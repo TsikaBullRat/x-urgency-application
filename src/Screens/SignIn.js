@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
 
 import { Card } from 'react-native-paper';
@@ -6,9 +6,14 @@ import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import SignUp from './SignUp'
+import {handleSignIn} from '../firebase'
 
 
 export default function SignIn({navigation}) {
+
+  const 
+    [email, setEmail] = useState(""),
+    [password, setPassword] = useState("")
 
 
   return (
@@ -50,7 +55,7 @@ export default function SignIn({navigation}) {
         <AntDesign name="user" size={22} color="black"  />
         
         <TextInput style={styles.txtUser} 
-          name= 'username' placeholder= 'Username' 
+          name= 'username' placeholder= 'Username' onChangeText={text=>setEmail(text)} 
         />
         </View>
 
@@ -65,7 +70,7 @@ export default function SignIn({navigation}) {
            <EvilIcons name="lock" size={28} color="black" />
            
            <TextInput style={styles.txtPass} 
-             name= 'password' placeholder= 'Password'          
+             name= 'password' placeholder= 'Password' onChangeText={text=>setPassword(text)}  
            />   
         </View>
 
@@ -77,7 +82,7 @@ export default function SignIn({navigation}) {
         <Text style= {{paddingLeft: 160, paddingBottom: 10, color: '#F47066'}}>Forgot Password? </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style= {styles.signIn}>
+        <TouchableOpacity style= {styles.signIn} onPress={()=>handleSignIn(email, password)}>
           <Text style= {{color: '#fff'}}>LOGIN </Text>
         </TouchableOpacity>
 
