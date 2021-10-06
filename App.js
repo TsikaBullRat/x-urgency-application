@@ -7,11 +7,15 @@ import ForgotPassword from './src/Screens/ForgotPassword';
 // You can import from local files
 import { SignIn, SignUp,} from './src/Screens';
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  
   return (
     <NavigationContainer>
+
       <Stack.Navigator initialRouteName="SignIn">
         <Stack.Screen name="Sign In" component={SignIn} />
         <Stack.Screen name="Sign Up" component={SignUp} />

@@ -5,8 +5,21 @@ import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
+import  { handleResetPassword}  from '../firebase'
 
 export default function ForgotPassword() {
+
+
+  const forgotPassword = ()=>{
+
+    alert("ada")
+    handleResetPassword("lindiwe.mpondo@gmail.com")
+  }
+  const Exit = ()=>{
+
+    alert("successfully logged out")
+  }
+
 
 
   return (
@@ -29,7 +42,7 @@ export default function ForgotPassword() {
 
 
 
-      <View style= {styles.header}>
+      <View style= {styles.header} >
         <Text style= {{fontWeight: 'bold', fontSize: 18, paddingLeft: 5}}>Reset Password</Text>
       </View>
 
@@ -87,8 +100,13 @@ export default function ForgotPassword() {
 
 
 
-        <TouchableOpacity style= {styles.signIn}>
+        <TouchableOpacity style= {styles.signIn}   onPress= {forgotPassword}>
           <Text style= {{color: '#fff'}}>Reset Password </Text>
+        </TouchableOpacity>
+
+        
+        <TouchableOpacity style= {styles.signIn}   onPress= {Exit}>
+          <Text style= {{color: '#fff'}}>Exit</Text>
         </TouchableOpacity>
 
 
