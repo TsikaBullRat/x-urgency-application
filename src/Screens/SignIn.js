@@ -1,3 +1,15 @@
+/**
+    * @description      : 
+    * @author           : MLab
+    * @group            : 
+    * @created          : 05/10/2021 - 12:38:39
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 05/10/2021
+    * - Author          : MLab
+    * - Modification    : 
+**/
 import React from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
 
@@ -5,7 +17,7 @@ import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
-import SignUp from './SignUp'
+import { Button } from '../components';
 
 
 export default function SignIn({navigation}) {
@@ -16,16 +28,16 @@ export default function SignIn({navigation}) {
 <View >
 
 
-      <Card style={styles.card}>  
+<Card style={styles.card}>  
 
-        <View style={styles.heartIcon}> 
-          <FontAwesome name="heartbeat" size={76} color="#fff" /> 
+<View style={styles.heartIcon}> 
+  <FontAwesome name="heartbeat" size={146} color="#fff" /> 
 
-          
-        </View>
-        <Text style={{color: '#fff', fontSize: 28, marginLeft: 15}}> X-urgency </Text>
+  
+</View>
+<Text style={{color: '#fff', fontSize: 28, marginLeft: 15}}> X-urgency </Text>
 
-      </Card>
+</Card>
 
 
 
@@ -45,14 +57,15 @@ export default function SignIn({navigation}) {
         
         <Card style={styles.txtCards}> 
 
-        <View style={{flexDirection: 'row'}}> 
+        <View style={{ flexDirection: 'row'}}> 
         
-        <AntDesign name="user" size={22} color="black"  />
+            <AntDesign name="user" size={20} color="black"  style= {{marginTop:10, marginLeft: 8}}/>
         
-        <TextInput style={styles.txtUser} 
-          name= 'username' placeholder= 'Username' 
-        />
-        </View>
+            <TextInput style={styles.txtUser} 
+              name= 'username' placeholder= 'Username' 
+            />
+
+          </View>
 
         </Card>
         
@@ -62,7 +75,8 @@ export default function SignIn({navigation}) {
 
         
          <View style={{flexDirection: 'row'}}> 
-           <EvilIcons name="lock" size={28} color="black" />
+         
+         <EvilIcons name="lock" size={28} color="black" style= {{ marginTop:8, marginLeft: 4}} />
            
            <TextInput style={styles.txtPass} 
              name= 'password' placeholder= 'Password'          
@@ -74,18 +88,17 @@ export default function SignIn({navigation}) {
 
 
         <TouchableOpacity>
-        <Text style= {{paddingLeft: 160, paddingBottom: 10, color: '#F47066'}}>Forgot Password? </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style= {styles.signIn}>
-          <Text style= {{color: '#fff'}}>LOGIN </Text>
+        <Text style= {styles.forgotPass}>Forgot Password? </Text>
         </TouchableOpacity>
 
 
 
+        <Button name="LOGIN"/>
 
 
-        <Text style= {{paddingTop: 5, paddingLeft: 100}}> 
+
+
+        <Text style= {{paddingTop: 5, paddingLeft: 125}}> 
           New User? 
           
           <TouchableOpacity  onPress= {() => {navigation.navigate('Sign Up')}}>
@@ -103,58 +116,74 @@ export default function SignIn({navigation}) {
 const styles = StyleSheet.create({
 
   card: {
+    position: 'absolute',
     backgroundColor: '#F47066',
-    marginTop: 1,
-    marginLeft: 38,
-    width: 262,
-    height: 150,
-    borderRadius: 30,
+    filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
+    width: 375,
+    height: 280,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
     alignItems: 'center',
+    justifyContent: 'center'
   },
 
   heartIcon: {
-    marginTop: 15,
-    marginLeft: 45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30,
   },
 
   header: {
-    paddingTop: 10,
-    paddingLeft: 135,
+    paddingTop: 300,
+    paddingLeft: 130,
+    paddingLeft: 150,
   },
 
   txtUser: {
-    borderRadius: 30,
+    width: 320,
+    height: 50,
+    borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey', 
-    padding: 5,
+    paddingLeft: 10,
   },
 
   txtPass: {
-    marginBottom: 15, 
-    borderRadius: 30,
+    width: 320,
+    height: 50,
+    borderRadius: 10,
     outline: 'none',
+    border: 0,
     backgroundColor: 'lightgrey', 
-    padding: 2,
+    paddingLeft: 10,
   },
 
   txtCards: {
     backgroundColor: 'lightgrey', 
-    width: 250,
-    height: 30, 
-    borderRadius: 30, 
-    marginLeft: 40,
-    marginTop: 10
+    width: 320,
+    height: 50, 
+    borderRadius: 10,
+    marginLeft: 28,
+    marginTop: 25
   },
 
+  forgotPass: {
+    paddingLeft: 160, 
+    paddingBottom: 10, 
+    color: '#F47066',
+    paddingLeft: 230,
+    paddingTop: 20,
+  },
+   
   signIn: { 
-    height: 30, 
-    width: 150, 
-    marginLeft: 90,
-    borderRadius: 30,
+    height: 50, 
+    width: 200, 
+    marginLeft: 85,
+    marginTop: 5,
+    borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center',
-  }
- 
-  
-});
+    justifyContent: 'center'
+  },
+
+})
