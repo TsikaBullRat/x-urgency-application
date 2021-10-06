@@ -1,8 +1,12 @@
 import {auth} from "../config"
+import { alertNote } from "../../Components"
 
 const handleSignIn = (email, password) =>{
     auth.signInWithEmailAndPassword(email, password)
-        .then(alert("Welcome"))
+        .then(()=>{
+            alertNote()
+            alert("Login Successful")
+        })
         .catch(err=>{
             console.log(err)
         })
