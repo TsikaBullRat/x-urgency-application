@@ -2,14 +2,14 @@
     * @description      : 
     * @author           : MLab
     * @group            : 
-    * @created          : 05/10/2021 - 12:37:47
+    * @created          : 06/10/2021 - 11:51:25
     * 
     * MODIFICATION LOG
     * - Version         : 1.0.0
-    * - Date            : 05/10/2021
+    * - Date            : 06/10/2021
     * - Author          : MLab
     * - Modification    : 
 **/
-import Button from "./button";
-
+import Button from './button'
+export {alertNote} from './Alert'
 export {Button}
