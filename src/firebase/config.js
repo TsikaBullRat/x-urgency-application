@@ -13,6 +13,7 @@ const app = firebase.initializeApp({
     measurementId: "G-K6LBM2CR1G"
 })
 
+
 const auth = app.auth()
 const firestore = app.firestore()
 const storage = app.storage()
