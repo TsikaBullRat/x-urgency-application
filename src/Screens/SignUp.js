@@ -1,13 +1,17 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
 
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
+import { handleSignUp } from '../firebase';
 
 export default function SignUp() {
 
+  const [email, setEmail] = useState(""),
+  [password, setPassword] = useState(""),
+  [Confirmpassword, setConfirmPassword] = useState("")
 
   return (
     <View >
@@ -45,7 +49,7 @@ export default function SignUp() {
         <AntDesign name="user" size={22} color="black"  />
         
         <TextInput style={styles.txtUser} 
-          name= 'username' placeholder= 'Username' 
+          name= 'username' placeholder= 'Username' onChangeText={text=>setEmail(text)}
         />
 
         </View>
@@ -62,7 +66,7 @@ export default function SignUp() {
            <EvilIcons name="lock" size={28} color="black" />
            
            <TextInput style={styles.txtPass} 
-             name= 'password' placeholder= 'Password'          
+             name= 'password' placeholder= 'Password' onChangeText={text=>setPassword(text)}    
            /> 
 
         </View>
@@ -77,7 +81,7 @@ export default function SignUp() {
 
         <EvilIcons name="lock" size={28} color="black" />
         <TextInput style={styles.txtRePass} 
-          name= 'password' placeholder= 'Re-enter Password'          
+          name= 'password' placeholder= 'Re-enter Password' onChangeText={text=>setConfirmPassword(text)} 
         />
         
       </View>
@@ -87,7 +91,7 @@ export default function SignUp() {
 
 
 
-        <TouchableOpacity style= {styles.signIn}>
+        <TouchableOpacity style= {styles.signIn} onPress={()=>handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword)}>
           <Text style= {{color: '#fff'}}>SIGN_UP </Text>
         </TouchableOpacity>
 
@@ -125,7 +129,7 @@ const styles = StyleSheet.create({
 
   txtUser: {
     borderRadius: 30,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey', 
     paddingLeft: 8,
     paddingTop: 8,
@@ -135,7 +139,7 @@ const styles = StyleSheet.create({
 
   txtPass: {
     borderRadius: 30,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey', 
     padding: 5,
   },
@@ -143,7 +147,7 @@ const styles = StyleSheet.create({
   txtRePass: {
     marginBottom: 15,
     borderRadius: 30,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey',
     padding: 5,
     paddingLeft: 4

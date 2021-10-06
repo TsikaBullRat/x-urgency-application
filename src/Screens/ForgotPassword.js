@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
 
   txtUser: {
     borderRadius: 30,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey', 
     paddingLeft: 8,
     paddingTop: 8,
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
 
   txtPass: {
     borderRadius: 30,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey', 
     padding: 5,
   },
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   txtRePass: {
     marginBottom: 15,
     borderRadius: 30,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey',
     padding: 5,
     paddingLeft: 4
