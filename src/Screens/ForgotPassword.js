@@ -1,25 +1,16 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
 
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
-import SignUp from './SignUp'
-import ForgotPassword from './ForgotPassword'
-import {handleSignIn} from '../firebase'
 
-
-export default function SignIn({navigation}) {
-
-  const 
-    [email, setEmail] = useState(""),
-    [password, setPassword] = useState("")
+export default function ForgotPassword() {
 
 
   return (
-    
-<View >
+    <View >
 
 
       <Card style={styles.card}>  
@@ -39,7 +30,7 @@ export default function SignIn({navigation}) {
 
 
       <View style= {styles.header}>
-        <Text style= {{fontWeight: 'bold', fontSize: 18, paddingLeft: 10}}>LogIn</Text>
+        <Text style= {{fontWeight: 'bold', fontSize: 18, paddingLeft: 5}}>Reset Password</Text>
       </View>
 
 
@@ -47,67 +38,71 @@ export default function SignIn({navigation}) {
       
       <View>
         
+        <Card style={styles.txtCards}>
 
-        
-        <Card style={styles.txtCards}> 
-
-        <View style={{flexDirection: 'row'}}> 
+        <View style={{ flexDirection: 'row'}}> 
         
         <AntDesign name="user" size={22} color="black"  />
         
         <TextInput style={styles.txtUser} 
-          name= 'username' placeholder= 'Username' onChangeText={text=>setEmail(text)} 
+          name= 'username' placeholder= 'Username' 
         />
+
         </View>
 
         </Card>
-        
 
 
-        <Card style={styles.txtCards}> 
 
-        
+
+
+        <Card style={styles.txtCards}>
          <View style={{flexDirection: 'row'}}> 
+
            <EvilIcons name="lock" size={28} color="black" />
            
            <TextInput style={styles.txtPass} 
-             name= 'password' placeholder= 'Password' onChangeText={text=>setPassword(text)}  
-           />   
+             name= 'password' placeholder= 'New Password'          
+           /> 
+
         </View>
 
         </Card>
 
 
 
-        <TouchableOpacity  onPress= {() => {navigation.navigate('Reset Password')}}>
-        <Text style= {{paddingLeft: 160, paddingBottom: 10, color: '#F47066'}}>Forgot Password? </Text>
+
+<Card style={styles.txtCards}>
+      <View style={{flexDirection: 'row'}}> 
+
+        <EvilIcons name="lock" size={28} color="black" />
+        <TextInput style={styles.txtRePass} 
+          name= 'password' placeholder= 'Confirm Password'          
+        />
+        
+      </View>
+
+      </Card>
+
+
+
+
+        <TouchableOpacity style= {styles.signIn}>
+          <Text style= {{color: '#fff'}}>Reset Password </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style= {styles.signIn} onPress={()=>handleSignIn(email, password)}>
-          <Text style= {{color: '#fff'}}>LOGIN </Text>
-        </TouchableOpacity>
 
-
-
-
-
-        <Text style= {{paddingTop: 5, paddingLeft: 100}}> 
-          New User? 
-          
-          <TouchableOpacity  onPress= {() => {navigation.navigate('Sign Up')}}>
-          <Text style={{color: '#F47066'}}> Sign Up</Text>
-          </TouchableOpacity>
-        </Text>
 
       </View>
 
 
-</View>
+
+
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-
   card: {
     backgroundColor: '#F47066',
     marginTop: 1,
@@ -125,29 +120,41 @@ const styles = StyleSheet.create({
 
   header: {
     paddingTop: 10,
-    paddingLeft: 135,
+    paddingRight: 95,
+    marginLeft: 90,
   },
 
   txtUser: {
     borderRadius: 30,
     outline: 'none',
     backgroundColor: 'lightgrey', 
-    padding: 5,
+    paddingLeft: 8,
+    paddingTop: 8,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   txtPass: {
-    marginBottom: 15, 
     borderRadius: 30,
     outline: 'none',
     backgroundColor: 'lightgrey', 
-    padding: 2,
+    padding: 5,
+  },
+
+  txtRePass: {
+    marginBottom: 15,
+    borderRadius: 30,
+    outline: 'none',
+    backgroundColor: 'lightgrey',
+    padding: 5,
+    paddingLeft: 4
   },
 
   txtCards: {
     backgroundColor: 'lightgrey', 
     width: 250,
     height: 30, 
-    borderRadius: 30, 
+    borderRadius: 30,
     marginLeft: 40,
     marginTop: 10
   },
@@ -156,10 +163,11 @@ const styles = StyleSheet.create({
     height: 30, 
     width: 150, 
     marginLeft: 90,
+    marginTop: 30,
     borderRadius: 30,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   }
  
   
