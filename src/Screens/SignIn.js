@@ -8,17 +8,25 @@ import { EvilIcons } from '@expo/vector-icons';
 import SignUp from './SignUp'
 import ForgotPassword from './ForgotPassword'
 import {handleSignIn} from '../firebase'
+import { AlertNote } from '../Components';
 
 
 export default function SignIn({navigation}) {
 
   const 
     [email, setEmail] = useState(""),
-    [password, setPassword] = useState("")
+    [password, setPassword] = useState(""),
+    [displayModal, setDisplaModal] = useState(false)
+
+  const Login = () =>{
+    handleSignIn(email, password)
+    setDisplaModal(true)
+  }
 
 
   return (
     <View >
+      <AlertNote visible={displayModal} setVisble={setDisplaModal}/>
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={76} color="#fff" />
@@ -66,7 +74,7 @@ export default function SignIn({navigation}) {
         <Text style= {{paddingLeft: 160, paddingBottom: 10, color: '#F47066'}}>Forgot Password? </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style= {styles.signIn} onPress={()=>handleSignIn(email, password)}>
+        <TouchableOpacity style= {styles.signIn} onPress={Login}>
           <Text style= {{color: '#fff'}}>LOGIN </Text>
         </TouchableOpacity>
         <Text style={{ paddingTop: 5, paddingLeft: 100 }}>
@@ -101,7 +109,7 @@ const styles = StyleSheet.create({
 
   txtUser: {
     borderRadius: 30,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey',
     padding: 5,
   },
@@ -109,7 +117,7 @@ const styles = StyleSheet.create({
   txtPass: {
     marginBottom: 15,
     borderRadius: 30,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey',
     padding: 2,
   },
