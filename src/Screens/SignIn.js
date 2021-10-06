@@ -1,12 +1,22 @@
-import React from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
+import React,{useState} from 'react';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
+
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import SignUp from './SignUp'
+import ForgotPassword from './ForgotPassword'
+import {handleSignIn} from '../firebase'
 
-export default function SignIn({ navigation }) {
+
+export default function SignIn({navigation}) {
+
+  const 
+    [email, setEmail] = useState(""),
+    [password, setPassword] = useState("")
+
+
   return (
     <View >
       <Card style={styles.card}>
@@ -19,27 +29,45 @@ export default function SignIn({ navigation }) {
         <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 10 }}>LogIn</Text>
       </View>
       <View>
-        <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={22} color="black" />
-            <TextInput style={styles.txtUser}
-              name='username' placeholder='Username'
-            />
-          </View>
+        
+
+        
+        <Card style={styles.txtCards}> 
+
+        <View style={{flexDirection: 'row'}}> 
+        
+        <AntDesign name="user" size={22} color="black"  />
+        
+        <TextInput style={styles.txtUser} 
+          name= 'username' placeholder= 'Username' onChangeText={text=>setEmail(text)} 
+        />
+        </View>
+
         </Card>
-        <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" />
-            <TextInput style={styles.txtPass}
-              name='password' placeholder='Password'
-            />
-          </View>
+        
+
+
+        <Card style={styles.txtCards}> 
+
+        
+         <View style={{flexDirection: 'row'}}> 
+           <EvilIcons name="lock" size={28} color="black" />
+           
+           <TextInput style={styles.txtPass} 
+             name= 'password' placeholder= 'Password' onChangeText={text=>setPassword(text)}  
+           />   
+        </View>
+
         </Card>
-        <TouchableOpacity>
-          <Text style={{ paddingLeft: 160, paddingBottom: 10, color: '#F47066' }}>Forgot Password? </Text>
+
+
+
+        <TouchableOpacity  onPress= {() => {navigation.navigate('Reset Password')}}>
+        <Text style= {{paddingLeft: 160, paddingBottom: 10, color: '#F47066'}}>Forgot Password? </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.signIn}>
-          <Text style={{ color: '#fff' }}>LOGIN </Text>
+
+        <TouchableOpacity style= {styles.signIn} onPress={()=>handleSignIn(email, password)}>
+          <Text style= {{color: '#fff'}}>LOGIN </Text>
         </TouchableOpacity>
         <Text style={{ paddingTop: 5, paddingLeft: 100 }}>
           New User?
