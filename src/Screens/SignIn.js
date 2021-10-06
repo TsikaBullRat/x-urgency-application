@@ -18,33 +18,16 @@ export default function SignIn({navigation}) {
 
 
   return (
-    
-<View >
-
-
-      <Card style={styles.card}>  
-
-        <View style={styles.heartIcon}> 
-          <FontAwesome name="heartbeat" size={76} color="#fff" /> 
-
-          
+    <View >
+      <Card style={styles.card}>
+        <View style={styles.heartIcon}>
+          <FontAwesome name="heartbeat" size={76} color="#fff" />
         </View>
-        <Text style={{color: '#fff', fontSize: 28, marginLeft: 15}}> X-urgency </Text>
-
+        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
-
-
-
-
-
-
-      <View style= {styles.header}>
-        <Text style= {{fontWeight: 'bold', fontSize: 18, paddingLeft: 10}}>LogIn</Text>
+      <View style={styles.header}>
+        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 10 }}>LogIn</Text>
       </View>
-
-
-      
-      
       <View>
         
 
@@ -86,40 +69,28 @@ export default function SignIn({navigation}) {
         <TouchableOpacity style= {styles.signIn} onPress={()=>handleSignIn(email, password)}>
           <Text style= {{color: '#fff'}}>LOGIN </Text>
         </TouchableOpacity>
-
-
-
-
-
-        <Text style= {{paddingTop: 5, paddingLeft: 100}}> 
-          New User? 
-          
-          <TouchableOpacity  onPress= {() => {navigation.navigate('Sign Up')}}>
-          <Text style={{color: '#F47066'}}> Sign Up</Text>
+        <Text style={{ paddingTop: 5, paddingLeft: 100 }}>
+          New User?
+          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
+            <Text style={{ color: '#F47066' }}> Sign Up</Text>
           </TouchableOpacity>
         </Text>
-
       </View>
-
-
-</View>
+    </View>
   )
 }
-
 const styles = StyleSheet.create({
-
   card: {
     backgroundColor: '#F47066',
     marginTop: 1,
-    marginLeft: 38,
-    width: 262,
-    height: 150,
+    width: 362,
+    height: 250,
     borderRadius: 30,
     alignItems: 'center',
   },
 
   heartIcon: {
-    marginTop: 15,
+    marginTop: 75,
     marginLeft: 45,
   },
 
@@ -131,36 +102,34 @@ const styles = StyleSheet.create({
   txtUser: {
     borderRadius: 30,
     outline: 'none',
-    backgroundColor: 'lightgrey', 
+    backgroundColor: 'lightgrey',
     padding: 5,
   },
 
   txtPass: {
-    marginBottom: 15, 
+    marginBottom: 15,
     borderRadius: 30,
     outline: 'none',
-    backgroundColor: 'lightgrey', 
+    backgroundColor: 'lightgrey',
     padding: 2,
   },
 
   txtCards: {
-    backgroundColor: 'lightgrey', 
+    backgroundColor: 'lightgrey',
     width: 250,
-    height: 30, 
-    borderRadius: 30, 
+    height: 30,
+    borderRadius: 30,
     marginLeft: 40,
     marginTop: 10
   },
 
-  signIn: { 
-    height: 30, 
-    width: 150, 
+  signIn: {
+    height: 30,
+    width: 150,
     marginLeft: 90,
     borderRadius: 30,
     backgroundColor: '#F47066',
     alignItems: 'center',
     justifyContent: 'center',
   }
- 
-  
 });
