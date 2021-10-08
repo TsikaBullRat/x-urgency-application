@@ -17,10 +17,13 @@ import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
-import { Button } from '../components';
+import { handleSignUp } from '../firebase';
 
 export default function SignUp() {
 
+  const [email, setEmail] = useState(""),
+  [password, setPassword] = useState(""),
+  [Confirmpassword, setConfirmPassword] = useState("")
 
   return (
     <View >
@@ -57,9 +60,9 @@ export default function SignUp() {
         
             <AntDesign name="user" size={20} color="black"  style= {{marginTop:10, marginLeft: 8}}/>
         
-            <TextInput style={styles.txtUser} 
-              name= 'username' placeholder= 'Username' 
-            />
+        <TextInput style={styles.txtUser} 
+          name= 'username' placeholder= 'Username' onChangeText={text=>setEmail(text)}
+        />
 
           </View>
 
@@ -74,10 +77,9 @@ export default function SignUp() {
 
             <EvilIcons name="lock" size={28} color="black" style= {{ marginTop:8, marginLeft: 4}} />
            
-            <TextInput style={styles.txtPass} 
-             name= 'password' placeholder= 'Password'
-             secureTextEntry={'true'}          
-            /> 
+           <TextInput style={styles.txtPass} 
+             name= 'password' placeholder= 'Password' onChangeText={text=>setPassword(text)}    
+           /> 
 
           </View>
 
@@ -93,10 +95,10 @@ export default function SignUp() {
               style= {{ marginTop:9, marginLeft: 4}} 
             />
 
-           <TextInput style={styles.txtRePass} 
-              name= 'password' secureTextEntry={'true'} 
-              placeholder= 'Re-enter Password'          
-            />
+        <EvilIcons name="lock" size={28} color="black" />
+        <TextInput style={styles.txtRePass} 
+          name= 'password' placeholder= 'Re-enter Password' onChangeText={text=>setConfirmPassword(text)} 
+        />
         
           </View>
 
@@ -105,7 +107,9 @@ export default function SignUp() {
 
 
 
-        <Button name="SIGNUP"/>
+        <TouchableOpacity style= {styles.signIn} onPress={()=>handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword)}>
+          <Text style= {{color: '#fff'}}>SIGN_UP </Text>
+        </TouchableOpacity>
 
 
 

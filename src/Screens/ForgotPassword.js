@@ -24,7 +24,6 @@ export default function ForgotPassword() {
 
   const forgotPassword = ()=>{
 
-    alert("ada")
     handleResetPassword("lindiwe.mpondo@gmail.com")
   }
   const Exit = ()=>{

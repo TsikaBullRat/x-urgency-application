@@ -17,6 +17,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import {handleSignIn} from '../firebase'
+import { AlertNote } from '../Components';
 
 export default function SignIn({navigation}) {
   const 
@@ -27,10 +28,11 @@ export default function SignIn({navigation}) {
     handleSignIn(email, password)
     setDisplaModal(true)
   }
+
+
   return (
     <View >
-      {/*<AlertNote visible={displayModal} setVisble={setDisplaModal}/>*/}
-
+      <AlertNote visible={displayModal} setVisble={setDisplaModal}/>
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={76} color="#fff" />
