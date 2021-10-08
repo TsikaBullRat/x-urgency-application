@@ -49,9 +49,14 @@ import cpr from '../images/cprIcon.png'
 import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
+import { auth } from '../firebase';
 
-export default function Home({navigation}) {
+export default function Home({navigation, setDone}) {
 
+  const Logout = () => {
+    auth.signOut()
+    setDone(false)
+  }
 
   return (
     <View style= {styles.contain}> 
@@ -277,7 +282,7 @@ export default function Home({navigation}) {
 
         </TouchableOpacity>
 
-        <TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
+        <TouchableOpacity  onPress={Logout}>
 
   <Image style={styles.user} source= {User} />
 

@@ -19,7 +19,7 @@ import ForgotPassword from './ForgotPassword'
 import {handleSignIn} from '../firebase'
 import { AlertNote } from '../Components';
 
-export default function SignIn({navigation}) {
+export default function SignIn({navigation, setDone}) {
   const 
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
@@ -30,6 +30,7 @@ export default function SignIn({navigation}) {
   const Login = () =>{
     handleSignIn(email, password, setMessage)
     setDisplaModal(true)
+    setDone(true)
   }
 
 
@@ -71,7 +72,7 @@ export default function SignIn({navigation}) {
         <Text style= {{paddingLeft: 220, paddingTop: 10, color: '#F47066'}}>Forgot Password? </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style= {styles.signIn} onPress={() => { navigation.navigate('Home') }}>
+        <TouchableOpacity style= {styles.signIn} onPress={Login}>
           <Text style= {{color: '#fff'}}>LOGIN </Text>
         </TouchableOpacity>
 
