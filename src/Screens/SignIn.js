@@ -2,9 +2,7 @@ import React,{useState} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
 
 import { Card } from 'react-native-paper';
-import { FontAwesome } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { EvilIcons } from '@expo/vector-icons';
+import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import SignUp from './SignUp'
 import ForgotPassword from './ForgotPassword'
 import {handleSignIn} from '../firebase'
@@ -16,17 +14,20 @@ export default function SignIn({navigation}) {
   const 
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
-    [displayModal, setDisplaModal] = useState(false)
+    [displayModal, setDisplaModal] = useState(false),
+    [message, setMessage] = useState("");
+    
 
   const Login = () =>{
-    handleSignIn(email, password)
+    handleSignIn(email, password, setMessage)
     setDisplaModal(true)
   }
 
 
   return (
+    
     <View >
-      <AlertNote visible={displayModal} setVisble={setDisplaModal}/>
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message}/>
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={76} color="#fff" />

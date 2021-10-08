@@ -1,6 +1,6 @@
 import { auth } from '../config'
 
-const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword) => {
+const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage) => {
     if (password !== Confirmpassword) {
         alert("Password Doesn't Match")
         setPassword(" ")
@@ -8,12 +8,13 @@ const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, s
     }
     else {
         auth.createUserWithEmailAndPassword(email, password).then(
-           alert('Signed Up')
+        //    alert('Signed Up')
         )
             .catch((error) => {
-                alert('Unsuccesful')
-                var errorCode = error.code;
-                var errorMessage = error.message;
+                // switch(error.code){
+                //     case ""
+                // }
+                setMessage(error.message);
             });
     }
     setEmail("")

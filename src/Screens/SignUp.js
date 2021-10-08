@@ -2,21 +2,28 @@ import React,{useState} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
 
 import { Card } from 'react-native-paper';
-import { FontAwesome } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { EvilIcons } from '@expo/vector-icons';
+import { FontAwesome,AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../firebase';
+import { AlertNote } from '../Components';
 
 export default function SignUp() {
 
   const [email, setEmail] = useState(""),
   [password, setPassword] = useState(""),
-  [Confirmpassword, setConfirmPassword] = useState("")
+  [Confirmpassword, setConfirmPassword] = useState(""),
+  [displayModal, setDisplaModal] = useState(false),
+  [message, setMessage] = useState("")
+
+  const Register = () =>{
+    handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage)
+    setDisplaModal(true)
+  }
 
   return (
+    
     <View >
 
-
+    <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message}/>
       <Card style={styles.card}>  
 
         <View style={styles.heartIcon}> 
@@ -91,7 +98,7 @@ export default function SignUp() {
 
 
 
-        <TouchableOpacity style= {styles.signIn} onPress={()=>handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword)}>
+        <TouchableOpacity style= {styles.signIn} onPress={Register}>
           <Text style= {{color: '#fff'}}>SIGN_UP </Text>
         </TouchableOpacity>
 

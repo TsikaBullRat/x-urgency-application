@@ -1,36 +1,27 @@
-import React, { useState } from 'react'
-// import { Alert, StyleSheet } from 'react-native'
-import { Modal, Platform, Pressable, StyleSheet, View } from 'react-native'
+import React from 'react';
+import { Modal, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-// const alertNote = () =>{
-//     Alert.alert(
-//         "Title",
-//         "Custom Message",
-//         [
-//             {
-//                 text: "Ok",
-//                 onPress:()=>console.log("Ok pressed"),
-//             }
-//         ]
-//     )
-// }
-
-const AlertNote = ({ visible, setVisible }) => {
-
-
+const AlertNote = ({ modalVisible, setModalVisible, msg }) => {
     return (
         <Modal
             animationType="fade"
             transparent={true}
-            visible={visible}
+            visible={modalVisible}
             onRequestClose={() => {
-                setVisible(false)
+                setModalVisible(!modalVisible);
             }}
-        >
-            <Pressable style={styles.backdrop} onPress={() => props.setModalVisible(false)} />
-            <View>
+            style={styles.modal}>
+            <Pressable style={styles.backdrop} onPress={() => setModalVisible(false)} >
+            <View style={styles.modal}>
+                <View style={styles.alerBox}>
+                    <Text style={styles.text}>{msg}</Text>
+                    <TouchableOpacity style={styles.button} onPress={()=>setModalVisible(false)}>
+                        <Text style={styles.btnText}>OK</Text>
+                    </TouchableOpacity>
+                </View>
                 
             </View>
+            </Pressable>
         </Modal>
     )
 }
@@ -43,24 +34,55 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
         ...Platform.select({
-            android: {
-                backgroundColor: "#232f34",
-                opacity: 0.32
-            },
             ios: {
                 backgroundColor: "#000000",
                 opacity: 0.3
             },
-            default:{
+            android: {
+                backgroundColor: "#232f34",
+                opacity: 0.32
+            },
+            web: {
+                backgroundColor: '#000',
+                opacity: 0.3
+            },
+            default: {
                 backgroundColor: '#000',
                 opacity: 0.3
             }
         })
+    },
+    alerBox: {
+        backgroundColor: '#F47066',
+        width: '80%',
+        height: 250,
+        borderRadius: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        opacity: 1
+    },
+    modal: {
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    text:{
+        fontSize: 25,
+        color: '#fff'
+    },
+    button:{
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 80,
+        height: 40,
+        marginTop: 20,
+        borderRadius: 25,
+    },
+    btnText:{
+        fontSize: 15,
+        color: '#F47066'
     }
 })
-// const alertError = () =>{
 
-// }
-
-// export{alertNote}
 export { AlertNote }
