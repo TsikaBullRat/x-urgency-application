@@ -10,15 +10,15 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, TouchableHighlight} from 'react-native';
+import React, {useState} from 'react';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 
 import { Card } from 'react-native-paper';
 import { FontAwesome,AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../firebase';
 import { AlertNote } from '../Components';
 
-export default function SignUp() {
+export default function SignUp({navigation}) {
 
   const [email, setEmail] = useState(""),
   [password, setPassword] = useState(""),
@@ -85,7 +85,9 @@ export default function SignUp() {
             <EvilIcons name="lock" size={28} color="black" style= {{ marginTop:8, marginLeft: 4}} />
            
            <TextInput style={styles.txtPass} 
-             name= 'password' placeholder= 'Password' onChangeText={text=>setPassword(text)}    
+             name= 'password' placeholder= 'Password' 
+             secureTextEntry={true}
+             onChangeText={text=>setPassword(text)}    
            /> 
 
           </View>
@@ -102,9 +104,10 @@ export default function SignUp() {
               style= {{ marginTop:9, marginLeft: 4}} 
             />
 
-        <EvilIcons name="lock" size={28} color="black" />
         <TextInput style={styles.txtRePass} 
-          name= 'password' placeholder= 'Re-enter Password' onChangeText={text=>setConfirmPassword(text)} 
+          name= 'password' placeholder= 'Re-enter Password' 
+          secureTextEntry={true}
+          onChangeText={text=>setConfirmPassword(text)} 
         />
         
           </View>
@@ -114,7 +117,7 @@ export default function SignUp() {
 
 
 
-        <TouchableOpacity style= {styles.signIn} onPress={Register}>
+        <TouchableOpacity style= {styles.signIn} onPress={() => { navigation.navigate('Home') }}>
           <Text style= {{color: '#fff'}}>SIGN_UP </Text>
         </TouchableOpacity>
 

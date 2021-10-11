@@ -23,27 +23,19 @@
     * - Modification    : 
 **/
 import React from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image } from 'react-native';
+import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity } from 'react-native';
 
 import {Input} from 'react-native-elements';
 
 import { Card } from 'react-native-paper';
 
 import { AntDesign } from '@expo/vector-icons';
-import Stroke from '../images/stroke.png';
 import strVid from '../images/stroke-vid.jpg';
-import heartVid from '../images/heart-vid.jpg';
+import User from '../images/user.jpg'
+import home from '../images/home.jpg'
+import play from '../images/playMenu.jpg'
 
-import epilepsyVid from '../images/epilepsy-vid.jpg';
-import cpr_vid2 from '../images/cpr_vid2.jpg';
-import drowning from '../images/drowning-vid.jpg';
-import pain from '../images/pain-vid.png';
-import burn from '../images/burns-vid.jpg';
-import choke from '../images/choking-vid.jpg';
-import bleed from '../images/bleeding-vid.webp';
-import heart from '../images/heart.png';
-import blood from '../images/blood.jpg';
-export default function Strokes() {
+export default function Strokes({navigation}) {
 
 
   return (
@@ -72,8 +64,7 @@ export default function Strokes() {
 
       
 
-      <ScrollView vertical={true} >
-      <Card style= {styles.menu2}>
+
   
           
         <View>
@@ -85,59 +76,6 @@ export default function Strokes() {
         </View>
       
   
-        <View> 
-          <Image style={styles.heartVid} source= {heartVid} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Heart-Attack</Text>
-        </View>
-  
-        <View> 
-          <Image style={styles.strokeVid} source= {epilepsyVid} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Epilepsy</Text>
-        </View>
-  
-        <View> 
-            <Image style={styles.cpr} source= {cpr_vid2} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>CPR</Text>
-        </View>
-            
-        <View> 
-          <Image style={styles.bleed} source= {bleed} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Bleeding</Text>
-        </View>
-
-        <View> 
-            <Image style={styles.choke} source= {choke} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Choking</Text>
-        </View>
-
-        <View> 
-            <Image style={styles.drowning} source= {drowning} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Drowning</Text>
-        </View>
-
-
-        <View> 
-            <Image style={styles.burns} source= {burn} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Burns</Text>
-        </View>
-            
-  
-        </Card>
-        </ScrollView> 
 
         <Input
    placeholder="Comment"
@@ -145,6 +83,38 @@ export default function Strokes() {
    
    onChangeText={value => this.setState({ comment: value })}
   />
+
+
+<View style= {{flexDirection: 'row'}}>
+
+<TouchableOpacity onPress={() => { navigation.navigate('Home') }}>
+
+<Image style={styles.home} source= {home} />
+
+</TouchableOpacity>
+
+<TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
+<Card style= {{backgroundColor: '#51545a31', height: 50, width: 50, borderRadius: 30, marginTop: 78, marginLeft: 35}}>
+
+
+<Image style={styles.play} source= {play} />
+
+</Card>
+</TouchableOpacity>
+
+<TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
+
+<Image style={styles.user} source= {User} />
+
+</TouchableOpacity>
+
+
+</View>
+
+
+<Card style= {{marginTop: 30, marginLeft: 30}}>
+  <Text>Comments</Text>
+</Card>
 
         
       
@@ -180,73 +150,7 @@ const styles = StyleSheet.create({
     marginTop: 25
   },
 
-  menu: {
-      width: 360, 
-      marginLeft: 10,
-      marginTop: 20, 
-      borderRadius: 15, 
-      backgroundColor: '#f7eeee',
-    },
-
-  strokeMenu: {
-    height:35, 
-    width: 35, 
-    borderRadius: 15,
-    marginTop: 5
-  },
-
-  heartMenu: {
-    height:35, 
-    width: 35, 
-    borderRadius: 15,
-    marginTop: 6
-  },
-
-  epilepsyMenu: {
-    height:55, 
-    width: 55, 
-    borderRadius: 15,
-    borderWidth: 15,
-    borderColor: '#F96056',
-    marginLeft:22
-  },
-
-  cprMenu: {
-    height:55, 
-    width: 55, 
-    borderRadius: 15,
-    borderWidth: 15,
-    borderColor: '#F96056',
-    marginLeft:22
-  },
-
-  bloodMenu: {
-    height:45, 
-    width: 45, 
-    borderRadius: 15,
-    marginTop: 8
-  },
-
-  conImg: {
-    height:55, 
-    width: 55, 
-    borderRadius: 15,
-    borderWidth: 15,
-    borderColor: '#F96056',
-    marginLeft: 32
-  },
-
-  
-
-  menu2: {
-    width: 316, 
-    height: 200,
-    marginLeft: 30,
-    marginTop: 20, 
-    borderRadius: 15, 
-    backgroundColor: '#f7eeee',
-  },
-
+ 
   strokeVid: {
     height:180, 
     width: 315,
@@ -254,48 +158,34 @@ const styles = StyleSheet.create({
 
   },
 
-  heartVid: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-
-}, 
-
-cpr: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-},
-
-bleed: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-},
-
-choke: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-},
-
-drowning: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-},
-
-burns: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-},
+  user: {
+    height: 25,
+    width: 25,
+    borderRadius: 30,
+    borderWidth: 1, 
+    borderColor: 'grey',
+    marginLeft: 100,
+    marginTop: 90,
+  },
+  
+  home: {
+    height: 25,
+    width: 25,
+    borderRadius: 30,
+    borderWidth: 1, 
+    borderColor: 'grey',
+    marginLeft: 52,
+    marginTop: 88,
+  },
+  
+  play: {
+    height: 25,
+    width: 25,
+    borderRadius: 30, 
+    borderColor: 'grey',
+    marginLeft: 12,
+    marginTop: 13,
+  }
   
 });
 

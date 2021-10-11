@@ -30,7 +30,7 @@ export default function App() {
     <NavigationContainer>
       {successful?(
       user?(
-        // Main Application
+      // Main Application
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" options={{ headerShown: false }} >
           {props=><Home {...props} setDone={setSuccess}/>}
