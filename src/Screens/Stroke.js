@@ -22,28 +22,40 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity } from 'react-native';
-
-import {Input} from 'react-native-elements';
-
+import React, {useState} from 'react';
+import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
-
 import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Avatar } from 'react-native-elements';
+
 import strVid from '../images/stroke-vid.jpg';
-import User from '../images/user.jpg'
-import home from '../images/home.jpg'
-import play from '../images/playMenu.jpg'
+
 
 export default function Strokes({navigation}) {
+    
+    const {comments, setComments} = useState('')
 
+    const styleTypes = ['default', 'dark-content', 'light-content'];
+  const [visibleStatusBar, setVisibleStatusBar] = useState(false);
+  const [styleStatusBar, setStyleStatusBar] = useState(styleTypes[0]);
+
+  const changeVisibilityStatusBar = () => {
+    setVisibleStatusBar(!visibleStatusBar);
+  };
+
+  const changeStyleStatusBar = () => {
+    const styleId = styleTypes.indexOf(styleStatusBar) + 1;
+
+    if (styleId === styleTypes.length) {
+      return setStyleStatusBar(styleTypes[0]);
+    }
+    return setStyleStatusBar(styleTypes[styleId]);
+  };
 
   return (
     <View style= {styles.contain}> 
-
-      <View style= {styles.header}>
-        <Text style= {{ fontSize: 36}}>What's your EMERGENCY?</Text>
-      </View>
 
 
       <Card style={styles.txtCards}>
@@ -58,62 +70,199 @@ export default function Strokes({navigation}) {
 
           </View>
 
-        </Card>
-
-      
-
-      
-
+      </Card>
 
   
           
         <View>
-          <Image style={styles.strokeVid} source= {strVid} />
-        
+
+          <Image style={styles.strokeVid} source= {strVid} />           
+          
         </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Stroke</Text>
-        </View>
+
+
+
       
+
+
+      
+      <View style={styles.descriptionContainer}>
+
+        {!visibleStatusBar ? (
+            
+          <View>
+
+            <View style= {{flexDirection: 'row', paddingLeft: 50, marginTop: 10}}>
+
+              <Text style={{fontWeight: 'bold'}}>
+                Stroke Emergency Video
+              </Text>
+
+              <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()} > 
   
+                <AntDesign name="downcircle" size={18} color="black"  style= {styles.dropDown}/>
+  
+              </TouchableOpacity>
 
-        <Input
-   placeholder="Comment"
-   leftIcon={{ type: 'font-awesome', name: 'comment' }}
-   
-   onChangeText={value => this.setState({ comment: value })}
-  />
+              </View>
 
+              <Text style={{fontSize: 10, paddingLeft: 50, paddingTop: 5}}>1.7M views - 2years ago</Text>
 
-<View style= {{flexDirection: 'row'}}>
+              <Card style={{borderColor: 'black', width: 315, marginTop: 20, marginLeft: 30}}>
 
-<TouchableOpacity onPress={() => { navigation.navigate('Home') }}>
+                <View style= {{flexDirection: 'row', marginTop: 5, marginLeft: 3}}>
 
-<Image style={styles.home} source= {home} />
+                  <View style={{marginLeft: 10}}>
 
-</TouchableOpacity>
+                    <Entypo name="thumbs-up" size={24} color="black" style={{marginLeft: 10}} />
+                    <Text style={{marginTop: 5}}>  16k  </Text>
 
-<TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
-<Card style= {{backgroundColor: '#51545a31', height: 50, width: 50, borderRadius: 30, marginTop: 78, marginLeft: 35}}>
-
-
-<Image style={styles.play} source= {play} />
-
-</Card>
-</TouchableOpacity>
-
-<TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
-
-<Image style={styles.user} source= {User} />
-
-</TouchableOpacity>
+                  </View>
 
 
-</View>
+                  <View style= {{marginLeft: 45}}>
+
+                    <Entypo name="thumbs-down" size={24} color="black" style={{marginTop: 3, marginLeft: 5}}/>
+                    <Text style={{paddingTop: 2}}>  16  </Text>
+
+                  </View>
 
 
-<Card style= {{marginTop: 30, marginLeft: 30}}>
-  <Text>Comments</Text>
+                  <View style= {{marginLeft: 40}}>
+                    
+                    <FontAwesome5 name="share" size={24} color="black" 
+                    style={{marginLeft: 13}}/>
+
+                    <Text style={{paddingTop: 5}}>  Share  </Text>
+
+                  </View>
+
+
+                  <View style= {{marginLeft: 40}}>
+                    
+                    <Entypo name="save" size={24} color="black" style={{marginLeft: 10}}/>
+
+                    <Text style={{paddingTop: 5}}>  Save  </Text>
+
+                  </View>
+                  
+
+                </View>
+
+              </Card>
+
+
+            <View style= {{marginTop: 50, marginLeft: 30, flexDirection: 'row'}}>
+
+              <Avatar rounded
+                      source={{
+                      uri: 'https://randomuser.me/api/portraits/men/41.jpg',
+                      }}
+                      size="medium"
+              />
+
+              <Text style={{paddingTop: 15, paddingLeft: 15}}>Rando123</Text>
+
+            </View>
+
+            
+  
+        </View>
+           
+          ) 
+            
+          : //Hidden Description
+      
+    <View>       
+
+          <Card style={{width: 315, height: 300, marginLeft: 20,
+                          borderRadius: 20,
+                          backgroundColor: 'pink',
+          }}>  
+
+
+          <View style={{flexDirection: 'row'}}>       
+
+            <Text
+              style={{
+              paddingLeft: 10,
+              paddingTop: 15,
+              fontWeight: 'bold',
+              fontSize: 16,
+            }}>
+              Description:
+            </Text>
+
+
+            <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
+
+              <AntDesign name="closecircle" size={18} color="black" style={{marginLeft: 180, marginTop: 15}}/>
+
+            </TouchableOpacity>
+
+          </View>
+
+        <View
+          style={{
+            marginTop: 10,
+            marginLeft: 12,
+            width: 255,
+          }}>
+          
+            
+            <Text >
+               Stroke Emergency Video
+            </Text>
+
+            <Text style= {{fontSize: 10, color: 'gray'}}>
+               1 000 000 Views
+            </Text>
+
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            marginTop: 10,
+            marginLeft: 12,
+            width: 255,
+          }}>
+
+          <Text style={{paddingTop: 10}}>                     
+            Lost your faith in ambulances' response time?
+            You can play doctor and help save a life by just
+            following the instructions of this video.
+            This video is accredited by the Department of Health
+            and Social Development, for critical emergencies only.                        
+          </Text>
+
+          <Text>Thank you for your support.</Text>
+       
+        </View>
+
+      </Card>
+    </View>
+      
+      
+          }
+
+          
+           
+
+    </View>
+
+
+
+
+
+
+
+
+
+<Card style= {{height: 40, marginTop: 30, marginLeft: 30}}>
+
+  <Text style= {{paddingTop: 10, paddingLeft: 10}}>Comments - 498</Text>
+
 </Card>
 
         
@@ -155,36 +304,12 @@ const styles = StyleSheet.create({
     height:180, 
     width: 315,
     borderRadius: 30,
-
+    marginTop: 50,
+    marginLeft: 30
   },
 
-  user: {
-    height: 25,
-    width: 25,
-    borderRadius: 30,
-    borderWidth: 1, 
-    borderColor: 'grey',
-    marginLeft: 100,
-    marginTop: 90,
-  },
-  
-  home: {
-    height: 25,
-    width: 25,
-    borderRadius: 30,
-    borderWidth: 1, 
-    borderColor: 'grey',
-    marginLeft: 52,
-    marginTop: 88,
-  },
-  
-  play: {
-    height: 25,
-    width: 25,
-    borderRadius: 30, 
-    borderColor: 'grey',
-    marginLeft: 12,
-    marginTop: 13,
+  dropDown: {
+    marginLeft: 100
   }
   
 });

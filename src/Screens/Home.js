@@ -23,8 +23,7 @@
     * - Modification    : 
 **/
 import React, {useState} from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, 
-  SafeAreaView, Button} from 'react-native';
+import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity} from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 
 import { Card } from 'react-native-paper';
@@ -42,15 +41,12 @@ import choke from '../images/choking-vid.jpg';
 import bleed from '../images/bleeding-vid.webp';
 import heart from '../images/heartAttack.png';
 import bleeding from '../images/bleed.png'
-import User from '../images/user.jpg'
-import home from '../images/home.jpg'
-import play from '../images/playMenu.jpg'
 import epilepsy from '../images/Epilepsy.png'
 import cpr from '../images/cprIcon.png'
 import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
-import strokeSteps from '../images/stroke-step.jpg'
+
 
 import { auth } from '../firebase';
 
@@ -61,22 +57,12 @@ export default function Home({navigation, setDone}) {
     setDone(false)
   }
 
-  const styleTypes = ['default', 'dark-content', 'light-content'];
+  /*const styleTypes = ['default', 'dark-content', 'light-content'];
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
-  const [styleStatusBar, setStyleStatusBar] = useState(styleTypes[0]);
 
   const changeVisibilityStatusBar = () => {
     setVisibleStatusBar(!visibleStatusBar);
-  };
-
-  const changeStyleStatusBar = () => {
-    const styleId = styleTypes.indexOf(styleStatusBar) + 1;
-
-    if (styleId === styleTypes.length) {
-      return setStyleStatusBar(styleTypes[0]);
-    }
-    return setStyleStatusBar(styleTypes[styleId]);
-  };
+  };*/
 
   return (
     <View style= {styles.contain}> 
@@ -126,10 +112,13 @@ export default function Home({navigation, setDone}) {
           
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 
-          <TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
+          <TouchableOpacity  >
           <View>
 
-          <Card style={{width: 50, height: 50, borderRadius: 15, marginLeft: 15, backgroundColor: '#F96056', alignItems: 'center'}}>
+          <Card style={{width: 50, height: 50, borderRadius: 15, marginLeft: 15, 
+                        backgroundColor: '#F96056', alignItems: 'center'}}
+                        onPress={() => { navigation.navigate('Strokes') }}
+          >
 
          
 
@@ -152,7 +141,7 @@ export default function Home({navigation, setDone}) {
 
             </Card>
 
-            <Text style={{paddingLeft: 10}}>Heart-Attack</Text>
+            <Text style={{paddingLeft: 15}}>Heart-Attack</Text>
           </View>
 
 
@@ -160,7 +149,7 @@ export default function Home({navigation, setDone}) {
           <View> 
           
             <Image style={styles.epilepsyMenu} source= {epilepsy} />
-            <Text style={{paddingLeft: 15}}>Epilepsy</Text>
+            <Text style={{paddingLeft: 18}}>Epilepsy</Text>
             
           </View>
 
@@ -232,9 +221,15 @@ export default function Home({navigation, setDone}) {
   
           
         <View>
-          <Image style={styles.strokeVid} source= {strVid} />
+          <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
+
+          <Image style={styles.strokeVid} source= {strVid} 
+          />
+          
+          </TouchableOpacity>
         
         </View>
+
         <View>
           <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Stroke</Text>
         </View>
@@ -297,7 +292,7 @@ export default function Home({navigation, setDone}) {
 
 
 
-        <View style={styles.buttonContainer}>
+        {/*<View style={styles.buttonContainer}>
 
       {!visibleStatusBar ? (
             
@@ -317,34 +312,7 @@ export default function Home({navigation, setDone}) {
 
         </TouchableOpacity>     
 
-      </View>
-
-
-        
-        <View style= {{flexDirection: 'row'}}>
-
-        <TouchableOpacity >
-<Card style= {{backgroundColor: '#51545a31', height: 50, width: 50, borderRadius: 30, marginTop: 60, marginLeft: 35}}>
-        <Image style={styles.home} source= {home} />
-        </Card>
-
-        </TouchableOpacity>
-
-        <TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
-
-        <Image style={styles.play} source= {play} />
-
-        </TouchableOpacity>
-
-        <TouchableOpacity  onPress={Logout}>
-
-  <Image style={styles.user} source= {User} />
-
-  </TouchableOpacity>
-
-
-</View>
-      
+        </View>*/}
 
 
     </View>
@@ -451,7 +419,7 @@ const styles = StyleSheet.create({
 
   menu2: {
     width: 316, 
-    height: 200,
+    height: 428,
     marginLeft: 30,
     marginTop: 20, 
     borderRadius: 15, 
@@ -514,8 +482,8 @@ home: {
   borderRadius: 30,
   borderWidth: 1, 
   borderColor: 'grey',
-  marginLeft: 12,
-  marginTop: 12,
+  marginLeft: 8,
+  marginTop: 8,
 },
 
 play: {
@@ -524,7 +492,7 @@ play: {
   borderRadius: 30, 
   borderColor: 'grey',
   marginLeft: 85,
-  marginTop: 73,
+  marginTop: 23,
 },
 
 user: {
@@ -534,7 +502,7 @@ user: {
   borderWidth: 1, 
   borderColor: 'grey',
   marginLeft: 100,
-  marginTop: 73,
+  marginTop: 23,
 },
 
 strokeStep: {
