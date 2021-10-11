@@ -13,26 +13,31 @@
 import React,{useState} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { Card } from 'react-native-paper';
-import { FontAwesome } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { EvilIcons } from '@expo/vector-icons';
+import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
+import SignUp from './SignUp'
+import ForgotPassword from './ForgotPassword'
 import {handleSignIn} from '../firebase'
 import { AlertNote } from '../Components';
 
-export default function SignIn({navigation}) {
+export default function SignIn({navigation, setDone}) {
   const 
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
-    [displayModal, setDisplaModal] = useState(false)
+    [displayModal, setDisplaModal] = useState(false),
+    [message, setMessage] = useState("");
+    
+
   const Login = () =>{
-    handleSignIn(email, password)
+    handleSignIn(email, password, setMessage)
     setDisplaModal(true)
+    setDone(true)
   }
 
 
   return (
+    
     <View >
-      <AlertNote visible={displayModal} setVisble={setDisplaModal}/>
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message}/>
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={76} color="#fff" />
@@ -67,7 +72,7 @@ export default function SignIn({navigation}) {
         <Text style= {{paddingLeft: 220, paddingTop: 10, color: '#F47066'}}>Forgot Password? </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style= {styles.signIn} onPress={() => { navigation.navigate('Home') }}>
+        <TouchableOpacity style= {styles.signIn} onPress={Login}>
           <Text style= {{color: '#fff'}}>LOGIN </Text>
         </TouchableOpacity>
 
