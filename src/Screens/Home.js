@@ -265,7 +265,7 @@ export default function Home({navigation}) {
         <View style= {{flexDirection: 'row'}}>
 
         <TouchableOpacity >
-<Card style= {{backgroundColor: '#ece4e4'}}>
+<Card style= {{backgroundColor: '#51545a31', height: 50, width: 50, borderRadius: 30, marginTop: 78, marginLeft: 35}}>
         <Image style={styles.home} source= {home} />
         </Card>
 
@@ -465,8 +465,8 @@ home: {
   borderRadius: 30,
   borderWidth: 1, 
   borderColor: 'grey',
-  marginLeft: 50,
-  marginTop: 90,
+  marginLeft: 12,
+  marginTop: 12,
 },
 
 play: {
@@ -474,7 +474,7 @@ play: {
   width: 25,
   borderRadius: 30, 
   borderColor: 'grey',
-  marginLeft: 100,
+  marginLeft: 85,
   marginTop: 90,
 }
   
