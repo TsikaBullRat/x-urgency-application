@@ -14,7 +14,7 @@ import React,{useState} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
-//import {handleSignIn} from '../firebase'
+import {handleSignIn} from '../firebase'
 import { AlertNote } from '../Components';
 
 export default function SignIn({navigation, setDone}) {
@@ -29,6 +29,7 @@ export default function SignIn({navigation, setDone}) {
     handleSignIn(email, password, setMessage)
     setDisplaModal(true)
     setDone(true)
+    //navigation.navigate('Home')
   }
 
 
@@ -61,7 +62,9 @@ export default function SignIn({navigation, setDone}) {
          <View style={{flexDirection: 'row'}}> 
            <EvilIcons name="lock" size={28} color="black" style= {{ marginTop:8, marginLeft: 4}} />
            <TextInput style={styles.txtPass} 
-             name= 'password' placeholder= 'Password' onChangeText={text=>setPassword(text)}  
+             name= 'password' placeholder= 'Password' 
+             secureTextEntry={true}
+             onChangeText={text=>setPassword(text)}  
            />   
         </View>
         </Card>

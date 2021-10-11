@@ -22,36 +22,40 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image } from 'react-native';
-
-import {Input} from 'react-native-elements';
-
+import React, {useState} from 'react';
+import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
-
 import { AntDesign } from '@expo/vector-icons';
-import Stroke from '../images/stroke.png';
+import { Entypo } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Avatar } from 'react-native-elements';
+
 import strVid from '../images/stroke-vid.jpg';
-import heartVid from '../images/heart-vid.jpg';
 
-import epilepsyVid from '../images/epilepsy-vid.jpg';
-import cpr_vid2 from '../images/cpr_vid2.jpg';
-import drowning from '../images/drowning-vid.jpg';
-import pain from '../images/pain-vid.png';
-import burn from '../images/burns-vid.jpg';
-import choke from '../images/choking-vid.jpg';
-import bleed from '../images/bleeding-vid.webp';
-import heart from '../images/heart.png';
-import blood from '../images/blood.jpg';
-export default function Strokes() {
 
+export default function Strokes({navigation}) {
+    
+    const {comments, setComments} = useState('')
+
+    const styleTypes = ['default', 'dark-content', 'light-content'];
+  const [visibleStatusBar, setVisibleStatusBar] = useState(false);
+  const [styleStatusBar, setStyleStatusBar] = useState(styleTypes[0]);
+
+  const changeVisibilityStatusBar = () => {
+    setVisibleStatusBar(!visibleStatusBar);
+  };
+
+  const changeStyleStatusBar = () => {
+    const styleId = styleTypes.indexOf(styleStatusBar) + 1;
+
+    if (styleId === styleTypes.length) {
+      return setStyleStatusBar(styleTypes[0]);
+    }
+    return setStyleStatusBar(styleTypes[styleId]);
+  };
 
   return (
     <View style= {styles.contain}> 
-
-      <View style= {styles.header}>
-        <Text style= {{ fontSize: 36}}>What's your EMERGENCY?</Text>
-      </View>
 
 
       <Card style={styles.txtCards}>
@@ -66,85 +70,200 @@ export default function Strokes() {
 
           </View>
 
-        </Card>
+      </Card>
 
-      
-
-      
-
-      <ScrollView vertical={true} >
-      <Card style= {styles.menu2}>
   
           
         <View>
-          <Image style={styles.strokeVid} source= {strVid} />
-        
+
+          <Image style={styles.strokeVid} source= {strVid} />           
+          
         </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Stroke</Text>
-        </View>
+
+
+
       
-  
-        <View> 
-          <Image style={styles.heartVid} source= {heartVid} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Heart-Attack</Text>
-        </View>
-  
-        <View> 
-          <Image style={styles.strokeVid} source= {epilepsyVid} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Epilepsy</Text>
-        </View>
-  
-        <View> 
-            <Image style={styles.cpr} source= {cpr_vid2} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>CPR</Text>
-        </View>
+
+
+      
+      <View style={styles.descriptionContainer}>
+
+        {!visibleStatusBar ? (
             
-        <View> 
-          <Image style={styles.bleed} source= {bleed} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Bleeding</Text>
-        </View>
+          <View>
 
-        <View> 
-            <Image style={styles.choke} source= {choke} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Choking</Text>
-        </View>
+            <View style= {{flexDirection: 'row', paddingLeft: 50, marginTop: 10}}>
 
-        <View> 
-            <Image style={styles.drowning} source= {drowning} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Drowning</Text>
-        </View>
+              <Text style={{fontWeight: 'bold'}}>
+                Stroke Emergency Video
+              </Text>
+
+              <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()} > 
+  
+                <AntDesign name="downcircle" size={18} color="black"  style= {styles.dropDown}/>
+  
+              </TouchableOpacity>
+
+              </View>
+
+              <Text style={{fontSize: 10, paddingLeft: 50, paddingTop: 5}}>1.7M views - 2years ago</Text>
+
+              <Card style={{borderColor: 'black', width: 315, marginTop: 20, marginLeft: 30}}>
+
+                <View style= {{flexDirection: 'row', marginTop: 5, marginLeft: 3}}>
+
+                  <View style={{marginLeft: 10}}>
+
+                    <Entypo name="thumbs-up" size={24} color="black" style={{marginLeft: 10}} />
+                    <Text style={{marginTop: 5}}>  16k  </Text>
+
+                  </View>
 
 
-        <View> 
-            <Image style={styles.burns} source= {burn} />
-        </View>
-        <View>
-          <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Burns</Text>
-        </View>
+                  <View style= {{marginLeft: 45}}>
+
+                    <Entypo name="thumbs-down" size={24} color="black" style={{marginTop: 3, marginLeft: 5}}/>
+                    <Text style={{paddingTop: 2}}>  16  </Text>
+
+                  </View>
+
+
+                  <View style= {{marginLeft: 40}}>
+                    
+                    <FontAwesome5 name="share" size={24} color="black" 
+                    style={{marginLeft: 13}}/>
+
+                    <Text style={{paddingTop: 5}}>  Share  </Text>
+
+                  </View>
+
+
+                  <View style= {{marginLeft: 40}}>
+                    
+                    <Entypo name="save" size={24} color="black" style={{marginLeft: 10}}/>
+
+                    <Text style={{paddingTop: 5}}>  Save  </Text>
+
+                  </View>
+                  
+
+                </View>
+
+              </Card>
+
+
+            <View style= {{marginTop: 50, marginLeft: 30, flexDirection: 'row'}}>
+
+              <Avatar rounded
+                      source={{
+                      uri: 'https://randomuser.me/api/portraits/men/41.jpg',
+                      }}
+                      size="medium"
+              />
+
+              <Text style={{paddingTop: 15, paddingLeft: 15}}>Rando123</Text>
+
+            </View>
+
             
   
-        </Card>
-        </ScrollView> 
+        </View>
+           
+          ) 
+            
+          : //Hidden Description
+      
+    <View>       
 
-        <Input
-   placeholder="Comment"
-   leftIcon={{ type: 'font-awesome', name: 'comment' }}
-   
-   onChangeText={value => this.setState({ comment: value })}
-  />
+          <Card style={{width: 315, height: 300, marginLeft: 20,
+                          borderRadius: 20,
+                          backgroundColor: 'pink',
+          }}>  
+
+
+          <View style={{flexDirection: 'row'}}>       
+
+            <Text
+              style={{
+              paddingLeft: 10,
+              paddingTop: 15,
+              fontWeight: 'bold',
+              fontSize: 16,
+            }}>
+              Description:
+            </Text>
+
+
+            <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
+
+              <AntDesign name="closecircle" size={18} color="black" style={{marginLeft: 180, marginTop: 15}}/>
+
+            </TouchableOpacity>
+
+          </View>
+
+        <View
+          style={{
+            marginTop: 10,
+            marginLeft: 12,
+            width: 255,
+          }}>
+          
+            
+            <Text >
+               Stroke Emergency Video
+            </Text>
+
+            <Text style= {{fontSize: 10, color: 'gray'}}>
+               1 000 000 Views
+            </Text>
+
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            marginTop: 10,
+            marginLeft: 12,
+            width: 255,
+          }}>
+
+          <Text style={{paddingTop: 10}}>                     
+            Lost your faith in ambulances' response time?
+            You can play doctor and help save a life by just
+            following the instructions of this video.
+            This video is accredited by the Department of Health
+            and Social Development, for critical emergencies only.                        
+          </Text>
+
+          <Text>Thank you for your support.</Text>
+       
+        </View>
+
+      </Card>
+    </View>
+      
+      
+          }
+
+          
+           
+
+    </View>
+
+
+
+
+
+
+
+
+
+<Card style= {{height: 40, marginTop: 30, marginLeft: 30}}>
+
+  <Text style= {{paddingTop: 10, paddingLeft: 10}}>Comments - 498</Text>
+
+</Card>
 
         
       
@@ -180,122 +299,18 @@ const styles = StyleSheet.create({
     marginTop: 25
   },
 
-  menu: {
-      width: 360, 
-      marginLeft: 10,
-      marginTop: 20, 
-      borderRadius: 15, 
-      backgroundColor: '#f7eeee',
-    },
-
-  strokeMenu: {
-    height:35, 
-    width: 35, 
-    borderRadius: 15,
-    marginTop: 5
-  },
-
-  heartMenu: {
-    height:35, 
-    width: 35, 
-    borderRadius: 15,
-    marginTop: 6
-  },
-
-  epilepsyMenu: {
-    height:55, 
-    width: 55, 
-    borderRadius: 15,
-    borderWidth: 15,
-    borderColor: '#F96056',
-    marginLeft:22
-  },
-
-  cprMenu: {
-    height:55, 
-    width: 55, 
-    borderRadius: 15,
-    borderWidth: 15,
-    borderColor: '#F96056',
-    marginLeft:22
-  },
-
-  bloodMenu: {
-    height:45, 
-    width: 45, 
-    borderRadius: 15,
-    marginTop: 8
-  },
-
-  conImg: {
-    height:55, 
-    width: 55, 
-    borderRadius: 15,
-    borderWidth: 15,
-    borderColor: '#F96056',
-    marginLeft: 32
-  },
-
-  
-
-  menu2: {
-    width: 316, 
-    height: 200,
-    marginLeft: 30,
-    marginTop: 20, 
-    borderRadius: 15, 
-    backgroundColor: '#f7eeee',
-  },
-
+ 
   strokeVid: {
     height:180, 
     width: 315,
     borderRadius: 30,
-
+    marginTop: 50,
+    marginLeft: 30
   },
 
-  heartVid: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-
-}, 
-
-cpr: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-},
-
-bleed: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-},
-
-choke: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-},
-
-drowning: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-},
-
-burns: {
-  height:180, 
-  width: 315,
-  borderRadius: 30,
-  marginTop: 30
-},
+  dropDown: {
+    marginLeft: 100
+  }
   
 });
 

@@ -22,17 +22,17 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React from 'react';
+import React, {useState} from 'react';
 import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity} from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 
 import { Card } from 'react-native-paper';
 
 import { AntDesign } from '@expo/vector-icons';
+
 import Stroke from '../images/stokeIc.png';
 import strVid from '../images/stroke-vid.jpg';
 import heartVid from '../images/heart-vid.jpg';
-
 import epilepsyVid from '../images/epilepsy-vid.jpg';
 import cpr_vid2 from '../images/cpr_vid2.jpg';
 import drowning from '../images/drowning-vid.jpg';
@@ -41,14 +41,13 @@ import choke from '../images/choking-vid.jpg';
 import bleed from '../images/bleeding-vid.webp';
 import heart from '../images/heartAttack.png';
 import bleeding from '../images/bleed.png'
-import User from '../images/user.jpg'
-import home from '../images/home.jpg'
-import play from '../images/playMenu.jpg'
 import epilepsy from '../images/Epilepsy.png'
 import cpr from '../images/cprIcon.png'
 import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
+
+
 import { auth } from '../firebase';
 
 export default function Home({navigation, setDone}) {
@@ -57,6 +56,13 @@ export default function Home({navigation, setDone}) {
     auth.signOut()
     setDone(false)
   }
+
+  /*const styleTypes = ['default', 'dark-content', 'light-content'];
+  const [visibleStatusBar, setVisibleStatusBar] = useState(false);
+
+  const changeVisibilityStatusBar = () => {
+    setVisibleStatusBar(!visibleStatusBar);
+  };*/
 
   return (
     <View style= {styles.contain}> 
@@ -87,10 +93,6 @@ export default function Home({navigation, setDone}) {
 </View>
 </View>
 
-<View>
-  
-</View>
-
 
       <Card style={styles.txtCards}>
 
@@ -110,10 +112,13 @@ export default function Home({navigation, setDone}) {
           
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
 
-          <TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
+          <TouchableOpacity  >
           <View>
 
-          <Card style={{width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center'}}>
+          <Card style={{width: 50, height: 50, borderRadius: 15, marginLeft: 15, 
+                        backgroundColor: '#F96056', alignItems: 'center'}}
+                        onPress={() => { navigation.navigate('Strokes') }}
+          >
 
          
 
@@ -121,7 +126,7 @@ export default function Home({navigation, setDone}) {
 
            
             </Card>
-            <Text style={{paddingLeft: 35}}>Stroke</Text>
+            <Text style={{paddingLeft: 20}}>Stroke</Text>
           </View>
 
           </TouchableOpacity>
@@ -130,30 +135,36 @@ export default function Home({navigation, setDone}) {
           
 
           <View> 
-            <Card style={{width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center'}}>
+            <Card style={{width: 50, height: 50, marginLeft: 28, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center'}}>
      
             <Image style={styles.heartMenu} source= {heart} />
 
             </Card>
 
-            <Text style={{paddingLeft: 20}}>Heart-Attack</Text>
+            <Text style={{paddingLeft: 15}}>Heart-Attack</Text>
           </View>
+
+
 
           <View> 
           
             <Image style={styles.epilepsyMenu} source= {epilepsy} />
-            <Text style={{paddingLeft: 15}}>Epilepsy</Text>
+            <Text style={{paddingLeft: 18}}>Epilepsy</Text>
             
           </View>
 
+
+
           <View> 
-          <Card style={{width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center'}}>
+          <Card style={{width: 50, height: 50, marginLeft: 28, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center'}}>
 
             <Image style={styles.cprMenu} source= {cpr} />
             <Text style={{paddingLeft: 8, paddingTop:8}}>CPR</Text>
 
             </Card>
           </View>
+
+
           
           <View> 
           <Card style={{width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center'}}>
@@ -163,6 +174,8 @@ export default function Home({navigation, setDone}) {
             <Text style={{paddingLeft: 28}}>Bleeding</Text>
           </View>
 
+
+
           <View> 
           <Card style={{width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center'}}>
 
@@ -171,6 +184,8 @@ export default function Home({navigation, setDone}) {
 
             </Card>
           </View>
+
+
 
 
           <View> 
@@ -183,6 +198,8 @@ export default function Home({navigation, setDone}) {
           </View>
 
 
+
+
           <View> 
           <Card style={{width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center'}}>
 
@@ -191,21 +208,28 @@ export default function Home({navigation, setDone}) {
 
             </Card>
           </View>
+
   
         </ScrollView>   
 
       </Card>
 
       
-
+      
       <ScrollView vertical={true} >
       <Card style= {styles.menu2}>
   
           
         <View>
-          <Image style={styles.strokeVid} source= {strVid} />
+          <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
+
+          <Image style={styles.strokeVid} source= {strVid} 
+          />
+          
+          </TouchableOpacity>
         
         </View>
+
         <View>
           <Text style={{paddingLeft: 20, fontWeight: 'bold'}}>Stroke</Text>
         </View>
@@ -265,32 +289,30 @@ export default function Home({navigation, setDone}) {
         </Card>
         </ScrollView> 
 
-      
-        
-        <View style= {{flexDirection: 'row'}}>
-
-        <TouchableOpacity >
-<Card style= {{backgroundColor: '#ece4e4'}}>
-        <Image style={styles.home} source= {home} />
-        </Card>
-
-        </TouchableOpacity>
-
-        <TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
-
-        <Image style={styles.play} source= {play} />
-
-        </TouchableOpacity>
-
-        <TouchableOpacity  onPress={Logout}>
-
-  <Image style={styles.user} source= {User} />
-
-  </TouchableOpacity>
 
 
-</View>
-      
+
+        {/*<View style={styles.buttonContainer}>
+
+      {!visibleStatusBar ? (
+            
+              
+       <View></View>
+           
+          ) 
+          
+          : //Hidden Step-by-steps
+
+          <Image style= {styles.strokeStep} source= {strokeSteps} />
+           
+          }
+        <TouchableOpacity  onPress={() => changeVisibilityStatusBar()} >
+
+          <Text style= {{fontWeight: 'bold', fontSize: 16, paddingTop: 20, paddingLeft: 115}}>View Step-by-Step</Text>
+
+        </TouchableOpacity>     
+
+        </View>*/}
 
 
     </View>
@@ -324,8 +346,8 @@ const styles = StyleSheet.create({
   },
 
   menu: {
-      width: 360, 
-      marginLeft: 10,
+      width: 305, 
+      marginLeft: 30,
       marginTop: 20, 
       borderRadius: 15, 
       backgroundColor: '#f7eeee',
@@ -351,7 +373,7 @@ const styles = StyleSheet.create({
     width: 50, 
     borderRadius: 15,
     backgroundColor: '#F96056',
-    marginLeft:15
+    marginLeft: 18
   },
 
   cprMenu: {
@@ -397,7 +419,7 @@ const styles = StyleSheet.create({
 
   menu2: {
     width: 316, 
-    height: 200,
+    height: 428,
     marginLeft: 30,
     marginTop: 20, 
     borderRadius: 15, 
@@ -454,24 +476,14 @@ burns: {
   marginTop: 30
 },
 
-user: {
-  height: 25,
-  width: 25,
-  borderRadius: 30,
-  borderWidth: 1, 
-  borderColor: 'grey',
-  marginLeft: 100,
-  marginTop: 90,
-},
-
 home: {
   height: 25,
   width: 25,
   borderRadius: 30,
   borderWidth: 1, 
   borderColor: 'grey',
-  marginLeft: 50,
-  marginTop: 90,
+  marginLeft: 8,
+  marginTop: 8,
 },
 
 play: {
@@ -479,8 +491,25 @@ play: {
   width: 25,
   borderRadius: 30, 
   borderColor: 'grey',
+  marginLeft: 85,
+  marginTop: 23,
+},
+
+user: {
+  height: 25,
+  width: 25,
+  borderRadius: 30,
+  borderWidth: 1, 
+  borderColor: 'grey',
   marginLeft: 100,
-  marginTop: 90,
+  marginTop: 23,
+},
+
+strokeStep: {
+  width: 315, 
+  height: 250, 
+  marginTop: 30,
+  marginLeft: 30
 }
   
 });
