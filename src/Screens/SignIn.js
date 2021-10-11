@@ -14,9 +14,7 @@ import React,{useState} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
-import SignUp from './SignUp'
-import ForgotPassword from './ForgotPassword'
-import {handleSignIn} from '../firebase'
+//import {handleSignIn} from '../firebase'
 import { AlertNote } from '../Components';
 
 export default function SignIn({navigation, setDone}) {
