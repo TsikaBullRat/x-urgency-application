@@ -1,13 +1,13 @@
 import {auth} from "../config"
 // import { alertNote } from "../../Components"
 
-const handleSignIn = (email, password, setMessage) =>{
+const handleSignIn = (email, password, setMessage, setDone) =>{
     auth.signInWithEmailAndPassword(email, password)
         .then(()=>{
-            // alertNote()
-            // alert("Login Successful")
+            setDone(true)
         })
         .catch(err=>{
+            setDone(false)
             switch(err.code){
                 case "auth/wrong-password":
                     setMessage("Your password is incorrect")

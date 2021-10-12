@@ -35,7 +35,7 @@ import strVid from '../images/stroke-vid.jpg';
 
 export default function Strokes({navigation}) {
     
-    const {comments, setComments} = useState('')
+    const [comments, setComments] = useState('')
 
     const styleTypes = ['default', 'dark-content', 'light-content'];
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
     width: 320,
     height: 50,
     borderRadius: 10,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey', 
     paddingLeft: 10,
   },

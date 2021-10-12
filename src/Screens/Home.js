@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
     width: 320,
     height: 50,
     borderRadius: 10,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey', 
     paddingLeft: 10,
   },
