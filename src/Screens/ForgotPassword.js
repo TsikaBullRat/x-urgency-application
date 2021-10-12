@@ -116,7 +116,7 @@ export default function ForgotPassword() {
         </TouchableOpacity>
 
         
-        <TouchableOpacity style= {styles.signIn}   onPress= {Exit}>
+        <TouchableOpacity style= {styles.signIn}   onPress={Exit}>
           <Text style= {{color: '#fff'}}>Exit</Text>
         </TouchableOpacity>
 
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   card: {
     position: 'absolute',
     backgroundColor: '#F47066',
-    filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
+    // filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
     width: 375,
     height: 280,
     borderBottomLeftRadius: 30,
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     width: 320,
     height: 50,
     borderRadius: 10,
-    outline: 'none',
+    // outline: 'none',
     backgroundColor: 'lightgrey', 
     paddingLeft: 10,
   },
@@ -169,8 +169,8 @@ const styles = StyleSheet.create({
     width: 320,
     height: 50,
     borderRadius: 10,
-    outline: 'none',
-    border: 0,
+    // outline: 'none',
+    // border: 0,
     backgroundColor: 'lightgrey', 
     paddingLeft: 10,
   },
@@ -179,8 +179,8 @@ const styles = StyleSheet.create({
     width: 320,
     height: 50,
     borderRadius: 10,
-    outline: 'none',
-    border: 0,
+    // outline: 'none',
+    // border: 0,
     backgroundColor: 'lightgrey', 
     paddingLeft: 10,
   },
