@@ -66,7 +66,7 @@ export default function ForgotPassword() {
 
         <View style={{ flexDirection: 'row'}}> 
         
-        <AntDesign name="user" size={22} color="black"  />
+        <AntDesign name="user" size={22} color="black" />
         
         <TextInput style={styles.txtUser} 
           name= 'username' placeholder= 'Username' 

@@ -82,7 +82,7 @@ export default function SignUp({navigation}) {
         <Card style={styles.txtCards}>
           <View style={{flexDirection: 'row'}}> 
 
-            <EvilIcons name="lock" size={28} color="black" style= {{ marginTop:8, marginLeft: 4}} />
+            <EvilIcons name="lock" size={28} color="blwack" style= {{ marginTop:8, marginLeft: 4}} />
            
            <TextInput style={styles.txtPass} 
              name= 'password' placeholder= 'Password' 

@@ -23,12 +23,14 @@
     * - Modification    : 
 **/
 import React, {useState} from 'react';
-import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity, Button } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
+
+import { Video, AVPlaybackStatus } from 'expo-av';
 
 import strVid from '../images/stroke-vid.jpg';
 
@@ -54,6 +56,12 @@ export default function Strokes({navigation}) {
     return setStyleStatusBar(styleTypes[styleId]);
   };
 
+
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});  
+
+  const link =  'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+
   return (
     <View style= {styles.contain}> 
 
@@ -74,11 +82,19 @@ export default function Strokes({navigation}) {
 
   
           
-        <View>
+      <View style= {{width: 315, marginTop:50, marginLeft: 30}}>
+      
+        <Video
+          ref={video}
+          source={{ uri: link }}
+          useNativeControls
+          resizeMode="contain"
+          isLooping
+          onPlaybackStatusUpdate={status => setStatus(() => status)}
+          style= {{borderRadius: 25}}
+        />
 
-          <Image style={styles.strokeVid} source= {strVid} />           
-          
-        </View>
+      </View>
 
 
 
@@ -175,9 +191,10 @@ export default function Strokes({navigation}) {
       
     <View>       
 
-          <Card style={{width: 315, height: 300, marginLeft: 20,
+          <Card style={{width: 315, height: 300, marginLeft: 28,
                           borderRadius: 20,
                           backgroundColor: 'pink',
+                          marginTop: 20
           }}>  
 
 
@@ -222,7 +239,6 @@ export default function Strokes({navigation}) {
 
         <View
           style={{
-            flexDirection: 'row',
             marginTop: 10,
             marginLeft: 12,
             width: 255,
@@ -236,7 +252,7 @@ export default function Strokes({navigation}) {
             and Social Development, for critical emergencies only.                        
           </Text>
 
-          <Text>Thank you for your support.</Text>
+          <Text style={{paddingTop: 10, fontWeight: 'bold'}}>Thank you for your support.</Text>
        
         </View>
 
@@ -251,25 +267,14 @@ export default function Strokes({navigation}) {
 
     </View>
 
+                <Card style= {{height: 40, width: 315, marginTop: 30, marginLeft: 30}}>
 
+                    <Text style= {{paddingTop: 10, paddingLeft: 10}}>Comments - 498</Text>
 
-
-
-
-
-
-
-<Card style= {{height: 40, marginTop: 30, marginLeft: 30}}>
-
-  <Text style= {{paddingTop: 10, paddingLeft: 10}}>Comments - 498</Text>
-
-</Card>
-
-        
-      
-
+                </Card>
 
     </View>
+
   )
 }
 
