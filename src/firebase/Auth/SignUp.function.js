@@ -1,5 +1,4 @@
 import { auth } from '../config'
-
 const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage) => {
     if (password !== Confirmpassword) {
         alert("Password Doesn't Match")

@@ -22,14 +22,12 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, {useState} from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button} from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
-
 import { Video, AVPlaybackStatus } from 'expo-av';
-
 import Stroke from '../images/stokeIc.png';
 import strVid from '../images/stroke-vid.jpg';
 import heartVid from '../images/heart-vid.jpg';
@@ -47,137 +45,95 @@ import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 import { auth } from '../firebase';
-
-
-
-export default function Home({navigation, setDone}) {
-
+export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
     setDone(false)
   }
-
-  const videos =[
-    
+  const videos = [
     {
       id: 1,
       title: "Stroke",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-    
     {
       id: 2,
-      title:"Heart-Attack", 
+      title: "Heart-Attack",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 3,
-      title:"Epilepsy",
+      title: "Epilepsy",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 4,
-      title:"CPR",
+      title: "CPR",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 5,
-      title:"Bleeding",
+      title: "Bleeding",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 6,
-      title:"Choking",
+      title: "Choking",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 7,
-      title:"Drowning",
+      title: "Drowning",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 8,
-      title:"Burn",
+      title: "Burn",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
   ];
-
   const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});  
-
-  const link =  'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-
-      
-   
-
+  const [status, setStatus] = React.useState({});
+  const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
   /*const styleTypes = ['default', 'dark-content', 'light-content'];
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
   const changeVisibilityStatusBar = () => {
     setVisibleStatusBar(!visibleStatusBar);
   };*/
   return (
-    <View style= {styles.contain}> 
-
-    
-
-    {/*---------------------------Header--------------------------*/}
-
-    <View style= {{flexDirection: 'row'}}>
-
-      <View style= {styles.header}>
-
-        <Text style= {{ fontSize: 36, paddingLeft: 30}}>What's your 
-        </Text>
-        <Text style= {{ fontSize: 36, paddingLeft: 30}}>EMERGENCY</Text>
-        
+    <View style={styles.contain}>
+      {/*---------------------------Header--------------------------*/}
+      <View style={{ flexDirection: 'row' }}>
+        <View style={styles.header}>
+          <Text style={{ fontSize: 36, paddingLeft: 30 }}>What's your
+          </Text>
+          <Text style={{ fontSize: 36, paddingLeft: 30 }}>EMERGENCY</Text>
+        </View>
+        <View style={{ marginTop: 50, marginLeft: 30 }}>
+          <Avatar
+            rounded
+            source={{
+              uri: 'https://randomuser.me/api/portraits/men/41.jpg',
+            }}
+            size="large"
+          />
+          <Badge
+            status="success"
+            containerStyle={{ position: 'absolute', top: -4, right: -4 }}
+          />
+        </View>
       </View>
-
-      <View style= {{marginTop: 50, marginLeft: 30}}>
-        <Avatar
-          rounded
-          source={{
-          uri: 'https://randomuser.me/api/portraits/men/41.jpg',
-          }}
-          size="large"
-        />
-
-        <Badge
-          status="success"
-          containerStyle={{ position: 'absolute', top: -4, right: -4 }}
-        />
-      </View> 
-
-    </View>
-
-
       {/*----------------------Search TextField----------------------*/}
-
       <Card style={styles.txtCards}>
-
-          <View style={{ flexDirection: 'row'}}> 
-        
-            <AntDesign name="search1" size={18} color="black"  style= {{marginTop:15, marginLeft: 8}}/>
-        
-            <TextInput style={styles.txtSearch} 
-              name= 'search' placeholder= 'Search' 
-            />
-
-          </View>
-
+        <View style={{ flexDirection: 'row' }}>
+          <AntDesign name="search1" size={18} color="black" style={{ marginTop: 15, marginLeft: 8 }} />
+          <TextInput style={styles.txtSearch}
+            name='search' placeholder='Search'
+          />
+        </View>
       </Card>
-
-
       {/*----------------------Horizontal Menu----------------------*/}
-
-      <Card style= {styles.menu}>
-          
+      <Card style={styles.menu}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <TouchableOpacity  >
             <View>
@@ -234,48 +190,29 @@ export default function Home({navigation, setDone}) {
           </View>
         </ScrollView>
       </Card>
-
-
-
-     
-
-
       {/*---------------------- Video Scroll View--------------------*/}
-
-    <ScrollView vertical={true} >     
-
-      <Card style= {styles.menu2}>
-
-        <View>
-          <Text>
-          
-            {videos.map(vid =>(
-              <ol >
-          
-                <Video
-                  ref={video}
-                  source={{ uri: link }}
-                  useNativeControls
-                  resizeMode="contain"
-                  isLooping
-                  onPlaybackStatusUpdate={status => setStatus(() => status)}
-                  style= {{width: 355, borderRadius: 25}}
-                />
-
-                <h4>{vid.title}</h4>
-                
-                
-              </ol>
-            ))} 
-
-          </Text>                
-        </View>
-
-      </Card  >
-    </ScrollView >     
-
-     
-
+      <ScrollView vertical={true} >
+        <Card style={styles.menu2}>
+          <View>
+            <Text>
+              {videos.map(vid => (
+                <ol >
+                  <Video
+                    ref={video}
+                    source={{ uri: link }}
+                    useNativeControls
+                    resizeMode="contain"
+                    isLooping
+                    onPlaybackStatusUpdate={status => setStatus(() => status)}
+                    style={{ width: 355, borderRadius: 25 }}
+                  />
+                  <h4>{vid.title}</h4>
+                </ol>
+              ))}
+            </Text>
+          </View>
+        </Card  >
+      </ScrollView >
     </View>
   )
 }
@@ -295,9 +232,9 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    backgroundColor: 'lightgrey', 
+    backgroundColor: 'lightgrey',
     width: 355,
-    height: 50, 
+    height: 50,
     borderRadius: 10,
     marginLeft: 28,
     marginTop: 25
@@ -374,13 +311,12 @@ const styles = StyleSheet.create({
   },
 
   menu2: {
-    width: 355, 
+    width: 355,
     height: 428,
     marginLeft: 30,
     marginTop: 20,
     borderRadius: 15,
     backgroundColor: '#f7eeee',
   },
-  
 });
 

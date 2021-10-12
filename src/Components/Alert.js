@@ -81,5 +81,4 @@ const styles = StyleSheet.create({
         color: '#F47066'
     }
 })
-
 export { AlertNote }

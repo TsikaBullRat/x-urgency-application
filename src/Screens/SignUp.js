@@ -48,15 +48,15 @@ export default function SignUp({ navigation }) {
           </View>
         </Card>
         <Card style={styles.txtCards}>
-          <View style={{flexDirection: 'row'}}> 
+          <View style={{ flexDirection: 'row' }}>
 
-            <EvilIcons name="lock" size={28} color="blwack" style= {{ marginTop:8, marginLeft: 4}} />
-           
-           <TextInput style={styles.txtPass} 
-             name= 'password' placeholder= 'Password' 
-             secureTextEntry={true}
-             onChangeText={text=>setPassword(text)}    
-           /> 
+            <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
+
+            <TextInput style={styles.txtPass}
+              name='password' placeholder='Password'
+              secureTextEntry={true}
+              onChangeText={text => setPassword(text)}
+            />
 
           </View>
         </Card>

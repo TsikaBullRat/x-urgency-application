@@ -1,6 +1,5 @@
 import { auth } from "../config"
 // import { alertNote } from "../../Components"
-
 const handleSignIn = (email, password, setMessage) => {
     auth.signInWithEmailAndPassword(email, password)
         .then(() => {
@@ -21,5 +20,4 @@ const handleSignIn = (email, password, setMessage) => {
             }
         })
 }
-
 export { handleSignIn }
