@@ -8,16 +8,15 @@ const AlertNote = ({ modalVisible, setModalVisible, msg }) => {
             visible={modalVisible}
             onRequestClose={() => {
                 setModalVisible(!modalVisible);
-            }}
-            style={styles.modal}>
+            }}>
             <Pressable style={styles.backdrop} onPress={() => setModalVisible(false)} >
-                <View style={styles.modal}>
-                    <View style={styles.alerBox}>
-                        <Text style={styles.text}>{msg}</Text>
-                        <TouchableOpacity style={styles.button} onPress={() => setModalVisible(false)}>
-                            <Text style={styles.btnText}>OK</Text>
-                        </TouchableOpacity>
-                    </View>
+            <View style={styles.modal}>
+                <View style={styles.alertBox}>
+                    <Text style={styles.text}>{msg}</Text>
+                    <TouchableOpacity style={styles.button} onPress={()=>setModalVisible(false)}>
+                        <Text style={styles.btnText}>OK</Text>
+                    </TouchableOpacity>
+                </View>
                 </View>
             </Pressable>
         </Modal>
@@ -49,14 +48,13 @@ const styles = StyleSheet.create({
             }
         })
     },
-    alerBox: {
+    alertBox: {
         backgroundColor: '#F47066',
         width: '80%',
         height: 250,
         borderRadius: 25,
         justifyContent: 'center',
         alignItems: 'center',
-        opacity: 1
     },
     modal: {
         flex: 1,

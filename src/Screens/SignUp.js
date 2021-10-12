@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   card: {
     position: 'absolute',
     backgroundColor: '#F47066',
-    filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
+    // filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
     width: 375,
     height: 280,
     borderBottomLeftRadius: 30,

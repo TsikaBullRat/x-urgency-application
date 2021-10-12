@@ -1,10 +1,10 @@
 import { auth } from "../config"
 // import { alertNote } from "../../Components"
-const handleSignIn = (email, password, setMessage) => {
+
+const handleSignIn = (email, password, setMessage, setDone) => {
     auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-            // alertNote()
-            // alert("Login Successful")
+            setDone(true)
         })
         .catch(err => {
             switch (err.code) {

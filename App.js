@@ -1,31 +1,28 @@
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 07/10/2021 - 10:00:40
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 07/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ForgotPassword from './src/Screens/ForgotPassword';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 // You can import from local files
-import { SignIn, SignUp, Home, Strokes } from './src/Screens';
+import { SignIn, SignUp, Home, Strokes, ForgotPassword } from './src/Screens';
 import { auth } from './src/firebase'
+
 const Stack = createNativeStackNavigator();
+
 export default function App() {
   const [successful, setSuccess] = useState(false),
     [user, setUser] = useState(null);
+
   useEffect(() => {
     auth.onAuthStateChanged(user => setUser(user))
-  }, [])
+    return () => {
+      auth.onAuthStateChanged(user => setUser(user))
+    }
+  }, [successful, user])
+
   return (
     <NavigationContainer>
+      <KeyboardAwareScrollView>
       {successful ? (
         user ? (
           // Main Application
@@ -51,6 +48,7 @@ export default function App() {
           <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
         </Stack.Navigator>
       )}
+      </KeyboardAwareScrollView>
     </NavigationContainer>
   );
 }

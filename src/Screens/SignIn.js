@@ -22,11 +22,11 @@ export default function SignIn({ navigation, setDone }) {
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
-  const Login = () => {
-    handleSignIn(email, password, setMessage)
+    
+
+  const Login = () =>{
+    handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
-    setDone(true)
-    //navigation.navigate('Home')
   }
   return (
     <View >
