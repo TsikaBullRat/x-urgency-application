@@ -1,6 +1,5 @@
 import React from 'react';
 import { Modal, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
 const AlertNote = ({ modalVisible, setModalVisible, msg }) => {
     return (
         <Modal
@@ -12,20 +11,18 @@ const AlertNote = ({ modalVisible, setModalVisible, msg }) => {
             }}
             style={styles.modal}>
             <Pressable style={styles.backdrop} onPress={() => setModalVisible(false)} >
-            <View style={styles.modal}>
-                <View style={styles.alerBox}>
-                    <Text style={styles.text}>{msg}</Text>
-                    <TouchableOpacity style={styles.button} onPress={()=>setModalVisible(false)}>
-                        <Text style={styles.btnText}>OK</Text>
-                    </TouchableOpacity>
+                <View style={styles.modal}>
+                    <View style={styles.alerBox}>
+                        <Text style={styles.text}>{msg}</Text>
+                        <TouchableOpacity style={styles.button} onPress={() => setModalVisible(false)}>
+                            <Text style={styles.btnText}>OK</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                
-            </View>
             </Pressable>
         </Modal>
     )
 }
-
 const styles = StyleSheet.create({
     backdrop: {
         position: 'absolute',
@@ -62,15 +59,15 @@ const styles = StyleSheet.create({
         opacity: 1
     },
     modal: {
-        flex:1,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    text:{
+    text: {
         fontSize: 25,
         color: '#fff'
     },
-    button:{
+    button: {
         backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
@@ -79,7 +76,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderRadius: 25,
     },
-    btnText:{
+    btnText: {
         fontSize: 15,
         color: '#F47066'
     }
