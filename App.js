@@ -10,7 +10,6 @@ import { auth } from './src/firebase'
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
   const [successful, setSuccess] = useState(false),
     [user, setUser] = useState(null);
 
@@ -46,8 +45,7 @@ export default function App() {
           <Stack.Screen name="Sign Up" options={{ headerShown: false }}>
             {props => <SignUp {...props} setDone={setSuccess} />}
           </Stack.Screen>
-          <Stack.Screen name="Reset 
-          Password" component={ForgotPassword} options={{ headerShown: false }} />
+          <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
         </Stack.Navigator>
       )}
       </KeyboardAwareScrollView>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Modal, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
 const AlertNote = ({ modalVisible, setModalVisible, msg }) => {
     return (
         <Modal
@@ -18,13 +17,11 @@ const AlertNote = ({ modalVisible, setModalVisible, msg }) => {
                         <Text style={styles.btnText}>OK</Text>
                     </TouchableOpacity>
                 </View>
-                
-            </View>
+                </View>
             </Pressable>
         </Modal>
     )
 }
-
 const styles = StyleSheet.create({
     backdrop: {
         position: 'absolute',
@@ -60,15 +57,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     modal: {
-        flex:1,
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    text:{
+    text: {
         fontSize: 25,
         color: '#fff'
     },
-    button:{
+    button: {
         backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
@@ -77,7 +74,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderRadius: 25,
     },
-    btnText:{
+    btnText: {
         fontSize: 15,
         color: '#F47066'
     }
