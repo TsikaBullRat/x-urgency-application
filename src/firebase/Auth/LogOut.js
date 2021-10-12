@@ -1,5 +1,4 @@
 import { auth } from "../config";
-
 const Exit = () => {
     firebase.auth().signOut()
         .then(function () {
@@ -8,6 +7,4 @@ const Exit = () => {
             // An error happened.
         });
 }
-
-
 export default Exit;
