@@ -312,7 +312,8 @@ export default function Home({navigation, setDone}) {
                   resizeMode="contain"
                   isLooping
                   onPlaybackStatusUpdate={status => setStatus(() => status)}
-                  style= {{width: 355, borderRadius: 25}}
+                  style= {{width: 355, marginLeft: -
+                  40, borderRadius: 25}}
                 />
 
                 <h4>{vid.title}</h4>

@@ -23,7 +23,7 @@
     * - Modification    : 
 **/
 import React, {useState} from 'react';
-import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity, Button } from 'react-native';
+import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -32,14 +32,18 @@ import { Avatar } from 'react-native-elements';
 
 import { Video, AVPlaybackStatus } from 'expo-av';
 
-import strVid from '../images/stroke-vid.jpg';
+
 
 
 export default function Strokes({navigation}) {
-    
-    const {comments, setComments} = useState('')
 
-    const styleTypes = ['default', 'dark-content', 'light-content'];
+  const video = React.useRef(null);
+  const [status, setStatus] = useState([]);  
+
+  const link =  'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+    
+    //const {comments, setComments} = useState('')
+
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
   const [styleStatusBar, setStyleStatusBar] = useState(styleTypes[0]);
 
@@ -57,13 +61,11 @@ export default function Strokes({navigation}) {
   };
 
 
-  const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});  
-
-  const link =  'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  
 
   return (
     <View style= {styles.contain}> 
+
 
 
       <Card style={styles.txtCards}>
@@ -193,7 +195,7 @@ export default function Strokes({navigation}) {
 
           <Card style={{width: 315, height: 300, marginLeft: 28,
                           borderRadius: 20,
-                          backgroundColor: 'pink',
+                          backgroundColor: '#fff',
                           marginTop: 20
           }}>  
 
