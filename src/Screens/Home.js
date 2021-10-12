@@ -22,11 +22,14 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button} from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
+
+import { Video, AVPlaybackStatus } from 'expo-av';
+
 import Stroke from '../images/stokeIc.png';
 import strVid from '../images/stroke-vid.jpg';
 import heartVid from '../images/heart-vid.jpg';
@@ -44,47 +47,137 @@ import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 import { auth } from '../firebase';
-export default function Home({ navigation, setDone }) {
+
+
+
+export default function Home({navigation, setDone}) {
+
   const Logout = () => {
     auth.signOut()
     setDone(false)
   }
+
+  const videos =[
+    
+    {
+      id: 1,
+      title: "Stroke",
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+    },
+    
+    {
+      id: 2,
+      title:"Heart-Attack", 
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+    },
+
+    {
+      id: 3,
+      title:"Epilepsy",
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+    },
+
+    {
+      id: 4,
+      title:"CPR",
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+    },
+
+    {
+      id: 5,
+      title:"Bleeding",
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+    },
+
+    {
+      id: 6,
+      title:"Choking",
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+    },
+
+    {
+      id: 7,
+      title:"Drowning",
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+    },
+
+    {
+      id: 8,
+      title:"Burn",
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+    },
+
+  ];
+
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});  
+
+  const link =  'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+
+      
+   
+
   /*const styleTypes = ['default', 'dark-content', 'light-content'];
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
   const changeVisibilityStatusBar = () => {
     setVisibleStatusBar(!visibleStatusBar);
   };*/
   return (
-    <View style={styles.contain}>
-      <View style={{ flexDirection: 'row' }}>
-        <View style={styles.header}>
-          <Text style={{ fontSize: 36, paddingLeft: 30 }}>What's Your
-          </Text>
-          <Text style={{ fontSize: 36, paddingLeft: 30 }}>EMERGENCY</Text>
-        </View>
-        <View style={{ marginTop: 50, marginLeft: 30 }}>
-          <Avatar
-            rounded
-            source={{
-              uri: 'https://randomuser.me/api/portraits/men/41.jpg',
-            }}
-            size="large"
-          />
-          <Badge
-            status="success"
-            containerStyle={{ position: 'absolute', top: -4, right: -4 }}
-          />
-        </View>
+    <View style= {styles.contain}> 
+
+    
+
+    {/*---------------------------Header--------------------------*/}
+
+    <View style= {{flexDirection: 'row'}}>
+
+      <View style= {styles.header}>
+
+        <Text style= {{ fontSize: 36, paddingLeft: 30}}>What's your 
+        </Text>
+        <Text style= {{ fontSize: 36, paddingLeft: 30}}>EMERGENCY</Text>
+        
       </View>
+
+      <View style= {{marginTop: 50, marginLeft: 30}}>
+        <Avatar
+          rounded
+          source={{
+          uri: 'https://randomuser.me/api/portraits/men/41.jpg',
+          }}
+          size="large"
+        />
+
+        <Badge
+          status="success"
+          containerStyle={{ position: 'absolute', top: -4, right: -4 }}
+        />
+      </View> 
+
+    </View>
+
+
+      {/*----------------------Search TextField----------------------*/}
+
       <Card style={styles.txtCards}>
-        <View style={{ flexDirection: 'row' }}>
-          <AntDesign name="search1" size={18} color="black" style={{ marginTop: 15, marginLeft: 8 }} />
-          <TextInput style={styles.txtSearch}
-            name='search' placeholder='Search'
-          />
-        </View>
+
+          <View style={{ flexDirection: 'row'}}> 
+        
+            <AntDesign name="search1" size={18} color="black"  style= {{marginTop:15, marginLeft: 8}}/>
+        
+            <TextInput style={styles.txtSearch} 
+              name= 'search' placeholder= 'Search' 
+            />
+
+          </View>
+
       </Card>
-      <Card style={styles.menu}>
+
+
+      {/*----------------------Horizontal Menu----------------------*/}
+
+      <Card style= {styles.menu}>
+          
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <TouchableOpacity  >
             <View>
@@ -141,72 +234,48 @@ export default function Home({ navigation, setDone }) {
           </View>
         </ScrollView>
       </Card>
-      <ScrollView vertical={true} >
-        <Card style={styles.menu2}>
-          <View>
-            <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
-              <Image style={styles.strokeVid} source={strVid}
-              />
-            </TouchableOpacity>
-          </View>
-          <View>
-            <Text style={{ paddingLeft: 20, fontWeight: 'bold' }}>Stroke</Text>
-          </View>
-          <View>
-            <Image style={styles.heartVid} source={heartVid} />
-          </View>
-          <View>
-            <Text style={{ paddingLeft: 20, fontWeight: 'bold' }}>Heart-Attack</Text>
-          </View>
-          <View>
-            <Image style={styles.strokeVid} source={epilepsyVid} />
-          </View>
-          <View>
-            <Text style={{ paddingLeft: 20, fontWeight: 'bold' }}>Epilepsy</Text>
-          </View>
-          <View>
-            <Image style={styles.cpr} source={cpr_vid2} />
-          </View>
-          <View>
-            <Text style={{ paddingLeft: 20, fontWeight: 'bold' }}>CPR</Text>
-          </View>
-          <View>
-            <Image style={styles.bleed} source={bleed} />
-          </View>
-          <View>
-            <Text style={{ paddingLeft: 20, fontWeight: 'bold' }}>Bleeding</Text>
-          </View>
-          <View>
-            <Image style={styles.choke} source={choke} />
-          </View>
-          <View>
-            <Text style={{ paddingLeft: 20, fontWeight: 'bold' }}>Choking</Text>
-          </View>
-          <View>
-            <Image style={styles.drowning} source={drowning} />
-          </View>
-          <View>
-            <Text style={{ paddingLeft: 20, fontWeight: 'bold' }}>Drowning</Text>
-          </View>
-          <View>
-            <Image style={styles.burns} source={burn} />
-          </View>
-          <View>
-            <Text style={{ paddingLeft: 20, fontWeight: 'bold' }}>Burns</Text>
-          </View>
-        </Card>
-      </ScrollView>
-      {/*<View style={styles.buttonContainer}>
-      {!visibleStatusBar ? (    
-       <View></View>
-          ) 
-          : //Hidden Step-by-steps
-          <Image style= {styles.strokeStep} source= {strokeSteps} />
-          }
-        <TouchableOpacity  onPress={() => changeVisibilityStatusBar()} >
-          <Text style= {{fontWeight: 'bold', fontSize: 16, paddingTop: 20, paddingLeft: 115}}>View Step-by-Step</Text>
-        </TouchableOpacity>     
-        </View>*/}
+
+
+
+     
+
+
+      {/*---------------------- Video Scroll View--------------------*/}
+
+    <ScrollView vertical={true} >     
+
+      <Card style= {styles.menu2}>
+
+        <View>
+          <Text>
+          
+            {videos.map(vid =>(
+              <ol >
+          
+                <Video
+                  ref={video}
+                  source={{ uri: link }}
+                  useNativeControls
+                  resizeMode="contain"
+                  isLooping
+                  onPlaybackStatusUpdate={status => setStatus(() => status)}
+                  style= {{width: 355, borderRadius: 25}}
+                />
+
+                <h4>{vid.title}</h4>
+                
+                
+              </ol>
+            ))} 
+
+          </Text>                
+        </View>
+
+      </Card  >
+    </ScrollView >     
+
+     
+
     </View>
   )
 }
@@ -226,9 +295,9 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    backgroundColor: 'lightgrey',
-    width: 320,
-    height: 50,
+    backgroundColor: 'lightgrey', 
+    width: 355,
+    height: 50, 
     borderRadius: 10,
     marginLeft: 28,
     marginTop: 25
@@ -305,98 +374,13 @@ const styles = StyleSheet.create({
   },
 
   menu2: {
-    width: 316,
+    width: 355, 
     height: 428,
     marginLeft: 30,
     marginTop: 20,
     borderRadius: 15,
     backgroundColor: '#f7eeee',
   },
-
-  strokeVid: {
-    height: 180,
-    width: 315,
-    borderRadius: 30,
-
-  },
-
-  heartVid: {
-    height: 180,
-    width: 315,
-    borderRadius: 30,
-    marginTop: 30
-
-  },
-
-  cpr: {
-    height: 180,
-    width: 315,
-    borderRadius: 30,
-    marginTop: 30
-  },
-
-  bleed: {
-    height: 180,
-    width: 315,
-    borderRadius: 30,
-    marginTop: 30
-  },
-
-  choke: {
-    height: 180,
-    width: 315,
-    borderRadius: 30,
-    marginTop: 30
-  },
-
-  drowning: {
-    height: 180,
-    width: 315,
-    borderRadius: 30,
-    marginTop: 30
-  },
-
-  burns: {
-    height: 180,
-    width: 315,
-    borderRadius: 30,
-    marginTop: 30
-  },
-
-  home: {
-    height: 25,
-    width: 25,
-    borderRadius: 30,
-    borderWidth: 1,
-    borderColor: 'grey',
-    marginLeft: 8,
-    marginTop: 8,
-  },
-
-  play: {
-    height: 25,
-    width: 25,
-    borderRadius: 30,
-    borderColor: 'grey',
-    marginLeft: 85,
-    marginTop: 23,
-  },
-
-  user: {
-    height: 25,
-    width: 25,
-    borderRadius: 30,
-    borderWidth: 1,
-    borderColor: 'grey',
-    marginLeft: 100,
-    marginTop: 23,
-  },
-
-  strokeStep: {
-    width: 315,
-    height: 250,
-    marginTop: 30,
-    marginLeft: 30
-  }
+  
 });
 

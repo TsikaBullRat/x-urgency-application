@@ -22,13 +22,16 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity, Button } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
+
+import { Video, AVPlaybackStatus } from 'expo-av';
+
 import strVid from '../images/stroke-vid.jpg';
 export default function Strokes({ navigation }) {
   const { comments, setComments } = useState('')
@@ -45,19 +48,51 @@ export default function Strokes({ navigation }) {
     }
     return setStyleStatusBar(styleTypes[styleId]);
   };
+
+
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});  
+
+  const link =  'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+
   return (
     <View style={styles.contain}>
       <Card style={styles.txtCards}>
-        <View style={{ flexDirection: 'row' }}>
-          <AntDesign name="search1" size={18} color="black" style={{ marginTop: 15, marginLeft: 8 }} />
-          <TextInput style={styles.txtSearch}
-            name='search' placeholder='Search'
-          />
-        </View>
+
+          <View style={{ flexDirection: 'row'}}> 
+        
+            <AntDesign name="search1" size={18} color="black"  style= {{marginTop:15, marginLeft: 8}}/>
+        
+            <TextInput style={styles.txtSearch} 
+              name= 'search' placeholder= 'Search' 
+            />
+
+          </View>
+
       </Card>
-      <View>
-        <Image style={styles.strokeVid} source={strVid} />
+
+  
+          
+      <View style= {{width: 315, marginTop:50, marginLeft: 30}}>
+      
+        <Video
+          ref={video}
+          source={{ uri: link }}
+          useNativeControls
+          resizeMode="contain"
+          isLooping
+          onPlaybackStatusUpdate={status => setStatus(() => status)}
+          style= {{borderRadius: 25}}
+        />
+
       </View>
+
+
+
+      
+
+
+      
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
@@ -103,12 +138,27 @@ export default function Strokes({ navigation }) {
           </View>
         )
           : //Hidden Description
-          <View>
-            <Card style={{
-              width: 315, height: 300, marginLeft: 20,
-              borderRadius: 20,
-              backgroundColor: 'pink',
+      
+    <View>       
+
+          <Card style={{width: 315, height: 300, marginLeft: 28,
+                          borderRadius: 20,
+                          backgroundColor: 'pink',
+                          marginTop: 20
+          }}>  
+
+
+          <View style={{flexDirection: 'row'}}>       
+
+            <Text
+              style={{
+              paddingLeft: 10,
+              paddingTop: 15,
+              fontWeight: 'bold',
+              fontSize: 16,
             }}>
+
+              
               <View style={{ flexDirection: 'row' }}>
                 <Text
                   style={{
@@ -123,6 +173,7 @@ export default function Strokes({ navigation }) {
                   <AntDesign name="closecircle" size={18} color="black" style={{ marginLeft: 180, marginTop: 15 }} />
                 </TouchableOpacity>
               </View>
+
               <View
                 style={{
                   marginTop: 10,
@@ -136,6 +187,7 @@ export default function Strokes({ navigation }) {
                   1 000 000 Views
                 </Text>
               </View>
+
               <View
                 style={{
                   flexDirection: 'row',
@@ -153,14 +205,66 @@ export default function Strokes({ navigation }) {
                 </Text>
                 <Text>Thank you for your support.</Text>
               </View>
+
             </Card>
           </View>
-        }
-      </View>
-      <Card style={{ height: 40, marginTop: 30, marginLeft: 30 }}>
-        <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments - 498</Text>
+
+        <View
+          style={{
+            marginTop: 10,
+            marginLeft: 12,
+            width: 255,
+          }}>
+          
+            
+            <Text >
+               Stroke Emergency Video
+            </Text>
+
+            <Text style= {{fontSize: 10, color: 'gray'}}>
+               1 000 000 Views
+            </Text>
+
+        </View>
+
+        <View
+          style={{
+            marginTop: 10,
+            marginLeft: 12,
+            width: 255,
+          }}>
+
+          <Text style={{paddingTop: 10}}>                     
+            Lost your faith in ambulances' response time?
+            You can play doctor and help save a life by just
+            following the instructions of this video.
+            This video is accredited by the Department of Health
+            and Social Development, for critical emergencies only.                        
+          </Text>
+
+          <Text style={{paddingTop: 10, fontWeight: 'bold'}}>Thank you for your support.</Text>
+       
+        </View>
+
       </Card>
     </View>
+      
+      
+          }
+
+          
+           
+
+    </View>
+
+                <Card style= {{height: 40, width: 315, marginTop: 30, marginLeft: 30}}>
+
+                    <Text style= {{paddingTop: 10, paddingLeft: 10}}>Comments - 498</Text>
+
+                </Card>
+
+    </View>
+
   )
 }
 const styles = StyleSheet.create({
