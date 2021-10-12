@@ -8,7 +8,7 @@ const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, s
     }
     else {
         auth.createUserWithEmailAndPassword(email, password).then(
-        //    alert('Signed Up')
+            //    alert('Signed Up')
         )
             .catch((error) => {
                 // switch(error.code){
@@ -21,4 +21,4 @@ const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, s
     setPassword("")
     setConfirmPassword("")
 }
-export {handleSignUp}
+export { handleSignUp }

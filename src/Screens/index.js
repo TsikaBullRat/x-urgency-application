@@ -15,6 +15,4 @@ import SignUp from "./SignUp"
 import ForgotPassword from "./ForgotPassword"
 import Home from "./Home"
 import Strokes from "./Stroke"
-
-
-export {SignIn, SignUp, ForgotPassword, Home, Strokes} 
+export { SignIn, SignUp, ForgotPassword, Home, Strokes }
