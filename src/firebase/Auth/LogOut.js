@@ -1,6 +1,5 @@
-import {auth} from "../config";
-
-const Exit = ()=>{
+import { auth } from "../config";
+const Exit = () => {
     firebase.auth().signOut()
         .then(function () {
             // Sign-out successful.
@@ -8,6 +7,4 @@ const Exit = ()=>{
             // An error happened.
         });
 }
-
-
 export default Exit;

@@ -1,5 +1,4 @@
 import { auth } from '../config'
-
 const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage) => {
     if (password !== Confirmpassword) {
         alert("Password Doesn't Match")
@@ -8,7 +7,7 @@ const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, s
     }
     else {
         auth.createUserWithEmailAndPassword(email, password).then(
-        //    alert('Signed Up')
+            //    alert('Signed Up')
         )
             .catch((error) => {
                 // switch(error.code){
@@ -21,4 +20,4 @@ const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, s
     setPassword("")
     setConfirmPassword("")
 }
-export {handleSignUp}
+export { handleSignUp }
