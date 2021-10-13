@@ -23,7 +23,7 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity, Button } from 'react-native';
+import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -33,17 +33,16 @@ import { Video, AVPlaybackStatus } from 'expo-av';
 
 
 
-
 export default function Strokes({navigation}) {
 
   const video = React.useRef(null); 
-
+  const [status, setStatus] = React.useState({});
+  const [userName, setUserName] = useState('Rando123')  
   const link =  'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     
     //const {comments, setComments} = useState('')
 
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
-  const [styleStatusBar, setStyleStatusBar] = useState(styleTypes[0]);
   const changeVisibilityStatusBar = () => {
     setVisibleStatusBar(!visibleStatusBar);
   };
@@ -130,7 +129,7 @@ export default function Strokes({navigation}) {
                 }}
                 size="medium"
               />
-              <Text style={{ paddingTop: 15, paddingLeft: 15 }}>Rando123</Text>
+              <Text style={{ paddingTop: 15, paddingLeft: 15 }}>{userName}</Text>
             </View>
           </View>
         )
