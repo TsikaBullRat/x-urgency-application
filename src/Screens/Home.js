@@ -132,7 +132,8 @@ export default function Home({ navigation, setDone }) {
       {/*----------------------Horizontal Menu----------------------*/}
       <Card style={styles.menu}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <TouchableOpacity  >
+          
+          <TouchableOpacity >
             <View>
               <Card style={{
                 width: 50, height: 50, borderRadius: 15, marginLeft: 15,
@@ -145,48 +146,59 @@ export default function Home({ navigation, setDone }) {
               <Text style={{ paddingLeft: 20 }}>Stroke</Text>
             </View>
           </TouchableOpacity>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 28, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.heartMenu} source={heart} />
             </Card>
             <Text style={{ paddingLeft: 15 }}>Heart-Attack</Text>
           </View>
+
           <View>
             <Image style={styles.epilepsyMenu} source={epilepsy} />
             <Text style={{ paddingLeft: 18 }}>Epilepsy</Text>
           </View>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 28, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.cprMenu} source={cpr} />
               <Text style={{ paddingLeft: 8, paddingTop: 8 }}>CPR</Text>
             </Card>
           </View>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.bloodMenu} source={bleeding} />
             </Card>
             <Text style={{ paddingLeft: 28 }}>Bleeding</Text>
           </View>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.conImg} source={choking} />
               <Text style={{ paddingLeft: 5, paddingTop: 8 }}>Choking</Text>
             </Card>
           </View>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.drown} source={drown} />
               <Text style={{ paddingLeft: 7, paddingTop: 3 }}>Drowning</Text>
             </Card>
           </View>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.burn} source={burns} />
               <Text style={{ paddingLeft: 5, paddingTop: 8 }}>Burns</Text>
             </Card>
           </View>
+
         </ScrollView>
       </Card>
+
+
+
       {/*---------------------- Video Scroll View--------------------*/}
 
     <ScrollView vertical={true} >     
@@ -194,11 +206,12 @@ export default function Home({ navigation, setDone }) {
       <Card style= {styles.menu2}>
 
         <View>
-          <Text>
-          
+
+              
             {videos.map(vid =>(
               <ol >
-          
+
+              <TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
                 <Video
                   ref={video}
                   source={{ uri: link }}
@@ -212,11 +225,14 @@ export default function Home({ navigation, setDone }) {
 
                 <h4>{vid.title}</h4>
                 
+              </TouchableOpacity>  
                 
               </ol>
             ))} 
 
-          </Text>                
+            
+
+               
         </View>
 
       </Card  >

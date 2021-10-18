@@ -32,7 +32,6 @@
     "react-native-screens": "~3.4.0",
     "react-native-vector-icons": "*",
     "react-native-web": "^0.17.5",
-  
     "styled-components": "*"
   },
   "devDependencies": {
