@@ -32,15 +32,19 @@ export default function SignIn({ navigation, setDone }) {
   return (
     <View >
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={76} color="#fff" />
         </View>
+
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
+
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 10 }}>LogIn</Text>
       </View>
+
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -50,6 +54,7 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
+
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
@@ -118,7 +123,6 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     outline: 'none',
-    border: 0,
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
