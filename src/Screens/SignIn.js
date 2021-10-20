@@ -65,6 +65,7 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
+        
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
           <Text style={{ paddingLeft: 220, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
         </TouchableOpacity>
@@ -74,12 +75,21 @@ export default function SignIn({ navigation, setDone }) {
         </TouchableOpacity>
 
         <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
-          New User?
+          New User?</Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-            <Text style={{ color: '#F47066' }}> Sign Up</Text>
+            <Text style={{ color: '#F47066' }}> SignUp</Text>
+          </TouchableOpacity>
+
+          <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
+          Medical Personel?</Text>
+          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
+            <Text style={{ color: '#F47066' }}> SignUp</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
+            <Text style={{ color: '#F47066' }}> SignIn</Text>
           </TouchableOpacity>
           
-        </Text>
+        
       </View>
     </View>
   )
@@ -88,7 +98,6 @@ const styles = StyleSheet.create({
   card: {
     position: 'absolute',
     backgroundColor: '#F47066',
-    filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
     width: 375,
     height: 280,
     borderBottomLeftRadius: 30,
@@ -106,7 +115,6 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 300,
     paddingLeft: 130,
-    paddingLeft: 150,
   },
 
   txtUser: {

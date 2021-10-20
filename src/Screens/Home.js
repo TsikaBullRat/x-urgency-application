@@ -93,7 +93,8 @@ export default function Home({ navigation, setDone }) {
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
   ];
-  const video = React.useRef(null);
+  const video = React.useRef( 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+);
   const [status, setStatus] = React.useState({});
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
 
@@ -120,15 +121,7 @@ export default function Home({ navigation, setDone }) {
           />
         </View>
       </View>
-      {/*----------------------Search TextField----------------------*/}
-      <Card style={styles.txtCards}>
-        <View style={{ flexDirection: 'row' }}>
-          <AntDesign name="search1" size={18} color="black" style={{ marginTop: 15, marginLeft: 8 }} />
-          <TextInput style={styles.txtSearch}
-            name='search' placeholder='Search'
-          />
-        </View>
-      </Card>
+
       {/*----------------------Horizontal Menu----------------------*/}
       <Card style={styles.menu}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -219,7 +212,6 @@ export default function Home({ navigation, setDone }) {
                 <Video
                   ref={video}
                   source={{ uri: link }}
-                  useNativeControls
                   resizeMode="contain"
                   isLooping
                   onPlaybackStatusUpdate={status => setStatus(() => status)}
