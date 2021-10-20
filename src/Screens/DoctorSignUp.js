@@ -1,15 +1,3 @@
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 05/10/2021 - 14:22:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 05/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'; 
 import { Card } from 'react-native-paper';
@@ -39,7 +27,6 @@ export default function DoctorSignUp({ navigation }) {
             <View style={styles.header}>
                 <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>Doctor SignUp</Text>
             </View>
-
             <View>
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
@@ -55,7 +42,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}
@@ -72,6 +58,14 @@ export default function DoctorSignUp({ navigation }) {
                 </Card>
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
+                        <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+                        <TextInput style={styles.txtUser}
+                            name='Email' placeholder='Email' onChangeText={text => setEmail(text)}
+                        />
+                    </View>
+                </Card>
+                <Card style={styles.txtCards}>
+                    <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}
                             name='Branch' placeholder='Branch'
                         />
@@ -79,21 +73,11 @@ export default function DoctorSignUp({ navigation }) {
                 </Card>
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
-                        <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
-                        <TextInput style={styles.txtUser}
-                            name='Email' placeholder='Email' onChangeText={text => setEmail(text)}
-                        />
-                    </View>
-                </Card>
-
-                <Card style={styles.txtCards}>
-                    <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}
                             name='Contact Details' placeholder='Contact Details'
                         />
                     </View>
                 </Card>
-
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
@@ -104,7 +88,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <EvilIcons name="lock" size={28} color="black"
@@ -117,8 +100,12 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
+<<<<<<< HEAD
 
                 <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
+=======
+                <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
+>>>>>>> a26568e7a429b90d1c2623455c930ed3f779492b
                     <Text style={{ color: '#fff' }}>Doctor_SIGN_UP </Text>
                 </TouchableOpacity>
             </View>

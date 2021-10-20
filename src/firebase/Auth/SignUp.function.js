@@ -8,7 +8,7 @@ const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, s
     else {
         auth.createUserWithEmailAndPassword(email, password)
             .then(
-                
+
             )
             .catch((error) => {
                 setMessage(error.message);

@@ -1,1 +1,1 @@
-export {AlertNote} from "./Alert"
+export { AlertNote } from "./Alert"

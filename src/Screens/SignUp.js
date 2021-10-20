@@ -35,12 +35,9 @@ export default function SignUp({ navigation }) {
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
-
-
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>SignUp</Text>
       </View>
-
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -50,7 +47,6 @@ export default function SignUp({ navigation }) {
             />
           </View>
         </Card>
-        
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />

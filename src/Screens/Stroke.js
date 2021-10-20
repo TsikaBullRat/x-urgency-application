@@ -30,22 +30,15 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
 import { Video, AVPlaybackStatus } from 'expo-av';
-
-
-export default function Strokes({navigation}) {
-
+export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')
   const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
-
-  const video = React.useRef(null); 
-  const [status, setStatus] = React.useState({}); 
-
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
   const setVid = () => {
     setVideoPlay()
-  } 
-    
-    const [comments, setComments] = useState({userName})
-
+  }
+  const [comments, setComments] = useState({ userName })
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
   const changeVisibilityStatusBar = () => {
     setVisibleStatusBar(!visibleStatusBar);
@@ -57,23 +50,14 @@ export default function Strokes({navigation}) {
     }
     return setStyleStatusBar(styleTypes[styleId]);
   };
-
-
-  
-
   return (
-    <View style= {styles.contain}> 
-
+    <View style={styles.contain}>
       <TouchableOpacity
-      onPress={() => { navigation.goBack('Home')}}
-      
+        onPress={() => { navigation.goBack('Home') }}
       >
         <AntDesign name="arrowleft" size={24} color="black" />
       </TouchableOpacity>
-
-
       <View style={{ width: 315, marginTop: 50, marginLeft: 30 }}>
-        
         <Video
           ref={video}
           source={{ uri: videoPlay }}
@@ -83,41 +67,27 @@ export default function Strokes({navigation}) {
           onPlaybackStatusUpdate={status => setStatus(() => status)}
           style={{ borderRadius: 25 }}
         />
-
       </View>
-
-
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
-
             <View style={{ flexDirection: 'row', paddingLeft: 50, marginTop: 10 }}>
-              
               <Text style={{ fontWeight: 'bold' }}>
                 Stroke Emergency Video
               </Text>
-
               <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()} >
                 <AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} />
               </TouchableOpacity>
-
             </View>
-
-
             <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
               1.7M views - 2years ago
             </Text>
-
             <Card style={{ borderColor: 'black', width: 315, marginTop: 20, marginLeft: 30 }}>
-              
               <View style={{ flexDirection: 'row', marginTop: 5, marginLeft: 3 }}>
                 <View style={{ marginLeft: 10 }}>
-                  
-                  <Entypo name="thumbs-up" size={24} color="black" style={{ marginLeft: 10 }} />                 
+                  <Entypo name="thumbs-up" size={24} color="black" style={{ marginLeft: 10 }} />
                   <Text style={{ marginTop: 5 }}>  16k  </Text>
-
                 </View>
-
                 <View style={{ marginLeft: 45 }}>
                   <Entypo name="thumbs-down" size={24} color="black" style={{ marginTop: 3, marginLeft: 5 }} />
                   <Text style={{ paddingTop: 2 }}>  16  </Text>
@@ -145,61 +115,46 @@ export default function Strokes({navigation}) {
           </View>
         )
           : //Hidden Description
-      
-         <View>       
-
-            <Card style={{width: 315, height: 300, marginLeft: 28,
-                          borderRadius: 20,
-                          backgroundColor: '#fff',
-                          marginTop: 20
-            }}>  
-
+          <View>
+            <Card style={{
+              width: 315, height: 300, marginLeft: 28,
+              borderRadius: 20,
+              backgroundColor: '#fff',
+              marginTop: 20
+            }}>
               <View style={{ flexDirection: 'row' }}>
-                
                 <Text
                   style={{
                     paddingLeft: 10,
                     paddingTop: 15,
                     fontWeight: 'bold',
                     fontSize: 16,
-                  }}>                 
+                  }}>
                   Description:
                 </Text>
-
                 <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                  
                   <AntDesign name="closecircle" size={18} color="black" style={{ marginLeft: 180, marginTop: 15 }} />
-
                 </TouchableOpacity>
-
               </View>
-
-
               <View
                 style={{
                   marginTop: 10,
                   marginLeft: 12,
                   width: 255,
                 }}>
-
                 <Text >
                   Stroke Emergency Video
                 </Text>
-
                 <Text style={{ fontSize: 10, color: 'gray' }}>
                   1 000 000 Views
                 </Text>
-
               </View>
-
-
               <View
                 style={{
                   marginTop: 10,
                   marginLeft: 12,
                   width: 255,
                 }}>
-
                 <Text style={{ paddingTop: 10 }}>
                   Lost your faith in ambulance response time?
                   You can play doctor and help save a life by just
@@ -207,27 +162,19 @@ export default function Strokes({navigation}) {
                   This video is accredited by the Department of Health
                   and Social Development, for critical emergencies only.
                 </Text>
-
-                <Text 
+                <Text
                   style={{ paddingTop: 10, fontWeight: 'bold' }}>
                   Thank you for your support.
                 </Text>
-
               </View>
             </Card>
-
-
           </View>
         }
       </View>
-      
       <Card style={{ height: 40, width: 315, marginTop: 30, marginLeft: 30 }}>
-        
         <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments - 498</Text>
-
         {/*userName Array*/}
         <Text>{userName}</Text>
-
       </Card>
     </View>
   )

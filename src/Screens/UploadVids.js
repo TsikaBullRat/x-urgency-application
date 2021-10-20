@@ -12,45 +12,36 @@
 **/
 import React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
-import {Card} from 'react-native-paper'
+import { Card } from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
-
-
 export default function Upload() {
   let [selectedImage, setSelectedImage] = React.useState(null);
-
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
-
     if (permissionResult.granted === false) {
       alert('Permission to access camera roll is required!');
       return;
     }
-
     let pickerResult = await ImagePicker.launchImageLibraryAsync();
     if (pickerResult.cancelled === true) {
       return;
-    } 
-
+    }
     if (Platform.OS === 'web') {
       let remoteUri = await uploadToAnonymousFilesAsync(pickerResult.uri);
       setSelectedImage({ localUri: pickerResult.uri, remoteUri });
     } else {
       setSelectedImage({ localUri: pickerResult.uri, remoteUri: 'https://moon.jpg' });
     }
-  }; 
-
+  };
   let openShareDialogAsync = async () => {
     if (!(await Sharing.isAvailableAsync())) {
       alert(`The image is available for sharing at: ${selectedImage.remoteUri}`);
       return;
     }
-
     Sharing.shareAsync(selectedImage.remoteUri || selectedImage.localUri);
   };
-
   if (selectedImage !== null) {
     return (
       <View style={styles.container}>
@@ -61,29 +52,24 @@ export default function Upload() {
       </View>
     );
   }
-
   return (
     <View style={styles.container}>
-       <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            
-            <TextInput style={styles.txtUser}
-              name='username' placeholder='Upload Video' 
-            />
-          </View>
-        </Card>
-
+      <Card style={styles.txtCards}>
+        <View style={{ flexDirection: 'row' }}>
+          <TextInput style={styles.txtUser}
+            name='username' placeholder='Upload Video'
+          />
+        </View>
+      </Card>
       <Text style={styles.instructions}>
         To share a photo from your phone with a friend, just press the button below!
       </Text>
-
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
         <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -91,14 +77,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-    txtUser: {
+  txtUser: {
     width: 320,
     height: 150,
     borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey',
-    paddingLeft: 10, 
-  }, 
+    paddingLeft: 10,
+  },
   instructions: {
     color: '#888',
     fontSize: 18,
