@@ -1,15 +1,3 @@
-/**
-    * @description      : 
-    * @author           : TLeeuw
-    * @group            : 
-    * @created          : 20/10/2021 - 11:58:46
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 20/10/2021
-    * - Author          : TLeeuw
-    * - Modification    : 
-**/
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
@@ -70,8 +58,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
-               
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}
@@ -86,8 +72,7 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
-                 <Card style={styles.txtCards}>
+                <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
                         <TextInput style={styles.txtUser}
@@ -95,7 +80,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-                
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
