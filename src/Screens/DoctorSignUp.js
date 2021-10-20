@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'; 
+import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../firebase';
 import { AlertNote } from '../Components/Alert';
-
 export default function DoctorSignUp({ navigation }) {
     const [email, setEmail] = useState(""),
         [password, setPassword] = useState(""),
@@ -100,12 +99,7 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-<<<<<<< HEAD
-
-                <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
-=======
                 <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
->>>>>>> a26568e7a429b90d1c2623455c930ed3f779492b
                     <Text style={{ color: '#fff' }}>Doctor_SIGN_UP </Text>
                 </TouchableOpacity>
             </View>

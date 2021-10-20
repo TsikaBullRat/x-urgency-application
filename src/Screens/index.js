@@ -18,5 +18,4 @@ import Strokes from "./Stroke"
 import UploadVids from "./UploadVids"
 import DoctorSignUp from "./DoctorSignUp"
 import MedicalHome from "./MedicalHome"
-
 export { SignIn, SignUp, ForgotPassword, Home, Strokes, UploadVids, DoctorSignUp, MedicalHome }

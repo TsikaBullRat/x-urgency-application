@@ -106,7 +106,7 @@ export default function Home({ navigation, setDone }) {
           <Text style={{ fontSize: 36, paddingLeft: 10 }}>EMERGENCY</Text>
         </View>
         <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <Avatar style ={styles.avatar}
+          <Avatar style={styles.avatar}
             rounded
             source={{
               uri: 'https://randomuser.me/api/portraits/men/41.jpg',
@@ -216,14 +216,14 @@ const styles = StyleSheet.create({
   avatar: {
     width: 70,
     height: 70,
-    borderRadius: 50, 
+    borderRadius: 50,
     margingTop: 80,
-    borderBottomWidth: 3,     
-    borderColor: 'turquoise',     
-    shadowColor: 'grey',   
-    shadowOffset: { width: 2, height: 2 },   
-    shadowOpacity: 0.4,         
-    elevation: 1, 
+    borderBottomWidth: 3,
+    borderColor: 'turquoise',
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.4,
+    elevation: 1,
   },
 
   txtSearch: {
@@ -236,21 +236,21 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    backgroundColor: 'lightgray',  
-    opacity: 0.8,   
+    backgroundColor: 'lightgray',
+    opacity: 0.8,
     width: 320,
-    height: 50, 
+    height: 50,
     borderRadius: 10,
     marginLeft: 28,
     marginTop: 25,
     borderBottomWidth: 2,
-    borderRightWidth: 2,             
-    borderColor: 'turquoise',  
-    shadowColor: 'skyblue', 
-    shadowOffset: { width: 3, height: 3 },  
-    shadowOpacity: 0.8, 
-    shadowRadius: 1,   
-    elevation: 1,  
+    borderRightWidth: 2,
+    borderColor: 'turquoise',
+    shadowColor: 'skyblue',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    elevation: 1,
   },
 
   menu: {
