@@ -215,7 +215,7 @@ export default function Home({ navigation, setDone }) {
                 <Video
                   ref={video}
                   source={{ uri: link }}
-                  useNativeControls
+                  // useNativeControls
                   resizeMode="contain"
                   isLooping
                   onPlaybackStatusUpdate={status => setStatus(() => status)}
