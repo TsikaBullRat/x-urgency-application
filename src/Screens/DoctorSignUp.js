@@ -1,3 +1,15 @@
+/**
+    * @description      : 
+    * @author           : TLeeuw
+    * @group            : 
+    * @created          : 20/10/2021 - 11:58:46
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 20/10/2021
+    * - Author          : TLeeuw
+    * - Modification    : 
+**/
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'; 
 import { Card } from 'react-native-paper';
@@ -100,12 +112,8 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-<<<<<<< HEAD
 
                 <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
-=======
-                <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
->>>>>>> a26568e7a429b90d1c2623455c930ed3f779492b
                     <Text style={{ color: '#fff' }}>Doctor_SIGN_UP </Text>
                 </TouchableOpacity>
             </View>
