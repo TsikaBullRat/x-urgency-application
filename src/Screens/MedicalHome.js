@@ -46,153 +46,99 @@ import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 import { auth } from '../firebase';
 
-export default function Home({ navigation, setDone }) {
+export default function MedicalHome({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
     setDone(false)
   }
+
   const videos = [
     {
       id: 1,
       title: "Stroke",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
+
     {
       id: 2,
       title: "Heart-Attack",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
+
     {
       id: 3,
       title: "Epilepsy",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
+
     {
       id: 4,
       title: "CPR",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
+
     {
       id: 5,
       title: "Bleeding",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
+
     {
       id: 6,
       title: "Choking",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
+
     {
       id: 7,
       title: "Drowning",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
+
     {
       id: 8,
       title: "Burn",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
+
   ];
-  const video = React.useRef( 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-);
+
+  const video = React.useRef( 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
+
   const [status, setStatus] = React.useState({});
+
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
 
   return (
     <View style={styles.contain}>
+
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row' }}>
+        
         <View style={styles.header}>
-          <Text style={{ fontSize: 36, paddingLeft: 10 }}>What's your
+          <Text style={{ fontSize: 36, paddingLeft: 10 }}>Dr. DoLittle
           </Text>
-          <Text style={{ fontSize: 36, paddingLeft: 10 }}>EMERGENCY</Text>
+          <Text style={{ fontSize: 36, paddingLeft: 10 }}>In Da House</Text>
         </View>
+
         <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <Avatar style ={styles.avatar}
+          <Avatar style= {styles.avatar}
             rounded
             source={{
-              uri: 'https://randomuser.me/api/portraits/men/41.jpg',
+              uri: 'https://randomuser.me/api/portraits/men/45.jpg',
             }}
             size="large"
           />
+
           <Badge
             status="success"
             containerStyle={{ position: 'absolute', top: -4, right: -4 }}
           />
+
         </View>
       </View>
 
-      {/*----------------------Horizontal Menu----------------------*/}
-      <Card style={styles.menu}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          
-          <TouchableOpacity >
-            <View>
-              <Card style={{
-                width: 50, height: 70, borderRadius: 15, marginLeft: 18, alignItems: 'center', textAlign: 'center', marginTop: 7
-              }}
-                onPress={() => { navigation.navigate('Strokes') }}
-              >
-                <Image style={styles.strokeMenu} source={Stroke} />
-                <Text style= {{fontSize: 12}}>Stroke</Text>
-
-              </Card>
-             
-            </View>
-          </TouchableOpacity>
-
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7}}>
-              <Image style={styles.heartMenu} source={heart} />
-              <Text style={{ paddingLeft: 10, fontSize: 12 }}>Heart-Attack</Text>
-            </Card>
-            
-          </View>
-
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.epilepsyMenu} source={epilepsy} />
-              <Text style={{fontSize: 12 }}>Epilepsy</Text>
-            </Card>
-          </View>
-
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.cprMenu} source={cpr} />
-              <Text style={{ paddingTop: 8, fontSize: 12 }}>CPR</Text>
-            </Card>
-          </View>
-
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.bloodMenu} source={bleeding} />
-            </Card>
-            <Text style={{ paddingLeft: 28, fontSize: 12 }}>Bleeding</Text>
-          </View>
-
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.conImg} source={choking} />
-              <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Choking</Text>
-            </Card>
-          </View>
-
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.drown} source={drown} />
-              <Text style={{ paddingLeft: 7, paddingTop: 3, fontSize: 12 }}>Drowning</Text>
-            </Card>
-          </View>
-
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
-              <Image style={styles.burn} source={burns} />
-              <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
-            </Card>
-          </View>
-
-        </ScrollView>
-      </Card>
+     
 
 
 
@@ -269,21 +215,12 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    backgroundColor: 'lightgray',  
-    opacity: 0.8,   
-    width: 320,
-    height: 50, 
+    backgroundColor: 'lightgrey',
+    width: 355,
+    height: 50,
     borderRadius: 10,
-    marginLeft: 28,
-    marginTop: 25,
-    borderBottomWidth: 2,
-    borderRightWidth: 2,             
-    borderColor: 'turquoise',  
-    shadowColor: 'skyblue', 
-    shadowOffset: { width: 3, height: 3 },  
-    shadowOpacity: 0.8, 
-    shadowRadius: 1,   
-    elevation: 1,  
+    marginLeft: 10,
+    marginTop: 25
   },
 
   menu: {
