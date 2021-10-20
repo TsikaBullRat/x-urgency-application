@@ -6,13 +6,11 @@ const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, s
         setConfirmPassword(" ")
     }
     else {
-        auth.createUserWithEmailAndPassword(email, password).then(
-            //    alert('Signed Up')
-        )
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(
+                
+            )
             .catch((error) => {
-                // switch(error.code){
-                //     case ""
-                // }
                 setMessage(error.message);
             });
     }

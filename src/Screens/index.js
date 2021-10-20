@@ -15,4 +15,6 @@ import SignUp from "./SignUp"
 import ForgotPassword from "./ForgotPassword"
 import Home from "./Home"
 import Strokes from "./Stroke"
-export { SignIn, SignUp, ForgotPassword, Home, Strokes }
+import BottomNav from '../Components/BottomNav'
+
+export { SignIn, SignUp, ForgotPassword, Home, Strokes, BottomNav }

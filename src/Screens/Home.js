@@ -45,6 +45,7 @@ import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 import { auth } from '../firebase';
+
 export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
@@ -95,11 +96,7 @@ export default function Home({ navigation, setDone }) {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  /*const styleTypes = ['default', 'dark-content', 'light-content'];
-  const [visibleStatusBar, setVisibleStatusBar] = useState(false);
-  const changeVisibilityStatusBar = () => {
-    setVisibleStatusBar(!visibleStatusBar);
-  };*/
+
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
@@ -135,7 +132,8 @@ export default function Home({ navigation, setDone }) {
       {/*----------------------Horizontal Menu----------------------*/}
       <Card style={styles.menu}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <TouchableOpacity  >
+          
+          <TouchableOpacity >
             <View>
               <Card style={{
                 width: 50, height: 50, borderRadius: 15, marginLeft: 15,
@@ -148,71 +146,100 @@ export default function Home({ navigation, setDone }) {
               <Text style={{ paddingLeft: 20 }}>Stroke</Text>
             </View>
           </TouchableOpacity>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 28, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.heartMenu} source={heart} />
             </Card>
             <Text style={{ paddingLeft: 15 }}>Heart-Attack</Text>
           </View>
+
           <View>
             <Image style={styles.epilepsyMenu} source={epilepsy} />
             <Text style={{ paddingLeft: 18 }}>Epilepsy</Text>
           </View>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 28, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.cprMenu} source={cpr} />
               <Text style={{ paddingLeft: 8, paddingTop: 8 }}>CPR</Text>
             </Card>
           </View>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.bloodMenu} source={bleeding} />
             </Card>
             <Text style={{ paddingLeft: 28 }}>Bleeding</Text>
           </View>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.conImg} source={choking} />
               <Text style={{ paddingLeft: 5, paddingTop: 8 }}>Choking</Text>
             </Card>
           </View>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.drown} source={drown} />
               <Text style={{ paddingLeft: 7, paddingTop: 3 }}>Drowning</Text>
             </Card>
           </View>
+
           <View>
             <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
               <Image style={styles.burn} source={burns} />
               <Text style={{ paddingLeft: 5, paddingTop: 8 }}>Burns</Text>
             </Card>
           </View>
+
         </ScrollView>
       </Card>
+
+
+
       {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView vertical={true} >
-        <Card style={styles.menu2}>
-          <View>
-            <Text>
-              {videos.map(vid => (
-                <ol >
-                  <Video
-                    ref={video}
-                    source={{ uri: link }}
-                    useNativeControls
-                    resizeMode="contain"
-                    isLooping
-                    onPlaybackStatusUpdate={status => setStatus(() => status)}
-                    style={{ width: 355, borderRadius: 25 }}
-                  />
-                  <h4>{vid.title}</h4>
-                </ol>
-              ))}
-            </Text>
-          </View>
-        </Card  >
-      </ScrollView >
+
+    <ScrollView vertical={true} >     
+
+      <Card style= {styles.menu2}>
+
+        <View>
+
+              
+            {videos.map(vid =>(
+              <ol >
+
+              <TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
+                <Video
+                  ref={video}
+                  source={{ uri: link }}
+                  useNativeControls
+                  resizeMode="contain"
+                  isLooping
+                  onPlaybackStatusUpdate={status => setStatus(() => status)}
+                  style= {{width: 355, marginLeft: -
+                  40, borderRadius: 25}}
+                />
+
+                <h4>{vid.title}</h4>
+                
+              </TouchableOpacity>  
+                
+              </ol>
+            ))} 
+
+            
+
+               
+        </View>
+
+      </Card  >
+    </ScrollView >     
+
+     
+
     </View>
   )
 }
@@ -299,7 +326,7 @@ const styles = StyleSheet.create({
     width: 40,
     borderRadius: 15,
     marginLeft: 15,
-    marginTop: 8
+    marginTop: 8,
   },
 
   burn: {
