@@ -64,13 +64,9 @@ export default function Strokes({navigation}) {
   return (
     <View style= {styles.contain}> 
 
-<<<<<<< HEAD
-      <TouchableOpacity onPress= {() => {navigation.navigate('Home')}}
-=======
       <TouchableOpacity
-      onPress={() => { navigation.goBack(null)}}
+      onPress={() => { navigation.goBack('Home')}}
       
->>>>>>> dff0c9ab768f542a73841180afcb87944f317a94
       >
         <AntDesign name="arrowleft" size={24} color="black" />
       </TouchableOpacity>

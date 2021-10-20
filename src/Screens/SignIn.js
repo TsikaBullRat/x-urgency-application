@@ -31,12 +31,7 @@ export default function SignIn({ navigation, setDone }) {
   }
   return (
     <View >
-<<<<<<< HEAD
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
-
-=======
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} excess={setDone}/>
->>>>>>> dff0c9ab768f542a73841180afcb87944f317a94
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={76} color="#fff" />
@@ -78,20 +73,26 @@ export default function SignIn({ navigation, setDone }) {
           <Text style={{ color: '#fff' }}>LOGIN </Text>
         </TouchableOpacity>
 
-        <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
+        <View style= {{flexDirection: 'row'}}>
+          <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
           New User?</Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-            <Text style={{ color: '#F47066' }}> SignUp</Text>
+            <Text style={{  paddingTop: 5, color: '#F47066'}}> SignUp</Text>
           </TouchableOpacity>
+        </View>
 
-          <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
+
+          <Text style={{ paddingTop: 25, paddingLeft: 120 }}>
           Medical Personel?</Text>
+
+        <View style= {{flexDirection: 'row', paddingLeft: 122}}>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-            <Text style={{ color: '#F47066' }}> SignUp</Text>
+            <Text style={{ color: '#F47066' }}> SignUp /</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
             <Text style={{ color: '#F47066' }}> SignIn</Text>
           </TouchableOpacity>
+        </View>
           
         
       </View>

@@ -2,7 +2,7 @@
     * @description      : 
     * @author           : TLeeuw
     * @group            : 
-    * @created          : 20/10/2021 - 09:33:40
+    * @created          : 20/10/2021 - 10:59:29
     * 
     * MODIFICATION LOG
     * - Version         : 1.0.0
@@ -11,10 +11,12 @@
     * - Modification    : 
 **/
 import React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
+import {Card} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
+
 
 export default function Upload() {
   let [selectedImage, setSelectedImage] = React.useState(null);
@@ -30,7 +32,7 @@ export default function Upload() {
     let pickerResult = await ImagePicker.launchImageLibraryAsync();
     if (pickerResult.cancelled === true) {
       return;
-    }
+    } 
 
     if (Platform.OS === 'web') {
       let remoteUri = await uploadToAnonymousFilesAsync(pickerResult.uri);
@@ -38,7 +40,7 @@ export default function Upload() {
     } else {
       setSelectedImage({ localUri: pickerResult.uri, remoteUri: 'https://moon.jpg' });
     }
-  };
+  }; 
 
   let openShareDialogAsync = async () => {
     if (!(await Sharing.isAvailableAsync())) {
@@ -62,13 +64,21 @@ export default function Upload() {
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} style={styles.logo} />
+       <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            
+            <TextInput style={styles.txtUser}
+              name='username' placeholder='Upload Video' 
+            />
+          </View>
+        </Card>
+
       <Text style={styles.instructions}>
         To share a photo from your phone with a friend, just press the button below!
       </Text>
 
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-        <Text style={styles.buttonText}>Pick a photo</Text>
+        <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>
     </View>
   );
@@ -81,11 +91,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logo: {
-    width: 305,
-    height: 159,
-    marginBottom: 20,
-  },
+    txtUser: {
+    width: 320,
+    height: 150,
+    borderRadius: 10,
+    outline: 'none',
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10, 
+  }, 
   instructions: {
     color: '#888',
     fontSize: 18,
