@@ -45,7 +45,6 @@ import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 import { auth } from '../firebase';
-
 export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
@@ -93,11 +92,10 @@ export default function Home({ navigation, setDone }) {
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
   ];
-  const video = React.useRef( 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-);
+  const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  );
   const [status, setStatus] = React.useState({});
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
@@ -121,11 +119,9 @@ export default function Home({ navigation, setDone }) {
           />
         </View>
       </View>
-
       {/*----------------------Horizontal Menu----------------------*/}
       <Card style={styles.menu}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          
           <TouchableOpacity >
             <View>
               <Card style={{
@@ -134,109 +130,80 @@ export default function Home({ navigation, setDone }) {
                 onPress={() => { navigation.navigate('Strokes') }}
               >
                 <Image style={styles.strokeMenu} source={Stroke} />
-                <Text style= {{fontSize: 12}}>Stroke</Text>
-
+                <Text style={{ fontSize: 12 }}>Stroke</Text>
               </Card>
-             
             </View>
           </TouchableOpacity>
-
           <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7}}>
+            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7 }}>
               <Image style={styles.heartMenu} source={heart} />
               <Text style={{ paddingLeft: 10, fontSize: 12 }}>Heart-Attack</Text>
             </Card>
-            
           </View>
-
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.epilepsyMenu} source={epilepsy} />
-              <Text style={{fontSize: 12 }}>Epilepsy</Text>
+              <Text style={{ fontSize: 12 }}>Epilepsy</Text>
             </Card>
           </View>
-
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.cprMenu} source={cpr} />
               <Text style={{ paddingTop: 8, fontSize: 12 }}>CPR</Text>
             </Card>
           </View>
-
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.bloodMenu} source={bleeding} />
             </Card>
             <Text style={{ paddingLeft: 28, fontSize: 12 }}>Bleeding</Text>
           </View>
-
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.conImg} source={choking} />
               <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Choking</Text>
             </Card>
           </View>
-
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.drown} source={drown} />
               <Text style={{ paddingLeft: 7, paddingTop: 3, fontSize: 12 }}>Drowning</Text>
             </Card>
           </View>
-
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
               <Image style={styles.burn} source={burns} />
               <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
             </Card>
           </View>
-
         </ScrollView>
       </Card>
-
-
-
       {/*---------------------- Video Scroll View--------------------*/}
-
-    <ScrollView vertical={true} >     
-
-      <Card style= {styles.menu2}>
-
-        <View>
-
-              
-            {videos.map(vid =>(
+      <ScrollView vertical={true} >
+        <Card style={styles.menu2}>
+          <View>
+            {videos.map(vid => (
               <ol >
-
-              <TouchableOpacity  onPress={() => { navigation.navigate('Strokes') }}>
-                <Video
-                  ref={video}
-                  source={{ uri: link }}
-                  // useNativeControls
-                  resizeMode="contain"
-                  isLooping
-                  onPlaybackStatusUpdate={status => setStatus(() => status)}
-                  style= {{width: 355, marginLeft: -
-                  40, borderRadius: 25}}
-                />
-
-                <h4>{vid.title}</h4>
-                
-              </TouchableOpacity>  
-                
+                <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
+                  <Video
+                    ref={video}
+                    source={{ uri: link }}
+                    // useNativeControls
+                    resizeMode="contain"
+                    isLooping
+                    onPlaybackStatusUpdate={status => setStatus(() => status)}
+                    style={{
+                      width: 355, marginLeft: -
+                        40, borderRadius: 25
+                    }}
+                  />
+                  <h4>{vid.title}</h4>
+                </TouchableOpacity>
               </ol>
-            ))} 
-
-            
-
-               
-        </View>
-
-      </Card  >
-    </ScrollView >     
-
-     
-
+            ))}
+          </View>
+        </Card  >
+      </ScrollView >
     </View>
   )
 }
@@ -349,6 +316,5 @@ const styles = StyleSheet.create({
     borderBottomWidth: 20,
     elevation: 5,
   },
-
 });
 

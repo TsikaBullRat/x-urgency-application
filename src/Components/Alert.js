@@ -1,9 +1,8 @@
 import React from 'react';
 import { Modal, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 const AlertNote = ({ modalVisible, setModalVisible, msg, excess }) => {
-
-    const Press = () =>{
-        excess? excess(true) : null
+    const Press = () => {
+        excess ? excess(true) : null
         setModalVisible(false)
     }
     return (
@@ -22,8 +21,7 @@ const AlertNote = ({ modalVisible, setModalVisible, msg, excess }) => {
                         <Text style={styles.btnText}>OK</Text>
                     </TouchableOpacity>
                 </View>
-                </View>
-            
+            </View>
         </Modal>
     )
 }
