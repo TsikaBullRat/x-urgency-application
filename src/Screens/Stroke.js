@@ -64,7 +64,13 @@ export default function Strokes({navigation}) {
   return (
     <View style= {styles.contain}> 
 
+<<<<<<< HEAD
       <TouchableOpacity onPress= {() => {navigation.navigate('Home')}}
+=======
+      <TouchableOpacity
+      onPress={() => { navigation.goBack(null)}}
+      
+>>>>>>> dff0c9ab768f542a73841180afcb87944f317a94
       >
         <AntDesign name="arrowleft" size={24} color="black" />
       </TouchableOpacity>
@@ -199,7 +205,7 @@ export default function Strokes({navigation}) {
                 }}>
 
                 <Text style={{ paddingTop: 10 }}>
-                  Lost your faith in ambulances' response time?
+                  Lost your faith in ambulance response time?
                   You can play doctor and help save a life by just
                   following the instructions of this video.
                   This video is accredited by the Department of Health

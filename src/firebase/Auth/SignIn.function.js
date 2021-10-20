@@ -4,7 +4,7 @@ import { auth } from "../config"
 const handleSignIn = (email, password, setMessage, setDone) =>{
     auth.signInWithEmailAndPassword(email, password)
         .then(()=>{
-            setDone(true)
+            setMessage("Welcome back")
         })
         .catch(err => {
             switch (err.code) {
