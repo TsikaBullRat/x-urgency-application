@@ -1,15 +1,3 @@
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 07/10/2021 - 10:07:05
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 07/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
 import React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
 import {Card} from 'react-native-paper'
@@ -17,7 +5,9 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-export default function Upload() {
+
+export default function UploadVideo() {
+  
   let [selectedImage, setSelectedImage] = React.useState(null);
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -58,9 +48,12 @@ export default function Upload() {
 
     <View style={styles.container}>
        <View>
-         <Text style={{marginTop: -240, fontSize: 18, color: "#f47066"}}>Upload Or Create<br/>First Aid Video Here!</Text>
-       
-       </View>
+         <Text style={{marginTop: -240, fontSize: 20, color: "000000", fontWeight: "bold", marginLeft: -10}}>Upload Or Create
+          <br/>Your First Aid Video Here
+         </Text>
+      </View>
+         
+     
       <View >
         <TextInput style={[styles.title, styles.shadowProp]}
           name='username' placeholder='Title'

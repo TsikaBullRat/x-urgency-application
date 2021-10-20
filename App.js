@@ -18,6 +18,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { SignIn, SignUp, Home, Strokes, ForgotPassword } from './src/Screens';
 import { auth } from './src/firebase'
 import { ActivityIndicator } from 'react-native-paper';
+import UploadVideo from './src/Screens/UploadVideo';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
