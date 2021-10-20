@@ -156,7 +156,7 @@ export default function Strokes({ navigation }) {
                   width: 255,
                 }}>
                 <Text style={{ paddingTop: 10 }}>
-                  Lost your faith in ambulances' response time?
+                  Lost your faith in ambulance response time?
                   You can play doctor and help save a life by just
                   following the instructions of this video.
                   This video is accredited by the Department of Health

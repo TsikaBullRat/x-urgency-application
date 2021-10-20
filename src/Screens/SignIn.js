@@ -22,9 +22,7 @@ export default function SignIn({ navigation, setDone }) {
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
-    
-
-  const Login = () =>{
+  const Login = () => {
     handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
   }

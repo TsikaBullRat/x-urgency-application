@@ -10,13 +10,13 @@ const AlertNote = ({ modalVisible, setModalVisible, msg }) => {
                 setModalVisible(!modalVisible);
             }}>
             <Pressable style={styles.backdrop} onPress={() => setModalVisible(false)} >
-            <View style={styles.modal}>
-                <View style={styles.alertBox}>
-                    <Text style={styles.text}>{msg}</Text>
-                    <TouchableOpacity style={styles.button} onPress={()=>setModalVisible(false)}>
-                        <Text style={styles.btnText}>OK</Text>
-                    </TouchableOpacity>
-                </View>
+                <View style={styles.modal}>
+                    <View style={styles.alertBox}>
+                        <Text style={styles.text}>{msg}</Text>
+                        <TouchableOpacity style={styles.button} onPress={() => setModalVisible(false)}>
+                            <Text style={styles.btnText}>OK</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </Pressable>
         </Modal>
