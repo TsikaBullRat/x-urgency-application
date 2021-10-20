@@ -15,7 +15,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 // You can import from local files
-import { SignIn, SignUp, Home, Strokes, ForgotPassword } from './src/Screens';
+import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp } from './src/Screens';
 import { auth } from './src/firebase'
 import { ActivityIndicator } from 'react-native-paper';
 
@@ -25,12 +25,12 @@ export default function App() {
     [user, setUser] = useState(null);
   useEffect(() => {
     auth.onAuthStateChanged(user => {
-      setUser(user)
+      // setUser(user)
       setSuccess(true)
     })
     return () => {
       auth.onAuthStateChanged(user => {
-        setUser(user)
+        // setUser(user)
         setSuccess(true)
       })
     }
@@ -56,13 +56,16 @@ export default function App() {
               <Stack.Screen name="Sign Up" options={{ headerShown: false }}>
                 {props => <SignUp {...props} setDone={setSuccess} />}
               </Stack.Screen>
+              <Stack.Screen name="Doctor SignUp" options={{ headerShown: false }}>
+                {props => <SignUp {...props} setDone={setSuccess} />}
+              </Stack.Screen>
               <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
             </Stack.Navigator>
           )
         ) : (
-        // Login/Sign functions
-        <ActivityIndicator size="large"/>
-      )}
+          // Login/Sign functions
+          <ActivityIndicator size="large" />
+        )}
       </KeyboardAwareScrollView>
     </NavigationContainer>
   );
