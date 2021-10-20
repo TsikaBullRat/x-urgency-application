@@ -1,1 +1,0 @@
-export {AlertNote} from "./Alert"

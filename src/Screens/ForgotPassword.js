@@ -37,17 +37,12 @@ export default function ForgotPassword() {
       </View>
       <View>
         <Card style={styles.txtCards}>
-
-        <View style={{ flexDirection: 'row'}}> 
-        
-        <AntDesign name="user" size={22} color="black" />
-        
-        <TextInput style={styles.txtUser} 
-          name= 'username' placeholder= 'Username' 
-        />
-
-        </View>
-
+          <View style={{ flexDirection: 'row' }}>
+            <AntDesign name="user" size={22} color="black" />
+            <TextInput style={styles.txtUser}
+              name='username' placeholder='Username'
+            />
+          </View>
         </Card>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -79,7 +74,7 @@ const styles = StyleSheet.create({
   card: {
     position: 'absolute',
     backgroundColor: '#F47066',
-    filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
+    // filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
     width: 375,
     height: 280,
     borderBottomLeftRadius: 30,

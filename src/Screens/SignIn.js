@@ -16,17 +16,18 @@ import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignIn } from '../firebase'
 import { AlertNote } from '../Components';
+
 export default function SignIn({ navigation, setDone }) {
   const
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
-  const Login = () => {
-    handleSignIn(email, password, setMessage)
+    
+
+  const Login = () =>{
+    handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
-    setDone(true)
-    //navigation.navigate('Home')
   }
   return (
     <View >
@@ -62,14 +63,17 @@ export default function SignIn({ navigation, setDone }) {
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
           <Text style={{ paddingLeft: 220, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.signIn} onPress={Login}>
           <Text style={{ color: '#fff' }}>LOGIN </Text>
         </TouchableOpacity>
+
         <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
           New User?
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
             <Text style={{ color: '#F47066' }}> Sign Up</Text>
           </TouchableOpacity>
+          
         </Text>
       </View>
     </View>
