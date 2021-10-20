@@ -25,12 +25,12 @@ export default function SignIn({ navigation, setDone }) {
     
 
   const Login = () =>{
-    handleSignIn(email, password, setMessage, setDone)
+    handleSignIn(email, password, setMessage)
     setDisplaModal(true)
   }
   return (
     <View >
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} excess={setDone}/>
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={76} color="#fff" />

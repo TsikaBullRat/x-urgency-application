@@ -6,6 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 // You can import from local files
 import { SignIn, SignUp, Home, Strokes, ForgotPassword } from './src/Screens';
 import { auth } from './src/firebase'
+import { ActivityIndicator } from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,39 +15,45 @@ export default function App() {
     [user, setUser] = useState(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => setUser(user))
+    auth.onAuthStateChanged(user => {
+      setUser(user)
+      setSuccess(true)
+    })
     return () => {
-      auth.onAuthStateChanged(user => setUser(user))
+      auth.onAuthStateChanged(user => {
+        setUser(user)
+        setSuccess(true)
+      })
     }
   }, [successful, user])
 
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-      {successful ? (
-        user ? (
-          // Main Application
-          <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" options={{ headerShown: false }} >
-              {props => <Home {...props} setDone={setSuccess} />}
-            </Stack.Screen>
-            <Stack.Screen name="Strokes" component={Strokes} options={{ headerShown: false }} />
-          </Stack.Navigator>
+        {successful ? (
+          user ? (
+            // Main Application
+            <Stack.Navigator initialRouteName="Home">
+              <Stack.Screen name="Home" options={{ headerShown: false }} >
+                {props => <Home {...props} setDone={setSuccess} />}
+              </Stack.Screen>
+              <Stack.Screen name="Strokes" component={Strokes} options={{ headerShown: false }} />
+            </Stack.Navigator>
+          ) : (
+            //Loader
+            <Stack.Navigator initialRouteName="SignIn">
+              <Stack.Screen name="Sign In" options={{ headerShown: false }} >
+                {props => <SignIn {...props} setDone={setSuccess} />}
+              </Stack.Screen>
+              <Stack.Screen name="Sign Up" options={{ headerShown: false }}>
+                {props => <SignUp {...props} setDone={setSuccess} />}
+              </Stack.Screen>
+              <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
+            </Stack.Navigator>
+          )
         ) : (
-          //Loader
-          null
-        )
-      ) : (
         // Login/Sign functions
-        <Stack.Navigator initialRouteName="SignIn">
-          <Stack.Screen name="Sign In" options={{ headerShown: false }} >
-            {props => <SignIn {...props} setDone={setSuccess} />}
-          </Stack.Screen>
-          <Stack.Screen name="Sign Up" options={{ headerShown: false }}>
-            {props => <SignUp {...props} setDone={setSuccess} />}
-          </Stack.Screen>
-          <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
-        </Stack.Navigator>
+        <ActivityIndicator size="large"/>
       )}
       </KeyboardAwareScrollView>
     </NavigationContainer>
