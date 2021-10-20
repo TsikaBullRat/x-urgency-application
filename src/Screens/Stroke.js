@@ -64,23 +64,16 @@ export default function Strokes({navigation}) {
   return (
     <View style= {styles.contain}> 
 
+<<<<<<< HEAD
+      <TouchableOpacity onPress= {() => {navigation.navigate('Home')}}
+=======
       <TouchableOpacity
       onPress={() => { navigation.goBack(null)}}
       
+>>>>>>> dff0c9ab768f542a73841180afcb87944f317a94
       >
         <AntDesign name="arrowleft" size={24} color="black" />
       </TouchableOpacity>
-
-      <Card style={styles.txtCards}>
-
-        <View style={{ flexDirection: 'row' }}>
-          <AntDesign name="search1" size={18} color="black" style={{ marginTop: 15, marginLeft: 8 }} />
-          <TextInput style={styles.txtSearch}
-            name='search' placeholder='Search'
-          />
-        </View>
-
-      </Card>
 
 
       <View style={{ width: 315, marginTop: 50, marginLeft: 30 }}>

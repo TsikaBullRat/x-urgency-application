@@ -93,7 +93,8 @@ export default function Home({ navigation, setDone }) {
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
   ];
-  const video = React.useRef(null);
+  const video = React.useRef( 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+);
   const [status, setStatus] = React.useState({});
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
 
@@ -102,11 +103,11 @@ export default function Home({ navigation, setDone }) {
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
-          <Text style={{ fontSize: 36, paddingLeft: 30 }}>What's your
+          <Text style={{ fontSize: 36, paddingLeft: 10 }}>What's your
           </Text>
-          <Text style={{ fontSize: 36, paddingLeft: 30 }}>EMERGENCY</Text>
+          <Text style={{ fontSize: 36, paddingLeft: 10 }}>EMERGENCY</Text>
         </View>
-        <View style={{ marginTop: 50, marginLeft: 30 }}>
+        <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar
             rounded
             source={{
@@ -120,15 +121,7 @@ export default function Home({ navigation, setDone }) {
           />
         </View>
       </View>
-      {/*----------------------Search TextField----------------------*/}
-      <Card style={styles.txtCards}>
-        <View style={{ flexDirection: 'row' }}>
-          <AntDesign name="search1" size={18} color="black" style={{ marginTop: 15, marginLeft: 8 }} />
-          <TextInput style={styles.txtSearch}
-            name='search' placeholder='Search'
-          />
-        </View>
-      </Card>
+
       {/*----------------------Horizontal Menu----------------------*/}
       <Card style={styles.menu}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -136,61 +129,65 @@ export default function Home({ navigation, setDone }) {
           <TouchableOpacity >
             <View>
               <Card style={{
-                width: 50, height: 50, borderRadius: 15, marginLeft: 15,
-                backgroundColor: '#F96056', alignItems: 'center'
+                width: 50, height: 70, borderRadius: 15, marginLeft: 18, alignItems: 'center', textAlign: 'center', marginTop: 7
               }}
                 onPress={() => { navigation.navigate('Strokes') }}
               >
                 <Image style={styles.strokeMenu} source={Stroke} />
+                <Text style= {{fontSize: 12}}>Stroke</Text>
+
               </Card>
-              <Text style={{ paddingLeft: 20 }}>Stroke</Text>
+             
             </View>
           </TouchableOpacity>
 
           <View>
-            <Card style={{ width: 50, height: 50, marginLeft: 28, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
+            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7}}>
               <Image style={styles.heartMenu} source={heart} />
+              <Text style={{ paddingLeft: 10, fontSize: 12 }}>Heart-Attack</Text>
             </Card>
-            <Text style={{ paddingLeft: 15 }}>Heart-Attack</Text>
+            
           </View>
 
           <View>
-            <Image style={styles.epilepsyMenu} source={epilepsy} />
-            <Text style={{ paddingLeft: 18 }}>Epilepsy</Text>
+            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
+              <Image style={styles.epilepsyMenu} source={epilepsy} />
+              <Text style={{fontSize: 12 }}>Epilepsy</Text>
+            </Card>
           </View>
 
           <View>
-            <Card style={{ width: 50, height: 50, marginLeft: 28, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
+            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.cprMenu} source={cpr} />
-              <Text style={{ paddingLeft: 8, paddingTop: 8 }}>CPR</Text>
+              <Text style={{ paddingTop: 8, fontSize: 12 }}>CPR</Text>
             </Card>
           </View>
 
           <View>
-            <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
+            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.bloodMenu} source={bleeding} />
             </Card>
-            <Text style={{ paddingLeft: 28 }}>Bleeding</Text>
+            <Text style={{ paddingLeft: 28, fontSize: 12 }}>Bleeding</Text>
           </View>
 
           <View>
-            <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
+            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.conImg} source={choking} />
-              <Text style={{ paddingLeft: 5, paddingTop: 8 }}>Choking</Text>
+              <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Choking</Text>
             </Card>
           </View>
 
           <View>
-            <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
+            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.drown} source={drown} />
-              <Text style={{ paddingLeft: 7, paddingTop: 3 }}>Drowning</Text>
+              <Text style={{ paddingLeft: 7, paddingTop: 3, fontSize: 12 }}>Drowning</Text>
             </Card>
           </View>
 
           <View>
-            <Card style={{ width: 50, height: 50, marginLeft: 30, borderRadius: 15, backgroundColor: '#F96056', alignItems: 'center' }}>
+            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
               <Image style={styles.burn} source={burns} />
-              <Text style={{ paddingLeft: 5, paddingTop: 8 }}>Burns</Text>
+              <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
             </Card>
           </View>
 
@@ -215,7 +212,10 @@ export default function Home({ navigation, setDone }) {
                 <Video
                   ref={video}
                   source={{ uri: link }}
+<<<<<<< HEAD
+=======
                   // useNativeControls
+>>>>>>> dff0c9ab768f542a73841180afcb87944f317a94
                   resizeMode="contain"
                   isLooping
                   onPlaybackStatusUpdate={status => setStatus(() => status)}
@@ -263,16 +263,15 @@ const styles = StyleSheet.create({
     width: 355,
     height: 50,
     borderRadius: 10,
-    marginLeft: 28,
+    marginLeft: 10,
     marginTop: 25
   },
 
   menu: {
-    width: 305,
-    marginLeft: 30,
+    width: 355,
+    left: 10,
     marginTop: 20,
     borderRadius: 15,
-    backgroundColor: '#f7eeee',
   },
 
   strokeMenu: {
@@ -281,21 +280,23 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginTop: 10,
     color: '#fff',
+    marginLeft: 3,
+    marginTop: 10
   },
 
   heartMenu: {
     height: 35,
     width: 35,
     borderRadius: 15,
-    marginTop: 6
+    marginTop: 5,
+    marginLeft: 12
   },
 
   epilepsyMenu: {
     height: 50,
     width: 50,
     borderRadius: 15,
-    backgroundColor: '#F96056',
-    marginLeft: 18
+    marginLeft: 6
   },
 
   cprMenu: {
@@ -340,10 +341,17 @@ const styles = StyleSheet.create({
   menu2: {
     width: 355,
     height: 428,
-    marginLeft: 30,
+    marginLeft: 10,
     marginTop: 20,
     borderRadius: 15,
-    backgroundColor: '#f7eeee',
+    shadowColor: "#000",
+    shadowOffset: {
+    },
+    shadowOpacity: 0.8,
+    shadowRadius: 3.84,
+    borderBottomWidth: 20,
+    elevation: 5,
   },
+
 });
 

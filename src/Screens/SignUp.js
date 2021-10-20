@@ -70,7 +70,7 @@ export default function SignUp({ navigation }) {
           </View>
         </Card>
         <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
-          <Text style={{ color: '#fff' }}>SIGN_UP </Text>
+          <Text style={{ color: '#fff' }} >SIGN_UP </Text>
         </TouchableOpacity>
       </View>
     </View>
