@@ -57,8 +57,8 @@ export default function App() {
               <Stack.Screen name="Sign Up" options={{ headerShown: false }}>
                 {props => <SignUp {...props} setDone={setSuccess} />}
               </Stack.Screen>
-              <Stack.Screen name="Doctor SignUp" options={{ headerShown: false }}>
-                {props => <SignUp {...props} setDone={setSuccess} />}
+              <Stack.Screen name="Doctor SignUp" component={DoctorSignUp} options={{ headerShown: false }}>
+               
               </Stack.Screen>
               <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
             </Stack.Navigator>

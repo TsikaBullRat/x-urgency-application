@@ -16,5 +16,6 @@ import ForgotPassword from "./ForgotPassword"
 import Home from "./Home"
 import Strokes from "./Stroke"
 import UploadVids from "./UploadVids"
+import DoctorSignUp from "./DoctorSignUp"
 
-export { SignIn, SignUp, ForgotPassword, Home, Strokes, UploadVids }
+export { SignIn, SignUp, ForgotPassword, Home, Strokes, UploadVids, DoctorSignUp }

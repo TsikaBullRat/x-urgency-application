@@ -86,7 +86,7 @@ export default function SignIn({ navigation, setDone }) {
           Medical Personel?</Text>
 
         <View style= {{flexDirection: 'row', paddingLeft: 122}}>
-          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
             <Text style={{ color: '#F47066' }}> SignUp /</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
