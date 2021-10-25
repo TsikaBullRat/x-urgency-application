@@ -15,7 +15,7 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../firebase';
-import { AlertNote } from '../Components/Alert';
+import { AlertNote } from '../Components';
 export default function SignUp({ navigation }) {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),

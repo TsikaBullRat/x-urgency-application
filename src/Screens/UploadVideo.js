@@ -4,7 +4,7 @@ import {Card} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 
 export default function UploadVideo() {
   
@@ -73,7 +73,7 @@ export default function UploadVideo() {
      
             <Card style={[styles.txtUser, styles.shadowProp]}>
               <View>
-              <Text style={{fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray'}}>Upload Video Here!</Text>
+              <Text style={{fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgrey'}}>Upload Video Here!</Text>
               </View>
                <Icon style={styles.icon}name="slideshow" color="#f47066" size={40} />
               </Card>

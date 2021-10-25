@@ -11,13 +11,14 @@
     * - Modification    : 
 **/
 import React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, TextInput,} from 'react-native';
 import {Card} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-export default function Upload() {
+import { Icon } from 'react-native-vector-icons/MaterialIcons';
+
+export default function SignIn() {
   let [selectedImage, setSelectedImage] = React.useState(null);
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -82,7 +83,7 @@ export default function Upload() {
               <View>
               <Text style={{fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray'}}>Upload Video Here!</Text>
               </View>
-               <Icon style={styles.icon}name="slideshow" color="#f47066" size={40} />
+               <Icon name="slideshow" color="#f47066" size={40} />
               </Card>
 
           </View>
@@ -106,16 +107,25 @@ export default function Upload() {
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  card: {
+    position: 'absolute',
+    backgroundColor: '#F47066',
+    width: 375,
+    height: 280,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
   },
 
-  icon:{
-    marginTop: 30,
-    marginLeft: 40,
+  header: {
+    paddingTop: 300,
+    paddingLeft: 130,
   },
 
   title: {
@@ -126,7 +136,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingLeft: 20, 
     marginTop: -140,
-    color: "lightgray"
+    color: "gray"
   },
   shadowProp: {
     shadowColor: '#171717',
@@ -141,10 +151,8 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     outline: 'none',
-    backgroundColor: 'white',
-    paddingLeft: 20, 
-    marginTop: -70,
-
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
   },
 
 
