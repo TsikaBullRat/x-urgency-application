@@ -1,6 +1,0 @@
-<<<<<<< HEAD
-export {AlertNote} from "./Alert"
-=======
-export {AlertNote} from "./Alert"
-export {HeartLoader} from "./HeartLoader"
->>>>>>> bf94eb0c01f298e92b99b3170f8597342a47d15e

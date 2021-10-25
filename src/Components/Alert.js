@@ -1,6 +1,10 @@
 import React from 'react';
 import { Modal, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-const AlertNote = ({ modalVisible, setModalVisible, msg }) => {
+const AlertNote = ({ modalVisible, setModalVisible, msg, excess }) => {
+    const Press = () => {
+        excess ? excess(true) : null
+        setModalVisible(false)
+    }
     return (
         <Modal
             animationType="fade"
@@ -9,16 +13,15 @@ const AlertNote = ({ modalVisible, setModalVisible, msg }) => {
             onRequestClose={() => {
                 setModalVisible(!modalVisible);
             }}>
-            <Pressable style={styles.backdrop} onPress={() => setModalVisible(false)} >
+            <Pressable style={styles.backdrop} onPress={() => setModalVisible(false)} ></Pressable>
             <View style={styles.modal}>
                 <View style={styles.alertBox}>
                     <Text style={styles.text}>{msg}</Text>
-                    <TouchableOpacity style={styles.button} onPress={()=>setModalVisible(false)}>
+                    <TouchableOpacity style={styles.button} onPress={Press}>
                         <Text style={styles.btnText}>OK</Text>
                     </TouchableOpacity>
                 </View>
-                </View>
-            </Pressable>
+            </View>
         </Modal>
     )
 }

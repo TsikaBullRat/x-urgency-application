@@ -1,24 +1,13 @@
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 07/10/2021 - 10:07:05
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 07/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
 import React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, TextInput,} from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
 import {Card} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
-import { Icon } from 'react-native-vector-icons/MaterialIcons';
+import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 
-export default function SignIn() {
+export default function UploadVideo() {
+  
   let [selectedImage, setSelectedImage] = React.useState(null);
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
@@ -54,15 +43,17 @@ export default function SignIn() {
       </View>
     );
   }
-  
   return (
 
 
     <View style={styles.container}>
        <View>
-         <Text style={{marginTop: -240, fontSize: 18, color: "#f47066"}}>Upload Or Create<br/>First Aid Video Here!</Text>
-       
-       </View>
+         <Text style={{marginTop: -240, fontSize: 20, color: "000000", fontWeight: "bold", marginLeft: -10}}>Upload Or Create
+          <br/>Your First Aid Video Here
+         </Text>
+      </View>
+         
+     
       <View >
         <TextInput style={[styles.title, styles.shadowProp]}
           name='username' placeholder='Title'
@@ -82,9 +73,9 @@ export default function SignIn() {
      
             <Card style={[styles.txtUser, styles.shadowProp]}>
               <View>
-              <Text style={{fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray'}}>Upload Video Here!</Text>
+              <Text style={{fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgrey'}}>Upload Video Here!</Text>
               </View>
-               <Icon name="slideshow" color="#f47066" size={40} />
+               <Icon style={styles.icon}name="slideshow" color="#f47066" size={40} />
               </Card>
 
           </View>
@@ -108,25 +99,16 @@ export default function SignIn() {
   );
 }
 const styles = StyleSheet.create({
-  card: {
-    position: 'absolute',
-    backgroundColor: '#F47066',
-    width: 375,
-    height: 280,
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-
-  heartIcon: {
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
 
-  header: {
-    paddingTop: 300,
-    paddingLeft: 130,
+  icon:{
+    marginTop: 30,
+    marginLeft: 40,
   },
 
   title: {
@@ -137,7 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingLeft: 20, 
     marginTop: -140,
-    color: "gray"
+    color: "lightgray"
   },
   shadowProp: {
     shadowColor: '#171717',
@@ -152,8 +134,10 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     outline: 'none',
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
+    backgroundColor: 'white',
+    paddingLeft: 20, 
+    marginTop: -70,
+
   },
 
 
