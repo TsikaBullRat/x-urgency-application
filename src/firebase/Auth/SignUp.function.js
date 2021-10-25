@@ -11,7 +11,7 @@ const handleSignUp = (email, password, Confirmpassword, setEmail, setPassword, s
 
             )
             .catch((error) => {
-                setMessage(error.message);
+                console.log(error);
             });
     }
     setEmail("")
