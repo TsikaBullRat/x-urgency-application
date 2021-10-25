@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingLeft: 20, 
     marginTop: -140,
-    color: "lightgray"
+    color: "lightgrey"
   },
   shadowProp: {
     shadowColor: '#171717',

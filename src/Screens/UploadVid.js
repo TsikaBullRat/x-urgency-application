@@ -17,7 +17,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
 
-export default function UploadVids() {
+export default function UploadVid() {
   let [selectedImage, setSelectedImage] = React.useState(null);
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();

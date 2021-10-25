@@ -15,8 +15,8 @@ import SignUp from "./SignUp"
 import ForgotPassword from "./ForgotPassword"
 import Home from "./Home"
 import Strokes from "./Stroke"
-import UploadVids from "./UploadVids";
+import UploadVid from "./UploadVid";
 import UploadVideo from "./UploadVideo"
 import DoctorSignUp from "./DoctorSignUp"
 import MedicalHome from "./MedicalHome"
-export { SignIn, SignUp, ForgotPassword, Home, Strokes, UploadVids, DoctorSignUp, MedicalHome }
+export { SignIn, SignUp, ForgotPassword, Home, Strokes, UploadVid, DoctorSignUp, MedicalHome }

@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    margingTop: 80,
+    marginTop: 80,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
     shadowColor: 'grey',
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    backgroundColor: 'lightgray',
+    backgroundColor: 'lightgrey',
     opacity: 0.8,
     width: 320,
     height: 50,
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderRightWidth: 2,
     borderColor: 'turquoise',
-    shadowColor: 'skyblue',
+    shadowColor: 'blue',
     shadowOffset: { width: 3, height: 3 },
     shadowOpacity: 0.8,
     shadowRadius: 1,

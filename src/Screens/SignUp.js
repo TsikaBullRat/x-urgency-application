@@ -19,16 +19,16 @@ import { AlertNote } from '../Components/Alert';
 export default function SignUp({ navigation }) {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
-    [Confirmpassword, setConfirmPassword] = useState(""),
-    [displayModal, setDisplaModal] = useState(false),
+    [ConfirmPassword, setConfirmPassword] = useState(""),
+    [displayModal, setDisplayModal] = useState(false),
     [message, setMessage] = useState("")
   const Register = () => {
-    handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage)
-    setDisplaModal(true)
+    handleSignUp(email, password, ConfirmPassword, setEmail, setPassword, setConfirmPassword, setMessage)
+    setDisplayModal(true)
   }
   return (
     <View >
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={146} color="#fff" />
@@ -49,7 +49,7 @@ export default function SignUp({ navigation }) {
         </Card>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
             <TextInput style={styles.txtPass}
               name='password' placeholder='Password'
               secureTextEntry={true}

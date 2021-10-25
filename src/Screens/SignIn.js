@@ -57,7 +57,7 @@ export default function SignIn() {
   return (
 
 
-    <View style={styles.container}>
+    <View>
        <View>
          <Text style={{marginTop: -240, fontSize: 18, color: "#f47066"}}>Upload Or Create<br/>First Aid Video Here!</Text>
        
@@ -81,7 +81,7 @@ export default function SignIn() {
      
             <Card style={[styles.txtUser, styles.shadowProp]}>
               <View>
-              <Text style={{fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray'}}>Upload Video Here!</Text>
+              <Text style={{fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgrey'}}>Upload Video Here!</Text>
               </View>
                <Icon name="slideshow" color="#f47066" size={40} />
               </Card>
@@ -98,7 +98,7 @@ export default function SignIn() {
    
    <TouchableOpacity onPress={openImagePickerAsync}>
 <View style={[styles.iconContainer, styles.shadowProp]}>
-<Icon name="camera"color='white' size={30}/>
+
  </View>
 </TouchableOpacity>
     </View>
