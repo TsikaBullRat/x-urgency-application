@@ -24,12 +24,12 @@ export default function App() {
     [user, setUser] = useState(null);
   useEffect(() => {
     auth.onAuthStateChanged(user => {
-      // setUser(user)
+      setUser(user)
       setSuccess(true)
     })
     return () => {
       auth.onAuthStateChanged(user => {
-        // setUser(user)
+        setUser(user)
         setSuccess(true)
       })
     }

@@ -34,7 +34,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}
@@ -42,7 +41,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}
@@ -50,7 +48,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}

@@ -22,10 +22,12 @@ export default function SignIn({ navigation, setDone }) {
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
+
   const Login = () => {
     handleSignIn(email, password, setMessage)
     setDisplaModal(true)
   }
+  
   return (
     <View >
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} excess={setDone} />
