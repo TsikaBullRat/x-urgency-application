@@ -10,107 +10,80 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, TextInput,} from 'react-native';
-import {Card} from 'react-native-paper'
-import * as ImagePicker from 'expo-image-picker';
-import * as Sharing from 'expo-sharing';
-import uploadToAnonymousFilesAsync from 'anonymous-files';
-import { Icon } from 'react-native-vector-icons/MaterialIcons';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Card } from 'react-native-paper';
+import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
+import { handleSignIn } from '../firebase'
+import { AlertNote } from '../Components';
 
-export default function SignIn() {
-  let [selectedImage, setSelectedImage] = React.useState(null);
-  let openImagePickerAsync = async () => {
-    let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
-    if (permissionResult.granted === false) {
-      alert('Permission to access camera roll is required!');
-      return;
-    }
-    let pickerResult = await ImagePicker.launchImageLibraryAsync();
-    if (pickerResult.cancelled === true) {
-      return;
-    } 
-    if (Platform.OS === 'web') {
-      let remoteUri = await uploadToAnonymousFilesAsync(pickerResult.uri);
-      setSelectedImage({ localUri: pickerResult.uri, remoteUri });
-    } else {
-      setSelectedImage({ localUri: pickerResult.uri, remoteUri: 'https://moon.jpg' });
-    }
-  }; 
-  let openShareDialogAsync = async () => {
-    if (!(await Sharing.isAvailableAsync())) {
-      alert(`The image is available for sharing at: ${selectedImage.remoteUri}`);
-      return;
-    }
-    Sharing.shareAsync(selectedImage.remoteUri || selectedImage.localUri);
-  };
-  if (selectedImage !== null) {
-    return (
-      <View style={styles.container}>
-        <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-        <TouchableOpacity onPress={openShareDialogAsync} style={styles.button}>
-          <Text style={styles.buttonText}>Share this photo</Text>
-        </TouchableOpacity>
-      </View>
-    );
+export default function SignIn({ navigation, setDone }) {
+  const
+    [email, setEmail] = useState(""),
+    [password, setPassword] = useState(""),
+    [displayModal, setDisplaModal] = useState(false),
+    [message, setMessage] = useState("");
+    
+
+  const Login = () =>{
+    handleSignIn(email, password, setMessage, setDone)
+    setDisplaModal(true)
   }
-  
   return (
-
-
-    <View style={styles.container}>
-       <View>
-         <Text style={{marginTop: -240, fontSize: 18, color: "#f47066"}}>Upload Or Create<br/>First Aid Video Here!</Text>
-       
-       </View>
-      <View >
-        <TextInput style={[styles.title, styles.shadowProp]}
-          name='username' placeholder='Title'
-          />
-
+    <View >
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      <Card style={styles.card}>
+        <View style={styles.heartIcon}>
+          <FontAwesome name="heartbeat" size={76} color="#fff" />
+        </View>
+        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
+      </Card>
+      <View style={styles.header}>
+        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 10 }}>LogIn</Text>
       </View>
-
-        <View>
-          <TextInput style={[styles.description, styles.shadowProp]}
-            name='username' placeholder='Description'
-          />
-
-         </View>
-       <Card style={styles.txtCards}>
+      <View>
+        <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-          
-     
-            <Card style={[styles.txtUser, styles.shadowProp]}>
-              <View>
-              <Text style={{fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray'}}>Upload Video Here!</Text>
-              </View>
-               <Icon name="slideshow" color="#f47066" size={40} />
-              </Card>
-
+            <AntDesign name="user" size={22} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <TextInput style={styles.txtUser}
+              name='username' placeholder='Username' onChangeText={text => setEmail(text)}
+            />
           </View>
         </Card>
-      <Text style={styles.instructions}>
-        
-      </Text>
-      <TouchableOpacity onPress={openImagePickerAsync} style={[styles.button, styles.shadowProp]}>
-        <Text style={styles.buttonText}>Upload Video</Text>
-      </TouchableOpacity>
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
+            <TextInput style={styles.txtPass}
+              name='password' placeholder='Password'
+              secureTextEntry={true}
+              onChangeText={text => setPassword(text)}
+            />
+          </View>
+        </Card>
+        <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
+          <Text style={{ paddingLeft: 220, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
+        </TouchableOpacity>
 
-   
-   <TouchableOpacity onPress={openImagePickerAsync}>
-<View style={[styles.iconContainer, styles.shadowProp]}>
-<Icon name="camera"color='white' size={30}/>
- </View>
-</TouchableOpacity>
+        <TouchableOpacity style={styles.signIn} onPress={Login}>
+          <Text style={{ color: '#fff' }}>LOGIN </Text>
+        </TouchableOpacity>
+
+        <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
+          New User?
+          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
+            <Text style={{ color: '#F47066' }}> Sign Up</Text>
+          </TouchableOpacity>
+          
+        </Text>
+      </View>
     </View>
-
-    
-  );
+  )
 }
 const styles = StyleSheet.create({
   card: {
     position: 'absolute',
     backgroundColor: '#F47066',
+    filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
     width: 375,
     height: 280,
     borderBottomLeftRadius: 30,
@@ -122,87 +95,61 @@ const styles = StyleSheet.create({
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 30,
   },
 
   header: {
     paddingTop: 300,
     paddingLeft: 130,
+    paddingLeft: 150,
   },
 
-  title: {
-    width: 300,
-    height: 40,
-    borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'white',
-    paddingLeft: 20, 
-    marginTop: -140,
-    color: "gray"
-  },
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
-
-  
-  description: {
-    width: 300,
-    height: 40,
+  txtUser: {
+    width: 320,
+    height: 50,
     borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
 
-
-    txtUser: {
-    width: 300,
-    height: 200,
+  txtPass: {
+    width: 320,
+    height: 50,
     borderRadius: 10,
     outline: 'none',
-    backgroundColor: 'white',
-    paddingLeft: 100, 
-  }, 
-  instructions: {
-    color: '#888',
-    fontSize: 18,
-    marginHorizontal: 15,
-    marginBottom: 10,
+    border: 0,
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
   },
-  button: {
-    backgroundColor: '#f47066',
-    padding: 10,
-    borderRadius: 10,
-    borderWidth: 3,
-    borderColor: "white",
-    marginRight: 150,
+
+  txtRePass: {
+    width: 320,
     height: 50,
-    marginTop: 40,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: '#fff',
-    marginTop: -5,
+    borderRadius: 10,
+    outline: 'none',
+    border: 0,
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
   },
 
-  iconContainer: {
-  width: 60,
-  height: 60,
-  backgroundColor: '#f47066',
-  borderRadius: 60,
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderColor: 'white',
-  borderWidth: 3,
-  marginTop: -55,
-  marginLeft: 250,
-},
+  txtCards: {
+    backgroundColor: 'lightgrey',
+    width: 320,
+    height: 50,
+    borderRadius: 10,
+    marginLeft: 28,
+    marginTop: 25
+  },
 
-  thumbnail: {
-    width: 300,
-    height: 300,
-    resizeMode: 'contain',
+  signIn: {
+    height: 50,
+    width: 200,
+    marginLeft: 85,
+    marginTop: 20,
+    borderRadius: 10,
+    backgroundColor: '#F47066',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 });
