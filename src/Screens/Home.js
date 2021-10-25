@@ -48,7 +48,6 @@ import { auth } from '../firebase';
 export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
-    setDone(false)
   }
   const videos = [
     {
@@ -170,12 +169,12 @@ export default function Home({ navigation, setDone }) {
               <Text style={{ paddingLeft: 7, paddingTop: 3, fontSize: 12 }}>Drowning</Text>
             </Card>
           </View>
-          <View>
+          <TouchableOpacity onPress={Logout}>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
               <Image style={styles.burn} source={burns} />
               <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
             </Card>
-          </View>
+          </TouchableOpacity>
         </ScrollView>
       </Card>
       {/*---------------------- Video Scroll View--------------------*/}
