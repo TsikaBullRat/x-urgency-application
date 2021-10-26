@@ -1,27 +1,3 @@
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 07/10/2021 - 10:05:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 07/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 05/10/2021 - 14:22:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 05/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
@@ -30,7 +6,12 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
 import { Video, AVPlaybackStatus } from 'expo-av';
+<<<<<<< HEAD
+
 export default function Strokes({ navigation }) {
+=======
+export default function Strokes({ navigation: { goBack } }) {
+>>>>>>> 781c6d04377a926f2043f00033dce8370f141cc6
   const [userName, setUserName] = useState('Rando123')
   const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
   const video = React.useRef(null);
@@ -53,20 +34,12 @@ export default function Strokes({ navigation }) {
   return (
     <View style={styles.contain}>
       <TouchableOpacity
-        onPress={() => { navigation.goBack('Home') }}
+        onPress={goBack}
       >
         <AntDesign name="arrowleft" size={24} color="black" />
       </TouchableOpacity>
       <View style={{ width: 315, marginTop: 50, marginLeft: 30 }}>
-        <Video
-          ref={video}
-          source={{ uri: videoPlay }}
-          useNativeControls
-          resizeMode="contain"
-          isLooping
-          onPlaybackStatusUpdate={status => setStatus(() => status)}
-          style={{ borderRadius: 25 }}
-        />
+
       </View>
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (

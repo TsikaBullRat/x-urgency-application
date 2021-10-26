@@ -15,7 +15,7 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignIn } from '../firebase'
-import { AlertNote } from '../Components/Alert';
+import { AlertNote } from '../Components';
 export default function SignIn({ navigation, setDone }) {
   const
     [email, setEmail] = useState(""),
@@ -23,12 +23,12 @@ export default function SignIn({ navigation, setDone }) {
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
   const Login = () => {
-    handleSignIn(email, password, setMessage)
+    handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
   }
   return (
     <View >
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} excess={setDone} />
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={146} color="#fff" />
@@ -60,30 +60,18 @@ export default function SignIn({ navigation, setDone }) {
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
           <Text style={{ paddingLeft: 220, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.signIn} onPress={Login}>
           <Text style={{ color: '#fff' }}>LOGIN </Text>
         </TouchableOpacity>
 
-        <View style={{ flexDirection: 'row' }}>
-          <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
-            New User?</Text>
-
+        <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
+          New User?
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-            <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
+            <Text style={{ color: '#F47066' }}> Sign Up</Text>
           </TouchableOpacity>
-        </View>
 
-        <Text style={{ fontSize: 18, paddingTop: 35, paddingLeft: 110 }}>
-          Medical Personel?</Text>
-
-        <View style= {{flexDirection: 'row', paddingLeft: 122}}>
-          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
-            <Text style={{ color: '#F47066' }}> SignUp /</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => { navigation.navigate('MedicalHome') }}>
-            <Text style={{ color: 'turquoise' }}> SignIn</Text>
-          </TouchableOpacity>
-        </View>
+        </Text>
       </View>
     </View>
   )
@@ -92,6 +80,7 @@ const styles = StyleSheet.create({
   card: {
     position: 'absolute',
     backgroundColor: '#F47066',
+    filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
     width: 375,
     height: 280,
     borderBottomLeftRadius: 30,
@@ -109,6 +98,7 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 300,
     paddingLeft: 130,
+    paddingLeft: 150,
   },
 
   txtUser: {
@@ -125,6 +115,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     outline: 'none',
+    border: 0,
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },

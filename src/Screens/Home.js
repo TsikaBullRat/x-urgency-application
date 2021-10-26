@@ -48,7 +48,6 @@ import { auth } from '../firebase';
 export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
-    setDone(false)
   }
   const videos = [
     {
@@ -120,7 +119,7 @@ export default function Home({ navigation, setDone }) {
 
         </View>
         <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <Avatar style ={styles.avatar}
+          <Avatar style={styles.avatar}
             rounded
             source={{
               uri: 'https://randomuser.me/api/portraits/men/41.jpg',
@@ -184,12 +183,12 @@ export default function Home({ navigation, setDone }) {
               <Text style={{ paddingLeft: 7, paddingTop: 3, fontSize: 12 }}>Drowning</Text>
             </Card>
           </View>
-          <View>
+          <TouchableOpacity onPress={Logout}>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
               <Image style={styles.burn} source={burns} />
               <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
             </Card>
-          </View>
+          </TouchableOpacity>
         </ScrollView>
       </Card>
       {/*---------------------- Video Scroll View--------------------*/}
@@ -230,14 +229,14 @@ const styles = StyleSheet.create({
   avatar: {
     width: 70,
     height: 70,
-    borderRadius: 50, 
+    borderRadius: 50,
     margingTop: 80,
-    borderBottomWidth: 3,     
-    borderColor: 'turquoise',     
-    shadowColor: 'grey',   
-    shadowOffset: { width: 2, height: 2 },   
-    shadowOpacity: 0.4,         
-    elevation: 1, 
+    borderBottomWidth: 3,
+    borderColor: 'turquoise',
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.4,
+    elevation: 1,
   },
 
   txtSearch: {
@@ -250,21 +249,21 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    backgroundColor: 'lightgray',  
-    opacity: 0.8,   
+    backgroundColor: 'lightgray',
+    opacity: 0.8,
     width: 320,
-    height: 50, 
+    height: 50,
     borderRadius: 10,
     marginLeft: 28,
     marginTop: 25,
     borderBottomWidth: 2,
-    borderRightWidth: 2,             
-    borderColor: 'turquoise',  
-    shadowColor: 'skyblue', 
-    shadowOffset: { width: 3, height: 3 },  
-    shadowOpacity: 0.8, 
-    shadowRadius: 1,   
-    elevation: 1,  
+    borderRightWidth: 2,
+    borderColor: 'turquoise',
+    shadowColor: 'skyblue',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    elevation: 1,
   },
 
   menu: {

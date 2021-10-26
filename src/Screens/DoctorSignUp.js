@@ -1,22 +1,9 @@
-/**
-    * @description      : 
-    * @author           : TLeeuw
-    * @group            : 
-    * @created          : 20/10/2021 - 11:58:46
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 20/10/2021
-    * - Author          : TLeeuw
-    * - Modification    : 
-**/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'; 
+import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../firebase';
 import { AlertNote } from '../Components/Alert';
-
 export default function DoctorSignUp({ navigation }) {
     const [email, setEmail] = useState(""),
         [password, setPassword] = useState(""),
@@ -47,7 +34,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}
@@ -55,7 +41,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}
@@ -63,7 +48,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}
@@ -71,8 +55,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
-               
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <TextInput style={styles.txtUser}
@@ -87,8 +69,7 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
-                 <Card style={styles.txtCards}>
+                <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
                         <TextInput style={styles.txtUser}
@@ -96,7 +77,10 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c355ec47b33954d28e659c0ce40bc7f06710f2fa
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
@@ -119,8 +103,7 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-
-                <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
+                <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
                     <Text style={{ color: '#fff' }}>Doctor_SIGN_UP </Text>
                 </TouchableOpacity>
             </View>
