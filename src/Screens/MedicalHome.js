@@ -126,7 +126,7 @@ export default function MedicalHome({ navigation, setDone }) {
           <View>
             {videos.map(vid => (
               <ol >
-                <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
+                <TouchableOpacity onPress={() => { navigation.navigate('UploadVideo') }}>
                   <Video
                     ref={video}
                     source={{ uri: link }}

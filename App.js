@@ -15,14 +15,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 // You can import from local files
-import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHome, UploadVid, UploadVideos } from './src/Screens';
+import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHome, UploadVid, UploadVideo } from './src/Screens';
 import { auth } from './src/firebase'
 import { ActivityIndicator } from 'react-native-paper';
-
-
-
-
-
 const Stack = createNativeStackNavigator();
 export default function App() {
   const [successful, setSuccess] = useState(false),
@@ -63,6 +58,8 @@ export default function App() {
               <Stack.Screen name="Doctor SignUp" component={DoctorSignUp} options={{ headerShown: false }}>
               </Stack.Screen>
               <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }}>
+              </Stack.Screen>
+              <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }}>
               </Stack.Screen>
               <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
             </Stack.Navigator>
