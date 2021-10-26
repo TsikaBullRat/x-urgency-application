@@ -31,7 +31,7 @@ export default function SignIn({ navigation, setDone }) {
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} excess={setDone} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={76} color="#fff" />
+          <FontAwesome name="heartbeat" size={146} color="#fff" />
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
@@ -63,22 +63,25 @@ export default function SignIn({ navigation, setDone }) {
         <TouchableOpacity style={styles.signIn} onPress={Login}>
           <Text style={{ color: '#fff' }}>LOGIN </Text>
         </TouchableOpacity>
+
         <View style={{ flexDirection: 'row' }}>
           <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
             New User?</Text>
+
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
             <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
           </TouchableOpacity>
         </View>
-        <Text style={{ paddingTop: 25, paddingLeft: 120 }}>
+
+        <Text style={{ fontSize: 18, paddingTop: 35, paddingLeft: 110 }}>
           Medical Personel?</Text>
 
         <View style= {{flexDirection: 'row', paddingLeft: 122}}>
           <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
             <Text style={{ color: '#F47066' }}> SignUp /</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
-            <Text style={{ color: '#F47066' }}> SignIn</Text>
+          <TouchableOpacity onPress={() => { navigation.navigate('MedicalHome') }}>
+            <Text style={{ color: 'turquoise' }}> SignIn</Text>
           </TouchableOpacity>
         </View>
       </View>

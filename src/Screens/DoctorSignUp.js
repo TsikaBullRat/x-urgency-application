@@ -96,7 +96,7 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-                
+
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
     card: {
         position: 'absolute',
         backgroundColor: '#F47066',
-        // filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
         width: 375,
         height: 280,
         borderBottomLeftRadius: 30,
@@ -149,7 +148,6 @@ const styles = StyleSheet.create({
     header: {
         paddingTop: 300,
         paddingLeft: 130,
-        paddingLeft: 150,
     },
 
     txtUser: {

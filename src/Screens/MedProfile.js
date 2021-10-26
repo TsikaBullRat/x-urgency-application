@@ -46,7 +46,7 @@ import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 import { auth } from '../firebase';
 
-export default function MedicalHome({ navigation, setDone }) {
+export default function MedicalProfile({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
     setDone(false)
@@ -125,15 +125,13 @@ export default function MedicalHome({ navigation, setDone }) {
                          Dr. DoLittle
           </Text>
 
-          <Text style={{ fontSize: 36, paddingLeft: 30, color: 'red',              
-    textShadowColor: 'grey',  textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1}}>In Da House</Text>
         </View>
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style= {styles.avatar}
             rounded
             source={{
-              uri: 'https://randomuser.me/api/portraits/men/45.jpg',
+              uri: 'https://randomuser.me/api/portraits/men/40.jpg',
             }}
             size="large"
           />
@@ -166,11 +164,10 @@ export default function MedicalHome({ navigation, setDone }) {
                 <Video
                   ref={video}
                   source={{ uri: link }}
-                  // useNativeControls
                   resizeMode="contain"
                   isLooping
                   onPlaybackStatusUpdate={status => setStatus(() => status)}
-                  style= {{width: 355, marginLeft: -
+                  style= {{width: 180, marginLeft: -
                   40, borderRadius: 25}}
                 />
 
@@ -189,16 +186,6 @@ export default function MedicalHome({ navigation, setDone }) {
       </Card  >
     </ScrollView >     
 
-    <View style= {{marginTop: 20, marginLeft: 300}}>
-
-  <TouchableOpacity onPress= {() => {navigation.navigate('Upload')}}>
-    <Card style= {{backgroundColor: 'turquoise', height: 50, width: 50, borderRadius: 50, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style= {{fontSize: 36}}> + </Text>
-    </Card>
-  </TouchableOpacity>
-
-    </View>
-
      
 
     </View>
@@ -206,7 +193,7 @@ export default function MedicalHome({ navigation, setDone }) {
 }
 const styles = StyleSheet.create({
   header: {
-    flexDirection: 'column',
+    flexDirection: 'row',
     paddingTop: 50
   },
 
@@ -221,6 +208,15 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },   
     shadowOpacity: 0.4,         
     elevation: 1, 
+  },
+
+  txtCards: {
+    backgroundColor: 'lightgrey',
+    width: 355,
+    height: 50,
+    borderRadius: 10,
+    marginLeft: 10,
+    marginTop: 25
   },
 
   menu2: {
