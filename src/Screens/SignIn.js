@@ -71,6 +71,10 @@ export default function SignIn({ navigation, setDone }) {
             <Text style={{ color: '#F47066' }}> Sign Up</Text>
           </TouchableOpacity>
 
+          <TouchableOpacity onPress={() => { navigation.navigate('DocHome') }}>
+            <Text style={{ color: '#F47066' }}> Sign Up</Text>
+          </TouchableOpacity>
+
         </Text>
       </View>
     </View>

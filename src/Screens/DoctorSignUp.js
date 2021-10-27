@@ -1,3 +1,15 @@
+/**
+    * @description      : 
+    * @author           : TLeeuw
+    * @group            : 
+    * @created          : 26/10/2021 - 11:55:25
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 26/10/2021
+    * - Author          : TLeeuw
+    * - Modification    : 
+**/
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
@@ -77,10 +89,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-<<<<<<< HEAD
-
-=======
->>>>>>> c355ec47b33954d28e659c0ce40bc7f06710f2fa
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
