@@ -18,10 +18,20 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHome, UploadVids, UploadVideos } from './src/Screens';
 import { auth } from './src/firebase'
 import { ActivityIndicator } from 'react-native-paper';
+import { LoadSet } from './src/firebase';
+
 const Stack = createNativeStackNavigator();
+
+
 export default function App() {
+
+  
+  
   const [successful, setSuccess] = useState(false),
-    [user, setUser] = useState(null);
+    [user, setUser] = useState(null),
+    [load, setLoad] = useState();
+    LoadSet(setLoad)
+    console.log(load)
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       setUser(user)
