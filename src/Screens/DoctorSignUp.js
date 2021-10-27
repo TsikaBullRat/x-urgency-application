@@ -1,3 +1,15 @@
+/**
+    * @description      : 
+    * @author           : TLeeuw
+    * @group            : 
+    * @created          : 26/10/2021 - 11:55:25
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 26/10/2021
+    * - Author          : TLeeuw
+    * - Modification    : 
+**/
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
@@ -110,7 +122,6 @@ const styles = StyleSheet.create({
     card: {
         position: 'absolute',
         backgroundColor: '#F47066',
-        // filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
         width: 375,
         height: 280,
         borderBottomLeftRadius: 30,
@@ -128,7 +139,6 @@ const styles = StyleSheet.create({
     header: {
         paddingTop: 300,
         paddingLeft: 130,
-        paddingLeft: 150,
     },
 
     txtUser: {

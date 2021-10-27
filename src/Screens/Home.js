@@ -100,9 +100,23 @@ export default function Home({ navigation, setDone }) {
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
-          <Text style={{ fontSize: 36, paddingLeft: 10 }}>What's your
+
+          <Text style={{ fontSize: 36, paddingLeft: 30,  
+                         color: 'turquoise',
+                         textShadowColor: 'grey',  textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1}}
+          >
+                         What's your
           </Text>
-          <Text style={{ fontSize: 36, paddingLeft: 10 }}>EMERGENCY</Text>
+
+          <Text style={{ fontSize: 36, paddingLeft: 30, color: 'red',              
+                         textShadowColor: 'grey',  
+                         textShadowOffset: { width: 2, height: 2 }, 
+                         textShadowOffset: { width: 20, height: 2 },
+                         textShadowRadius: 1}}
+          >
+                         EMERGENCY
+          </Text>
+
         </View>
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar}
@@ -325,17 +339,20 @@ const styles = StyleSheet.create({
 
   menu2: {
     width: 355,
-    height: 428,
+    height: 520,
     marginLeft: 10,
     marginTop: 20,
     borderRadius: 15,
-    shadowColor: "#000",
+    shadowColor: "#fff",
+    shadowWidth: 20,
     shadowOffset: {
     },
     shadowOpacity: 0.8,
     shadowRadius: 3.84,
-    borderBottomWidth: 20,
+    borderBottomWidth: 4,
+    borderRightWidth: 2,
     elevation: 5,
   },
+
 });
 
