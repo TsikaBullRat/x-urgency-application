@@ -10,7 +10,7 @@ import {Likes} from '../Components/Likes'
 import {Dislikes} from '../Components/Dislikes'
 
 
-export default function Strokes({ navigation: { goBack } }) {
+export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')
   const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
   const video = React.useRef(null);
@@ -37,13 +37,14 @@ export default function Strokes({ navigation: { goBack } }) {
   return (
     <View style={styles.contain}>
       <TouchableOpacity
-        onPress={() => {navigation.navigate('Home')}}>
+        onPress={() => {
+          navigation.navigate('Home');
+        }}>
         <AntDesign name="arrowleft" size={24} color="black" />
       </TouchableOpacity>
 
-
-      <View style={{ width: 315, marginTop: 50, marginLeft: 30 }}>
-         <Video
+      <View style={{ width: 315, marginLeft: 10 }}>
+        <Video
           source={{ uri: videoPlay }}
           useNativeControls
           resizeMode="contain"
@@ -52,27 +53,29 @@ export default function Strokes({ navigation: { goBack } }) {
           isLooping
           style={{ borderRadius: 25 }}
         />
+      </View> 
 
-      <View style={{ width: 315, marginTop: 50, marginLeft: 30 }}>
-
-      </View>
 
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
-          
           <View>
-            <View style={{ flexDirection: 'row', paddingLeft: 50, marginTop: 10 }}>
-              <Text style={{ fontWeight: 'bold' }}>
-                Stroke Emergency Video
-              </Text>
-              <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()} >
-                <AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} />
+            <View style={{ flexDirection: 'row', paddingLeft: 30, marginTop:15}}>
+              <Text style={{ fontWeight: 'bold' }}>Stroke Emergency Video</Text>
+              <TouchableOpacity
+                title="topNav"
+                onPress={() => changeVisibilityStatusBar()}>
+                <AntDesign
+                  name="downcircle"
+                  size={18}
+                  color="black"
+                  style={styles.dropDown}
+                />
               </TouchableOpacity>
             </View>
+            <Text style={{ fontSize: 10, paddingLeft: 35 }}>
+              1.7M views - 2years ago  
+            </Text>  
 
-            <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
-              1.7M views - 2years ago
-            </Text>
 
             <Card
               style={{
@@ -113,6 +116,7 @@ export default function Strokes({ navigation: { goBack } }) {
               </View>
             </Card>
 
+
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
               <Avatar
@@ -139,7 +143,7 @@ export default function Strokes({ navigation: { goBack } }) {
               style={{
                 width: 315,
                 height: 300,
-                marginLeft: 40,
+                marginLeft: 10,
                 borderRadius: 20, 
                 backgroundColor: '#fff',
                 marginTop: 15,
@@ -238,6 +242,10 @@ export default function Strokes({ navigation: { goBack } }) {
   )
 }
 const styles = StyleSheet.create({
+  contain: {
+    alignItems: 'center'
+  },
+  
   header: {
     paddingLeft: 30,
     paddingTop: 50

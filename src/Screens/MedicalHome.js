@@ -92,9 +92,11 @@ export default function MedicalHome({ navigation }) {
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
   ];
+
   const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
   const [status, setStatus] = React.useState({});
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
@@ -106,9 +108,9 @@ export default function MedicalHome({ navigation }) {
             textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
           }}
           >
-
             Dr. DoLittle
           </Text>
+          
           <Text style={{
             fontSize: 36, paddingLeft: 30, color: 'red',
             textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
@@ -154,17 +156,22 @@ export default function MedicalHome({ navigation }) {
           </View>
         </Card  >
       </ScrollView >
-      <TouchableOpacity onPress={() => { navigation.navigate('UploadVideo') }}>
+      <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
         <Text style={{ color: '#F47066' }}>Upload</Text>
       </TouchableOpacity>
     </View>
   )
 }
 const styles = StyleSheet.create({
+  contain: {
+    alignItems: 'center'
+  },
+
   header: {
     flexDirection: 'column',
     paddingTop: 50
   },
+
   avatar: {
     width: 70,
     height: 70,
@@ -177,6 +184,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
+
   menu2: {
     width: 355,
     height: 520,
@@ -188,8 +196,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.8,
     shadowRadius: 3.84,
-    borderBottomWidth: 4,
-    borderRightWidth: 2,
     elevation: 5,
   },
 });

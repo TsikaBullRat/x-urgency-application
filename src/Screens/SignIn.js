@@ -16,6 +16,7 @@ import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignIn } from '../firebase'
 import { AlertNote } from '../Components';
+
 export default function SignIn({ navigation, setDone }) {
   const
     [email, setEmail] = useState(""),
@@ -28,16 +29,20 @@ export default function SignIn({ navigation, setDone }) {
   }
   return (
     <View style={styles.container}>
+
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
+
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 18 }}>LogIn</Text>
       </View>
+
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -47,6 +52,7 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
+
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
@@ -57,10 +63,10 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
+
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
-          <Text style={{ paddingLeft: 220, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
+          <Text style={{ paddingLeft: 180, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
         </TouchableOpacity>
-<<<<<<< HEAD
 
       
         <View style={{alignItems:'center', alignContent: 'center'}}>
@@ -69,41 +75,33 @@ export default function SignIn({ navigation, setDone }) {
         </TouchableOpacity>
         </View>
 
-        <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center'}}>
+
+        <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <Text style={{ paddingTop: 5 }}>
-            New User?</Text>
-            
-=======
-        <TouchableOpacity style={styles.signIn} onPress={Login}>
-          <Text style={{ color: '#fff' }}>LOGIN </Text>
-        </TouchableOpacity>
-        <View style={{ flexDirection: 'row' }}>
-          <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
             New User?
           </Text>
->>>>>>> c69ed0a1ab1e11d584582c285bf0ea017be4a745
-          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
 
+          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
             <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
           </TouchableOpacity>
         </View>
-<<<<<<< HEAD
 
-        <Text style={{ paddingTop: 5, textAlign: 'center', justifyContent: 'center' }}>
-          Medical Personel?
-        </Text> 
 
-=======
-        <Text style={{ paddingTop: 5, textAlign: 'center', justifyContent: 'center' }}>
-          Medical Personel?</Text>
->>>>>>> c69ed0a1ab1e11d584582c285bf0ea017be4a745
+        <Text style={{ paddingTop: 10, textAlign: 'center', justifyContent: 'center' }}>
+            Medical Personel?
+        </Text>
+
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
+          
+
           <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
             <Text style={{ color: '#F47066' }}> SignUp /</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
+
+          <TouchableOpacity onPress={() => { navigation.navigate('MedicalHome') }}>
             <Text style={{ color: '#F47066' }}> SignIn</Text>
           </TouchableOpacity>
+          
         </View>
       </View>
     </View>
@@ -113,6 +111,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center'
   },
+
   card: {
     backgroundColor: '#F47066',
     width: 325,
@@ -123,14 +122,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center'
   },
+  
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
+
   header: {
     paddingTop: 5
   },
+
   txtUser: {
     width: 260,
     height: 40,
@@ -139,6 +141,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
+
   txtPass: {
     width: 260,
     height: 40,
@@ -147,14 +150,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
+
   txtCards: {
     backgroundColor: 'lightgrey',
     width: 285,
     height: 40,
     borderRadius: 10,
-    marginLeft: 25,
+    marginLeft: 2,
     marginTop: 25
   },
+  
   signIn: {
     height: 50,
     width: 200,

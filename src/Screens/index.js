@@ -19,4 +19,4 @@ import UploadVids from "./UploadVids";
 import UploadVideo from "./UploadVideo"
 import DoctorSignUp from "./DoctorSignUp"
 import MedicalHome from "./MedicalHome"
-export { SignIn, SignUp, ForgotPassword, Home, Strokes, UploadVids, DoctorSignUp, MedicalHome }
+export { SignIn, SignUp, ForgotPassword, Home, Strokes, UploadVideo, DoctorSignUp, MedicalHome }
