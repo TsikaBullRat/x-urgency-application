@@ -248,14 +248,6 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
 
-  txtSearch: {
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
-  },
 
   txtCards: {
     backgroundColor: 'lightgray',
