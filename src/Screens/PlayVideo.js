@@ -6,9 +6,8 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
 import { Video, AVPlaybackStatus } from 'expo-av';
-import {Likes} from '../Components/Likes'
-import {Dislikes} from '../Components/Dislikes'
-
+import { Likes } from '../Components/Likes'
+import { Dislikes } from '../Components/Dislikes'
 
 export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')
@@ -46,13 +45,11 @@ export default function Strokes({ navigation }) {
           isLooping
           style={{ borderRadius: 25 }}
         />
-      </View> 
-
-
+      </View>
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
-            <View style={{ flexDirection: 'row', paddingLeft: 30, marginTop:15}}>
+            <View style={{ flexDirection: 'row', paddingLeft: 30, marginTop: 15 }}>
               <Text style={{ fontWeight: 'bold' }}>Stroke Emergency Video</Text>
               <TouchableOpacity
                 title="topNav"
@@ -66,50 +63,43 @@ export default function Strokes({ navigation }) {
               </TouchableOpacity>
             </View>
             <Text style={{ fontSize: 10, paddingLeft: 35 }}>
-              1.7M views - 2years ago  
-            </Text>  
-
-
+              1.7M views - 2years ago
+            </Text>
             <Card
               style={{
                 borderColor: 'black',
                 width: 315,
-                marginTop: 5,  
-                marginLeft: 25,  
+                marginTop: 5,
+                marginLeft: 25,
               }}>
               <View
                 style={{ flexDirection: 'row', marginTop: 5, marginLeft: 3 }}>
-                  <View>
+                <View>
                   <Likes />
-                   </View>
-
-                <View style={{ marginLeft: 32, marginTop: 3}}>   
-                  <Dislikes /> 
-                </View>   
-  
+                </View>
+                <View style={{ marginLeft: 32, marginTop: 3 }}>
+                  <Dislikes />
+                </View>
                 <View style={{ marginLeft: 40 }}>
                   <FontAwesome5
                     name="share"
                     size={20}
                     color="black"
-                   style={{ marginLeft: 11}}     
+                    style={{ marginLeft: 11 }}
                   />
-                  <Text style={{ paddingTop: 5 }}> Share </Text> 
-                </View> 
-
-                <View style={{ marginLeft: 32 }}> 
+                  <Text style={{ paddingTop: 5 }}> Share </Text>
+                </View>
+                <View style={{ marginLeft: 32 }}>
                   <Entypo
                     name="save"
                     size={20}
-                    color="black" 
-                    style={{ marginLeft: 8}}   
-                  /> 
+                    color="black"
+                    style={{ marginLeft: 8 }}
+                  />
                   <Text style={{ paddingTop: 5 }}> Save </Text>
                 </View>
               </View>
             </Card>
-
-
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
               <Avatar
@@ -124,20 +114,15 @@ export default function Strokes({ navigation }) {
               </Text>
             </View>
           </View>
-
-
-
         ) : (
           //Hidden Description
-          
-          
           <View>
             <Card
               style={{
                 width: 315,
                 height: 300,
                 marginLeft: 10,
-                borderRadius: 20, 
+                borderRadius: 20,
                 backgroundColor: '#fff',
                 marginTop: 15,
               }}>
@@ -149,7 +134,6 @@ export default function Strokes({ navigation }) {
                     fontWeight: 'bold',
                     fontSize: 16,
                   }}>
-
                   Description:
                 </Text>
                 <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()} >
@@ -207,118 +191,117 @@ export default function Strokes({ navigation }) {
                   {userName}
                 </Text>
               </View>
-              </Card>
-            </View> 
-          ) (
-            //Hidden Description
-            <View>
-              <Card
+            </Card>
+          </View>
+        )(
+          //Hidden Description
+          <View>
+            <Card
+              style={{
+                width: 315,
+                height: 300,
+                marginLeft: 40,
+                borderRadius: 20,
+                backgroundColor: '#fff',
+                marginTop: 15,
+              }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Text
+                  style={{
+                    paddingLeft: 10,
+                    fontWeight: 'bold',
+                    fontSize: 16,
+                  }}>
+                  Description:
+                </Text>
+                <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
+                  <AntDesign
+                    name="closecircle"
+                    size={18}
+                    color="black"
+                    style={{ marginLeft: 182 }}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View
                 style={{
-                  width: 315,
-                  height: 300,
-                  marginLeft: 40,
-                  borderRadius: 20,
-                  backgroundColor: '#fff',
-                  marginTop: 15,
+                  marginTop: 10,
+                  marginLeft: 12,
+                  width: 255,
                 }}>
-                <View style={{ flexDirection: 'row' }}>
-                  <Text
-                    style={{
-                      paddingLeft: 10,
-                      fontWeight: 'bold',
-                      fontSize: 16,
-                    }}>
-                    Description:
-                  </Text>
-                  <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                    <AntDesign
-                      name="closecircle"
-                      size={18}
-                      color="black"
-                      style={{ marginLeft: 182 }}
-                    />
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={{
-                    marginTop: 10,
-                    marginLeft: 12,
-                    width: 255,
-                  }}>
-                  <Text>Stroke Emergency Video</Text>
-                  <Text style={{ fontSize: 10, color: 'gray' }}>
-                    1 000 000 Views
-                  </Text>
-                </View>
-                <View
-                  style={{
-                    marginTop: 10,
-                    marginLeft: 12,
-                    width: 255,
-                  }}>
-                  <Text style={{ paddingTop: 10 }}>
-                    Lost your faith in ambulance response time? You can play
-                    doctor and help save a life by just following the instructions
-                    of this video. This video is accredited by the Department of
-                    Health and Social Development, for critical emergencies only.
-                  </Text>
-                  <Text style={{ paddingTop: 10, fontWeight: 'bold' }}>
-                    Thank you for your support.
-                  </Text>
-                </View>
-              </Card>
-            </View>
-          )}
-        </View>
-        <Card style={{ height: 40, width: 315, marginTop: 5, marginLeft: 10 }}>
-          <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
-          {/*userName Array*/}
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-        </Card>
+                <Text>Stroke Emergency Video</Text>
+                <Text style={{ fontSize: 10, color: 'gray' }}>
+                  1 000 000 Views
+                </Text>
+              </View>
+              <View
+                style={{
+                  marginTop: 10,
+                  marginLeft: 12,
+                  width: 255,
+                }}>
+                <Text style={{ paddingTop: 10 }}>
+                  Lost your faith in ambulance response time? You can play
+                  doctor and help save a life by just following the instructions
+                  of this video. This video is accredited by the Department of
+                  Health and Social Development, for critical emergencies only.
+                </Text>
+                <Text style={{ paddingTop: 10, fontWeight: 'bold' }}>
+                  Thank you for your support.
+                </Text>
+              </View>
+            </Card>
+          </View>
+        )}
       </View>
-    
+      <Card style={{ height: 40, width: 315, marginTop: 5, marginLeft: 10 }}>
+        <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
+        {/*userName Array*/}
+        <Card style={{
+          backgroundColor: 'silver', height: 100,
+          marginTop: 10
+        }}>
+          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+            dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+          </Text>
+        </Card>
+        <Card style={{
+          backgroundColor: 'silver', height: 100,
+          marginTop: 10
+        }}>
+          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+            dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+          </Text>
+        </Card>
+        <Card style={{
+          backgroundColor: 'silver', height: 100,
+          marginTop: 10
+        }}>
+          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+            dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+          </Text>
+        </Card>
+        <Card style={{
+          backgroundColor: 'silver', height: 100,
+          marginTop: 10
+        }}>
+          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+            dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+          </Text>
+        </Card>
+      </Card>
+    </View>
   )
 }
 const styles = StyleSheet.create({
   contain: {
     alignItems: 'center'
   },
-  
+
   header: {
     paddingLeft: 30,
     paddingTop: 50

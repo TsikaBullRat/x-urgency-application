@@ -216,7 +216,7 @@ export default function Home({ navigation, setDone }) {
         </Card  >
       </ScrollView >
 
-      <View style={{paddingTop: 20}}>
+      <View style={{ paddingTop: 20 }}>
         <TouchableOpacity>
           Med Home
         </TouchableOpacity>

@@ -49,42 +49,27 @@ export default function App() {
               <Stack.Screen name="Sign In" options={{ headerShown: false }} >
                 {props => <SignIn {...props} setDone={setSuccess} />}
               </Stack.Screen>
-
-              <Stack.Screen name="Home" options={{ headerShown: false }} >
-                {props => <Home {...props} setDone={setSuccess} />}
-              </Stack.Screen>
-
               <Stack.Screen name="Sign Up" options={{ headerShown: false }}>
                 {props => <SignUp {...props} setDone={setSuccess} />}
               </Stack.Screen>
-
               <Stack.Screen name="Doctor SignUp" component={DoctorSignUp} options={{ headerShown: false }}>
               </Stack.Screen>
-
               <Stack.Screen name="Doctor SignIn" component={DoctorSignUp} options={{ headerShown: false }}>
               </Stack.Screen>
-
               <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }}>
               </Stack.Screen>
-              
               <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
-              
               <Stack.Screen name="Upload" component={UploadVideo} options={{ headerShown: false }} />
-            
               <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
               <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
-
             </Stack.Navigator>
-            
           ) : (
             //Loader
             <Stack.Navigator initialRouteName="Home">
-  
-              
-              
-
+              <Stack.Screen name="Home" options={{ headerShown: false }} >
+                {props => <Home {...props} setDone={setSuccess} />}
+              </Stack.Screen>
             </Stack.Navigator>
-            
           )
         ) : (
           // Login/Sign functions

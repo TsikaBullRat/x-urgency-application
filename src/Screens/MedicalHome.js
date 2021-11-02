@@ -110,7 +110,7 @@ export default function MedicalHome({ navigation }) {
           >
             Dr. DoLittle
           </Text>
-          
+
           <Text style={{
             fontSize: 36, paddingLeft: 30, color: 'red',
             textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
@@ -126,18 +126,16 @@ export default function MedicalHome({ navigation }) {
             }}
             size="large"
           />
-
           <Badge
             status="success"
             containerStyle={{ position: 'absolute', top: -4, right: -4 }}
           />
         </View>
-
       </View>
       {/*---------------------- Video Scroll View--------------------*/}
       <ScrollView vertical={true} showsHorizontalScrollIndicator={false} >
         <Card style={styles.menu2}>
-          <View style={{alignItems: 'center'}}>
+          <View style={{ alignItems: 'center' }}>
             {videos.map(vid => (
               <ol >
                 <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
@@ -160,11 +158,9 @@ export default function MedicalHome({ navigation }) {
           </View>
         </Card  >
       </ScrollView >
-
       <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
         <Text style={{ color: '#F47066' }}>Upload</Text>
       </TouchableOpacity>
-
     </View>
   )
 }
