@@ -60,20 +60,21 @@ export default function App() {
               </Stack.Screen>
               <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
 
-              
+              <Stack.Screen name="Home" options={{ headerShown: false }} >
+                {props => <Home {...props} setDone={setSuccess} />}
+              </Stack.Screen>
 
+              <Stack.Screen name="Strokes" component={Strokes} options={{ headerShown: false }} />
+
+              <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
               
             </Stack.Navigator>
             
           ) : (
             // Main Application
             <Stack.Navigator initialRouteName="Home">
-              <Stack.Screen name="Home" options={{ headerShown: false }} >
-                {props => <Home {...props} setDone={setSuccess} />}
-              </Stack.Screen>
-              <Stack.Screen name="Strokes" component={Strokes} options={{ headerShown: false }} />
-
-              <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
+              
+              
               
             </Stack.Navigator>
             
