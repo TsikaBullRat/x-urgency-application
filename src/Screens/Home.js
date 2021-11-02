@@ -189,8 +189,9 @@ export default function Home({ navigation, setDone }) {
           </TouchableOpacity>
         </ScrollView>
       </Card>
+
       {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView vertical={true} >
+      <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
             {videos.map(vid => (
@@ -214,7 +215,8 @@ export default function Home({ navigation, setDone }) {
           </View>
         </Card  >
       </ScrollView >
-      <View>
+
+      <View style={{paddingTop: 20}}>
         <TouchableOpacity>
           Med Home
         </TouchableOpacity>
@@ -244,14 +246,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
-  txtSearch: {
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
-  },
+
+
   txtCards: {
     backgroundColor: 'lightgray',
     opacity: 0.8,
