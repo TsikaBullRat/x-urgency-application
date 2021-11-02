@@ -16,12 +16,14 @@ import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../firebase';
 import { AlertNote } from '../Components/Alert';
+
 export default function SignUp({ navigation }) {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [Confirmpassword, setConfirmPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("")
+    
   const Register = () => {
     handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage)
     setDisplaModal(true)

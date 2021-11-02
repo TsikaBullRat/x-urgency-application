@@ -218,7 +218,15 @@ export default function Home({ navigation, setDone }) {
             ))}
           </View>
         </Card  >
+
       </ScrollView >
+ 
+    <View>
+      <TouchableOpacity>
+        Med Home
+      </TouchableOpacity>
+    </View>
+
     </View>
   )
 }

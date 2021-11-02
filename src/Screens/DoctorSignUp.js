@@ -111,8 +111,8 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-                <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
-                    <Text style={{ color: '#fff' }}>Doctor_SIGN_UP </Text>
+                <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
+                    <Text style={{ color: '#fff' }}>SIGN_UP </Text>
                 </TouchableOpacity>
             </View>
         </View>
