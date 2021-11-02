@@ -6,8 +6,6 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
 import { Video, AVPlaybackStatus } from 'expo-av';
-
-
 export default function Strokes({ navigation: { goBack } }) {
   const [userName, setUserName] = useState('Rando123')
   const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')

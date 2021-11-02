@@ -23,7 +23,7 @@ export default function SignUp({ navigation }) {
     [Confirmpassword, setConfirmPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("")
-    
+
   const Register = () => {
     handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage)
     setDisplaModal(true)
