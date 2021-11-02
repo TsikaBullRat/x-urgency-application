@@ -45,7 +45,7 @@ import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 import { auth } from '../firebase';
-export default function MedicalHome({ navigation, setDone }) {
+export default function MedicalHome({ navigation }) {
   const Logout = () => {
     auth.signOut()
     setDone(false)
@@ -95,6 +95,8 @@ export default function MedicalHome({ navigation, setDone }) {
   const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
   const [status, setStatus] = React.useState({});
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+
+
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
@@ -130,8 +132,10 @@ export default function MedicalHome({ navigation, setDone }) {
           />
         </View>
       </View>
+
+      
       {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView vertical={true} >
+      <ScrollView vertical={true} showsHorizontalScrollIndicator={false} >
         <Card style={styles.menu2}>
           <View>
             {videos.map(vid => (
@@ -156,6 +160,9 @@ export default function MedicalHome({ navigation, setDone }) {
           </View>
         </Card  >
       </ScrollView >
+        <TouchableOpacity onPress={() => { navigation.navigate('UploadVideo') }}>
+            <Text style={{ color: '#F47066' }}>Upload</Text>
+          </TouchableOpacity>
     </View>
   )
 }

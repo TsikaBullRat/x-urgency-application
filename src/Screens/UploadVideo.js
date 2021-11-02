@@ -1,3 +1,15 @@
+/**
+    * @description      : 
+    * @author           : TLeeuw
+    * @group            : 
+    * @created          : 02/11/2021 - 09:06:04
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 02/11/2021
+    * - Author          : TLeeuw
+    * - Modification    : 
+**/
 import React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
 import { Card } from 'react-native-paper'
@@ -5,6 +17,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
+
 export default function UploadVideo() {
   let [selectedImage, setSelectedImage] = React.useState(null);
   let openImagePickerAsync = async () => {
@@ -26,7 +39,7 @@ export default function UploadVideo() {
   };
   let openShareDialogAsync = async () => {
     if (!(await Sharing.isAvailableAsync())) {
-      alert(`The image is available for sharing at: ${selectedImage.remoteUri}`);
+      alert("The image is available for sharing at: ${`selectedImage.remoteUri`}");
       return;
     }
     Sharing.shareAsync(selectedImage.remoteUri || selectedImage.localUri);
