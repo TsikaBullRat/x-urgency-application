@@ -19,16 +19,13 @@ import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHom
 import { auth } from './src/firebase'
 import { ActivityIndicator } from 'react-native-paper';
 import { LoadSet } from './src/firebase';
-
 const Stack = createNativeStackNavigator();
-
-export default function App() {  
-  
+export default function App() {
   const [successful, setSuccess] = useState(false),
     [user, setUser] = useState(null),
     [load, setLoad] = useState();
-    LoadSet(setLoad)
-    console.log(load)
+  LoadSet(setLoad)
+  console.log(load)
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       setUser(user)
@@ -61,12 +58,7 @@ export default function App() {
               <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }}>
               </Stack.Screen>
               <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
-
-              
-
-              
             </Stack.Navigator>
-            
           ) : (
             // Main Application
             <Stack.Navigator initialRouteName="Home">
@@ -74,11 +66,8 @@ export default function App() {
                 {props => <Home {...props} setDone={setSuccess} />}
               </Stack.Screen>
               <Stack.Screen name="Strokes" component={Strokes} options={{ headerShown: false }} />
-
               <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
-              
             </Stack.Navigator>
-            
           )
         ) : (
           // Login/Sign functions

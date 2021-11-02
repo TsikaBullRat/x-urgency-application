@@ -95,14 +95,11 @@ export default function MedicalHome({ navigation }) {
   const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
   const [status, setStatus] = React.useState({});
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-
-
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
-
           <Text style={{
             fontSize: 36, paddingLeft: 30,
             color: 'turquoise',
@@ -112,7 +109,6 @@ export default function MedicalHome({ navigation }) {
 
             Dr. DoLittle
           </Text>
-
           <Text style={{
             fontSize: 36, paddingLeft: 30, color: 'red',
             textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
@@ -132,8 +128,6 @@ export default function MedicalHome({ navigation }) {
           />
         </View>
       </View>
-
-      
       {/*---------------------- Video Scroll View--------------------*/}
       <ScrollView vertical={true} showsHorizontalScrollIndicator={false} >
         <Card style={styles.menu2}>
@@ -160,9 +154,9 @@ export default function MedicalHome({ navigation }) {
           </View>
         </Card  >
       </ScrollView >
-        <TouchableOpacity onPress={() => { navigation.navigate('UploadVideo') }}>
-            <Text style={{ color: '#F47066' }}>Upload</Text>
-          </TouchableOpacity>
+      <TouchableOpacity onPress={() => { navigation.navigate('UploadVideo') }}>
+        <Text style={{ color: '#F47066' }}>Upload</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -171,7 +165,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingTop: 50
   },
-
   avatar: {
     width: 70,
     height: 70,
@@ -184,7 +177,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
-
   menu2: {
     width: 355,
     height: 520,

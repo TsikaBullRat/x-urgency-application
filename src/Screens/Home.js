@@ -45,7 +45,6 @@ import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 import { auth } from '../firebase';
-
 export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
@@ -92,19 +91,14 @@ export default function Home({ navigation, setDone }) {
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
   ];
-
   const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
-
   const [status, setStatus] = React.useState({});
-
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
-
           <Text style={{
             fontSize: 36, paddingLeft: 30,
             color: 'turquoise',
@@ -113,14 +107,14 @@ export default function Home({ navigation, setDone }) {
           >
             What's your
           </Text>
-
-          <Text style={{ fontSize: 36, paddingLeft: 30, color: 'red',              
-                         textShadowColor: 'grey',  
-                         textShadowOffset: { width: 2, height: 2 }, 
-                         textShadowRadius: 1}} >
-                         EMERGENCY
+          <Text style={{
+            fontSize: 36, paddingLeft: 30, color: 'red',
+            textShadowColor: 'grey',
+            textShadowOffset: { width: 2, height: 2 },
+            textShadowRadius: 1
+          }} >
+            EMERGENCY
           </Text>
-
         </View>
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar}
@@ -220,15 +214,12 @@ export default function Home({ navigation, setDone }) {
             ))}
           </View>
         </Card  >
-
       </ScrollView >
- 
-    <View>
-      <TouchableOpacity>
-        Med Home
-      </TouchableOpacity>
-    </View>
-
+      <View>
+        <TouchableOpacity>
+          Med Home
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -237,7 +228,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingTop: 50
   },
-
   avatar: {
     width: 70,
     height: 70,
@@ -250,7 +240,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
-
   txtSearch: {
     width: 320,
     height: 50,
@@ -259,7 +248,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-
   txtCards: {
     backgroundColor: 'lightgray',
     opacity: 0.8,
@@ -277,14 +265,12 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     elevation: 1,
   },
-
   menu: {
     width: 355,
     left: 10,
     marginTop: 20,
     borderRadius: 15,
   },
-
   strokeMenu: {
     height: 30,
     width: 30,
@@ -294,7 +280,6 @@ const styles = StyleSheet.create({
     marginLeft: 3,
     marginTop: 10
   },
-
   heartMenu: {
     height: 35,
     width: 35,
@@ -302,14 +287,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 12
   },
-
   epilepsyMenu: {
     height: 50,
     width: 50,
     borderRadius: 15,
     marginLeft: 6
   },
-
   cprMenu: {
     height: 35,
     width: 35,
@@ -317,14 +300,12 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8
   },
-
   bloodMenu: {
     height: 35,
     width: 35,
     borderRadius: 15,
     marginTop: 8
   },
-
   conImg: {
     height: 35,
     width: 35,
@@ -332,7 +313,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 8
   },
-
   drown: {
     height: 40,
     width: 40,
@@ -340,7 +320,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 8,
   },
-
   burn: {
     height: 35,
     width: 35,
@@ -348,7 +327,6 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8
   },
-
   menu2: {
     width: 355,
     height: 520,
@@ -365,6 +343,5 @@ const styles = StyleSheet.create({
     borderRightWidth: 2,
     elevation: 5,
   },
-
 });
 

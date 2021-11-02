@@ -33,16 +33,12 @@ export default function SignIn({ navigation, setDone }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
-        
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
-
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 18 }}>LogIn</Text>
       </View>
-
       <View>
-
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={22} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
@@ -51,7 +47,6 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
-
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
@@ -62,51 +57,40 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
-
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
           <Text style={{ paddingLeft: 220, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
         </TouchableOpacity>
-
-      
         <TouchableOpacity style={styles.signIn} onPress={Login}>
           <Text style={{ color: '#fff' }}>LOGIN </Text>
         </TouchableOpacity>
-
-      <View style={{flexDirection: 'row'}}>
-        <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
-          New User?
-        </Text>
-
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
+            New User?
+          </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
             <Text style={{ color: '#F47066', paddingTop: 5 }} > Sign Up</Text>
           </TouchableOpacity>
-          </View>
-
-       <Text style={{ paddingTop: 5, textAlign: 'center', justifyContent: 'center' }}>
-          Medical Personel?</Text> 
-
+        </View>
+        <Text style={{ paddingTop: 5, textAlign: 'center', justifyContent: 'center' }}>
+          Medical Personel?</Text>
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
-
             <Text style={{ color: '#F47066' }}> SignUp /</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
             <Text style={{ color: '#F47066' }}> SignIn</Text>
           </TouchableOpacity>
-        </View> 
-
+        </View>
       </View>
     </View>
   )
 }
-
 const styles = StyleSheet.create({
-  container: { 
+  container: {
     alignItems: 'center'
   },
-
   card: {
-    backgroundColor: '#F47066', 
+    backgroundColor: '#F47066',
     width: 325,
     height: 200,
     borderBottomLeftRadius: 30,
@@ -121,7 +105,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   header: {
-     paddingTop: 5
+    paddingTop: 5
   },
   txtUser: {
     width: 260,
@@ -131,7 +115,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
- 
   txtPass: {
     width: 260,
     height: 40,
