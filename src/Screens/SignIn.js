@@ -68,7 +68,7 @@ export default function SignIn({ navigation, setDone }) {
             New User?
           </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-            <Text style={{ color: '#F47066', paddingTop: 5 }} > Sign Up</Text>
+            <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
           </TouchableOpacity>
         </View>
         <Text style={{ paddingTop: 5, textAlign: 'center', justifyContent: 'center' }}>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   },
   txtCards: {
     backgroundColor: 'lightgrey',
-    width: 260,
+    width: 285,
     height: 40,
     borderRadius: 10,
     marginLeft: 25,
@@ -134,11 +134,10 @@ const styles = StyleSheet.create({
   signIn: {
     height: 50,
     width: 200,
-    marginLeft: 85,
     marginTop: 20,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 });

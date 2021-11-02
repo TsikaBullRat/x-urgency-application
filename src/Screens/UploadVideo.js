@@ -17,7 +17,6 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
-
 export default function UploadVideo() {
   let [selectedImage, setSelectedImage] = React.useState(null);
   let openImagePickerAsync = async () => {

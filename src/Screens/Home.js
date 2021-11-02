@@ -53,7 +53,7 @@ export default function Home({ navigation, setDone }) {
     {
       id: 1,
       title: "Stroke",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+      url: 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
     },
     {
       id: 2,
@@ -63,7 +63,7 @@ export default function Home({ navigation, setDone }) {
     {
       id: 3,
       title: "Epilepsy",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+      url: 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
     },
     {
       id: 4,
@@ -73,7 +73,7 @@ export default function Home({ navigation, setDone }) {
     {
       id: 5,
       title: "Bleeding",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+      url: 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
     },
     {
       id: 6,
@@ -83,7 +83,7 @@ export default function Home({ navigation, setDone }) {
     {
       id: 7,
       title: "Drowning",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+      url: 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
     },
     {
       id: 8,
@@ -198,14 +198,13 @@ export default function Home({ navigation, setDone }) {
                 <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
                   <Video
                     ref={video}
-                    source={{ uri: link }}
-                    // useNativeControls
+                    source={{ uri: vid.url }}
                     resizeMode="contain"
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                     style={{
-                      width: 355, marginLeft: -
-                        40, borderRadius: 25
+                      width: 315, marginLeft: -
+                        10
                     }}
                   />
                   <h4>{vid.title}</h4>
@@ -224,6 +223,11 @@ export default function Home({ navigation, setDone }) {
   )
 }
 const styles = StyleSheet.create({
+  contain: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff'
+  },
   header: {
     flexDirection: 'column',
     paddingTop: 50
@@ -328,20 +332,10 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   menu2: {
-    width: 355,
+    width: 315,
     height: 520,
-    marginLeft: 10,
     marginTop: 20,
     borderRadius: 15,
-    shadowColor: "#fff",
-    shadowWidth: 20,
-    shadowOffset: {
-    },
-    shadowOpacity: 0.8,
-    shadowRadius: 3.84,
-    borderBottomWidth: 4,
-    borderRightWidth: 2,
-    elevation: 5,
   },
 });
 
