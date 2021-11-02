@@ -106,7 +106,6 @@ export default function MedicalProfile({ navigation, setDone }) {
             textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
           }}
           >
-
             Dr. DoLittle
           </Text>
         </View>

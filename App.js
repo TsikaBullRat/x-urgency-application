@@ -19,16 +19,13 @@ import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHom
 import { auth } from './src/firebase'
 import { ActivityIndicator } from 'react-native-paper';
 import { LoadSet } from './src/firebase';
-
 const Stack = createNativeStackNavigator();
-
-export default function App() {  
-  
+export default function App() {
   const [successful, setSuccess] = useState(false),
     [user, setUser] = useState(null),
     [load, setLoad] = useState();
-    LoadSet(setLoad)
-    console.log(load)
+  LoadSet(setLoad)
+  console.log(load)
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       setUser(user)
@@ -61,6 +58,7 @@ export default function App() {
               <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }}>
               </Stack.Screen>
               <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
+<<<<<<< HEAD
 
               <Stack.Screen name="Home" options={{ headerShown: false }} >
                 {props => <Home {...props} setDone={setSuccess} />}
@@ -70,16 +68,24 @@ export default function App() {
 
               <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
               
+=======
+>>>>>>> c69ed0a1ab1e11d584582c285bf0ea017be4a745
             </Stack.Navigator>
-            
           ) : (
             // Main Application
             <Stack.Navigator initialRouteName="Home">
+<<<<<<< HEAD
               
               
               
+=======
+              <Stack.Screen name="Home" options={{ headerShown: false }} >
+                {props => <Home {...props} setDone={setSuccess} />}
+              </Stack.Screen>
+              <Stack.Screen name="Strokes" component={Strokes} options={{ headerShown: false }} />
+              <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
+>>>>>>> c69ed0a1ab1e11d584582c285bf0ea017be4a745
             </Stack.Navigator>
-            
           )
         ) : (
           // Login/Sign functions
