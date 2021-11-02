@@ -114,8 +114,10 @@ export default function MedicalHome({ navigation }) {
           <Text style={{
             fontSize: 36, paddingLeft: 30, color: 'red',
             textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
-          }}>In Da House</Text>
+          }}>In Da House
+          </Text>
         </View>
+
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar}
             rounded
@@ -124,16 +126,18 @@ export default function MedicalHome({ navigation }) {
             }}
             size="large"
           />
+
           <Badge
             status="success"
             containerStyle={{ position: 'absolute', top: -4, right: -4 }}
           />
         </View>
+
       </View>
       {/*---------------------- Video Scroll View--------------------*/}
       <ScrollView vertical={true} showsHorizontalScrollIndicator={false} >
         <Card style={styles.menu2}>
-          <View>
+          <View style={{alignItems: 'center'}}>
             {videos.map(vid => (
               <ol >
                 <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
@@ -145,7 +149,7 @@ export default function MedicalHome({ navigation }) {
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                     style={{
-                      width: 355, marginLeft: -
+                      width: 315, marginLeft: -
                         40, borderRadius: 25
                     }}
                   />
@@ -156,15 +160,18 @@ export default function MedicalHome({ navigation }) {
           </View>
         </Card  >
       </ScrollView >
+
       <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
         <Text style={{ color: '#F47066' }}>Upload</Text>
       </TouchableOpacity>
+
     </View>
   )
 }
 const styles = StyleSheet.create({
   contain: {
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   header: {
@@ -187,9 +194,9 @@ const styles = StyleSheet.create({
 
   menu2: {
     width: 355,
-    height: 520,
+    height: 260,
     marginLeft: 10,
-    marginTop: 20,
+    marginTop: 50,
     borderRadius: 15,
     shadowColor: "#fff",
     shadowOffset: {

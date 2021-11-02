@@ -68,14 +68,7 @@ export default function SignIn({ navigation, setDone }) {
         <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
           <Text style={{ color: '#F47066' }}> SignUp</Text>
         </TouchableOpacity>
-        <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
-          Medical Personel?</Text>
-        <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-          <Text style={{ color: '#F47066' }}> SignUp</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
-          <Text style={{ color: '#F47066' }}> SignIn</Text>
-        </TouchableOpacity>
+    
       </View>
     </View>
   )
