@@ -15,15 +15,29 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 // You can import from local files
-import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHome, UploadVideo } from './src/Screens';
+import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHome } from './src/Screens';
 import { auth } from './src/firebase'
 import { ActivityIndicator } from 'react-native-paper';
 
+
 const Stack = createNativeStackNavigator();
 
+
+import { LoadSet } from './src/firebase';
+
+
+
+
+
 export default function App() {
+
+  
+  
   const [successful, setSuccess] = useState(false),
-    [user, setUser] = useState(null);
+    [user, setUser] = useState(null),
+    [load, setLoad] = useState();
+    LoadSet(setLoad)
+    console.log(load)
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       setUser(user)
@@ -41,19 +55,6 @@ export default function App() {
       <KeyboardAwareScrollView>
         {successful ? (
           user ? (
-            // Main Application
-            <Stack.Navigator initialRouteName="Home">
-              <Stack.Screen name="Home" options={{ headerShown: false }} >
-                {props => <Home {...props} setDone={setSuccess} />}
-              </Stack.Screen>
-              <Stack.Screen name="Strokes" component={Strokes} options={{ headerShown: false }} />
-
-              <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
-              
-              <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
-            </Stack.Navigator>
-          ) : (
-            //Loader
             <Stack.Navigator initialRouteName="SignIn">
               <Stack.Screen name="Sign In" options={{ headerShown: false }} >
                 {props => <SignIn {...props} setDone={setSuccess} />}
@@ -71,6 +72,20 @@ export default function App() {
 
               
             </Stack.Navigator>
+           
+          ) : (
+            //Loader
+             // Main Application
+            <Stack.Navigator initialRouteName="Home">
+              <Stack.Screen name="Home" options={{ headerShown: false }} >
+                {props => <Home {...props} setDone={setSuccess} />}
+              </Stack.Screen>
+              <Stack.Screen name="Strokes" component={Strokes} options={{ headerShown: false }} />
+
+              <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
+              
+            </Stack.Navigator>
+            
           )
         ) : (
           // Login/Sign functions

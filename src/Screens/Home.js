@@ -45,6 +45,7 @@ import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 import { auth } from '../firebase';
+
 export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
@@ -91,10 +92,13 @@ export default function Home({ navigation, setDone }) {
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
   ];
-  const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  );
+
+  const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
+
   const [status, setStatus] = React.useState({});
+
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
@@ -111,9 +115,7 @@ export default function Home({ navigation, setDone }) {
           <Text style={{ fontSize: 36, paddingLeft: 30, color: 'red',              
                          textShadowColor: 'grey',  
                          textShadowOffset: { width: 2, height: 2 }, 
-                         textShadowOffset: { width: 20, height: 2 },
-                         textShadowRadius: 1}}
-          >
+                         textShadowRadius: 1}} >
                          EMERGENCY
           </Text>
 
