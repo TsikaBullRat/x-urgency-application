@@ -105,11 +105,13 @@ export default function Home({ navigation, setDone }) {
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
 
-          <Text style={{ fontSize: 36, paddingLeft: 30,  
-                         color: 'turquoise',
-                         textShadowColor: 'grey',  textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1}}
+          <Text style={{
+            fontSize: 36, paddingLeft: 30,
+            color: 'turquoise',
+            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
+          }}
           >
-                         What's your
+            What's your
           </Text>
 
           <Text style={{ fontSize: 36, paddingLeft: 30, color: 'red',              

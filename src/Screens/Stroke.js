@@ -41,6 +41,7 @@ export default function Strokes({ navigation: { goBack } }) {
         <AntDesign name="arrowleft" size={24} color="black" />
       </TouchableOpacity>
 
+
       <View style={{ width: 315, marginTop: 50, marginLeft: 30 }}>
          <Video
           source={{ uri: videoPlay }}
@@ -51,6 +52,9 @@ export default function Strokes({ navigation: { goBack } }) {
           isLooping
           style={{ borderRadius: 25 }}
         />
+
+      <View style={{ width: 315, marginTop: 50, marginLeft: 30 }}>
+
       </View>
 
       <View style={styles.descriptionContainer}>
