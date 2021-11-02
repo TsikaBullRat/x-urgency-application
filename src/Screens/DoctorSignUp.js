@@ -77,10 +77,6 @@ export default function DoctorSignUp({ navigation }) {
                         />
                     </View>
                 </Card>
-<<<<<<< HEAD
-
-=======
->>>>>>> c355ec47b33954d28e659c0ce40bc7f06710f2fa
                 <Card style={styles.txtCards}>
                     <View style={{ flexDirection: 'row' }}>
                         <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />

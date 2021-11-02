@@ -60,17 +60,20 @@ export default function SignIn({ navigation, setDone }) {
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
           <Text style={{ paddingLeft: 220, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
         </TouchableOpacity>
-
         <TouchableOpacity style={styles.signIn} onPress={Login}>
           <Text style={{ color: '#fff' }}>LOGIN </Text>
         </TouchableOpacity>
-
         <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
           New User?
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
             <Text style={{ color: '#F47066' }}> Sign Up</Text>
           </TouchableOpacity>
-
+        </Text>
+        <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
+          Doctor Sign Up?
+          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
+            <Text style={{ color: '#F47066' }}> Sign Up</Text>
+          </TouchableOpacity>
         </Text>
       </View>
     </View>
@@ -88,19 +91,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
-
   header: {
     paddingTop: 300,
     paddingLeft: 130,
     paddingLeft: 150,
   },
-
   txtUser: {
     width: 320,
     height: 50,
@@ -109,7 +109,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-
   txtPass: {
     width: 320,
     height: 50,
@@ -119,7 +118,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-
   txtRePass: {
     width: 320,
     height: 50,
@@ -129,7 +127,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-
   txtCards: {
     backgroundColor: 'lightgrey',
     width: 320,
@@ -138,7 +135,6 @@ const styles = StyleSheet.create({
     marginLeft: 28,
     marginTop: 25
   },
-
   signIn: {
     height: 50,
     width: 200,

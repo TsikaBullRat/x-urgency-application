@@ -101,20 +101,24 @@ export default function Home({ navigation, setDone }) {
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
 
-          <Text style={{ fontSize: 36, paddingLeft: 30,  
-                         color: 'turquoise',
-                         textShadowColor: 'grey',  textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1}}
+          <Text style={{
+            fontSize: 36, paddingLeft: 30,
+            color: 'turquoise',
+            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
+          }}
           >
-                         What's your
+            What's your
           </Text>
 
-          <Text style={{ fontSize: 36, paddingLeft: 30, color: 'red',              
-                         textShadowColor: 'grey',  
-                         textShadowOffset: { width: 2, height: 2 }, 
-                         textShadowOffset: { width: 20, height: 2 },
-                         textShadowRadius: 1}}
+          <Text style={{
+            fontSize: 36, paddingLeft: 30, color: 'red',
+            textShadowColor: 'grey',
+            textShadowOffset: { width: 2, height: 2 },
+            textShadowOffset: { width: 20, height: 2 },
+            textShadowRadius: 1
+          }}
           >
-                         EMERGENCY
+            EMERGENCY
           </Text>
 
         </View>

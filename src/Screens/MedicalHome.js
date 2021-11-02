@@ -101,16 +101,20 @@ export default function MedicalHome({ navigation, setDone }) {
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
 
-           <Text style={{ fontSize: 36, paddingLeft: 30,  
-                         color: 'turquoise',
-                         textShadowColor: 'grey',  textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1}}
-            >
-                         
-                         Dr. DoLittle
+          <Text style={{
+            fontSize: 36, paddingLeft: 30,
+            color: 'turquoise',
+            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
+          }}
+          >
+
+            Dr. DoLittle
           </Text>
 
-          <Text style={{ fontSize: 36, paddingLeft: 30, color: 'red',              
-    textShadowColor: 'grey',  textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1}}>In Da House</Text>
+          <Text style={{
+            fontSize: 36, paddingLeft: 30, color: 'red',
+            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
+          }}>In Da House</Text>
         </View>
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar}

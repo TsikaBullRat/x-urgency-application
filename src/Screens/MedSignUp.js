@@ -88,19 +88,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
-
   header: {
     paddingTop: 300,
     paddingLeft: 130,
     paddingLeft: 150,
   },
-
   txtUser: {
     width: 320,
     height: 50,
@@ -109,7 +106,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-
   txtPass: {
     width: 320,
     height: 50,
@@ -119,7 +115,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-
   txtRePass: {
     width: 320,
     height: 50,
@@ -129,7 +124,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-
   txtCards: {
     backgroundColor: 'lightgrey',
     width: 320,
@@ -138,7 +132,6 @@ const styles = StyleSheet.create({
     marginLeft: 28,
     marginTop: 25
   },
-
   signIn: {
     height: 50,
     width: 200,
