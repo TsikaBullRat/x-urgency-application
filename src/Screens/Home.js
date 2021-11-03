@@ -107,23 +107,22 @@ export default function Home({ navigation, setDone }) {
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
-
-          <Text style={{ fontSize: 36, paddingLeft: 30,  
-                         color: 'turquoise',
-                         textShadowColor: 'grey',  textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1}}
+          <Text style={{
+            fontSize: 36, paddingLeft: 30,
+            color: 'turquoise',
+            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
+          }}
           >
-                         What's your
+            What's your
           </Text>
-
-          <Text style={{ fontSize: 36, paddingLeft: 30, color: 'red',              
-                         textShadowColor: 'grey',  
-                         textShadowOffset: { width: 2, height: 2 }, 
-                         textShadowOffset: { width: 20, height: 2 },
-                         textShadowRadius: 1}}
-          >
-                         EMERGENCY
+          <Text style={{
+            fontSize: 36, paddingLeft: 30, color: 'red',
+            textShadowColor: 'grey',
+            textShadowOffset: { width: 2, height: 2 },
+            textShadowRadius: 1
+          }} >
+            EMERGENCY
           </Text>
-
         </View>
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar}
@@ -198,8 +197,9 @@ export default function Home({ navigation, setDone }) {
           </TouchableOpacity>
         </ScrollView>
       </Card>
+
       {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView vertical={true} >
+      <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
             {videos?(videos.map(vid => (
@@ -207,13 +207,12 @@ export default function Home({ navigation, setDone }) {
                   <Video
                     ref={video}
                     source={{ uri: vid.url }}
-                    // useNativeControls
                     resizeMode="contain"
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                     style={{
-                      width: 355, marginLeft: -
-                        40, borderRadius: 25
+                      width: 315, marginLeft: -
+                        10
                     }}
                   />
                   <h4>{vid.title}</h4>
@@ -222,15 +221,25 @@ export default function Home({ navigation, setDone }) {
           </View>
         </Card  >
       </ScrollView >
+
+      <View style={{ paddingTop: 20 }}>
+        <TouchableOpacity>
+          Med Home
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
 const styles = StyleSheet.create({
+  contain: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff'
+  },
   header: {
     flexDirection: 'column',
     paddingTop: 50
   },
-
   avatar: {
     width: 70,
     height: 70,
@@ -244,14 +253,6 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
 
-  txtSearch: {
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
-  },
 
   txtCards: {
     backgroundColor: 'lightgray',
@@ -270,14 +271,12 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     elevation: 1,
   },
-
   menu: {
     width: 355,
     left: 10,
     marginTop: 20,
     borderRadius: 15,
   },
-
   strokeMenu: {
     height: 30,
     width: 30,
@@ -287,7 +286,6 @@ const styles = StyleSheet.create({
     marginLeft: 3,
     marginTop: 10
   },
-
   heartMenu: {
     height: 35,
     width: 35,
@@ -295,14 +293,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 12
   },
-
   epilepsyMenu: {
     height: 50,
     width: 50,
     borderRadius: 15,
     marginLeft: 6
   },
-
   cprMenu: {
     height: 35,
     width: 35,
@@ -310,14 +306,12 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8
   },
-
   bloodMenu: {
     height: 35,
     width: 35,
     borderRadius: 15,
     marginTop: 8
   },
-
   conImg: {
     height: 35,
     width: 35,
@@ -325,7 +319,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 8
   },
-
   drown: {
     height: 40,
     width: 40,
@@ -333,7 +326,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 8,
   },
-
   burn: {
     height: 35,
     width: 35,
@@ -341,23 +333,11 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8
   },
-
   menu2: {
-    width: 355,
+    width: 315,
     height: 520,
-    marginLeft: 10,
     marginTop: 20,
     borderRadius: 15,
-    shadowColor: "#fff",
-    shadowWidth: 20,
-    shadowOffset: {
-    },
-    shadowOpacity: 0.8,
-    shadowRadius: 3.84,
-    borderBottomWidth: 4,
-    borderRightWidth: 2,
-    elevation: 5,
   },
-
 });
 

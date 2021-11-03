@@ -1,23 +1,5 @@
 import { storage } from '../config'
 
-// const LoadSet = (Load) => {
-
-//     var content
-//     storage.ref().child('').listAll()
-//         .then(res=>{
-//             res.items.forEach(itemRef=>{
-//                 let link = itemRef.toString()
-//                 let name = itemRef.name
-//                 content=[...content, {link: link, title: name}]
-//                 console.log(name)
-//                 return content
-//             })
-//             Load(content)
-//         })
-//         .catch(err=>{
-//             return null
-//         })
-// }
 const LoadSet = (Load) => {
 
     var content = []
