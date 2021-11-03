@@ -49,11 +49,6 @@ export default function Strokes({ navigation }) {
 
   return (
     <View style={styles.contain}>
-      <TouchableOpacity
-        onPress={goBack}>
-        <AntDesign name="arrowleft" size={24} color="black" />
-      </TouchableOpacity>      
-
 
       <View style={{ width: 365 }}>
       

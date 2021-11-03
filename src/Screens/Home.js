@@ -109,6 +109,7 @@ export default function Home({ navigation, setDone }) {
           >
             What's your
           </Text>
+
           <Text style={{
             fontSize: 36, paddingLeft: 30, color: 'red',
             textShadowColor: 'grey',
@@ -118,11 +119,12 @@ export default function Home({ navigation, setDone }) {
             EMERGENCY
           </Text>
         </View>
+
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar}
             rounded
             source={{
-              uri: 'https://randomuser.me/api/portraits/men/41.jpg',
+              uri: 'https://randomuser.me/api/portraits/men/44.jpg',
             }}
             size="large"
           />
@@ -218,11 +220,6 @@ export default function Home({ navigation, setDone }) {
         </Card  >
       </ScrollView >
 
-      <View style={{ paddingTop: 20 }}>
-        <TouchableOpacity>
-          Med Home
-        </TouchableOpacity>
-      </View>
     </View>
   )
 }
