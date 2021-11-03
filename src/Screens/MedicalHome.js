@@ -160,7 +160,7 @@ export default function MedicalHome({ navigation }) {
       </ScrollView >
 
       <TouchableOpacity style={styles.btnUpload} onPress={() => { navigation.navigate('Upload') }}>
-        <Text style={{ color: '#fff', fontSize: 32 }}>+</Text>
+        <Text style={{ color: '#fff', fontSize: 26 }}>+</Text>
       </TouchableOpacity>
     </View>
   )
@@ -205,12 +205,11 @@ const styles = StyleSheet.create({
 
   btnUpload: {
     backgroundColor: '#F47066', 
-    height: 5, 
-    width: 30, 
+    height: 40, 
+    width: 40, 
     borderRadius: 50, 
     textAlign: 'center', 
-    marginLeft: 280, 
-    paddingBottom: 60,
+    marginLeft: 280
   },
   
 });

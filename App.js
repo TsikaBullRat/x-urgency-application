@@ -24,7 +24,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [successful, setSuccess] = useState(false),
-    [user, setUser] = useState(null),
+    [user, setUser] = useState(''),
     [load, setLoad] = useState();
 
   LoadSet(setLoad)

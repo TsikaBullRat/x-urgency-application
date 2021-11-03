@@ -76,6 +76,7 @@ export default function UploadVideo({ navigation }) {
       <View style={{ marginTop: 50 }}>
 
         <Text style={styles.header}>Fill in Info. below:</Text>
+        
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: "row" }}>
             <TextInput
@@ -116,9 +117,11 @@ export default function UploadVideo({ navigation }) {
       <Text style={styles.instructions}>
         To share a video from your phone/PC , just press the button below!
       </Text>
+
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
         <Text style={styles.buttonText}>Pick a video</Text>
       </TouchableOpacity>
+
     </View>
   );
 }
@@ -135,11 +138,6 @@ const styles = StyleSheet.create({
     color: '#F47066',
   },
 
-  logo: {
-    width: 305,
-    height: 159,
-    marginTop: 450,
-  },
 
   instructions: {
     color: "#888",

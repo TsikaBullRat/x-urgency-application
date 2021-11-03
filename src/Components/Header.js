@@ -10,9 +10,15 @@
     * - Author          : TLeeuw
     * - Modification    : 
 **/
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
+import { Avatar, Badge } from 'react-native-elements';
+
+export default function Header() {
 
 
-
+  return (
+    <View style={styles.contain}>
 {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
@@ -39,7 +45,7 @@
           <Avatar style={styles.avatar}
             rounded
             source={{
-              uri: 'https://randomuser.me/api/portraits/men/44.jpg',
+              uri: 'https://randomuser.me/api/portraits/men/40.jpg',
             }}
             size="large"
           />
@@ -48,4 +54,33 @@
             containerStyle={{ position: 'absolute', top: -4, right: -4 }}
           />
         </View>
-      </View>
+        </View>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  contain: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff'
+  },
+  header: {
+    flexDirection: 'column',
+    paddingTop: 50
+  },
+
+  avatar: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    margingTop: 80,
+    borderBottomWidth: 3,
+    borderColor: 'turquoise',
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.4,
+    elevation: 1,
+  },
+
+})
