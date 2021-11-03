@@ -25,10 +25,14 @@ import {Dislikes} from '../Functions/Dislikes'
 export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')
   const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
+<<<<<<< HEAD
 
  
+=======
+  const [videoVisible, setVideoVisible] = useState(true);
+>>>>>>> 0bf50af6ca06559e0bf6cf811fc80bde22608b18
   const setVid = () => {
-   setVideoPlay()
+    setVideoPlay()
   }
 
   const [comments, setComments] = useState({ userName })
@@ -45,27 +49,33 @@ export default function Strokes({ navigation }) {
     return setStyleStatusBar(styleTypes[styleId]);
   };
 
-
-
   return (
     <View style={styles.contain}>
-
       <View style={{ width: 365 }}>
+<<<<<<< HEAD
       
       <Video
+=======
+        {videoVisible && <Video
+>>>>>>> 0bf50af6ca06559e0bf6cf811fc80bde22608b18
           source={{ uri: videoPlay }}
-          
           rate={1.0}
           volume={1.0}
           isMuted
           useNativeControls
           resizeMode="contain"
           isLooping
+<<<<<<< HEAD
           style={{ borderRadius: 25}}
         />
       </View> 
 
 
+=======
+          style={{ borderRadius: 25 }}
+        />}
+      </View>
+>>>>>>> 0bf50af6ca06559e0bf6cf811fc80bde22608b18
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
@@ -120,7 +130,6 @@ export default function Strokes({ navigation }) {
                 </View>
               </View>
             </Card>
-                             
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
               <Avatar
@@ -130,7 +139,7 @@ export default function Strokes({ navigation }) {
                 }}
                 size="medium"
               />
-              <Text style={{ paddingTop: 15, paddingLeft: 15 }}>
+              <Text style={{ paddingTop: 15, paddingLeft: 15 }} onPress=  {navigation.navigate('Doctor')}>
                 {userName}
               </Text>
             </View>
@@ -147,7 +156,6 @@ export default function Strokes({ navigation }) {
                 backgroundColor: '#fff',
                 marginTop: 15,
               }}>
-
               <View style={{ flexDirection: 'row' }}>
                 <Text
                   style={{
@@ -227,7 +235,6 @@ export default function Strokes({ navigation }) {
         
         )}
       </View>
-
       <ScrollView showsVerticalScrollIndicator={false}
       >
 

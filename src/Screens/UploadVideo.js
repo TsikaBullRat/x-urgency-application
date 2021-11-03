@@ -41,7 +41,6 @@ export default function UploadVideo({ navigation }) {
     }
     setSelectedImage({ localUri: pickerResult.uri });
   };
-
   let openShareDialogAsync = async () => {
     if (!(await Sharing.isAvailableAsync())) {
       alert(`Uh oh, sharing isn't available on your platform`);
@@ -113,7 +112,6 @@ export default function UploadVideo({ navigation }) {
           </View>
         </Card>
       </View>
-
       <Text style={styles.instructions}>
         To share a video from your phone/PC , just press the button below!
       </Text>

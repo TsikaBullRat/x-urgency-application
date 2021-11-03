@@ -25,19 +25,22 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [successful, setSuccess] = useState(false),
     [user, setUser] = useState(''),
+<<<<<<< HEAD
     [load, setLoad] = useState('');
 
+=======
+    [load, setLoad] = useState();
+>>>>>>> 0bf50af6ca06559e0bf6cf811fc80bde22608b18
   LoadSet(setLoad)
   console.log(load)
   useEffect(() => {
     auth.onAuthStateChanged(user => {
-      setUser(user)
+      setUser(true)
       setSuccess(true)
     })
-
     return () => {
       auth.onAuthStateChanged(user => {
-        setUser(user)
+        setUser(true)
         setSuccess(true)
       })
     }
@@ -57,31 +60,24 @@ export default function App() {
               </Stack.Screen>
               <Stack.Screen name="Doctor SignUp" component={DoctorSignUp} options={{ headerShown: false }}>
               </Stack.Screen>
-
-              <Stack.Screen name="Doctor SignIn" component={DoctorSignUp} options={{ headerShown: false }}/>
-           
+              <Stack.Screen name="Doctor SignIn" component={DoctorSignUp} options={{ headerShown: false }} />
               <Stack.Screen name="Home" options={{ headerShown: false }} >
                 {props => <Home {...props} setDone={setSuccess} />}
               </Stack.Screen>
-              
               <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }}>
               </Stack.Screen>
               <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
               <Stack.Screen name="Upload" component={UploadVideo} options={{ headerShown: false }} />
               <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
-
               <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
-
               <Stack.Screen name="DocProfile" component={DocProfile} options={{ headerShown: false }} />
-
-              <Stack.Screen name="DocSignUp" component={DocSignUp} options={{ headerShown: false }} />
-
+              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
             </Stack.Navigator>
           ) : (
             //Loader
-            <Stack.Navigator initialRouteName="Home">
-              <Stack.Screen name="Home" options={{ headerShown: false }} >
-                {props => <Home {...props} setDone={setSuccess} />}
+            <Stack.Navigator initialRouteName="Doctor">
+              <Stack.Screen name="Doctor" options={{ headerShown: false }} >
+                {props => <Doctor {...props} />}
               </Stack.Screen>
             </Stack.Navigator>
           )
