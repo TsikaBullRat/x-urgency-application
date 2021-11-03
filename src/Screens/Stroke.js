@@ -1,27 +1,3 @@
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 07/10/2021 - 10:05:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 07/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 05/10/2021 - 14:22:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 05/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';

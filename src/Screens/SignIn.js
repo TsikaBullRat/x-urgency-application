@@ -31,7 +31,7 @@ export default function SignIn({ navigation, setDone }) {
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={76} color="#fff" />
+          <FontAwesome name="heartbeat" size={146} color="#fff" />
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>

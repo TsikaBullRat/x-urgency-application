@@ -1,5 +1,17 @@
 {
+<<<<<<< HEAD
     "cSpell.words": [
         "Leeuw"
     ]
+=======
+    "debug.allowBreakpointsEverywhere": true,
+    "files.autoGuessEncoding": true,
+    "files.exclude": {
+        "**/.vscode": true,
+        "compile_commands.json": true,
+        "*.hrccproj": true,
+        "*.sln": true,
+        "*.suo": true
+    }
+>>>>>>> 9112f4e1be65cb68c6bfb7a748b4d98a32af1ad8
 }
