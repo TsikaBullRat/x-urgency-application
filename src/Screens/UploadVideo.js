@@ -24,7 +24,7 @@ import { Card } from "react-native-paper";
 import * as ImagePicker from "expo-image-picker";
 import * as Sharing from "expo-sharing";
 
-export default function App({ navigation }) {
+export default function UploadVideo({ navigation }) {
   let [selectedImage, setSelectedImage] = useState(null);
 
   let openImagePickerAsync = async () => {
@@ -74,6 +74,8 @@ export default function App({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={{ marginTop: 50 }}>
+
+        <Text style={styles.header}>Fill in Info. below:</Text>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: "row" }}>
             <TextInput
@@ -125,6 +127,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  header: {
+    fontSize: 28, 
+    textAlign: 'center', 
+    color: '#F47066',
   },
 
   logo: {

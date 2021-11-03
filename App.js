@@ -50,7 +50,7 @@ export default function App() {
           user ? (
             <Stack.Navigator initialRouteName="SignIn">
               <Stack.Screen name="Sign In" options={{ headerShown: false }} >
-                {props => <UploadVideo {...props} setDone={setSuccess} />}
+                {props => <SignIn {...props} setDone={setSuccess} />}
               </Stack.Screen>
               <Stack.Screen name="Sign Up" options={{ headerShown: false }}>
                 {props => <SignUp {...props} setDone={setSuccess} />}
