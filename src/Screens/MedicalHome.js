@@ -158,14 +158,9 @@ export default function MedicalHome({ navigation }) {
           </View>
         </Card  >
       </ScrollView >
-<<<<<<< HEAD
 
       <TouchableOpacity style={styles.btnUpload} onPress={() => { navigation.navigate('Upload') }}>
         <Text style={{ color: '#fff', fontSize: 32 }}>+</Text>
-=======
-      <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
-        <Text style={{ color: '#F47066' }}>Upload</Text>
->>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
       </TouchableOpacity>
     </View>
   )

@@ -44,20 +44,14 @@ export default function App({ navigation }) {
     return (
       <View style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-<<<<<<< HEAD
         <TouchableOpacity onPress={() => {navigation.navigate('MedicalHome')}} style={styles.button}>
           <Text style={styles.buttonText}>Upload Video</Text>
-=======
-        <TouchableOpacity onPress={() => { navigation.navigate('MedicalHome') }} style={styles.button}>
-          <Text style={styles.buttonText}>Share this video</Text>
->>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
         </TouchableOpacity>
       </View>
     );
   }
   return (
     <View style={styles.container}>
-<<<<<<< HEAD
 
       <View style={{marginTop: 50}}>
 
@@ -86,8 +80,6 @@ export default function App({ navigation }) {
         </Card> 
       </View>
       
-=======
->>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
       <Text style={styles.instructions}>
         To share a video from your phone/PC , just press the button below!
       </Text>

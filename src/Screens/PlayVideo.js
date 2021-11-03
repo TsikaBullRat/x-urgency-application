@@ -17,29 +17,18 @@ import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
-<<<<<<< HEAD
 import { Video } from 'expo-av';
 import {Likes} from '../Components/Likes'
 import {Dislikes} from '../Components/Dislikes'
 
-=======
-import { Video, AVPlaybackStatus } from 'expo-av';
-import { Likes } from '../Components/Likes'
-import { Dislikes } from '../Components/Dislikes'
->>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
 
 export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')
   const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
-<<<<<<< HEAD
 
   const [videoVisible, setVideoVisible] = useState(true);
 
   
-=======
-  const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
->>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
   const setVid = () => {
    setVideoPlay()
   }
@@ -55,29 +44,20 @@ export default function Strokes({ navigation }) {
     }
     return setStyleStatusBar(styleTypes[styleId]);
   };
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
   return (
     <View style={styles.contain}>
       <TouchableOpacity
         onPress={goBack}>
         <AntDesign name="arrowleft" size={24} color="black" />
-<<<<<<< HEAD
       </TouchableOpacity>      
 
 
       <View style={{ width: 365 }}>
       
       {videoVisible && <Video
-=======
-      </TouchableOpacity>
-      <View style={{ width: 315, marginTop: 50, marginLeft: 30 }}>
-        <Video
->>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
           source={{ uri: videoPlay }}
           
           rate={1.0}
@@ -86,24 +66,11 @@ export default function Strokes({ navigation }) {
           useNativeControls
           resizeMode="contain"
           isLooping
-<<<<<<< HEAD
           style={{ borderRadius: 25}}
         />}
-
-        <TouchableOpacity onPress={()=>{setVideoVisible(false)}}>
-        <Text >
-          Toggle Visibility
-        </Text>
-      </TouchableOpacity>
-
       </View> 
 
 
-=======
-          style={{ borderRadius: 25 }}
-        />
-      </View>
->>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
@@ -158,13 +125,7 @@ export default function Strokes({ navigation }) {
                 </View>
               </View>
             </Card>
-<<<<<<< HEAD
-            
-
-          
-          
-=======
->>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
+                             
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
               <Avatar
@@ -319,15 +280,11 @@ export default function Strokes({ navigation }) {
           </View>
         )}
       </View>
-<<<<<<< HEAD
 
       <ScrollView showsVerticalScrollIndicator={false}
       >
 
       <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
-=======
-      <Card style={{ height: 40, width: 315, marginTop: 5, marginLeft: 10 }}>
->>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
         <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
         {/*userName Array*/}
         <Card style={{
