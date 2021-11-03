@@ -16,14 +16,12 @@ import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../firebase';
 import { AlertNote } from '../Components/Alert';
-
 export default function SignUp({ navigation }) {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [Confirmpassword, setConfirmPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("")
-
   const Register = () => {
     handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage)
     setDisplaModal(true)
@@ -70,14 +68,12 @@ export default function SignUp({ navigation }) {
               onChangeText={text => setConfirmPassword(text)}
             />
           </View>
-        </Card> 
-
-        <View style={{alignItems:'center'}}>
-        <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
-          <Text style={{ color: '#fff' }} >SIGN_UP </Text>
-        </TouchableOpacity>
+        </Card>
+        <View style={{ alignItems: 'center' }}>
+          <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
+            <Text style={{ color: '#fff' }} >SIGN_UP </Text>
+          </TouchableOpacity>
         </View>
- 
       </View>
     </View>
   )
@@ -86,31 +82,25 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
   },
-
-
   card: {
     position: 'absolute',
     backgroundColor: '#F47066',
-
     width: 325,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    alignItems: 'center', 
+    alignItems: 'center',
     justifyContent: 'center'
   },
-
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
-
   header: {
-    paddingTop: 205,  
-    textAlign: 'center' 
+    paddingTop: 205,
+    textAlign: 'center'
   },
-
   txtUser: {
     width: 280,
     height: 40,
@@ -118,7 +108,6 @@ const styles = StyleSheet.create({
     outline: 'none',
     backgroundColor: 'lightgrey'
   },
-
   txtPass: {
     width: 280,
     height: 40,
@@ -127,7 +116,6 @@ const styles = StyleSheet.create({
     border: 0,
     backgroundColor: 'lightgrey',
   },
-
   txtRePass: {
     width: 280,
     height: 40,
@@ -136,7 +124,6 @@ const styles = StyleSheet.create({
     border: 0,
     backgroundColor: 'lightgrey',
   },
-
   txtCards: {
     backgroundColor: 'lightgrey',
     width: 280,
@@ -144,7 +131,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 25
   },
-
   signIn: {
     height: 40,
     width: 150,

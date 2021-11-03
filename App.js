@@ -52,45 +52,41 @@ export default function App() {
               <Stack.Screen name="Sign In" options={{ headerShown: false }} >
                 {props => <UploadVideo {...props} setDone={setSuccess} />}
               </Stack.Screen>
-
-              <Stack.Screen name="Home" options={{ headerShown: false }} >
-                {props => <Home {...props} setDone={setSuccess} />}
-              </Stack.Screen>
-
               <Stack.Screen name="Sign Up" options={{ headerShown: false }}>
                 {props => <SignUp {...props} setDone={setSuccess} />}
               </Stack.Screen>
-
               <Stack.Screen name="Doctor SignUp" component={DoctorSignUp} options={{ headerShown: false }}>
               </Stack.Screen>
+<<<<<<< HEAD
 
               <Stack.Screen name="Doctor SignIn" component={DoctorSignUp} options={{ headerShown: false }}/>
            
 
+=======
+              <Stack.Screen name="Doctor SignIn" component={DoctorSignUp} options={{ headerShown: false }}>
+              </Stack.Screen>
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
               <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }}>
               </Stack.Screen>
-              
               <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
-              
               <Stack.Screen name="Upload" component={UploadVideo} options={{ headerShown: false }} />
-            
               <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
 
               <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
+<<<<<<< HEAD
 
               <Stack.Screen name="DocProfile" component={DocProfile} options={{ headerShown: false }} />
 
+=======
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
             </Stack.Navigator>
-            
           ) : (
             //Loader
             <Stack.Navigator initialRouteName="Home">
-  
-              
-              
-
+              <Stack.Screen name="Home" options={{ headerShown: false }} >
+                {props => <Home {...props} setDone={setSuccess} />}
+              </Stack.Screen>
             </Stack.Navigator>
-            
           )
         ) : (
           // Login/Sign functions

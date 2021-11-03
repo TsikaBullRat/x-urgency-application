@@ -63,7 +63,7 @@ export default function Home({ navigation, setDone }) {
     {
       id: 3,
       title: "Epilepsy",
-      url:'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
+      url: 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
     },
     {
       id: 4,
@@ -218,7 +218,7 @@ export default function Home({ navigation, setDone }) {
         </Card  >
       </ScrollView >
 
-      <View style={{paddingTop: 20}}>
+      <View style={{ paddingTop: 20 }}>
         <TouchableOpacity>
           Med Home
         </TouchableOpacity>
@@ -232,7 +232,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#fff'
   },
-
   header: {
     flexDirection: 'column',
     paddingTop: 50

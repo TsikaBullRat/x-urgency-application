@@ -16,7 +16,7 @@ import {Card} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 
-export default function App({navigation}) {
+export default function App({ navigation }) {
   let [selectedImage, setSelectedImage] = React.useState(null);
 
   let openImagePickerAsync = async () => {
@@ -26,13 +26,11 @@ export default function App({navigation}) {
       alert('Permission to access camera roll is required!');
       return;
     }
-
     let pickerResult = await ImagePicker.launchImageLibraryAsync();
     if (pickerResult.cancelled === true) {
       return;
     }
-
-    setSelectedImage({ localUri: pickerResult.uri }); 
+    setSelectedImage({ localUri: pickerResult.uri });
   };
 
   let openShareDialogAsync = async () => {
@@ -40,23 +38,26 @@ export default function App({navigation}) {
       alert(`Uh oh, sharing isn't available on your platform`);
       return;
     }
-
     await Sharing.shareAsync(selectedImage.localUri);
   };
-
   if (selectedImage !== null) {
     return (
       <View style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
+<<<<<<< HEAD
         <TouchableOpacity onPress={() => {navigation.navigate('MedicalHome')}} style={styles.button}>
           <Text style={styles.buttonText}>Upload Video</Text>
+=======
+        <TouchableOpacity onPress={() => { navigation.navigate('MedicalHome') }} style={styles.button}>
+          <Text style={styles.buttonText}>Share this video</Text>
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
         </TouchableOpacity>
       </View>
     );
   }
- 
   return (
     <View style={styles.container}>
+<<<<<<< HEAD
 
       <View style={{marginTop: 50}}>
 
@@ -85,19 +86,19 @@ export default function App({navigation}) {
         </Card> 
       </View>
       
+=======
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
       <Text style={styles.instructions}>
         To share a video from your phone/PC , just press the button below!
       </Text>
-
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
         <Text style={styles.buttonText}>Pick a video</Text>
       </TouchableOpacity>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
- container: {
+  container: {
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',

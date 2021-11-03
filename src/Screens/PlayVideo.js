@@ -17,28 +17,37 @@ import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
+<<<<<<< HEAD
 import { Video } from 'expo-av';
 import {Likes} from '../Components/Likes'
 import {Dislikes} from '../Components/Dislikes'
 
+=======
+import { Video, AVPlaybackStatus } from 'expo-av';
+import { Likes } from '../Components/Likes'
+import { Dislikes } from '../Components/Dislikes'
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
 
 export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')
   const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
+<<<<<<< HEAD
 
   const [videoVisible, setVideoVisible] = useState(true);
 
   
+=======
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
   const setVid = () => {
    setVideoPlay()
   }
-
   const [comments, setComments] = useState({ userName })
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
   const changeVisibilityStatusBar = () => {
     setVisibleStatusBar(!visibleStatusBar);
   };
-
   const changeStyleStatusBar = () => {
     const styleId = styleTypes.indexOf(styleStatusBar) + 1;
     if (styleId === styleTypes.length) {
@@ -46,22 +55,29 @@ export default function Strokes({ navigation }) {
     }
     return setStyleStatusBar(styleTypes[styleId]);
   };
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
   return (
     <View style={styles.contain}>
       <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('Home');
-        }}>
+        onPress={goBack}>
         <AntDesign name="arrowleft" size={24} color="black" />
+<<<<<<< HEAD
       </TouchableOpacity>      
 
 
       <View style={{ width: 365 }}>
       
       {videoVisible && <Video
+=======
+      </TouchableOpacity>
+      <View style={{ width: 315, marginTop: 50, marginLeft: 30 }}>
+        <Video
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
           source={{ uri: videoPlay }}
           
           rate={1.0}
@@ -70,6 +86,7 @@ export default function Strokes({ navigation }) {
           useNativeControls
           resizeMode="contain"
           isLooping
+<<<<<<< HEAD
           style={{ borderRadius: 25}}
         />}
 
@@ -82,10 +99,15 @@ export default function Strokes({ navigation }) {
       </View> 
 
 
+=======
+          style={{ borderRadius: 25 }}
+        />
+      </View>
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
-            <View style={{ flexDirection: 'row', paddingLeft: 30, marginTop:15}}>
+            <View style={{ flexDirection: 'row', paddingLeft: 30, marginTop: 15 }}>
               <Text style={{ fontWeight: 'bold' }}>Stroke Emergency Video</Text>
               <TouchableOpacity
                 title="topNav"
@@ -99,52 +121,50 @@ export default function Strokes({ navigation }) {
               </TouchableOpacity>
             </View>
             <Text style={{ fontSize: 10, paddingLeft: 35 }}>
-              1.7M views - 2years ago  
-            </Text>  
-
-
+              1.7M views - 2years ago
+            </Text>
             <Card
               style={{
                 borderColor: 'black',
                 width: 315,
-                marginTop: 5,  
-                marginLeft: 25,  
+                marginTop: 5,
+                marginLeft: 25,
               }}>
               <View
                 style={{ flexDirection: 'row', marginTop: 5, marginLeft: 3 }}>
-                  <View>
+                <View>
                   <Likes />
-                   </View>
-
-                <View style={{ marginLeft: 32, marginTop: 3}}>   
-                  <Dislikes /> 
-                </View>   
-  
+                </View>
+                <View style={{ marginLeft: 32, marginTop: 3 }}>
+                  <Dislikes />
+                </View>
                 <View style={{ marginLeft: 40 }}>
                   <FontAwesome5
                     name="share"
                     size={20}
                     color="black"
-                   style={{ marginLeft: 11}}     
+                    style={{ marginLeft: 11 }}
                   />
-                  <Text style={{ paddingTop: 5 }}> Share </Text> 
-                </View> 
-
-                <View style={{ marginLeft: 32 }}> 
+                  <Text style={{ paddingTop: 5 }}> Share </Text>
+                </View>
+                <View style={{ marginLeft: 32 }}>
                   <Entypo
                     name="save"
                     size={20}
-                    color="black" 
-                    style={{ marginLeft: 8}}   
-                  /> 
+                    color="black"
+                    style={{ marginLeft: 8 }}
+                  />
                   <Text style={{ paddingTop: 5 }}> Save </Text>
                 </View>
               </View>
             </Card>
+<<<<<<< HEAD
             
 
           
           
+=======
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
               <Avatar
@@ -159,20 +179,15 @@ export default function Strokes({ navigation }) {
               </Text>
             </View>
           </View>
-
-
-
         ) : (
           //Hidden Description
-          
-          
           <View>
             <Card
               style={{
                 width: 315,
                 height: 300,
                 marginLeft: 10,
-                borderRadius: 20, 
+                borderRadius: 20,
                 backgroundColor: '#fff',
                 marginTop: 15,
               }}>
@@ -184,18 +199,94 @@ export default function Strokes({ navigation }) {
                     fontWeight: 'bold',
                     fontSize: 16,
                   }}>
-
                   Description:
                 </Text>
-
+                <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()} >
+                  <AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} />
+                </TouchableOpacity>
+              </View>
+              <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
+                1.7M views - 2years ago
+              </Text>
+              <Card
+                style={{
+                  borderColor: 'black',
+                  width: 315,
+                  marginTop: 5,
+                  marginLeft: 25,
+                }}>
+                <View
+                  style={{ flexDirection: 'row', marginTop: 5, marginLeft: 3 }}>
+                  <View>
+                    <Likes />
+                  </View>
+                  <View style={{ marginLeft: 32, marginTop: 3 }}>
+                    <Dislikes />
+                  </View>
+                  <View style={{ marginLeft: 40 }}>
+                    <FontAwesome5
+                      name="share"
+                      size={20}
+                      color="black"
+                      style={{ marginLeft: 11 }}
+                    />
+                    <Text style={{ paddingTop: 5 }}> Share </Text>
+                  </View>
+                  <View style={{ marginLeft: 32 }}>
+                    <Entypo
+                      name="save"
+                      size={20}
+                      color="black"
+                      style={{ marginLeft: 8 }}
+                    />
+                    <Text style={{ paddingTop: 5 }}> Save </Text>
+                  </View>
+                </View>
+              </Card>
+              <View
+                style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
+                <Avatar
+                  rounded
+                  source={{
+                    uri: 'https://randomuser.me/api/portraits/men/41.jpg',
+                  }}
+                  size="medium"
+                />
+                <Text style={{ paddingTop: 15, paddingLeft: 15 }}>
+                  {userName}
+                </Text>
+              </View>
+            </Card>
+          </View>
+        )(
+          //Hidden Description
+          <View>
+            <Card
+              style={{
+                width: 315,
+                height: 300,
+                marginLeft: 40,
+                borderRadius: 20,
+                backgroundColor: '#fff',
+                marginTop: 15,
+              }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Text
+                  style={{
+                    paddingLeft: 10,
+                    fontWeight: 'bold',
+                    fontSize: 16,
+                  }}>
+                  Description:
+                </Text>
                 <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
                   <AntDesign
                     name="closecircle"
                     size={18}
                     color="black"
-                    style={{ marginLeft: 182 }}   
+                    style={{ marginLeft: 182 }}
                   />
-                </TouchableOpacity> 
+                </TouchableOpacity>
               </View>
               <View
                 style={{
@@ -228,46 +319,53 @@ export default function Strokes({ navigation }) {
           </View>
         )}
       </View>
+<<<<<<< HEAD
 
       <ScrollView showsVerticalScrollIndicator={false}
       >
 
       <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
+=======
+      <Card style={{ height: 40, width: 315, marginTop: 5, marginLeft: 10 }}>
+>>>>>>> a63d26169c456fc56b6ac4f4bd7654c1144d2b68
         <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
         {/*userName Array*/}
-
-        <Card style={{ backgroundColor: 'silver', height: 100,
-                       marginTop: 10 }}>
+        <Card style={{
+          backgroundColor: 'silver', height: 100,
+          marginTop: 10
+        }}>
           <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style= {{color: 'red'}}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
             dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
           </Text>
         </Card>
-
-        <Card style={{ backgroundColor: 'silver', height: 100,
-                       marginTop: 10}}>
+        <Card style={{
+          backgroundColor: 'silver', height: 100,
+          marginTop: 10
+        }}>
           <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-<SafeAreaView style= {{color: 'red'}}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
             dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
           </Text>
         </Card>
-
-        <Card style={{ backgroundColor: 'silver', height: 100, 
-                       marginTop: 10 }}> 
+        <Card style={{
+          backgroundColor: 'silver', height: 100,
+          marginTop: 10
+        }}>
           <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style= {{color: 'red'}}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
             dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
           </Text>
         </Card>
-
-        <Card style={{ backgroundColor: 'silver', height: 100,
-                       marginTop: 10 }}>
+        <Card style={{
+          backgroundColor: 'silver', height: 100,
+          marginTop: 10
+        }}>
           <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style= {{color: 'red'}}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
             dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-          </Text> 
-        </Card>  
-
+          </Text>
+        </Card>
       </Card>
 
       </ScrollView>
@@ -278,7 +376,7 @@ const styles = StyleSheet.create({
   contain: {
     alignItems: 'center'
   },
-  
+
   header: {
     paddingLeft: 30,
     paddingTop: 50
