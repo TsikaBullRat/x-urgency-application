@@ -94,8 +94,10 @@ export default function Home({ navigation, setDone }) {
   const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
   const [status, setStatus] = React.useState({});
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+
   return (
     <View style={styles.contain}>
+
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
@@ -130,6 +132,7 @@ export default function Home({ navigation, setDone }) {
           />
         </View>
       </View>
+
       {/*----------------------Horizontal Menu----------------------*/}
       <Card style={styles.menu}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -193,10 +196,10 @@ export default function Home({ navigation, setDone }) {
       {/*---------------------- Video Scroll View--------------------*/}
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
-          <View>
+          <View >
             {videos.map(vid => (
               <ol >
-                <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
+                <TouchableOpacity onPress={() => { navigation.navigate('PlayVideo') }}>
                   <Video
                     ref={video}
                     source={{ uri: vid.url }}
@@ -204,8 +207,7 @@ export default function Home({ navigation, setDone }) {
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                     style={{
-                      width: 315, marginLeft: -
-                        10
+                      width: 315
                     }}
                   />
                   <h4>{vid.title}</h4>
@@ -235,6 +237,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingTop: 50
   },
+
   avatar: {
     width: 70,
     height: 70,
@@ -247,7 +250,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
-
 
   txtCards: {
     backgroundColor: 'lightgray',
@@ -264,14 +266,16 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 3, height: 3 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
-    elevation: 1,
+    elevation: 1, 
   },
+
   menu: {
     width: 355,
     left: 10,
     marginTop: 20,
     borderRadius: 15,
   },
+
   strokeMenu: {
     height: 30,
     width: 30,
@@ -281,6 +285,7 @@ const styles = StyleSheet.create({
     marginLeft: 3,
     marginTop: 10
   },
+
   heartMenu: {
     height: 35,
     width: 35,
@@ -288,12 +293,14 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 12
   },
+
   epilepsyMenu: {
     height: 50,
     width: 50,
     borderRadius: 15,
     marginLeft: 6
   },
+
   cprMenu: {
     height: 35,
     width: 35,
@@ -301,12 +308,14 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8
   },
+
   bloodMenu: {
     height: 35,
     width: 35,
     borderRadius: 15,
     marginTop: 8
   },
+
   conImg: {
     height: 35,
     width: 35,
@@ -314,6 +323,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 8
   },
+
   drown: {
     height: 40,
     width: 40,
@@ -321,6 +331,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 8,
   },
+
   burn: {
     height: 35,
     width: 35,
@@ -328,11 +339,13 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8
   },
+
   menu2: {
     width: 315,
-    height: 520,
+    height: 560,
     marginTop: 20,
     borderRadius: 15,
+    alignItems: 'center'
   },
 });
 

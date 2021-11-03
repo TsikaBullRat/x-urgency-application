@@ -15,7 +15,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 // You can import from local files
-import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHome, UploadVideo, PlayVideo } from './src/Screens';
+import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHome, UploadVideo, PlayVideo, DocProfile } from './src/Screens';
 import { auth } from './src/firebase'
 import { ActivityIndicator } from 'react-native-paper';
 import { LoadSet } from './src/firebase';
@@ -26,6 +26,7 @@ export default function App() {
   const [successful, setSuccess] = useState(false),
     [user, setUser] = useState(null),
     [load, setLoad] = useState();
+
   LoadSet(setLoad)
   console.log(load)
   useEffect(() => {
@@ -33,6 +34,7 @@ export default function App() {
       setUser(user)
       setSuccess(true)
     })
+
     return () => {
       auth.onAuthStateChanged(user => {
         setUser(user)
@@ -40,6 +42,7 @@ export default function App() {
       })
     }
   }, [successful, user])
+
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
@@ -47,7 +50,7 @@ export default function App() {
           user ? (
             <Stack.Navigator initialRouteName="SignIn">
               <Stack.Screen name="Sign In" options={{ headerShown: false }} >
-                {props => <SignIn {...props} setDone={setSuccess} />}
+                {props => <UploadVideo {...props} setDone={setSuccess} />}
               </Stack.Screen>
 
               <Stack.Screen name="Home" options={{ headerShown: false }} >
@@ -61,8 +64,8 @@ export default function App() {
               <Stack.Screen name="Doctor SignUp" component={DoctorSignUp} options={{ headerShown: false }}>
               </Stack.Screen>
 
-              <Stack.Screen name="Doctor SignIn" component={DoctorSignUp} options={{ headerShown: false }}>
-              </Stack.Screen>
+              <Stack.Screen name="Doctor SignIn" component={DoctorSignUp} options={{ headerShown: false }}/>
+           
 
               <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }}>
               </Stack.Screen>
@@ -72,7 +75,10 @@ export default function App() {
               <Stack.Screen name="Upload" component={UploadVideo} options={{ headerShown: false }} />
             
               <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+
               <Stack.Screen name="DocHome" component={MedicalHome} options={{ headerShown: false }} />
+
+              <Stack.Screen name="DocProfile" component={DocProfile} options={{ headerShown: false }} />
 
             </Stack.Navigator>
             

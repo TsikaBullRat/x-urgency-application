@@ -161,8 +161,8 @@ export default function MedicalHome({ navigation }) {
         </Card  >
       </ScrollView >
 
-      <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
-        <Text style={{ color: '#F47066' }}>Upload</Text>
+      <TouchableOpacity style={styles.btnUpload} onPress={() => { navigation.navigate('Upload') }}>
+        <Text style={{ color: '#fff', fontSize: 32 }}>+</Text>
       </TouchableOpacity>
 
     </View>
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
 
   menu2: {
     width: 355,
-    height: 260,
+    height: 550,
     marginLeft: 10,
     marginTop: 50,
     borderRadius: 15,
@@ -205,5 +205,16 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+
+  btnUpload: {
+    backgroundColor: '#F47066', 
+    height: 5, 
+    width: 30, 
+    borderRadius: 50, 
+    textAlign: 'center', 
+    marginLeft: 280, 
+    paddingBottom: 60,
+  },
+  
 });
 
