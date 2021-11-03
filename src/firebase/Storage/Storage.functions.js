@@ -1,24 +1,51 @@
 import { storage } from '../config'
 
-const LoadSet = async (Load) => {
+// const LoadSet = (Load) => {
 
-    var content
-    let list = await storage.ref().child('').listAll()
+//     var content
+//     storage.ref().child('').listAll()
+//         .then(res=>{
+//             res.items.forEach(itemRef=>{
+//                 let link = itemRef.toString()
+//                 let name = itemRef.name
+//                 content=[...content, {link: link, title: name}]
+//                 console.log(name)
+//                 return content
+//             })
+//             Load(content)
+//         })
+//         .catch(err=>{
+//             return null
+//         })
+// }
+const LoadSet = (Load) => {
+
+    var content = []
+    var i = 0
+    window.link
+    var getLink = entry =>{
+        window.link = entry
+        return window.link
+    }
+    
+    storage.ref().child('').listAll()
         .then(res=>{
             res.items.forEach(itemRef=>{
-                let link = itemRef.toString()
+                
+                itemRef.getDownloadURL()
+                    .then(url=>getLink(url))
                 let name = itemRef.name
-                content=[...content, {link: link, title: name}]
+                content=[...content, {id: i++, url: window.link, title: name}]
                 return content
             })
-            return content
+            // console.log(content)
+            Load(content)
         })
-        .then(item=>console.log(item))
         .catch(err=>{
             return null
         })
-    console.log(list)
-    Load(list)
 }
 
 export { LoadSet }
+
+//https://firebasestorage.googleapis.com/v0/b/x-urge…=media

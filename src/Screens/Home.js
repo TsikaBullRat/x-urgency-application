@@ -22,7 +22,7 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
@@ -45,56 +45,63 @@ import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 import { auth } from '../firebase';
+import { LoadSet } from '../firebase';
 export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
   }
-  const videos = [
-    {
-      id: 1,
-      title: "Stroke",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
-    {
-      id: 2,
-      title: "Heart-Attack",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
-    {
-      id: 3,
-      title: "Epilepsy",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
-    {
-      id: 4,
-      title: "CPR",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
-    {
-      id: 5,
-      title: "Bleeding",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
-    {
-      id: 6,
-      title: "Choking",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
-    {
-      id: 7,
-      title: "Drowning",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
-    {
-      id: 8,
-      title: "Burn",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
-  ];
-  const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  );
+  const [videos, setLoad] = useState(null);
+
+    LoadSet(setLoad)
+  useEffect(()=>{
+    console.log(videos)
+  },[])
+    
+  // const videos = [
+  //   {
+  //     id: 1,
+  //     title: "Stroke",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Heart-Attack",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Epilepsy",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "CPR",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "Bleeding",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 6,
+  //     title: "Choking",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 7,
+  //     title: "Drowning",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 8,
+  //     title: "Burn",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  // ];
+  const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
   const [status, setStatus] = React.useState({});
-  const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  // const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
@@ -195,12 +202,11 @@ export default function Home({ navigation, setDone }) {
       <ScrollView vertical={true} >
         <Card style={styles.menu2}>
           <View>
-            {videos.map(vid => (
-              <ol >
-                <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
+            {videos?(videos.map(vid => (
+                <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
                   <Video
                     ref={video}
-                    source={{ uri: link }}
+                    source={{ uri: vid.url }}
                     // useNativeControls
                     resizeMode="contain"
                     isLooping
@@ -212,8 +218,7 @@ export default function Home({ navigation, setDone }) {
                   />
                   <h4>{vid.title}</h4>
                 </TouchableOpacity>
-              </ol>
-            ))}
+            ))):(null)}
           </View>
         </Card  >
       </ScrollView >
