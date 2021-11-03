@@ -19,4 +19,6 @@ import UploadVideo from "./UploadVideo"
 import DoctorSignUp from "./DoctorSignUp"
 import MedicalHome from "./MedicalHome"
 import DocProfile from "./DocProfile"
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, DocProfile }
+import DocSignUp from "./DocSignUp"
+
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, DocProfile }

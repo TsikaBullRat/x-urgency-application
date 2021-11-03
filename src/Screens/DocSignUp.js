@@ -2,11 +2,11 @@
     * @description      : 
     * @author           : TLeeuw
     * @group            : 
-    * @created          : 26/10/2021 - 11:55:25
+    * @created          : 03/11/2021 - 11:05:52
     * 
     * MODIFICATION LOG
     * - Version         : 1.0.0
-    * - Date            : 26/10/2021
+    * - Date            : 03/11/2021
     * - Author          : TLeeuw
     * - Modification    : 
 **/
@@ -22,6 +22,7 @@ export default function DoctorSignUp({ navigation }) {
         [Confirmpassword, setConfirmPassword] = useState(""),
         [displayModal, setDisplaModal] = useState(false),
         [message, setMessage] = useState("")
+
     const DoctorRegister = () => {
         handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage)
         setDisplaModal(true)
@@ -32,7 +33,7 @@ export default function DoctorSignUp({ navigation }) {
 
             <Card style={styles.card}>
                 <View style={styles.heartIcon}>
-                    <FontAwesome name="heartbeat" size={146} color="#fff" />
+                    <FontAwesome name="heartbeat" size={90} color="#fff" />
                 </View>
 
                 <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency
@@ -45,45 +46,61 @@ export default function DoctorSignUp({ navigation }) {
 
             <View>
                 
-                    <Card style={{ height: 230 }}>
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
                                 <TextInput style={styles.txtField}
-                                    name='Name' placeholder='Name'
+                                    name='Branch' placeholder='Branch'
+                                />
+                            </View>
+                        </Card>
+                        <Card style={styles.txtCards}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <TextInput style={styles.txtField}
+                                    name='Contact Details' placeholder='Contact Details'
                                 />
                             </View>
                         </Card>
 
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
+                                <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
                                 <TextInput style={styles.txtField}
-                                    name='Surname' placeholder='Surname'
+                                    name='Email' placeholder='Email' 
+                                    value= '' onChangeText={text => setEmail(text)}
                                 />
                             </View>
                         </Card>
 
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
+                                <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
                                 <TextInput style={styles.txtField}
-                                    name='Specialization' placeholder='Specialization'
+                                    name='password' placeholder='Password'
+                                    secureTextEntry={true} value= ''
+                                    onChangeText={text => setPassword(text)}
                                 />
                             </View>
                         </Card>
 
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
-                                    name='Qualification' placeholder='Qualification'
+                                <EvilIcons name="lock" size={28} color="black"
+                                    style={{ marginTop: 9, marginLeft: 4 }}
+                                />
+                                <TextInput style={styles.txtRePass}
+                                    name='password' placeholder='Re-enter Password'
+                                    secureTextEntry={true}
+                                    onChangeText={text => setConfirmPassword(text)}
                                 />
                             </View>
-                        </Card>                      
-                    </Card>
-              
-                <View style={{ alignItems: 'center' }}>
-                    <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('DocSignUp') }}>
-                        <Text style={{ color: '#fff' }}>Next </Text>
-                    </TouchableOpacity>
-                </View>
+                        </Card>
+
+                    <View style={{ alignItems: 'center' }}>
+                      <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
+
+                        <Text style={{ color: '#fff' }}>SIGNUP </Text>
+                      </TouchableOpacity>
+                    </View>
             </View>
         </View>
     )
@@ -135,11 +152,10 @@ const styles = StyleSheet.create({
     signIn: {
         height: 50,
         width: 200,
-        marginTop: 15,
+        marginTop: 35,
         borderRadius: 10,
         backgroundColor: '#F47066',
         alignItems: 'center',
         justifyContent: 'center'
     },
 });
-                
