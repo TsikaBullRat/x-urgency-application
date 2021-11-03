@@ -25,12 +25,7 @@ import {Dislikes} from '../Functions/Dislikes'
 export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')
   const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
-<<<<<<< HEAD
-
- 
-=======
   const [videoVisible, setVideoVisible] = useState(true);
->>>>>>> 0bf50af6ca06559e0bf6cf811fc80bde22608b18
   const setVid = () => {
     setVideoPlay()
   }
@@ -52,12 +47,8 @@ export default function Strokes({ navigation }) {
   return (
     <View style={styles.contain}>
       <View style={{ width: 365 }}>
-<<<<<<< HEAD
       
       <Video
-=======
-        {videoVisible && <Video
->>>>>>> 0bf50af6ca06559e0bf6cf811fc80bde22608b18
           source={{ uri: videoPlay }}
           rate={1.0}
           volume={1.0}
@@ -65,17 +56,11 @@ export default function Strokes({ navigation }) {
           useNativeControls
           resizeMode="contain"
           isLooping
-<<<<<<< HEAD
           style={{ borderRadius: 25}}
         />
       </View> 
 
 
-=======
-          style={{ borderRadius: 25 }}
-        />}
-      </View>
->>>>>>> 0bf50af6ca06559e0bf6cf811fc80bde22608b18
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
