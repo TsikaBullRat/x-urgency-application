@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { View, StyleSheet } from "react-native"
 import { gsap } from 'gsap'
+
 const HeartBeat = () => {
     const dot = useRef();
     const tl = useRef();

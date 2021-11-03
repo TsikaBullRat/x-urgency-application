@@ -97,7 +97,6 @@ export default function Home({ navigation, setDone }) {
 
   return (
     <View style={styles.contain}>
-
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
@@ -109,7 +108,6 @@ export default function Home({ navigation, setDone }) {
           >
             What's your
           </Text>
-
           <Text style={{
             fontSize: 36, paddingLeft: 30, color: 'red',
             textShadowColor: 'grey',
@@ -119,7 +117,6 @@ export default function Home({ navigation, setDone }) {
             EMERGENCY
           </Text>
         </View>
-
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar}
             rounded
@@ -134,7 +131,6 @@ export default function Home({ navigation, setDone }) {
           />
         </View>
       </View>
-
       {/*----------------------Horizontal Menu----------------------*/}
       <Card style={styles.menu}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -194,7 +190,6 @@ export default function Home({ navigation, setDone }) {
           </TouchableOpacity>
         </ScrollView>
       </Card>
-
       {/*---------------------- Video Scroll View--------------------*/}
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
@@ -219,10 +214,10 @@ export default function Home({ navigation, setDone }) {
           </View>
         </Card  >
       </ScrollView >
-
     </View>
   )
 }
+
 const styles = StyleSheet.create({
   contain: {
     alignItems: 'center',
@@ -233,7 +228,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingTop: 50
   },
-
   avatar: {
     width: 70,
     height: 70,
@@ -246,7 +240,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
-
   txtCards: {
     backgroundColor: 'lightgray',
     opacity: 0.8,
@@ -262,16 +255,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 3, height: 3 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
-    elevation: 1, 
+    elevation: 1,
   },
-
   menu: {
     width: 355,
     left: 10,
     marginTop: 20,
     borderRadius: 15,
   },
-
   strokeMenu: {
     height: 30,
     width: 30,
@@ -281,7 +272,6 @@ const styles = StyleSheet.create({
     marginLeft: 3,
     marginTop: 10
   },
-
   heartMenu: {
     height: 35,
     width: 35,
@@ -289,14 +279,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 12
   },
-
   epilepsyMenu: {
     height: 50,
     width: 50,
     borderRadius: 15,
     marginLeft: 6
   },
-
   cprMenu: {
     height: 35,
     width: 35,
@@ -304,14 +292,12 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8
   },
-
   bloodMenu: {
     height: 35,
     width: 35,
     borderRadius: 15,
     marginTop: 8
   },
-
   conImg: {
     height: 35,
     width: 35,
@@ -319,7 +305,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 8
   },
-
   drown: {
     height: 40,
     width: 40,
@@ -327,7 +312,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 8,
   },
-
   burn: {
     height: 35,
     width: 35,
@@ -335,7 +319,6 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8
   },
-
   menu2: {
     width: 315,
     height: 560,

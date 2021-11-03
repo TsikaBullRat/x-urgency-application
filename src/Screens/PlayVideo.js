@@ -18,19 +18,15 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
 import { Video } from 'expo-av';
-import {Likes} from '../Components/Likes'
-import {Dislikes} from '../Components/Dislikes'
-
+import { Likes } from '../Components/Likes'
+import { Dislikes } from '../Components/Dislikes'
 
 export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')
   const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
-
   const [videoVisible, setVideoVisible] = useState(true);
-
-  
   const setVid = () => {
-   setVideoPlay()
+    setVideoPlay()
   }
   const [comments, setComments] = useState({ userName })
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
@@ -45,27 +41,20 @@ export default function Strokes({ navigation }) {
     return setStyleStatusBar(styleTypes[styleId]);
   };
 
-
-
   return (
     <View style={styles.contain}>
-
       <View style={{ width: 365 }}>
-      
-      {videoVisible && <Video
+        {videoVisible && <Video
           source={{ uri: videoPlay }}
-          
           rate={1.0}
           volume={1.0}
           isMuted
           useNativeControls
           resizeMode="contain"
           isLooping
-          style={{ borderRadius: 25}}
+          style={{ borderRadius: 25 }}
         />}
-      </View> 
-
-
+      </View>
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
@@ -120,7 +109,6 @@ export default function Strokes({ navigation }) {
                 </View>
               </View>
             </Card>
-                             
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
               <Avatar
@@ -130,7 +118,7 @@ export default function Strokes({ navigation }) {
                 }}
                 size="medium"
               />
-              <Text style={{ paddingTop: 15, paddingLeft: 15 }}>
+              <Text style={{ paddingTop: 15, paddingLeft: 15 }} onPress=  {navigation.navigate('Doctor')}>
                 {userName}
               </Text>
             </View>
@@ -147,7 +135,6 @@ export default function Strokes({ navigation }) {
                 backgroundColor: '#fff',
                 marginTop: 15,
               }}>
-
               <View style={{ flexDirection: 'row' }}>
                 <Text
                   style={{
@@ -275,51 +262,48 @@ export default function Strokes({ navigation }) {
           </View>
         )}
       </View>
-
       <ScrollView showsVerticalScrollIndicator={false}
       >
-
-      <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
-        <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
-        {/*userName Array*/}
-        <Card style={{
-          backgroundColor: 'silver', height: 100,
-          marginTop: 10
-        }}>
-          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-            dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-          </Text>
+        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
+          <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
+          {/*userName Array*/}
+          <Card style={{
+            backgroundColor: 'silver', height: 100,
+            marginTop: 10
+          }}>
+            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+            </Text>
+          </Card>
+          <Card style={{
+            backgroundColor: 'silver', height: 100,
+            marginTop: 10
+          }}>
+            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+            </Text>
+          </Card>
+          <Card style={{
+            backgroundColor: 'silver', height: 100,
+            marginTop: 10
+          }}>
+            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+            </Text>
+          </Card>
+          <Card style={{
+            backgroundColor: 'silver', height: 100,
+            marginTop: 10
+          }}>
+            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+            </Text>
+          </Card>
         </Card>
-        <Card style={{
-          backgroundColor: 'silver', height: 100,
-          marginTop: 10
-        }}>
-          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-            dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-          </Text>
-        </Card>
-        <Card style={{
-          backgroundColor: 'silver', height: 100,
-          marginTop: 10
-        }}>
-          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-            dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-          </Text>
-        </Card>
-        <Card style={{
-          backgroundColor: 'silver', height: 100,
-          marginTop: 10
-        }}>
-          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-            dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-          </Text>
-        </Card>
-      </Card>
-
       </ScrollView>
     </View>
   )

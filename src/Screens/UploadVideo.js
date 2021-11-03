@@ -12,16 +12,14 @@
 **/
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
-import {Card} from 'react-native-paper'
+import { Card } from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 
 export default function App({ navigation }) {
   let [selectedImage, setSelectedImage] = React.useState(null);
-
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
-
     if (permissionResult.granted === false) {
       alert('Permission to access camera roll is required!');
       return;
@@ -32,7 +30,6 @@ export default function App({ navigation }) {
     }
     setSelectedImage({ localUri: pickerResult.uri });
   };
-
   let openShareDialogAsync = async () => {
     if (!(await Sharing.isAvailableAsync())) {
       alert(`Uh oh, sharing isn't available on your platform`);
@@ -44,7 +41,7 @@ export default function App({ navigation }) {
     return (
       <View style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-        <TouchableOpacity onPress={() => {navigation.navigate('MedicalHome')}} style={styles.button}>
+        <TouchableOpacity onPress={() => { navigation.navigate('MedicalHome') }} style={styles.button}>
           <Text style={styles.buttonText}>Upload Video</Text>
         </TouchableOpacity>
       </View>
@@ -52,34 +49,29 @@ export default function App({ navigation }) {
   }
   return (
     <View style={styles.container}>
-
-      <View style={{marginTop: 50}}>
-
-      <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <TextInput style={styles.txtField}
-              name='username' placeholder='Title' 
-            />
-          </View>
-        </Card>
-
+      <View style={{ marginTop: 50 }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <TextInput style={styles.txtField}
-              name='password' placeholder='Category'        
+              name='username' placeholder='Title'
             />
           </View>
         </Card>
-
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <TextInput style={styles.txtField}
-              name='password' placeholder= 'Description'
+              name='password' placeholder='Category'
             />
           </View>
-        </Card> 
+        </Card>
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <TextInput style={styles.txtField}
+              name='password' placeholder='Description'
+            />
+          </View>
+        </Card>
       </View>
-      
       <Text style={styles.instructions}>
         To share a video from your phone/PC , just press the button below!
       </Text>
