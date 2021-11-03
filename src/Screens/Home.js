@@ -125,10 +125,7 @@ export default function Home({ navigation, setDone }) {
           </View>
         </Card  >
       </ScrollView >
-<<<<<<< HEAD
-=======
    
->>>>>>> 2c1dce224fe2fa2e795a3cfe829bc9e5f312d87d
     </View>
   )
 }
@@ -139,7 +136,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#fff'
   },
-<<<<<<< HEAD
   header: {
     flexDirection: 'column',
     paddingTop: 50
@@ -242,8 +238,5 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: 'center'
   },
-=======
-
->>>>>>> 2c1dce224fe2fa2e795a3cfe829bc9e5f312d87d
 });
 

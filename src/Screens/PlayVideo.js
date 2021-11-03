@@ -17,16 +17,10 @@ import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
-<<<<<<< HEAD
-import { Video } from 'expo-av';
-import { Likes } from '../Components/Likes'
-import { Dislikes } from '../Components/Dislikes'
-=======
 import { Video, AVPlaybackStatus } from 'expo-av';
 import {Likes} from '../Functions/Likes'
 import {Dislikes} from '../Functions/Dislikes'
 
->>>>>>> 2c1dce224fe2fa2e795a3cfe829bc9e5f312d87d
 
 export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')
