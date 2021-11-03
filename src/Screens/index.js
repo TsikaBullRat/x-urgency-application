@@ -18,6 +18,5 @@ import PlayVideo from "./PlayVideo"
 import UploadVideo from "./UploadVideo"
 import DoctorSignUp from "./DoctorSignUp"
 import MedicalHome from "./MedicalHome"
-import DocContacts from "./DocContacts"
-import DoctorProfile from "./Doctor"
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, DocContacts, DoctorProfile }
+import DocProfile from "./DocProfile"
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, DocProfile }

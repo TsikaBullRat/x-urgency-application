@@ -1,21 +1,36 @@
+/**
+    * @description      : 
+    * @author           : TLeeuw
+    * @group            : 
+    * @created          : 03/11/2021 - 09:30:54
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 03/11/2021
+    * - Author          : TLeeuw
+    * - Modification    : 
+**/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
-import { Video, AVPlaybackStatus } from 'expo-av';
-import { Likes } from '../Components/Likes'
-import { Dislikes } from '../Components/Dislikes'
+import { Video } from 'expo-av';
+import {Likes} from '../Components/Likes'
+import {Dislikes} from '../Components/Dislikes'
+
 
 export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')
   const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
-  const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
+
+  const [videoVisible, setVideoVisible] = useState(true);
+
+  
   const setVid = () => {
-    setVideoPlay()
+   setVideoPlay()
   }
   const [comments, setComments] = useState({ userName })
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
@@ -29,23 +44,28 @@ export default function Strokes({ navigation }) {
     }
     return setStyleStatusBar(styleTypes[styleId]);
   };
+
+
+
   return (
     <View style={styles.contain}>
-      <TouchableOpacity
-        onPress={goBack}>
-        <AntDesign name="arrowleft" size={24} color="black" />
-      </TouchableOpacity>
-      <View style={{ width: 315, marginTop: 50, marginLeft: 30 }}>
-        <Video
+
+      <View style={{ width: 365 }}>
+      
+      {videoVisible && <Video
           source={{ uri: videoPlay }}
+          
+          rate={1.0}
+          volume={1.0}
+          isMuted
           useNativeControls
           resizeMode="contain"
-          shouldPlay
-          shouldRasterizeIOS
           isLooping
-          style={{ borderRadius: 25 }}
-        />
-      </View>
+          style={{ borderRadius: 25}}
+        />}
+      </View> 
+
+
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
@@ -100,6 +120,7 @@ export default function Strokes({ navigation }) {
                 </View>
               </View>
             </Card>
+                             
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
               <Avatar
@@ -254,7 +275,11 @@ export default function Strokes({ navigation }) {
           </View>
         )}
       </View>
-      <Card style={{ height: 40, width: 315, marginTop: 5, marginLeft: 10 }}>
+
+      <ScrollView showsVerticalScrollIndicator={false}
+      >
+
+      <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
         <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
         {/*userName Array*/}
         <Card style={{
@@ -294,6 +319,8 @@ export default function Strokes({ navigation }) {
           </Text>
         </Card>
       </Card>
+
+      </ScrollView>
     </View>
   )
 }

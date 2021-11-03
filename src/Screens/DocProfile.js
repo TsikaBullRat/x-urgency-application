@@ -100,68 +100,16 @@ export default function MedicalHome({ navigation }) {
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
-      <View style={{ flexDirection: 'row' }}>
-        <View style={styles.header}>
-          <Text style={{
-            fontSize: 36, paddingLeft: 30,
-            color: 'turquoise',
-            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
-          }}
-          >
-            Dr. DoLittle
-          </Text>
-
-          <Text style={{
-            fontSize: 36, paddingLeft: 30, color: 'red',
-            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
-          }}>In Da House
-          </Text>
-        </View>
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar}
-            rounded
             source={{
-              uri: 'https://randomuser.me/api/portraits/men/45.jpg',
+              uri: 'https://randomuser.me/api/portraits/men/28.jpg',
             }}
-            size="large"
-          />
-          <Badge
-            status="success"
-            containerStyle={{ position: 'absolute', top: -4, right: -4 }}
+    
           />
         </View>
-      </View>
-      {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView vertical={true} showsHorizontalScrollIndicator={false} >
-        <Card style={styles.menu2}>
-          <View style={{ alignItems: 'center' }}>
-            {videos.map(vid => (
-              <ol >
-                <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
-                  <Video
-                    ref={video}
-                    source={{ uri: link }}
-                    // useNativeControls
-                    resizeMode="contain"
-                    isLooping
-                    onPlaybackStatusUpdate={status => setStatus(() => status)}
-                    style={{
-                      width: 315, marginLeft: -
-                        40, borderRadius: 25
-                    }}
-                  />
-                  <h4>{vid.title}</h4>
-                </TouchableOpacity>
-              </ol>
-            ))}
-          </View>
-        </Card  >
-      </ScrollView >
-
-      <TouchableOpacity style={styles.btnUpload} onPress={() => { navigation.navigate('Upload') }}>
-        <Text style={{ color: '#fff', fontSize: 32 }}>+</Text>
-      </TouchableOpacity>
+     
     </View>
   )
 }
@@ -177,9 +125,8 @@ const styles = StyleSheet.create({
   },
 
   avatar: {
-    width: 70,
-    height: 70,
-    borderRadius: 50,
+    height: 150,
+    width: 150,
     margingTop: 80,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
@@ -191,7 +138,7 @@ const styles = StyleSheet.create({
 
   menu2: {
     width: 355,
-    height: 550,
+    height: 260,
     marginLeft: 10,
     marginTop: 50,
     borderRadius: 15,
@@ -202,16 +149,5 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-
-  btnUpload: {
-    backgroundColor: '#F47066', 
-    height: 5, 
-    width: 30, 
-    borderRadius: 50, 
-    textAlign: 'center', 
-    marginLeft: 280, 
-    paddingBottom: 60,
-  },
-  
 });
 

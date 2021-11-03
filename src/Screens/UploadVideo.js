@@ -1,5 +1,18 @@
+/**
+    * @description      : 
+    * @author           : TLeeuw
+    * @group            : 
+    * @created          : 03/11/2021 - 09:44:00
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 03/11/2021
+    * - Author          : TLeeuw
+    * - Modification    : 
+**/
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
+import {Card} from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 
@@ -31,14 +44,42 @@ export default function App({ navigation }) {
     return (
       <View style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-        <TouchableOpacity onPress={() => { navigation.navigate('MedicalHome') }} style={styles.button}>
-          <Text style={styles.buttonText}>Share this video</Text>
+        <TouchableOpacity onPress={() => {navigation.navigate('MedicalHome')}} style={styles.button}>
+          <Text style={styles.buttonText}>Upload Video</Text>
         </TouchableOpacity>
       </View>
     );
   }
   return (
     <View style={styles.container}>
+
+      <View style={{marginTop: 50}}>
+
+      <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <TextInput style={styles.txtField}
+              name='username' placeholder='Title' 
+            />
+          </View>
+        </Card>
+
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <TextInput style={styles.txtField}
+              name='password' placeholder='Category'        
+            />
+          </View>
+        </Card>
+
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <TextInput style={styles.txtField}
+              name='password' placeholder= 'Description'
+            />
+          </View>
+        </Card> 
+      </View>
+      
       <Text style={styles.instructions}>
         To share a video from your phone/PC , just press the button below!
       </Text>
@@ -86,4 +127,23 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginTop: 20
   },
+
+  txtField: {
+    width: 285,
+    height: 40,
+    borderRadius: 10,
+    outline: 'none',
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
+  },
+
+  txtCards: {
+    backgroundColor: 'lightgrey',
+    width: 285,
+    height: 40,
+    borderRadius: 10,
+    marginLeft: 2,
+    marginTop: 15
+  },
+
 });
