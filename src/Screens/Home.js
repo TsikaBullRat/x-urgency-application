@@ -24,10 +24,8 @@
 **/
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
-import { Avatar, Badge } from 'react-native-elements';
-import { Video, AVPlaybackStatus } from 'expo-av';
+import { Video, } from 'expo-av';
 import { Card } from 'react-native-paper';
-import { AntDesign } from '@expo/vector-icons';
 import { auth } from '../firebase';
 import Header from '../Components/Header'
 import Menu from '../Components/Menu'

@@ -10,18 +10,10 @@
     * - Author          : TLeeuw
     * - Modification    : 
 **/
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, ScrollView, Image, TouchableOpacity, } from 'react-native';
 import { Card } from 'react-native-paper';
 import Stroke from '../images/stokeIc.png';
-import strVid from '../images/stroke-vid.jpg';
-import heartVid from '../images/heart-vid.jpg';
-import epilepsyVid from '../images/epilepsy-vid.jpg';
-import cpr_vid2 from '../images/cpr_vid2.jpg';
-import drowning from '../images/drowning-vid.jpg';
-import burn from '../images/burns-vid.jpg';
-import choke from '../images/choking-vid.jpg';
-import bleed from '../images/bleeding-vid.webp';
 import heart from '../images/heartAttack.png';
 import bleeding from '../images/bleed.png'
 import epilepsy from '../images/Epilepsy.png'

@@ -26,24 +26,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
-import { AntDesign } from '@expo/vector-icons';
 import { Video, AVPlaybackStatus } from 'expo-av';
-import Stroke from '../images/stokeIc.png';
-import strVid from '../images/stroke-vid.jpg';
-import heartVid from '../images/heart-vid.jpg';
-import epilepsyVid from '../images/epilepsy-vid.jpg';
-import cpr_vid2 from '../images/cpr_vid2.jpg';
-import drowning from '../images/drowning-vid.jpg';
-import burn from '../images/burns-vid.jpg';
-import choke from '../images/choking-vid.jpg';
-import bleed from '../images/bleeding-vid.webp';
-import heart from '../images/heartAttack.png';
-import bleeding from '../images/bleed.png'
-import epilepsy from '../images/Epilepsy.png'
-import cpr from '../images/cprIcon.png'
-import choking from '../images/choke.png'
-import drown from '../images/drown.png'
-import burns from '../images/burn.png'
 import { auth } from '../firebase';
 export default function MedicalHome({ navigation }) {
   const Logout = () => {

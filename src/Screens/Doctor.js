@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
-import { check } from 'prettier';
+import { Socials } from '../Components';
 
 const DoctorProfile = () => {
 
@@ -69,6 +69,13 @@ const DoctorProfile = () => {
                     </View>
                     <Text style={styles.textTitle}>Dr Sighn</Text>
                 </View>
+
+                <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
+                    <Socials text="Following" number="15" />
+                    <Socials text="Followers" number="3000K" />
+                    <Socials text="Likes" number="3.1M" />
+                </View>
+
                 <View>
                     <SwitchSelector
                         options={options}
@@ -163,9 +170,10 @@ const styles = StyleSheet.create({
 
     words: {
         width: 250,
-        marginLeft: 45,
+        marginLeft: 55,
 
     },
+
 
 })
 export default DoctorProfile;
