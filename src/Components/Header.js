@@ -16,10 +16,9 @@ import { Avatar, Badge } from 'react-native-elements';
 
 export default function Header() {
 
-
   return (
     <View style={styles.contain}>
-{/*---------------------------Header--------------------------*/}
+      {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
           <Text style={{
@@ -30,7 +29,6 @@ export default function Header() {
           >
             What's your
           </Text>
-
           <Text style={{
             fontSize: 36, paddingLeft: 30, color: 'red',
             textShadowColor: 'grey',
@@ -40,7 +38,6 @@ export default function Header() {
             EMERGENCY
           </Text>
         </View>
-
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar}
             rounded
@@ -54,17 +51,19 @@ export default function Header() {
             containerStyle={{ position: 'absolute', top: -4, right: -4 }}
           />
         </View>
-        </View>
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+
   contain: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff'
   },
+
   header: {
     flexDirection: 'column',
     paddingTop: 50

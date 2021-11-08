@@ -2,69 +2,75 @@
     * @description      : 
     * @author           : TLeeuw
     * @group            : 
-    * @created          : 08/11/2021 - 10:27:08
+    * @created          : 20/10/2021 - 10:59:29
     * 
     * MODIFICATION LOG
     * - Version         : 1.0.0
-    * - Date            : 08/11/2021
+    * - Date            : 20/10/2021
     * - Author          : TLeeuw
     * - Modification    : 
 **/
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, TextInput } from 'react-native';
+import { Card } from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
+import uploadToAnonymousFilesAsync from 'anonymous-files';
 
-export default function UploadVideo({navigation}) {
+export default function UploadVid() {
   let [selectedImage, setSelectedImage] = React.useState(null);
-
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
-
     if (permissionResult.granted === false) {
       alert('Permission to access camera roll is required!');
       return;
     }
-
     let pickerResult = await ImagePicker.launchImageLibraryAsync();
     if (pickerResult.cancelled === true) {
       return;
     }
-
-    setSelectedImage({ localUri: pickerResult.uri }); 
+    if (Platform.OS === 'web') {
+      let remoteUri = await uploadToAnonymousFilesAsync(pickerResult.uri);
+      setSelectedImage({ localUri: pickerResult.uri, remoteUri });
+    } else {
+      setSelectedImage({ localUri: pickerResult.uri, remoteUri: 'https://moon.jpg' });
+    }
   };
-
   let openShareDialogAsync = async () => {
     if (!(await Sharing.isAvailableAsync())) {
-      alert(`Uh oh, sharing isn't available on your platform`);
+      alert(`The image is available for sharing at: ${selectedImage.remoteUri}`);
       return;
     }
-
-    await Sharing.shareAsync(selectedImage.localUri);
+    Sharing.shareAsync(selectedImage.remoteUri || selectedImage.localUri);
   };
   if (selectedImage !== null) {
     return (
       <View style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-        <TouchableOpacity onPress={() => {navigation.navigate('MedicalHome')}} style={styles.button}>
+        <TouchableOpacity onPress={openShareDialogAsync} style={styles.button}>
           <Text style={styles.buttonText}>Share this photo</Text>
         </TouchableOpacity>
       </View>
     );
   }
- 
   return (
     <View style={styles.container}>
+      <Card style={styles.txtCards}>
+        <View style={{ flexDirection: 'row' }}>
+          <TextInput style={styles.txtUser}
+            name='username' placeholder='Upload Video'
+          />
+        </View>
+      </Card>
       <Text style={styles.instructions}>
-        To upload a Video from your phone, just press the button below!
+        To share a photo from your phone with a friend, just press the button below!
       </Text>
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-        <Text style={styles.buttonText}>Pick a photo</Text>
+        <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -72,22 +78,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logo: {
-    width: 305,
-    height: 159,
-    marginBottom: 20,
+  txtUser: {
+    width: 320,
+    height: 150,
+    borderRadius: 10,
+    outline: 'none',
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
   },
   instructions: {
     color: '#888',
     fontSize: 18,
     marginHorizontal: 15,
-    marginTop: 500,
+    marginBottom: 10,
   },
   button: {
     backgroundColor: 'blue',
     padding: 20,
     borderRadius: 5,
-    marginTop: 30
   },
   buttonText: {
     fontSize: 20,
@@ -96,7 +104,6 @@ const styles = StyleSheet.create({
   thumbnail: {
     width: 300,
     height: 300,
-    marginTop: 550,
     resizeMode: 'contain',
   },
 });

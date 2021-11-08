@@ -68,7 +68,7 @@ export default function SignIn({ navigation, setDone }) {
         </TouchableOpacity>
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={Login}>
+          <TouchableOpacity style={styles.signIn} onPress={()=>navigation.navigate('Home')}>
             <Text style={{ color: '#fff' }}>LOGIN </Text>
           </TouchableOpacity>
         </View>

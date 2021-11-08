@@ -38,7 +38,6 @@ const DoctorProfile = () => {
             setSpecialization(true)
             setAbout(false)
             setQualification(false)
-
             setContact(false)
         }
 
@@ -54,7 +53,6 @@ const DoctorProfile = () => {
 
     return (
         <>
-
             <View>
                 <View style={styles.container}>
                     <View style={{ marginTop: 50, marginLeft: 10 }}>

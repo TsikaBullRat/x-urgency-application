@@ -13,7 +13,6 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
 import { Card } from 'react-native-paper';
-
 import Stroke from '../images/stokeIc.png';
 import strVid from '../images/stroke-vid.jpg';
 import heartVid from '../images/heart-vid.jpg';
@@ -33,11 +32,9 @@ import burns from '../images/burn.png'
 
 export default function Header() {
 
-
   return (
     <View style={styles.contain}>
-
-{/*----------------------Horizontal Menu----------------------*/}
+      {/*----------------------Horizontal Menu----------------------*/}
       <Card style={styles.menu}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <TouchableOpacity >
@@ -97,7 +94,7 @@ export default function Header() {
         </ScrollView>
       </Card>
 
-      </View>
+    </View>
   )
 }
 const styles = StyleSheet.create({
@@ -174,5 +171,4 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8
   },
-
 })

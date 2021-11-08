@@ -17,6 +17,7 @@ import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../firebase';
 import { AlertNote } from '../Components/Alert';
 export default function DoctorSignUp({ navigation }) {
+    
     const [email, setEmail] = useState(""),
         [password, setPassword] = useState(""),
         [Confirmpassword, setConfirmPassword] = useState(""),
@@ -29,7 +30,6 @@ export default function DoctorSignUp({ navigation }) {
     return (
         <View style={styles.container}>
             <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
-
             <Card style={styles.card}>
                 <View style={styles.heartIcon}>
                     <FontAwesome name="heartbeat" size={90} color="#fff" />
@@ -38,11 +38,9 @@ export default function DoctorSignUp({ navigation }) {
                 <Text style={{ color: '#fff', fontSize: 28, marginLeft: 8 }}> X-urgency
                 </Text>
             </Card>
-
             <View style={styles.header}>
                 <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>Doctor SignUp</Text>
             </View>
-
             <View>
                 
                     <Card style={{ height: 230 }}>
@@ -78,7 +76,7 @@ export default function DoctorSignUp({ navigation }) {
                             </View>
                         </Card>                      
                     </Card>
-              
+                </Card>
                 <View style={{ alignItems: 'center' }}>
                     <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
                         <Text style={{ color: '#fff' }}>SIGNIN </Text>
@@ -142,4 +140,3 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
 });
-                
