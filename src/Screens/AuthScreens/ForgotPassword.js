@@ -16,8 +16,7 @@ import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
-import { handleResetPassword } from '../firebase'
-
+import { handleResetPassword } from '../../firebase'
 export default function ForgotPassword() {
   const forgotPassword = () => {
     handleResetPassword("lindiwe.mpondo@gmail.com")
