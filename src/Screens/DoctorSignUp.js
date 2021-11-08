@@ -30,6 +30,7 @@ export default function DoctorSignUp({ navigation }) {
     return (
         <View style={styles.container}>
             <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+            
             <Card style={styles.card}>
                 <View style={styles.heartIcon}>
                     <FontAwesome name="heartbeat" size={90} color="#fff" />
@@ -38,11 +39,12 @@ export default function DoctorSignUp({ navigation }) {
                 <Text style={{ color: '#fff', fontSize: 28, marginLeft: 8 }}> X-urgency
                 </Text>
             </Card>
+            
             <View style={styles.header}>
                 <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>Doctor SignUp</Text>
             </View>
-            <View>
-                
+            
+            <View>              
                     <Card style={{ height: 230 }}>
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
@@ -74,9 +76,9 @@ export default function DoctorSignUp({ navigation }) {
                                     name='Branch' placeholder='Branch'
                                 />
                             </View>
-                        </Card>                      
-                    </Card>
-                </Card>
+                        </Card> 
+                        </Card>                     
+
                 <View style={{ alignItems: 'center' }}>
                     <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
                         <Text style={{ color: '#fff' }}>SIGNIN </Text>
