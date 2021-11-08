@@ -14,9 +14,9 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp"
 import ForgotPassword from "./ForgotPassword"
 import Home from "./Home"
-import Strokes from "./Stroke"
-import UploadVid from "./UploadVid";
+import PlayVideo from "./PlayVideo"
+import UploadVideo from "./UploadVideo"
 import DoctorSignUp from "./DoctorSignUp"
 import MedicalHome from "./MedicalHome"
-import UploadVideo from "./UploadVideo";
-export { SignIn, SignUp, ForgotPassword, Home, Strokes, UploadVid, DoctorSignUp, MedicalHome, UploadVideo }
+import DocContacts from "./DocContacts"
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, DocContacts }

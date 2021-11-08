@@ -68,14 +68,7 @@ export default function SignIn({ navigation, setDone }) {
         <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
           <Text style={{ color: '#F47066' }}> SignUp</Text>
         </TouchableOpacity>
-        <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
-          Medical Personel?</Text>
-        <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-          <Text style={{ color: '#F47066' }}> SignUp</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
-          <Text style={{ color: '#F47066' }}> SignIn</Text>
-        </TouchableOpacity>
+
       </View>
     </View>
   )
@@ -91,18 +84,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
-
   header: {
     paddingTop: 300,
     paddingLeft: 130,
   },
-
   txtUser: {
     width: 320,
     height: 50,
@@ -111,7 +101,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-
   txtPass: {
     width: 320,
     height: 50,
@@ -120,7 +109,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-
   txtRePass: {
     width: 320,
     height: 50,
@@ -130,7 +118,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-
   txtCards: {
     backgroundColor: 'lightgrey',
     width: 320,
@@ -139,7 +126,6 @@ const styles = StyleSheet.create({
     marginLeft: 28,
     marginTop: 25
   },
-
   signIn: {
     height: 50,
     width: 200,
