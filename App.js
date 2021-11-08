@@ -25,7 +25,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [successful, setSuccess] = useState(false),
     [user, setUser] = useState(''),
-    [load, setLoad] = useState();
+    [load, setLoad] = useState('');
+
   LoadSet(setLoad)
   console.log(load)
   useEffect(() => {
@@ -53,7 +54,7 @@ export default function App() {
               <Stack.Screen name="Sign Up" options={{ headerShown: false }}>
                 {props => <SignUp {...props} setDone={setSuccess} />}
               </Stack.Screen>
-              <Stack.Screen name="Doctor SignUp" component={DoctorSignUp} options={{ headerShown: false }}>
+              <Stack.Screen name="Doctor SignUp" component={DocSignUp} options={{ headerShown: false }}>
               </Stack.Screen>
               <Stack.Screen name="Doctor SignIn" component={DoctorSignUp} options={{ headerShown: false }} />
               <Stack.Screen name="Home" options={{ headerShown: false }} >

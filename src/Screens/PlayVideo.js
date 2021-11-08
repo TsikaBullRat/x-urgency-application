@@ -46,7 +46,8 @@ export default function Strokes({ navigation }) {
   return (
     <View style={styles.contain}>
       <View style={{ width: 365 }}>
-        {videoVisible && <Video
+      
+      <Video
           source={{ uri: videoPlay }}
           rate={1.0}
           volume={1.0}
@@ -54,9 +55,11 @@ export default function Strokes({ navigation }) {
           useNativeControls
           resizeMode="contain"
           isLooping
-          style={{ borderRadius: 25 }}
-        />}
-      </View>
+          style={{ borderRadius: 25}}
+        />
+      </View> 
+
+
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
@@ -200,65 +203,7 @@ export default function Strokes({ navigation }) {
               </View>
             </Card>
           </View>
-        )(
-          //Hidden Description
-          <View>
-            <Card
-              style={{
-                width: 315,
-                height: 300,
-                marginLeft: 40,
-                borderRadius: 20,
-                backgroundColor: '#fff',
-                marginTop: 15,
-              }}>
-              <View style={{ flexDirection: 'row' }}>
-                <Text
-                  style={{
-                    paddingLeft: 10,
-                    fontWeight: 'bold',
-                    fontSize: 16,
-                  }}>
-                  Description:
-                </Text>
-                <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                  <AntDesign
-                    name="closecircle"
-                    size={18}
-                    color="black"
-                    style={{ marginLeft: 182 }}
-                  />
-                </TouchableOpacity>
-              </View>
-              <View
-                style={{
-                  marginTop: 10,
-                  marginLeft: 12,
-                  width: 255,
-                }}>
-                <Text>Stroke Emergency Video</Text>
-                <Text style={{ fontSize: 10, color: 'gray' }}>
-                  1 000 000 Views
-                </Text>
-              </View>
-              <View
-                style={{
-                  marginTop: 10,
-                  marginLeft: 12,
-                  width: 255,
-                }}>
-                <Text style={{ paddingTop: 10 }}>
-                  Lost your faith in ambulance response time? You can play
-                  doctor and help save a life by just following the instructions
-                  of this video. This video is accredited by the Department of
-                  Health and Social Development, for critical emergencies only.
-                </Text>
-                <Text style={{ paddingTop: 10, fontWeight: 'bold' }}>
-                  Thank you for your support.
-                </Text>
-              </View>
-            </Card>
-          </View>
+        
         )}
       </View>
       <ScrollView showsVerticalScrollIndicator={false}
