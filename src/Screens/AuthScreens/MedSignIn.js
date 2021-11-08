@@ -14,8 +14,14 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
+<<<<<<< HEAD:src/Screens/AuthScreens/MedSignIn.js
 import { handleSignIn } from '../../firebase'
 import { AlertNote } from '../../Components';
+=======
+import { handleSignIn } from '../firebase'
+import { AlertNote } from '../Components';
+
+>>>>>>> ea6c1894311140be89aa8b2b4b707d45c4dc0cb2:src/Screens/DocSignIn.js
 export default function SignIn({ navigation, setDone }) {
   const
     [email, setEmail] = useState(""),
@@ -23,21 +29,24 @@ export default function SignIn({ navigation, setDone }) {
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
   const Login = () => {
-    handleSignIn(email, password, setMessage)
+    handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
+    navigation.navigate('MedicalHome')
   }
   return (
-    <View >
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} excess={setDone} />
+    <View style={styles.container}>
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={76} color="#fff" />
+          <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
+
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 10 }}>LogIn</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Medical LogIn</Text>
       </View>
+
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -47,6 +56,7 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
+
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
@@ -57,83 +67,90 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
+
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
-          <Text style={{ paddingLeft: 220, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.signIn} onPress={Login}>
-          <Text style={{ color: '#fff' }}>LOGIN </Text>
-        </TouchableOpacity>
-        <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
-          New User?</Text>
-        <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-          <Text style={{ color: '#F47066' }}> SignUp</Text>
+          <Text style={{ paddingLeft: 180, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
         </TouchableOpacity>
 
+        <View style={{ alignItems: 'center', alignContent: 'center' }}>
+          <TouchableOpacity style={styles.signIn} onPress={Login}>
+            <Text style={{ color: '#fff' }}>LOGIN </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
+          <Text style={{ paddingTop: 5 }}>
+            New?
+          </Text>
+          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
+            <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
+          </TouchableOpacity>
+        </View>
+        
       </View>
     </View>
   )
 }
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center'
+  },
+
   card: {
-    position: 'absolute',
     backgroundColor: '#F47066',
-    width: 375,
-    height: 280,
+    width: 325,
+    height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    textAlign: 'center'
   },
+
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
+
   header: {
-    paddingTop: 300,
-    paddingLeft: 130,
+    paddingTop: 5
   },
+
   txtUser: {
-    width: 320,
-    height: 50,
+    width: 260,
+    height: 40,
     borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
+
   txtPass: {
-    width: 320,
-    height: 50,
+    width: 260,
+    height: 40,
     borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
-  txtRePass: {
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    outline: 'none',
-    border: 0,
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
-  },
+
   txtCards: {
     backgroundColor: 'lightgrey',
-    width: 320,
-    height: 50,
+    width: 285,
+    height: 40,
     borderRadius: 10,
-    marginLeft: 28,
+    marginLeft: 2,
     marginTop: 25
   },
+
   signIn: {
     height: 50,
     width: 200,
-    marginLeft: 85,
     marginTop: 20,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 });

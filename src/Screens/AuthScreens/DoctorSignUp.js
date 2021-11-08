@@ -11,12 +11,13 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
 import { AlertNote } from '../../Components/Alert';
 export default function DoctorSignUp({ navigation }) {
+
     const [email, setEmail] = useState(""),
         [name, setName] = useState(""),
         [surname, setSurname] = useState(""),
@@ -36,18 +37,20 @@ export default function DoctorSignUp({ navigation }) {
     return (
         <View style={styles.container}>
             <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+            
             <Card style={styles.card}>
                 <View style={styles.heartIcon}>
-                    <FontAwesome name="heartbeat" size={146} color="#fff" />
+                    <FontAwesome name="heartbeat" size={90} color="#fff" />
                 </View>
-                <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency
+                <Text style={{ color: '#fff', fontSize: 28, marginLeft: 8 }}> X-urgency
                 </Text>
             </Card>
+            
             <View style={styles.header}>
                 <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>Doctor SignUp</Text>
             </View>
-            <View>
-                <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
+            
+            <View>              
                     <Card style={{ height: 230 }}>
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
@@ -70,6 +73,7 @@ export default function DoctorSignUp({ navigation }) {
                                 />
                             </View>
                         </Card>
+
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
                                 <TextInput style={styles.txtField}
@@ -91,41 +95,27 @@ export default function DoctorSignUp({ navigation }) {
                                 />
                             </View>
                         </Card>
+
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
-                                <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
                                 <TextInput style={styles.txtField}
-                                    name='Email' placeholder='Email' onChangeText={text => setEmail(text)}
+                                    name='Email' placeholder='Email'
                                 />
                             </View>
                         </Card>
+
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
-                                <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
                                 <TextInput style={styles.txtField}
-                                    name='password' placeholder='Password'
-                                    secureTextEntry={true}
-                                    onChangeText={text => setPassword(text)}
+                                    name='Branch' placeholder='Branch'
                                 />
                             </View>
-                        </Card>
-                        <Card style={styles.txtCards}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <EvilIcons name="lock" size={28} color="black"
-                                    style={{ marginTop: 9, marginLeft: 4 }}
-                                />
-                                <TextInput style={styles.txtRePass}
-                                    name='password' placeholder='Re-enter Password'
-                                    secureTextEntry={true}
-                                    onChangeText={text => setConfirmPassword(text)}
-                                />
-                            </View>
-                        </Card>
-                    </Card>
-                </ScrollView>
+                        </Card> 
+                        </Card>                     
+
                 <View style={{ alignItems: 'center' }}>
                     <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
-                        <Text style={{ color: '#fff' }}>SIGN_UP </Text>
+                        <Text style={{ color: '#fff' }}>SIGNIN </Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -159,7 +149,7 @@ const styles = StyleSheet.create({
     },
 
     txtField: {
-        width: 260,
+        width: 285,
         height: 40,
         borderRadius: 10,
         outline: 'none',

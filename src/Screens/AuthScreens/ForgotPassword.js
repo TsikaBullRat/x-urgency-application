@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';

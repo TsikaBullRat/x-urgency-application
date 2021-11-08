@@ -1,19 +1,19 @@
 /**
-    * @description      : 
-    * @author           : TLeeuw
-    * @group            : 
-    * @created          : 12/10/2021 - 16:06:47
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 12/10/2021
-    * - Author          : TLeeuw
-    * - Modification    : 
-**/
-import React, { useState, useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+ * @description      :
+ * @author           : TLeeuw
+ * @group            :
+ * @created          : 12/10/2021 - 16:06:47
+ *
+ * MODIFICATION LOG
+ * - Version         : 1.0.0
+ * - Date            : 12/10/2021
+ * - Author          : TLeeuw
+ * - Modification    :
+ **/
+import React, { useState, useEffect } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 // You can import from local files
 import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHome, UploadVideo, PlayVideo } from './src/Screens';
 import { auth, Detector } from './src/firebase'

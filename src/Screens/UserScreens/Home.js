@@ -22,30 +22,14 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
-import { Avatar, Badge } from 'react-native-elements';
+import React, { useState } from 'react';
+import { View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
+import { Video, } from 'expo-av';
 import { Card } from 'react-native-paper';
-import { AntDesign } from '@expo/vector-icons';
-import { Video, AVPlaybackStatus } from 'expo-av';
-import Stroke from '../../images/stokeIc.png';
-import strVid from '../../images/stroke-vid.jpg';
-import heartVid from '../../images/heart-vid.jpg';
-import epilepsyVid from '../../images/epilepsy-vid.jpg';
-import cpr_vid2 from '../../images/cpr_vid2.jpg';
-import drowning from '../../images/drowning-vid.jpg';
-import burn from '../../images/burns-vid.jpg';
-import choke from '../../images/choking-vid.jpg';
-import bleed from '../../images/bleeding-vid.webp';
-import heart from '../../images/heartAttack.png';
-import bleeding from '../../images/bleed.png'
-import epilepsy from '../../images/Epilepsy.png'
-import cpr from '../../images/cprIcon.png'
-import choking from '../../images/choke.png'
-import drown from '../../images/drown.png'
-import burns from '../../images/burn.png'
 import { auth } from '../../firebase';
-import { LoadSet } from '../../firebase';
+import Header from '../../Components/Header'
+import Menu from '../../Components/Menu'
+
 export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
@@ -103,100 +87,8 @@ export default function Home({ navigation, setDone }) {
   // const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
   return (
     <View style={styles.contain}>
-      {/*---------------------------Header--------------------------*/}
-      <View style={{ flexDirection: 'row' }}>
-        <View style={styles.header}>
-          <Text style={{
-            fontSize: 36, paddingLeft: 30,
-            color: 'turquoise',
-            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
-          }}
-          >
-            What's your
-          </Text>
-          <Text style={{
-            fontSize: 36, paddingLeft: 30, color: 'red',
-            textShadowColor: 'grey',
-            textShadowOffset: { width: 2, height: 2 },
-            textShadowRadius: 1
-          }} >
-            EMERGENCY
-          </Text>
-        </View>
-        <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <Avatar style={styles.avatar}
-            rounded
-            source={{
-              uri: 'https://randomuser.me/api/portraits/men/41.jpg',
-            }}
-            size="large"
-          />
-          <Badge
-            status="success"
-            containerStyle={{ position: 'absolute', top: -4, right: -4 }}
-          />
-        </View>
-      </View>
-      {/*----------------------Horizontal Menu----------------------*/}
-      <Card style={styles.menu}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <TouchableOpacity >
-            <View>
-              <Card style={{
-                width: 50, height: 70, borderRadius: 15, marginLeft: 18, alignItems: 'center', textAlign: 'center', marginTop: 7
-              }}
-                onPress={() => { navigation.navigate('Strokes') }}
-              >
-                <Image style={styles.strokeMenu} source={Stroke} />
-                <Text style={{ fontSize: 12 }}>Stroke</Text>
-              </Card>
-            </View>
-          </TouchableOpacity>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7 }}>
-              <Image style={styles.heartMenu} source={heart} />
-              <Text style={{ paddingLeft: 10, fontSize: 12 }}>Heart-Attack</Text>
-            </Card>
-          </View>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.epilepsyMenu} source={epilepsy} />
-              <Text style={{ fontSize: 12 }}>Epilepsy</Text>
-            </Card>
-          </View>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.cprMenu} source={cpr} />
-              <Text style={{ paddingTop: 8, fontSize: 12 }}>CPR</Text>
-            </Card>
-          </View>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.bloodMenu} source={bleeding} />
-            </Card>
-            <Text style={{ paddingLeft: 28, fontSize: 12 }}>Bleeding</Text>
-          </View>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.conImg} source={choking} />
-              <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Choking</Text>
-            </Card>
-          </View>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.drown} source={drown} />
-              <Text style={{ paddingLeft: 7, paddingTop: 3, fontSize: 12 }}>Drowning</Text>
-            </Card>
-          </View>
-          <TouchableOpacity onPress={Logout}>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
-              <Image style={styles.burn} source={burns} />
-              <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
-            </Card>
-          </TouchableOpacity>
-        </ScrollView>
-      </Card>
-
+      <Header />
+      <Menu />
       {/*---------------------- Video Scroll View--------------------*/}
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
@@ -210,8 +102,7 @@ export default function Home({ navigation, setDone }) {
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                     style={{
-                      width: 315, marginLeft: -
-                        10
+                      width: 315
                     }}
                   />
                   <h4>{vid.title}</h4>
@@ -220,15 +111,10 @@ export default function Home({ navigation, setDone }) {
           </View>
         </Card  >
       </ScrollView >
-
-      <View style={{ paddingTop: 20 }}>
-        <TouchableOpacity>
-          Med Home
-        </TouchableOpacity>
-      </View>
     </View>
   )
 }
+
 const styles = StyleSheet.create({
   contain: {
     alignItems: 'center',
@@ -243,7 +129,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    margingTop: 80,
+    marginTop: 80,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
     shadowColor: 'grey',
@@ -251,10 +137,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
-
-
   txtCards: {
-    backgroundColor: 'lightgray',
+    backgroundColor: 'lightgrey',
     opacity: 0.8,
     width: 320,
     height: 50,
@@ -264,7 +148,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderRightWidth: 2,
     borderColor: 'turquoise',
-    shadowColor: 'skyblue',
+    shadowColor: 'blue',
     shadowOffset: { width: 3, height: 3 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
@@ -334,9 +218,10 @@ const styles = StyleSheet.create({
   },
   menu2: {
     width: 315,
-    height: 520,
+    height: 560,
     marginTop: 20,
     borderRadius: 15,
+    alignItems: 'center'
   },
 });
 

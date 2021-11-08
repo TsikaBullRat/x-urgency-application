@@ -63,7 +63,7 @@ export default function SignIn({ navigation, setDone }) {
           <Text style={{ paddingLeft: 180, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
         </TouchableOpacity>
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={Login}>
+          <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('Home')}>
             <Text style={{ color: '#fff' }}>LOGIN </Text>
           </TouchableOpacity>
         </View>
@@ -79,11 +79,8 @@ export default function SignIn({ navigation, setDone }) {
           Medical Personel?
         </Text>
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
-            <Text style={{ color: '#F47066' }}> SignUp /</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => { navigation.navigate('MedicalHome') }}>
-            <Text style={{ color: '#F47066' }}> SignIn</Text>
+          <TouchableOpacity onPress={() => { navigation.navigate('DocSignIn') }}>
+            <Text style={{ color: '#F47066' }}> SignIn </Text>
           </TouchableOpacity>
         </View>
       </View>

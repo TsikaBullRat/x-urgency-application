@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { Entypo } from 'react-native-vector-icons'
 
 class Counter extends React.Component {
-  state = { count: 16 };
+  state = { count: 106 };
 
   setCount = () => this.setState(
     prevState => ({ ...prevState, count: this.state.count + 1 })
@@ -14,15 +14,15 @@ class Counter extends React.Component {
     return (
       <View>
 
-        <View>
+        <View style={{ marginLeft: 10 }}>
           <TouchableOpacity onPress={this.setCount}>
             <Entypo
-              name="thumbs-down"
+              name="thumbs-up"
               size={20}
               color="black"
               style={{ marginLeft: 10 }}
             />
-            <Text style={{ paddingTop: 3, paddingLeft: 5 }}> {count}k </Text>
+            <Text style={{ paddingTop: 6 }}> {count}k </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -30,8 +30,8 @@ class Counter extends React.Component {
   }
 }
 
-const Dislikes = () => (
+const Likes = () => (
   <Counter />
 );
 
-export { Dislikes }
+export { Likes }
