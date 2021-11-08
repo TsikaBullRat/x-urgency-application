@@ -26,7 +26,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Video, } from 'expo-av';
 import { Card } from 'react-native-paper';
-import { auth } from '../../firebase';
+import { auth, LoadSet } from '../../firebase';
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 
@@ -36,10 +36,10 @@ export default function Home({ navigation, setDone }) {
   }
   const [videos, setLoad] = useState(null);
 
-    LoadSet(setLoad)
+  LoadSet(setLoad)
   // useEffect(()=>{
-    
-    
+
+
   // const videos = [
   //   {
   //     id: 1,
@@ -93,21 +93,21 @@ export default function Home({ navigation, setDone }) {
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
-            {videos?(videos.map(vid => (
-                <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
-                  <Video
-                    ref={video}
-                    source={{ uri: vid.url }}
-                    resizeMode="contain"
-                    isLooping
-                    onPlaybackStatusUpdate={status => setStatus(() => status)}
-                    style={{
-                      width: 315
-                    }}
-                  />
-                  <h4>{vid.title}</h4>
-                </TouchableOpacity>
-            ))):(null)}
+            {videos ? (videos.map(vid => (
+              <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
+                <Video
+                  ref={video}
+                  source={{ uri: vid.url }}
+                  resizeMode="contain"
+                  isLooping
+                  onPlaybackStatusUpdate={status => setStatus(() => status)}
+                  style={{
+                    width: 315
+                  }}
+                />
+                <h4>{vid.title}</h4>
+              </TouchableOpacity>
+            ))) : (null)}
           </View>
         </Card  >
       </ScrollView >
