@@ -27,11 +27,12 @@ export default function App() {
     [user, setUser] = useState(''),
     [load, setLoad] = useState('');
   LoadSet(setLoad)
-  console.log(load)
+  
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       setUser(true)
       setSuccess(true)
+      console.log(user)
     })
     return () => {
       auth.onAuthStateChanged(user => {
@@ -60,6 +61,8 @@ export default function App() {
                 {props => <Home {...props} setDone={setSuccess} />}
               </Stack.Screen>
               <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }}>
+              </Stack.Screen>
+              <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }}>
               </Stack.Screen>
               <Stack.Screen name="Reset Password" component={ForgotPassword} options={{ headerShown: false }} />
               <Stack.Screen name="Upload" component={UploadVideo} options={{ headerShown: false }} />

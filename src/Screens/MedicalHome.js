@@ -136,7 +136,7 @@ export default function MedicalHome({ navigation }) {
           <View style={{ alignItems: 'center' }}>
             {videos.map(vid => (
               <ol >
-                <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
+                <TouchableOpacity onPress={() => { navigation.navigate('UploadVideo') }}>
                   <Video
                     ref={video}
                     source={{ uri: link }}
@@ -154,8 +154,8 @@ export default function MedicalHome({ navigation }) {
               </ol>
             ))}
           </View>
-        </Card  >
-      </ScrollView >
+        </Card>
+      </ScrollView>
       <TouchableOpacity style={styles.btnUpload} onPress={() => { navigation.navigate('Upload') }}>
         <Text style={{ color: '#fff', fontSize: 26 }}>+</Text>
       </TouchableOpacity>
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    margingTop: 80,
+    marginTop: 80,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
     shadowColor: 'grey',
