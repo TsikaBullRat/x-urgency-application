@@ -20,5 +20,6 @@ import DoctorSignUp from "./DoctorSignUp"
 import MedicalHome from "./MedicalHome"
 import DocProfile from "./DocProfile"
 import DocSignUp from "./DocSignUp"
+import Doctor from "./Doctor"
 
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, DocProfile }
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, DocProfile, Doctor }

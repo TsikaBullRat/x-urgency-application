@@ -201,11 +201,11 @@ const styles = StyleSheet.create({
   },
 
   btnUpload: {
-    backgroundColor: '#F47066', 
-    height: 40, 
-    width: 40, 
-    borderRadius: 50, 
-    textAlign: 'center', 
+    backgroundColor: '#F47066',
+    height: 40,
+    width: 40,
+    borderRadius: 50,
+    textAlign: 'center',
     marginLeft: 280
   },
 

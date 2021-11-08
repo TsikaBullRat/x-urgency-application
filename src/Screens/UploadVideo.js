@@ -26,11 +26,9 @@ import * as Sharing from "expo-sharing";
 
 export default function UploadVideo({ navigation }) {
   let [selectedImage, setSelectedImage] = useState(null);
-
   let openImagePickerAsync = async () => {
     let permissionResult =
       await ImagePicker.requestCameraRollPermissionsAsync();
-
     if (permissionResult.granted === false) {
       alert("Permission to access camera roll is required!");
       return;
@@ -48,7 +46,6 @@ export default function UploadVideo({ navigation }) {
     }
     await Sharing.shareAsync(selectedImage.localUri);
   };
-
   if (selectedImage !== null) {
     return (
       <View style={styles.container}>
@@ -73,9 +70,7 @@ export default function UploadVideo({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={{ marginTop: 50 }}>
-
         <Text style={styles.header}>Fill in Info. below:</Text>
-        
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: "row" }}>
             <TextInput
@@ -85,23 +80,20 @@ export default function UploadVideo({ navigation }) {
             />
           </View>
         </Card>
-
         <Picker
           selectedValue={selectedValue}
           style={styles.picker}
           onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         >
-          <Picker.Item label="Stroke" value= 'stroke' />
-          <Picker.Item label="Heart-Attack" value= 'heart-attack' />
-          <Picker.Item label="Epilepsy" value= 'epilepsy' />
-          <Picker.Item label="CPR" value= 'cpr' />
-          <Picker.Item label="Drowning"  value= 'drowning' />
-          <Picker.Item label="Choking" value= 'choking' />
-          <Picker.Item label="Java" value= 'java'  />
-          <Picker.Item label="Burns" value= 'burns' />
-
+          <Picker.Item label="Stroke" value='stroke' />
+          <Picker.Item label="Heart-Attack" value='heart-attack' />
+          <Picker.Item label="Epilepsy" value='epilepsy' />
+          <Picker.Item label="CPR" value='cpr' />
+          <Picker.Item label="Drowning" value='drowning' />
+          <Picker.Item label="Choking" value='choking' />
+          <Picker.Item label="Java" value='java' />
+          <Picker.Item label="Burns" value='burns' />
         </Picker>
-
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: "row" }}>
             <TextInput
@@ -115,11 +107,9 @@ export default function UploadVideo({ navigation }) {
       <Text style={styles.instructions}>
         To share a video from your phone/PC , just press the button below!
       </Text>
-
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
         <Text style={styles.buttonText}>Pick a video</Text>
       </TouchableOpacity>
-
     </View>
   );
 }
@@ -131,8 +121,8 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    fontSize: 28, 
-    textAlign: 'center', 
+    fontSize: 28,
+    textAlign: 'center',
     color: '#F47066',
   },
 

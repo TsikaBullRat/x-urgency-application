@@ -24,13 +24,11 @@
 **/
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
-
 import { Avatar, Badge } from 'react-native-elements';
 import { Video, AVPlaybackStatus } from 'expo-av';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { auth } from '../firebase';
-
 import Header from '../Components/Header'
 import Menu from '../Components/Menu'
 
@@ -93,21 +91,17 @@ export default function Home({ navigation, setDone }) {
   const [status, setStatus] = React.useState({});
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
 
-
   return (
     <View style={styles.contain}>
-
       <Header />
-
       <Menu />
-
       {/*---------------------- Video Scroll View--------------------*/}
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View >
             {videos.map(vid => (
               <ol >
-                <TouchableOpacity onPress={() => {navigation.navigate('PlayVideo') }}>
+                <TouchableOpacity onPress={() => { navigation.navigate('PlayVideo') }}>
                   <Video
                     ref={video}
                     source={{ uri: vid.url }}
@@ -125,7 +119,6 @@ export default function Home({ navigation, setDone }) {
           </View>
         </Card  >
       </ScrollView >
-   
     </View>
   )
 }
