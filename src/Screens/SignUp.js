@@ -14,7 +14,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
-import { handleSignUp } from '../firebase';
+import { handleSignUp } from '../firebase'
 import { AlertNote } from '../Components/Alert';
 export default function SignUp({ navigation }) {
   const [email, setEmail] = useState(""),

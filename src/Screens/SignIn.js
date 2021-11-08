@@ -15,7 +15,7 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignIn } from '../firebase'
-import { AlertNote } from '../Components';
+import { AlertNote } from '../Components/Alert';
 
 export default function SignIn({ navigation, setDone }) {
   const

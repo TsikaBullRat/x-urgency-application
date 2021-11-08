@@ -44,7 +44,7 @@ import cpr from '../images/cprIcon.png'
 import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
-import { auth } from '../firebase';
+import { auth } from '../firebase/Auth';
 export default function MedicalHome({ navigation }) {
   const Logout = () => {
     auth.signOut()
