@@ -32,10 +32,10 @@ export default function DoctorSignUp({ navigation }) {
 
             <Card style={styles.card}>
                 <View style={styles.heartIcon}>
-                    <FontAwesome name="heartbeat" size={146} color="#fff" />
+                    <FontAwesome name="heartbeat" size={90} color="#fff" />
                 </View>
 
-                <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency
+                <Text style={{ color: '#fff', fontSize: 28, marginLeft: 8 }}> X-urgency
                 </Text>
             </Card>
 
@@ -80,8 +80,8 @@ export default function DoctorSignUp({ navigation }) {
                     </Card>
               
                 <View style={{ alignItems: 'center' }}>
-                    <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('DocSignUp') }}>
-                        <Text style={{ color: '#fff' }}>Next </Text>
+                    <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Doctor') }}>
+                        <Text style={{ color: '#fff' }}>SIGNIN </Text>
                     </TouchableOpacity>
                 </View>
             </View>
