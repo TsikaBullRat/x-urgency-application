@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../firebase';
@@ -33,7 +33,6 @@ export default function DoctorSignUp({ navigation }) {
                 <View style={styles.heartIcon}>
                     <FontAwesome name="heartbeat" size={90} color="#fff" />
                 </View>
-
                 <Text style={{ color: '#fff', fontSize: 28, marginLeft: 8 }}> X-urgency
                 </Text>
             </Card>

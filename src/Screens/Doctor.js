@@ -29,7 +29,6 @@ const DoctorProfile = () => {
         if (value == 'Qualification') {
             setQualification(true)
             setAbout(false)
-
             setSpecialization(false)
             setContact(false)
         }
@@ -81,9 +80,7 @@ const DoctorProfile = () => {
                         hasPadding
                     />
                 </View>
-
             </View>
-
             {About ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     Hi I am Dr Sighn , I have a major in neurosurgery.
@@ -91,7 +88,6 @@ const DoctorProfile = () => {
                     I really love the work I do , I'm a very determined person and devoted to being a Dr.
                 </Text>
             </View> : <View></View>}
-
             {Qalification ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     Becoming a doctor isn’t just a career move. Medicine is something that you devote your life to studying and practising
@@ -100,7 +96,6 @@ const DoctorProfile = () => {
                     As such, a career in medicine is academically rigorous.
                 </Text>
             </View> : <View></View>}
-
             {Specialization ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     Neurologists
@@ -108,7 +103,6 @@ const DoctorProfile = () => {
                     They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.
                 </Text>
             </View> : <View></View>}
-
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     Show Contact

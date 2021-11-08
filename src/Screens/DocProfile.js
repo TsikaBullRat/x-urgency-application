@@ -23,7 +23,7 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';

@@ -15,7 +15,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 // You can import from local files
-import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHome, UploadVideo, PlayVideo, DocProfile, DocSignUp, Doctor } from './src/Screens';
+import { SignIn, SignUp, Home, ForgotPassword, DoctorSignUp, MedicalHome, UploadVideo, PlayVideo, DocProfile, DocSignUp, Doctor } from './src/Screens';
 import { auth } from './src/firebase'
 import { ActivityIndicator } from 'react-native-paper';
 import { LoadSet } from './src/firebase';
@@ -26,7 +26,6 @@ export default function App() {
   const [successful, setSuccess] = useState(false),
     [user, setUser] = useState(''),
     [load, setLoad] = useState('');
-
   LoadSet(setLoad)
   console.log(load)
   useEffect(() => {
