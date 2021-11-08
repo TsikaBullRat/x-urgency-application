@@ -110,14 +110,12 @@ export default function MedicalHome({ navigation }) {
           >
             Dr. DoLittle
           </Text>
-
           <Text style={{
             fontSize: 36, paddingLeft: 30, color: 'red',
             textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
           }}>In Da House
           </Text>
         </View>
-
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar}
             rounded
@@ -158,8 +156,8 @@ export default function MedicalHome({ navigation }) {
           </View>
         </Card>
       </ScrollView>
-      <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
-        <Text style={{ color: '#F47066' }}>Upload</Text>
+      <TouchableOpacity style={styles.btnUpload} onPress={() => { navigation.navigate('Upload') }}>
+        <Text style={{ color: '#fff', fontSize: 26 }}>+</Text>
       </TouchableOpacity>
     </View>
   )
@@ -190,7 +188,7 @@ const styles = StyleSheet.create({
 
   menu2: {
     width: 355,
-    height: 260,
+    height: 550,
     marginLeft: 10,
     marginTop: 50,
     borderRadius: 15,
@@ -201,5 +199,15 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+
+  btnUpload: {
+    backgroundColor: '#F47066',
+    height: 40,
+    width: 40,
+    borderRadius: 50,
+    textAlign: 'center',
+    marginLeft: 280
+  },
+
 });
 

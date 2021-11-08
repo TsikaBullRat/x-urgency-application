@@ -68,11 +68,11 @@ export default function SignIn({ navigation, setDone }) {
         <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
           <Text style={{ color: '#F47066' }}> SignUp</Text>
         </TouchableOpacity>
-
       </View>
     </View>
   )
 }
+
 const styles = StyleSheet.create({
   card: {
     position: 'absolute',
