@@ -111,7 +111,7 @@ export default function DoctorSignUp({ navigation }) {
           <TouchableOpacity
             style={styles.signIn}
             onPress={() => {
-              navigation.navigate("Doctor SignIn");
+              navigation.navigate("Doctor_SignUp");
             }}
           >
             <Text style={{ color: "#fff" }}>Next </Text>

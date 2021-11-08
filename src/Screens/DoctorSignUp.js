@@ -49,22 +49,6 @@ export default function DoctorSignUp({ navigation }) {
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
                                 <TextInput style={styles.txtField}
-                                    name='Name' placeholder='Name'
-                                />
-                            </View>
-                        </Card>
-
-                        <Card style={styles.txtCards}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
-                                    name='Surname' placeholder='Surname'
-                                />
-                            </View>
-                        </Card>
-
-                        <Card style={styles.txtCards}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
                                     name='Specialization' placeholder='Specialization'
                                 />
                             </View>
@@ -73,14 +57,30 @@ export default function DoctorSignUp({ navigation }) {
                         <Card style={styles.txtCards}>
                             <View style={{ flexDirection: 'row' }}>
                                 <TextInput style={styles.txtField}
-                                    name='Qualification' placeholder='Qualification'
+                                    name='Contact NO.' placeholder='Contact NO.'
+                                />
+                            </View>
+                        </Card>
+
+                        <Card style={styles.txtCards}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <TextInput style={styles.txtField}
+                                    name='Email' placeholder='Email'
+                                />
+                            </View>
+                        </Card>
+
+                        <Card style={styles.txtCards}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <TextInput style={styles.txtField}
+                                    name='Branch' placeholder='Branch'
                                 />
                             </View>
                         </Card>                      
                     </Card>
               
                 <View style={{ alignItems: 'center' }}>
-                    <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Doctor') }}>
+                    <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
                         <Text style={{ color: '#fff' }}>SIGNIN </Text>
                     </TouchableOpacity>
                 </View>

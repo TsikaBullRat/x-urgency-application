@@ -17,9 +17,10 @@ import Home from "./Home"
 import PlayVideo from "./PlayVideo"
 import UploadVideo from "./UploadVideo"
 import DoctorSignUp from "./DoctorSignUp"
+import DocSignIn from "./DocSignIn"
 import MedicalHome from "./MedicalHome"
-import DocProfile from "./DocProfile"
 import DocSignUp from "./DocSignUp"
 import Doctor from "./Doctor"
+import Upload from "./Upload"
 
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, DocProfile, Doctor }
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, Doctor, DocSignIn, Upload }

@@ -26,7 +26,7 @@ export default function SignIn({ navigation, setDone }) {
   const Login = () => {
     handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
-    navigation.navigate('Home')
+    navigation.navigate('MedicalHome')
   }
   return (
     <View style={styles.container}>
@@ -39,7 +39,7 @@ export default function SignIn({ navigation, setDone }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>LogIn</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Medical LogIn</Text>
       </View>
 
       <View>
@@ -72,26 +72,16 @@ export default function SignIn({ navigation, setDone }) {
             <Text style={{ color: '#fff' }}>LOGIN </Text>
           </TouchableOpacity>
         </View>
-        
+
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <Text style={{ paddingTop: 5 }}>
-            New User?
+            New?
           </Text>
-          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
             <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
           </TouchableOpacity>
         </View>
-
-        <Text style={{ paddingTop: 10, textAlign: 'center', justifyContent: 'center' }}>
-          Medical Personel?
-        </Text>
-
-        <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <TouchableOpacity onPress={() => { navigation.navigate('DocSignIn') }}>
-            <Text style={{ color: '#F47066' }}> SignIn </Text>
-          </TouchableOpacity>
-        </View>
-
+        
       </View>
     </View>
   )
