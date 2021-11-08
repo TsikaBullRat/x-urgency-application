@@ -6,8 +6,8 @@ import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
 import { Video, AVPlaybackStatus } from 'expo-av';
-import { Likes } from '../Components/Likes'
-import { Dislikes } from '../Components/Dislikes'
+import { Likes } from '../../Components/Likes'
+import { Dislikes } from '../../Components/Dislikes'
 
 export default function Strokes({ navigation }) {
   const [userName, setUserName] = useState('Rando123')

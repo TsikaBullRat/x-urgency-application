@@ -2,11 +2,11 @@
     * @description      : 
     * @author           : MLab
     * @group            : 
-    * @created          : 07/10/2021 - 10:07:05
+    * @created          : 05/10/2021 - 14:22:53
     * 
     * MODIFICATION LOG
     * - Version         : 1.0.0
-    * - Date            : 07/10/2021
+    * - Date            : 05/10/2021
     * - Author          : MLab
     * - Modification    : 
 **/
@@ -14,34 +14,34 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
-import { handleSignIn } from '../firebase'
-import { AlertNote } from '../Components';
-export default function SignIn({ navigation, setDone }) {
-  const
-    [email, setEmail] = useState(""),
+import { handleSignUp } from '../../firebase';
+import { AlertNote } from '../../Components/Alert';
+export default function SignUp({ navigation }) {
+  const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
+    [Confirmpassword, setConfirmPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
-    [message, setMessage] = useState("");
-  const Login = () => {
-    handleSignIn(email, password, setMessage)
+    [message, setMessage] = useState("")
+  const Register = () => {
+    handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage)
     setDisplaModal(true)
   }
   return (
-    <View >
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} excess={setDone} />
+    <View style={styles.container}>
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={76} color="#fff" />
+          <FontAwesome name="heartbeat" size={146} color="#fff" />
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 10 }}>LogIn</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>SignUp</Text>
       </View>
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={22} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
             <TextInput style={styles.txtUser}
               name='username' placeholder='Username' onChangeText={text => setEmail(text)}
             />
@@ -49,7 +49,7 @@ export default function SignIn({ navigation, setDone }) {
         </Card>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
+            <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
             <TextInput style={styles.txtPass}
               name='password' placeholder='Password'
               secureTextEntry={true}
@@ -57,28 +57,36 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
-        <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
-          <Text style={{ paddingLeft: 220, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.signIn} onPress={Login}>
-          <Text style={{ color: '#fff' }}>LOGIN </Text>
-        </TouchableOpacity>
-        <Text style={{ paddingTop: 5, paddingLeft: 120 }}>
-          New User?</Text>
-        <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-          <Text style={{ color: '#F47066' }}> SignUp</Text>
-        </TouchableOpacity>
-
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <EvilIcons name="lock" size={28} color="black"
+              style={{ marginTop: 9, marginLeft: 4 }}
+            />
+            <TextInput style={styles.txtRePass}
+              name='password' placeholder='Re-enter Password'
+              secureTextEntry={true}
+              onChangeText={text => setConfirmPassword(text)}
+            />
+          </View>
+        </Card>
+        <View style={{ alignItems: 'center' }}>
+          <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
+            <Text style={{ color: '#fff' }} >SIGN_UP </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )
 }
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
   card: {
     position: 'absolute',
     backgroundColor: '#F47066',
-    width: 375,
-    height: 280,
+    width: 325,
+    height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
@@ -90,50 +98,47 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   header: {
-    paddingTop: 300,
-    paddingLeft: 130,
+    paddingTop: 205,
+    textAlign: 'center'
   },
   txtUser: {
-    width: 320,
-    height: 50,
+    width: 280,
+    height: 40,
     borderRadius: 10,
     outline: 'none',
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
+    backgroundColor: 'lightgrey'
   },
   txtPass: {
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
-  },
-  txtRePass: {
-    width: 320,
-    height: 50,
+    width: 280,
+    height: 40,
     borderRadius: 10,
     outline: 'none',
     border: 0,
     backgroundColor: 'lightgrey',
-    paddingLeft: 10,
+  },
+  txtRePass: {
+    width: 280,
+    height: 40,
+    borderRadius: 10,
+    outline: 'none',
+    border: 0,
+    backgroundColor: 'lightgrey',
   },
   txtCards: {
     backgroundColor: 'lightgrey',
-    width: 320,
-    height: 50,
+    width: 280,
+    height: 40,
     borderRadius: 10,
-    marginLeft: 28,
     marginTop: 25
   },
   signIn: {
-    height: 50,
-    width: 200,
-    marginLeft: 85,
-    marginTop: 20,
+    height: 40,
+    width: 150,
+    marginTop: 45,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
     justifyContent: 'center'
   },
 });
+

@@ -2,75 +2,69 @@
     * @description      : 
     * @author           : MLab
     * @group            : 
-    * @created          : 05/10/2021 - 14:22:53
+    * @created          : 07/10/2021 - 10:18:53
     * 
     * MODIFICATION LOG
     * - Version         : 1.0.0
-    * - Date            : 05/10/2021
+    * - Date            : 07/10/2021
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Card } from 'react-native-paper';
-import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
-import { handleSignUp } from '../firebase';
-import { AlertNote } from '../Components';
-export default function SignUp({ navigation }) {
-  const [email, setEmail] = useState(""),
-    [password, setPassword] = useState(""),
-    [Confirmpassword, setConfirmPassword] = useState(""),
-    [displayModal, setDisplaModal] = useState(false),
-    [message, setMessage] = useState("")
-  const Register = () => {
-    handleSignUp(email, password, Confirmpassword, setEmail, setPassword, setConfirmPassword, setMessage)
-    setDisplaModal(true)
+import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
+import { handleResetPassword } from '../../firebase'
+export default function ForgotPassword() {
+  const forgotPassword = () => {
+    handleResetPassword("lindiwe.mpondo@gmail.com")
+  }
+  const Exit = () => {
+    alert("Successfully logged out")
   }
   return (
     <View >
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={146} color="#fff" />
+          <FontAwesome name="heartbeat" size={76} color="#fff" />
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
-      <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>SignUp</Text>
+      <View style={styles.header} >
+        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>Reset Password</Text>
       </View>
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <AntDesign name="user" size={22} color="black" />
             <TextInput style={styles.txtUser}
-              name='username' placeholder='Username' onChangeText={text => setEmail(text)}
+              name='username' placeholder='Username'
             />
           </View>
         </Card>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="blwack" style={{ marginTop: 8, marginLeft: 4 }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 10, }} />
             <TextInput style={styles.txtPass}
-              name='password' placeholder='Password'
-              secureTextEntry={true}
-              onChangeText={text => setPassword(text)}
+              name='password' placeholder='New Password'
             />
           </View>
         </Card>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black"
-              style={{ marginTop: 9, marginLeft: 4 }}
-            />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 10, }} />
             <TextInput style={styles.txtRePass}
-              name='password' placeholder='Re-enter Password'
-              secureTextEntry={true}
-              onChangeText={text => setConfirmPassword(text)}
+              name='password' placeholder='Confirm Password'
             />
           </View>
         </Card>
-        <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
-          <Text style={{ color: '#fff' }} >SIGN_UP </Text>
+        <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
+          <Text style={{ color: '#fff' }}>Reset Password </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.signIn} onPress={Exit}>
+          <Text style={{ color: '#fff' }}>Exit</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -136,11 +130,10 @@ const styles = StyleSheet.create({
     height: 50,
     width: 200,
     marginLeft: 85,
-    marginTop: 45,
+    marginTop: 20,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
     justifyContent: 'center'
   },
 });
-

@@ -10,13 +10,16 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import SignIn from "./SignIn";
-import SignUp from "./SignUp"
-import ForgotPassword from "./ForgotPassword"
-import Home from "./Home"
-import PlayVideo from "./PlayVideo"
-import UploadVideo from "./UploadVideo"
-import DoctorSignUp from "./DoctorSignUp"
-import MedicalHome from "./MedicalHome"
-import DocContacts from "./DocContacts"
+import SignIn from "./AuthScreens/SignIn";
+import SignUp from "./AuthScreens/SignUp"
+import ForgotPassword from "./AuthScreens/ForgotPassword"
+import Home from "./UserScreens/Home"
+import PlayVideo from "./UserScreens/PlayVideo"
+import UploadVideo from "./DoctorsScreens/UploadVideo"
+import DoctorSignUp from "./AuthScreens/DoctorSignUp"
+import MedicalHome from "./DoctorsScreens/MedicalHome"
+import DocContacts from "./DoctorsScreens/DocContacts"
 export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, DocContacts }
+export {UserScreens} from './UserScreens/UserScreens'
+export {AuthScreens} from './AuthScreens/AuthScreens'
+export {DoctorsScreens} from './DoctorsScreens/DoctorScreens'
