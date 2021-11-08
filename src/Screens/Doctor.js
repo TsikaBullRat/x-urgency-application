@@ -70,9 +70,11 @@ const DoctorProfile = () => {
                     <Text style={styles.textTitle}>Dr Sighn</Text>
                 </View>
 
-                <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
+                <View style={{ flexDirection: 'row', marginBottom: 20, justifyContent: 'center', alignItems: 'center' }}>
                     <Socials text="Following" number="15" />
+                    <View style={styles.pole} />
                     <Socials text="Followers" number="3000K" />
+                    <View style={styles.pole} />
                     <Socials text="Likes" number="3.1M" />
                 </View>
 
@@ -170,10 +172,17 @@ const styles = StyleSheet.create({
 
     words: {
         width: 250,
-        marginLeft: 55,
+        marginLeft: 20,
 
     },
-
+    pole: {
+        borderLeftWidth: 1,
+        borderLeftColor: 'grey',
+        height: 40,
+        alignSelf: 'center',
+        marginRight: 10,
+        marginLeft: 0
+    }
 
 })
 export default DoctorProfile;

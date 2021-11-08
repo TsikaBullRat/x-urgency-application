@@ -22,7 +22,7 @@ import { ActivityIndicator } from 'react-native-paper';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [successful, setSuccess] = useState(false),
+  const [successful, setSuccess] = useState(true),
     [user, setUser] = useState(''),
     [load, setLoad] = useState('');
   //LoadSet(setLoad)
@@ -30,13 +30,13 @@ export default function App() {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUser(true);
-      setSuccess(true);
+      // setSuccess(true);
     })
 
     return () =>
       auth.onAuthStateChanged((user) => {
         setUser(true);
-        setSuccess(true);
+        // setSuccess(true);
       });
   
   }, [successful, user]);
@@ -56,12 +56,6 @@ export default function App() {
               <Stack.Screen
                 name="Doctor SignUp"
                 component={DocSignUp}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                name="Doctor SignIn"
-                component={DocSignIn}
                 options={{ headerShown: false }}
               />
 
