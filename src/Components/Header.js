@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
+import { Text, View, StyleSheet, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 
 export default function Header() {

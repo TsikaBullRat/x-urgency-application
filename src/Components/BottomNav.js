@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React from 'react'
-import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -93,7 +93,7 @@ const BottomNav = () => {
               <Text >
                 Stroke Emergency Video
               </Text>
-              <Text style={{ fontSize: 10, color: 'gray' }}>
+              <Text style={{ fontSize: 10, color: 'grey' }}>
                 1 000 000 Views
               </Text>
             </View>
