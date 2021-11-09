@@ -15,7 +15,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 
-export default function UploadVideo({navigation}) {
+export default function UploadVideo({ navigation }) {
   let [selectedImage, setSelectedImage] = React.useState(null);
 
   let openImagePickerAsync = async () => {
@@ -31,7 +31,7 @@ export default function UploadVideo({navigation}) {
       return;
     }
 
-    setSelectedImage({ localUri: pickerResult.uri }); 
+    setSelectedImage({ localUri: pickerResult.uri });
   };
 
   let openShareDialogAsync = async () => {
@@ -46,13 +46,13 @@ export default function UploadVideo({navigation}) {
     return (
       <View style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-        <TouchableOpacity onPress={() => {navigation.navigate('MedicalHome')}} style={styles.button}>
+        <TouchableOpacity onPress={() => { navigation.navigate('MedicalHome') }} style={styles.button}>
           <Text style={styles.buttonText}>Share this photo</Text>
         </TouchableOpacity>
       </View>
     );
   }
- 
+
   return (
     <View style={styles.container}>
       <Text style={styles.instructions}>

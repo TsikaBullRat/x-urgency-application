@@ -14,14 +14,9 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
-<<<<<<< HEAD:src/Screens/AuthScreens/MedSignIn.js
-import { handleSignIn } from '../../firebase'
-import { AlertNote } from '../../Components';
-=======
 import { handleSignIn } from '../firebase'
 import { AlertNote } from '../Components';
 
->>>>>>> ea6c1894311140be89aa8b2b4b707d45c4dc0cb2:src/Screens/DocSignIn.js
 export default function SignIn({ navigation, setDone }) {
   const
     [email, setEmail] = useState(""),
@@ -86,7 +81,7 @@ export default function SignIn({ navigation, setDone }) {
             <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
           </TouchableOpacity>
         </View>
-        
+
       </View>
     </View>
   )

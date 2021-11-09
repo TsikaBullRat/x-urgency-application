@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { AuthScreens, DoctorsScreens, UserScreens } from "../../Screens";
-import { auth, firestore } from "..";
+import { firestore } from "..";
 
 const Check = ({ user }) => {
 
@@ -15,7 +15,7 @@ const Check = ({ user }) => {
                 setStatement(doc.exists)
                 setBusy(false)
             })
-        
+
     }, [])
 
     // console.log(What)
@@ -49,9 +49,9 @@ const Detector = ({ user }) => {
 
 const styles = StyleSheet.create({
     loader: {
-      alignItems: 'center',
-      justifyContent: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     }
-  })
+})
 
 export { Detector }

@@ -25,13 +25,13 @@ const handleSignUp = (email, password, Confirmpassword, setMessage) => {
     // setConfirmPassword("")
 }
 
-const handleDoctorSignUp = (email, password, Confirmpassword, name, surname, qualification, specialization, branch, Contact, setMessage) =>{
+const handleDoctorSignUp = (email, password, Confirmpassword, name, surname, setMessage) => {
     if (password !== Confirmpassword) {
         setMessage("Password Doesn't Match")
     }
     else {
         auth.createUserWithEmailAndPassword(email, password)
-            .then(user=>{
+            .then(user => {
                 user.user.displayName = name + " " + surname
             })
             .then(
