@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../firebase';
@@ -30,50 +30,56 @@ export default function DoctorSignUp({ navigation }) {
     return (
         <View style={styles.container}>
             <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+            
             <Card style={styles.card}>
                 <View style={styles.heartIcon}>
                     <FontAwesome name="heartbeat" size={90} color="#fff" />
                 </View>
-
                 <Text style={{ color: '#fff', fontSize: 28, marginLeft: 8 }}> X-urgency
                 </Text>
             </Card>
+            
             <View style={styles.header}>
                 <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>Doctor SignUp</Text>
             </View>
-            <View>
-                <Card style={{ height: 230 }}>
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Name' placeholder='Name'
-                            />
-                        </View>
-                    </Card>
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Surname' placeholder='Surname'
-                            />
-                        </View>
-                    </Card>
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Specialization' placeholder='Specialization'
-                            />
-                        </View>
-                    </Card>
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Qualification' placeholder='Qualification'
-                            />
-                        </View>
-                    </Card>
-                </Card>
+            
+            <View>              
+                    <Card style={{ height: 230 }}>
+                        <Card style={styles.txtCards}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <TextInput style={styles.txtField}
+                                    name='Specialization' placeholder='Specialization'
+                                />
+                            </View>
+                        </Card>
+
+                        <Card style={styles.txtCards}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <TextInput style={styles.txtField}
+                                    name='Contact NO.' placeholder='Contact NO.'
+                                />
+                            </View>
+                        </Card>
+
+                        <Card style={styles.txtCards}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <TextInput style={styles.txtField}
+                                    name='Email' placeholder='Email'
+                                />
+                            </View>
+                        </Card>
+
+                        <Card style={styles.txtCards}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <TextInput style={styles.txtField}
+                                    name='Branch' placeholder='Branch'
+                                />
+                            </View>
+                        </Card> 
+                        </Card>                     
+
                 <View style={{ alignItems: 'center' }}>
-                    <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Doctor') }}>
+                    <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
                         <Text style={{ color: '#fff' }}>SIGNIN </Text>
                     </TouchableOpacity>
                 </View>

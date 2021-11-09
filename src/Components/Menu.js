@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, Image, TouchableOpacity, } from 'react-native';
 import { Card } from 'react-native-paper';
 import Stroke from '../images/stokeIc.png';
 import strVid from '../images/stroke-vid.jpg';
@@ -30,7 +30,7 @@ import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 
-export default function Header() {
+export default function Header({ navigate }) {
 
   return (
     <View style={styles.contain}>
@@ -42,7 +42,7 @@ export default function Header() {
               <Card style={{
                 width: 50, height: 70, borderRadius: 15, marginLeft: 18, alignItems: 'center', textAlign: 'center', marginTop: 7
               }}
-                onPress={() => { navigation.navigate('Strokes') }}
+                onPress={navigate}
               >
                 <Image style={styles.strokeMenu} source={Stroke} />
                 <Text style={{ fontSize: 12 }}>Stroke</Text>

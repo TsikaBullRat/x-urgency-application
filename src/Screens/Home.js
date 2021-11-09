@@ -23,7 +23,7 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
+import { View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Video, AVPlaybackStatus } from 'expo-av';
 import { Card } from 'react-native-paper';
@@ -36,7 +36,6 @@ export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
   }
-
   const videos = [
     {
       id: 1,

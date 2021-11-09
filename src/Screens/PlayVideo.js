@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, SafeAreaView, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -46,8 +46,7 @@ export default function Strokes({ navigation }) {
   return (
     <View style={styles.contain}>
       <View style={{ width: 365 }}>
-      
-      <Video
+        <Video
           source={{ uri: videoPlay }}
           rate={1.0}
           volume={1.0}
@@ -55,11 +54,9 @@ export default function Strokes({ navigation }) {
           useNativeControls
           resizeMode="contain"
           isLooping
-          style={{ borderRadius: 25}}
+          style={{ borderRadius: 25 }}
         />
-      </View> 
-
-
+      </View>
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
@@ -203,7 +200,7 @@ export default function Strokes({ navigation }) {
               </View>
             </Card>
           </View>
-        
+
         )}
       </View>
       <ScrollView showsVerticalScrollIndicator={false}
