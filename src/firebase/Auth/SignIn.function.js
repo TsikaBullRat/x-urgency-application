@@ -1,6 +1,6 @@
 import { auth } from "../config"
 // import { alertNote } from "../../Components"
-const handleSignIn = (email, password, setMessage, setDone) => {
+const handleSignIn = (email, password, setMessage) => {
     auth.signInWithEmailAndPassword(email, password)
         .then(() => {
             setMessage("Welcome back")

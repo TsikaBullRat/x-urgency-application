@@ -30,7 +30,7 @@ import { auth, LoadSet } from '../../firebase';
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 
-export default function Home({ navigation, setDone }) {
+export default function Home({ navigation }) {
   const Logout = () => {
     auth.signOut()
   }

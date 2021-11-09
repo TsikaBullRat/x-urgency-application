@@ -81,7 +81,7 @@ export default function SignIn({ navigation, setDone }) {
             <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
           </TouchableOpacity>
         </View>
-        
+
       </View>
     </View>
   )

@@ -12,29 +12,26 @@
  **/
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 // You can import from local files
-import { SignIn, SignUp, Home, Strokes, ForgotPassword, DoctorSignUp, MedicalHome, UploadVideo, PlayVideo } from './src/Screens';
 import { auth, Detector } from './src/firebase'
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-
 
 export default function App() {
 
   const [user, setUser] = useState(),
-        [checked, setChecked] = useState(false)
+    [checked, setChecked] = useState(false)
 
-    useEffect(()=>{
-        auth.onAuthStateChanged(user=>setUser(user))
-        setChecked(true)
-    },[user])
+  useEffect(() => {
+    auth.onAuthStateChanged(user => setUser(user))
+    setChecked(true)
+  }, [user])
 
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
         {checked ? (
-            <Detector user={user}/>
+          <Detector user={user} />
         ) : (
           // Login/Sign functions
           <View style={styles.loader}>
