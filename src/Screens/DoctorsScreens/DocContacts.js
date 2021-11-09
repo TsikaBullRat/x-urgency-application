@@ -23,62 +23,52 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
-import { Video, AVPlaybackStatus } from 'expo-av';
 import { Card } from 'react-native-paper';
-import { AntDesign } from '@expo/vector-icons';
+import { Video, AVPlaybackStatus } from 'expo-av';
 import { auth } from '../firebase';
-import Header from '../Components/Header'
-import Menu from '../Components/Menu'
-
-export default function Home({ navigation, setDone }) {
+export default function MedicalHome({ navigation }) {
   const Logout = () => {
     auth.signOut()
+    setDone(false)
   }
   const videos = [
     {
       id: 1,
       title: "Stroke",
-      url: 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 2,
       title: "Heart-Attack",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 3,
       title: "Epilepsy",
-      url: 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 4,
       title: "CPR",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 5,
       title: "Bleeding",
-      url: 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 6,
       title: "Choking",
       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 7,
       title: "Drowning",
-      url: 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
-
     {
       id: 8,
       title: "Burn",
@@ -92,23 +82,54 @@ export default function Home({ navigation, setDone }) {
 
   return (
     <View style={styles.contain}>
-      <Header />
-      <Menu />
+      {/*---------------------------Header--------------------------*/}
+      <View style={{ flexDirection: 'row' }}>
+        <View style={styles.header}>
+          <Text style={{
+            fontSize: 36, paddingLeft: 30,
+            color: 'turquoise',
+            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
+          }}
+          >
+            Dr. DoLittle
+          </Text>
+          <Text style={{
+            fontSize: 36, paddingLeft: 30, color: 'red',
+            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
+          }}>In Da House
+          </Text>
+        </View>
+        <View style={{ marginTop: 50, marginLeft: 10 }}>
+          <Avatar style={styles.avatar}
+            rounded
+            source={{
+              uri: 'https://randomuser.me/api/portraits/men/45.jpg',
+            }}
+            size="large"
+          />
+          <Badge
+            status="success"
+            containerStyle={{ position: 'absolute', top: -4, right: -4 }}
+          />
+        </View>
+      </View>
       {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
+      <ScrollView vertical={true} showsHorizontalScrollIndicator={false} >
         <Card style={styles.menu2}>
-          <View >
+          <View style={{ alignItems: 'center' }}>
             {videos.map(vid => (
               <ol >
-                <TouchableOpacity onPress={() => { navigation.navigate('PlayVideo') }}>
+                <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
                   <Video
                     ref={video}
-                    source={{ uri: vid.url }}
+                    source={{ uri: link }}
+                    // useNativeControls
                     resizeMode="contain"
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                     style={{
-                      width: 315
+                      width: 315, marginLeft: -
+                        40, borderRadius: 25
                     }}
                   />
                   <h4>{vid.title}</h4>
@@ -118,25 +139,28 @@ export default function Home({ navigation, setDone }) {
           </View>
         </Card  >
       </ScrollView >
+      <TouchableOpacity onPress={() => { navigation.navigate('Upload') }}>
+        <Text style={{ color: '#F47066' }}>Upload</Text>
+      </TouchableOpacity>
     </View>
   )
 }
-
 const styles = StyleSheet.create({
   contain: {
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff'
+    justifyContent: 'center'
   },
+
   header: {
     flexDirection: 'column',
     paddingTop: 50
   },
+
   avatar: {
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 80,
+    margingTop: 80,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
     shadowColor: 'grey',
@@ -144,91 +168,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
-  txtCards: {
-    backgroundColor: 'lightgrey',
-    opacity: 0.8,
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    marginLeft: 28,
-    marginTop: 25,
-    borderBottomWidth: 2,
-    borderRightWidth: 2,
-    borderColor: 'turquoise',
-    shadowColor: 'blue',
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    elevation: 1,
-  },
-  menu: {
-    width: 355,
-    left: 10,
-    marginTop: 20,
-    borderRadius: 15,
-  },
-  strokeMenu: {
-    height: 30,
-    width: 30,
-    borderRadius: 15,
-    marginTop: 10,
-    color: '#fff',
-    marginLeft: 3,
-    marginTop: 10
-  },
-  heartMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginTop: 5,
-    marginLeft: 12
-  },
-  epilepsyMenu: {
-    height: 50,
-    width: 50,
-    borderRadius: 15,
-    marginLeft: 6
-  },
-  cprMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 5,
-    marginTop: 8
-  },
-  bloodMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginTop: 8
-  },
-  conImg: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 15,
-    marginTop: 8
-  },
-  drown: {
-    height: 40,
-    width: 40,
-    borderRadius: 15,
-    marginLeft: 15,
-    marginTop: 8,
-  },
-  burn: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 5,
-    marginTop: 8
-  },
+
   menu2: {
-    width: 315,
-    height: 560,
-    marginTop: 20,
+    width: 355,
+    height: 260,
+    marginLeft: 10,
+    marginTop: 50,
     borderRadius: 15,
-    alignItems: 'center'
+    shadowColor: "#fff",
+    shadowOffset: {
+    },
+    shadowOpacity: 0.8,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 });
 

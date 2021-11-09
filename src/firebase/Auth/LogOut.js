@@ -1,4 +1,4 @@
-import { auth } from "../config";
+
 const Exit = () => {
     firebase.auth().signOut()
         .then(function () {
