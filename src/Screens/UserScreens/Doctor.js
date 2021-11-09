@@ -112,7 +112,8 @@ const DoctorProfile = () => {
             </View> : <View></View>}
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Show Contact
+                    Mr Sighn@gmail.com
+                    0730772725 
                 </Text>
             </View> : <View></View>}
 
@@ -173,7 +174,6 @@ const styles = StyleSheet.create({
         marginLeft: 55,
 
     },
-
 
 })
 export default DoctorProfile;
