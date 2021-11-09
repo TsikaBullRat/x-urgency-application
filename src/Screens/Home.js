@@ -88,6 +88,8 @@ export default function Home({ navigation, setDone }) {
   const [status, setStatus] = React.useState({});
   const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
 
+  
+
   return (
     <View style={styles.contain}>
       <Header />
@@ -110,6 +112,10 @@ export default function Home({ navigation, setDone }) {
                     }}
                   />
                   <h4>{vid.title}</h4>
+
+                  
+                  
+                  
                 </TouchableOpacity>
               </ol>
             ))}

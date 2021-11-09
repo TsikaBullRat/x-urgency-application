@@ -25,7 +25,7 @@ export default function App() {
   const [successful, setSuccess] = useState(false),
     [user, setUser] = useState(''),
     [load, setLoad] = useState('');
-  //LoadSet(setLoad)
+  LoadSet(setLoad)
   
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
