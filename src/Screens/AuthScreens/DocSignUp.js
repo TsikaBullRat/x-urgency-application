@@ -21,8 +21,8 @@ import {
 } from "react-native";
 import { Card } from "react-native-paper";
 import { FontAwesome, } from "@expo/vector-icons";
-import { handleSignUp } from "../firebase";
-import { AlertNote } from "../Components/Alert";
+import { handleSignUp } from "../../firebase";
+import { AlertNote } from "../../Components/Alert";
 export default function DoctorSignUp({ navigation }) {
     const [email, setEmail] = useState(""),
         [password, setPassword] = useState(""),

@@ -1,8 +1,8 @@
+export { handleSignIn } from './Auth/SignIn.function'
+export { handleSignUp, handleDoctorSignUp } from './Auth/SignUp.function'
+export { handleResetPassword } from './Auth/resetpassword';
+export { auth, firestore, storage } from './config'
+export { LoadSet } from './Storage/Storage.functions'
+export {Detector} from './Auth/Protocol'
 import Exit from "./Auth/LogOut"
-import { handleResetPassword } from "./Auth/resetpassword"
-import { handleSignIn } from "./Auth/Signin.function"
-import { handleSignUp } from "./Auth/SignUp.function"
-import { auth } from "./config"
-
-
-export { Exit, handleResetPassword, handleSignIn, handleSignUp, auth }
+export { Exit }

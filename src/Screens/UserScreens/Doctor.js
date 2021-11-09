@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
-import { Socials } from '../Components';
+import { Socials } from '../../Components';
 
 const DoctorProfile = () => {
 

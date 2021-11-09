@@ -14,8 +14,8 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
-import { handleSignIn } from '../firebase'
-import { AlertNote } from '../Components';
+import { handleSignIn } from '../../firebase'
+import { AlertNote } from '../../Components';
 
 export default function SignIn({ navigation, setDone }) {
   const
@@ -26,7 +26,7 @@ export default function SignIn({ navigation, setDone }) {
   const Login = () => {
     handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
-    navigation.navigate('MedicalHome')
+    navigation.navigate('Home')
   }
   return (
     <View style={styles.container}>
@@ -37,11 +37,9 @@ export default function SignIn({ navigation, setDone }) {
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
-
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Medical LogIn</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>LogIn</Text>
       </View>
-
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -51,7 +49,6 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
-
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
@@ -62,26 +59,30 @@ export default function SignIn({ navigation, setDone }) {
             />
           </View>
         </Card>
-
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
           <Text style={{ paddingLeft: 180, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
         </TouchableOpacity>
-
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={Login}>
+          <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('Home')}>
             <Text style={{ color: '#fff' }}>LOGIN </Text>
           </TouchableOpacity>
         </View>
-
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <Text style={{ paddingTop: 5 }}>
-            New?
+            New User?
           </Text>
-          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
             <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
           </TouchableOpacity>
         </View>
-        
+        <Text style={{ paddingTop: 10, textAlign: 'center', justifyContent: 'center' }}>
+          Medical Personel?
+        </Text>
+        <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('DocSignIn') }}>
+            <Text style={{ color: '#F47066' }}> SignIn </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )

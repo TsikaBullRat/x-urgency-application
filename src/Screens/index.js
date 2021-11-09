@@ -10,17 +10,21 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import SignIn from "./SignIn";
-import SignUp from "./SignUp"
-import ForgotPassword from "./ForgotPassword"
-import Home from "./Home"
-import PlayVideo from "./PlayVideo"
-import UploadVideo from "./UploadVideo"
-import DoctorSignUp from "./DoctorSignUp"
-import DocSignIn from "./DocSignIn"
-import MedicalHome from "./MedicalHome"
-import DocSignUp from "./DocSignUp"
-import Doctor from "./Doctor"
-import Upload from "./Upload"
+import SignIn from "./AuthScreens/SignIn";
+import SignUp from "./AuthScreens/SignUp"
+import ForgotPassword from "./AuthScreens/ForgotPassword"
+import Home from "./UserScreens/Home"
+import PlayVideo from "./UserScreens/PlayVideo"
+import UploadVideo from "./DoctorsScreens/UploadVideo"
+import DoctorSignUp from "./AuthScreens/DoctorSignUp"
+import DocSignIn from "./AuthScreens/DocSignIn"
+import MedicalHome from "./DoctorsScreens/MedicalHome"
+import DocSignUp from "./AuthScreens/DocSignUp"
+import Doctor from "./DoctorsScreens/Doctor"
+import Upload from "./DoctorsScreens/Upload"
 
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, Doctor, DocSignIn, Upload }
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, Doctor,  Upload }
+
+export {UserScreens} from './UserScreens/UserScreens'
+export {DoctorsScreens} from './DoctorsScreens/DoctorScreens'
+export {AuthScreens} from './AuthScreens/AuthScreens'
