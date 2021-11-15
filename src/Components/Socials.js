@@ -11,7 +11,7 @@ const Socials = ({ text, number }) => {
     )
 }
 
-export default Socials 
+export default Socials
 const styles = StyleSheet.create({
     socials: {
         justifyContent: 'center',

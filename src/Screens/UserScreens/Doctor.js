@@ -113,7 +113,7 @@ const DoctorProfile = () => {
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     Mr Sighn@gmail.com
-                    0730772725 
+                    0730772725
                 </Text>
             </View> : <View></View>}
 
