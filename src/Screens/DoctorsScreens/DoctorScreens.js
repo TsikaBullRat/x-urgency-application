@@ -1,7 +1,7 @@
 import React from 'react';
 import {} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { MedicalHome, UploadVideo } from '..';
+import { Clone, MedicalHome, UploadVideo } from '..';
 
 const Stack = createNativeStackNavigator()
 

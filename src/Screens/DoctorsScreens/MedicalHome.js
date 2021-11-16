@@ -22,12 +22,13 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React from 'react';
+import React, {useState} from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
 import { Video, } from 'expo-av';
-import { auth } from '../../firebase';
+import { auth, Exit } from '../../firebase';
+import { ProgressBar } from '../../Components';
 
 export default function MedicalHome({ navigation }) {
   const Logout = () => {
@@ -80,7 +81,8 @@ export default function MedicalHome({ navigation }) {
   const video = React.useRef(
     "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
   );
-  const [status, setStatus] = React.useState({});
+  const [status, setStatus] = useState({}),
+    [loading, setLoading] = useState(null);
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
 
   return (
@@ -97,6 +99,7 @@ export default function MedicalHome({ navigation }) {
               textShadowOffset: { width: 2, height: 2 },
               textShadowRadius: 1,
             }}
+            onPress={Exit}
           >
             Dr. DoLittle
           </Text>
@@ -133,6 +136,7 @@ export default function MedicalHome({ navigation }) {
         </View>
       </View>
       {/*---------------------- Video Scroll View--------------------*/}
+      {loading?<ProgressBar status={loading}/>:null}
       <ScrollView vertical={true} showsHorizontalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View style={{ alignItems: "center" }}>

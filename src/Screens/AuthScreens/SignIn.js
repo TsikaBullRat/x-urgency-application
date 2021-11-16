@@ -26,7 +26,6 @@ export default function SignIn({ navigation, setDone }) {
   const Login = () => {
     handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
-    navigation.navigate('Home')
   }
   return (
     <View style={styles.container}>
@@ -63,7 +62,7 @@ export default function SignIn({ navigation, setDone }) {
           <Text style={{ paddingLeft: 180, paddingTop: 10, color: '#F47066' }}>Forgot Password? </Text>
         </TouchableOpacity>
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity style={styles.signIn} onPress={Login}>
             <Text style={{ color: '#fff' }}>LOGIN </Text>
           </TouchableOpacity>
         </View>

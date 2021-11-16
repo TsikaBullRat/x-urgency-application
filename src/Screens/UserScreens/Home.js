@@ -22,11 +22,11 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, ScrollView, Text, TouchableOpacity, } from 'react-native';
 import { Video, } from 'expo-av';
 import { Card } from 'react-native-paper';
-import { auth } from '../../firebase';
+import { auth, LoadSet } from '../../firebase';
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 
@@ -36,57 +36,18 @@ export default function Home({ navigation, setDone }) {
   }
   const [videos, setLoad] = useState(null);
 
+  useEffect(()=>{
     LoadSet(setLoad)
-  // useEffect(()=>{
-    
-    
-  // const videos = [
-  //   {
-  //     id: 1,
-  //     title: "Stroke",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Heart-Attack",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Epilepsy",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "CPR",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "Bleeding",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 6,
-  //     title: "Choking",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 7,
-  //     title: "Drowning",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 8,
-  //     title: "Burn",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  // ];
-  const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
+  }, [])
+
+  useEffect(()=>{
+    console.log(videos)
+  }, [])
+  
   const [status, setStatus] = React.useState({});
-  // const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
   return (
     <View style={styles.contain}>
+      <Text onPress={Logout}>X</Text>
       <Header />
       <Menu />
       {/*---------------------- Video Scroll View--------------------*/}
@@ -96,7 +57,7 @@ export default function Home({ navigation, setDone }) {
             {videos?(videos.map(vid => (
                 <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
                   <Video
-                    ref={video}
+                    // ref={vid.url}
                     source={{ uri: vid.url }}
                     resizeMode="contain"
                     isLooping

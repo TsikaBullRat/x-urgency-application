@@ -29,6 +29,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-elements": "^3.4.2",
     "react-native-icons": "^0.7.1",
+    "react-native-image-picker": "^4.2.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.4",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-paper": "3.6.0",
@@ -38,7 +39,8 @@
     "react-native-switch-selector": "^2.1.4",
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "^0.17.5",
-    "styled-components": "*"
+    "styled-components": "*",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
