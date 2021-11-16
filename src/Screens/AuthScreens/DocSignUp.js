@@ -17,7 +17,7 @@ import {
     StyleSheet,
     TextInput,
     TouchableOpacity,
-    ScrollView,
+
 } from "react-native";
 import { Card } from "react-native-paper";
 import { FontAwesome, } from "@expo/vector-icons";
