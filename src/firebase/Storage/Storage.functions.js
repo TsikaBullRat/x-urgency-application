@@ -20,7 +20,7 @@ const LoadSet = (Load) => {
             })
             
         })
-        .catch(err=>{
+        .catch(err => {
             return null
         })
 }

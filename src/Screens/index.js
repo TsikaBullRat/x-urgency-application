@@ -17,7 +17,6 @@ import Home from "./UserScreens/Home"
 import PlayVideo from "./UserScreens/PlayVideo"
 import UploadVideo from "./DoctorsScreens/UploadVideo"
 import DoctorSignUp from "./AuthScreens/DoctorSignUp"
-import DocSignIn from "./AuthScreens/DocSignIn"
 import MedicalHome from "./DoctorsScreens/MedicalHome"
 import DocSignUp from "./AuthScreens/DocSignUp"
 import Doctor from "./DoctorsScreens/Doctor"
@@ -26,6 +25,6 @@ import Clone from "./Clone";
 
 export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, Doctor,  Upload, Clone }
 
-export {UserScreens} from './UserScreens/UserScreens'
-export {DoctorsScreens} from './DoctorsScreens/DoctorScreens'
-export {AuthScreens} from './AuthScreens/AuthScreens'
+export { UserScreens } from './UserScreens/UserScreens'
+export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'
+export { AuthScreens } from './AuthScreens/AuthScreens'

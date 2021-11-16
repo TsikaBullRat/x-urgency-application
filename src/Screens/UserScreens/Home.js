@@ -30,12 +30,13 @@ import { auth, LoadSet } from '../../firebase';
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 
-export default function Home({ navigation, setDone }) {
+export default function Home({ navigation }) {
   const Logout = () => {
     auth.signOut()
   }
   const [videos, setLoad] = useState(null);
 
+<<<<<<< HEAD
   useEffect(()=>{
     LoadSet(setLoad)
   }, [])
@@ -44,6 +45,55 @@ export default function Home({ navigation, setDone }) {
     console.log(videos)
   }, [])
   
+=======
+  LoadSet(setLoad)
+  // useEffect(()=>{
+
+
+  // const videos = [
+  //   {
+  //     id: 1,
+  //     title: "Stroke",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Heart-Attack",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Epilepsy",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "CPR",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "Bleeding",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 6,
+  //     title: "Choking",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 7,
+  //     title: "Drowning",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  //   {
+  //     id: 8,
+  //     title: "Burn",
+  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  //   },
+  // ];
+  const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
+>>>>>>> 9647312d5ffd3bb0eee41dfdc23df6dc5c839840
   const [status, setStatus] = React.useState({});
   return (
     <View style={styles.contain}>
@@ -54,6 +104,7 @@ export default function Home({ navigation, setDone }) {
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
+<<<<<<< HEAD
             {videos?(videos.map(vid => (
                 <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
                   <Video
@@ -69,6 +120,23 @@ export default function Home({ navigation, setDone }) {
                   <h4>{vid.title}</h4>
                 </TouchableOpacity>
             ))):(null)}
+=======
+            {videos ? (videos.map(vid => (
+              <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
+                <Video
+                  ref={video}
+                  source={{ uri: vid.url }}
+                  resizeMode="contain"
+                  isLooping
+                  onPlaybackStatusUpdate={status => setStatus(() => status)}
+                  style={{
+                    width: 315
+                  }}
+                />
+                <h4>{vid.title}</h4>
+              </TouchableOpacity>
+            ))) : (null)}
+>>>>>>> 9647312d5ffd3bb0eee41dfdc23df6dc5c839840
           </View>
         </Card  >
       </ScrollView >

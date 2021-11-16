@@ -119,7 +119,7 @@ export default function MedicalHome({ navigation }) {
         </View>
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <TouchableOpacity onPress= {() => {navigation.navigate('Doctor')}}>
+          <TouchableOpacity onPress={() => { navigation.navigate('Doctor') }}>
             <Avatar
               style={styles.avatar}
               rounded

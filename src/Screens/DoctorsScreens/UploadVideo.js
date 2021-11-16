@@ -16,7 +16,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import {Upload} from '../../firebase'
 
-export default function UploadVideo({navigation}) {
+export default function UploadVideo({ navigation }) {
   let [selectedImage, setSelectedImage] = React.useState(null);
 
   let openImagePickerAsync = async () => {
@@ -32,7 +32,7 @@ export default function UploadVideo({navigation}) {
       return;
     }
 
-    setSelectedImage({ localUri: pickerResult.uri }); 
+    setSelectedImage({ localUri: pickerResult.uri });
   };
 
   // let openShareDialogAsync = async () => {
@@ -53,7 +53,7 @@ export default function UploadVideo({navigation}) {
       </View>
     );
   }
- 
+
   return (
     <View style={styles.container}>
       <Text style={styles.instructions}>

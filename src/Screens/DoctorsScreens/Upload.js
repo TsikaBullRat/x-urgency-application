@@ -65,7 +65,7 @@ export default function Upload({ navigation }) {
         </View>
       </Card>
 
-      <TouchableOpacity onPress= {() => {navigation.navigate('UploadVideo')}} style= {{marginTop: 30}}>
+      <TouchableOpacity onPress={() => { navigation.navigate('UploadVideo') }} style={{ marginTop: 30 }}>
         Go to Upload
       </TouchableOpacity>
     </View>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
 
-   picker: {
+  picker: {
     backgroundColor: "lightgrey",
     height: 40,
     width: 285,

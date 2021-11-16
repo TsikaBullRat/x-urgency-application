@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
@@ -112,7 +112,8 @@ const DoctorProfile = () => {
             </View> : <View></View>}
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Show Contact
+                    Mr Sighn@gmail.com
+                    0730772725
                 </Text>
             </View> : <View></View>}
 
@@ -173,7 +174,6 @@ const styles = StyleSheet.create({
         marginLeft: 55,
 
     },
-
 
 })
 export default DoctorProfile;
