@@ -47,7 +47,7 @@ export default function UploadVideo({ navigation }) {
     return (
       <View style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-        <TouchableOpacity onPress={() => {Upload(selectedImage)}} style={styles.button}>
+        <TouchableOpacity onPress={() => {Upload(selectedImage.localUri)}} style={styles.button}>
           <Text style={styles.buttonText}>Share this photo</Text>
         </TouchableOpacity>
       </View>

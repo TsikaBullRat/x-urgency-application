@@ -1,9 +1,15 @@
 import { storage, app } from '../config'
 import firebase from 'firebase'
 import {v4 as uuidv4} from 'uuid'
+// import { atob } from 'buffer'
+// import { atob } from 'atob'
+
+var atob = require('atob')
 
 const LoadSet = (Load) => {
 
+    var fs = require('fs')
+    var http = require('http')
     var content = []
     var i = 0
     var getLink
@@ -11,9 +17,9 @@ const LoadSet = (Load) => {
     storage.ref().child('').listAll()
         .then(res=>{
             res.items.forEach(async itemRef=>{
-                
                 getLink = itemRef.getDownloadURL().then(url=>url)
                 let link = await getLink
+                console.log(link)
                 let name = itemRef.name
                 content=[...content, {id: i++, url: link, title: name}]
                 Load(content)
@@ -26,9 +32,19 @@ const LoadSet = (Load) => {
 }
 
 const Upload = async(uri) =>{
-    
-    console.log(uri)
-    var upload = storage.ref().child(`${uuidv4()}.mp4`).put(uri.uri)
+
+    var byteString = atob(uri.split(',')[1])
+    var MIMEstring = uri.split(',')[0].split(':')[1].split(';')[0]
+
+    var ab = new ArrayBuffer(byteString.length)
+    var ia = new Uint8Array(ab)
+    for(var i = 0; i<byteString.length; i++){
+        ia[i] = byteString.charCodeAt(i)
+    }
+
+    var bb = new Blob([ab], {type : MIMEstring})
+    var upload = storage.ref().child(`${uuidv4()}.mp4`).put(bb)
+
     upload.on('state_changed', 
     snapshot=>{
         var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100
@@ -48,70 +64,5 @@ const Upload = async(uri) =>{
         console.log(err)
     })
 }
-
-// const SelectImage = () =>{
-
-// }
-
-//Possible solution 1
-
-/*
-const Upload = async(file) =>{
-
-    file?getFile(file):null
-}
-
-const getFile = (file) =>{
-
-    var reader = new FileReader();
-
-    reader.readAsDataURL(file)
-
-    reader.onprogress = Progress
-    reader.onload = Loaded
-    reader.onerror = Handler
-
-}
-
-const Progress = (evt) =>{
-    if(evt.lengthComputable){
-        var Loaded = (evt.loaded / evt.total)
-        if(Loaded < 1){
-
-        }
-    }
-}
-
-const Loaded = (evt) =>{
-
-    var fileString = evt.target.result
-    Finish(fileString)
-
-    // // if(utils.regexp.isChinese(fileString)){
-
-    // // }else{
-
-    // // }
-    // // xhr.send(fileString)
-}
-
-const Handle = (evt) =>{
-    if(evt.target.error.name == "NotReadableError"){
-        console.log(evt.target.error)
-    }
-}
-
-const Finish = (file) =>{
-    // var file = new File(['Image'], uri, {type:'image'})
-    var upload = storage.ref().child(file)
-
-    upload.put(file)
-        .then(snapshot=>{
-            console.log('Uploaded a blob or file')
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-}*/
 
 export { LoadSet, Upload }
