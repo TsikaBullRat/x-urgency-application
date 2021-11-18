@@ -23,7 +23,7 @@ import Doctor from "./DoctorsScreens/Doctor"
 import Upload from "./DoctorsScreens/Upload"
 import Clone from "./Clone";
 
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, Doctor,  Upload, Clone }
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, Doctor, Upload, Clone }
 
 export { UserScreens } from './UserScreens/UserScreens'
 export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'

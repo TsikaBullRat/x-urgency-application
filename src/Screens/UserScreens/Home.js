@@ -36,14 +36,14 @@ export default function Home({ navigation }) {
   }
   const [videos, setLoad] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
     LoadSet(setLoad)
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(videos)
   }, [])
-  
+
   const [status, setStatus] = React.useState({});
   return (
     <View style={styles.contain}>
@@ -54,21 +54,21 @@ export default function Home({ navigation }) {
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
-            {videos?(videos.map(vid => (
-                <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
-                  <Video
-                    // ref={vid.url}
-                    source={{ uri: vid.url }}
-                    resizeMode="contain"
-                    isLooping
-                    onPlaybackStatusUpdate={status => setStatus(() => status)}
-                    style={{
-                      width: 315
-                    }}
-                  />
-                  <h4>{vid.title}</h4>
-                </TouchableOpacity>
-            ))):(null)}
+            {videos ? (videos.map(vid => (
+              <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
+                <Video
+                  // ref={vid.url}
+                  source={{ uri: vid.url }}
+                  resizeMode="contain"
+                  isLooping
+                  onPlaybackStatusUpdate={status => setStatus(() => status)}
+                  style={{
+                    width: 315
+                  }}
+                />
+                <h4>{vid.title}</h4>
+              </TouchableOpacity>
+            ))) : (null)}
           </View>
         </Card  >
       </ScrollView >

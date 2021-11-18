@@ -22,7 +22,7 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
@@ -136,7 +136,7 @@ export default function MedicalHome({ navigation }) {
         </View>
       </View>
       {/*---------------------- Video Scroll View--------------------*/}
-      {loading?<ProgressBar status={loading}/>:null}
+      {loading ? <ProgressBar status={loading} /> : null}
       <ScrollView vertical={true} showsHorizontalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View style={{ alignItems: "center" }}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home, PlayVideo, Clone } from '..';
+import { PlayVideo, Clone } from '..';
 
 const Stack = createNativeStackNavigator()
 

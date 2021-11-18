@@ -12,7 +12,6 @@
  **/
 import React, { useState } from "react";
 import {
-  Image,
   StyleSheet,
   Picker,
   Text,
