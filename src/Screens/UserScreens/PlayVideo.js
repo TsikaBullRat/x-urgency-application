@@ -10,7 +10,7 @@
     * - Author          : TLeeuw
     * - Modification    : 
 **/
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
@@ -21,28 +21,30 @@ import { Video } from 'expo-av';
 import { Likes } from '../../Functions/Likes'
 import { Dislikes } from '../../Functions/Dislikes'
 
-export default function Strokes({ navigation }) {
+export default function Strokes({ navigation, data }) {
   const [userName, setUserName] = useState('Rando123')
-  const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
+  const [videoPlay, setVideoPlay] = useState(data.url)
   const [videoVisible, setVideoVisible] = useState(true);
   const setVid = () => {
     setVideoPlay()
   }
 
-  const [comments, setComments] = useState({ userName })
-  const [visibleStatusBar, setVisibleStatusBar] = useState(false);
-  const changeVisibilityStatusBar = () => {
-    setVisibleStatusBar(!visibleStatusBar);
-  };
+  const [comments, setComments] = useState({ userName }),
+    [visibleStatusBar, setVisibleStatusBar] = useState(false),
+    changeVisibilityStatusBar = () => {
+      setVisibleStatusBar(!visibleStatusBar);
+    },
+    changeStyleStatusBar = () => {
+      const styleId = styleTypes.indexOf(styleStatusBar) + 1;
+      if (styleId === styleTypes.length) {
+        return setStyleStatusBar(styleTypes[0]);
+      }
+      return setStyleStatusBar(styleTypes[styleId]);
+    };
 
-  const changeStyleStatusBar = () => {
-    const styleId = styleTypes.indexOf(styleStatusBar) + 1;
-    if (styleId === styleTypes.length) {
-      return setStyleStatusBar(styleTypes[0]);
-    }
-    return setStyleStatusBar(styleTypes[styleId]);
-  };
-
+    useEffect(()=>{
+      console.log(data.stamp)
+    }, [])
   return (
     <View style={styles.contain}>
       <View style={{ width: 365 }}>
@@ -61,7 +63,7 @@ export default function Strokes({ navigation }) {
         {!visibleStatusBar ? (
           <View>
             <View style={{ flexDirection: 'row', paddingLeft: 30, marginTop: 15 }}>
-              <Text style={{ fontWeight: 'bold' }}>Stroke Emergency Video</Text>
+              <Text style={{ fontWeight: 'bold' }}>{data.title}</Text>
               <TouchableOpacity
                 title="topNav"
                 onPress={() => changeVisibilityStatusBar()}>
@@ -119,9 +121,10 @@ export default function Strokes({ navigation }) {
                   uri: 'https://randomuser.me/api/portraits/men/41.jpg',
                 }}
                 size="medium"
+              onPress={()=>navigation.navigate('Doctor')}
               />
-              <Text style={{ paddingTop: 15, paddingLeft: 15 }} onPress={navigation.navigate('Doctor')}>
-                {userName}
+              <Text style={{ paddingTop: 15, paddingLeft: 15 }} >
+                {data.owner}
               </Text>
             </View>
           </View>
@@ -145,13 +148,16 @@ export default function Strokes({ navigation }) {
                     fontSize: 16,
                   }}>
                   Description:
+                  <Text>
+                    {data.description}
+                  </Text>
                 </Text>
                 <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()} >
                   <AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} />
                 </TouchableOpacity>
               </View>
               <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
-                1.7M views - 2years ago
+                1.7M views - {data.stamps}
               </Text>
               <Card
                 style={{

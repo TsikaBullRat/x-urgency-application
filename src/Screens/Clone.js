@@ -1,170 +1,152 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, ScrollView, Text, TouchableOpacity, } from 'react-native';
-import { Video, } from 'expo-av';
-import { Card } from 'react-native-paper';
-import { auth, LoadSet } from '../firebase';
-import Header from '../Components/Header'
-import Menu from '../Components/Menu'
+/**
+ * @description      :
+ * @author           : TLeeuw
+ * @group            :
+ * @created          : 08/11/2021 - 10:11:41
+ *
+ * MODIFICATION LOG
+ * - Version         : 1.0.0
+ * - Date            : 08/11/2021
+ * - Author          : TLeeuw
+ * - Modification    :
+ **/
+import React, { useState } from "react";
+import {
+    Image,
+    StyleSheet,
+    Picker,
+    Text,
+    TouchableOpacity,
+    View,
+    TextInput,
+} from "react-native";
 
-export default function Home({ navigation }) {
-  const Logout = () => {
-    auth.signOut()
-  }
-  const [videos, setLoad] = useState(null);
+import { Card } from "react-native-paper";
+import { UploadVideo } from "../firebase";
+import * as ImagePicker from 'expo-image-picker';
 
-  useEffect(() => {
-    LoadSet(setLoad)
-  }, [])
+export default function Clone({ navigation }) {
+    const [selectedValue, setSelectedValue] = useState("stroke"),
+        [title, setTitle] = useState(),
+        [description, setDescpription] = useState(),
+        [selectedImage, setSelectedImage] = useState(null),
+        openImagePickerAsync = async () => {
+            let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
-  //   useEffect(()=>{
+            if (permissionResult.granted === false) {
+                alert('Permission to access camera roll is required!');
+                return;
+            }
 
-  //     if(videos){
-  //         for(var i = 0; i<videos.length; i++){
-  //             console.log(require(videos[0].url))
-  //         }
-  //     }
-  //   }, [videos])
+            let pickerResult = await ImagePicker.launchImageLibraryAsync({ mediaTypes: 'Videos' });
+            if (pickerResult.cancelled === true) {
+                return;
+            }
 
-  const [status, setStatus] = React.useState({});
-  return (
-    <View style={styles.contain}>
-      <Text onPress={Logout}>X</Text>
-      <Header />
-      <Menu />
-      {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
-        <Card style={styles.menu2}>
-          <View>
-            {videos ? (videos.map(vid => (
-              <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
-                <Video
-                  // ref={vid.url}
-                  source={{ uri: vid.url }}
-                  resizeMode="contain"
-                  isLooping
-                  onPlaybackStatusUpdate={status => setStatus(() => status)}
-                  style={{
-                    width: 315
-                  }}
-                  full
-                />
-                <h4>{vid.title}</h4>
-              </TouchableOpacity>
-            ))) : (null)}
-          </View>
-        </Card  >
-      </ScrollView >
-    </View>
-  )
+            setSelectedImage({ localUri: pickerResult.uri });
+        },
+        Run = () =>{
+            openImagePickerAsync();
+            selectedImage?UploadVideo(selectedImage.localUri, title, description, selectedValue ):null
+        }
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.header}>Fill in Info. below:</Text>
+
+            <Card style={styles.txtCards}>
+                <View style={{ flexDirection: "row" }}>
+                    <TextInput
+                        style={styles.txtField}
+                        name="username"
+                        placeholder="Title"
+                        onChangeText={text=>setTitle(text)}
+                    />
+                </View>
+            </Card>
+
+            <Picker
+                selectedValue={selectedValue}
+                style={styles.picker}
+                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+            >
+                <Picker.Item label="Stroke" value="stroke" />
+                <Picker.Item label="Heart-Attack" value="heart-attack" />
+                <Picker.Item label="Epilepsy" value="epilepsy" />
+                <Picker.Item label="CPR" value="cpr" />
+                <Picker.Item label="Drowning" value="drowning" />
+                <Picker.Item label="Choking" value="choking" />
+                <Picker.Item label="Java" value="java" />
+                <Picker.Item label="Burns" value="burns" />
+            </Picker>
+
+            <Card style={styles.txtCards}>
+                <View style={{ flexDirection: "row" }}>
+                    <TextInput
+                        style={styles.txtField}
+                        name="password"
+                        placeholder="Description"
+                        onChangeText={text=>setDescpription(text)}
+                    />
+                </View>
+            </Card>
+
+            <TouchableOpacity onPress={Run} style={{ marginTop: 30 }}>
+                Upload
+            </TouchableOpacity>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  contain: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff'
-  },
-  header: {
-    flexDirection: 'column',
-    paddingTop: 50
-  },
-  avatar: {
-    width: 70,
-    height: 70,
-    borderRadius: 50,
-    marginTop: 80,
-    borderBottomWidth: 3,
-    borderColor: 'turquoise',
-    shadowColor: 'grey',
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-    elevation: 1,
-  },
-  txtCards: {
-    backgroundColor: 'lightgrey',
-    opacity: 0.8,
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    marginLeft: 28,
-    marginTop: 25,
-    borderBottomWidth: 2,
-    borderRightWidth: 2,
-    borderColor: 'turquoise',
-    shadowColor: 'blue',
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    elevation: 1,
-  },
-  menu: {
-    width: 355,
-    left: 10,
-    marginTop: 20,
-    borderRadius: 15,
-  },
-  strokeMenu: {
-    height: 30,
-    width: 30,
-    borderRadius: 15,
-    marginTop: 10,
-    color: '#fff',
-    marginLeft: 3,
-    marginTop: 10
-  },
-  heartMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginTop: 5,
-    marginLeft: 12
-  },
-  epilepsyMenu: {
-    height: 50,
-    width: 50,
-    borderRadius: 15,
-    marginLeft: 6
-  },
-  cprMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 5,
-    marginTop: 8
-  },
-  bloodMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginTop: 8
-  },
-  conImg: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 15,
-    marginTop: 8
-  },
-  drown: {
-    height: 40,
-    width: 40,
-    borderRadius: 15,
-    marginLeft: 15,
-    marginTop: 8,
-  },
-  burn: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 5,
-    marginTop: 8
-  },
-  menu2: {
-    width: 315,
-    height: 560,
-    marginTop: 20,
-    borderRadius: 15,
-    alignItems: 'center'
-  },
-});
+    container: {
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+    },
 
+    header: {
+        fontSize: 28,
+        textAlign: "center",
+        color: "#F47066",
+    },
+
+    button: {
+        backgroundColor: "blue",
+        padding: 20,
+        borderRadius: 5,
+        marginTop: 20,
+    },
+
+    buttonText: {
+        fontSize: 20,
+        color: "#fff",
+    },
+
+    txtField: {
+        width: 285,
+        height: 40,
+        borderRadius: 10,
+        outline: "none",
+        backgroundColor: "lightgrey",
+        paddingLeft: 10,
+    },
+
+    txtCards: {
+        backgroundColor: "lightgrey",
+        width: 285,
+        height: 40,
+        borderRadius: 10,
+        marginLeft: 2,
+        marginTop: 15,
+    },
+
+    picker: {
+        backgroundColor: "lightgrey",
+        height: 40,
+        width: 285,
+        borderRadius: 10,
+        marginLeft: 2,
+        marginTop: 15,
+    },
+});

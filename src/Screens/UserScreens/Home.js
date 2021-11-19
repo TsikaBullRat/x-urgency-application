@@ -30,13 +30,19 @@ import { auth, LoadSet } from '../../firebase';
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 
-export default function Home({ navigation }) {
-  const Logout = () => {
+export default function Home({ navigation, setData }) {
+  
+  const [videos, setLoad] = useState(null),
+    VideoScreen = (data) =>{
+      navigation.navigate('PlayVideo')
+      setData(data)
+    },
+    Logout = () => {
     auth.signOut()
   }
-  const [videos, setLoad] = useState(null);
 
-  useEffect(() => {
+  
+  useEffect(()=>{
     LoadSet(setLoad)
   }, [])
 
@@ -54,21 +60,21 @@ export default function Home({ navigation }) {
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
-            {videos ? (videos.map(vid => (
-              <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
-                <Video
-                  // ref={vid.url}
-                  source={{ uri: vid.url }}
-                  resizeMode="contain"
-                  isLooping
-                  onPlaybackStatusUpdate={status => setStatus(() => status)}
-                  style={{
-                    width: 315
-                  }}
-                />
-                <h4>{vid.title}</h4>
-              </TouchableOpacity>
-            ))) : (null)}
+            {videos?(videos.map(vid => (
+                <TouchableOpacity onPress={()=>VideoScreen(vid)} key={vid.id}>
+                  <Video
+                    // ref={vid.url}
+                    source={{ uri: vid.url }}
+                    resizeMode="contain"
+                    isLooping
+                    onPlaybackStatusUpdate={status => setStatus(() => status)}
+                    style={{
+                      width: 315
+                    }}
+                  />
+                  <h4>{vid.title}</h4>
+                </TouchableOpacity>
+            ))):(null)}
           </View>
         </Card  >
       </ScrollView >
