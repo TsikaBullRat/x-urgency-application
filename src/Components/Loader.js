@@ -1,16 +1,25 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-export const ProgressBar = (status) =>{
+export const ProgressBar = ({ status }) => {
 
-    const [progress, Load] = useState(status*100)
+    const [inner, setInner] = useState({
+        width: `${status}%`,
+        height: 15,
+        backgroundColor: '#F47066'
+    })
 
-    useEffect(()=>{
-        Load(status*100)
-    }, [])
-    return(
+    useEffect(() => {
+        console.log(status)
+        setInner({
+            width: `${status}%`,
+            height: 15,
+            backgroundColor: '#F47066'
+        })
+    }, [status])
+    return (
         <View style={styles.outer}>
-            <View style={styles.outer}>
+            <View style={inner}>
 
             </View>
         </View>
@@ -20,5 +29,5 @@ export const ProgressBar = (status) =>{
 const styles = StyleSheet.create({
     width: '100%',
     height: 15,
-    backgroundColor: 'green'
+    backgroundColor: 'transparent'
 })

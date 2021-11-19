@@ -28,7 +28,7 @@ export default function SignUp({ navigation }) {
   }
   return (
     <View style={styles.container}>
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />

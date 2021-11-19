@@ -22,7 +22,7 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
@@ -30,7 +30,7 @@ import { Video, } from 'expo-av';
 import { auth, Exit } from '../../firebase';
 import { ProgressBar } from '../../Components';
 
-export default function MedicalHome({ navigation }) {
+export default function MedicalHome({ navigation, progress, Log }) {
   const Logout = () => {
     auth.signOut();
     setDone(false);
@@ -85,6 +85,10 @@ export default function MedicalHome({ navigation }) {
     [loading, setLoading] = useState(null);
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
 
+  useEffect(()=>{
+    if(progress === 100)Log(null)
+  },[progress])
+
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
@@ -117,6 +121,7 @@ export default function MedicalHome({ navigation }) {
             In Da House
           </Text>
         </View>
+        {progress?<ProgressBar status={progress}/>: null}
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <TouchableOpacity onPress={() => { navigation.navigate('Doctor') }}>
