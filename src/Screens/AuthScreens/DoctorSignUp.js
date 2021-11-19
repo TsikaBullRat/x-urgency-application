@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     signIn: {
         height: 50,
         width: 200,
-        marginTop: 15,
+        marginTop: 220,
         borderRadius: 10,
         backgroundColor: '#F47066',
         alignItems: 'center',
