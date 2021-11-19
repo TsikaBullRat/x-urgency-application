@@ -31,8 +31,13 @@ export default function DoctorSignUp({ navigation }) {
         [message, setMessage] = useState("")
 
     const DoctorRegister = () => {
-        handleDoctorSignUp(email, password, Confirmpassword, name, surname, qualification, specialization, branch, Contact, setEmail, setPassword, setConfirmPassword, setMessage)
+        if (password !== Confirmpassword) {
+            setMessage("Password Doesn't Match")
+            setDisplaModal(true)
+        }else{
+        handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, Contact, setEmail, setPassword, setConfirmPassword, setMessage)
         setDisplaModal(true)
+        }
     }
     return (
         <View style={styles.container}>
@@ -104,17 +109,10 @@ export default function DoctorSignUp({ navigation }) {
                         </View>
                     </Card>
 
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Branch' placeholder='Branch'
-                            />
-                        </View>
-                    </Card>
                 </Card>
 
                 <View style={{ alignItems: 'center' }}>
-                    <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
+                    <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
                         <Text style={{ color: '#fff' }}>SIGNIN </Text>
                     </TouchableOpacity>
                 </View>
