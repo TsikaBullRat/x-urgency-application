@@ -46,10 +46,10 @@ export default function Home({ navigation, setData }) {
     LoadSet(setLoad)
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(videos)
   }, [])
-  
+
   const [status, setStatus] = React.useState({});
   return (
     <View style={styles.contain}>

@@ -5,4 +5,4 @@ import Header from "./Header"
 import Socials from "./Socials"
 import { ProgressBar } from "./Loader"
 
-export { AlertNote, BottomNav, button, Header,  Socials, ProgressBar }
+export { AlertNote, BottomNav, button, Header, Socials, ProgressBar }

@@ -141,7 +141,7 @@ export default function MedicalHome({ navigation, progress, Log }) {
         </View>
       </View>
       {/*---------------------- Video Scroll View--------------------*/}
-      {loading?<ProgressBar status={loading}/>:null}
+      {loading ? <ProgressBar status={loading} /> : null}
       <ScrollView vertical={true} showsHorizontalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View style={{ alignItems: "center" }}>
