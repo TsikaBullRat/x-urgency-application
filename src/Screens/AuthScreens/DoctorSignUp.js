@@ -24,10 +24,10 @@ export default function DoctorSignUp({ navigation }) {
         [qualification, setQualification] = useState(""),
         [specialization, setSpecialization] = useState(""),
         [branch, setBranch] = useState(""),
-        [Contact, setContact] = useState(""),
+        [contactdetails, setContactDetails] = useState(""),
         [password, setPassword] = useState(""),
-        [Confirmpassword, setConfirmPassword] = useState(""),
-        [displayModal, setDisplaModal] = useState(false),
+        [confirmpassword, setConfirmPassword] = useState(""),
+        [displayModal, setDisplayModal] = useState(false),
         [message, setMessage] = useState("")
 
     const DoctorRegister = () => {
@@ -41,7 +41,7 @@ export default function DoctorSignUp({ navigation }) {
     }
     return (
         <View style={styles.container}>
-            <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+            <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
 
             <Card style={styles.card}>
                 <View style={styles.heartIcon}>
@@ -109,6 +109,21 @@ export default function DoctorSignUp({ navigation }) {
                         </View>
                     </Card>
 
+                    <Card style={styles.txtCards}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TextInput style={styles.txtField}
+                                name='Password' placeholder='Password'
+                            />
+                        </View>
+                    </Card>
+                    
+                    <Card style={styles.txtCards}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TextInput style={styles.txtField}
+                                name='Confirm Password' placeholder='Confirm Password'
+                            />
+                        </View>
+                    </Card>
                 </Card>
 
                 <View style={{ alignItems: 'center' }}>
@@ -167,7 +182,7 @@ const styles = StyleSheet.create({
     signIn: {
         height: 50,
         width: 200,
-        marginTop: 220,
+        marginTop: 280,
         borderRadius: 10,
         backgroundColor: '#F47066',
         alignItems: 'center',
