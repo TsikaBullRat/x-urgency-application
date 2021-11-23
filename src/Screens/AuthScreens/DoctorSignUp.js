@@ -16,7 +16,9 @@ import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
 import { AlertNote } from '../../Components/Alert';
-export default function DoctorSignUp({ navigation }) {
+import {auth, firestore} from '../../firebase'
+
+export default function DoctorSignUp({ navigation, setDetails }) {
 
     const [email, setEmail] = useState(""),
         [name, setName] = useState(""),
@@ -31,12 +33,20 @@ export default function DoctorSignUp({ navigation }) {
         [message, setMessage] = useState("")
 
     const DoctorRegister = () => {
-        if (password !== Confirmpassword) {
+        if (password !== confirmpassword) {
             setMessage("Password Doesn't Match")
-            setDisplaModal(true)
+            // setDisplaModal(true)
         }else{
-        handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, Contact, setEmail, setPassword, setConfirmPassword, setMessage)
-        setDisplaModal(true)
+        handleDoctorSignUp(email, password, name + " " + surname, setMessage)
+        setDetails({
+            Branch: branch,
+            Contact: contactdetails,
+            Qualification: qualification,
+            Specilization: specialization,
+            verified: false,
+            create: true
+        })
+        // setDisplaModal(true)
         }
     }
     return (
@@ -96,7 +106,7 @@ export default function DoctorSignUp({ navigation }) {
                     <Card style={styles.txtCards}>
                         <View style={{ flexDirection: 'row' }}>
                             <TextInput style={styles.txtField}
-                                name='Contact Details' placeholder='Contact Details' onChangeText={text => setContact(text)}
+                                name='Contact Details' placeholder='Contact Details' onChangeText={text => setContactDetails(text)}
                             />
                         </View>
                     </Card>
@@ -105,6 +115,7 @@ export default function DoctorSignUp({ navigation }) {
                         <View style={{ flexDirection: 'row' }}>
                             <TextInput style={styles.txtField}
                                 name='Email' placeholder='Email'
+                                onChangeText={text => setEmail(text)}
                             />
                         </View>
                     </Card>
@@ -113,6 +124,7 @@ export default function DoctorSignUp({ navigation }) {
                         <View style={{ flexDirection: 'row' }}>
                             <TextInput style={styles.txtField}
                                 name='Password' placeholder='Password'
+                                onChangeText={text => setPassword(text)}
                             />
                         </View>
                     </Card>
@@ -121,6 +133,7 @@ export default function DoctorSignUp({ navigation }) {
                         <View style={{ flexDirection: 'row' }}>
                             <TextInput style={styles.txtField}
                                 name='Confirm Password' placeholder='Confirm Password'
+                                onChangeText={text => setConfirmPassword(text)}
                             />
                         </View>
                     </Card>

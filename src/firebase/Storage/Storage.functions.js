@@ -51,7 +51,7 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
     firestore.collection('Videos').doc(id).set({
         title: title,
         tag: cat,
-        owner: auth.currentUser.displayName,
+        owner: await auth.currentUser.displayName,
         description: description,
         added: new Date()
     })
