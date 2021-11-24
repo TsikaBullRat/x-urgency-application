@@ -31,11 +31,11 @@ export default function DoctorSignUp({ navigation }) {
         [message, setMessage] = useState("")
 
     const DoctorRegister = () => {
-        if (password !== Confirmpassword) {
+        if (password !== confirmpassword) {
             setMessage("Password Doesn't Match")
             setDisplaModal(true)
         }else{
-        handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, Contact, setEmail, setPassword, setConfirmPassword, setMessage)
+        handleDoctorSignUp(email, password, name, confirmpassword + " " + surname, qualification, specialization, branch, contactdetails, setEmail, setPassword, setConfirmPassword, setMessage)
         setDisplaModal(true)
         }
     }
@@ -96,7 +96,7 @@ export default function DoctorSignUp({ navigation }) {
                     <Card style={styles.txtCards}>
                         <View style={{ flexDirection: 'row' }}>
                             <TextInput style={styles.txtField}
-                                name='Contact Details' placeholder='Contact Details' onChangeText={text => setContact(text)}
+                                name='Contact Details' placeholder='Contact Details' onChangeText={text => setContactDetails(text)}
                             />
                         </View>
                     </Card>
@@ -112,7 +112,7 @@ export default function DoctorSignUp({ navigation }) {
                     <Card style={styles.txtCards}>
                         <View style={{ flexDirection: 'row' }}>
                             <TextInput style={styles.txtField}
-                                name='Password' placeholder='Password'
+                                name='Password' placeholder='Password' onChangeText={text => setPassword(text)}
                             />
                         </View>
                     </Card>
@@ -120,7 +120,7 @@ export default function DoctorSignUp({ navigation }) {
                     <Card style={styles.txtCards}>
                         <View style={{ flexDirection: 'row' }}>
                             <TextInput style={styles.txtField}
-                                name='Confirm Password' placeholder='Confirm Password'
+                                name='Confirm Password' placeholder='Confirm Password' onChangeText={text => setConfirmPassword(text)}
                             />
                         </View>
                     </Card>
