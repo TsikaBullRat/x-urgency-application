@@ -25,7 +25,6 @@ export default function App() {
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       user?(
-      console.log(user.displayName),
       setID(user.uid)
       ):(
         null

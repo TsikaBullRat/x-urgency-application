@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { AuthScreens, DoctorsScreens, UserScreens } from "../../Screens";
-import { firestore } from "..";
+import { firestore, auth } from "..";
 
 const Check = ({ details, id }) => {
 
