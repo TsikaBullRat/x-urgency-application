@@ -37,16 +37,8 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             setMessage("Password Doesn't Match")
             // setDisplaModal(true)
         }else{
-        handleDoctorSignUp(email, password, name + " " + surname, setMessage)
-        setDetails({
-            Branch: branch,
-            Contact: contactdetails,
-            Qualification: qualification,
-            Specilization: specialization,
-            verified: false,
-            create: true
-        })
-        // setDisplaModal(true)
+        handleDoctorSignUp(email, password, name, confirmpassword + " " + surname, qualification, specialization, branch, contactdetails, setEmail, setPassword, setConfirmPassword, setMessage)
+        setDisplaModal(true)
         }
     }
     return (
