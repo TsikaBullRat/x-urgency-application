@@ -19,19 +19,19 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 export default function App() {
 
-  const [user, setUser] = useState(),
+  const [id, setID] = useState(null),
     [checked, setChecked] = useState(false)
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => setUser(user))
+    auth.onAuthStateChanged(user => user?setID(user.uid):null)
     setChecked(true)
-  }, [user])
+  }, [id])
 
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
         {checked ? (
-          <Detector user={user} />
+          <Detector id={id} />
         ) : (
           // Login/Sign functions
           <View style={styles.loader}>

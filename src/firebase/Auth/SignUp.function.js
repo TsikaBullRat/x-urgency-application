@@ -26,29 +26,14 @@ const handleSignUp = (email, password, Confirmpassword, setMessage) => {
     // setConfirmPassword("")
 }
 
-const handleDoctorSignUp = (email, password, name, qualification, specialization, branch, Contact, setMessage) => {
+const handleDoctorSignUp = (email, password, name, setMessage) => {
 
-        var id;
         auth.createUserWithEmailAndPassword(email, password)
             .then(user => {
                 user.user.displayName = name
-                id = user.user.uid
+                setMessage("Welcome")
                 console.log('this is done')
             })
-            .then(()=>{
-                console.log(id)
-                firestore.collection('Doctors').doc(id).set({
-                    Branch: branch,
-                    Contact: Contact,
-                    Qualification: qualification,
-                    Specilization: specialization,
-                    verified: false
-                })
-                console.log('this is done too')
-            })
-            .then(
-                setMessage("Welcome")
-            )
             .catch((error) => {
                 switch (error.code) {
                     case 'auth/invalid-email':

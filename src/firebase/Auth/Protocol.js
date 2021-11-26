@@ -3,19 +3,31 @@ import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { AuthScreens, DoctorsScreens, UserScreens } from "../../Screens";
 import { firestore } from "..";
 
-const Check = ({ user }) => {
+const Check = ({ id, data }) => {
 
     const [statement, setStatement] = useState(null)
     const [busy, setBusy] = useState(true)
-    // const What = firestore.collection("Doctors").doc(user).get()
-    //     .then(doc=>doc.data())
+
     useEffect(() => {
+        data?(
+            firestore.collection('Doctors').doc(id).set({
+                Branch: branch,
+                Contact: Contact,
+                Qualification: qualification,
+                Specilization: specialization,
+                verified: false
+            })
+            .then(()=>{
+                setStatement(true)
+                setBusy(false)
+            })
+        ):(
         firestore.collection("Doctors").doc(user).get()
             .then(doc => {
                 setStatement(doc.exists)
                 setBusy(false)
             })
-
+        )
     }, [])
 
     // console.log(What)
@@ -35,13 +47,15 @@ const Check = ({ user }) => {
 
 }
 
-const Detector = ({ user }) => {
+const Detector = ({ id }) => {
+
+    const [data, setData] = useState(null)
 
     return (
-        user ? (
-            <Check user={user.uid} />
+        id ? (
+            <Check id={id} data={data}/>
         ) : (
-            <AuthScreens />
+            <AuthScreens setData={setData}/>
         )
     )
 
