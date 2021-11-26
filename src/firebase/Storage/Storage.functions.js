@@ -18,12 +18,12 @@ const LoadSet = (Load) => {
                 let link = await getLink
                 let find = await data.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                 let name = find.title
+                let owner = find.owner
+                let firestore = itemRef.name.split('.')[0]
                 let description = find.description
                 console.log(find)
-                let date = find.added
-                let stamp
-                let filter
-                content = [...content, { id: i++, url: link, title: name, description: description, stamp: stamp }]
+                let stamp = find.added.toDate()
+                content = [...content, { id: i++, url: link, title: name, description: description, stamp: stamp, owner:owner, firestore: firestore }]
                 Load(content)
             })
 
@@ -51,7 +51,7 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
     firestore.collection('Videos').doc(id).set({
         title: title,
         tag: cat,
-        owner: auth.currentUser.displayName,
+        owner: await auth.currentUser.displayName,
         description: description,
         added: new Date()
     })

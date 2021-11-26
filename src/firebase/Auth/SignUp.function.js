@@ -28,11 +28,14 @@ const handleSignUp = (email, password, Confirmpassword, setMessage) => {
 
 const handleDoctorSignUp = (email, password, name, setMessage) => {
 
+        
         auth.createUserWithEmailAndPassword(email, password)
             .then(user => {
-                user.user.displayName = name
-                setMessage("Welcome")
-                console.log('this is done')
+                user.user.updateProfile({
+                    displayName:name
+                })
+                .then(console.log('I done'))
+                .catch(err=>console.log(err))
             })
             .catch((error) => {
                 switch (error.code) {

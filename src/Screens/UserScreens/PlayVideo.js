@@ -10,25 +10,26 @@
     * - Author          : TLeeuw
     * - Modification    : 
 **/
-import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
-import { Video } from 'expo-av';
-import { Likes } from '../../Functions/Likes'
-import { Dislikes } from '../../Functions/Dislikes'
+import { Video, } from 'expo-av';
+import { Likes } from '../../firebase/Functions/Likes'
+import { Dislikes } from '../../firebase/Functions/Dislikes'
+import { auth, firestore, Count } from '../../firebase';
+import { Comments } from '../../Components';
 
 export default function Strokes({ navigation, data }) {
-  const [userName, setUserName] = useState('Rando123')
-  const [videoPlay, setVideoPlay] = useState(data.url)
-  const [videoVisible, setVideoVisible] = useState(true);
-  const setVid = () => {
-    setVideoPlay()
-  }
 
+  const [userName, setUserName] = useState(data.owner)
+  const [videoPlay, setVideoPlay] = useState(data.url)
+  const [videoVisible, setVideoVisible] = useState(true)
+  const [count, setCount] = useState(0)
+  const refrence = useRef(data.url)
   const [comments, setComments] = useState({ userName }),
     [visibleStatusBar, setVisibleStatusBar] = useState(false),
     changeVisibilityStatusBar = () => {
@@ -40,15 +41,34 @@ export default function Strokes({ navigation, data }) {
         return setStyleStatusBar(styleTypes[0]);
       }
       return setStyleStatusBar(styleTypes[styleId]);
+    },
+    addAct = async () => {
+      let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts')
+      let find = metadata.doc(auth.currentUser.uid).get()
+      let found = await find.then(doc => doc.exist)
+
+      found ? (
+        null
+      ) : (
+        metadata.doc(auth.currentUser.uid).set({
+          liked: false,
+          disliked: false,
+          viewed: true,
+          comments: [null],
+          user: auth.currentUser.email
+        })
+      )
     };
 
-    useEffect(()=>{
-      console.log(data.stamp)
-    }, [])
+      useEffect(() => {
+        addAct()
+        // setCount(Count(data.firestore))
+      }, [])
   return (
     <View style={styles.contain}>
       <View style={{ width: 365 }}>
         <Video
+          ref={refrence}
           source={{ uri: videoPlay }}
           rate={1.0}
           volume={1.0}
@@ -56,7 +76,7 @@ export default function Strokes({ navigation, data }) {
           useNativeControls
           resizeMode="contain"
           isLooping
-          style={{ borderRadius: 25 }}
+          style={{ borderRadius: 25, width: 350, height: 180, }}
         />
       </View>
       <View style={styles.descriptionContainer}>
@@ -88,10 +108,10 @@ export default function Strokes({ navigation, data }) {
               <View
                 style={{ flexDirection: 'row', marginTop: 5, marginLeft: 3 }}>
                 <View>
-                  <Likes />
+                  <Likes data={data.firestore} />
                 </View>
                 <View style={{ marginLeft: 32, marginTop: 3 }}>
-                  <Dislikes />
+                  <Dislikes data={data.firestore} />
                 </View>
                 <View style={{ marginLeft: 40 }}>
                   <FontAwesome5
@@ -121,7 +141,7 @@ export default function Strokes({ navigation, data }) {
                   uri: 'https://randomuser.me/api/portraits/men/41.jpg',
                 }}
                 size="medium"
-              onPress={()=>navigation.navigate('Doctor')}
+                onPress={() => navigation.navigate('Doctor')}
               />
               <Text style={{ paddingTop: 15, paddingLeft: 15 }} >
                 {data.owner}
@@ -203,55 +223,29 @@ export default function Strokes({ navigation, data }) {
                   }}
                   size="medium"
                 />
+                <Text>{userName}</Text>
               </View>
             </Card>
           </View>
 
         )}
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}
-      >
-        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
-          <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
-          {/*userName Array*/}
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-        </Card>
-      </ScrollView>
+      {/* <Comments video={data.firestore} /> */}
+      <ScrollView showsVerticalScrollIndicator={false}>
+            <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
+                <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
+                <TextInput placeholder="Comment" />
+                <Card style={{
+                    backgroundColor: 'silver', height: 100,
+                    marginTop: 10
+                }}>
+                    <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+                        <SafeAreaView style={{ color: 'red' }}>This person</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+                        dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+                    </Text>
+                </Card>
+            </Card>
+        </ScrollView>
     </View>
   )
 }

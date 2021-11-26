@@ -1,34 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { AuthScreens, DoctorsScreens, UserScreens } from "../../Screens";
-import { firestore } from "..";
+import { firestore, auth } from "..";
 
-const Check = ({ id, data }) => {
+const Check = ({ details, id }) => {
 
     const [statement, setStatement] = useState(null)
     const [busy, setBusy] = useState(true)
+    // const What = firestore.collection("Doctors").doc(user).get()
+    //     .then(doc=>doc.data())
+    details? (
+        useEffect(() => {
+            firestore.collection("Doctors").doc(id).set({
+                Branch:details.Branch,
+                Contact:details.Contact,
+                Qualification:details.Qualification,
+                Specilization:details.Specilization,
+                verified:details.verified,
+            })
+                .then(doc => {
+                    setStatement(true)
+                    setBusy(false)
+                })
+        }, [])
+    ) : (
+        useEffect(() => {
+            firestore.collection("Doctors").doc(id).get()
+                .then(doc => {
+                    setStatement(doc.exists)
+                    setBusy(false)
+                })
 
-    useEffect(() => {
-        data?(
-            firestore.collection('Doctors').doc(id).set({
-                Branch: branch,
-                Contact: Contact,
-                Qualification: qualification,
-                Specilization: specialization,
-                verified: false
-            })
-            .then(()=>{
-                setStatement(true)
-                setBusy(false)
-            })
-        ):(
-        firestore.collection("Doctors").doc(user).get()
-            .then(doc => {
-                setStatement(doc.exists)
-                setBusy(false)
-            })
-        )
-    }, [])
+        }, [])
+    )
 
     // console.log(What)
     return (
@@ -49,13 +53,17 @@ const Check = ({ id, data }) => {
 
 const Detector = ({ id }) => {
 
-    const [data, setData] = useState(null)
+    const [details, setDetails] = useState(null)
+
+    useEffect(() => {
+        console.log(id)
+    }, [])
 
     return (
         id ? (
-            <Check id={id} data={data}/>
+            <Check id={id} details={details}/>
         ) : (
-            <AuthScreens setData={setData}/>
+            <AuthScreens setDetails={setDetails} />
         )
     )
 

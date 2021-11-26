@@ -46,10 +46,6 @@ export default function Home({ navigation, setData }) {
     LoadSet(setLoad)
   }, [])
 
-  useEffect(() => {
-    console.log(videos)
-  }, [])
-
   const [status, setStatus] = React.useState({});
   return (
     <View style={styles.contain}>
@@ -61,16 +57,22 @@ export default function Home({ navigation, setData }) {
         <Card style={styles.menu2}>
           <View>
             {videos?(videos.map(vid => (
-                <TouchableOpacity onPress={()=>VideoScreen(vid)} key={vid.id}>
+                <TouchableOpacity onPress={()=>VideoScreen(vid)} key={vid.id}
+                style={{
+                  width: 315,
+                  height: 180,
+                  overflow: 'hidden',
+                  borderRadius: 25,
+                  marginTop: 20,
+                  marginBottom: 20 
+                }}>
                   <Video
                     // ref={vid.url}
                     source={{ uri: vid.url }}
                     resizeMode="contain"
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
-                    style={{
-                      width: 315
-                    }}
+                    
                   />
                   <h4>{vid.title}</h4>
                 </TouchableOpacity>

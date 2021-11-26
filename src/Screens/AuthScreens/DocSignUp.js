@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
         width: 285,
         height: 40,
         borderRadius: 10,
-        outline: "none",
+        // outline: "none",
         backgroundColor: "lightgrey",
         paddingLeft: 10,
     },
