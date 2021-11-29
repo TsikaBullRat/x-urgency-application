@@ -141,11 +141,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               />
             </View>
           </Card>
-
-            
-
-                
-            
           </Card>
 
           <Card style={styles.txtCards}>
