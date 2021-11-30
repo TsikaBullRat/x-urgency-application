@@ -23,13 +23,7 @@ export default function App() {
     [checked, setChecked] = useState(false)
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => {
-      user?(
-      setID(user.uid)
-      ):(
-        null
-      )
-    })
+    auth.onAuthStateChanged(user => user?setID(user.uid):null)
     setChecked(true)
   }, [id])
 

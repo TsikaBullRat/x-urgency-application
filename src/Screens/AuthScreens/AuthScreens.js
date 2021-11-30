@@ -5,11 +5,11 @@ import { SignIn, SignUp, DoctorSignUp, ForgotPassword } from '..';
 
 const Stack = createNativeStackNavigator()
 
-export const AuthScreens = ({setDetails}) => {
+export const AuthScreens = ({setData}) => {
   return (
     <Stack.Navigator initialRouteName="Sign In">
       <Stack.Screen name="Doctor SignIn" options={{ headerShown: false }} >
-        {props => <DoctorSignUp {...props} setDetails={setDetails}/>}
+        {props => <DoctorSignUp {...props} setData={setData} />}
       </Stack.Screen>
       <Stack.Screen name="Sign In" options={{ headerShown: false }} >
         {props => <SignIn {...props} />}
