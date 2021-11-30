@@ -92,40 +92,48 @@ export default function MedicalHome({ navigation }) {
   )
 }
 const styles = StyleSheet.create({
-  contain: {
+  container: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'center'
+    marginTop: 10,
+    marginBottom: 15,
+    backgroundColor: '#fff',
+    height: 850,
   },
-
-  header: {
-    flexDirection: 'column',
-    paddingTop: 50
+  textTitle: {
+    color: 'red',
+    fontSize: 25,
+    marginTop: 5,
   },
-
+  textTitle2: {
+    fontSize: 15,
+    marginTop: 20,
+    marginLeft: 5,
+  },
+  box: {
+    flexDirection: 'row',
+  },
+  tab: {
+    paddingLeft: 5,
+    width: 380,
+  },
   avatar: {
-    height: 150,
-    width: 150,
+    width: 70,
+    height: 70,
+    borderRadius: 50,
     margingTop: 80,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
     shadowColor: 'grey',
-    shadowOffset: { width: 2, height: 2 },
+    shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.4,
     elevation: 1,
   },
-
-  menu2: {
-    width: 355,
-    height: 260,
-    marginLeft: 10,
-    marginTop: 50,
-    borderRadius: 15,
-    shadowColor: "#fff",
-    shadowOffset: {
-    },
-    shadowOpacity: 0.8,
-    shadowRadius: 3.84,
-    elevation: 5,
+  words: {
+    width: 250,
+    textAlign: 'center',
+    alignSelf: 'center'
   },
 });
 

@@ -88,9 +88,10 @@ export default function SignIn({ navigation, setDone }) {
 }
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 850,
+    backgroundColor: '#fff',
   },
-
   card: {
     backgroundColor: '#F47066',
     width: 325,
@@ -99,46 +100,46 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
   },
-
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
-
   header: {
-    paddingTop: 5
+    paddingTop: 5,
   },
-
   txtUser: {
     width: 260,
-    height: 40,
+    height: 38,
     borderRadius: 10,
-    // outline: 'none',
+    outline: 'none',
     backgroundColor: 'lightgrey',
-    paddingLeft: 10,
   },
-
   txtPass: {
     width: 260,
-    height: 40,
+    height: 38,
     borderRadius: 10,
-    // outline: 'none',
+    outline: 'none',
     backgroundColor: 'lightgrey',
-    paddingLeft: 10,
   },
-
   txtCards: {
     backgroundColor: 'lightgrey',
     width: 285,
     height: 40,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 25
+    marginTop: 25,
+    borderWidth: 1,
+    borderColor: '#F47066',
   },
-
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
   signIn: {
     height: 50,
     width: 200,

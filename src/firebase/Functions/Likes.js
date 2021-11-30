@@ -68,14 +68,10 @@ function Counter({ video }) {
   );
 }
 
-const Likes = ({ data }) => (
-  <Counter video={data} />
-);
-
-// const Like = (vid, user) =>{
-
-//   firestore.collection("Videos").doc(vid).collection('Acts').doc(user).get()
-//       .then()
-// }
+const Likes = ({ data }) => {
+  return(
+    <Counter video={data} />
+  )
+};
 
 export { Likes }

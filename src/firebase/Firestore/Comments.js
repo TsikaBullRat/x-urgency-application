@@ -17,4 +17,17 @@ const Count = async doc =>{
     return count
 }
 
-export {Count}
+const Collect = async(doc) =>{
+    let collector = await firestore.collection('Videos').doc(doc).collection('Acts')
+    let comments = await collector.onSnapshot(async query=>{
+            let throwback = await query.forEach(doc=>{
+                let filter = doc.data()
+                return filter.comments
+            })
+            return throwback
+        })
+
+    return comments
+}
+
+export {Count, Collect}
