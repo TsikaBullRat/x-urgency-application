@@ -81,6 +81,8 @@ export default function SignUp({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    height: 850,
+    backgroundColor: '#fff',
   },
   card: {
     position: 'absolute',
@@ -90,7 +92,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   heartIcon: {
     alignItems: 'center',
@@ -99,37 +101,50 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingTop: 205,
-    textAlign: 'center'
+    textAlign: 'center',  
   },
   txtUser: {
-    width: 280,
-    height: 40,
+    width: 260,
+    height: 38,
     borderRadius: 10,
-    // outline: 'none',
-    backgroundColor: 'lightgrey'
+    outline: 'none',
+    backgroundColor: 'lightgrey',
+    padding: 5,
+    paddingTop: 18,
   },
   txtPass: {
-    width: 280,
-    height: 40,
+    width: 260,
+    height: 38,
     borderRadius: 10,
-    // outline: 'none',
-    border: 0,
+    outline: 'none',
     backgroundColor: 'lightgrey',
+    padding: 5,
+    paddingTop: 18,
   },
   txtRePass: {
-    width: 280,
-    height: 40,
+    width: 260,
+    height: 38,
     borderRadius: 10,
-    // outline: 'none',
-    border: 0,
+    outline: 'none',
     backgroundColor: 'lightgrey',
+    padding: 5,
+    paddingTop: 18,
   },
   txtCards: {
     backgroundColor: 'lightgrey',
-    width: 280,
+    width: 285,
     height: 40,
     borderRadius: 10,
-    marginTop: 25
+    marginLeft: 2,
+    marginTop: 25,
+    borderWidth: 1,
+    borderColor: '#F47066',
+  },
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
   signIn: {
     height: 40,
@@ -138,7 +153,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 });
 

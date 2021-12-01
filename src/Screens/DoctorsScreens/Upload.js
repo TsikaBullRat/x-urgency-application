@@ -103,55 +103,52 @@
  }
  
  const styles = StyleSheet.create({
-     container: {
-         backgroundColor: "#fff",
-         alignItems: "center",
-         justifyContent: "center",
-     },
- 
-     header: {
-         fontSize: 28,
-         textAlign: "center",
-         color: "#F47066",
-     },
- 
-     button: {
-         backgroundColor: "blue",
-         padding: 20,
-         borderRadius: 5,
-         marginTop: 20,
-     },
- 
-     buttonText: {
-         fontSize: 20,
-         color: "#fff",
-     },
- 
-     txtField: {
-         width: 285,
-         height: 40,
-         borderRadius: 10,
-         outline: "none",
-         backgroundColor: "lightgrey",
-         paddingLeft: 10,
-     },
- 
-     txtCards: {
-         backgroundColor: "lightgrey",
-         width: 285,
-         height: 40,
-         borderRadius: 10,
-         marginLeft: 2,
-         marginTop: 15,
-     },
- 
-     picker: {
-         backgroundColor: "lightgrey",
-         height: 40,
-         width: 285,
-         borderRadius: 10,
-         marginLeft: 2,
-         marginTop: 15,
-     },
- });
- 
+    container: {
+      backgroundColor: "#fff",
+      alignItems: "center",
+      height: 800
+    },
+    header: {
+      paddingTop: 30,
+      fontSize: 28,
+      textAlign: "center",
+      color: "#F47066",
+    },
+    paragraph: {
+      marginBottom: 350, 
+      fontSize: 18,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      color:'#F96056'
+    },
+    shadowProp: {
+      shadowColor: '#171717',
+      shadowOffset: { width: -2,     height: 4 },
+      shadowOpacity: 0.5,
+      shadowRadius: 10,
+    },
+    input1:{
+      width: 280,
+      height: 40,
+      borderRadius: 10,
+      marginTop: -280,
+      marginLeft: 17,
+      padding: 20,
+      fontSize: 16,
+      borderColor: '#F96056', 
+      borderWidth: 1,
+      outline: 'none'
+    },
+    input2:{
+      width: 280,
+      height: 40,
+      borderRadius: 10,
+      marginTop: -220,
+      marginLeft: 17,
+      padding: 20,
+      fontSize: 16,
+      borderColor: '#F96056',
+      borderWidth: 1,
+      outline: 'none'
+    },
+  });

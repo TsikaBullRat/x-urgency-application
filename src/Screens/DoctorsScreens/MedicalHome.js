@@ -185,47 +185,46 @@ export default function MedicalHome({ navigation, progress, Log }) {
 }
 const styles = StyleSheet.create({
   contain: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff', 
   },
-
   header: {
-    flexDirection: "column",
+    flexDirection: 'column',
     paddingTop: 50,
   },
-
   avatar: {
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 80,
+    marginTop: 55, 
     borderBottomWidth: 3,
-    borderColor: "turquoise",
-    shadowColor: "grey",
+    borderColor: 'turquoise',
+    shadowColor: 'grey',
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.4,
     elevation: 1,
   },
-
   menu2: {
-    width: 355,
+    width: 355, 
     height: 550,
     marginLeft: 10,
     marginTop: 50,
     borderRadius: 15,
-    shadowColor: "#fff",
-    shadowOffset: {},
-    shadowOpacity: 0.8,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
-
-  btnUpload: {
-    backgroundColor: "#F47066",
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+  btnUpload: { 
+    backgroundColor: '#F47066',
     height: 40,
     width: 40,
-    borderRadius: 50,
-    textAlign: "center",
-    marginLeft: 280,
+    borderRadius: 50, 
+    textAlign: 'center',
+    marginLeft: 290, 
+    marginTop: 15        
   },
 });
