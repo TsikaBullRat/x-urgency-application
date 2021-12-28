@@ -21,7 +21,6 @@ import { Video, } from 'expo-av';
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore, Count } from '../../firebase';
-import { Comments } from '../../Components';
 
 export default function Strokes({ navigation, data }) {
 
@@ -62,7 +61,7 @@ export default function Strokes({ navigation, data }) {
 
       useEffect(() => {
         addAct()
-        // setCount(Count(data.firestore))
+        setCount(Count(data.firestore))
       }, [])
   return (
     <View style={styles.contain}>

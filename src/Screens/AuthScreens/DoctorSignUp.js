@@ -1,39 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
-import { Card } from "react-native-paper";
-import { FontAwesome } from "@expo/vector-icons";
-import { handleDoctorSignUp } from "../../firebase";
-import { AlertNote } from "../../Components/Alert";
-
-export default function DoctorSignUp({ navigation, setData }) {
-  const [email, setEmail] = useState(""),
-    [name, setName] = useState(""),
-    [surname, setSurname] = useState(""),
-    [qualification, setQualification] = useState(""),
-    [specialization, setSpecialization] = useState(""),
-    [branch, setBranch] = useState(""),
-    [contactdetails, setContactDetails] = useState(""),
-    [password, setPassword] = useState(""),
-    [confirmpassword, setConfirmPassword] = useState(""),
-    [displayModal, setDisplayModal] = useState(false),
-    [message, setMessage] = useState("");
-
-  const DoctorRegister = () => {
-    if (password !== Confirmpassword) {
-      setMessage("Password Doesn't Match");
-      setDisplaModal(true);
-    } else {
-        setData({qualification, specialization,branch,contactdetails})
-      handleDoctorSignUp(email, password, name + " " + surname, setMessage);
-      setDisplaModal(true);
-=======
 /**
     * @description      : 
     * @author           : TLeeuw
@@ -76,9 +40,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         handleDoctorSignUp(email, password, name, confirmpassword + " " + surname, qualification, specialization, branch, contactdetails, setEmail, setPassword, setConfirmPassword, setMessage)
         setDisplaModal(true)
         }
->>>>>>> e5a00026906a0411511a0bc76cd575322251e690
     }
-  };
   return (
     <View style={styles.container}>
       <AlertNote
@@ -166,16 +128,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               />
             </View>
           </Card>
-
-<<<<<<< HEAD
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Email"
-                placeholder="Email"
-              />
-=======
+          <Card>
             <View>
                 <Card style={{ height: 230 }}>
                     <Card style={styles.txtCards}>
@@ -255,7 +208,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                         <Text style={{ color: '#fff' }}>SIGNIN </Text>
                     </TouchableOpacity>
                 </View>
->>>>>>> e5a00026906a0411511a0bc76cd575322251e690
             </View>
           </Card>
 
