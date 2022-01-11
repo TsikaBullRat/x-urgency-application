@@ -34,67 +34,71 @@ export default function Home({ navigation, setDone }) {
   const Logout = () => {
     auth.signOut()
   }
-  const [videos, setLoad] = useState(null);
+  //const [videos, setLoad] = useState(null);
 
-  LoadSet(setLoad)
-  // useEffect(()=>{
+ // LoadSet(setLoad)
+  
+  
 
 
-  // const videos = [
-  //   {
-  //     id: 1,
-  //     title: "Stroke",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Heart-Attack",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Epilepsy",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "CPR",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "Bleeding",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 6,
-  //     title: "Choking",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 7,
-  //     title: "Drowning",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  //   {
-  //     id: 8,
-  //     title: "Burn",
-  //     url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-  //   },
-  // ];
+    const videos = [
+     {
+       id: 1,
+      title: "Stroke",
+       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+     },
+     {
+       id: 2,
+       title: "Heart-Attack",
+      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+     },
+     {
+       id: 3,
+       title: "Epilepsy",
+       url: 'http://d23dyxelo5psv.cloudfront.net/big_buck_bunny.mp4'
+     },
+     {
+       id: 4,
+       title: "CPR",
+       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+     },
+     {
+       id: 5,
+       title: "Bleeding",
+       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+     },
+     {
+       id: 6,
+       title: "Choking",
+       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+     },
+     {
+       id: 7,
+       title: "Drowning",
+       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+     },
+     {
+      id: 8,
+       title: "Burn",
+       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+     },
+   ]
+
   const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
-  const [status, setStatus] = React.useState({});
+  const [status, setStatus] = useState({});
   // const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
   return (
     <View style={styles.contain}>
       <Header />
       <Menu />
+
       {/*---------------------- Video Scroll View--------------------*/}
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
-        <Card style={styles.menu2}>
-          <View>
+
+        <Card style={[styles.menu2, styles.shadowProp]}>
+     
             {videos ? (videos.map(vid => (
-              <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
+              <TouchableOpacity onPress={() => { navigation.navigate('PlayVideo') }} key={vid.id}>
                 <Video
                   ref={video}
                   source={{ uri: vid.url }}
@@ -108,7 +112,7 @@ export default function Home({ navigation, setDone }) {
                 <h4>{vid.title}</h4>
               </TouchableOpacity>
             ))) : (null)}
-          </View>
+       
         </Card  >
       </ScrollView >
     </View>
@@ -154,6 +158,14 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     elevation: 1,
   },
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+
   menu: {
     width: 355,
     left: 10,

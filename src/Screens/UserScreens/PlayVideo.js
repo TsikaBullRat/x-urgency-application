@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -45,22 +45,20 @@ export default function Strokes({ navigation }) {
 
   return (
     <View style={styles.contain}>
-      <View style={{ width: 365 }}>
+      <View style={{ width: 315, marginLeft: 10, marginTop: 50 }}>
         <Video
           source={{ uri: videoPlay }}
-          rate={1.0}
-          volume={1.0}
-          isMuted
           useNativeControls
-          resizeMode="contain"
-          isLooping
+          shouldRasterizeIOS
           style={{ borderRadius: 25 }}
         />
       </View>
+
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
-            <View style={{ flexDirection: 'row', paddingLeft: 30, marginTop: 15 }}>
+            <View
+              style={{ flexDirection: 'row', paddingLeft: 30, marginTop: 15 }}>
               <Text style={{ fontWeight: 'bold' }}>Stroke Emergency Video</Text>
               <TouchableOpacity
                 title="topNav"
@@ -76,6 +74,7 @@ export default function Strokes({ navigation }) {
             <Text style={{ fontSize: 10, paddingLeft: 35 }}>
               1.7M views - 2years ago
             </Text>
+
             <Card
               style={{
                 borderColor: 'black',
@@ -88,9 +87,11 @@ export default function Strokes({ navigation }) {
                 <View>
                   <Likes />
                 </View>
+
                 <View style={{ marginLeft: 32, marginTop: 3 }}>
                   <Dislikes />
                 </View>
+
                 <View style={{ marginLeft: 40 }}>
                   <FontAwesome5
                     name="share"
@@ -100,6 +101,7 @@ export default function Strokes({ navigation }) {
                   />
                   <Text style={{ paddingTop: 5 }}> Share </Text>
                 </View>
+
                 <View style={{ marginLeft: 32 }}>
                   <Entypo
                     name="save"
@@ -111,6 +113,7 @@ export default function Strokes({ navigation }) {
                 </View>
               </View>
             </Card>
+
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
               <Avatar
@@ -120,13 +123,25 @@ export default function Strokes({ navigation }) {
                 }}
                 size="medium"
               />
-              <Text style={{ paddingTop: 15, paddingLeft: 15 }} onPress={navigation.navigate('Doctor')}>
+              <Text style={{ paddingTop: 15, paddingLeft: 15 }}>
                 {userName}
-              </Text>
+              </Text>            
             </View>
+
+              <Card style={[styles.txtCards, styles.shadowProp]}>
+                <View style={{ flexDirection: 'row'}}>   
+                  <TextInput
+                    style={styles.comment}
+                    name="comment"
+                    placeholder="Write a comment" 
+                  />
+                </View> 
+              </Card>
+
           </View>
         ) : (
-          //Hidden Description
+          //Hidden Description  
+
           <View>
             <Card
               style={{
@@ -146,108 +161,92 @@ export default function Strokes({ navigation }) {
                   }}>
                   Description:
                 </Text>
-                <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()} >
-                  <AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} />
+
+                <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
+                  <AntDesign
+                    name="closecircle"
+                    size={18}
+                    color="black"
+                    style={{ marginLeft: 182 }}
+                  />
                 </TouchableOpacity>
               </View>
-              <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
-                1.7M views - 2years ago
-              </Text>
-              <Card
-                style={{
-                  borderColor: 'black',
-                  width: 315,
-                  marginTop: 5,
-                  marginLeft: 25,
-                }}>
-                <View
-                  style={{ flexDirection: 'row', marginTop: 5, marginLeft: 3 }}>
-                  <View>
-                    <Likes />
-                  </View>
-                  <View style={{ marginLeft: 32, marginTop: 3 }}>
-                    <Dislikes />
-                  </View>
-                  <View style={{ marginLeft: 40 }}>
-                    <FontAwesome5
-                      name="share"
-                      size={20}
-                      color="black"
-                      style={{ marginLeft: 11 }}
-                    />
-                    <Text style={{ paddingTop: 5 }}> Share </Text>
-                  </View>
-                  <View style={{ marginLeft: 32 }}>
-                    <Entypo
-                      name="save"
-                      size={20}
-                      color="black"
-                      style={{ marginLeft: 8 }}
-                    />
-                    <Text style={{ paddingTop: 5 }}> Save </Text>
-                  </View>
-                </View>
-              </Card>
               <View
-                style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
-                <Avatar
-                  rounded
-                  source={{
-                    uri: 'https://randomuser.me/api/portraits/men/41.jpg',
-                  }}
-                  size="medium"
-                />
+                style={{
+                  marginTop: 10,
+                  marginLeft: 12,
+                  width: 255,
+                }}>
+                <Text>Stroke Emergency Video</Text>
+                <Text style={{ fontSize: 10, color: 'gray' }}>
+                  1 000 000 Views
+                </Text>
+              </View>
+              <View
+                style={{
+                  marginTop: 10,
+                  marginLeft: 12,
+                  width: 255,
+                }}>
+                <Text style={{ paddingTop: 10 }}>
+                  Lost your faith in ambulance response time? You can play
+                  doctor and help save a life by just following the instructions
+                  of this video. This video is accredited by the Department of
+                  Health and Social Development, for critical emergencies only.
+                </Text>
+                <Text style={{ paddingTop: 10, fontWeight: 'bold' }}>
+                  Thank you for your support.
+                </Text>
               </View>
             </Card>
           </View>
-
         )}
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}
-      >
-        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
-          <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
-          {/*userName Array*/}
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
+
+      <Card
+        style={{
+          height: 500,
+          width: 315,
+          marginTop: 5,
+          marginLeft: 10,
+          backgroundColor: '#fff',
+        }}>
+        <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
+        {/*userName Array*/}
+
+        <Card style={{ backgroundColor: 'silver', height: 100, marginTop: 10 }}>
+          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>:
+            dfhbdnd dgnsgn gfsnxgb dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf
+            fgfxxfngn xgngfn hnhnhn.
+          </Text>
         </Card>
-      </ScrollView>
-    </View>
-  )
+
+        <Card style={{ backgroundColor: 'silver', height: 100, marginTop: 10 }}>
+          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>:
+            dfhbdnd dgnsgn gfsnxgb dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf
+            fgfxxfngn xgngfn hnhnhn.
+          </Text>
+        </Card>
+
+        <Card style={{ backgroundColor: 'silver', height: 100, marginTop: 10 }}>
+          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>:
+            dfhbdnd dgnsgn gfsnxgb dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf
+            fgfxxfngn xgngfn hnhnhn.
+          </Text>
+        </Card>
+
+        <Card style={{ backgroundColor: 'silver', height: 100, marginTop: 10 }}>
+          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>:
+            dfhbdnd dgnsgn gfsnxgb dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf
+            fgfxxfngn xgngfn hnhnhn.
+          </Text>
+        </Card>
+      </Card>
+    </View>  )
 }
 const styles = StyleSheet.create({
   contain: {
@@ -260,11 +259,30 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
+    marginLeft: 20,
     backgroundColor: 'lightgrey',
-    width: 320,
+    width: 315,
     height: 50,
     borderRadius: 10,
-    marginTop: 25,
+    marginTop: 5,
+    borderWidth: 1, 
+    borderColor: '#F47066'
+  },
+
+  comment: {
+    width: 260, 
+    height: 38,
+    borderRadius: 10,
+    outline: 'none',
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
+  }, 
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
 
   strokeVid: {
