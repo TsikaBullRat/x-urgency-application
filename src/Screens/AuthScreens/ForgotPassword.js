@@ -71,10 +71,16 @@ export default function ForgotPassword() {
   )
 }
 const styles = StyleSheet.create({
+
+  container: {
+    alignItems: 'center',
+    height: 850,
+    backgroundColor: '#fff'
+  },
+  
   card: {
     position: 'absolute',
     backgroundColor: '#F47066',
-    // filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
     width: 375,
     height: 280,
     borderBottomLeftRadius: 30,
@@ -82,16 +88,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
+
   header: {
     paddingTop: 300,
     paddingLeft: 130,
     paddingLeft: 150,
   },
+
   txtUser: {
     width: 320,
     height: 50,
@@ -100,6 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
+
   txtPass: {
     width: 320,
     height: 50,
@@ -109,6 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
+
   txtRePass: {
     width: 320,
     height: 50,
@@ -118,6 +129,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },
+
   txtCards: {
     backgroundColor: 'lightgrey',
     width: 320,
@@ -126,6 +138,14 @@ const styles = StyleSheet.create({
     marginLeft: 28,
     marginTop: 25
   },
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+
   signIn: {
     height: 50,
     width: 200,

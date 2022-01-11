@@ -16,6 +16,7 @@ import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
 import { AlertNote } from '../../Components/Alert';
+
 export default function DoctorSignUp({ navigation }) {
 
     const [email, setEmail] = useState(""),
@@ -38,7 +39,7 @@ export default function DoctorSignUp({ navigation }) {
         <View style={styles.container}>
             <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
             
-            <Card style={styles.card}>
+            <Card style={[styles.card, styles.shadowProp]}>
                 <View style={styles.heartIcon}>
                     <FontAwesome name="heartbeat" size={90} color="#fff" />
                 </View>
@@ -52,21 +53,8 @@ export default function DoctorSignUp({ navigation }) {
             
             <View>              
                     <Card style={{ height: 230 }}>
-                        <Card style={styles.txtCards}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
-                                    name='Name' placeholder='Name' onChangeText={text => setName(text)}
-                                />
-                            </View>
-                        </Card>
-                        <Card style={styles.txtCards}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
-                                    name='Surname' placeholder='Surname' onChangeText={text => setSurname(text)}
-                                />
-                            </View>
-                        </Card>
-                        <Card style={styles.txtCards}>
+                      
+                        <Card style={[styles.txtCards, styles.shadowProp]}>
                             <View style={{ flexDirection: 'row' }}>
                                 <TextInput style={styles.txtField}
                                     name='Specialization' placeholder='Specialization' onChangeText={text => setSpecialization(text)}
@@ -74,58 +62,39 @@ export default function DoctorSignUp({ navigation }) {
                             </View>
                         </Card>
 
-                        <Card style={styles.txtCards}>
+                        <Card style={[styles.txtCards, styles.shadowProp]}>
                             <View style={{ flexDirection: 'row' }}>
                                 <TextInput style={styles.txtField}
                                     name='Qualification' placeholder='Qualification' onChangeText={text => setQualification(text)}
                                 />
                             </View>
                         </Card>
-                        <Card style={styles.txtCards}>
+
+                        <Card style={[styles.txtCards, styles.shadowProp]}>
                             <View style={{ flexDirection: 'row' }}>
                                 <TextInput style={styles.txtField}
                                     name='Branch' placeholder='Branch' onChangeText={text => setBranch(text)}
                                 />
                             </View>
-                        </Card>
-                        <Card style={styles.txtCards}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
-                                    name='Contact Details' placeholder='Contact Details' onChangeText={text => setContact(text)}
-                                />
-                            </View>
-                        </Card>
-
-                        <Card style={styles.txtCards}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
-                                    name='Email' placeholder='Email'
-                                />
-                            </View>
-                        </Card>
-
-                        <Card style={styles.txtCards}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
-                                    name='Branch' placeholder='Branch'
-                                />
-                            </View>
                         </Card> 
-                        </Card>                     
+                    </Card>
 
                 <View style={{ alignItems: 'center' }}>
-                    <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('MedicalHome') }}>
+                    <TouchableOpacity style={[styles.signIn, styles.shadowProp]} onPress={() => {navigation.navigate('MedicalHome') }}>
                         <Text style={{ color: '#fff' }}>SIGNIN </Text>
                     </TouchableOpacity>
                 </View>
             </View>
+
         </View>
     )
 }
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center'
-    },
+    alignItems: 'center',
+    height: 850,
+    backgroundColor: '#fff'
+  },
 
     card: {
         backgroundColor: '#F47066',
@@ -150,21 +119,30 @@ const styles = StyleSheet.create({
 
     txtField: {
         width: 285,
-        height: 40,
+        height: 38,
         borderRadius: 10,
         outline: 'none',
         backgroundColor: 'lightgrey',
         paddingLeft: 10,
     },
 
-    txtCards: {
-        backgroundColor: 'lightgrey',
-        width: 285,
-        height: 40,
-        borderRadius: 10,
-        marginLeft: 2,
-        marginTop: 15
-    },
+   txtCards: {
+    backgroundColor: "lightgrey",
+    width: 285,
+    height: 40,
+    borderRadius: 10,
+    marginLeft: 2,
+    marginTop: 15,
+    borderWidth: 1,
+    borderColor: "#F47066"
+  },
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
 
     signIn: {
         height: 50,

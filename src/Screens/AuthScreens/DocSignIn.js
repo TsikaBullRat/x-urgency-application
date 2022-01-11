@@ -23,15 +23,18 @@ export default function SignIn({ navigation, setDone }) {
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
+
   const Login = () => {
     handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
     navigation.navigate('MedicalHome')
   }
+
   return (
     <View style={styles.container}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
-      <Card style={styles.card}>
+
+      <Card style={[styles.card, styles.shadowProp]}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
@@ -43,7 +46,7 @@ export default function SignIn({ navigation, setDone }) {
       </View>
 
       <View>
-        <Card style={styles.txtCards}>
+        <Card style={[styles.txtCards, styles.shadowProp]}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={22} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
             <TextInput style={styles.txtUser}
@@ -52,7 +55,7 @@ export default function SignIn({ navigation, setDone }) {
           </View>
         </Card>
 
-        <Card style={styles.txtCards}>
+        <Card style={[styles.txtCards, styles.shadowProp]}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
             <TextInput style={styles.txtPass}
@@ -68,7 +71,7 @@ export default function SignIn({ navigation, setDone }) {
         </TouchableOpacity>
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={Login}>
+          <TouchableOpacity style={[styles.signIn, styles.shadowProp]} onPress={Login}>
             <Text style={{ color: '#fff' }}>LOGIN </Text>
           </TouchableOpacity>
         </View>
@@ -77,7 +80,7 @@ export default function SignIn({ navigation, setDone }) {
           <Text style={{ paddingTop: 5 }}>
             New?
           </Text>
-          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('DocSignUp') }}>
             <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
           </TouchableOpacity>
         </View>
@@ -87,8 +90,11 @@ export default function SignIn({ navigation, setDone }) {
   )
 }
 const styles = StyleSheet.create({
+  
   container: {
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 850,
+    backgroundColor: '#fff'
   },
 
   card: {
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
 
   txtUser: {
     width: 260,
-    height: 40,
+    height: 38,
     borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey',
@@ -123,7 +129,7 @@ const styles = StyleSheet.create({
 
   txtPass: {
     width: 260,
-    height: 40,
+    height: 38,
     borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey',
@@ -136,7 +142,16 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 25
+    marginTop: 25,
+    borderWidth: 1,
+    borderColor: '#F47066'
+  },
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
 
   signIn: {
