@@ -22,7 +22,7 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, ScrollView, Text, TouchableOpacity, } from 'react-native';
 import { Video, } from 'expo-av';
 import { Card } from 'react-native-paper';
@@ -30,12 +30,13 @@ import { auth, LoadSet } from '../../firebase';
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 
-export default function Home({ navigation, setData }) {
+export default function Home({ navigation, route, setData }) {
   
   const [videos, setLoad] = useState(null),
+    ref=useRef(null),
     VideoScreen = (data) =>{
-      navigation.navigate('PlayVideo')
       setData(data)
+      navigation.navigate('PlayVideo')
     },
     Logout = () => {
     auth.signOut()
@@ -44,6 +45,7 @@ export default function Home({ navigation, setData }) {
   
   useEffect(()=>{
     LoadSet(setLoad)
+    console.log(videos)
   }, [])
 
   const [status, setStatus] = React.useState({});
@@ -51,7 +53,7 @@ export default function Home({ navigation, setData }) {
     <View style={styles.contain}>
       <Text onPress={Logout}>X</Text>
       <Header />
-      <Menu />
+      <Menu list={videos} setVids={setLoad}/>
       {/*---------------------- Video Scroll View--------------------*/}
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
@@ -68,7 +70,7 @@ export default function Home({ navigation, setData }) {
                   marginLeft: 20
                 }}>
                   <Video
-                    // ref={vid.url}
+                    ref={ref}
                     source={{ uri: vid.url }}
                     resizeMode="contain"
                     isLooping
