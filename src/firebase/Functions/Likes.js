@@ -18,7 +18,6 @@ function Counter({ video }) {
             setCount(count + 1)
           })
         })
-      console.log("I'm working")
     },
     Like = async () => {
       let thisLike = await firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).get()

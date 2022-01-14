@@ -11,21 +11,19 @@ const LoadSet = (Load) => {
     var getLink
     var data = firestore.collection('Videos')
     const Collect = async (doc) => {
-        let collection = data.doc(doc).collection('Acts').where('comments', '!=', null)
-        window.comments = []
-        collection.onSnapshot(async query =>{
-            return await query.forEach(doc=>{
-                let item = doc.data().comments
-                window.comments = [...window.comments, item]
-                return window.comments
+        let collection = await data.doc(doc).collection('Acts').doc(auth.currentUser.uid).get()
+            .then(async doc =>{
+                for(var i = 0; i < doc.data().comments.length; i++){
+                    return {...doc.data().comments[i], user: doc.data().user}
+                }
             })
-        })
-        return window.comments
-    };
+        return collection
+    }
 
     storage.ref().child('').listAll()
         .then(res => {
             res.items.forEach(async itemRef => {
+                
                 getLink = itemRef.getDownloadURL().then(url => url)
                 let link = await getLink
                 let find = await data.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
@@ -34,12 +32,11 @@ const LoadSet = (Load) => {
                 let firestore = itemRef.name.split('.')[0]
                 let description = find.description
                 let comments = await Collect(itemRef.name.split('.')[0])
-                console.log(comments)
                 let stamp = find.added.toDate()
-                content = [...content, { id: i++, url: link, title: name, description: description, stamp: stamp, owner: owner, firestore: firestore }]
+                content = [...content, { id: i++, url: link, title: name, description, stamp, owner, firestore, comments }]
                 Load(content)
             })
-
+            
         })
         .catch(err => {
             return null

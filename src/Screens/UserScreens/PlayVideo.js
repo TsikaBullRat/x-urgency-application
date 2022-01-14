@@ -44,9 +44,7 @@ export default function VideoScreen({ navigation, data }) {
     },
     addAct = async () => {
       let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts')
-      let find = metadata.doc(auth.currentUser.uid).get()
-      let found = await find.then(doc => doc.exist)
-
+      let found = (await metadata.doc(auth.currentUser.uid).get()).exists
       found ? (
         null
       ) : (
@@ -58,21 +56,11 @@ export default function VideoScreen({ navigation, data }) {
           user: auth.currentUser.email
         })
       )
-    },
-    Collect = async () => {
-      await firestore.collection('Videos').doc(data.firestore).collection('Acts')
-        .onSnapshot(query => {
-          query.forEach(doc => {
-            let filter = doc.data()
-            setComments([...comments, filter.comments])
-          })
-        })
     };
 
   useEffect(() => {
     addAct()
-    // Collect()
-    console.log(comments)
+    console.log(data.comments)
   }, [])
   return (
     <View style={styles.contain}>
@@ -245,15 +233,18 @@ export default function VideoScreen({ navigation, data }) {
         <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
 
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>This person</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
+          
+            {/* {data.comments.map(item =>
+            <Card style={{
+              backgroundColor: 'silver', height: 100,
+              marginTop: 10
+            }}>
+              <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+                <SafeAreaView style={{ color: 'red' }}>{item.user}</SafeAreaView>: {item.comment}
+              </Text>
+              </Card>
+            )} */}
+          
 
         </Card>
       </ScrollView>
