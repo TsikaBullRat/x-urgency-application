@@ -4,6 +4,19 @@ import { v4 as uuidv4 } from 'uuid'
 
 var atob = require('atob')
 
+const Collect = async (doc, SetCollection) => {
+    var set = []
+    await firestore.collection('Videos').doc(doc).collection('Acts')
+        .onSnapshot(query=>{
+            query.forEach(doc=>{
+                set = [...set, {user: doc.data().user, comments: doc.data().comments}]
+                return set
+            })
+            console.log(set)
+            SetCollection(set)
+        })
+}
+
 const LoadSet = (Load) => {
 
     var content = []
@@ -11,25 +24,22 @@ const LoadSet = (Load) => {
     var getLink
     var data = firestore.collection('Videos')
     var collection = [] 
-    const Collect = async (doc) => {
-        var set = []
-        await data.doc(doc).collection('Acts')
-            .onSnapshot(query=>{
-                query.forEach(doc=>{
-                    set = [...set, {user: doc.data().user, comments: doc.data().comments}]
-                    return set
-                })
-                console.log(set)
-                SetCollection(set)
-            })
-        return collection
-    },
-    SetCollection = (data) =>{
-        console.log(data)
-        collection = data
-        console.log(collection)
-        return collection
-    }
+    // const /*Collect = async (doc) => {
+    //     var set = []
+    //     await data.doc(doc).collection('Acts')
+    //         .onSnapshot(query=>{
+    //             query.forEach(doc=>{
+    //                 set = [...set, {user: doc.data().user, comments: doc.data().comments}]
+    //                 return set
+    //             })
+    //             SetCollection(set)
+    //         })
+    //     return collection
+    // },*/
+    // SetCollection = (data) =>{
+    //     collection = data
+    //     return collection
+    // }
 
 
     storage.ref().child('').listAll()
@@ -43,11 +53,10 @@ const LoadSet = (Load) => {
                 let owner = find.owner
                 let firestore = itemRef.name.split('.')[0]
                 let description = find.description
-                await Collect(itemRef.name.split('.')[0])
-                let comments = collection
-                console.log(collection)
+                // await Collect(itemRef.name.split('.')[0])
+                // let comments = collection
                 let stamp = find.added.toDate()
-                content = [...content, { id: i++, url: link, title: name, description, stamp, owner, firestore, comments }]
+                content = [...content, { id: i++, url: link, title: name, description, stamp, owner, firestore}]
                 Load(content)
             })
             
@@ -102,4 +111,4 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
         })
 }
 
-export { LoadSet, UploadVideo }
+export { LoadSet, UploadVideo, Collect }
