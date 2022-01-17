@@ -12,6 +12,7 @@
     "@react-navigation/native": "*",
     "@react-navigation/native-stack": "*",
     "anonymous-files": "^1.0.1",
+    "atob": "^2.1.2",
     "cli": "^1.0.1",
     "expo": "^1.0.0",
     "expo-av": "^9.2.3",
@@ -20,6 +21,7 @@
     "expo-image-picker": "^10.2.3",
     "expo-sharing": "^9.2.1",
     "expo-status-bar": "~1.0.4",
+    "express": "^4.17.1",
     "firebase": "8.2.3",
     "gsap": "^3.8.0",
     "prettier": "^2.4.1",
@@ -27,9 +29,10 @@
     "react-dom": "^17.0.1",
     "react-icons": "*",
     "react-is": "^16.8.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native": "~0.63.4",
     "react-native-elements": "^3.4.2",
     "react-native-icons": "^0.7.1",
+    "react-native-image-picker": "^4.2.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.4",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-paper": "3.6.0",
@@ -39,8 +42,8 @@
     "react-native-switch-selector": "^2.1.4",
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "^0.17.5",
-    "standard": "^16.0.4",
-    "styled-components": "*"
+    "styled-components": "*",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

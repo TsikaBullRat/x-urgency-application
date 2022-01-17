@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { AlertNote } from \"./Alert\";","map":{"version":3,"sources":["C:/Users/MLab/Desktop/React-Native/X-Urgency/x-urgency-application/src/Components/index.js"],"names":["AlertNote"],"mappings":"AAAA,SAASA,SAAT","sourcesContent":["export { AlertNote } from \"./Alert\"\r\n\r\n"]},"metadata":{},"sourceType":"module"}

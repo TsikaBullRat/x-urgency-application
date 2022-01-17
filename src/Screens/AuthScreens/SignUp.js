@@ -90,7 +90,11 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     height: 850,
+<<<<<<< HEAD
     backgroundColor: '#fff'
+=======
+    backgroundColor: '#fff',
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
   },
 
   card: {
@@ -101,7 +105,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   heartIcon: {
@@ -112,33 +116,49 @@ const styles = StyleSheet.create({
 
   header: {
     paddingTop: 205,
-    textAlign: 'center'
+    textAlign: 'center',  
   },
 
   txtUser: {
+<<<<<<< HEAD
     width: 280,
+=======
+    width: 260,
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 38,
     borderRadius: 10,
     outline: 'none',
-    backgroundColor: 'lightgrey'
+    backgroundColor: 'lightgrey',
+    padding: 5,
+    paddingTop: 18,
   },
 
   txtPass: {
+<<<<<<< HEAD
     width: 280,
+=======
+    width: 260,
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 38,
     borderRadius: 10,
     outline: 'none',
-    border: 0,
     backgroundColor: 'lightgrey',
+    padding: 5,
+    paddingTop: 18,
   },
 
   txtRePass: {
+<<<<<<< HEAD
     width: 280,
+=======
+    width: 260,
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 38,
     borderRadius: 10,
     outline: 'none',
-    border: 0,
     backgroundColor: 'lightgrey',
+    padding: 5,
+    paddingTop: 18,
   },
 
   txtCards: {
@@ -148,8 +168,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 25,
+<<<<<<< HEAD
     borderWidth: 1, 
     borderColor: '#F47066'
+=======
+    borderWidth: 1,
+    borderColor: '#F47066',
+  },
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
   },
 
   shadowProp: {
@@ -166,7 +197,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 });
 

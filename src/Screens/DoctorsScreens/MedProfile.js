@@ -22,7 +22,7 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';

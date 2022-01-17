@@ -17,6 +17,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
+
 export default function ForgotPassword() {
   const forgotPassword = () => {
     handleResetPassword("lindiwe.mpondo@gmail.com")
@@ -71,22 +72,21 @@ export default function ForgotPassword() {
   )
 }
 const styles = StyleSheet.create({
-
   container: {
     alignItems: 'center',
-    height: 850,
+    textAlign: 'center',
+    height: 950,
     backgroundColor: '#fff'
   },
-  
   card: {
-    position: 'absolute',
     backgroundColor: '#F47066',
-    width: 375,
-    height: 280,
+    width: 325,
+    height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    textAlign: 'center'
   },
 
   heartIcon: {
@@ -96,47 +96,49 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    paddingTop: 300,
-    paddingLeft: 130,
-    paddingLeft: 150,
+    paddingTop: 5
   },
 
   txtUser: {
-    width: 320,
-    height: 50,
+    width: 260,
+    height: 35,
     borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey',
-    paddingLeft: 10,
+    padding: 8,
+    paddingTop: 20
   },
 
   txtPass: {
-    width: 320,
-    height: 50,
+    width: 280,
+    height: 35,
     borderRadius: 10,
     outline: 'none',
     border: 0,
     backgroundColor: 'lightgrey',
-    paddingLeft: 10,
+    padding: 5,
+    paddingTop: 18
   },
 
   txtRePass: {
-    width: 320,
-    height: 50,
+    width: 280,
+    height: 35,
     borderRadius: 10,
     outline: 'none',
     border: 0,
     backgroundColor: 'lightgrey',
-    paddingLeft: 10,
+    padding: 5,
+    paddingTop: 18
   },
 
   txtCards: {
     backgroundColor: 'lightgrey',
-    width: 320,
-    height: 50,
+    width: 280,
+    height: 40,
     borderRadius: 10,
-    marginLeft: 28,
-    marginTop: 25
+    marginTop: 25,
+    borderWidth: 2,
+    borderColor: '#F47066'
   },
 
   shadowProp: {
@@ -149,11 +151,16 @@ const styles = StyleSheet.create({
   signIn: {
     height: 50,
     width: 200,
-    marginLeft: 85,
     marginTop: 20,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+  },
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
 });

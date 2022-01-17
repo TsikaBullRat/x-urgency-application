@@ -1,3 +1,4 @@
+import { firestore } from '..';
 import { auth } from '../config'
 const handleSignUp = (email, password, Confirmpassword, setMessage) => {
     if (password !== Confirmpassword) {
@@ -25,18 +26,17 @@ const handleSignUp = (email, password, Confirmpassword, setMessage) => {
     // setConfirmPassword("")
 }
 
-const handleDoctorSignUp = (email, password, Confirmpassword, name, surname, qualification, specialization, branch, Contact, setMessage) =>{
-    if (password !== Confirmpassword) {
-        setMessage("Password Doesn't Match")
-    }
-    else {
+const handleDoctorSignUp = (email, password, name, setMessage) => {
+
+        
         auth.createUserWithEmailAndPassword(email, password)
-            .then(user=>{
-                user.user.displayName = name + " " + surname
+            .then(user => {
+                user.user.updateProfile({
+                    displayName:name
+                })
+                .then(console.log('I done'))
+                .catch(err=>console.log(err))
             })
-            .then(
-                setMessage("Welcome")
-            )
             .catch((error) => {
                 switch (error.code) {
                     case 'auth/invalid-email':
@@ -47,6 +47,5 @@ const handleDoctorSignUp = (email, password, Confirmpassword, name, surname, qua
                         break
                 }
             });
-    }
 }
 export { handleSignUp, handleDoctorSignUp }

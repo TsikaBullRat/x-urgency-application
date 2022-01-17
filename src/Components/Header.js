@@ -10,7 +10,7 @@
     * - Author          : TLeeuw
     * - Modification    : 
 **/
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 

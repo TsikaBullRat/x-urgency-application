@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
@@ -112,7 +112,8 @@ const DoctorProfile = () => {
             </View> : <View></View>}
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Show Contact
+                    Mr Sighn@gmail.com
+                    0730772725
                 </Text>
             </View> : <View></View>}
 
@@ -122,58 +123,47 @@ const DoctorProfile = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 10,
-        marginBottom: 15,
-
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 10,
+      marginBottom: 15,
+      backgroundColor: '#fff',
+      height: 850,
     },
-
     textTitle: {
-        color: 'red',
-        fontSize: 25,
-        marginTop: 5,
-
+      color: 'red',
+      fontSize: 25,
+      marginTop: 5,
     },
-
     textTitle2: {
-        fontSize: 15,
-        marginTop: 20,
-        marginLeft: 5,
-
+      fontSize: 15,
+      marginTop: 20,
+      marginLeft: 5,
     },
-
     box: {
-        flexDirection: "row",
-
+      flexDirection: 'row',
     },
-
     tab: {
-        paddingLeft: 10
-
+      paddingLeft: 5,
+      width: 380,
     },
-
     avatar: {
-        width: 70,
-        height: 70,
-        borderRadius: 50,
-        margingTop: 80,
-        borderBottomWidth: 3,
-        borderColor: 'turquoise',
-        shadowColor: 'grey',
-        shadowOffset: { width: 1, height: 1 },
-        shadowOpacity: 0.4,
-        elevation: 1,
-
+      width: 70,
+      height: 70,
+      borderRadius: 50,
+      margingTop: 80,
+      borderBottomWidth: 3,
+      borderColor: 'turquoise',
+      shadowColor: 'grey',
+      shadowOffset: { width: 1, height: 1 },
+      shadowOpacity: 0.4,
+      elevation: 1,
     },
-
     words: {
-        width: 250,
-        marginLeft: 55,
-
+      width: 250,
+      textAlign: 'center',
+      alignSelf: 'center'
     },
-
-
-})
+  });
 export default DoctorProfile;

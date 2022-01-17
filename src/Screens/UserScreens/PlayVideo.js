@@ -10,56 +10,99 @@
     * - Author          : TLeeuw
     * - Modification    : 
 **/
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
-import { Video } from 'expo-av';
-import { Likes } from '../../Functions/Likes'
-import { Dislikes } from '../../Functions/Dislikes'
+import { Video, } from 'expo-av';
+import { Likes } from '../../firebase/Functions/Likes'
+import { Dislikes } from '../../firebase/Functions/Dislikes'
+import { auth, firestore, Count, Collect } from '../../firebase';
+import { Comments } from '../../Components';
 
-export default function Strokes({ navigation }) {
-  const [userName, setUserName] = useState('Rando123')
-  const [videoPlay, setVideoPlay] = useState('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4')
-  const [videoVisible, setVideoVisible] = useState(true);
-  const setVid = () => {
-    setVideoPlay()
-  }
+export default function VideoScreen({ navigation, data }) {
 
-  const [comments, setComments] = useState({ userName })
-  const [visibleStatusBar, setVisibleStatusBar] = useState(false);
-  const changeVisibilityStatusBar = () => {
-    setVisibleStatusBar(!visibleStatusBar);
-  };
+  const [userName, setUserName] = useState(data.owner)
+  const [videoPlay, setVideoPlay] = useState(data.url)
+  const [videoVisible, setVideoVisible] = useState(true)
+  const [count, setCount] = useState(0)
+  const refrence = useRef(data.url)
+  const [comments, setComments] = useState([]),
+    [visibleStatusBar, setVisibleStatusBar] = useState(false),
+    changeVisibilityStatusBar = () => {
+      setVisibleStatusBar(!visibleStatusBar);
+    },
+    changeStyleStatusBar = () => {
+      const styleId = styleTypes.indexOf(styleStatusBar) + 1;
+      if (styleId === styleTypes.length) {
+        return setStyleStatusBar(styleTypes[0]);
+      }
+      return setStyleStatusBar(styleTypes[styleId]);
+    },
+    addAct = async () => {
+      let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts')
+      let find = metadata.doc(auth.currentUser.uid).get()
+      let found = await find.then(doc => doc.exist)
 
-  const changeStyleStatusBar = () => {
-    const styleId = styleTypes.indexOf(styleStatusBar) + 1;
-    if (styleId === styleTypes.length) {
-      return setStyleStatusBar(styleTypes[0]);
-    }
-    return setStyleStatusBar(styleTypes[styleId]);
-  };
+      found ? (
+        null
+      ) : (
+        metadata.doc(auth.currentUser.uid).set({
+          liked: false,
+          disliked: false,
+          viewed: true,
+          comments: [null],
+          user: auth.currentUser.email
+        })
+      )
+    },
+    Collect = async () => {
+      await firestore.collection('Videos').doc(data.firestore).collection('Acts')
+        .onSnapshot(query => {
+          query.forEach(doc => {
+            let filter = doc.data()
+            setComments([...comments, filter.comments])
+          })
+        })
+    };
 
+  useEffect(() => {
+    addAct()
+    // Collect()
+    console.log(comments)
+  }, [])
   return (
     <View style={styles.contain}>
       <View style={{ width: 315, marginLeft: 10, marginTop: 50 }}>
         <Video
+          ref={refrence}
           source={{ uri: videoPlay }}
           useNativeControls
+<<<<<<< HEAD
           shouldRasterizeIOS
           style={{ borderRadius: 25 }}
+=======
+          resizeMode="contain"
+          isLooping
+          style={{ borderRadius: 25, width: 350, height: 180, }}
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
         />
       </View>
 
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
+<<<<<<< HEAD
             <View
               style={{ flexDirection: 'row', paddingLeft: 30, marginTop: 15 }}>
               <Text style={{ fontWeight: 'bold' }}>Stroke Emergency Video</Text>
+=======
+            <View style={{ flexDirection: 'row', paddingLeft: 30, marginTop: 15 }}>
+              <Text style={{ fontWeight: 'bold' }}>{data.title}</Text>
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
               <TouchableOpacity
                 title="topNav"
                 onPress={() => changeVisibilityStatusBar()}>
@@ -85,11 +128,11 @@ export default function Strokes({ navigation }) {
               <View
                 style={{ flexDirection: 'row', marginTop: 5, marginLeft: 3 }}>
                 <View>
-                  <Likes />
+                  <Likes data={data.firestore} />
                 </View>
 
                 <View style={{ marginLeft: 32, marginTop: 3 }}>
-                  <Dislikes />
+                  <Dislikes data={data.firestore} />
                 </View>
 
                 <View style={{ marginLeft: 40 }}>
@@ -122,10 +165,17 @@ export default function Strokes({ navigation }) {
                   uri: 'https://randomuser.me/api/portraits/men/41.jpg',
                 }}
                 size="medium"
+                onPress={() => navigation.navigate('Doctor')}
               />
+<<<<<<< HEAD
               <Text style={{ paddingTop: 15, paddingLeft: 15 }}>
                 {userName}
               </Text>            
+=======
+              <Text style={{ paddingTop: 15, paddingLeft: 15 }} >
+                {data.owner}
+              </Text>
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
             </View>
 
               <Card style={[styles.txtCards, styles.shadowProp]}>
@@ -160,6 +210,9 @@ export default function Strokes({ navigation }) {
                     fontSize: 16,
                   }}>
                   Description:
+                  <Text>
+                    {data.description}
+                  </Text>
                 </Text>
 
                 <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
@@ -171,7 +224,14 @@ export default function Strokes({ navigation }) {
                   />
                 </TouchableOpacity>
               </View>
+<<<<<<< HEAD
               <View
+=======
+              <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
+                1.7M views - {data.stamps}
+              </Text>
+              <Card
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
                 style={{
                   marginTop: 10,
                   marginLeft: 12,
@@ -183,6 +243,7 @@ export default function Strokes({ navigation }) {
                 </Text>
               </View>
               <View
+<<<<<<< HEAD
                 style={{
                   marginTop: 10,
                   marginLeft: 12,
@@ -197,11 +258,23 @@ export default function Strokes({ navigation }) {
                 <Text style={{ paddingTop: 10, fontWeight: 'bold' }}>
                   Thank you for your support.
                 </Text>
+=======
+                style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
+                <Avatar
+                  rounded
+                  source={{
+                    uri: 'https://randomuser.me/api/portraits/men/41.jpg',
+                  }}
+                  size="medium"
+                />
+                <Text>{userName}</Text>
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
               </View>
             </Card>
           </View>
         )}
       </View>
+<<<<<<< HEAD
 
       <Card
         style={{
@@ -247,20 +320,42 @@ export default function Strokes({ navigation }) {
         </Card>
       </Card>
     </View>  )
+=======
+      {/* <Comments video={data.firestore} /> */}
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
+          <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
+
+          <Card style={{
+            backgroundColor: 'silver', height: 100,
+            marginTop: 10
+          }}>
+            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+              <SafeAreaView style={{ color: 'red' }}>This person</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+            </Text>
+          </Card>
+
+        </Card>
+      </ScrollView>
+      <TextInput placeholder="Comment" style={styles.commentBox} />
+    </View>
+  )
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
 }
 const styles = StyleSheet.create({
   contain: {
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
   },
-
-  header: {
-    paddingLeft: 30,
-    paddingTop: 50
+  dropDown: {
+    marginLeft: 110,
   },
-
   txtCards: {
     marginLeft: 20,
     backgroundColor: 'lightgrey',
+<<<<<<< HEAD
     width: 315,
     height: 50,
     borderRadius: 10,
@@ -283,17 +378,29 @@ const styles = StyleSheet.create({
     shadowOffset: { width: -2,     height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
+=======
+    width: 285,
+    height: 40,
+    borderRadius: 10,
+    marginLeft: 20,
+    marginTop: 5,
+    borderWidth: 1,
+    borderColor: '#F47066'
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
   },
-
-  strokeVid: {
-    height: 180,
-    width: 315,
-    borderRadius: 30,
-    marginTop: 50,
+  comment: {
+    width: 260,
+    height: 38,
+    borderRadius: 10,
+    outline: 'none',
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
   },
-
-  dropDown: {
-    marginLeft: 110
-  }
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
 });
 

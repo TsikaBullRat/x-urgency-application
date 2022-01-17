@@ -1,20 +1,8 @@
-/**
-    * @description      : 
-    * @author           : TLeeuw
-    * @group            : 
-    * @created          : 15/11/2021 - 15:23:16
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 15/11/2021
-    * - Author          : TLeeuw
-    * - Modification    : 
-**/
-import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
-import SwitchSelector from "react-native-switch-selector"
-import { Avatar, Badge } from 'react-native-elements'
-import { Socials } from '../../Components'
+import React from 'react';
+import { Text, View, StyleSheet, } from 'react-native';
+import SwitchSelector from "react-native-switch-selector";
+import { Avatar, Badge } from 'react-native-elements';
+import { Socials } from '../../Components';
 
 const DoctorProfile = () => {
 
@@ -126,7 +114,8 @@ const DoctorProfile = () => {
             </View> : <View></View>}
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Show Contact
+                    Mr Sighn@gmail.com
+                    0730772725
                 </Text>
             </View> : <View></View>}
 

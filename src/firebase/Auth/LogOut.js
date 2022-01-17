@@ -1,6 +1,6 @@
-
+import { auth } from "..";
 const Exit = () => {
-    firebase.auth().signOut()
+    auth.signOut()
         .then(function () {
             // Sign-out successful.
         }).catch(function (error) {
