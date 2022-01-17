@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { alertNote } from \"./Alert\";","map":{"version":3,"sources":["C:/Users/MLab/Desktop/React-Native/X-Urgency/x-urgency-application/src/components/index.js"],"names":["alertNote"],"mappings":"AACA,SAAQA,SAAR","sourcesContent":["\r\nexport {alertNote} from './Alert'"]},"metadata":{},"sourceType":"module"}
