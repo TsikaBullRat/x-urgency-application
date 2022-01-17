@@ -18,7 +18,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
-export default function ForgotPassword() {
+export default function ForgotPassword({navigation}) {
   const forgotPassword = () => {
     handleResetPassword("lindiwe.mpondo@gmail.com")
   }
@@ -31,15 +31,15 @@ export default function ForgotPassword() {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={76} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
+        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 20 }}> X-urgency </Text>
       </Card>
       <View style={styles.header} >
-        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>Reset Password</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5, marginLeft: 110 }}>Reset Password</Text>
       </View>
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={22} color="black" />
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 4, marginLeft: 5}} />
             <TextInput style={styles.txtUser}
               name='username' placeholder='Username'
             />
@@ -47,7 +47,7 @@ export default function ForgotPassword() {
         </Card>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 10, }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 2, }} />
             <TextInput style={styles.txtPass}
               name='password' placeholder='New Password'
             />
@@ -55,17 +55,17 @@ export default function ForgotPassword() {
         </Card>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 10, }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 2, }} />
             <TextInput style={styles.txtRePass}
               name='password' placeholder='Confirm Password'
             />
           </View>
         </Card>
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
-          <Text style={{ color: '#fff' }}>Reset Password </Text>
+          <Text style={{ color: '#fff' }}>RESET PASSWORD </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.signIn} onPress={Exit}>
-          <Text style={{ color: '#fff' }}>Exit</Text>
+          <Text style={{ color: '#fff' }}>EXIT</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginLeft: 30,
   },
 
   heartIcon: {
@@ -106,29 +107,28 @@ const styles = StyleSheet.create({
     outline: 'none',
     backgroundColor: 'lightgrey',
     padding: 8,
-    paddingTop: 20
+    paddingTop: 5
   },
 
   txtPass: {
-    width: 280,
+    width: 260,
     height: 35,
     borderRadius: 10,
     outline: 'none',
-    border: 0,
     backgroundColor: 'lightgrey',
     padding: 5,
-    paddingTop: 18
+    paddingTop: 5
   },
 
   txtRePass: {
-    width: 280,
+    width: 260,
     height: 35,
     borderRadius: 10,
     outline: 'none',
     border: 0,
     backgroundColor: 'lightgrey',
     padding: 5,
-    paddingTop: 18
+    paddingTop: 5
   },
 
   txtCards: {
@@ -138,7 +138,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 25,
     borderWidth: 2,
-    borderColor: '#F47066'
+    borderColor: '#F47066',
+    marginLeft: 50,
   },
 
   shadowProp: {
@@ -156,6 +157,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F47066',
     alignItems: 'center',
     justifyContent: 'center',
+    marginLeft: 80,
   },
   shadowProp: {
     shadowColor: '#171717',

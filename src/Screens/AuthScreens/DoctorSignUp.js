@@ -194,27 +194,29 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               />
             </View>
           </Card>
-          </Card>
-
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
                 name="Password"
                 placeholder="Password"
+                onChangeText={(text) => setContactDetails(text)}
               />
             </View>
           </Card>
-
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
-                name="Confirm Password"
-                placeholder="Confirm Password"
+                name="Confirm password"
+                placeholder="Confirm password"
+                onChangeText={(text) => setContactDetails(text)}
               />
             </View>
           </Card>
+          </Card>
+
+        
        
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
@@ -305,7 +307,7 @@ const styles = StyleSheet.create({
     signIn: {
         height: 50,
         width: 200,
-        marginTop: 15,
+        marginTop: 280,
         borderRadius: 10,
         backgroundColor: "#F47066",
         alignItems: "center",
