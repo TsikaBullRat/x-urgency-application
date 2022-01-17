@@ -44,9 +44,7 @@ export default function VideoScreen({ navigation, data }) {
     },
     addAct = async () => {
       let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts')
-      let find = metadata.doc(auth.currentUser.uid).get()
-      let found = await find.then(doc => doc.exist)
-
+      let found = (await metadata.doc(auth.currentUser.uid).get()).exists
       found ? (
         null
       ) : (
@@ -58,21 +56,11 @@ export default function VideoScreen({ navigation, data }) {
           user: auth.currentUser.email
         })
       )
-    },
-    Collect = async () => {
-      await firestore.collection('Videos').doc(data.firestore).collection('Acts')
-        .onSnapshot(query => {
-          query.forEach(doc => {
-            let filter = doc.data()
-            setComments([...comments, filter.comments])
-          })
-        })
     };
 
   useEffect(() => {
     addAct()
-    // Collect()
-    console.log(comments)
+    console.log(data.comments)
   }, [])
   return (
     <View style={styles.contain}>
@@ -81,28 +69,17 @@ export default function VideoScreen({ navigation, data }) {
           ref={refrence}
           source={{ uri: videoPlay }}
           useNativeControls
-<<<<<<< HEAD
-          shouldRasterizeIOS
-          style={{ borderRadius: 25 }}
-=======
           resizeMode="contain"
           isLooping
           style={{ borderRadius: 25, width: 350, height: 180, }}
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
         />
       </View>
 
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
-<<<<<<< HEAD
-            <View
-              style={{ flexDirection: 'row', paddingLeft: 30, marginTop: 15 }}>
-              <Text style={{ fontWeight: 'bold' }}>Stroke Emergency Video</Text>
-=======
             <View style={{ flexDirection: 'row', paddingLeft: 30, marginTop: 15 }}>
               <Text style={{ fontWeight: 'bold' }}>{data.title}</Text>
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
               <TouchableOpacity
                 title="topNav"
                 onPress={() => changeVisibilityStatusBar()}>
@@ -167,15 +144,9 @@ export default function VideoScreen({ navigation, data }) {
                 size="medium"
                 onPress={() => navigation.navigate('Doctor')}
               />
-<<<<<<< HEAD
-              <Text style={{ paddingTop: 15, paddingLeft: 15 }}>
-                {userName}
-              </Text>            
-=======
               <Text style={{ paddingTop: 15, paddingLeft: 15 }} >
                 {data.owner}
               </Text>
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
             </View>
 
               <Card style={[styles.txtCards, styles.shadowProp]}>
@@ -224,14 +195,10 @@ export default function VideoScreen({ navigation, data }) {
                   />
                 </TouchableOpacity>
               </View>
-<<<<<<< HEAD
-              <View
-=======
               <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
                 1.7M views - {data.stamps}
               </Text>
               <Card
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
                 style={{
                   marginTop: 10,
                   marginLeft: 12,
@@ -243,22 +210,6 @@ export default function VideoScreen({ navigation, data }) {
                 </Text>
               </View>
               <View
-<<<<<<< HEAD
-                style={{
-                  marginTop: 10,
-                  marginLeft: 12,
-                  width: 255,
-                }}>
-                <Text style={{ paddingTop: 10 }}>
-                  Lost your faith in ambulance response time? You can play
-                  doctor and help save a life by just following the instructions
-                  of this video. This video is accredited by the Department of
-                  Health and Social Development, for critical emergencies only.
-                </Text>
-                <Text style={{ paddingTop: 10, fontWeight: 'bold' }}>
-                  Thank you for your support.
-                </Text>
-=======
                 style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
                 <Avatar
                   rounded
@@ -268,80 +219,34 @@ export default function VideoScreen({ navigation, data }) {
                   size="medium"
                 />
                 <Text>{userName}</Text>
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
               </View>
             </Card>
           </View>
         )}
       </View>
-<<<<<<< HEAD
-
-      <Card
-        style={{
-          height: 500,
-          width: 315,
-          marginTop: 5,
-          marginLeft: 10,
-          backgroundColor: '#fff',
-        }}>
-        <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: 498</Text>
-        {/*userName Array*/}
-
-        <Card style={{ backgroundColor: 'silver', height: 100, marginTop: 10 }}>
-          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>:
-            dfhbdnd dgnsgn gfsnxgb dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf
-            fgfxxfngn xgngfn hnhnhn.
-          </Text>
-        </Card>
-
-        <Card style={{ backgroundColor: 'silver', height: 100, marginTop: 10 }}>
-          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>:
-            dfhbdnd dgnsgn gfsnxgb dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf
-            fgfxxfngn xgngfn hnhnhn.
-          </Text>
-        </Card>
-
-        <Card style={{ backgroundColor: 'silver', height: 100, marginTop: 10 }}>
-          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>:
-            dfhbdnd dgnsgn gfsnxgb dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf
-            fgfxxfngn xgngfn hnhnhn.
-          </Text>
-        </Card>
-
-        <Card style={{ backgroundColor: 'silver', height: 100, marginTop: 10 }}>
-          <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-            <SafeAreaView style={{ color: 'red' }}>{userName}</SafeAreaView>:
-            dfhbdnd dgnsgn gfsnxgb dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf
-            fgfxxfngn xgngfn hnhnhn.
-          </Text>
-        </Card>
-      </Card>
-    </View>  )
-=======
       {/* <Comments video={data.firestore} /> */}
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
 
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>This person</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
+          
+            {/* {data.comments.map(item =>
+            <Card style={{
+              backgroundColor: 'silver', height: 100,
+              marginTop: 10
+            }}>
+              <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+                <SafeAreaView style={{ color: 'red' }}>{item.user}</SafeAreaView>: {item.comment}
+              </Text>
+              </Card>
+            )} */}
+          
 
         </Card>
       </ScrollView>
       <TextInput placeholder="Comment" style={styles.commentBox} />
     </View>
   )
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
 }
 const styles = StyleSheet.create({
   contain: {
@@ -355,7 +260,6 @@ const styles = StyleSheet.create({
   txtCards: {
     marginLeft: 20,
     backgroundColor: 'lightgrey',
-<<<<<<< HEAD
     width: 315,
     height: 50,
     borderRadius: 10,
@@ -378,15 +282,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: -2,     height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
-=======
-    width: 285,
-    height: 40,
-    borderRadius: 10,
-    marginLeft: 20,
-    marginTop: 5,
-    borderWidth: 1,
-    borderColor: '#F47066'
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
   },
   comment: {
     width: 260,

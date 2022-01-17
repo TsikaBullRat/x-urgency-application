@@ -10,22 +10,32 @@ const LoadSet = (Load) => {
     var i = 0
     var getLink
     var data = firestore.collection('Videos')
+    var collection = [] 
     const Collect = async (doc) => {
-        let collection = data.doc(doc).collection('Acts').where('comments', '!=', null)
-        window.comments = []
-        collection.onSnapshot(async query =>{
-            return await query.forEach(doc=>{
-                let item = doc.data().comments
-                window.comments = [...window.comments, item]
-                return window.comments
+        var set = []
+        await data.doc(doc).collection('Acts')
+            .onSnapshot(query=>{
+                query.forEach(doc=>{
+                    set = [...set, {user: doc.data().user, comments: doc.data().comments}]
+                    return set
+                })
+                console.log(set)
+                SetCollection(set)
             })
-        })
-        return window.comments
-    };
+        return collection
+    },
+    SetCollection = (data) =>{
+        console.log(data)
+        collection = data
+        console.log(collection)
+        return collection
+    }
+
 
     storage.ref().child('').listAll()
         .then(res => {
             res.items.forEach(async itemRef => {
+                
                 getLink = itemRef.getDownloadURL().then(url => url)
                 let link = await getLink
                 let find = await data.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
@@ -33,13 +43,14 @@ const LoadSet = (Load) => {
                 let owner = find.owner
                 let firestore = itemRef.name.split('.')[0]
                 let description = find.description
-                let comments = await Collect(itemRef.name.split('.')[0])
-                console.log(comments)
+                await Collect(itemRef.name.split('.')[0])
+                let comments = collection
+                console.log(collection)
                 let stamp = find.added.toDate()
-                content = [...content, { id: i++, url: link, title: name, description: description, stamp: stamp, owner: owner, firestore: firestore }]
+                content = [...content, { id: i++, url: link, title: name, description, stamp, owner, firestore, comments }]
                 Load(content)
             })
-
+            
         })
         .catch(err => {
             return null

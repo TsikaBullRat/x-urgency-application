@@ -22,7 +22,7 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, ScrollView, Text, TouchableOpacity, } from 'react-native';
 import { Video, } from 'expo-av';
 import { Card } from 'react-native-paper';
@@ -30,108 +30,32 @@ import { auth, LoadSet } from '../../firebase';
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 
-export default function Home({ navigation, setData }) {
+export default function Home({ navigation, route, setData }) {
   
   const [videos, setLoad] = useState(null),
+    ref=useRef(null),
     VideoScreen = (data) =>{
-      navigation.navigate('PlayVideo')
       setData(data)
+      navigation.navigate('PlayVideo')
     },
     Logout = () => {
     auth.signOut()
   }
-<<<<<<< HEAD
-  //const [videos, setLoad] = useState(null);
-
- // LoadSet(setLoad)
-  
-  
-
-
-    const videos = [
-     {
-       id: 1,
-      title: "Stroke",
-       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-     },
-     {
-       id: 2,
-       title: "Heart-Attack",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-     },
-     {
-       id: 3,
-       title: "Epilepsy",
-       url: 'http://d23dyxelo5psv.cloudfront.net/big_buck_bunny.mp4'
-     },
-     {
-       id: 4,
-       title: "CPR",
-       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-     },
-     {
-       id: 5,
-       title: "Bleeding",
-       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-     },
-     {
-       id: 6,
-       title: "Choking",
-       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-     },
-     {
-       id: 7,
-       title: "Drowning",
-       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-     },
-     {
-      id: 8,
-       title: "Burn",
-       url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-     },
-   ]
-
-  const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
-  const [status, setStatus] = useState({});
-  // const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-=======
 
   
   useEffect(()=>{
     LoadSet(setLoad)
+    console.log(videos)
   }, [])
 
   const [status, setStatus] = React.useState({});
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
   return (
     <View style={styles.contain}>
       <Text onPress={Logout}>X</Text>
       <Header />
-      <Menu />
-
+      <Menu list={videos} setVids={setLoad}/>
       {/*---------------------- Video Scroll View--------------------*/}
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
-<<<<<<< HEAD
-
-        <Card style={[styles.menu2, styles.shadowProp]}>
-     
-            {videos ? (videos.map(vid => (
-              <TouchableOpacity onPress={() => { navigation.navigate('PlayVideo') }} key={vid.id}>
-                <Video
-                  ref={video}
-                  source={{ uri: vid.url }}
-                  resizeMode="contain"
-                  isLooping
-                  onPlaybackStatusUpdate={status => setStatus(() => status)}
-                  style={{
-                    width: 315
-                  }}
-                />
-                <h4>{vid.title}</h4>
-              </TouchableOpacity>
-            ))) : (null)}
-       
-=======
         <Card style={styles.menu2}>
           <View>
             {videos?(videos.map(vid => (
@@ -146,7 +70,7 @@ export default function Home({ navigation, setData }) {
                   marginLeft: 20
                 }}>
                   <Video
-                    // ref={vid.url}
+                    ref={ref}
                     source={{ uri: vid.url }}
                     resizeMode="contain"
                     isLooping
@@ -157,12 +81,11 @@ export default function Home({ navigation, setData }) {
                 </TouchableOpacity>
             ))):(null)}
           </View>
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
         </Card  >
       </ScrollView >
     </View>
   )
-}
+} 
 
 const styles = StyleSheet.create({
   container: { 
