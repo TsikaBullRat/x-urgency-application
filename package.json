@@ -14,7 +14,7 @@
     "anonymous-files": "^1.0.1",
     "atob": "^2.1.2",
     "cli": "^1.0.1",
-    "expo": "^1.0.0",
+    "expo": "^41.0.0",
     "expo-av": "^9.2.3",
     "expo-cli": "^4.13.0",
     "expo-constants": "^12.1.3",
