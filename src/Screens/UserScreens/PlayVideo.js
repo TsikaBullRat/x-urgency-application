@@ -65,19 +65,17 @@ export default function VideoScreen({ navigation, data }) {
   }, [])
   return (
     <View style={styles.contain}>
-      <View style={{ width: 365 }}>
+      <View style={{ width: 315, marginLeft: 10, marginTop: 50 }}>
         <Video
           ref={refrence}
           source={{ uri: videoPlay }}
-          rate={1.0}
-          volume={1.0}
-          isMuted
           useNativeControls
           resizeMode="contain"
           isLooping
           style={{ borderRadius: 25, width: 350, height: 180, }}
         />
       </View>
+
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
@@ -97,6 +95,7 @@ export default function VideoScreen({ navigation, data }) {
             <Text style={{ fontSize: 10, paddingLeft: 35 }}>
               1.7M views - 2years ago
             </Text>
+
             <Card
               style={{
                 borderColor: 'black',
@@ -109,9 +108,11 @@ export default function VideoScreen({ navigation, data }) {
                 <View>
                   <Likes data={data.firestore} />
                 </View>
+
                 <View style={{ marginLeft: 32, marginTop: 3 }}>
                   <Dislikes data={data.firestore} />
                 </View>
+
                 <View style={{ marginLeft: 40 }}>
                   <FontAwesome5
                     name="share"
@@ -121,6 +122,7 @@ export default function VideoScreen({ navigation, data }) {
                   />
                   <Text style={{ paddingTop: 5 }}> Share </Text>
                 </View>
+
                 <View style={{ marginLeft: 32 }}>
                   <Entypo
                     name="save"
@@ -132,6 +134,7 @@ export default function VideoScreen({ navigation, data }) {
                 </View>
               </View>
             </Card>
+
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
               <Avatar
@@ -146,9 +149,21 @@ export default function VideoScreen({ navigation, data }) {
                 {data.owner}
               </Text>
             </View>
+
+              <Card style={[styles.txtCards, styles.shadowProp]}>
+                <View style={{ flexDirection: 'row'}}>   
+                  <TextInput
+                    style={styles.comment}
+                    name="comment"
+                    placeholder="Write a comment" 
+                  />
+                </View> 
+              </Card>
+
           </View>
         ) : (
-          //Hidden Description
+          //Hidden Description  
+
           <View>
             <Card
               style={{
@@ -171,8 +186,14 @@ export default function VideoScreen({ navigation, data }) {
                     {data.description}
                   </Text>
                 </Text>
-                <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()} >
-                  <AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} />
+
+                <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
+                  <AntDesign
+                    name="closecircle"
+                    size={18}
+                    color="black"
+                    style={{ marginLeft: 182 }}
+                  />
                 </TouchableOpacity>
               </View>
               <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
@@ -180,39 +201,15 @@ export default function VideoScreen({ navigation, data }) {
               </Text>
               <Card
                 style={{
-                  borderColor: 'black',
-                  width: 315,
-                  marginTop: 5,
-                  marginLeft: 25,
+                  marginTop: 10,
+                  marginLeft: 12,
+                  width: 255,
                 }}>
-                <View
-                  style={{ flexDirection: 'row', marginTop: 5, marginLeft: 3 }}>
-                  <View>
-                    <Likes />
-                  </View>
-                  <View style={{ marginLeft: 32, marginTop: 3 }}>
-                    <Dislikes />
-                  </View>
-                  <View style={{ marginLeft: 40 }}>
-                    <FontAwesome5
-                      name="share"
-                      size={20}
-                      color="black"
-                      style={{ marginLeft: 11 }}
-                    />
-                    <Text style={{ paddingTop: 5 }}> Share </Text>
-                  </View>
-                  <View style={{ marginLeft: 32 }}>
-                    <Entypo
-                      name="save"
-                      size={20}
-                      color="black"
-                      style={{ marginLeft: 8 }}
-                    />
-                    <Text style={{ paddingTop: 5 }}> Save </Text>
-                  </View>
-                </View>
-              </Card>
+                <Text>Stroke Emergency Video</Text>
+                <Text style={{ fontSize: 10, color: 'gray' }}>
+                  1 000 000 Views
+                </Text>
+              </View>
               <View
                 style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
                 <Avatar
@@ -226,7 +223,6 @@ export default function VideoScreen({ navigation, data }) {
               </View>
             </Card>
           </View>
-
         )}
       </View>
       {/* <Comments video={data.firestore} /> */}
@@ -265,14 +261,30 @@ const styles = StyleSheet.create({
     marginLeft: 110,
   },
   txtCards: {
-    backgroundColor: 'lightgrey',
-    width: 285,
-    height: 40,
-    borderRadius: 10,
     marginLeft: 20,
+    backgroundColor: 'lightgrey',
+    width: 315,
+    height: 50,
+    borderRadius: 10,
     marginTop: 5,
-    borderWidth: 1,
+    borderWidth: 1, 
     borderColor: '#F47066'
+  },
+
+  comment: {
+    width: 260, 
+    height: 38,
+    borderRadius: 10,
+    outline: 'none',
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
+  }, 
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
   comment: {
     width: 260,

@@ -16,7 +16,9 @@ import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../../firebase';
 import { AlertNote } from '../../Components/Alert';
+
 export default function SignUp({ navigation }) {
+
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [ConfirmPassword, setConfirmPassword] = useState(""),
@@ -29,17 +31,20 @@ export default function SignUp({ navigation }) {
   return (
     <View style={styles.container}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
-      <Card style={styles.card}>
+      
+      <Card style={[styles.card, styles.shadowProp]}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
+
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>SignUp</Text>
       </View>
+
       <View>
-        <Card style={styles.txtCards}>
+        <Card style={[styles.txtCards, styles.shadowProp]}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
             <TextInput style={styles.txtUser}
@@ -47,7 +52,8 @@ export default function SignUp({ navigation }) {
             />
           </View>
         </Card>
-        <Card style={styles.txtCards}>
+
+        <Card style={[styles.txtCards, styles.shadowProp]}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
             <TextInput style={styles.txtPass}
@@ -57,7 +63,8 @@ export default function SignUp({ navigation }) {
             />
           </View>
         </Card>
-        <Card style={styles.txtCards}>
+
+        <Card style={[styles.txtCards, styles.shadowProp]}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black"
               style={{ marginTop: 9, marginLeft: 4 }}
@@ -69,8 +76,9 @@ export default function SignUp({ navigation }) {
             />
           </View>
         </Card>
+
         <View style={{ alignItems: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
+          <TouchableOpacity style={[styles.signIn, styles.shadowProp]} onPress={() => { navigation.navigate('Home') }}>
             <Text style={{ color: '#fff' }} >SIGN_UP </Text>
           </TouchableOpacity>
         </View>
@@ -82,8 +90,13 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     height: 850,
+<<<<<<< HEAD
+    backgroundColor: '#fff'
+=======
     backgroundColor: '#fff',
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
   },
+
   card: {
     position: 'absolute',
     backgroundColor: '#F47066',
@@ -94,17 +107,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
+
   header: {
     paddingTop: 205,
     textAlign: 'center',  
   },
+
   txtUser: {
+<<<<<<< HEAD
+    width: 280,
+=======
     width: 260,
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 38,
     borderRadius: 10,
     outline: 'none',
@@ -112,8 +132,13 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingTop: 18,
   },
+
   txtPass: {
+<<<<<<< HEAD
+    width: 280,
+=======
     width: 260,
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 38,
     borderRadius: 10,
     outline: 'none',
@@ -121,8 +146,13 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingTop: 18,
   },
+
   txtRePass: {
+<<<<<<< HEAD
+    width: 280,
+=======
     width: 260,
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 38,
     borderRadius: 10,
     outline: 'none',
@@ -130,6 +160,7 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingTop: 18,
   },
+
   txtCards: {
     backgroundColor: 'lightgrey',
     width: 285,
@@ -137,6 +168,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 25,
+<<<<<<< HEAD
+    borderWidth: 1, 
+    borderColor: '#F47066'
+=======
     borderWidth: 1,
     borderColor: '#F47066',
   },
@@ -145,7 +180,16 @@ const styles = StyleSheet.create({
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
   },
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+
   signIn: {
     height: 40,
     width: 150,

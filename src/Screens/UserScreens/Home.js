@@ -85,7 +85,7 @@ export default function Home({ navigation, route, setData }) {
       </ScrollView >
     </View>
   )
-}
+} 
 
 const styles = StyleSheet.create({
   container: { 
@@ -108,7 +108,32 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.4,
     elevation: 1,
-  },  
+  },
+  txtCards: {
+    backgroundColor: 'lightgrey',
+    opacity: 0.8,
+    width: 320,
+    height: 50,
+    borderRadius: 10,
+    marginLeft: 28,
+    marginTop: 25,
+    borderBottomWidth: 2,
+    borderRightWidth: 2,
+    borderColor: 'turquoise',
+    shadowColor: 'blue',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    elevation: 1,
+  },
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+
   menu: {
     flexDirection: 'row',
     width: 320, 

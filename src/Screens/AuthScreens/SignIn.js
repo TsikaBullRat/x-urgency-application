@@ -1,25 +1,31 @@
 /**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 07/10/2021 - 10:07:05
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 07/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
-import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import { Card } from 'react-native-paper';
-import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
-import { handleSignIn } from '../../firebase'
-import { AlertNote } from '../../Components';
+ * @description      : 
+ * @author           : MLab
+ * @group            : 
+ * @created          : 07/10/2021 - 10:07:05
+ * 
+ * MODIFICATION LOG
+ * - Version         : 1.0.0
+ * - Date            : 07/10/2021
+ * - Author          : MLab
+ * - Modification    : 
+ **/
+import React, {useState} from 'react';
+import {
+    Text,
+    View,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity,
+    KeyboardAvoidingView
+} from 'react-native';
+import {Card} from 'react-native-paper';
+import {FontAwesome, AntDesign, EvilIcons} from '@expo/vector-icons';
+import {handleSignIn} from '../../firebase'
+import {AlertNote} from '../../Components';
 
-export default function SignIn({ navigation, setDone }) {
-  const
-    [email, setEmail] = useState(""),
+export default function SignIn({navigation, setDone}) {
+    const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
@@ -100,6 +106,19 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
+<<<<<<< HEAD
+    textAlign: 'center'
+},
+heartIcon: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30
+},
+header: {
+    paddingTop: 5
+},
+txtUser: {
+=======
     textAlign: 'center',
   },
   heartIcon: {
@@ -111,20 +130,33 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   txtUser: {
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     width: 260,
     height: 38,
     borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey',
+<<<<<<< HEAD
+    paddingLeft: 10
+},
+txtPass: {
+=======
   },
   txtPass: {
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     width: 260,
     height: 38,
     borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey',
+<<<<<<< HEAD
+    paddingLeft: 10
+},
+txtCards: {
+=======
   },
   txtCards: {
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     backgroundColor: 'lightgrey',
     width: 285,
     height: 40,
@@ -132,6 +164,20 @@ const styles = StyleSheet.create({
     marginLeft: 2,
     marginTop: 25,
     borderWidth: 1,
+<<<<<<< HEAD
+    borderColor: '#F47066'
+},
+shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: {
+        width: -2,
+        height: 4
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 10
+},
+signIn: {
+=======
     borderColor: '#F47066',
   },
   shadowProp: {
@@ -141,12 +187,12 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
   },
   signIn: {
+>>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 50,
     width: 200,
     marginTop: 20,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    justifyContent: 'center'
+}});

@@ -18,6 +18,8 @@ import { auth, Detector } from './src/firebase'
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 export default function App() {
+    const [user, setUser] = useState(),
+        [checked, setChecked] = useState(false);
 
   const [id, setID] = useState(null),
     [checked, setChecked] = useState(false)
@@ -27,7 +29,7 @@ export default function App() {
     setChecked(true)
   }, [id])
 
-  return (
+    return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
         {checked ? (
@@ -44,8 +46,8 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  loader: {
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+    loader: {
+        alignItems: "center",
+        justifyContent: "center"
+    }
+});
