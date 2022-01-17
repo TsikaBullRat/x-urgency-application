@@ -5028,7 +5028,7 @@
     "@expo/config-plugins" "^3.0.0"
     "expo-modules-core" "~0.2.0"
 
-"expo-cli@^4.3.0":
+"expo-cli@^4.13.0":
   "integrity" "sha512-C7dfk2yleC7mdOoo9KzphfYz7F+I881VLb8UVgKCqGokwEyxhceKZCImX3D4zsR7bsKJEyjjEvx1XNIp4LV+Ew=="
   "resolved" "https://registry.npmjs.org/expo-cli/-/expo-cli-4.13.0.tgz"
   "version" "4.13.0"
