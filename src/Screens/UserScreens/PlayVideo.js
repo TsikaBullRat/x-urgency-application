@@ -60,7 +60,8 @@ export default function VideoScreen({ navigation, data }) {
 
   useEffect(() => {
     addAct()
-    console.log(data.comments)
+    Collect(data.firestore, setComments)
+    console.log(comments)
   }, [])
   return (
     <View style={styles.contain}>
@@ -229,18 +230,20 @@ export default function VideoScreen({ navigation, data }) {
         <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
 
-          
-            {/* {data.comments.map(item =>
+{/*           
+            {comments.map(item =>
             <Card style={{
               backgroundColor: 'silver', height: 100,
               marginTop: 10
             }}>
               <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-                <SafeAreaView style={{ color: 'red' }}>{item.user}</SafeAreaView>: {item.comment}
+                <SafeAreaView style={{ color: 'red' }}>{item.user}</SafeAreaView>: {item.comments.map(item=>(
+                  <Text>{item.comment}</Text>
+                ))}
               </Text>
               </Card>
-            )} */}
-          
+            )}
+           */}
 
         </Card>
       </ScrollView>
