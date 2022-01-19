@@ -19,23 +19,13 @@ export default function Header() {
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', width: 295, justifyContent: 'flex-start' }}>
         <View style={styles.header}>
-          <Text style={{
-            fontSize: 36, paddingLeft: 30,
-            color: 'turquoise',
-            textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1
-          }}
-          >
+          <Text>
             What's your
           </Text>
-          <Text style={{
-            fontSize: 36, paddingLeft: 30, color: 'red',
-            textShadowColor: 'grey',
-            textShadowOffset: { width: 2, height: 2 },
-            textShadowRadius: 1
-          }} >
-            EMERGENCY
+          <Text>
+            EMERGENCY ?
           </Text>
         </View>
         <View style={{ marginTop: 50, marginLeft: 10 }}>
@@ -66,7 +56,9 @@ const styles = StyleSheet.create({
 
   header: {
     flexDirection: 'column',
-    paddingTop: 50
+    color: '#F96056',
+    fontSize: 36,
+    //fontFamily: 'poor story'
   },
 
   avatar: {

@@ -37,16 +37,15 @@ const VideoList = ({videos, VideoScreen}) =>{
 
   return(
     videos?(videos.map(vid => (
-      <View key={vid.id}>
+      <View style={{width:295, alignItems:'center'}}
+            key={vid.id}
+      >
                 <TouchableOpacity onPress={()=>VideoScreen(vid)} 
                 style={{
-                  width: 315,
-                  height: 180,
+                  width: 290,
+                  height: 145,
                   overflow: 'hidden',
-                  borderRadius: 25,
-                  marginTop: 20,
-                  marginBottom: 20,
-                  marginLeft: 20
+                  marginTop: 5,
                 }}>
                   <Video
                     ref={ref}
@@ -89,7 +88,8 @@ export default function Home({ navigation, route, setData }) {
       <Header />
       <Menu list={videos} setVids={setLoad}/>
       {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:555}} 
+      vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
             <VideoList videos={videos} VideoScreen={VideoScreen}/>
@@ -109,8 +109,8 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'column',
     paddingTop: 5, 
-    marginLeft: 15,
   },
+
   avatar: {
     width: 70,
     height: 70,
