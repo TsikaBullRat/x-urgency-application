@@ -43,7 +43,7 @@ export default function SignIn({navigation, setDone}) {
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
       </Card>
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>LogIn</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 36, color: '#51535D' }}>LogIn</Text>
       </View>
       <View>
         <Card style={styles.txtCards}>
