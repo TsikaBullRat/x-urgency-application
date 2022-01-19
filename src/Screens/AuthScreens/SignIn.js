@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingTop: 25,
-
+  },
 txtUser: {
     width: 260,
     height: 38,
@@ -163,4 +163,4 @@ txtUser: {
     justifyContent: 'center',
   },
 
-});
+})
