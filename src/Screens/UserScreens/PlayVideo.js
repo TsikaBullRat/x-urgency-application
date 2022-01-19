@@ -209,7 +209,7 @@ export default function VideoScreen({ navigation, data }) {
                 <Text style={{ fontSize: 10, color: 'gray' }}>
                   1 000 000 Views
                 </Text>
-              </View>
+              </Card>
               <View
                 style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
                 <Avatar

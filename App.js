@@ -21,19 +21,20 @@ export default function App() {
     const [user, setUser] = useState(),
         [checked, setChecked] = useState(false);
 
-  const [id, setID] = useState(null),
-    [checked, setChecked] = useState(false)
-
   useEffect(() => {
-    auth.onAuthStateChanged(user => user?setID(user.uid):null)
+    auth.onAuthStateChanged(user => user?setUser(user.uid):null)
     setChecked(true)
-  }, [id])
+  }, )
+
+
+
+
 
     return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
         {checked ? (
-          <Detector id={id} />
+          <Detector id={user} />
         ) : (
           // Login/Sign functions
           <View style={styles.loader}>

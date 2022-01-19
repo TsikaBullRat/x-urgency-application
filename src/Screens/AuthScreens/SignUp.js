@@ -90,11 +90,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     height: 850,
-<<<<<<< HEAD
-    backgroundColor: '#fff'
-=======
     backgroundColor: '#fff',
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
   },
 
   card: {
@@ -120,11 +116,7 @@ const styles = StyleSheet.create({
   },
 
   txtUser: {
-<<<<<<< HEAD
-    width: 280,
-=======
     width: 260,
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 38,
     borderRadius: 10,
     outline: 'none',
@@ -134,11 +126,7 @@ const styles = StyleSheet.create({
   },
 
   txtPass: {
-<<<<<<< HEAD
-    width: 280,
-=======
     width: 260,
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 38,
     borderRadius: 10,
     outline: 'none',
@@ -148,11 +136,7 @@ const styles = StyleSheet.create({
   },
 
   txtRePass: {
-<<<<<<< HEAD
-    width: 280,
-=======
     width: 260,
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 38,
     borderRadius: 10,
     outline: 'none',
@@ -168,10 +152,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 25,
-<<<<<<< HEAD
-    borderWidth: 1, 
-    borderColor: '#F47066'
-=======
     borderWidth: 1,
     borderColor: '#F47066',
   },
@@ -180,7 +160,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
   },
 
   shadowProp: {
