@@ -95,9 +95,10 @@ export default function SignIn({navigation, setDone}) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    height: 850,
+    height: 979,
     backgroundColor: '#fff',
   },
+ 
   card: {
     backgroundColor: '#F47066',
     width: 325,
@@ -108,50 +109,58 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
   },
+
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
   header: {
-    paddingTop: 5,
-  },
-  txtUser: {
+    paddingTop: 25,
+
+txtUser: {
     width: 260,
     height: 38,
+    paddingLeft: 10,
+    paddingTop: 15,
     borderRadius: 10,
     outline: 'none',
-    backgroundColor: 'lightgrey',
   },
+
   txtPass: {
     width: 260,
     height: 38,
+    paddingLeft: 8,
+    paddingTop: 15,
     borderRadius: 10,
     outline: 'none',
-    backgroundColor: 'lightgrey',
   },
+
   txtCards: {
-    backgroundColor: 'lightgrey',
     width: 285,
-    height: 40,
+    height: 50,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 25,
+    marginTop: 75,
     borderWidth: 1,
     borderColor: '#F47066',
   },
+
   shadowProp: {
     shadowColor: '#171717',
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },
+
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 20,
+    marginTop: 60,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center'
-}});
+    justifyContent: 'center',
+  },
+
+});
