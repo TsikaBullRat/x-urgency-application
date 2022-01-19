@@ -95,9 +95,10 @@ export default function SignIn({navigation, setDone}) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    height: 850,
+    height: 979,
     backgroundColor: '#fff',
   },
+ 
   card: {
     backgroundColor: '#F47066',
     width: 325,
@@ -106,93 +107,68 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-<<<<<<< HEAD
-    textAlign: 'center'
-},
-heartIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30
-},
-header: {
-    paddingTop: 5
-},
-txtUser: {
-=======
     textAlign: 'center',
   },
+
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
   header: {
-    paddingTop: 5,
+    paddingTop: 25,
   },
   txtUser: {
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     width: 260,
     height: 38,
     borderRadius: 10,
     outline: 'none',
     backgroundColor: 'lightgrey',
-<<<<<<< HEAD
     paddingLeft: 10
 },
-txtPass: {
-=======
+txtUser: {
+    width: 260,
+    height: 38,
+    paddingLeft: 10,
+    paddingTop: 15,
+    borderRadius: 10,
+    outline: 'none',
   },
+
   txtPass: {
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     width: 260,
     height: 38,
+    paddingLeft: 8,
+    paddingTop: 15,
     borderRadius: 10,
     outline: 'none',
-    backgroundColor: 'lightgrey',
-<<<<<<< HEAD
-    paddingLeft: 10
-},
-txtCards: {
-=======
   },
+
   txtCards: {
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
-    backgroundColor: 'lightgrey',
     width: 285,
-    height: 40,
+    height: 50,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 25,
+    marginTop: 75,
     borderWidth: 1,
-<<<<<<< HEAD
-    borderColor: '#F47066'
-},
-shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: {
-        width: -2,
-        height: 4
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 10
-},
-signIn: {
-=======
     borderColor: '#F47066',
   },
+
   shadowProp: {
     shadowColor: '#171717',
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },
+
   signIn: {
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     height: 50,
     width: 200,
-    marginTop: 20,
+    marginTop: 60,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center'
-}});
+    justifyContent: 'center',
+  },
+
+});
