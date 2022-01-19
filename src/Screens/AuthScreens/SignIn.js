@@ -117,15 +117,7 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingTop: 25,
-  },
-  txtUser: {
-    width: 260,
-    height: 38,
-    borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10
-},
+
 txtUser: {
     width: 260,
     height: 38,

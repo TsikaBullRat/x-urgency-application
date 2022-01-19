@@ -125,72 +125,6 @@ export default function DoctorSignUp({ navigation }) {
   );
 }
 const styles = StyleSheet.create({
-<<<<<<< HEAD
-  
-  container: {
-    alignItems: 'center',
-    height: 850,
-    backgroundColor: '#fff'
-  },
-
-  card: {
-    backgroundColor: "#F47066",
-    width: 325,
-    height: 200,
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-  },
-
-  heartIcon: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 30,
-  },
-
-  header: {
-    paddingTop: 10,
-  },
-
-  txtField: {
-    width: 285,
-    height: 38,
-    borderRadius: 10,
-    outline: "none",
-    backgroundColor: "lightgrey",
-    paddingLeft: 10,
-  },
-
-  txtCards: {
-    backgroundColor: "lightgrey",
-    width: 285,
-    height: 40,
-    borderRadius: 10,
-    marginLeft: 2,
-    marginTop: 15,
-    borderWidth: 1,
-    borderColor: "#F47066"
-  },
-
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
-
-  signIn: {
-    height: 50,
-    width: 200,
-    marginTop: 15,
-    borderRadius: 10,
-    backgroundColor: "#F47066",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-=======
     container: {
         alignItems: "center",
     },
@@ -243,5 +177,4 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
 });

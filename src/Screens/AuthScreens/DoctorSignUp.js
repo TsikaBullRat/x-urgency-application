@@ -41,59 +41,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         setDisplaModal(true)
         }
     }
-<<<<<<< HEAD
-    return (
-        <View style={styles.container}>
-            <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
-            
-            <Card style={[styles.card, styles.shadowProp]}>
-                <View style={styles.heartIcon}>
-                    <FontAwesome name="heartbeat" size={90} color="#fff" />
-                </View>
-                <Text style={{ color: '#fff', fontSize: 28, marginLeft: 8 }}> X-urgency
-                </Text>
-            </Card>
-            
-            <View style={styles.header}>
-                <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>Doctor SignUp</Text>
-            </View>
-            
-            <View>              
-                    <Card style={{ height: 230 }}>
-                      
-                        <Card style={[styles.txtCards, styles.shadowProp]}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
-                                    name='Specialization' placeholder='Specialization' onChangeText={text => setSpecialization(text)}
-                                />
-                            </View>
-                        </Card>
-
-                        <Card style={[styles.txtCards, styles.shadowProp]}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
-                                    name='Qualification' placeholder='Qualification' onChangeText={text => setQualification(text)}
-                                />
-                            </View>
-                        </Card>
-
-                        <Card style={[styles.txtCards, styles.shadowProp]}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <TextInput style={styles.txtField}
-                                    name='Branch' placeholder='Branch' onChangeText={text => setBranch(text)}
-                                />
-                            </View>
-                        </Card> 
-                    </Card>
-
-                <View style={{ alignItems: 'center' }}>
-                    <TouchableOpacity style={[styles.signIn, styles.shadowProp]} onPress={() => {navigation.navigate('MedicalHome') }}>
-                        <Text style={{ color: '#fff' }}>SIGNIN </Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-
-=======
  
     
   return (
@@ -222,7 +169,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
           <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
             <Text style={{ color: "#fff" }}>SIGNIN </Text>
           </TouchableOpacity>
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
         </View>
       </View>
     </View>
@@ -230,18 +176,10 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 }
 const styles = StyleSheet.create({
     container: {
-<<<<<<< HEAD
-    alignItems: 'center',
-    height: 850,
-    backgroundColor: '#fff'
-  },
-
-=======
         alignItems: "center",
         backgroundColor: '#fff',
         height: 850
     },
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     card: {
         backgroundColor: "#F47066",
         width: 325,
@@ -262,37 +200,12 @@ const styles = StyleSheet.create({
     },
     txtField: {
         width: 285,
-<<<<<<< HEAD
-        height: 38,
-=======
         height: 35,
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
         borderRadius: 10,
         outline: "none",
         backgroundColor: "lightgrey",
         paddingLeft: 10,
     },
-<<<<<<< HEAD
-
-   txtCards: {
-    backgroundColor: "lightgrey",
-    width: 285,
-    height: 40,
-    borderRadius: 10,
-    marginLeft: 2,
-    marginTop: 15,
-    borderWidth: 1,
-    borderColor: "#F47066"
-  },
-
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
-
-=======
     txtCards: {
         backgroundColor: "lightgrey",
         width: 285,
@@ -303,7 +216,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     borderColor: '#F47066'
     },
->>>>>>> 31775eba9d486977bb629ed03e65537688786fb3
     signIn: {
         height: 50,
         width: 200,
