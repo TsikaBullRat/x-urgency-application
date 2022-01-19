@@ -31,6 +31,7 @@ export default function VideoScreen({ navigation, data }) {
   const [count, setCount] = useState(0)
   const refrence = useRef(data.url)
   const [comments, setComments] = useState([]),
+    [comment, setComment] = useState(""),
     [visibleStatusBar, setVisibleStatusBar] = useState(false),
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar);
@@ -56,13 +57,19 @@ export default function VideoScreen({ navigation, data }) {
           user: auth.currentUser.email
         })
       )
+    },
+    Navigate = async() =>{
+      navigation.navigate('Doctor', {data: data.match})
     };
 
   useEffect(() => {
     addAct()
-    Collect(data.firestore, setComments)
-    console.log(comments)
   }, [])
+
+  useEffect(()=>{
+    Collect(data.firestore, setComments, setCount)
+  }, [comments])
+   
   return (
     <View style={styles.contain}>
       <View style={{ width: 315, marginLeft: 10, marginTop: 50 }}>
@@ -143,7 +150,7 @@ export default function VideoScreen({ navigation, data }) {
                   uri: 'https://randomuser.me/api/portraits/men/41.jpg',
                 }}
                 size="medium"
-                onPress={() => navigation.navigate('Doctor')}
+                onPress={Navigate}
               />
               <Text style={{ paddingTop: 15, paddingLeft: 15 }} >
                 {data.owner}
@@ -156,7 +163,9 @@ export default function VideoScreen({ navigation, data }) {
                     style={styles.comment}
                     name="comment"
                     placeholder="Write a comment" 
+                  onChangeText={text=>setComment(text)}
                   />
+                  <Button onPress={()=>Post(comment, data.firestore)} title='Press Me'/>
                 </View> 
               </Card>
 
@@ -230,20 +239,17 @@ export default function VideoScreen({ navigation, data }) {
         <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
 
-{/*           
-            {comments.map(item =>
+{comments.map((item, index) =>
             <Card style={{
               backgroundColor: 'silver', height: 100,
               marginTop: 10
-            }}>
-              <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-                <SafeAreaView style={{ color: 'red' }}>{item.user}</SafeAreaView>: {item.comments.map(item=>(
-                  <Text>{item.comment}</Text>
-                ))}
-              </Text>
+            }}
+            key={index}>
+              <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
+              <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>
+              </SafeAreaView>
               </Card>
             )}
-           */}
 
         </Card>
       </ScrollView>
