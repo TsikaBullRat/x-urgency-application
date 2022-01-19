@@ -162,4 +162,4 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
         })
 }
 
-export { LoadSet, UploadVideo, Collect }
+export { LoadSet, UploadVideo, Collect, Post }

@@ -28,4 +28,4 @@ const Share = () => {
   );
 };
 
-export default Share;
+export { Share };

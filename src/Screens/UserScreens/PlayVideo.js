@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -20,8 +20,9 @@ import { Avatar } from 'react-native-elements';
 import { Video, } from 'expo-av';
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
-import { auth, firestore, Count, Collect } from '../../firebase';
+import { auth, firestore, Count, Collect, Post } from '../../firebase';
 import { Comments } from '../../Components';
+
 
 export default function VideoScreen({ navigation, data }) {
 
@@ -165,7 +166,10 @@ export default function VideoScreen({ navigation, data }) {
                     placeholder="Write a comment" 
                   onChangeText={text=>setComment(text)}
                   />
-                  <Button onPress={()=>Post(comment, data.firestore)} title='Press Me'/>
+                  <View style={{width: 90, height: 70, borderRadius: 25, marginTop: 7, marginRight: 10,}}>
+                  <Button color="#F47066" onPress={()=>Post(comment, data.firestore)} title='Comment'
+                  />
+                  </View>
                 </View> 
               </Card>
 
@@ -306,5 +310,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },
+
 });
 
