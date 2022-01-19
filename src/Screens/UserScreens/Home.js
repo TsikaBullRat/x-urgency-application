@@ -40,13 +40,12 @@ const VideoList = ({videos, VideoScreen}) =>{
       <View style={{width:295, alignItems:'center'}}
             key={vid.id}
       >
-                <TouchableOpacity onPress={()=>VideoScreen(vid)} 
-                style={{
-                  width: 290,
-                  height: 145,
-                  overflow: 'hidden',
-                  marginTop: 5,
-                }}>
+      <Card
+        style={{ 
+          width: 295,
+          height: 195, 
+          backgroundColor: '#FAFAFA'
+        }}>
                   <Video
                     ref={ref}
                     source={{ uri: vid.url }}
@@ -54,10 +53,28 @@ const VideoList = ({videos, VideoScreen}) =>{
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                   />
-                  
-                </TouchableOpacity>
+                  <View style={{flexDirection: 'row', width: 295, 
+marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
+<TouchableOpacity
+            onPress={() => {
+              navigation.navigate('VideoScreen');
+            }}>
+            <Image
+              style={{ borderRadius: 50 }}
+              source={require('../images/btnPlay.jpg')}
+            />
+          </TouchableOpacity>
+
+          <Image 
+            style={{ width: 220, marginVertical: 5}} 
+            source={require('../images/timeBar.png')}
+          />
+        </View> 
+        </Card>
+
                 <Text style={styles.tag}>{vid.title}</Text>
                 <Text style={styles.tag}>{vid.owner}</Text>
+                
                 </View>
             ))):(null)
   )
