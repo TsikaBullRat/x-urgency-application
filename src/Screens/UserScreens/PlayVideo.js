@@ -240,7 +240,7 @@ export default function VideoScreen({ navigation, data }) {
       </View>
       {/* <Comments video={data.firestore} /> */}
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
+        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft:15 }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
 
 {comments.map((item, index) =>
