@@ -30,6 +30,40 @@ import { auth, LoadSet } from '../../firebase';
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 
+const VideoList = ({videos, VideoScreen}) =>{
+
+  const [status, setStatus] = useState({});
+  const ref=useRef(null);
+
+  return(
+    videos?(videos.map(vid => (
+      <View key={vid.id}>
+                <TouchableOpacity onPress={()=>VideoScreen(vid)} 
+                style={{
+                  width: 315,
+                  height: 180,
+                  overflow: 'hidden',
+                  borderRadius: 25,
+                  marginTop: 20,
+                  marginBottom: 20,
+                  marginLeft: 20
+                }}>
+                  <Video
+                    ref={ref}
+                    source={{ uri: vid.url }}
+                    resizeMode="contain"
+                    isLooping
+                    onPlaybackStatusUpdate={status => setStatus(() => status)}
+                  />
+                  
+                </TouchableOpacity>
+                <Text style={styles.tag}>{vid.title}</Text>
+                <Text style={styles.tag}>{vid.owner}</Text>
+                </View>
+            ))):(null)
+  )
+}
+
 export default function Home({ navigation, route, setData }) {
   
   const [videos, setLoad] = useState(null),
@@ -58,28 +92,7 @@ export default function Home({ navigation, route, setData }) {
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
-            {videos?(videos.map(vid => (
-                <TouchableOpacity onPress={()=>VideoScreen(vid)} key={vid.id}
-                style={{
-                  width: 315,
-                  height: 180,
-                  overflow: 'hidden',
-                  borderRadius: 25,
-                  marginTop: 20,
-                  marginBottom: 20,
-                  marginLeft: 20
-                }}>
-                  <Video
-                    ref={ref}
-                    source={{ uri: vid.url }}
-                    resizeMode="contain"
-                    isLooping
-                    onPlaybackStatusUpdate={status => setStatus(() => status)}
-                    
-                  />
-                  <h4>{vid.title}</h4>
-                </TouchableOpacity>
-            ))):(null)}
+            <VideoList videos={videos} VideoScreen={VideoScreen}/>
           </View>
         </Card  >
       </ScrollView >
