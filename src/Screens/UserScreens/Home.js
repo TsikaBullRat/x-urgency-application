@@ -65,6 +65,7 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
             onPress={() => {
               navigation.navigate('VideoScreen');
             }}>
+<<<<<<< HEAD
            {/* <Image
               style={{ borderRadius: 50 }}
               source={require('../images/btnPlay.jpg')}
@@ -75,6 +76,12 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
             style={{ width: 220, marginVertical: 5}} 
             source={require('../images/timeBar.png')}
           />*/}
+=======
+         
+          </TouchableOpacity>
+
+        
+>>>>>>> 6d34ea741c7641e9392bd58b573b1ddb9726df20
         </View> 
         </Card>
 
