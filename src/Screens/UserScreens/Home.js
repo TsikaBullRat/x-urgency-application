@@ -23,7 +23,7 @@
     * - Modification    : 
 **/
 import React, { useState, useEffect, useRef } from 'react';
-import { View, StyleSheet, ScrollView, Text, TouchableOpacity, } from 'react-native';
+import { View, StyleSheet, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
 import { Video, } from 'expo-av';
 import { Card } from 'react-native-paper';
 import { auth, LoadSet } from '../../firebase';
@@ -59,10 +59,16 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
             onPress={() => {
               navigation.navigate('VideoScreen');
             }}>
-         
+            <Image
+              style={{ borderRadius: 50 }}
+              source={require('../../images/btnPlay.jpg')}
+            />
           </TouchableOpacity>
 
-        
+          <Image 
+            style={{ width: 220, marginVertical: 5}} 
+            source={require('../../images/timeBar.png')}
+          />
         </View> 
         </Card>
 
