@@ -61,13 +61,13 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
             }}>
             <Image
               style={{ borderRadius: 50 }}
-              source={require('../../images/btnPlay.jpg')}
+              source={require('../../images/timeBar.png')}
             />
           </TouchableOpacity>
 
           <Image 
             style={{ width: 220, marginVertical: 5}} 
-            source={require('../../images/timeBar.png')}
+            source={require('../../images/btnPlay.jpg')}
           />
         </View> 
         </Card>
