@@ -18,6 +18,7 @@ export default function Button({ name }) {
       <Text style={{ color: '#fff' }}>{name}</Text>
     </TouchableOpacity>
   )
+  
 }
 const styles = StyleSheet.create({
   signIn: {
