@@ -52,6 +52,12 @@ const VideoList = ({videos, VideoScreen}) =>{
                     resizeMode="contain"
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
+                    style={{
+            width: 280,
+            height: 200,
+            marginTop: 5,
+            alignSelf: 'center',
+          }}
                   />
                   <View style={{flexDirection: 'row', width: 295, 
 marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
@@ -59,6 +65,7 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
             onPress={() => {
               navigation.navigate('VideoScreen');
             }}>
+<<<<<<< HEAD
             <Image
               style={{ borderRadius: 50 }}
               source={require('../../images/timeBar.png')}
@@ -69,16 +76,48 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
             style={{ width: 220, marginVertical: 5}} 
             source={require('../../images/btnPlay.jpg')}
           />
+=======
+<<<<<<< HEAD
+           {/* <Image
+              style={{ borderRadius: 50 }}
+              source={require('../images/btnPlay.jpg')}
+            />*/}
+          </TouchableOpacity>
+
+          {/*<Image 
+            style={{ width: 220, marginVertical: 5}} 
+            source={require('../images/timeBar.png')}
+          />*/}
+=======
+         
+          </TouchableOpacity>
+
+        
+>>>>>>> 6d34ea741c7641e9392bd58b573b1ddb9726df20
+>>>>>>> 6d7368dfae9801ce8e350078d1b15a19f7190a07
         </View> 
         </Card>
 
+              <View style={{ width: 295 }}>
                 <Text style={styles.tag}>{vid.title}</Text>
-                <Text style={styles.tag}>{vid.owner}</Text>
-                
+
+                <View style={{ flexDirection: 'row', maxWidth: 250 }}>
+                  <Text style={styles.tag}>{vid.owner}</Text>
                 </View>
+              </View>
+                
+      </View>
             ))):(null)
   )
 }
+
+ const ItemSeperatorView = () => {
+    return (
+      <View
+        style={{ height: 0.5, width: '100%', backgroundColor: '#c8c8c8' }}
+      />
+    );
+  };
 
 export default function Home({ navigation, route, setData }) {
   
@@ -100,7 +139,7 @@ export default function Home({ navigation, route, setData }) {
 
   const [status, setStatus] = React.useState({});
   return (
-    <View style={styles.contain}>
+    <View style={styles.container}>
       <Text onPress={Logout}>X</Text>
       <Header />
       <Menu list={videos} setVids={setLoad}/>
@@ -124,8 +163,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff' 
   },
   header: {
-    flexDirection: 'column',
-    paddingTop: 5, 
+    fontWeight: 'medium',
+    fontSize: 18,
+    color: '#F96056',
+    paddingTop: 20, 
   },
 
   avatar: {
@@ -139,30 +180,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
-  txtCards: {
-    backgroundColor: 'lightgrey',
-    opacity: 0.8,
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    marginLeft: 28,
-    marginTop: 25,
-    borderBottomWidth: 2,
-    borderRightWidth: 2,
-    borderColor: 'turquoise',
-    shadowColor: 'blue',
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    elevation: 1,
-  },
-
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
+ 
 
   menu: {
     flexDirection: 'row',
@@ -182,6 +200,11 @@ const styles = StyleSheet.create({
   categoryListText: {
     paddingLeft: 15, 
     fontSize: 17,
+    fontWeight: 'bold'
+  },
+
+  tag: {
+    fontSize: 16, 
     fontWeight: 'bold'
   }
 });
