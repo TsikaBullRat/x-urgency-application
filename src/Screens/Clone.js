@@ -22,7 +22,7 @@ import {
 } from "react-native";
 
 import { Card } from "react-native-paper";
-import { UploadVideo } from "../firebase";
+import { Upload } from "../firebase";
 import * as ImagePicker from 'expo-image-picker';
 
 export default function Clone({ navigation }) {
@@ -47,7 +47,7 @@ export default function Clone({ navigation }) {
         },
         Run = () =>{
             openImagePickerAsync();
-            selectedImage?UploadVideo(selectedImage.localUri, title, description, selectedValue ):null
+            selectedImage?Upload(selectedImage.localUri, title, description, selectedValue ):null
         }
 
     return (

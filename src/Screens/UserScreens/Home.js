@@ -65,7 +65,7 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
             onPress={() => {
               navigation.navigate('VideoScreen');
             }}>
-<<<<<<< HEAD
+
             <Image
               style={{ borderRadius: 50 }}
               source={require('../../images/timeBar.png')}
@@ -76,25 +76,12 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
             style={{ width: 220, marginVertical: 5}} 
             source={require('../../images/btnPlay.jpg')}
           />
-=======
-<<<<<<< HEAD
-           {/* <Image
-              style={{ borderRadius: 50 }}
-              source={require('../images/btnPlay.jpg')}
-            />*/}
-          </TouchableOpacity>
 
-          {/*<Image 
-            style={{ width: 220, marginVertical: 5}} 
-            source={require('../images/timeBar.png')}
-          />*/}
-=======
          
-          </TouchableOpacity>
+         
 
         
->>>>>>> 6d34ea741c7641e9392bd58b573b1ddb9726df20
->>>>>>> 6d7368dfae9801ce8e350078d1b15a19f7190a07
+
         </View> 
         </Card>
 
@@ -111,13 +98,7 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
   )
 }
 
- const ItemSeperatorView = () => {
-    return (
-      <View
-        style={{ height: 0.5, width: '100%', backgroundColor: '#c8c8c8' }}
-      />
-    );
-  };
+
 
 export default function Home({ navigation, route, setData }) {
   
@@ -150,8 +131,8 @@ export default function Home({ navigation, route, setData }) {
           <View>
             <VideoList videos={videos} VideoScreen={VideoScreen}/>
           </View>
-        </Card  >
-      </ScrollView >
+        </Card>
+      </ScrollView>
     </View>
   )
 } 
