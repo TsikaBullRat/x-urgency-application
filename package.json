@@ -10,12 +10,11 @@
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
     "@react-navigation/native": "*",
-    "@react-navigation/native-stack": "*",
+    "@react-navigation/native-stack": "16.9.0",
     "anonymous-files": "^1.0.1",
     "atob": "^2.1.2",
     "cli": "^1.0.1",
     "expo": "^1.0.0",
-    "expo-av": "^9.2.3",
     "expo-cli": "^4.3.0",
     "expo-constants": "^12.1.3",
     "expo-image-picker": "^10.2.3",

@@ -157,12 +157,12 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
 
-  shadowProp: {
+  {/*shadowProp: {
     shadowColor: '#171717',
     shadowOffset: { width: -2,     height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
-  },
+  },*/}
 
   menu: {
     flexDirection: 'row',
