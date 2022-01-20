@@ -71,7 +71,7 @@ export default function VideoScreen({ navigation, route}) {
   useEffect(()=>{
     Collect(data.firestore, setComments, setCount)
   }, [comments])
-
+  
   return (
     <View style={styles.contain}>
       <View style={{ width: 315, marginLeft: 10, marginTop: 50 }}>
@@ -165,9 +165,12 @@ export default function VideoScreen({ navigation, route}) {
                     style={styles.comment}
                     name="comment"
                     placeholder="Write a comment" 
-                    onChangeText={text=>setComment(text)}
+                  onChangeText={text=>setComment(text)}
                   />
-                  <Button onPress={()=>Post(comment, data.firestore)} title='Press Me'/>
+                  <View style={{width: 90, height: 70, borderRadius: 25, marginTop: 7, marginRight: 10,}}>
+                  <Button color="#F47066" onPress={()=>Post(comment, data.firestore)} title='Comment'
+                  />
+                  </View>
                 </View> 
               </Card>
 
@@ -238,9 +241,10 @@ export default function VideoScreen({ navigation, route}) {
       </View>
       {/* <Comments video={data.firestore} /> */}
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
+        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft:15 }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
-            {comments.map((item, index) =>
+
+{comments.map((item, index) =>
             <Card style={{
               backgroundColor: 'silver', height: 100,
               marginTop: 10
@@ -251,8 +255,10 @@ export default function VideoScreen({ navigation, route}) {
               </SafeAreaView>
               </Card>
             )}
+
         </Card>
       </ScrollView>
+      <TextInput placeholder="Comment" style={styles.commentBox} />
     </View>
   )
 }

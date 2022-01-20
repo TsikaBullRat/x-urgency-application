@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 var atob = require('atob')
 
-
 const Collect = async (doc, SetCollection, Count) => {
     var count = 0
     var set = []

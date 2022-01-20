@@ -41,7 +41,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         setDisplaModal(true)
         }
     }
-
  
     
   return (

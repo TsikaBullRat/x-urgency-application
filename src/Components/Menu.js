@@ -26,10 +26,8 @@ import burns from '../images/burn.png'
 export default function Header({ list, setVids }) {
 
   const Sort = (match) =>{
-    setVids(null)
-    LoadSet(setVids, match)
+    setVids(list.filter(item=>item.tag === match))
   }
-
   return (
     <View style={styles.contain}>
       {/*----------------------Horizontal Menu----------------------*/}
@@ -103,7 +101,6 @@ export default function Header({ list, setVids }) {
           </Pressable>
         </ScrollView>
       </Card>
-
     </View>
   )
 }

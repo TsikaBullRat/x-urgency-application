@@ -27,7 +27,6 @@ const DoctorProfile = ({route}) => {
             setContact(false)
         }
 
-
         if (value == 'Qualification') {
             setQualification(true)
             setAbout(false)
@@ -51,10 +50,6 @@ const DoctorProfile = ({route}) => {
         }
 
     })
-
-    useEffect(()=>{
-        console.log(route.params)
-    }, [data])
 
     return (
         <>
@@ -96,7 +91,9 @@ const DoctorProfile = ({route}) => {
             </View>
             {About ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    {data.about}
+                    Hi I am Dr Sighn , I have a major in neurosurgery.
+                    To become a nuerosurgent you have to study for 7to8 years in residency to optain a degree in Doctor of medicine(M.D).
+                    I really love the work I do , I'm a very determined person and devoted to being a Dr.
                 </Text>
             </View> : <View></View>}
             {Qalification ? <View style={styles.words}>

@@ -125,7 +125,6 @@ export default function DoctorSignUp({ navigation }) {
   );
 }
 const styles = StyleSheet.create({
-
     container: {
         alignItems: "center",
     },

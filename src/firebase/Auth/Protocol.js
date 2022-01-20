@@ -57,10 +57,6 @@ const Detector = ({ id }) => {
 
     const [details, setDetails] = useState(null)
 
-    // useEffect(() => {
-    //     console.log(id)
-    // }, [])
-
     return (
         id ? (
             <Check id={id} details={details}/>

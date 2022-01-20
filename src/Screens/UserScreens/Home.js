@@ -13,17 +13,15 @@ const VideoList = ({videos, VideoScreen}) =>{
 
   return(
     videos?(videos.map(vid => (
-      <View key={vid.id}>
-                <TouchableOpacity onPress={()=>VideoScreen(vid)} 
-                style={{
-                  width: 315,
-                  height: 180,
-                  overflow: 'hidden',
-                  borderRadius: 25,
-                  marginTop: 20,
-                  marginBottom: 20,
-                  marginLeft: 20
-                }}>
+      <View style={{width:295, alignItems:'center'}}
+            key={vid.id}
+      >
+      <Card
+        style={{ 
+          width: 295,
+          height: 195, 
+          backgroundColor: '#FAFAFA'
+        }}>
                   <Video
                     ref={ref}
                     source={{ uri: vid.url }}
@@ -31,12 +29,22 @@ const VideoList = ({videos, VideoScreen}) =>{
                     isLooping
                     onPlaybackStatusUpdate={status => setStatus(() => status)}
                   />
-                  
-                </TouchableOpacity>
+                  <View style={{flexDirection: 'row', width: 295, 
+marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
+<TouchableOpacity
+            onPress={() => {
+              navigation.navigate('VideoScreen');
+            }}>
+         
+          </TouchableOpacity>
+
+        
+        </View> 
+        </Card>
+
                 <Text style={styles.tag}>{vid.title}</Text>
                 <Text style={styles.tag}>{vid.owner}</Text>
-                <Text style={styles.tag}>Views: {vid.views}</Text>
-                <Text style={styles.tag}>{vid.stamp}</Text>
+                
                 </View>
             ))):(null)
   )
@@ -63,10 +71,11 @@ export default function Home({ navigation, route, setData }) {
       <Header />
       <Menu list={videos} setVids={setLoad}/>
       {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{height:555}} 
+      vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
-          <VideoList videos={videos} VideoScreen={VideoScreen}/>
+            <VideoList videos={videos} VideoScreen={VideoScreen}/>
           </View>
         </Card  >
       </ScrollView >
@@ -83,8 +92,8 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'column',
     paddingTop: 5, 
-    marginLeft: 15,
   },
+
   avatar: {
     width: 70,
     height: 70,
@@ -140,10 +149,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15, 
     fontSize: 17,
     fontWeight: 'bold'
-  },
-  tag:{
-    fontSize: 15,
-    top: 30
   }
 });
 
