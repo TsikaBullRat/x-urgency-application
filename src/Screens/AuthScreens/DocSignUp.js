@@ -155,12 +155,12 @@ const styles = StyleSheet.create({
         height: 40,
         borderRadius: 10,
         // outline: "none",
-        backgroundColor: "lightgrey",
+        backgroundColor: "#ffffff",
         paddingLeft: 10,
     },
 
     txtCards: {
-        backgroundColor: "lightgrey",
+        backgroundColor: "#ffffff",
         width: 285,
         height: 40,
         borderRadius: 10,

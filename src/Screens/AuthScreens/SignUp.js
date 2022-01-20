@@ -127,28 +127,28 @@ const styles = StyleSheet.create({
 
   txtPass: {
     width: 260,
-    height: 38,
+    height: 50,
     borderRadius: 10,
     outline: 'none',
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#ffffff',
     padding: 5,
     paddingTop: 18,
   },
 
   txtRePass: {
     width: 260,
-    height: 38,
+    height: 50,
     borderRadius: 10,
     outline: 'none',
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#ffffff',
     padding: 5,
     paddingTop: 18,
   },
 
   txtCards: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#ffffff',
     width: 285,
-    height: 40,
+    height: 50,
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 25,

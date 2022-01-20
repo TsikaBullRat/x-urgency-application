@@ -125,6 +125,7 @@ txtUser: {
     paddingTop: 15,
     borderRadius: 10,
     outline: 'none',
+ 
   },
 
   txtPass: {
