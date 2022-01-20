@@ -20,7 +20,7 @@ import { Avatar } from 'react-native-elements';
 import { Video, } from 'expo-av';
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
-import { auth, firestore, Collect, Post } from '../../firebase';
+import { auth, firestore, Collect, Post, ShareItem } from '../../firebase';
 import { Comments } from '../../Components';
 
 export default function VideoScreen({ navigation, route}) {
@@ -122,15 +122,16 @@ export default function VideoScreen({ navigation, route}) {
                   <Dislikes data={data.firestore} />
                 </View>
 
-                <View style={{ marginLeft: 40 }}>
+                <TouchableOpacity style={{ marginLeft: 40 }}>
                   <FontAwesome5
                     name="share"
                     size={20}
                     color="black"
                     style={{ marginLeft: 11 }}
+                    onPress={()=>ShareItem(data.url)}
                   />
                   <Text style={{ paddingTop: 5 }}> Share </Text>
-                </View>
+                </TouchableOpacity>
 
                 <View style={{ marginLeft: 32 }}>
                   <Entypo

@@ -1,31 +1,25 @@
 
 import React from 'react';
-import { Share, View, Button } from 'react-native';
+import { Share } from 'react-native';
 
-const Share = () => {
-  const onShare = async () => {
+const ShareItem = async(url) => {
     try {
       const result = await Share.share({
-        message: 'React Native | A framework for building native apps using React',
+        URL: url,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
-          // shared with activity type of result.activityType
+          console.log("Shared with activity type") // shared with activity type of result.activityType
+          console.log(result.activityType)
         } else {
-          // shared
+          console.log("Shared") // shared
         }
       } else if (result.action === Share.dismissedAction) {
-        // dismissed
+        console.log("Could not share") // dismissed
       }
     } catch (error) {
       alert(error.message);
     }
-  };
-  return (
-    <View style={{ marginTop: 50 }}>
-      <Button onPress={onShare} title="Share" />
-    </View>
-  );
 };
 
-export { Share };
+export { ShareItem };
