@@ -49,11 +49,11 @@ const VideoList = ({ videos, VideoScreen }) => {
               marginTop: 15,
               width: 335,
               height: 245,
-              alignItems: "center",
+              alignItems: "center",             
               backgroundColor: "#FAFAFA",
             }}
           >
-            <View style={{ width: 335 }}>
+            <TouchableOpacity style={{ width: 335 }}>
               <Video
                 ref={ref}
                 source={{ uri: vid.url }}
@@ -67,13 +67,13 @@ const VideoList = ({ videos, VideoScreen }) => {
                   alignSelf: "center",
                 }}
               />
-            </View>
+            </TouchableOpacity>
 
-            <View style={{ width: 335 }}>
+            <View style={{ justifyContent:'space-evenly' }}>
               <Text style={styles.vidTitle}>{vid.title}</Text>
               <Text style={styles.tag}>{vid.owner}</Text>
 
-              <View style={{width:295, flexDirection:'row', justifyContent:'space-between'}}>
+              <View style={{flexDirection:'row', justifyContent:'space-between'}}>
                 <Text style={styles.tag}>{vid.views}Views</Text>
                 <Text style={styles.tag}>{vid.stamp}</Text>
               </View>
@@ -209,6 +209,7 @@ const styles = StyleSheet.create({
   },
 
   tag: {
+    paddingVertical:2,
     fontSize: 12,
   },
 });
