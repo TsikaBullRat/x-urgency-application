@@ -33,7 +33,7 @@
  } from "react-native";
  import { Video } from "expo-av";
  import { Card } from "react-native-paper";
- import { auth, LoadSet } from "../../firebase";
+ import { auth, LoadSet, Exit } from "../../firebase";
  import Header from "../../Components/Header";
  import Menu from "../../Components/Menu";
  
@@ -43,7 +43,7 @@
  
    return videos
      ? videos.map((vid) => (
-         <TouchableOpacity style={{ width: 295, alignItems: "center" }} key={vid.id} onPress={VideoScreen}>
+         <TouchableOpacity style={{ width: 295, alignItems: "center" }} key={vid.id} onPress={()=>VideoScreen(vid)}>
            <Card
              style={{
                marginTop: 15,
@@ -103,7 +103,6 @@
  
    useEffect(() => {
      LoadSet(setLoad);
-     console.log(videos);
    }, []);
  
    const [status, setStatus] = React.useState({});
@@ -113,7 +112,7 @@
          
          <View style={{flexDirection:'row', alignItems:'flex-end', justifyContent:'space-between'}}>
          <Header />
-         <TouchableOpacity>
+         <TouchableOpacity onPress={Exit}>
              <Image
                source={require("../../images/logOut.png")}
                style={styles.logoutIMG}
