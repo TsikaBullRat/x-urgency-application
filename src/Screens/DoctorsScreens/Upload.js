@@ -121,12 +121,12 @@
 
 
           
-             <TouchableOpacity onPress={openImagePickerAsync} style={[styles.button, styles.shadowProp]}>
+             <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
         <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>
  
              <TouchableOpacity onPress={openImagePickerAsync}>
-<View style={[styles.iconContainer, styles.shadowProp]}>
+<View style={styles.iconContainer}>
 <Icon name="camera"color='white' size={30}/>
  </View>
 </TouchableOpacity>
@@ -151,23 +151,18 @@
        width: 330,
        height: 60,
        borderRadius: 10,
-       outline: 'none',
+       outlineColor: 'transparent',
        backgroundColor: 'white',
        paddingLeft: 20, 
        color: "lightgrey",
        marginTop: 50,
     },
-    shadowProp: {
-        shadowColor: '#171717',
-        shadowOffset: {width: -2, height: 4},
-        shadowOpacity: 0.5,
-        shadowRadius: 10,
-      },
+
       txtUser: {
         width: 330,
         height: 200,
         borderRadius: 10,
-        outline: 'none',
+        outlineColor: 'transparent',
         backgroundColor: 'white',
         paddingLeft: 100, 
         marginTop: 60,
@@ -183,12 +178,7 @@
       textAlign: 'center',
       color:'#F96056'
     },
-    shadowProp: {
-      shadowColor: '#171717',
-      shadowOffset: { width: -2,     height: 4 },
-      shadowOpacity: 0.5,
-      shadowRadius: 10,
-    },
+
     input1:{
       width: 280,
       height: 40,
@@ -199,7 +189,7 @@
       fontSize: 16,
       borderColor: '#F96056', 
       borderWidth: 1,
-      outline: 'none'
+      outlineColor: 'transparent',
     },
     input2:{
       width: 280,
@@ -211,7 +201,7 @@
       fontSize: 16,
       borderColor: '#F96056',
       borderWidth: 1,
-      outline: 'none'
+      outlineColor: 'transparent',
     },
     iconContainer: {
         width: 60,

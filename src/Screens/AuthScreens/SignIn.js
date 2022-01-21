@@ -124,7 +124,7 @@ txtUser: {
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
-    outline: 'none',
+    outlineColor: 'transparent',
  
   },
 
@@ -134,7 +134,7 @@ txtUser: {
     paddingLeft: 8,
     paddingTop: 15,
     borderRadius: 10,
-    outline: 'none',
+    outlineColor: 'transparent',
   },
 
   txtCards: {

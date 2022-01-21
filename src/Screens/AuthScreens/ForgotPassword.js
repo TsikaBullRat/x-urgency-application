@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     width: 260,
     height: 35,
     borderRadius: 10,
-    outline: 'none',
+    outlineColor: 'transparent',
     backgroundColor: '#ffffff',
     padding: 8,
     paddingTop: 5
@@ -157,10 +157,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 80,
   },
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
+
 });

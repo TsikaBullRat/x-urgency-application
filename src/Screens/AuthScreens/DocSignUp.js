@@ -49,7 +49,7 @@ export default function DoctorSignUp({ navigation }) {
         msg={message}
       />
 
-      <Card style={[styles.card, styles.shadowProp]}>
+      <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
@@ -67,7 +67,7 @@ export default function DoctorSignUp({ navigation }) {
       <View>
         <Card style={{ height: 230 }}>
 
-          <Card style={[styles.txtCards, styles.shadowProp]}>
+          <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
@@ -77,7 +77,7 @@ export default function DoctorSignUp({ navigation }) {
             </View>
           </Card>
 
-          <Card style={[styles.txtCards, styles.shadowProp]}>
+          <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
@@ -87,7 +87,7 @@ export default function DoctorSignUp({ navigation }) {
             </View>
           </Card>
 
-          <Card style={[styles.txtCards, styles.shadowProp]}>
+          <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
@@ -98,7 +98,7 @@ export default function DoctorSignUp({ navigation }) {
             </View>
           </Card>
 
-          <Card style={[styles.txtCards, styles.shadowProp]}>
+          <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
@@ -112,7 +112,7 @@ export default function DoctorSignUp({ navigation }) {
 
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity
-            style={[styles.signIn, styles.shadowProp]}
+            style={styles.signIn}
             onPress={() => {
               navigation.navigate("DoctorSignUp");
             }}
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
         width: 285,
         height: 40,
         borderRadius: 10,
-        // outline: "none",
+        outlineColor: 'transparent',
         backgroundColor: "#ffffff",
         paddingLeft: 10,
     },
