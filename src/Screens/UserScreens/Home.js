@@ -53,7 +53,7 @@ const VideoList = ({ videos, VideoScreen }) => {
               backgroundColor: "#FAFAFA",
             }}
           >
-            <TouchableOpacity style={{ width: 335 }}>
+            <TouchableOpacity  onPress={VideoScreen} style={{ width: 335 }}>
               <Video
                 ref={ref}
                 source={{ uri: vid.url }}
@@ -108,7 +108,7 @@ export default function Home({ navigation, route, setData }) {
     console.log(videos);
   }, []);
 
-  const [status, setStatus] = React.useState({});
+  //const [status, setStatus] = React.useState({});
   return (
     <View style={styles.container}>
       <View style={{ width: 295 }}>
