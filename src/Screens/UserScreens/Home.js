@@ -47,34 +47,37 @@ const VideoList = ({ videos, VideoScreen }) => {
           <Card
             style={{
               marginTop: 15,
-              maxWidth: 335,
-              height: 260,
-              alignItems:'center',
+              width: 335,
+              height: 245,
+              alignItems: "center",
               backgroundColor: "#FAFAFA",
             }}
           >
-            <Video
-              ref={ref}
-              source={{ uri: vid.url }}
-              resizeMode="stretch"
-              isLooping
-              onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-              style={{
-                width: 280,
-                height: 165,
-                marginTop: 5,
-                alignSelf: "center",
-              }}
-            />
-      
-          
+            <View style={{ width: 335 }}>
+              <Video
+                ref={ref}
+                source={{ uri: vid.url }}
+                resizeMode="stretch"
+                isLooping
+                onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+                style={{
+                  width: "100%",
+                  height: 165,
+                  marginTop: 5,
+                  alignSelf: "center",
+                }}
+              />
+            </View>
 
-          <View style={{ width: 295 }}>
-            <Text style={styles.vidTitle}>{vid.title}</Text>
+            <View style={{ width: 335 }}>
+              <Text style={styles.vidTitle}>{vid.title}</Text>
               <Text style={styles.tag}>{vid.owner}</Text>
-              <Text style={styles.tag}>{vid.views}</Text>
-          </View>
 
+              <View style={{width:295, flexDirection:'row', justifyContent:'space-between'}}>
+                <Text style={styles.tag}>{vid.views}Views</Text>
+                <Text style={styles.tag}>{vid.stamp}</Text>
+              </View>
+            </View>
           </Card>
 
           <ItemSeperatorView />
@@ -85,9 +88,7 @@ const VideoList = ({ videos, VideoScreen }) => {
 
 const ItemSeperatorView = () => {
   return (
-    <View
-      style={{ height: 0.5, width: '100%', backgroundColor: '#c8c8c8' }}
-    />
+    <View style={{ height: 0.5, width: "100%", backgroundColor: "#c8c8c8" }} />
   );
 };
 
@@ -111,10 +112,15 @@ export default function Home({ navigation, route, setData }) {
   return (
     <View style={styles.container}>
       <View style={{ width: 295 }}>
-        
-        <View style={{flexDirection:'row', alignItems:'flex-end', justifyContent:'space-between'}}>
-        <Header />
-        <TouchableOpacity>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+          }}
+        >
+          <Header />
+          <TouchableOpacity>
             <Image
               source={require("../../images/logOut.png")}
               style={styles.logoutIMG}
@@ -148,7 +154,7 @@ const styles = StyleSheet.create({
     width: 15,
     height: 15,
     marginTop: -80,
-    marginLeft: -20
+    marginLeft: -20,
   },
 
   header: {
@@ -198,7 +204,8 @@ const styles = StyleSheet.create({
   },
 
   vidTitle: {
-    
+    fontSize: 16,
+    fontWeight: "bold",
   },
 
   tag: {
