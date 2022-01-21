@@ -167,7 +167,7 @@ const LoadSet = (Load, query) => {
     )
 }
 
-const UploadVideo = async (uri, title, description, cat, Log) => {
+const Upload = async (uri, title, description, cat, Log) => {
 
     var id = uuidv4()
     var byteString = atob(uri.split(',')[1])
@@ -212,4 +212,4 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
         })
 }
 
-export { LoadSet, UploadVideo, Collect, Post }
+export { LoadSet, Upload, Collect, Post }

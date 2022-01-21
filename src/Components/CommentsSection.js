@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, Card, Text, SafeAreaView, TextInput } from 'react-native';
+import {ScrollView, Text, SafeAreaView, TextInput } from 'react-native';
+import {Card} from 'react-native-paper'
 import { firestore } from '../firebase';
 
 const Count = async doc =>{

@@ -19,20 +19,23 @@ export default function Header() {
   return (
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
-      <View style={{ flexDirection: 'row', width: 295, justifyContent: 'flex-start' }}>
-        <View style={styles.header}>
-          <Text>
-            What's your
-          </Text>
-          <Text>
-            EMERGENCY ?
-          </Text>
+      <View
+        style={{
+          flexDirection: 'row',
+          maxWidth: 295,
+          justifyContent: 'flex-start',
+        }}>
+
+        <View style={styles.hearderContainer}>
+        <Text style={styles.header}>What's your</Text>
+        <Text style={styles.header}>EMERGENCY</Text>
         </View>
-        <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <Avatar style={styles.avatar}
+        <View>
+          <Avatar
+            style={styles.avatar}
             rounded
             source={{
-              uri: 'https://randomuser.me/api/portraits/men/40.jpg',
+              uri: 'https://randomuser.me/api/portraits/men/41.jpg',
             }}
             size="large"
           />
@@ -40,7 +43,7 @@ export default function Header() {
             status="success"
             containerStyle={{ position: 'absolute', top: -4, right: -4 }}
           />
-        </View>
+          </View>
       </View>
     </View>
   )
@@ -49,12 +52,15 @@ export default function Header() {
 const styles = StyleSheet.create({
 
   contain: {
+    width:295,    
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff'
   },
 
   header: {
+    width:240,    
+    justifyContent: 'flex-start',
     flexDirection: 'column',
     color: '#F96056',
     fontSize: 36,
@@ -65,13 +71,20 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    margingTop: 80,
+    marginTop: 80,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
     shadowColor: 'grey',
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.4,
     elevation: 1,
+  },
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
 
 })

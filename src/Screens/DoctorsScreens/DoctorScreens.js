@@ -20,4 +20,4 @@ export const DoctorsScreens = () => {
             <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false}} />
         </Stack.Navigator>
     )
-}
+} 

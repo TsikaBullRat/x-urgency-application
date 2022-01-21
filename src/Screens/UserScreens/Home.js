@@ -23,7 +23,7 @@
     * - Modification    : 
 **/
 import React, { useState, useEffect, useRef } from 'react';
-import { View, StyleSheet, ScrollView, Text, TouchableOpacity, } from 'react-native';
+import { View, StyleSheet, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
 import { Video, } from 'expo-av';
 import { Card } from 'react-native-paper';
 import { auth, LoadSet } from '../../firebase';
@@ -65,8 +65,23 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
             onPress={() => {
               navigation.navigate('VideoScreen');
             }}>
-         
+
+            <Image
+              style={{ borderRadius: 50 }}
+              source={require('../../images/timeBar.png')}
+            />
           </TouchableOpacity>
+
+          <Image 
+            style={{ width: 220, marginVertical: 5}} 
+            source={require('../../images/btnPlay.jpg')}
+          />
+
+         
+         
+
+        
+
         </View> 
         </Card>
 
@@ -83,13 +98,7 @@ marginVertical: -40,justifyContent:'space-around', alignItems:'center'}}>
   )
 }
 
- const ItemSeperatorView = () => {
-    return (
-      <View
-        style={{ height: 0.5, width: '100%', backgroundColor: '#c8c8c8' }}
-      />
-    );
-  };
+
 
 export default function Home({ navigation, route, setData }) {
   
@@ -112,18 +121,20 @@ export default function Home({ navigation, route, setData }) {
   const [status, setStatus] = React.useState({});
   return (
     <View style={styles.container}>
-      <Text onPress={Logout}>X</Text>
+    <View style={{width: 335}}>
+      <Text >X</Text>
       <Header />
       <Menu list={videos} setVids={setLoad}/>
       {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView style={{height:555}} 
-      vertical={true} showsVerticalScrollIndicator={false}>
+      {/* <ScrollView style={{height:555}} 
+      vertical={true} showsVerticalScrollIndicator={false}> */}
         <Card style={styles.menu2}>
           <View>
             <VideoList videos={videos} VideoScreen={VideoScreen}/>
           </View>
-        </Card  >
-      </ScrollView >
+        </Card>
+      {/* </ScrollView> */}
+      </View>
     </View>
   )
 } 
@@ -139,6 +150,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#F96056',
     paddingTop: 20, 
+    borderBottomWidth: 3,
+    borderColor: 'turquoise',
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.4,
+    elevation: 1,
   },
 
   avatar: {
