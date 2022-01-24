@@ -34,7 +34,7 @@ export default function App() {
           <Detector user={user} />
         ) : (
           // Login/Sign functions
-          <View style={styles.loader}>
+          <View style={styles.loader}> 
             <ActivityIndicator size="large" />
           </View>
         )}
