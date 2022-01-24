@@ -15,15 +15,9 @@ const Collect = async (doc, SetCollection, Count) => {
                 let time
                 let load = []
 
-<<<<<<< HEAD
                 if(doc.data().comments !== undefined){
                     if(doc.data().comments[0] !== null)
                         count = doc.data().comments.length
-=======
-                if (doc.data().comments !== undefined) {
-                    if (doc.data().comments[0] !== null)
-                        count = count + doc.data().comments.length
->>>>>>> 6a44ba9c1b238d12afb7d387107cd04db46ba55d
                 }
 
                 if (doc.data().comments !== undefined) {
