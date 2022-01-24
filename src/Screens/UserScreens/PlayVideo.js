@@ -21,8 +21,6 @@ import { Avatar } from 'react-native-elements';
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore, Count, Collect, Post } from '../../firebase';
-import { Comments } from '../../Components';
-
 
 export default function VideoScreen({ navigation, route}) {
 
@@ -60,18 +58,18 @@ export default function VideoScreen({ navigation, route}) {
         })
       )
     },
-    Navigate = async() =>{
-      navigation.navigate('Doctor', {data: data.match})
+    Navigate = async () => {
+      navigation.navigate('Doctor', { data: data.match })
     };
 
   useEffect(() => {
     addAct()
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     Collect(data.firestore, setComments, setCount)
   }, [comments])
-   
+
   return (
     <View style={styles.contain}>
       <View style={{ width: 315, marginLeft: 10, marginTop: 50 }}>
@@ -159,20 +157,20 @@ export default function VideoScreen({ navigation, route}) {
               </Text>
             </View>
 
-              <Card style={[styles.txtCards, styles.shadowProp]}>
-                <View style={{ flexDirection: 'row'}}>   
-                  <TextInput
-                    style={styles.comment}
-                    name="comment"
-                    placeholder="Write a comment" 
-                  onChangeText={text=>setComment(text)}
+            <Card style={[styles.txtCards, styles.shadowProp]}>
+              <View style={{ flexDirection: 'row' }}>
+                <TextInput
+                  style={styles.comment}
+                  name="comment"
+                  placeholder="Write a comment"
+                  onChangeText={text => setComment(text)}
+                />
+                <View style={{ width: 90, height: 70, borderRadius: 25, marginTop: 7, marginRight: 10, }}>
+                  <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title='Comment'
                   />
-                  <View style={{width: 90, height: 70, borderRadius: 25, marginTop: 7, marginRight: 10,}}>
-                  <Button color="#F47066" onPress={()=>Post(comment, data.firestore)} title='Comment'
-                  />
-                  </View>
-                </View> 
-              </Card>
+                </View>
+              </View>
+            </Card>
 
           </View>
         ) : (
@@ -241,20 +239,20 @@ export default function VideoScreen({ navigation, route}) {
       </View>
       {/* <Comments video={data.firestore} /> */}
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft:15 }}>
+        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 15 }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
 
-{comments.map((item, index) =>
+          {comments.map((item, index) =>
             <Card style={{
               backgroundColor: 'silver', height: 100,
               marginTop: 10
             }}
-            key={index}>
+              key={index}>
               <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>
+                <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>
               </SafeAreaView>
-              </Card>
-            )}
+            </Card>
+          )}
 
         </Card>
       </ScrollView>
@@ -278,22 +276,22 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     marginTop: 5,
-    borderWidth: 1, 
+    borderWidth: 1,
     borderColor: '#F47066'
   },
 
   comment: {
-    width: 260, 
+    width: 260,
     height: 38,
     borderRadius: 10,
     outlineColor: 'transparent',
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
-  }, 
+  },
 
   shadowProp: {
     shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
+    shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },

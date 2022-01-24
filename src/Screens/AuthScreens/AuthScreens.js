@@ -29,7 +29,21 @@ export const AuthScreens = () => {
         {(props) => <SignIn {...props} />}
       </Stack.Screen>
 
-      
+      <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
+        {(props) => <SignUp {...props} />}
+      </Stack.Screen>
+
+      <Stack.Screen
+        name='Reset Password'
+        component={ForgotPassword}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name='Doctor SignUp'
+        component={DoctorSignUp}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   )
 }
