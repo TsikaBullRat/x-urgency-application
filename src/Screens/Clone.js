@@ -21,9 +21,15 @@ import {
     TextInput,
 } from "react-native";
 
+<<<<<<< HEAD
  //import { Card } from "react-native-paper";
 import { UploadVideo } from "../firebase";
 //import * as ImagePicker from 'expo-image-picker';
+=======
+import { Card } from "react-native-paper";
+import { Upload } from "../firebase";
+import * as ImagePicker from 'expo-image-picker';
+>>>>>>> 491f7d28e768d98a22416f8bb0fbc15a8b6d93b4
 
 export default function Clone({ navigation }) {
     const [selectedValue, setSelectedValue] = useState("stroke"),
@@ -47,7 +53,7 @@ export default function Clone({ navigation }) {
         },
         Run = () =>{
             openImagePickerAsync();
-            selectedImage?UploadVideo(selectedImage.localUri, title, description, selectedValue ):null
+            selectedImage?Upload(selectedImage.localUri, title, description, selectedValue ):null
         }
 
     return (
@@ -127,7 +133,7 @@ const styles = StyleSheet.create({
         width: 285,
         height: 40,
         borderRadius: 10,
-        outline: "none",
+        outlineColor: 'transparent',
         backgroundColor: "lightgrey",
         paddingLeft: 10,
     },

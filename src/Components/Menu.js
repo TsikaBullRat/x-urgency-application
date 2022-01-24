@@ -30,19 +30,21 @@ export default function Header({ list, setVids }) {
   return (
     <View style={styles.contain}>
       {/*----------------------Horizontal Menu----------------------*/}
-      <Card style={styles.menu}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+ 
+        <ScrollView 
+        style={{maxWidth:335}}
+        horizontal={true} showsHorizontalScrollIndicator={false}>
           <Pressable onPress={()=>Sort("stroke")}>
             <View>
               <Card style={{
-                width: 50, height: 70, borderRadius: 15, marginLeft: 18, alignItems: 'center', textAlign: 'center', marginTop: 7
+                width: 50, height: 70, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7
               }}
                 
               >
                 <Image style={styles.strokeMenu} source={Stroke} />
                 <Text style={{ fontSize: 12 }}>Stroke</Text>
               </Card>
-            </View>
+            </View> 
           </Pressable>
           <Pressable onPress={()=>Sort("heartattack")}>
           <View>
@@ -98,8 +100,7 @@ export default function Header({ list, setVids }) {
               <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
             </Card>
           </Pressable>
-        </ScrollView>
-      </Card>
+</ScrollView>
     </View>
   )
 }
@@ -111,7 +112,9 @@ const styles = StyleSheet.create({
   },
 
   menu: {
-    width: 355,
+    width: 335,
+    alignItems:'center',
+    justifyContent:'space-even',
     marginTop: 20,
     borderRadius: 15,
   },
