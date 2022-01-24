@@ -1,32 +1,7 @@
-/**
- * @description      :
- * @author           : MLab
- * @group            :
- * @created          : 07/10/2021 - 10:05:53
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 07/10/2021
- * - Author          : MLab
- * - Modification    :
- **/
-/**
- * @description      :
- * @author           : MLab
- * @group            :
- * @created          : 05/10/2021 - 14:22:53
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 05/10/2021
- * - Author          : MLab
- * - Modification    :
- **/
 import React, { useState, useEffect, useRef } from "react";
 import {
   View,
   StyleSheet,
-  //ScrollView,
   Text,
   TouchableOpacity,
   Image,
@@ -74,7 +49,7 @@ const VideoList = ({ videos, VideoScreen }) => {
               <Text style={styles.tag}>{vid.owner}</Text>
 
               <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-                <Text style={styles.tag}>{vid.views}Views</Text>
+                <Text style={styles.tag}>{vid.views} Views</Text>
                 <Text style={styles.tag}>{vid.stamp}</Text>
               </View>
             </View>
@@ -92,10 +67,11 @@ const ItemSeperatorView = () => {
   );
 };
 
-export default function Home({ navigation, route, setData }) {
+export default function Home({ navigation, setMatch }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
+      setMatch(data.match)
       navigation.navigate("PlayVideo", {data});
     },
     Logout = () => {
@@ -104,7 +80,6 @@ export default function Home({ navigation, route, setData }) {
 
   useEffect(() => {
     LoadSet(setLoad);
-    console.log(videos);
   }, []);
 
   const [status, setStatus] = React.useState({});
@@ -119,7 +94,8 @@ export default function Home({ navigation, route, setData }) {
           }}
         >
           <Header />
-          <TouchableOpacity>
+          <TouchableOpacity
+           onPress={Logout}>
             <Image
               source={require("../../images/logOut.png")}
               style={styles.logoutIMG}
