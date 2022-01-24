@@ -11,6 +11,28 @@
  * - Modification    :
  **/
 /**
+<<<<<<< HEAD
+    * @description      : 
+    * @author           : MLab
+    * @group            : 
+    * @created          : 05/10/2021 - 14:22:53
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 05/10/2021
+    * - Author          : MLab
+    * - Modification    : 
+**/
+import React, { useState, useEffect, useRef } from 'react';
+import { View, StyleSheet, ScrollView, Text, TouchableOpacity, } from 'react-native';
+//import { Video, } from 'expo-av';
+//import { Card } from 'react-native-paper';
+import { auth, LoadSet } from '../../firebase';
+import Header from '../../Components/Header'
+import Menu from '../../Components/Menu'
+
+const VideoList = ({videos, VideoScreen}) =>{
+=======
  * @description      :
  * @author           : MLab
  * @group            :
@@ -36,6 +58,7 @@ import { Card } from "react-native-paper";
 import { auth, LoadSet } from "../../firebase";
 import Header from "../../Components/Header";
 import Menu from "../../Components/Menu";
+>>>>>>> 491f7d28e768d98a22416f8bb0fbc15a8b6d93b4
 
 const VideoList = ({ videos, VideoScreen }) => {
   const [status, setStatus] = useState({});
@@ -180,6 +203,26 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
+<<<<<<< HEAD
+  txtCards: {
+    backgroundColor: 'lightgrey',
+    opacity: 0.8,
+    width: 320,
+    height: 50,
+    borderRadius: 10,
+    marginLeft: 28,
+    marginTop: 25,
+    borderBottomWidth: 2,
+    borderRightWidth: 2,
+    borderColor: 'turquoise',
+    shadowColor: 'blue',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    elevation: 1,
+  },
+=======
+>>>>>>> 491f7d28e768d98a22416f8bb0fbc15a8b6d93b4
 
   menu: {
     flexDirection: "row",

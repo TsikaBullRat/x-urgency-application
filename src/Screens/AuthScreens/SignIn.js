@@ -124,8 +124,12 @@ txtUser: {
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
+<<<<<<< HEAD
+    outlineColor: "transparent",
+=======
     outlineColor: 'transparent',
  
+>>>>>>> 491f7d28e768d98a22416f8bb0fbc15a8b6d93b4
   },
 
   txtPass: {
@@ -134,7 +138,11 @@ txtUser: {
     paddingLeft: 8,
     paddingTop: 15,
     borderRadius: 10,
+<<<<<<< HEAD
+    outlineColor: "transparent",
+=======
     outlineColor: 'transparent',
+>>>>>>> 491f7d28e768d98a22416f8bb0fbc15a8b6d93b4
   },
 
   txtCards: {

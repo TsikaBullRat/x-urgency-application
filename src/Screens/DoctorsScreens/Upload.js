@@ -18,9 +18,14 @@
      Text,
      TouchableOpacity,
      View,
-     TextInput,
- } from "react-native";
+     TextInput,  
+ } from "react-native"; 
  
+<<<<<<< HEAD
+ //import { Card } from "react-native-paper";
+ import { UploadVideo } from "../../firebase";
+ //import * as ImagePicker from 'expo-image-picker';
+=======
  import { Card } from "react-native-paper";
  import { Upload } from "../../firebase";
  import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -28,6 +33,7 @@
  import * as Sharing from 'expo-sharing';
  import uploadToAnonymousFilesAsync from 'anonymous-files';
 
+>>>>>>> 491f7d28e768d98a22416f8bb0fbc15a8b6d93b4
  
  export default function Clone({ navigation, Log }) {
      const [selectedValue, setSelectedValue] = useState("stroke"),

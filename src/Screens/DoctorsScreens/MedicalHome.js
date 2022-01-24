@@ -25,8 +25,8 @@
 import React, {useState, useEffect} from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
-import { Card } from 'react-native-paper';
-import { Video, } from 'expo-av';
+//import { Card } from 'react-native-paper';
+//import { Video, } from 'expo-av';
 import { auth, Exit } from '../../firebase';
 import { ProgressBar } from '../../Components';
 

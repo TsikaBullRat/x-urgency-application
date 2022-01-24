@@ -12,12 +12,12 @@
 **/
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button } from 'react-native';
-import { Card } from 'react-native-paper';
+//import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
-import { Video, } from 'expo-av';
+//import { Video, } from 'expo-av';
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore, Count, Collect, Post } from '../../firebase';
