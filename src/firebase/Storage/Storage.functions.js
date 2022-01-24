@@ -1,4 +1,4 @@
-import { storage, app, auth, firestore } from '../config'
+import { storage, auth, firestore } from '../config'
 import firebase from 'firebase'
 import { v4 as uuidv4 } from 'uuid'
 

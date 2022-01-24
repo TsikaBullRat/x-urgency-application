@@ -22,9 +22,9 @@ import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore, Count, Collect, Post } from '../../firebase';
 
-export default function VideoScreen({ navigation, route}) {
+export default function VideoScreen({ navigation, route }) {
 
-  const {data} = route.params
+  const { data } = route.params
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.url)
   const [videoVisible, setVideoVisible] = useState(true)

@@ -32,11 +32,11 @@ import { ProgressBar } from '../../Components';
 
 export default function MedicalHome({ navigation, progress, Log }) {
   const [done, setDone] = useState(true),
- 
-   Logout = () => {
-    auth.signOut();
-    setDone(!done);
-  };
+
+    Logout = () => {
+      auth.signOut();
+      setDone(!done);
+    };
 
   const videos = [
     {
