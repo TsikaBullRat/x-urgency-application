@@ -1,7 +1,8 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-const Socials = ({ text, number }) => {ex
+const Socials = ({ text, number }) => {
+    ex
     return (
         <View style={styles.socials}>
             <Text style={{ textAlign: 'center' }}>{number}</Text>

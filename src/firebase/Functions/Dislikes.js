@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Entypo } from 'react-native-vector-icons';
 import { firestore, auth } from '..';
 
 function Counter({ video }) {
   const [count, setCount] = useState(0),
+
     [pressed, setPressed] = useState(false),
     Check = async () => {
       let myDislike = await firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).get()
@@ -17,6 +18,7 @@ function Counter({ video }) {
           })
         })
     },
+
     Like = async () => {
       let thisLike = await firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => (doc.data().liked))

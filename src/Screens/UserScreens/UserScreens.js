@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home, PlayVideo, Clone, DoctorProfile } from '..';

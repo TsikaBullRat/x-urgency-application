@@ -18,7 +18,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
-export default function ForgotPassword({navigation}) {
+export default function ForgotPassword({ navigation }) {
   const forgotPassword = () => {
     handleResetPassword("lindiwe.mpondo@gmail.com")
   }
@@ -39,7 +39,7 @@ export default function ForgotPassword({navigation}) {
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 4, marginLeft: 5}} />
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 4, marginLeft: 5 }} />
             <TextInput style={styles.txtUser}
               name='username' placeholder='Username'
             />

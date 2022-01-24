@@ -12,7 +12,6 @@
  **/
 import React, { useState } from "react";
 import {
-    Image,
     StyleSheet,
     Picker,
     Text,
@@ -45,9 +44,9 @@ export default function Clone({ navigation }) {
 
             setSelectedImage({ localUri: pickerResult.uri });
         },
-        Run = () =>{
+        Run = () => {
             openImagePickerAsync();
-            selectedImage?Upload(selectedImage.localUri, title, description, selectedValue ):null
+            selectedImage ? Upload(selectedImage.localUri, title, description, selectedValue) : null
         }
 
     return (
@@ -60,7 +59,7 @@ export default function Clone({ navigation }) {
                         style={styles.txtField}
                         name="username"
                         placeholder="Title"
-                        onChangeText={text=>setTitle(text)}
+                        onChangeText={text => setTitle(text)}
                     />
                 </View>
             </Card>
@@ -86,7 +85,7 @@ export default function Clone({ navigation }) {
                         style={styles.txtField}
                         name="password"
                         placeholder="Description"
-                        onChangeText={text=>setDescpription(text)}
+                        onChangeText={text => setDescpription(text)}
                     />
                 </View>
             </Card>

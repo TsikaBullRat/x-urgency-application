@@ -24,7 +24,7 @@
 **/
 import React, { useState } from 'react';
 import { View, StyleSheet, } from 'react-native';
-import { Avatar, Badge } from 'react-native-elements';
+import { Avatar } from 'react-native-elements';
 import { auth } from '../../firebase';
 export default function MedicalHome({ navigation }) {
   const Logout = () => {

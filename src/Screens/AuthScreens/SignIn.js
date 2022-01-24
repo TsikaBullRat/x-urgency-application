@@ -10,22 +10,22 @@
  * - Author          : MLab
  * - Modification    : 
  **/
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
-    Text,
-    View,
-    StyleSheet,
-    TextInput,
-    TouchableOpacity,
-    KeyboardAvoidingView
-} from 'react-native';
-import {Card} from 'react-native-paper';
-import {FontAwesome, AntDesign, EvilIcons} from '@expo/vector-icons';
-import {handleSignIn} from '../../firebase'
-import {AlertNote} from '../../Components';
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
 
-export default function SignIn({navigation, setDone}) {
-    const [email, setEmail] = useState(""),
+} from 'react-native';
+import { Card } from 'react-native-paper';
+import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
+import { handleSignIn } from '../../firebase'
+import { AlertNote } from '../../Components';
+
+export default function SignIn({ navigation, setDone }) {
+  const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     height: 979,
     backgroundColor: '#fff',
   },
- 
+
   card: {
     backgroundColor: '#F47066',
     width: 325,
@@ -118,14 +118,13 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 25,
   },
-txtUser: {
+  txtUser: {
     width: 260,
     height: 38,
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
     outlineColor: 'transparent',
- 
   },
 
   txtPass: {
@@ -134,6 +133,7 @@ txtUser: {
     paddingLeft: 8,
     paddingTop: 15,
     borderRadius: 10,
+    outlineColor: "transparent",
     outlineColor: 'transparent',
   },
 

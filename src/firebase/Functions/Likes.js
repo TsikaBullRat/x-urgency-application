@@ -5,12 +5,11 @@ import { firestore, auth } from '..';
 
 function Counter({ video }) {
 
-
   const [count, setCount] = useState(0),
     [pressed, setPressed] = useState(false),
     Check = async () => {
       let myLike = await firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).get()
-        .then(doc => (doc.data().liked))
+        .then(doc => (doc.data().likes))
       firestore.collection('Videos').doc(video).collection('Acts').where("liked", "==", true)
         .onSnapshot(query => {
           setCount(0)
@@ -30,17 +29,17 @@ function Counter({ video }) {
         }),
         setPressed(!pressed)
       ) : (
-        thisDislike?(
+        thisDislike ? (
           firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
             liked: true,
             disliked: false
           }),
           setPressed(!pressed)
-        ):(
-        firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
-          liked: true
-        }),
-        setPressed(!pressed)
+        ) : (
+          firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
+            liked: true
+          }),
+          setPressed(!pressed)
         )
       )
     };
@@ -61,6 +60,7 @@ function Counter({ video }) {
             style={{ marginLeft: 10 }}
           />
           <Text style={{ paddingTop: 6 }}> {count}</Text>
+          console.log({count})
         </TouchableOpacity>
       </View>
     </View>
@@ -68,7 +68,7 @@ function Counter({ video }) {
 }
 
 const Likes = ({ data }) => {
-  return(
+  return (
     <Counter video={data} />
   )
 };
