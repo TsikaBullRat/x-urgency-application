@@ -24,8 +24,8 @@
 **/
 import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, ScrollView, Text, TouchableOpacity, } from 'react-native';
-import { Video, } from 'expo-av';
-import { Card } from 'react-native-paper';
+//import { Video, } from 'expo-av';
+//import { Card } from 'react-native-paper';
 import { auth, LoadSet } from '../../firebase';
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
@@ -150,13 +150,6 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     elevation: 1,
   },
-
-  {/*shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },*/}
 
   menu: {
     flexDirection: 'row',

@@ -21,9 +21,9 @@ import {
     TextInput,
 } from "react-native";
 
-import { Card } from "react-native-paper";
+ //import { Card } from "react-native-paper";
 import { UploadVideo } from "../firebase";
-import * as ImagePicker from 'expo-image-picker';
+//import * as ImagePicker from 'expo-image-picker';
 
 export default function Clone({ navigation }) {
     const [selectedValue, setSelectedValue] = useState("stroke"),
