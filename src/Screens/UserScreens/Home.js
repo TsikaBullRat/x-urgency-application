@@ -53,7 +53,7 @@ const VideoList = ({ videos, VideoScreen }) => {
               backgroundColor: "#FAFAFA",
             }}
           >
-            <TouchableOpacity  onPress={VideoScreen} style={{ width: 335 }}>
+            <TouchableOpacity style={{ width: 335 }} onPress={()=>VideoScreen(vid)}>
               <Video
                 ref={ref}
                 source={{ uri: vid.url }}
@@ -96,8 +96,7 @@ export default function Home({ navigation, route, setData }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
-      setData(data);
-      navigation.navigate("PlayVideo");
+      navigation.navigate("PlayVideo", {data});
     },
     Logout = () => {
       auth.signOut();

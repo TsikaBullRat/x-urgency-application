@@ -24,8 +24,9 @@ import { auth, firestore, Count, Collect, Post } from '../../firebase';
 import { Comments } from '../../Components';
 
 
-export default function VideoScreen({ navigation, data }) {
+export default function VideoScreen({ navigation, route}) {
 
+  const {data} = route.params
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.url)
   const [videoVisible, setVideoVisible] = useState(true)
