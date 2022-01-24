@@ -90,7 +90,7 @@ export default function SignIn({ navigation, setDone }) {
   )
 }
 const styles = StyleSheet.create({
-  
+
   container: {
     alignItems: 'center',
     height: 850,
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
 
   shadowProp: {
     shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
+    shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },

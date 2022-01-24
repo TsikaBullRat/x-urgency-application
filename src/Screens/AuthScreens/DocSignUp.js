@@ -17,7 +17,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  ScrollView,
+
 } from "react-native";
 import { Card } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
@@ -125,56 +125,56 @@ export default function DoctorSignUp({ navigation }) {
   );
 }
 const styles = StyleSheet.create({
-    container: {
-        alignItems: "center",
-    },
+  container: {
+    alignItems: "center",
+  },
 
-    card: {
-        backgroundColor: "#F47066",
-        width: 325,
-        height: 200,
-        borderBottomLeftRadius: 30,
-        borderBottomRightRadius: 30,
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
-    },
+  card: {
+    backgroundColor: "#F47066",
+    width: 325,
+    height: 200,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+  },
 
-    heartIcon: {
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 30,
-    },
+  heartIcon: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 30,
+  },
 
-    header: {
-        paddingTop: 10,
-    },
+  header: {
+    paddingTop: 10,
+  },
 
-    txtField: {
-        width: 285,
-        height: 40,
-        borderRadius: 10,
-        outlineColor: 'transparent',
-        backgroundColor: "#ffffff",
-        paddingLeft: 10,
-    },
+  txtField: {
+    width: 285,
+    height: 40,
+    borderRadius: 10,
+    outlineColor: 'transparent',
+    backgroundColor: "#ffffff",
+    paddingLeft: 10,
+  },
 
-    txtCards: {
-        backgroundColor: "#ffffff",
-        width: 285,
-        height: 40,
-        borderRadius: 10,
-        marginLeft: 2,
-        marginTop: 15,
-    },
+  txtCards: {
+    backgroundColor: "#ffffff",
+    width: 285,
+    height: 40,
+    borderRadius: 10,
+    marginLeft: 2,
+    marginTop: 15,
+  },
 
-    signIn: {
-        height: 50,
-        width: 200,
-        marginTop: 15,
-        borderRadius: 10,
-        backgroundColor: "#F47066",
-        alignItems: "center",
-        justifyContent: "center",
-    },
+  signIn: {
+    height: 50,
+    width: 200,
+    marginTop: 15,
+    borderRadius: 10,
+    backgroundColor: "#F47066",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

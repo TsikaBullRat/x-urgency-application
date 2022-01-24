@@ -12,7 +12,7 @@
  **/
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { Avatar, Badge } from "react-native-elements";
+import { Avatar } from "react-native-elements";
 
 export default function Header() {
   return (
@@ -22,7 +22,7 @@ export default function Header() {
         style={{
           width: 335,
           flexDirection: "row",
-          alignItems:'center',
+          alignItems: 'center',
           justifyContent: "space-even",
         }}
       >

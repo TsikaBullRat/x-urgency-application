@@ -39,7 +39,7 @@ export const AuthScreens = () => {
         options={{ headerShown: false }}
       />
 
-      <Stack.Screen 
+      <Stack.Screen
         name='Doctor SignUp'
         component={DoctorSignUp}
         options={{ headerShown: false }}

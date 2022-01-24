@@ -28,24 +28,23 @@ const handleSignUp = (email, password, Confirmpassword, setMessage) => {
 
 const handleDoctorSignUp = (email, password, name, setMessage) => {
 
-        
-        auth.createUserWithEmailAndPassword(email, password)
-            .then(user => {
-                user.user.updateProfile({
-                    displayName:name
-                })
-                .then(console.log('I done'))
-                .catch(err=>console.log(err))
+    auth.createUserWithEmailAndPassword(email, password)
+        .then(user => {
+            user.user.updateProfile({
+                displayName: name
             })
-            .catch((error) => {
-                switch (error.code) {
-                    case 'auth/invalid-email':
-                        setMessage("Invalid email address")
-                        break
-                    case 'auth/weak-password':
-                        setMessage("Password too weak")
-                        break
-                }
-            });
+                .then(console.log('I done'))
+                .catch(err => console.log(err))
+        })
+        .catch((error) => {
+            switch (error.code) {
+                case 'auth/invalid-email':
+                    setMessage("Invalid email address")
+                    break
+                case 'auth/weak-password':
+                    setMessage("Password too weak")
+                    break
+            }
+        });
 }
 export { handleSignUp, handleDoctorSignUp }

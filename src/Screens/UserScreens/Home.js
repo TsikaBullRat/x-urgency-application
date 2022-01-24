@@ -43,46 +43,46 @@ const VideoList = ({ videos, VideoScreen }) => {
 
   return videos
     ? videos.map((vid) => (
-        <View style={{ width: 295, alignItems: "center" }} key={vid.id}>
-          <Card
-            style={{
-              marginTop: 15,
-              width: 335,
-              height: 245,
-              alignItems: "center",             
-              backgroundColor: "#FAFAFA",
-            }}
-          >
-            <TouchableOpacity style={{ width: 335 }} onPress={()=>VideoScreen(vid)}>
-              <Video
-                ref={ref}
-                source={{ uri: vid.url }}
-                resizeMode="stretch"
-                isLooping
-                onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-                style={{
-                  width: "100%",
-                  height: 165,
-                  marginTop: 5,
-                  alignSelf: "center",
-                }}
-              />
-            </TouchableOpacity>
+      <View style={{ width: 295, alignItems: "center" }} key={vid.id}>
+        <Card
+          style={{
+            marginTop: 15,
+            width: 335,
+            height: 245,
+            alignItems: "center",
+            backgroundColor: "#FAFAFA",
+          }}
+        >
+          <TouchableOpacity style={{ width: 335 }} onPress={() => VideoScreen(vid)}>
+            <Video
+              ref={ref}
+              source={{ uri: vid.url }}
+              resizeMode="stretch"
+              isLooping
+              onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+              style={{
+                width: "100%",
+                height: 165,
+                marginTop: 5,
+                alignSelf: "center",
+              }}
+            />
+          </TouchableOpacity>
 
-            <View style={{ justifyContent:'space-evenly' }}>
-              <Text style={styles.vidTitle}>{vid.title}</Text>
-              <Text style={styles.tag}>{vid.owner}</Text>
+          <View style={{ justifyContent: 'space-evenly' }}>
+            <Text style={styles.vidTitle}>{vid.title}</Text>
+            <Text style={styles.tag}>{vid.owner}</Text>
 
-              <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-                <Text style={styles.tag}>{vid.views}Views</Text>
-                <Text style={styles.tag}>{vid.stamp}</Text>
-              </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <Text style={styles.tag}>{vid.views}Views</Text>
+              <Text style={styles.tag}>{vid.stamp}</Text>
             </View>
-          </Card>
+          </View>
+        </Card>
 
-          <ItemSeperatorView />
-        </View>
-      ))
+        <ItemSeperatorView />
+      </View>
+    ))
     : null;
 };
 
@@ -96,7 +96,7 @@ export default function Home({ navigation, route, setData }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
-      navigation.navigate("PlayVideo", {data});
+      navigation.navigate("PlayVideo", { data });
     },
     Logout = () => {
       auth.signOut();
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
   },
 
   tag: {
-    paddingVertical:2,
+    paddingVertical: 2,
     fontSize: 12,
   },
 });
