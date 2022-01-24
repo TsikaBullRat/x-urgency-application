@@ -67,36 +67,47 @@ export default function UploadVideo({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    height: 850,
   },
-  logo: {
-    width: 305,
-    height: 159,
-    marginBottom: 20,
+  imgContainer: {
+    alignItems: 'center',
   },
   instructions: {
     color: '#888',
     fontSize: 18,
     marginHorizontal: 15,
-    marginTop: 500,
-  },
-  button: {
-    backgroundColor: 'blue',
-    padding: 20,
-    borderRadius: 5,
-    marginTop: 30
-  },
-  buttonText: {
-    fontSize: 20,
-    color: '#fff',
+    paddingTop: 150, 
+  }, 
+  logo: {
+    width: 270,
+    height: 270,
+    marginLeft: 20,
+    marginTop: 20,
   },
   thumbnail: {
     width: 300,
     height: 300,
-    marginTop: 550,
+    marginTop: 100,
     resizeMode: 'contain',
+  },
+  button1: {
+    backgroundColor: '#F47066',
+    padding: 20,
+    marginTop: 30,
+    marginLeft: 20, 
+    borderRadius: 5,  
+  },
+  button: {
+    backgroundColor: '#F47066',
+    padding: 20,
+    marginTop: 30,
+    borderRadius: 5,  
+    alignSelf: 'center'
+  },
+  buttonText: {
+    fontSize: 20,
+    color: '#fff', 
   },
 });

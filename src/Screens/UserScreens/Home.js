@@ -1,188 +1,214 @@
 /**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 07/10/2021 - 10:05:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 07/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
+ * @description      :
+ * @author           : MLab
+ * @group            :
+ * @created          : 07/10/2021 - 10:05:53
+ *
+ * MODIFICATION LOG
+ * - Version         : 1.0.0
+ * - Date            : 07/10/2021
+ * - Author          : MLab
+ * - Modification    :
+ **/
 /**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 05/10/2021 - 14:22:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 05/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, ScrollView, Text, TouchableOpacity, } from 'react-native';
-import { Video, } from 'expo-av';
-import { Card } from 'react-native-paper';
-import { auth, LoadSet } from '../../firebase';
-import Header from '../../Components/Header'
-import Menu from '../../Components/Menu'
+ * @description      :
+ * @author           : MLab
+ * @group            :
+ * @created          : 05/10/2021 - 14:22:53
+ *
+ * MODIFICATION LOG
+ * - Version         : 1.0.0
+ * - Date            : 05/10/2021
+ * - Author          : MLab
+ * - Modification    :
+ **/
+import React, { useState, useEffect, useRef } from "react";
+import {
+  View,
+  StyleSheet,
+  //ScrollView,
+  Text,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+import { Video } from "expo-av";
+import { Card } from "react-native-paper";
+import { auth, LoadSet } from "../../firebase";
+import Header from "../../Components/Header";
+import Menu from "../../Components/Menu";
 
-export default function Home({ navigation }) {
-  const Logout = () => {
-    auth.signOut()
-  }
-  const [videos, setLoad] = useState(null);
+const VideoList = ({ videos, VideoScreen }) => {
+  const [status, setStatus] = useState({});
+  const ref = useRef(null);
+
+  return videos
+    ? videos.map((vid) => (
+        <View style={{ width: 295, alignItems: "center" }} key={vid.id}>
+          <Card
+            style={{
+              marginTop: 15,
+              width: 335,
+              height: 245,
+              alignItems: "center",             
+              backgroundColor: "#FAFAFA",
+            }}
+          >
+            <TouchableOpacity style={{ width: 335 }} onPress={()=>VideoScreen(vid)}>
+              <Video
+                ref={ref}
+                source={{ uri: vid.url }}
+                resizeMode="stretch"
+                isLooping
+                onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+                style={{
+                  width: "100%",
+                  height: 165,
+                  marginTop: 5,
+                  alignSelf: "center",
+                }}
+              />
+            </TouchableOpacity>
+
+            <View style={{ justifyContent:'space-evenly' }}>
+              <Text style={styles.vidTitle}>{vid.title}</Text>
+              <Text style={styles.tag}>{vid.owner}</Text>
+
+              <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                <Text style={styles.tag}>{vid.views}Views</Text>
+                <Text style={styles.tag}>{vid.stamp}</Text>
+              </View>
+            </View>
+          </Card>
+
+          <ItemSeperatorView />
+        </View>
+      ))
+    : null;
+};
+
+const ItemSeperatorView = () => {
+  return (
+    <View style={{ height: 0.5, width: "100%", backgroundColor: "#c8c8c8" }} />
+  );
+};
+
+export default function Home({ navigation, route, setData }) {
+  const [videos, setLoad] = useState(null),
+    ref = useRef(null),
+    VideoScreen = (data) => {
+      navigation.navigate("PlayVideo", {data});
+    },
+    Logout = () => {
+      auth.signOut();
+    };
 
   useEffect(() => {
-    LoadSet(setLoad)
-  }, [])
-
-  useEffect(() => {
-    console.log(videos)
-  }, [])
+    LoadSet(setLoad);
+    console.log(videos);
+  }, []);
 
   const [status, setStatus] = React.useState({});
   return (
-    <View style={styles.contain}>
-      <Text onPress={Logout}>X</Text>
-      <Header />
-      <Menu />
-      {/*---------------------- Video Scroll View--------------------*/}
-      <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
+    <View style={styles.container}>
+      <View style={{ width: 295 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+          }}
+        >
+          <Header />
+          <TouchableOpacity>
+            <Image
+              source={require("../../images/logOut.png")}
+              style={styles.logoutIMG}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <Menu list={videos} setVids={setLoad} />
+        {/*---------------------- Video Scroll View--------------------*/}
+        {/* <ScrollView style={{height:555}} 
+      vertical={true} showsVerticalScrollIndicator={false}> */}
         <Card style={styles.menu2}>
           <View>
-            {videos ? (videos.map(vid => (
-              <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }} key={vid.id}>
-                <Video
-                  // ref={vid.url}
-                  source={{ uri: vid.url }}
-                  resizeMode="contain"
-                  isLooping
-                  onPlaybackStatusUpdate={status => setStatus(() => status)}
-                  style={{
-                    width: 315
-                  }}
-                />
-                <h4>{vid.title}</h4>
-              </TouchableOpacity>
-            ))) : (null)}
+            <VideoList videos={videos} VideoScreen={VideoScreen} />
           </View>
-        </Card  >
-      </ScrollView >
+        </Card>
+        {/* </ScrollView> */}
+      </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  contain: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff'
+  container: {
+    flex: 1,
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
+
+  logoutIMG: {
+    width: 15,
+    height: 15,
+    marginTop: -80,
+    marginLeft: -20,
+  },
+
   header: {
-    flexDirection: 'column',
-    paddingTop: 50
-  },
-  avatar: {
-    width: 70,
-    height: 70,
-    borderRadius: 50,
-    marginTop: 80,
+    fontWeight: "medium",
+    fontSize: 18,
+    color: "#F96056",
+    paddingTop: 20,
     borderBottomWidth: 3,
-    borderColor: 'turquoise',
-    shadowColor: 'grey',
+    borderColor: "turquoise",
+    shadowColor: "grey",
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.4,
     elevation: 1,
   },
-  txtCards: {
-    backgroundColor: 'lightgrey',
-    opacity: 0.8,
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    marginLeft: 28,
-    marginTop: 25,
-    borderBottomWidth: 2,
-    borderRightWidth: 2,
-    borderColor: 'turquoise',
-    shadowColor: 'blue',
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
+
+  avatar: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    borderBottomWidth: 3,
+    borderColor: "turquoise",
+    shadowColor: "grey",
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.4,
     elevation: 1,
   },
+
   menu: {
-    width: 355,
-    left: 10,
+    flexDirection: "row",
+    width: 320,
     marginTop: 20,
     borderRadius: 15,
-  },
-  strokeMenu: {
-    height: 30,
-    width: 30,
-    borderRadius: 15,
-    marginTop: 10,
-    color: '#fff',
-    marginLeft: 3,
-    marginTop: 10
-  },
-  heartMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginTop: 5,
-    marginLeft: 12
-  },
-  epilepsyMenu: {
-    height: 50,
-    width: 50,
-    borderRadius: 15,
-    marginLeft: 6
-  },
-  cprMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 5,
-    marginTop: 8
-  },
-  bloodMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginTop: 8
-  },
-  conImg: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 15,
-    marginTop: 8
-  },
-  drown: {
-    height: 40,
-    width: 40,
-    borderRadius: 15,
-    marginLeft: 15,
-    marginTop: 8,
-  },
-  burn: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 5,
-    marginTop: 8
   },
   menu2: {
-    width: 315,
-    height: 560,
-    marginTop: 20,
+    width: 320,
+    height: 520,
     borderRadius: 15,
-    alignItems: 'center'
+    shadowOffset: {},
+    shadowOpacity: 0.8,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  categoryListText: {
+    paddingLeft: 15,
+    fontSize: 17,
+    fontWeight: "bold",
+  },
+
+  vidTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+
+  tag: {
+    paddingVertical:2,
+    fontSize: 12,
   },
 });
-

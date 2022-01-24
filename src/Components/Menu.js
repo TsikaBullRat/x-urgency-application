@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React from 'react';
-import { Text, View, StyleSheet, ScrollView, Image, TouchableOpacity, } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, Image, Pressable } from 'react-native';
 import { Card } from 'react-native-paper';
 import Stroke from '../images/stokeIc.png';
 import heart from '../images/heartAttack.png';
@@ -22,70 +22,85 @@ import choking from '../images/choke.png'
 import drown from '../images/drown.png'
 import burns from '../images/burn.png'
 
-export default function Header({ navigate }) {
+export default function Header({ list, setVids }) {
 
+  const Sort = (match) =>{
+    setVids(list.filter(item=>item.tag === match))
+  }
   return (
     <View style={styles.contain}>
       {/*----------------------Horizontal Menu----------------------*/}
-      <Card style={styles.menu}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <TouchableOpacity >
+ 
+        <ScrollView 
+        style={{maxWidth:335}}
+        horizontal={true} showsHorizontalScrollIndicator={false}>
+          <Pressable onPress={()=>Sort("stroke")}>
             <View>
               <Card style={{
-                width: 50, height: 70, borderRadius: 15, marginLeft: 18, alignItems: 'center', textAlign: 'center', marginTop: 7
+                width: 50, height: 70, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7
               }}
-                onPress={navigate}
+                
               >
                 <Image style={styles.strokeMenu} source={Stroke} />
                 <Text style={{ fontSize: 12 }}>Stroke</Text>
               </Card>
-            </View>
-          </TouchableOpacity>
+            </View> 
+          </Pressable>
+          <Pressable onPress={()=>Sort("heartattack")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7 }}>
               <Image style={styles.heartMenu} source={heart} />
               <Text style={{ paddingLeft: 10, fontSize: 12 }}>Heart-Attack</Text>
             </Card>
           </View>
+          </Pressable>
+          <Pressable onPress={()=>Sort("epilepsy")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.epilepsyMenu} source={epilepsy} />
               <Text style={{ fontSize: 12 }}>Epilepsy</Text>
             </Card>
           </View>
+          </Pressable>
+          <Pressable onPress={()=>Sort("cpr")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.cprMenu} source={cpr} />
               <Text style={{ paddingTop: 8, fontSize: 12 }}>CPR</Text>
             </Card>
           </View>
+          </Pressable>
+          <Pressable onPress={()=>Sort("bleeding")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.bloodMenu} source={bleeding} />
             </Card>
             <Text style={{ paddingLeft: 28, fontSize: 12 }}>Bleeding</Text>
           </View>
+          </Pressable>
+          <Pressable onPress={()=>Sort("choking")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.conImg} source={choking} />
               <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Choking</Text>
             </Card>
           </View>
+          </Pressable>
+          <Pressable onPress={()=>Sort("drowning")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.drown} source={drown} />
               <Text style={{ paddingLeft: 7, paddingTop: 3, fontSize: 12 }}>Drowning</Text>
             </Card>
           </View>
-          <TouchableOpacity>
+          </Pressable>
+          <Pressable onPress={()=>Sort("burn")}>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
               <Image style={styles.burn} source={burns} />
               <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
             </Card>
-          </TouchableOpacity>
-        </ScrollView>
-      </Card>
-
+          </Pressable>
+</ScrollView>
     </View>
   )
 }
@@ -97,7 +112,9 @@ const styles = StyleSheet.create({
   },
 
   menu: {
-    width: 355,
+    width: 335,
+    alignItems:'center',
+    justifyContent:'space-even',
     marginTop: 20,
     borderRadius: 15,
   },

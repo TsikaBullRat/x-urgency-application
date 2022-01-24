@@ -18,7 +18,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
-export default function ForgotPassword() {
+export default function ForgotPassword({navigation}) {
   const forgotPassword = () => {
     handleResetPassword("lindiwe.mpondo@gmail.com")
   }
@@ -31,15 +31,15 @@ export default function ForgotPassword() {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={76} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> X-urgency </Text>
+        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 20 }}> X-urgency </Text>
       </Card>
       <View style={styles.header} >
-        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>Reset Password</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5, marginLeft: 110 }}>Reset Password</Text>
       </View>
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={22} color="black" />
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 4, marginLeft: 5}} />
             <TextInput style={styles.txtUser}
               name='username' placeholder='Username'
             />
@@ -47,7 +47,7 @@ export default function ForgotPassword() {
         </Card>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 10, }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 2, }} />
             <TextInput style={styles.txtPass}
               name='password' placeholder='New Password'
             />
@@ -55,86 +55,100 @@ export default function ForgotPassword() {
         </Card>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 10, }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 2, }} />
             <TextInput style={styles.txtRePass}
               name='password' placeholder='Confirm Password'
             />
           </View>
         </Card>
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
-          <Text style={{ color: '#fff' }}>Reset Password </Text>
+          <Text style={{ color: '#fff' }}>RESET PASSWORD </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.signIn} onPress={Exit}>
-          <Text style={{ color: '#fff' }}>Exit</Text>
+          <Text style={{ color: '#fff' }}>EXIT</Text>
         </TouchableOpacity>
       </View>
     </View>
   )
 }
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    textAlign: 'center',
+    height: 950,
+    backgroundColor: '#fff'
+  },
   card: {
-    position: 'absolute',
     backgroundColor: '#F47066',
-    // filter: 'drop-shadow(0, 4, 4, rgba(0, 0, 0, 0.25))',
-    width: 375,
-    height: 280,
+    width: 325,
+    height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    textAlign: 'center',
+    marginLeft: 30,
   },
+
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
   },
+
   header: {
-    paddingTop: 300,
-    paddingLeft: 130,
-    paddingLeft: 150,
+    paddingTop: 5
   },
+
   txtUser: {
-    width: 320,
-    height: 50,
+    width: 260,
+    height: 35,
     borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
+    outlineColor: 'transparent',
+    backgroundColor: '#ffffff',
+    padding: 8,
+    paddingTop: 5
   },
+
   txtPass: {
-    width: 320,
+    width: 260,
     height: 50,
     borderRadius: 10,
-    outline: 'none',
-    border: 0,
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
+    backgroundColor: '#fff',
+    padding: 5,
+    paddingTop: 5
   },
+
   txtRePass: {
-    width: 320,
+    width: 260,
     height: 50,
     borderRadius: 10,
-    outline: 'none',
     border: 0,
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
+    backgroundColor: '#fff',
+    padding: 5,
+    paddingTop: 5
   },
+
   txtCards: {
-    backgroundColor: 'lightgrey',
-    width: 320,
+    backgroundColor: '#fff',
+    width: 280,
     height: 50,
     borderRadius: 10,
-    marginLeft: 28,
-    marginTop: 25
+    marginTop: 25,
+    borderWidth: 2,
+    borderColor: '#F47066',
+    marginLeft: 50,
   },
+
   signIn: {
     height: 50,
     width: 200,
-    marginLeft: 85,
-    marginTop: 20,
+    marginTop: 50,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginLeft: 80,
   },
+
 });

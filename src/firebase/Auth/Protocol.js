@@ -1,22 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { AuthScreens, DoctorsScreens, UserScreens } from "../../Screens";
-import { firestore } from "..";
+import { firestore, auth } from "..";
 
-const Check = ({ user }) => {
+const Check = ({ details, id }) => {
 
     const [statement, setStatement] = useState(null)
     const [busy, setBusy] = useState(true)
     // const What = firestore.collection("Doctors").doc(user).get()
     //     .then(doc=>doc.data())
-    useEffect(() => {
-        firestore.collection("Doctors").doc(user).get()
-            .then(doc => {
-                setStatement(doc.exists)
-                setBusy(false)
+    details? (
+        useEffect(() => {
+            firestore.collection("Doctors").doc(id).set({
+                Branch:details.Branch,
+                Contact:details.Contact,
+                Qualification:details.Qualification,
+                Specilization:details.Specilization,
+                verified:details.verified,
             })
+                .then(doc => {
+                    setStatement(true)
+                    setBusy(false)
+                })
+        }, [])
+    ) : (
+        useEffect(() => {
+            firestore.collection("Doctors").doc(id).get()
+                .then(doc => {
+                    setStatement(doc.exists)
+                    setBusy(false)
+                })
 
-    }, [])
+        }, [])
+    )
 
     // console.log(What)
     return (
@@ -35,13 +51,19 @@ const Check = ({ user }) => {
 
 }
 
-const Detector = ({ user }) => {
+const Detector = ({ id }) => {
+
+    const [details, setDetails] = useState(null)
+
+    useEffect(() => {
+        console.log(id)
+    }, [])
 
     return (
-        user ? (
-            <Check user={user.uid} />
+        id ? (
+            <Check id={id} details={details}/>
         ) : (
-            <AuthScreens />
+            <AuthScreens setDetails={setDetails} />
         )
     )
 
