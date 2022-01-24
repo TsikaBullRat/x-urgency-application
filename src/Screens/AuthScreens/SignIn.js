@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     outlineColor: 'transparent',
-
   },
 
   txtPass: {
@@ -134,6 +133,7 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     paddingTop: 15,
     borderRadius: 10,
+    outlineColor: "transparent",
     outlineColor: 'transparent',
   },
 

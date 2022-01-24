@@ -107,7 +107,7 @@ export default function Home({ navigation, route, setData }) {
     console.log(videos);
   }, []);
 
-  const [status, setStatus] = React.useState({});
+  //const [status, setStatus] = React.useState({});
   return (
     <View style={styles.container}>
       <View style={{ width: 295 }}>
@@ -180,6 +180,23 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
+  txtCards: {
+    backgroundColor: 'lightgrey',
+    opacity: 0.8,
+    width: 320,
+    height: 50,
+    borderRadius: 10,
+    marginLeft: 28,
+    marginTop: 25,
+    borderBottomWidth: 2,
+    borderRightWidth: 2,
+    borderColor: 'turquoise',
+    shadowColor: 'blue',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    elevation: 1,
+  },
 
   menu: {
     flexDirection: "row",
@@ -211,4 +228,4 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     fontSize: 12,
   },
-});
+})

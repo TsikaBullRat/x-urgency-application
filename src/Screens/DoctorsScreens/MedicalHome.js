@@ -25,16 +25,19 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
-import { Card } from 'react-native-paper';
-import { Video, } from 'expo-av';
+//import { Card } from 'react-native-paper';
+//import { Video, } from 'expo-av';
 import { auth, Exit } from '../../firebase';
 import { ProgressBar } from '../../Components';
 
 export default function MedicalHome({ navigation, progress, Log }) {
-  const Logout = () => {
+  const [done, setDone] = useState(true),
+ 
+   Logout = () => {
     auth.signOut();
-    setDone(false);
+    setDone(!done);
   };
+
   const videos = [
     {
       id: 1,
@@ -124,7 +127,7 @@ export default function MedicalHome({ navigation, progress, Log }) {
         {progress ? <ProgressBar status={progress} /> : null}
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <TouchableOpacity onPress={() => { navigation.navigate('Doctor') }}>
+          <TouchableOpacity onPress={Logout}>
             <Avatar
               style={styles.avatar}
               rounded
