@@ -61,7 +61,8 @@ export default function VideoScreen({ navigation, route}) {
       )
     },
     Navigate = async() =>{
-      navigation.navigate('Doctor', {data: data.match})
+      let match = data.match
+      navigation.navigate('Doctor', {match})
     };
 
   useEffect(() => {
@@ -70,7 +71,7 @@ export default function VideoScreen({ navigation, route}) {
 
   useEffect(()=>{
     Collect(data.firestore, setComments, setCount)
-  }, [comments])
+  }, [])
   
   return (
     <View style={styles.contain}>
@@ -122,7 +123,7 @@ export default function VideoScreen({ navigation, route}) {
                   <Dislikes data={data.firestore} />
                 </View>
 
-                <TouchableOpacity style={{ marginLeft: 40 }}>
+                <TouchableOpacity style={{ marginLeft: 40 }} onPress={()=>ShareItem(data.url)}>
                   <FontAwesome5
                     name="share"
                     size={20}

@@ -26,7 +26,7 @@ import burns from '../images/burn.png'
 export default function Header({ list, setVids }) {
 
   const Sort = (match) =>{
-    setVids(list.filter(item=>item.tag === match))
+    LoadSet(setVids, match)
   }
   return (
     <View style={styles.contain}>
@@ -45,7 +45,7 @@ export default function Header({ list, setVids }) {
               </Card>
             </View>
           </Pressable>
-          <Pressable onPress={()=>Sort("heartattack")}>
+          <Pressable onPress={()=>Sort("heart-attack")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7 }}>
               <Image style={styles.heartMenu} source={heart} />

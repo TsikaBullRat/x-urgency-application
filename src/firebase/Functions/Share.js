@@ -5,7 +5,7 @@ import { Share } from 'react-native';
 const ShareItem = async(url) => {
     try {
       const result = await Share.share({
-        URL: url,
+        url: url,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -18,7 +18,7 @@ const ShareItem = async(url) => {
         console.log("Could not share") // dismissed
       }
     } catch (error) {
-      alert(error.message);
+      console.log(error.message);
     }
 };
 

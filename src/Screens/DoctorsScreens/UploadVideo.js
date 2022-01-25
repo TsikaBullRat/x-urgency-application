@@ -13,7 +13,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { Upload } from '../../firebase'
+// import { UploadVideo } from '../../firebase'
 
 export default function UploadVideo({ navigation }) {
   let [selectedImage, setSelectedImage] = React.useState(null);
