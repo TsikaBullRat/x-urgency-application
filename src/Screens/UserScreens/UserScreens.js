@@ -3,24 +3,23 @@ import { } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home, PlayVideo, Clone, DoctorProfile } from '..';
 
-
 const Stack = createNativeStackNavigator()
 
 export const UserScreens = () => {
 
     const [match, setMatch] = useState(null)
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(match)
-    },[match])
+    }, [match])
     return (
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
             <Stack.Screen name="Home" options={{ headerShown: false }} >
-                {props=><Home {...props} setMatch={setMatch}/>}
+                {props => <Home {...props} setMatch={setMatch} />}
             </Stack.Screen>
             <Stack.Screen name="Doctor" options={{ headerShown: false }} >
-                {props=><DoctorProfile {...props} match={match} />}
+                {props => <DoctorProfile {...props} match={match} />}
             </Stack.Screen>
         </Stack.Navigator>
     )

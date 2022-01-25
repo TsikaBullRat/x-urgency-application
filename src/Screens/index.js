@@ -20,7 +20,6 @@ import DoctorSignUp from "./AuthScreens/DoctorSignUp"
 import MedicalHome from "./DoctorsScreens/MedicalHome"
 import DocSignUp from "./AuthScreens/DocSignUp"
 import Doctor from "./DoctorsScreens/Doctor"
-import DoctorProfile from "./UserScreens/Doctor";
 import Upload from "./DoctorsScreens/Upload"
 import Clone from "./Clone"
 import EmergencyContacts from "../Components/EmergencyContacts";

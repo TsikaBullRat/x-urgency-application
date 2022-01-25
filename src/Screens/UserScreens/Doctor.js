@@ -1,11 +1,11 @@
-import React, {useState, useEffect}from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
 //import SwitchSelector from "react-native-switch-selector";
 //import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
 import { firestore } from '../../firebase';
 
-const DoctorProfile = ({match, route}) => {
+const DoctorProfile = ({ match, route }) => {
 
     const info = route.params
     const options = [
@@ -52,14 +52,14 @@ const DoctorProfile = ({match, route}) => {
         }
 
     }
-    const getDoctorInfo = () =>{
+    const getDoctorInfo = () => {
         firestore.collection("Doctors").doc(match).get()
-            .then(doc=>{
+            .then(doc => {
                 setData(doc.data())
             })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getDoctorInfo()
     }, [])
 
@@ -103,7 +103,7 @@ const DoctorProfile = ({match, route}) => {
             </View>
             {About ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    {data?data.about:null}
+                    {data ? data.about : null}
                 </Text>
             </View> : <View></View>}
             {Qalification ? <View style={styles.words}>
