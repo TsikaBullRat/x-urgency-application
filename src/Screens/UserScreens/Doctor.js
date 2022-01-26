@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
-//import SwitchSelector from "react-native-switch-selector";
-//import { Avatar, Badge } from 'react-native-elements';
+import SwitchSelector from "react-native-switch-selector";
+import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
 import { firestore } from '../../firebase';
 
@@ -52,15 +52,16 @@ const DoctorProfile = ({ match, route }) => {
         }
 
     }
-    const getDoctorInfo = () => {
-        firestore.collection("Doctors").doc(match).get()
-            .then(doc => {
+    const getDoctorInfo = () =>{
+        firestore.collection("Doctors").doc(match.match).get()
+            .then(doc=>{
                 setData(doc.data())
             })
     }
 
     useEffect(() => {
         getDoctorInfo()
+        console.log(match)
     }, [])
 
     return (
@@ -80,7 +81,7 @@ const DoctorProfile = ({ match, route }) => {
                             containerStyle={{ position: 'absolute', top: -4, right: -4 }}
                         />
                     </View>
-                    <Text style={styles.textTitle}>Dr Sighn</Text>
+                    <Text style={styles.textTitle}>Dr. {match.owner}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
@@ -108,23 +109,21 @@ const DoctorProfile = ({ match, route }) => {
             </View> : <View></View>}
             {Qalification ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Becoming a doctor isn’t just a career move. Medicine is something that you devote your life to studying and practising
-                    After all, you will be making decisions that directly impact patients’ lives.
-                    It’s therefore essential that you understand the intricacies of the human body and have undergone the highest level of training.
-                    As such, a career in medicine is academically rigorous.
+                    {data.Qualification}
                 </Text>
             </View> : <View></View>}
             {Specialization ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Neurologists
-                    These are specialists in the nervous system, which includes the brain, spinal cord, and nerves.
-                    They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.
+                    {data.Specilization}
                 </Text>
             </View> : <View></View>}
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     Mr Sighn@gmail.com
-                    0730772725
+                    {"\n"}
+                    {data.Contact}
+                    {"\n"}
+                    {data.Branch}
                 </Text>
             </View> : <View></View>}
 
@@ -134,47 +133,47 @@ const DoctorProfile = ({ match, route }) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 10,
-        marginBottom: 15,
-        backgroundColor: '#fff',
-        height: 850,
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 10,
+      marginBottom: 15,
+      backgroundColor: '#fff',
+      height: 850,
     },
     textTitle: {
-        color: 'red',
-        fontSize: 25,
-        marginTop: 5,
+      color: 'red',
+      fontSize: 25,
+      marginTop: 5,
     },
     textTitle2: {
-        fontSize: 15,
-        marginTop: 20,
-        marginLeft: 5,
+      fontSize: 15,
+      marginTop: 20,
+      marginLeft: 5,
     },
     box: {
-        flexDirection: 'row',
+      flexDirection: 'row',
     },
     tab: {
-        paddingLeft: 5,
-        width: 380,
+      paddingLeft: 5,
+      width: 380,
     },
     avatar: {
-        width: 70,
-        height: 70,
-        borderRadius: 50,
-        margingTop: 80,
-        borderBottomWidth: 3,
-        borderColor: 'turquoise',
-        shadowColor: 'grey',
-        shadowOffset: { width: 1, height: 1 },
-        shadowOpacity: 0.4,
-        elevation: 1,
+      width: 70,
+      height: 70,
+      borderRadius: 50,
+      margingTop: 80,
+      borderBottomWidth: 3,
+      borderColor: 'turquoise',
+      shadowColor: 'grey',
+      shadowOffset: { width: 1, height: 1 },
+      shadowOpacity: 0.4,
+      elevation: 1,
     },
     words: {
-        width: 250,
-        textAlign: 'center',
-        alignSelf: 'center'
+      width: 250,
+      textAlign: 'center',
+      alignSelf: 'center'
     },
-});
+  });
 export default DoctorProfile;
