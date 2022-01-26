@@ -15,8 +15,8 @@ const Collect = async (doc, SetCollection, Count) => {
                 let time
                 let load = []
 
-                if(doc.data().comments !== undefined){
-                    if(doc.data().comments[0] !== null)
+                if (doc.data().comments !== undefined) {
+                    if (doc.data().comments[0] !== null)
                         count = doc.data().comments.length
                 }
 
@@ -64,38 +64,38 @@ const LoadSet = (Load, query) => {
         let today = new Date()
         let frame
         let frag
-        if(today.getFullYear() === date.getFullYear()){
-            if(today.getMonth() === date.getMonth()){
-                if(date.getDay() !== today.getDay()){
-                    if(today.getDate() === date.getDate()){
-                        if(today.getHours() === date.getHours()){
-                            if(today.getMinutes() === date.getMinutes()){
-                                if(today.getSeconds() === date.getSeconds()){
+        if (today.getFullYear() === date.getFullYear()) {
+            if (today.getMonth() === date.getMonth()) {
+                if (date.getDay() !== today.getDay()) {
+                    if (today.getDate() === date.getDate()) {
+                        if (today.getHours() === date.getHours()) {
+                            if (today.getMinutes() === date.getMinutes()) {
+                                if (today.getSeconds() === date.getSeconds()) {
                                     frame = "Now"
-                                }else{
+                                } else {
                                     frame = "A few seconds ago"
                                 }
-                            }else{
-                                frame = (today.getMinutes() - date.getMinutes()) !== 1?(today.getMinutes() - date.getMinutes()) +" minutes ago." : (today.getMinutes() - date.getMinutes()) +" minute ago."
+                            } else {
+                                frame = (today.getMinutes() - date.getMinutes()) !== 1 ? (today.getMinutes() - date.getMinutes()) + " minutes ago." : (today.getMinutes() - date.getMinutes()) + " minute ago."
                             }
-                        }else{
-                            frame = (today.getHours() - date.getHours()) !== 1?(today.getHours() - date.getHours()) +" hours ago." : (today.getHours() - date.getHours()) +" hour ago."
+                        } else {
+                            frame = (today.getHours() - date.getHours()) !== 1 ? (today.getHours() - date.getHours()) + " hours ago." : (today.getHours() - date.getHours()) + " hour ago."
                         }
-                    }else{
-                        frame = (today.getDate() - date.getDate()) !== 1?(today.getDate() - date.getDate()) +" days ago." : (today.getDate() - date.getDate()) +" day ago."
+                    } else {
+                        frame = (today.getDate() - date.getDate()) !== 1 ? (today.getDate() - date.getDate()) + " days ago." : (today.getDate() - date.getDate()) + " day ago."
                     }
-                }else{
-                    frame = ((today.getDate() - date.getDate())/7) !== 1?((today.getDate() - date.getDate())/7) + " weeks ago." : ((today.getDate() - date.getDate())/7) + " weeks ago."
+                } else {
+                    frame = ((today.getDate() - date.getDate()) / 7) !== 1 ? ((today.getDate() - date.getDate()) / 7) + " weeks ago." : ((today.getDate() - date.getDate()) / 7) + " weeks ago."
                 }
-            }else{
-                frame = (today.getMonth() - date.getMonth()) !== 1?(today.getMonth() - date.getMonth()) +" months ago." : (today.getMonth() - date.getMonth()) +" month ago."
+            } else {
+                frame = (today.getMonth() - date.getMonth()) !== 1 ? (today.getMonth() - date.getMonth()) + " months ago." : (today.getMonth() - date.getMonth()) + " month ago."
             }
-        }else{
-            if(((date.getMonth()+1)-(today.getMonth()+1) >= 1)){
-                frag = ((date.getMonth()+1)-(today.getMonth()+1))
+        } else {
+            if (((date.getMonth() + 1) - (today.getMonth() + 1) >= 1)) {
+                frag = ((date.getMonth() + 1) - (today.getMonth() + 1))
                 frag = 12 - frag
-                frame = frag !== 1?frag + " months ago." : frag + " months ago."
-            }else{
+                frame = frag !== 1 ? frag + " months ago." : frag + " months ago."
+            } else {
                 frame = (today.getFullYear() - date.getFullYear()) + " years ago"
             }
         }

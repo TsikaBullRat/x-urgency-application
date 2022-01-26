@@ -97,7 +97,7 @@ export default function Home({ navigation, setMatch }) {
         >
           <Header />
           <TouchableOpacity
-           onPress={Logout}>
+            onPress={Logout}>
             <Image
               source={require("../../images/logOut.png")}
               style={styles.logoutIMG}
