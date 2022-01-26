@@ -19,6 +19,7 @@ import { EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
 export default function ForgotPassword({ navigation }) {
+  
   const forgotPassword = () => {
     handleResetPassword("lindiwe.mpondo@gmail.com")
   }
@@ -41,7 +42,7 @@ export default function ForgotPassword({ navigation }) {
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={20} color="black" style={{ marginTop: 4, marginLeft: 5 }} />
             <TextInput style={styles.txtUser}
-              name='username' placeholder='Username'
+              name='email' placeholder='Email'
             />
           </View>
         </Card>
@@ -102,31 +103,30 @@ const styles = StyleSheet.create({
 
   txtUser: {
     width: 260,
-    height: 35,
+    height: 38,
+    paddingLeft: 10,
+    paddingTop: 15,
     borderRadius: 10,
     outlineColor: 'transparent',
-    backgroundColor: '#ffffff',
-    padding: 8,
-    paddingTop: 5
   },
 
   txtPass: {
     width: 260,
-    height: 50,
+    height: 38,
+    paddingLeft: 8,
+    paddingTop: 15,
     borderRadius: 10,
-    backgroundColor: '#fff',
-    padding: 5,
-    paddingTop: 5
+    outlineColor: "transparent",
+
   },
 
   txtRePass: {
     width: 260,
-    height: 50,
+    height: 38,
     borderRadius: 10,
-    border: 0,
-    backgroundColor: '#fff',
     padding: 5,
-    paddingTop: 5
+    paddingTop: 5,
+    outlineColor: 'transparent',
   },
 
   txtCards: {
