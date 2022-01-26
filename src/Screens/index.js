@@ -25,7 +25,7 @@ import Upload from "./DoctorsScreens/Upload"
 import Clone from "./Clone"
 import EmergencyContacts from "../Components/EmergencyContacts";
 
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, DocSignUp, MedicalHome, Doctor, Upload, Clone, EmergencyContacts }
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorProfile, DoctorSignUp, DocSignUp, MedicalHome, Doctor, Upload, Clone, EmergencyContacts }
 
 export { UserScreens } from './UserScreens/UserScreens'
 export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'

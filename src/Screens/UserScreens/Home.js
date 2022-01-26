@@ -71,8 +71,10 @@ export default function Home({ navigation, setMatch }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
-      setMatch(data.match)
-      navigation.navigate("PlayVideo", {data});
+      let match = data.match
+       let owner = data.owner
+       setMatch({match, owner})
+       navigation.navigate("PlayVideo", {data});
     },
     Logout = () => {
       auth.signOut();
