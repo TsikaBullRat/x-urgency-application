@@ -32,6 +32,7 @@ export default function SignIn({navigation, setDone}) {
   const Login = () => {
     handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
+    navigation.navigate('Home')
   }
   return (
     <View style={styles.container}>
@@ -119,21 +120,23 @@ const styles = StyleSheet.create({
     paddingTop: 25,
   },
 txtUser: {
-    width: 260,
+    width: 220,
     height: 38,
-    paddingLeft: 10,
-    paddingTop: 15,
-    borderRadius: 10,
-    outline: 'none',
-  },
-
-  txtPass: {
-    width: 260,
-    height: 38,
+    marginTop: 5,
     paddingLeft: 8,
     paddingTop: 15,
     borderRadius: 10,
-    outline: 'none',
+    outlineColor: '#fff',
+  },
+
+  txtPass: {
+    width: 220,
+    height: 38,
+    marginTop: 5,
+    paddingLeft: 8,
+    paddingTop: 15,
+    borderRadius: 10,
+    outlineColor: '#fff',
   },
 
   txtCards: {
