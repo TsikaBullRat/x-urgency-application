@@ -22,19 +22,22 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React, {useState, useEffect} from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
-import { Video, } from 'expo-av';
+import { Video } from 'expo-av';
 import { auth, Exit } from '../../firebase';
 import { ProgressBar } from '../../Components';
 
 export default function MedicalHome({ navigation, progress, Log }) {
-  const Logout = () => {
-    auth.signOut();
-    setDone(false);
-  };
+  const [done, setDone] = useState(true),
+
+    Logout = () => {
+      auth.signOut();
+      setDone(!done);
+    };
+
   const videos = [
     {
       id: 1,
@@ -85,9 +88,9 @@ export default function MedicalHome({ navigation, progress, Log }) {
     [loading, setLoading] = useState(null);
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
 
-  useEffect(()=>{
-    if(progress === 100)Log(null)
-  },[progress])
+  useEffect(() => {
+    if (progress === 100) Log(null)
+  }, [progress])
 
   return (
     <View style={styles.contain}>
@@ -121,10 +124,10 @@ export default function MedicalHome({ navigation, progress, Log }) {
             In Da House
           </Text>
         </View>
-        {progress?<ProgressBar status={progress}/>: null}
+        {progress ? <ProgressBar status={progress} /> : null}
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <TouchableOpacity onPress={() => { navigation.navigate('Doctor') }}>
+          <TouchableOpacity onPress={Logout}>
             <Avatar
               style={styles.avatar}
               rounded
@@ -187,7 +190,7 @@ const styles = StyleSheet.create({
   contain: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff', 
+    backgroundColor: '#fff',
   },
   header: {
     flexDirection: 'column',
@@ -197,7 +200,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 55, 
+    marginTop: 55,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
     shadowColor: 'grey',
@@ -206,7 +209,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   menu2: {
-    width: 355, 
+    width: 355,
     height: 550,
     marginLeft: 10,
     marginTop: 50,
@@ -214,17 +217,17 @@ const styles = StyleSheet.create({
   },
   shadowProp: {
     shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
+    shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },
-  btnUpload: { 
+  btnUpload: {
     backgroundColor: '#F47066',
     height: 40,
     width: 40,
-    borderRadius: 50, 
+    borderRadius: 50,
     textAlign: 'center',
-    marginLeft: 290, 
-    marginTop: 15        
+    marginLeft: 290,
+    marginTop: 15
   },
 });

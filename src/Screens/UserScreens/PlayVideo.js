@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -20,17 +20,20 @@ import { Avatar } from 'react-native-elements';
 import { Video, } from 'expo-av';
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
-import { auth, firestore, Count, Collect } from '../../firebase';
+import { auth, firestore, Collect, Post, ShareItem } from '../../firebase';
 import { Comments } from '../../Components';
 
-export default function VideoScreen({ navigation, data }) {
+export default function VideoScreen({ navigation, route }) {
 
+  const { data } = route.params
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.url)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
   const refrence = useRef(data.url)
+  const [info, setInfo] = useState()
   const [comments, setComments] = useState([]),
+    [comment, setComment] = useState(""),
     [visibleStatusBar, setVisibleStatusBar] = useState(false),
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar);
@@ -44,9 +47,7 @@ export default function VideoScreen({ navigation, data }) {
     },
     addAct = async () => {
       let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts')
-      let find = metadata.doc(auth.currentUser.uid).get()
-      let found = await find.then(doc => doc.exists)
-
+      let found = (await metadata.doc(auth.currentUser.uid).get()).exists
       found ? (
         null
       ) : (
@@ -59,37 +60,32 @@ export default function VideoScreen({ navigation, data }) {
         })
       )
     },
-    Collect = async () => {
-      firestore.collection('Videos').doc(data.firestore).collection('Acts')
-        .onSnapshot(query => {
-          query.forEach(doc => {
-            // let filter = doc.data()
-            setComments([...comments, doc.data().comments])
-            console.log(comments)
-          })
-        })
+    Navigate = async () => {
+      let match = data.match
+      navigation.navigate('Doctor', { match })
     };
 
   useEffect(() => {
     addAct()
-    Collect()
-    console.log(comments)
   }, [])
+
+  useEffect(() => {
+    Collect(data.firestore, setComments, setCount)
+  }, [])
+
   return (
     <View style={styles.contain}>
-      <View style={{ width: 365 }}>
+      <View style={{ width: 315, marginLeft: 10, marginTop: 50 }}>
         <Video
           ref={refrence}
           source={{ uri: videoPlay }}
-          rate={1.0}
-          volume={1.0}
-          isMuted
           useNativeControls
           resizeMode="contain"
           isLooping
           style={{ borderRadius: 25, width: 350, height: 180, }}
         />
       </View>
+
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View>
@@ -107,8 +103,9 @@ export default function VideoScreen({ navigation, data }) {
               </TouchableOpacity>
             </View>
             <Text style={{ fontSize: 10, paddingLeft: 35 }}>
-              1.7M views - 2years ago
+              {data.views} views - {data.stamp}
             </Text>
+
             <Card
               style={{
                 borderColor: 'black',
@@ -121,18 +118,22 @@ export default function VideoScreen({ navigation, data }) {
                 <View>
                   <Likes data={data.firestore} />
                 </View>
+
                 <View style={{ marginLeft: 32, marginTop: 3 }}>
                   <Dislikes data={data.firestore} />
                 </View>
-                <View style={{ marginLeft: 40 }}>
+
+                <TouchableOpacity style={{ marginLeft: 40 }} onPress={() => ShareItem(data.url)}>
                   <FontAwesome5
                     name="share"
                     size={20}
                     color="black"
                     style={{ marginLeft: 11 }}
+                    onPress={() => ShareItem(data.url)}
                   />
                   <Text style={{ paddingTop: 5 }}> Share </Text>
-                </View>
+                </TouchableOpacity>
+
                 <View style={{ marginLeft: 32 }}>
                   <Entypo
                     name="save"
@@ -144,6 +145,7 @@ export default function VideoScreen({ navigation, data }) {
                 </View>
               </View>
             </Card>
+
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
               <Avatar
@@ -152,15 +154,32 @@ export default function VideoScreen({ navigation, data }) {
                   uri: 'https://randomuser.me/api/portraits/men/41.jpg',
                 }}
                 size="medium"
-                onPress={() => navigation.navigate('Doctor')}
+                onPress={Navigate}
               />
               <Text style={{ paddingTop: 15, paddingLeft: 15 }} >
                 {data.owner}
               </Text>
             </View>
+
+            <Card style={[styles.txtCards, styles.shadowProp]}>
+              <View style={{ flexDirection: 'row' }}>
+                <TextInput
+                  style={styles.comment}
+                  name="comment"
+                  placeholder="Write a comment"
+                  onChangeText={text => setComment(text)}
+                />
+                <View style={{ width: 90, height: 70, borderRadius: 25, marginTop: 7, marginRight: 10, }}>
+                  <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title='Comment'
+                  />
+                </View>
+              </View>
+            </Card>
+
           </View>
         ) : (
-          //Hidden Description
+          //Hidden Description  
+
           <View>
             <Card
               style={{
@@ -183,47 +202,29 @@ export default function VideoScreen({ navigation, data }) {
                     {data.description}
                   </Text>
                 </Text>
-                <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()} >
-                  <AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} />
+
+                <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
+                  <AntDesign
+                    name="closecircle"
+                    size={18}
+                    color="black"
+                    style={{ marginLeft: 182 }}
+                  />
                 </TouchableOpacity>
               </View>
               <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
-                1.7M views - {data.stamps}
+                {data.views} views - {data.stamps}
               </Text>
               <Card
                 style={{
-                  borderColor: 'black',
-                  width: 315,
-                  marginTop: 5,
-                  marginLeft: 25,
+                  marginTop: 10,
+                  marginLeft: 12,
+                  width: 255,
                 }}>
-                <View
-                  style={{ flexDirection: 'row', marginTop: 5, marginLeft: 3 }}>
-                  <View>
-                    <Likes />
-                  </View>
-                  <View style={{ marginLeft: 32, marginTop: 3 }}>
-                    <Dislikes />
-                  </View>
-                  <View style={{ marginLeft: 40 }}>
-                    <FontAwesome5
-                      name="share"
-                      size={20}
-                      color="black"
-                      style={{ marginLeft: 11 }}
-                    />
-                    <Text style={{ paddingTop: 5 }}> Share </Text>
-                  </View>
-                  <View style={{ marginLeft: 32 }}>
-                    <Entypo
-                      name="save"
-                      size={20}
-                      color="black"
-                      style={{ marginLeft: 8 }}
-                    />
-                    <Text style={{ paddingTop: 5 }}> Save </Text>
-                  </View>
-                </View>
+                <Text>Stroke Emergency Video</Text>
+                <Text style={{ fontSize: 10, color: 'gray' }}>
+                  {data.views} Views
+                </Text>
               </Card>
               <View
                 style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
@@ -238,27 +239,27 @@ export default function VideoScreen({ navigation, data }) {
               </View>
             </Card>
           </View>
-
         )}
       </View>
       {/* <Comments video={data.firestore} /> */}
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
+        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 15 }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
 
-          <Card style={{
-            backgroundColor: 'silver', height: 100,
-            marginTop: 10
-          }}>
-            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-              <SafeAreaView style={{ color: 'red' }}>This person</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-            </Text>
-          </Card>
+          {comments.map((item, index) =>
+            <Card style={{
+              backgroundColor: 'silver', height: 100,
+              marginTop: 10
+            }}
+              key={index}>
+              <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
+                <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>
+              </SafeAreaView>
+            </Card>
+          )}
 
         </Card>
       </ScrollView>
-      <TextInput placeholder="Comment" style={styles.commentBox} onChangeText={text=>setComment(text)}/>
     </View>
   )
 }
@@ -272,20 +273,36 @@ const styles = StyleSheet.create({
     marginLeft: 110,
   },
   txtCards: {
-    backgroundColor: 'lightgrey',
-    width: 285,
-    height: 40,
-    borderRadius: 10,
     marginLeft: 20,
+    backgroundColor: 'lightgrey',
+    width: 315,
+    height: 50,
+    borderRadius: 10,
     marginTop: 5,
     borderWidth: 1,
     borderColor: '#F47066'
+  },
+
+  comment: {
+    width: 260,
+    height: 38,
+    borderRadius: 10,
+    outlineColor: 'transparent',
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
+  },
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
   comment: {
     width: 260,
     height: 38,
     borderRadius: 10,
-    outline: 'none',
+    outlineColor: 'transparent',
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },

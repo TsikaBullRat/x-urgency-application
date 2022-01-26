@@ -16,22 +16,22 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 // You can import from local files
 import { auth, Detector } from './src/firebase'
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { EmergencyContacts } from "./src/Screens";
 
 export default function App() {
-
-  const [id, setID] = useState(null),
-    [checked, setChecked] = useState(false)
+  const [user, setUser] = useState(),
+    [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => user?setID(user.uid):null)
+    auth.onAuthStateChanged(user => user ? setUser(user.uid) : null)
     setChecked(true)
-  }, [id])
+  })
 
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
         {checked ? (
-          <Detector id={id} />
+          <Detector id={user} />
         ) : (
           // Login/Sign functions
           <View style={styles.loader}>
@@ -45,7 +45,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   loader: {
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center"
   }
-})
+});

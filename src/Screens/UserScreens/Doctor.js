@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
+import { firestore } from '../../firebase';
 
-const DoctorProfile = () => {
+const DoctorProfile = ({ match, route }) => {
 
+    const info = route.params
     const options = [
         { label: "About ", value: "About" },
         { label: "Qualification", value: "Qualification" },
         { label: "Specialization", value: "Specialization" },
         { label: "Contact", value: "Contact" }
     ];
-    const [About, setAbout] = React.useState(true);
-    const [Qalification, setQualification] = React.useState(false);
-    const [Specialization, setSpecialization] = React.useState(false);
-    const [Contact, setContact] = React.useState(false);
+    const [About, setAbout] = useState(true);
+    const [Qalification, setQualification] = useState(false);
+    const [Specialization, setSpecialization] = useState(false);
+    const [Contact, setContact] = useState(false);
+    const [data, setData] = useState(null);
 
-    const check = ((value) => {
+    const check = (value) => {
 
         if (value == 'About') {
             setAbout(true)
@@ -48,7 +51,18 @@ const DoctorProfile = () => {
 
         }
 
-    })
+    }
+    const getDoctorInfo = () =>{
+        firestore.collection("Doctors").doc(match.match).get()
+            .then(doc=>{
+                setData(doc.data())
+            })
+    }
+
+    useEffect(() => {
+        getDoctorInfo()
+        console.log(match)
+    }, [])
 
     return (
         <>
@@ -67,7 +81,7 @@ const DoctorProfile = () => {
                             containerStyle={{ position: 'absolute', top: -4, right: -4 }}
                         />
                     </View>
-                    <Text style={styles.textTitle}>Dr Sighn</Text>
+                    <Text style={styles.textTitle}>Dr. {match.owner}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
@@ -90,30 +104,26 @@ const DoctorProfile = () => {
             </View>
             {About ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Hi I am Dr Sighn , I have a major in neurosurgery.
-                    To become a nuerosurgent you have to study for 7to8 years in residency to optain a degree in Doctor of medicine(M.D).
-                    I really love the work I do , I'm a very determined person and devoted to being a Dr.
+                    {data ? data.about : null}
                 </Text>
             </View> : <View></View>}
             {Qalification ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Becoming a doctor isn’t just a career move. Medicine is something that you devote your life to studying and practising
-                    After all, you will be making decisions that directly impact patients’ lives.
-                    It’s therefore essential that you understand the intricacies of the human body and have undergone the highest level of training.
-                    As such, a career in medicine is academically rigorous.
+                    {data.Qualification}
                 </Text>
             </View> : <View></View>}
             {Specialization ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Neurologists
-                    These are specialists in the nervous system, which includes the brain, spinal cord, and nerves.
-                    They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.
+                    {data.Specilization}
                 </Text>
             </View> : <View></View>}
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     Mr Sighn@gmail.com
-                    0730772725
+                    {"\n"}
+                    {data.Contact}
+                    {"\n"}
+                    {data.Branch}
                 </Text>
             </View> : <View></View>}
 
