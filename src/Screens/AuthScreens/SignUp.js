@@ -31,7 +31,7 @@ export default function SignUp({ navigation }) {
   return (
     <View style={styles.container}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
-      
+
       <Card style={[styles.card, styles.shadowProp]}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
 
   header: {
     paddingTop: 205,
-    textAlign: 'center',  
+    textAlign: 'center',
   },
 
   txtUser: {
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
 
   shadowProp: {
     shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
+    shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },

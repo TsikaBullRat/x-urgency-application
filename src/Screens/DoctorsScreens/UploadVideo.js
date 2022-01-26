@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
     color: '#888',
     fontSize: 18,
     marginHorizontal: 15,
-    paddingTop: 150, 
-  }, 
+    paddingTop: 150,
+  },
   logo: {
     width: 270,
     height: 270,
@@ -96,18 +96,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#F47066',
     padding: 20,
     marginTop: 30,
-    marginLeft: 20, 
-    borderRadius: 5,  
+    marginLeft: 20,
+    borderRadius: 5,
   },
   button: {
     backgroundColor: '#F47066',
     padding: 20,
     marginTop: 30,
-    borderRadius: 5,  
+    borderRadius: 5,
     alignSelf: 'center'
   },
   buttonText: {
     fontSize: 20,
-    color: '#fff', 
+    color: '#fff',
   },
 });

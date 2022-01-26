@@ -9,14 +9,14 @@ const Check = ({ details, id }) => {
     const [busy, setBusy] = useState(true)
     // const What = firestore.collection("Doctors").doc(user).get()
     //     .then(doc=>doc.data())
-    details? (
+    details ? (
         useEffect(() => {
             firestore.collection("Doctors").doc(id).set({
-                Branch:details.Branch,
-                Contact:details.Contact,
-                Qualification:details.Qualification,
-                Specilization:details.Specilization,
-                verified:details.verified,
+                Branch: details.Branch,
+                Contact: details.Contact,
+                Qualification: details.Qualification,
+                Specilization: details.Specilization,
+                verified: details.verified,
             })
                 .then(doc => {
                     setStatement(true)
@@ -61,7 +61,7 @@ const Detector = ({ id }) => {
 
     return (
         id ? (
-            <Check id={id} details={details}/>
+            <Check id={id} details={details} />
         ) : (
             <AuthScreens setDetails={setDetails} />
         )

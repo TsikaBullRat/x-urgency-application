@@ -26,7 +26,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
-import { Video, AVPlaybackStatus } from 'expo-av';
+import { Video } from 'expo-av';
 import { auth } from '../firebase';
 export default function MedicalHome({ navigation }) {
   const Logout = () => {
