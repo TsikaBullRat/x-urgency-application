@@ -108,6 +108,17 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               />
             </View>
           </Card>
+          
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: "row" }}>
+              <TextInput
+                style={styles.txtField}
+                name="Email"
+                placeholder="Email"
+                onChangeText={(text) => setEmail(text)}
+              />
+            </View>
+          </Card>
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
@@ -128,87 +139,11 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               />
             </View>
           </Card>
-          <Card>
-            <View>
-                <Card style={{ height: 230 }}>
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Name' placeholder='Name' onChangeText={text => setName(text)}
-                            />
-                        </View>
-                    </Card>
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Surname' placeholder='Surname' onChangeText={text => setSurname(text)}
-                            />
-                        </View>
-                    </Card>
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Specialization' placeholder='Specialization' onChangeText={text => setSpecialization(text)}
-                            />
-                        </View>
-                    </Card>
 
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Qualification' placeholder='Qualification' onChangeText={text => setQualification(text)}
-                            />
-                        </View>
-                    </Card>
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Branch' placeholder='Branch' onChangeText={text => setBranch(text)}
-                            />
-                        </View>
-                    </Card>
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Contact Details' placeholder='Contact Details' onChangeText={text => setContactDetails(text)}
-                            />
-                        </View>
-                    </Card>
+            
 
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Email' placeholder='Email'
-                                onChangeText={text => setEmail(text)}
-                            />
-                        </View>
-                    </Card>
-
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Password' placeholder='Password'
-                                onChangeText={text => setPassword(text)}
-                            />
-                        </View>
-                    </Card>
-                    
-                    <Card style={styles.txtCards}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.txtField}
-                                name='Confirm Password' placeholder='Confirm Password'
-                                onChangeText={text => setConfirmPassword(text)}
-                            />
-                        </View>
-                    </Card>
-                </Card>
-
-                <View style={{ alignItems: 'center' }}>
-                    <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
-                        <Text style={{ color: '#fff' }}>SIGNIN </Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+                
+            
           </Card>
 
           <Card style={styles.txtCards}>
@@ -230,8 +165,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               />
             </View>
           </Card>
-        </Card>
-
+       
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
             <Text style={{ color: "#fff" }}>SIGNIN </Text>
@@ -242,56 +176,60 @@ export default function DoctorSignUp({ navigation, setDetails }) {
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-  },
-
-  card: {
-    backgroundColor: "#F47066",
-    width: 325,
-    height: 200,
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-  },
-
-  heartIcon: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 30,
-  },
-
-  header: {
-    paddingTop: 10,
-  },
-
-  txtField: {
-    width: 285,
-    height: 40,
-    borderRadius: 10,
-    outline: "none",
-    backgroundColor: "lightgrey",
-    paddingLeft: 10,
-  },
-
-  txtCards: {
-    backgroundColor: "lightgrey",
-    width: 285,
-    height: 40,
-    borderRadius: 10,
-    marginLeft: 2,
-    marginTop: 15,
-  },
-
-  signIn: {
-    height: 50,
-    width: 200,
-    marginTop: 280,
-    borderRadius: 10,
-    backgroundColor: "#F47066",
-    alignItems: "center",
-    justifyContent: "center",
+    container: {
+        alignItems: "center",
+        backgroundColor: '#fff',
+        height: 850
+    },
+    card: {
+        backgroundColor: "#F47066",
+        width: 325,
+        height: 200,
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+    },
+    heartIcon: {
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 30,
+    },
+    header: {
+        paddingTop: 10,
+    },
+    txtField: {
+        width: 285,
+        height: 35,
+        borderRadius: 10,
+        outline: "none",
+        backgroundColor: "lightgrey",
+        paddingLeft: 10,
+    },
+    txtCards: {
+        backgroundColor: "lightgrey",
+        width: 285,
+        height: 40,
+        borderRadius: 10,
+        marginLeft: 2,
+        marginTop: 15,
+        borderWidth: 1,
+    borderColor: '#F47066'
+    },
+    signIn: {
+        height: 50,
+        width: 200,
+        marginTop: 15,
+        borderRadius: 10,
+        backgroundColor: "#F47066",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2,     height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
   },
 });

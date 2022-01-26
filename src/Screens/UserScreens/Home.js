@@ -64,7 +64,8 @@ export default function Home({ navigation, setData }) {
                   overflow: 'hidden',
                   borderRadius: 25,
                   marginTop: 20,
-                  marginBottom: 20 
+                  marginBottom: 20,
+                  marginLeft: 20
                 }}>
                   <Video
                     // ref={vid.url}
@@ -85,112 +86,46 @@ export default function Home({ navigation, setData }) {
 }
 
 const styles = StyleSheet.create({
-  contain: {
+  container: { 
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff' 
   },
   header: {
     flexDirection: 'column',
-    paddingTop: 50
+    paddingTop: 5, 
+    marginLeft: 15,
   },
   avatar: {
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 80,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
     shadowColor: 'grey',
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.4,
     elevation: 1,
-  },
-  txtCards: {
-    backgroundColor: 'lightgrey',
-    opacity: 0.8,
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    marginLeft: 28,
-    marginTop: 25,
-    borderBottomWidth: 2,
-    borderRightWidth: 2,
-    borderColor: 'turquoise',
-    shadowColor: 'blue',
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    elevation: 1,
-  },
+  },  
   menu: {
-    width: 355,
-    left: 10,
-    marginTop: 20,
-    borderRadius: 15,
-  },
-  strokeMenu: {
-    height: 30,
-    width: 30,
-    borderRadius: 15,
-    marginTop: 10,
-    color: '#fff',
-    marginLeft: 3,
-    marginTop: 10
-  },
-  heartMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginTop: 5,
-    marginLeft: 12
-  },
-  epilepsyMenu: {
-    height: 50,
-    width: 50,
-    borderRadius: 15,
-    marginLeft: 6
-  },
-  cprMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 5,
-    marginTop: 8
-  },
-  bloodMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginTop: 8
-  },
-  conImg: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 15,
-    marginTop: 8
-  },
-  drown: {
-    height: 40,
-    width: 40,
-    borderRadius: 15,
-    marginLeft: 15,
-    marginTop: 8,
-  },
-  burn: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 5,
-    marginTop: 8
-  },
+    flexDirection: 'row',
+    width: 320, 
+    marginTop: 20,  
+    borderRadius: 15, 
+  }, 
   menu2: {
-    width: 315,
-    height: 560,
-    marginTop: 20,
+    width: 320, 
+    height: 520,    
     borderRadius: 15,
-    alignItems: 'center'
+    shadowOffset: {}, 
+    shadowOpacity: 0.8,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
+  categoryListText: {
+    paddingLeft: 15, 
+    fontSize: 17,
+    fontWeight: 'bold'
+  }
 });
 

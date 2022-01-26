@@ -20,16 +20,17 @@ import { Avatar } from 'react-native-elements';
 import { Video, } from 'expo-av';
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
-import { auth, firestore, Count } from '../../firebase';
+import { auth, firestore, Count, Collect } from '../../firebase';
+import { Comments } from '../../Components';
 
-export default function Strokes({ navigation, data }) {
+export default function VideoScreen({ navigation, data }) {
 
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.url)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
   const refrence = useRef(data.url)
-  const [comments, setComments] = useState({ userName }),
+  const [comments, setComments] = useState([]),
     [visibleStatusBar, setVisibleStatusBar] = useState(false),
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar);
@@ -44,7 +45,7 @@ export default function Strokes({ navigation, data }) {
     addAct = async () => {
       let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts')
       let find = metadata.doc(auth.currentUser.uid).get()
-      let found = await find.then(doc => doc.exist)
+      let found = await find.then(doc => doc.exists)
 
       found ? (
         null
@@ -57,12 +58,23 @@ export default function Strokes({ navigation, data }) {
           user: auth.currentUser.email
         })
       )
+    },
+    Collect = async () => {
+      firestore.collection('Videos').doc(data.firestore).collection('Acts')
+        .onSnapshot(query => {
+          query.forEach(doc => {
+            // let filter = doc.data()
+            setComments([...comments, doc.data().comments])
+            console.log(comments)
+          })
+        })
     };
 
-      useEffect(() => {
-        addAct()
-        setCount(Count(data.firestore))
-      }, [])
+  useEffect(() => {
+    addAct()
+    Collect()
+    console.log(comments)
+  }, [])
   return (
     <View style={styles.contain}>
       <View style={{ width: 365 }}>
@@ -231,50 +243,57 @@ export default function Strokes({ navigation, data }) {
       </View>
       {/* <Comments video={data.firestore} /> */}
       <ScrollView showsVerticalScrollIndicator={false}>
-            <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
-                <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
-                <TextInput placeholder="Comment" />
-                <Card style={{
-                    backgroundColor: 'silver', height: 100,
-                    marginTop: 10
-                }}>
-                    <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-                        <SafeAreaView style={{ color: 'red' }}>This person</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-                        dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
-                    </Text>
-                </Card>
-            </Card>
-        </ScrollView>
+        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
+          <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
+
+          <Card style={{
+            backgroundColor: 'silver', height: 100,
+            marginTop: 10
+          }}>
+            <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
+              <SafeAreaView style={{ color: 'red' }}>This person</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
+              dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+            </Text>
+          </Card>
+
+        </Card>
+      </ScrollView>
+      <TextInput placeholder="Comment" style={styles.commentBox} onChangeText={text=>setComment(text)}/>
     </View>
   )
 }
 const styles = StyleSheet.create({
   contain: {
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
   },
-
-  header: {
-    paddingLeft: 30,
-    paddingTop: 50
+  dropDown: {
+    marginLeft: 110,
   },
-
   txtCards: {
     backgroundColor: 'lightgrey',
-    width: 320,
-    height: 50,
+    width: 285,
+    height: 40,
     borderRadius: 10,
-    marginTop: 25,
+    marginLeft: 20,
+    marginTop: 5,
+    borderWidth: 1,
+    borderColor: '#F47066'
   },
-
-  strokeVid: {
-    height: 180,
-    width: 315,
-    borderRadius: 30,
-    marginTop: 50,
+  comment: {
+    width: 260,
+    height: 38,
+    borderRadius: 10,
+    outline: 'none',
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
   },
-
-  dropDown: {
-    marginLeft: 110
-  }
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
 });
 

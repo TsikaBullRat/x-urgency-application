@@ -6,4 +6,4 @@ export { LoadSet, UploadVideo } from './Storage/Storage.functions'
 export {Detector, Like} from './Auth/Protocol'
 import Exit from "./Auth/LogOut"
 export { Exit }
-export {Count } from './Firestore/Comments'
+export {Count, Collect } from './Firestore/Comments'

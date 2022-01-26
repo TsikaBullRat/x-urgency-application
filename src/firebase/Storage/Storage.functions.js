@@ -10,6 +10,18 @@ const LoadSet = (Load) => {
     var i = 0
     var getLink
     var data = firestore.collection('Videos')
+    const Collect = async (doc) => {
+        let collection = data.doc(doc).collection('Acts').where('comments', '!=', null)
+        window.comments = []
+        collection.onSnapshot(async query =>{
+            return await query.forEach(doc=>{
+                let item = doc.data().comments
+                window.comments = [...window.comments, item]
+                return window.comments
+            })
+        })
+        return window.comments
+    };
 
     storage.ref().child('').listAll()
         .then(res => {
@@ -21,9 +33,10 @@ const LoadSet = (Load) => {
                 let owner = find.owner
                 let firestore = itemRef.name.split('.')[0]
                 let description = find.description
-                console.log(find)
+                let comments = await Collect(itemRef.name.split('.')[0])
+                console.log(comments)
                 let stamp = find.added.toDate()
-                content = [...content, { id: i++, url: link, title: name, description: description, stamp: stamp, owner:owner, firestore: firestore }]
+                content = [...content, { id: i++, url: link, title: name, description: description, stamp: stamp, owner: owner, firestore: firestore }]
                 Load(content)
             })
 
