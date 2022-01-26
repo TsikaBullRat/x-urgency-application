@@ -17,7 +17,7 @@
     "expo-cli": "^4.3.0",
     "expo-constants": "^13.0.1",
     "express": "^4.17.1",
-    "firebase": "^8.10.0",
+    "firebase": "^9.6.4",
     "gsap": "^3.8.0",
     "prettier": "^2.4.1",
     "react": "16.9.0",
