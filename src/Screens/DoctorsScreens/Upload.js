@@ -21,7 +21,7 @@ import {
 } from "react-native";
 
 import { Card } from "react-native-paper";
-import { Upload } from "../../firebase";
+import { UploadVideo } from "../../firebase";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -48,7 +48,7 @@ export default function Clone({ navigation, Log }) {
     Run = () => {
       openImagePickerAsync();
       selectedImage ? (
-        Upload(selectedImage.localUri, title, description, selectedValue, Log),
+        UploadVideo(selectedImage.localUri, title, description, selectedValue, Log),
         navigation.goBack()
       ) : null
 

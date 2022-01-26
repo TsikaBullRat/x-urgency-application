@@ -19,13 +19,14 @@ import { AlertNote } from '../../Components/Alert';
 
 export default function SignUp({ navigation }) {
 
-  const [email, setEmail] = useState(""),
+  const [username, setUserName] = useState(""),
+  [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [ConfirmPassword, setConfirmPassword] = useState(""),
     [displayModal, setDisplayModal] = useState(false),
     [message, setMessage] = useState("")
   const Register = () => {
-    handleSignUp(email, password, ConfirmPassword, setEmail, setPassword, setConfirmPassword, setMessage)
+    handleSignUp(username, email, password, ConfirmPassword,  setUserName, setEmail, setPassword, setConfirmPassword, setMessage, )
     setDisplayModal(true)
   }
   return (
@@ -42,13 +43,21 @@ export default function SignUp({ navigation }) {
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>SignUp</Text>
       </View>
+      <Card style={[styles.txtCards, styles.shadowProp]}>
+          <View style={{ flexDirection: 'row' }}>
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <TextInput style={styles.txtUser}
+              name='username' placeholder='Username' onChangeText={text => setUserName(text)}
+            />
+          </View>
+        </Card>
 
       <View>
         <Card style={[styles.txtCards, styles.shadowProp]}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
             <TextInput style={styles.txtUser}
-              name='username' placeholder='Username' onChangeText={text => setEmail(text)}
+              name='email' placeholder='Email' onChangeText={text => setEmail(text)}
             />
           </View>
         </Card>
