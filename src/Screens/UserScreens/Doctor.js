@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
 //import SwitchSelector from "react-native-switch-selector";
 //import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
+import { firestore } from '../../firebase';
 
-const DoctorProfile = () => {
+const DoctorProfile = ({ match, route }) => {
 
+    const info = route.params
     const options = [
         { label: "About ", value: "About" },
         { label: "Qualification", value: "Qualification" },
         { label: "Specialization", value: "Specialization" },
         { label: "Contact", value: "Contact" }
     ];
-    const [About, setAbout] = React.useState(true);
-    const [Qalification, setQualification] = React.useState(false);
-    const [Specialization, setSpecialization] = React.useState(false);
-    const [Contact, setContact] = React.useState(false);
+    const [About, setAbout] = useState(true);
+    const [Qalification, setQualification] = useState(false);
+    const [Specialization, setSpecialization] = useState(false);
+    const [Contact, setContact] = useState(false);
+    const [data, setData] = useState(null);
 
-    const check = ((value) => {
+    const check = (value) => {
 
         if (value == 'About') {
             setAbout(true)
@@ -48,7 +51,17 @@ const DoctorProfile = () => {
 
         }
 
-    })
+    }
+    const getDoctorInfo = () => {
+        firestore.collection("Doctors").doc(match).get()
+            .then(doc => {
+                setData(doc.data())
+            })
+    }
+
+    useEffect(() => {
+        getDoctorInfo()
+    }, [])
 
     return (
         <>
@@ -90,9 +103,7 @@ const DoctorProfile = () => {
             </View>
             {About ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Hi I am Dr Sighn , I have a major in neurosurgery.
-                    To become a nuerosurgent you have to study for 7to8 years in residency to optain a degree in Doctor of medicine(M.D).
-                    I really love the work I do , I'm a very determined person and devoted to being a Dr.
+                    {data ? data.about : null}
                 </Text>
             </View> : <View></View>}
             {Qalification ? <View style={styles.words}>

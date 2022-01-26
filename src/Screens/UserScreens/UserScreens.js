@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { } from 'react-native';
-//import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home, PlayVideo, Clone, Doctor } from '..';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Home, PlayVideo, Clone, DoctorProfile } from '..';
 
 const Stack = createNativeStackNavigator()
 
 export const UserScreens = () => {
 
-    const [payload, setPayLoad] = useState(null)
+    const [match, setMatch] = useState(null)
 
     useEffect(() => {
-        console.log(payload)
-    }, [payload])
+        console.log(match)
+    }, [match])
     return (
         <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="PlayVideo" options={{ headerShown: false }} >
-                {props => <PlayVideo {...props} data={payload} />}
-            </Stack.Screen>
+            <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
             <Stack.Screen name="Home" options={{ headerShown: false }} >
-                {props => <Home {...props} setData={setPayLoad} />}
+                {props => <Home {...props} setMatch={setMatch} />}
             </Stack.Screen>
             <Stack.Screen name="Doctor" options={{ headerShown: false }} >
-                {props => <Doctor />}
+                {props => <DoctorProfile {...props} match={match} />}
             </Stack.Screen>
         </Stack.Navigator>
     )

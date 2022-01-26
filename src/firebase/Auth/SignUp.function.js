@@ -1,4 +1,3 @@
-import { firestore } from '..';
 import { auth } from '../config'
 const handleSignUp = (email, password, Confirmpassword, setMessage) => {
     if (password !== Confirmpassword) {

@@ -12,24 +12,26 @@
 **/
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button } from 'react-native';
-//import { Card } from 'react-native-paper';
+import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
-//import { Video, } from 'expo-av';
+import { Video, } from 'expo-av';
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
-import { auth, firestore, Count, Collect, Post } from '../../firebase';
+import { auth, firestore, Collect, Post, ShareItem } from '../../firebase';
+import { Comments } from '../../Components';
 
-export default function VideoScreen({ navigation, route}) {
+export default function VideoScreen({ navigation, route }) {
 
-  const {data} = route.params
+  const { data } = route.params
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.url)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
   const refrence = useRef(data.url)
+  const [info, setInfo] = useState()
   const [comments, setComments] = useState([]),
     [comment, setComment] = useState(""),
     [visibleStatusBar, setVisibleStatusBar] = useState(false),
@@ -59,7 +61,8 @@ export default function VideoScreen({ navigation, route}) {
       )
     },
     Navigate = async () => {
-      navigation.navigate('Doctor', { data: data.match })
+      let match = data.match
+      navigation.navigate('Doctor', { match })
     };
 
   useEffect(() => {
@@ -68,7 +71,7 @@ export default function VideoScreen({ navigation, route}) {
 
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
-  }, [comments])
+  }, [])
 
   return (
     <View style={styles.contain}>
@@ -100,7 +103,7 @@ export default function VideoScreen({ navigation, route}) {
               </TouchableOpacity>
             </View>
             <Text style={{ fontSize: 10, paddingLeft: 35 }}>
-              1.7M views - 2years ago
+              {data.views} views - {data.stamp}
             </Text>
 
             <Card
@@ -120,15 +123,16 @@ export default function VideoScreen({ navigation, route}) {
                   <Dislikes data={data.firestore} />
                 </View>
 
-                <View style={{ marginLeft: 40 }}>
+                <TouchableOpacity style={{ marginLeft: 40 }} onPress={() => ShareItem(data.url)}>
                   <FontAwesome5
                     name="share"
                     size={20}
                     color="black"
                     style={{ marginLeft: 11 }}
+                    onPress={() => ShareItem(data.url)}
                   />
                   <Text style={{ paddingTop: 5 }}> Share </Text>
-                </View>
+                </TouchableOpacity>
 
                 <View style={{ marginLeft: 32 }}>
                   <Entypo
@@ -209,7 +213,7 @@ export default function VideoScreen({ navigation, route}) {
                 </TouchableOpacity>
               </View>
               <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
-                1.7M views - {data.stamps}
+                {data.views} views - {data.stamps}
               </Text>
               <Card
                 style={{
@@ -219,7 +223,7 @@ export default function VideoScreen({ navigation, route}) {
                 }}>
                 <Text>Stroke Emergency Video</Text>
                 <Text style={{ fontSize: 10, color: 'gray' }}>
-                  1 000 000 Views
+                  {data.views} Views
                 </Text>
               </Card>
               <View
@@ -256,7 +260,6 @@ export default function VideoScreen({ navigation, route}) {
 
         </Card>
       </ScrollView>
-      <TextInput placeholder="Comment" style={styles.commentBox} />
     </View>
   )
 }
@@ -309,6 +312,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },
-
 });
 
