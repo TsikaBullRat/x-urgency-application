@@ -60,7 +60,6 @@ function Counter({ video }) {
             style={{ marginLeft: 10 }}
           />
           <Text style={{ paddingTop: 6 }}> {count}</Text>
-          console.log({count})
         </TouchableOpacity>
       </View>
     </View>
