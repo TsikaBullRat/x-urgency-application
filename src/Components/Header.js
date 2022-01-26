@@ -20,7 +20,8 @@ export default function Header() {
       {/*---------------------------Header--------------------------*/}
       <View
         style={{
-          width: 335,
+          width: 350,
+          marginTop: 25,
           flexDirection: "row",
           alignItems: 'center',
           justifyContent: "space-even",

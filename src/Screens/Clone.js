@@ -21,7 +21,6 @@ import {
 } from "react-native";
 
 import { Card } from "react-native-paper";
-import { Upload } from "../firebase";
 import * as ImagePicker from 'expo-image-picker';
 
 export default function Clone({ navigation }) {

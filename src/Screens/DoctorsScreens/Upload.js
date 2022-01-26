@@ -21,7 +21,6 @@ import {
 } from "react-native";
 
 import { Card } from "react-native-paper";
-import { Upload } from "../../firebase";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
 
