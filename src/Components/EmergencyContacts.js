@@ -6,6 +6,10 @@ const Emergency = ({ navigation }) => {
     return (
         <View style={styles.Emergency}>
 
+            <View>
+                <Text> Emergency? Call Us ON : </Text> <br/>
+            </View>
+            
             <Text> Nationwide : 112 </Text> <br />
 
             <Text> Police : 10111 </Text> <br />
@@ -25,7 +29,7 @@ const Emergency = ({ navigation }) => {
             <Text> Roads and Stormwater : 053 830 6836</Text> <br />
 
             <Text> Electrical : 053 830 6442</Text> <br />
-
+ 
         </View>
 
     )
@@ -34,10 +38,10 @@ const Emergency = ({ navigation }) => {
 const styles = StyleSheet.create({
     Emergency: {
 
+        flex: 1 ,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 15,
-        padding: 53,
+        padding: 110,
         backgroundColor: 'red',
 
     },
