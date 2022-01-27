@@ -180,7 +180,7 @@ export default function VideoScreen({ navigation, route }) {
                   placeholder="Write a comment"
                   onChangeText={text => setComment(text)}
                 />
-                <View style={{ width: 90, height: 70, borderRadius: 25, marginTop: 7, marginRight: 10, }}>
+                <View style={{ width: 90, height: 70, borderRadius: 30, marginTop: 1, marginRight: 3, }}>
                   <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title='Comment'
                   />
                 </View>
