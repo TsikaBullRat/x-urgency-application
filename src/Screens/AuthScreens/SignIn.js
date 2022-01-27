@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     outlineColor: "transparent",
-    outlineColor: 'transparent',
   },
 
   txtCards: {
