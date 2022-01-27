@@ -52,13 +52,12 @@ function Counter({ video }) {
   return (
     <View>
 
-      <View style={{ marginLeft: 10 }}>
+      <View>
         <TouchableOpacity onPress={Like}>
           <Entypo
             name="thumbs-down"
             size={20}
             color="black"
-            style={{ marginLeft: 10 }}
           />
           <Text style={{ paddingTop: 6 }}> {count}</Text>
         </TouchableOpacity>

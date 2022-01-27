@@ -28,9 +28,9 @@ export default function App() {
   })
 
   return (
-   <view>
-     <EmergencyContacts/>
-   </view>
+    <View>
+      <EmergencyContacts />
+    </View>
   );
 }
 
