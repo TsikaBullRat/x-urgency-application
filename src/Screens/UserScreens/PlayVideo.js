@@ -20,8 +20,9 @@ import { Avatar } from 'react-native-elements';
 import { Video, } from 'expo-av';
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
-import { auth, firestore} from '../../firebase'
-import {Collect, Post, //ShareItem 
+import { auth, firestore } from '../../firebase'
+import {
+  Collect, Post, //ShareItem 
 } from '../../firebase';
 import { Comments } from '../../Components';
 
@@ -91,71 +92,71 @@ export default function VideoScreen({ navigation, route }) {
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
           <View
-                style={{
-                  marginTop: 15,
-                  alignItems: 'center',
-                }}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    width: 315,
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}>
+            style={{
+              marginTop: 15,
+              alignItems: 'center',
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                width: 315,
+                alignItems: 'center',
+                justifyContent: 'space-between',
+              }}>
 
               <View>
-              <Text style={{ fontWeight: 'bold' }}>{data.title}</Text>
-              <Text style={{ fontSize: 10}}>
-                {data.views} views - {data.stamp}
-              </Text>
+                <Text style={{ fontWeight: 'bold' }}>{data.title}</Text>
+                <Text style={{ fontSize: 10 }}>
+                  {data.views} views - {data.stamp}
+                </Text>
               </View>
-              
+
               <View>
-              <TouchableOpacity
-                title="topNav"
-                onPress={() => changeVisibilityStatusBar()}>
-                <AntDesign
-                  name="downcircle"
-                  size={18}
-                  color="black"
-                  style={styles.dropDown}
-                />
-              </TouchableOpacity>
+                <TouchableOpacity
+                  title="topNav"
+                  onPress={() => changeVisibilityStatusBar()}>
+                  <AntDesign
+                    name="downcircle"
+                    size={18}
+                    color="black"
+                    style={styles.dropDown}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
 
-            
 
-              <View
-                style={{ width: 345, flexDirection: 'row', marginTop: 25, alignItems:'center', justifyContent:'space-around'}}>
-                <View>
-                  <Likes data={data.firestore} />
-                </View>
 
-                <View style={{ marginTop: 3 }}>
-                  <Dislikes data={data.firestore} />
-                </View>
-
-                <TouchableOpacity onPress={() => ShareItem(data.url)}>
-                  <FontAwesome5
-                    name="share"
-                    size={20}
-                    color="black"
-                    onPress={() => ShareItem(data.url)}
-                    style={{marginLeft: 15}}
-                  />
-                  <Text style={{ paddingTop: 5}}> Share </Text>
-                </TouchableOpacity>
-
-                <View>
-                  <Entypo
-                    name="save"
-                    size={20}
-                    color="black"
-                  />
-                  <Text style={{ paddingTop: 5 }}> Save </Text>
-                </View>
+            <View
+              style={{ width: 345, flexDirection: 'row', marginTop: 25, alignItems: 'center', justifyContent: 'space-around' }}>
+              <View>
+                <Likes data={data.firestore} />
               </View>
+
+              <View style={{ marginTop: 3 }}>
+                <Dislikes data={data.firestore} />
+              </View>
+
+              <TouchableOpacity onPress={() => ShareItem(data.url)}>
+                <FontAwesome5
+                  name="share"
+                  size={20}
+                  color="black"
+                  onPress={() => ShareItem(data.url)}
+                  style={{ marginLeft: 15 }}
+                />
+                <Text style={{ paddingTop: 5 }}> Share </Text>
+              </TouchableOpacity>
+
+              <View>
+                <Entypo
+                  name="save"
+                  size={20}
+                  color="black"
+                />
+                <Text style={{ paddingTop: 5 }}> Save </Text>
+              </View>
+            </View>
 
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
@@ -223,7 +224,7 @@ export default function VideoScreen({ navigation, route }) {
                   />
                 </TouchableOpacity>
               </View>
-              
+
               <View
                 style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
                 <Avatar
@@ -270,7 +271,7 @@ const styles = StyleSheet.create({
   dropDown: {
     //marginTop: 10,
   },
-   txtCards: {
+  txtCards: {
     backgroundColor: '#f5f4f2',
     width: 295,
     height: 40,

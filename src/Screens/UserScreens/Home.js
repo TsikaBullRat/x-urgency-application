@@ -72,9 +72,9 @@ export default function Home({ navigation, setMatch }) {
     ref = useRef(null),
     VideoScreen = (data) => {
       let match = data.match
-       let owner = data.owner
-       setMatch({match, owner})
-       navigation.navigate("PlayVideo", {data});
+      let owner = data.owner
+      setMatch({ match, owner })
+      navigation.navigate("PlayVideo", { data });
     },
     Logout = () => {
       auth.signOut();
@@ -94,7 +94,7 @@ export default function Home({ navigation, setMatch }) {
             justifyContent: "space-between",
           }}
         >
-        <TouchableOpacity
+          <TouchableOpacity
             onPress={Logout}>
             <Image
               source={require("../../images/logOut.png")}
@@ -102,20 +102,21 @@ export default function Home({ navigation, setMatch }) {
             />
           </TouchableOpacity>
           <Header />
-          
+
         </View>
 
         <Menu list={videos} setVids={setLoad} />
         {/*---------------------- Video Scroll View--------------------*/}
-        <ScrollView style={{height:580, width: 335, //alignItems:'center'
-        }} 
-      vertical={true} showsVerticalScrollIndicator={false}> 
-        <Card style={styles.menu2}>
-          <View>
-            <VideoList videos={videos} VideoScreen={VideoScreen} />
-          </View>
-        </Card>
-        </ScrollView> 
+        <ScrollView style={{
+          height: 580, width: 335, //alignItems:'center'
+        }}
+          vertical={true} showsVerticalScrollIndicator={false}>
+          <Card style={styles.menu2}>
+            <View>
+              <VideoList videos={videos} VideoScreen={VideoScreen} />
+            </View>
+          </Card>
+        </ScrollView>
       </View>
     </View>
   );
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
   logoutIMG: {
     width: 15,
     height: 15,
-    marginTop:25
+    marginTop: 25
   },
 
   header: {

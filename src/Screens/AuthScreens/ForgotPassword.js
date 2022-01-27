@@ -19,7 +19,7 @@ import { EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
 export default function ForgotPassword({ navigation }) {
-  
+
   const forgotPassword = () => {
     handleResetPassword("lindiwe.mpondo@gmail.com")
   }
