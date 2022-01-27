@@ -9,7 +9,8 @@ const Collect = async (doc, SetCollection, Count) => {
     var set = []
     await firestore.collection('Videos').doc(doc).collection('Acts')
         .onSnapshot(query=>{
-            query.forEach(doc=>{
+            query.forEach(async doc=>{
+                let locator
                 let user
                 let comment
                 let time
@@ -23,7 +24,8 @@ const Collect = async (doc, SetCollection, Count) => {
                 if(doc.data().comments !== undefined){
                     if(doc.data().comments[0] !== null){
                         for(var i = 0; i < doc.data().comments.length; i++){
-                            user = doc.data().user
+                            locator = doc.data().ref
+                            user = await firestore.collection("Users").doc(locator).get().then(doc=>doc.data().username)
                             comment = doc.data().comments[i].comment
                             time = doc.data().comments[i].time.toDate()
                             load = [...load, { user, comment, time }]
@@ -189,13 +191,10 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
     firestore.collection('Videos').doc(id).set({
         title: title,
         tag: cat,
-        owner: await auth.currentUser.displayName,
+        ref: await auth.currentUser.uid,
         description: description,
         added: new Date()
     })
-        .then(() => {
-            firestore.collection('Videos').doc(id).collection('Acts').doc('init').set({ start: null })
-        })
 
     upload.on('state_changed',
         snapshot => {

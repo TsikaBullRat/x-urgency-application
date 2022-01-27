@@ -19,19 +19,20 @@ import { AlertNote } from '../../Components/Alert';
 
 export default function SignUp({ navigation }) {
 
-  const [email, setEmail] = useState(""),
+  const [name, setName] = useState(""),
+    [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [ConfirmPassword, setConfirmPassword] = useState(""),
     [displayModal, setDisplayModal] = useState(false),
     [message, setMessage] = useState("")
-  const Register = () => {
-    handleSignUp(email, password, ConfirmPassword, setEmail, setPassword, setConfirmPassword, setMessage)
+  const Register = async () => {
+    handleSignUp(name, email, password, ConfirmPassword, setMessage)
     setDisplayModal(true)
   }
   return (
     <View style={styles.container}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
-      
+
       <Card style={[styles.card, styles.shadowProp]}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
@@ -48,7 +49,16 @@ export default function SignUp({ navigation }) {
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
             <TextInput style={styles.txtUser}
-              name='username' placeholder='Username' onChangeText={text => setEmail(text)}
+              name='username' placeholder='Username' onChangeText={text => setName(text)}
+            />
+          </View>
+        </Card>
+
+        <Card style={[styles.txtCards, styles.shadowProp]}>
+          <View style={{ flexDirection: 'row' }}>
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <TextInput style={styles.txtUser}
+              name='eamil' placeholder='Email' onChangeText={text => setEmail(text)}
             />
           </View>
         </Card>
@@ -78,7 +88,7 @@ export default function SignUp({ navigation }) {
         </Card>
 
         <View style={{ alignItems: 'center' }}>
-          <TouchableOpacity style={[styles.signIn, styles.shadowProp]} onPress={() => { navigation.navigate('Home') }}>
+          <TouchableOpacity style={[styles.signIn, styles.shadowProp]} onPress={Register}>
             <Text style={{ color: '#fff' }} >SIGN_UP </Text>
           </TouchableOpacity>
         </View>
@@ -112,14 +122,14 @@ const styles = StyleSheet.create({
 
   header: {
     paddingTop: 205,
-    textAlign: 'center',  
+    textAlign: 'center',
   },
 
   txtUser: {
     width: 260,
     height: 38,
     borderRadius: 10,
-    outline: 'none',
+    outlineColor: 'transparent',
     backgroundColor: 'lightgrey',
     padding: 5,
     paddingTop: 18,
@@ -127,28 +137,28 @@ const styles = StyleSheet.create({
 
   txtPass: {
     width: 260,
-    height: 38,
+    height: 50,
     borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'lightgrey',
+    outlineColor: 'transparent',
+    backgroundColor: '#ffffff',
     padding: 5,
     paddingTop: 18,
   },
 
   txtRePass: {
     width: 260,
-    height: 38,
+    height: 50,
     borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'lightgrey',
+    outlineColor: 'transparent',
+    backgroundColor: '#ffffff',
     padding: 5,
     paddingTop: 18,
   },
 
   txtCards: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#ffffff',
     width: 285,
-    height: 40,
+    height: 50,
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 25,
@@ -164,7 +174,7 @@ const styles = StyleSheet.create({
 
   shadowProp: {
     shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
+    shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },

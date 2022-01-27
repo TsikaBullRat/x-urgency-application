@@ -18,7 +18,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
-export default function ForgotPassword({navigation}) {
+export default function ForgotPassword({ navigation }) {
   const forgotPassword = () => {
     handleResetPassword("lindiwe.mpondo@gmail.com")
   }
@@ -39,7 +39,7 @@ export default function ForgotPassword({navigation}) {
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 4, marginLeft: 5}} />
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 4, marginLeft: 5 }} />
             <TextInput style={styles.txtUser}
               name='username' placeholder='Username'
             />
@@ -104,37 +104,35 @@ const styles = StyleSheet.create({
     width: 260,
     height: 35,
     borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'lightgrey',
+    outlineColor: 'transparent',
+    backgroundColor: '#ffffff',
     padding: 8,
     paddingTop: 5
   },
 
   txtPass: {
     width: 260,
-    height: 35,
+    height: 50,
     borderRadius: 10,
-    outline: 'none',
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#fff',
     padding: 5,
     paddingTop: 5
   },
 
   txtRePass: {
     width: 260,
-    height: 35,
+    height: 50,
     borderRadius: 10,
-    outline: 'none',
     border: 0,
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#fff',
     padding: 5,
     paddingTop: 5
   },
 
   txtCards: {
-    backgroundColor: 'lightgrey',
+    backgroundColor: '#fff',
     width: 280,
-    height: 40,
+    height: 50,
     borderRadius: 10,
     marginTop: 25,
     borderWidth: 2,
@@ -142,27 +140,15 @@ const styles = StyleSheet.create({
     marginLeft: 50,
   },
 
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
-
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 20,
+    marginTop: 50,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 80,
   },
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2,     height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
+
 });
