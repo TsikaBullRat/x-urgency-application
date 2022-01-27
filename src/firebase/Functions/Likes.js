@@ -18,6 +18,7 @@ function Counter({ video }) {
           })
         })
     },
+
     Like = async () => {
       let thisLike = await firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => (doc.data().liked))
@@ -51,13 +52,12 @@ function Counter({ video }) {
   return (
     <View>
 
-      <View style={{ marginLeft: 10 }}>
+      <View>
         <TouchableOpacity onPress={Like}>
           <Entypo
             name="thumbs-up"
             size={20}
             color="black"
-            style={{ marginLeft: 10 }}
           />
           <Text style={{ paddingTop: 6 }}> {count}</Text>
         </TouchableOpacity>

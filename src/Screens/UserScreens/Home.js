@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  Image,
+  Image, ScrollView
 } from "react-native";
 import { Video } from "expo-av";
 import { Card } from "react-native-paper";
@@ -18,7 +18,7 @@ const VideoList = ({ videos, VideoScreen }) => {
 
   return videos
     ? videos.map((vid) => (
-      <View style={{ width: 295, alignItems: "center" }} key={vid.id}>
+      <View style={{ width: 335, alignItems: "center" }} key={vid.id}>
         <Card
           style={{
             marginTop: 15,
@@ -63,7 +63,7 @@ const VideoList = ({ videos, VideoScreen }) => {
 
 const ItemSeperatorView = () => {
   return (
-    <View style={{ height: 0.5, width: "100%", backgroundColor: "#c8c8c8" }} />
+    <View style={{ height: 0.5, width: 400, backgroundColor: "#c8c8c8" }} />
   );
 };
 
@@ -87,34 +87,35 @@ export default function Home({ navigation, setMatch }) {
   //const [status, setStatus] = React.useState({});
   return (
     <View style={styles.container}>
-      <View style={{ width: 295 }}>
+      <View style={{ width: 335 }}>
         <View
           style={{
-            flexDirection: "row",
             alignItems: "flex-end",
             justifyContent: "space-between",
           }}
         >
-          <Header />
-          <TouchableOpacity
+        <TouchableOpacity
             onPress={Logout}>
             <Image
               source={require("../../images/logOut.png")}
               style={styles.logoutIMG}
             />
           </TouchableOpacity>
+          <Header />
+          
         </View>
 
         <Menu list={videos} setVids={setLoad} />
         {/*---------------------- Video Scroll View--------------------*/}
-        {/* <ScrollView style={{height:555}} 
-      vertical={true} showsVerticalScrollIndicator={false}> */}
+        <ScrollView style={{height:580, width: 335, //alignItems:'center'
+        }} 
+      vertical={true} showsVerticalScrollIndicator={false}> 
         <Card style={styles.menu2}>
           <View>
             <VideoList videos={videos} VideoScreen={VideoScreen} />
           </View>
         </Card>
-        {/* </ScrollView> */}
+        </ScrollView> 
       </View>
     </View>
   );
@@ -122,16 +123,15 @@ export default function Home({ navigation, setMatch }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    height: 840,
+    backgroundColor: '#fff',
   },
 
   logoutIMG: {
     width: 15,
     height: 15,
-    marginTop: -80,
-    marginLeft: -20,
+    marginTop:25
   },
 
   header: {
