@@ -34,13 +34,22 @@ export default function Header({done}) {
   }, [])
   return (
     <View style={styles.contain}>
+      <View> 
+        <TouchableOpacity
+            onPress={Logout}>
+             <Image
+               source={require("../images/logOut.png")}
+               style={styles.logoutIMG}
+             />
+           </TouchableOpacity>
+      </View>
       {/*---------------------------Header--------------------------*/}
-      <View style={{ flexDirection: 'row', width: 295, justifyContent: 'flex-start' }}>
-        <View style={styles.header}>
-          <Text>
+      <View style={{ flexDirection: 'row', width: 295, marginTop:40, justifyContent: 'flex-start' }}>
+        <View >
+          <Text style={styles.header}>
             What's your
           </Text>
-          <Text>
+          <Text style={styles.header}>
             EMERGENCY ?
           </Text>
         </View>
@@ -76,6 +85,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff'
+  },
+
+  logoutIMG: {
+    width: 15,
+    height: 15,
+    
   },
 
   header: {

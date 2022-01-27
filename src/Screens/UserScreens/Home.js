@@ -60,13 +60,7 @@
            }}
          >
            <Header />
-           <TouchableOpacity
-            onPress={Logout}>
-             <Image
-               source={require("../../images/logOut.png")}
-               style={styles.logoutIMG}
-             />
-           </TouchableOpacity>
+           
          </View>
  
          <Menu list={videos} setVids={setLoad} />
@@ -91,12 +85,7 @@
      backgroundColor: "#fff",
    },
  
-   logoutIMG: {
-     width: 15,
-     height: 15,
-     marginTop: -80,
-     marginLeft: -20,
-   },
+   
  
    header: {
      fontWeight: "medium",

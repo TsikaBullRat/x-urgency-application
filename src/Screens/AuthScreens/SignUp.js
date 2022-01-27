@@ -32,8 +32,8 @@ export default function SignUp({ navigation }) {
   return (
     <View style={styles.container}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
-
-      <Card style={[styles.card, styles.shadowProp]}>
+      
+      <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
@@ -45,7 +45,7 @@ export default function SignUp({ navigation }) {
       </View>
 
       <View>
-        <Card style={[styles.txtCards, styles.shadowProp]}>
+        <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
             <TextInput style={styles.txtUser}
@@ -63,7 +63,7 @@ export default function SignUp({ navigation }) {
           </View>
         </Card>
 
-        <Card style={[styles.txtCards, styles.shadowProp]}>
+        <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
             <TextInput style={styles.txtPass}
@@ -74,7 +74,7 @@ export default function SignUp({ navigation }) {
           </View>
         </Card>
 
-        <Card style={[styles.txtCards, styles.shadowProp]}>
+        <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black"
               style={{ marginTop: 9, marginLeft: 4 }}
@@ -88,7 +88,7 @@ export default function SignUp({ navigation }) {
         </Card>
 
         <View style={{ alignItems: 'center' }}>
-          <TouchableOpacity style={[styles.signIn, styles.shadowProp]} onPress={Register}>
+          <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
             <Text style={{ color: '#fff' }} >SIGN_UP </Text>
           </TouchableOpacity>
         </View>
@@ -126,59 +126,35 @@ const styles = StyleSheet.create({
   },
 
   txtUser: {
-    width: 260,
+    width: 220,
     height: 38,
+    marginTop: 5,
+    paddingLeft: 8,
+    paddingTop: 12,
     borderRadius: 10,
-    outlineColor: 'transparent',
-    backgroundColor: 'lightgrey',
-    padding: 5,
-    paddingTop: 18,
+    outlineColor: '#fff',
   },
 
   txtPass: {
-    width: 260,
-    height: 50,
+    width: 220,
+    height: 38,
+    marginTop: 5,
+    paddingLeft: 8,
+    paddingTop: 15,
     borderRadius: 10,
-    outlineColor: 'transparent',
-    backgroundColor: '#ffffff',
-    padding: 5,
-    paddingTop: 18,
-  },
-
-  txtRePass: {
-    width: 260,
-    height: 50,
-    borderRadius: 10,
-    outlineColor: 'transparent',
-    backgroundColor: '#ffffff',
-    padding: 5,
-    paddingTop: 18,
+    outlineColor: '#fff',
   },
 
   txtCards: {
-    backgroundColor: '#ffffff',
     width: 285,
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 25,
+    marginTop: 75,
     borderWidth: 1,
     borderColor: '#F47066',
   },
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
-
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
-
+  
   signIn: {
     height: 40,
     width: 150,

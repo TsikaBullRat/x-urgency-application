@@ -25,7 +25,8 @@
     "react-native-switch-selector": "^2.1.4",
     "react-native-video": "^5.2.0",
     "react-native-web": "0.17.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "expo-cli": "4.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
