@@ -28,9 +28,18 @@ export default function App() {
   })
 
   return (
-    <View>
-      <EmergencyContacts />
-    </View>
+    <NavigationContainer>
+      <KeyboardAwareScrollView>
+        {checked ? (
+          <Detector id={user} />
+        ) : (
+          // Login/Sign functions
+          <View style={styles.loader}>
+            <ActivityIndicator size="large" />
+          </View>
+        )}
+      </KeyboardAwareScrollView>
+    </NavigationContainer>
   );
 }
 
