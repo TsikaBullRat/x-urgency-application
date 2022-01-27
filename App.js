@@ -16,6 +16,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 // You can import from local files
 import { auth, Detector } from './src/firebase'
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { EmergencyContacts } from "./src/Screens";
 
 export default function App() {
   const [user, setUser] = useState(),

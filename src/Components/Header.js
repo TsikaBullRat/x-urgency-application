@@ -28,7 +28,7 @@ export default function Header() {
         }}
       >
         <View>
-          <Text style={styles.header}>What's your</Text>
+          <Text style={styles.header}>What's Your</Text>
           <Text style={styles.header}>EMERGENCY</Text>
         </View>
 

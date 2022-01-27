@@ -1,41 +1,46 @@
 import React from 'react'
-import { View, Text, } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
-const Emergency = () => {
+const Emergency = ({ navigation }) => {
 
     return (
-        <View>
+        <View style={styles.Emergency}>
 
-            <Text> Nationwide : 112 </Text>
+            <Text> Nationwide : 112 </Text> <br />
 
-            <Text> Vodacom Emergency : 082 112 </Text>
+            <Text> Police : 10111 </Text> <br />
 
-            <Text> MTN Emergency : 083 112 </Text>
+            <Text> Ambulance : 10177 </Text> <br />
 
-            <Text> Cell C Emergency : 084 112 </Text>
+            <Text> Fire Brigade : 10177 </Text> <br />
 
-            <Text> Nationwide Flying Squad-Police Patrol Unit : 10111 </Text>
+            <Text> Netcare911 : 082 911 </Text> <br />
 
-            <Text> Nationwide Ambulance : 10177 </Text>
+            <Text> Medical Emergency Company ER24 : 084 124 </Text> <br />
 
-            <Text> Nationwide Fire Brigade : 10177 </Text>
+            <Text> Ambulance Services : 053 802 9111</Text> <br />
 
-            <Text> Netcare911 : 082 911 </Text>
+            <Text> Fire Department : 053 832 4211  </Text> <br />
 
-            <Text> Nationwide Medical Emergency Company ER24 : 084 124 </Text>
+            <Text> Roads and Stormwater : 053 830 6836</Text> <br />
 
-            <Text> Ambulance Services : 053 802 9111</Text>
-
-            <Text> Fire Department : 053 832 4211  </Text>
-
-            <Text> Roads and Stormwater : 053 830 6836</Text>
-
-            <Text> Electrical : 053 830 6442</Text>
+            <Text> Electrical : 053 830 6442</Text> <br />
 
         </View>
 
     )
 }
 
+const styles = StyleSheet.create({
+    Emergency: {
+
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 15,
+        padding: 53,
+        backgroundColor: 'red',
+
+    },
+})
 
 export default Emergency
