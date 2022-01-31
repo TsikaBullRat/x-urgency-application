@@ -4,17 +4,18 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { auth, Detector } from './src/firebase'
 import { ActivityIndicator, StyleSheet, View, Share } from 'react-native';
 
+
 export default function App() {
-  
+
   const [id, setID] = useState(null),
-    [checked, setChecked] = useState(false)
+    [checked, setChecked] = useState(true)
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => user?setID(user.uid):null)
-    setChecked(true)
-  }, [id])
+    auth.onAuthStateChanged(user => user ? setID(user.uid) : null)
+    setChecked(true);
+  }, [id]);
 
-    return (
+  return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
         {checked ? (
@@ -31,8 +32,8 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-    loader: {
-        alignItems: "center",
-        justifyContent: "center"
-    }
+  loader: {
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });

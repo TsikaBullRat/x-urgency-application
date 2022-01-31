@@ -1,15 +1,4 @@
-/**
- * @description      :
- * @author           : TLeeuw
- * @group            :
- * @created          : 08/11/2021 - 10:11:41
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 08/11/2021
- * - Author          : TLeeuw
- * - Modification    :
- **/
+
  import React, { useState } from "react";
  import {
      Image,

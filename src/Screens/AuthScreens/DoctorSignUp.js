@@ -30,7 +30,12 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         [password, setPassword] = useState(""),
         [confirmpassword, setConfirmPassword] = useState(""),
         [displayModal, setDisplayModal] = useState(false),
-        [message, setMessage] = useState("")
+        [message, setMessage] = useState(""),
+        [visibleStatusBar, setVisibleStatusBar] = useState(false),
+
+    changeVisibilityStatusBar = () => {
+      setVisibleStatusBar(!visibleStatusBar);
+    },
 
     const DoctorRegister = () => {
         if (password !== confirmpassword) {
@@ -67,8 +72,9 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         </Text>
       </View>
 
+      {!visibleStatusBar ? (
       <View>
-        <Card style={{ height: 230 }}>
+
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
@@ -89,7 +95,49 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               />
             </View>
           </Card>
+
           <Card style={styles.txtCards}>
+            <View style={{ flexDirection: "row" }}>
+              <TextInput
+                style={styles.txtField}
+                name="Email"
+                placeholder="Email"
+                onChangeText={(text) => setEmail(text)}
+              />
+            </View>
+          </Card>
+
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: "row" }}>
+              <TextInput
+                style={styles.txtField}
+                name="Password"
+                placeholder="Password"
+                onChangeText={(text) => setContactDetails(text)}
+              />
+            </View>
+          </Card>
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: "row" }}>
+              <TextInput
+                style={styles.txtField}
+                name="Confirm password"
+                placeholder="Confirm password"
+                onChangeText={(text) => setContactDetails(text)}
+              />
+            </View>
+          </Card>
+
+          <View style={{ alignItems: "center" }}>
+          <TouchableOpacity style={styles.signIn} onPress={() => {changeVisibilityStatusBar(!visibleStatusBar)}}>
+            <Text style={{ color: "#fff" }}>{`NEXT`} </Text>
+          </TouchableOpacity>
+        </View>
+
+          </View>
+          ) : (
+            <View>
+            <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
@@ -111,16 +159,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             </View>
           </Card>
           
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Email"
-                placeholder="Email"
-                onChangeText={(text) => setEmail(text)}
-              />
-            </View>
-          </Card>
+          
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
@@ -141,37 +180,22 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               />
             </View>
           </Card>
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Password"
-                placeholder="Password"
-                onChangeText={(text) => setContactDetails(text)}
-              />
-            </View>
-          </Card>
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Confirm password"
-                placeholder="Confirm password"
-                onChangeText={(text) => setContactDetails(text)}
-              />
-            </View>
-          </Card>
-          </Card>
+
+          <View style={{ alignItems: "center" }}>
+          <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
+            <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
+          </TouchableOpacity>
+        </View>
+
+          </View>
+          )}       
+
 
         
        
-        <View style={{ alignItems: "center" }}>
-          <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
-            <Text style={{ color: "#fff" }}>SIGNIN </Text>
-          </TouchableOpacity>
-        </View>
+        
       </View>
-    </View>
+
   );
 }
 const styles = StyleSheet.create({

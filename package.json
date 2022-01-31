@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject"
-  },
+  },  
   "dependencies": {
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
@@ -26,7 +26,8 @@
     "react-native-video": "^5.2.0",
     "react-native-web": "0.17.1",
     "uuid": "^8.3.2",
-    "expo-cli": "4.7.2"
+    "expo-cli": "4.7.2",
+    "expo-camera": "~12.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

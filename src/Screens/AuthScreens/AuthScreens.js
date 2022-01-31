@@ -21,7 +21,7 @@ export const AuthScreens = () => {
     <Stack.Navigator initialRouteName='Sign In'>
       <Stack.Screen
         name='Doctor SignIn'
-        component={DoctorSignUp}
+        component={DocSignIn}
         options={{ headerShown: false }}
       />
 
