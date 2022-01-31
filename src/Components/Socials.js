@@ -2,11 +2,6 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 const Socials = ({ text, number }) => {
-<<<<<<< HEAD
-=======
-    ex
-
->>>>>>> a12dc729eae053db3e732cc49b715a0f232083e4
     return (
 
         <View style={styles.socials}>

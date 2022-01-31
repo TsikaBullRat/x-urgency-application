@@ -24,7 +24,7 @@ export default function App() {
   useEffect(() => {
     auth.onAuthStateChanged(user => user ? setUser(user.uid) : null)
     setChecked(true)
-  })
+  }, [user])
 
   return (
     <NavigationContainer>
