@@ -5,9 +5,9 @@ import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
 import { firestore } from '../../firebase';
 
-const DoctorProfile = ({match, route}) => {
+const DoctorProfile = ({ route }) => {
 
-    const info = route.params
+    const info = route.params.match
     const options = [
         { label: "About ", value: "About" },
         { label: "Qualification", value: "Qualification" },
@@ -19,6 +19,7 @@ const DoctorProfile = ({match, route}) => {
     const [Specialization, setSpecialization] = useState(false);
     const [Contact, setContact] = useState(false);
     const [doctor, setDoctor] = useState("")
+    const [email, setEmail] = useState("")
     const [data, setData] = useState(null);
 
     const check = (value) => {
@@ -54,13 +55,14 @@ const DoctorProfile = ({match, route}) => {
 
     }
     const getDoctorInfo = () =>{
-        firestore.collection("Users").doc(match).collection("cred").doc(match).get()
+        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
             .then(doc=>{
                 setData(doc.data())
             })
-        firestore.collection("Users").doc(match).get()
+        firestore.collection("Users").doc(info).get()
             .then(doc=>{
                 setDoctor(doc.data().username)
+                setEmail(doc.data().email)
             })
         
     }
@@ -69,6 +71,9 @@ const DoctorProfile = ({match, route}) => {
         getDoctorInfo()
     }, [])
 
+    useEffect(()=>{
+        console.log(data)
+    }, [data])
     return (
         data?(
             <>
@@ -126,7 +131,7 @@ const DoctorProfile = ({match, route}) => {
             </View> : <View></View>}
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Mr Sighn@gmail.com
+                    {email}
                     {"\n"}
                     {data.contact}
                     {"\n"}

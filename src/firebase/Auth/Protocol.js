@@ -51,13 +51,20 @@ const Check = ({ details, id }) => {
 
 }
 
-const Detector = ({ id }) => {
+const Detector = ({ id, setChecked }) => {
 
     const [details, setDetails] = useState(null)
+    const Run = () =>{
+        id?(
+            setChecked(true)
+        ):(
+            setChecked(true)
+        )
+    }
 
-    useEffect(() => {
-        console.log(id)
-    }, [])
+    useEffect(()=>{
+        Run()
+    }, [id])
 
     return (
         id ? (

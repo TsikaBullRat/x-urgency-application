@@ -7,17 +7,11 @@ const Stack = createNativeStackNavigator()
 
 export const UserScreens = () => {
 
-    const [match, setMatch] = useState(null)
-
-    useEffect(() => {
-        console.log(match)
-    }, [match])
     return (
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
-            <Stack.Screen name="Home" options={{ headerShown: false }} >
-                {props => <Home {...props} setMatch={setMatch} />}
-            </Stack.Screen>
+            <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+            <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

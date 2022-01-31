@@ -1,86 +1,124 @@
 /**
- * @description      :
- * @author           : TLeeuw
- * @group            :
- * @created          : 03/11/2021 - 12:02:33
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 03/11/2021
- * - Author          : TLeeuw
- * - Modification    :
- **/
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { Avatar } from "react-native-elements";
+    * @description      : 
+    * @author           : TLeeuw
+    * @group            : 
+    * @created          : 03/11/2021 - 12:02:33
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 03/11/2021
+    * - Author          : TLeeuw
+    * - Modification    : 
+**/
+import React, { useEffect, useState } from 'react';
+import { Text, View, StyleSheet, Image } from 'react-native';
+import { Avatar, Badge } from 'react-native-elements';
+import { color } from 'react-native-elements/dist/helpers';
+import { auth, firestore } from '../firebase'
 
-export default function Header() {
+export default function Header({done}) {
+
+  const [image, setImage] = useState()
+  const [initial, setInitial] = useState()
+  const getProfile = async () =>{
+    let name
+    setImage(auth.currentUser.photoURL)
+    // name = await firestore.collection("Users").doc(auth.currentUser.uid).get().then(()=>doc.data().username)
+    name = auth.currentUser.displayName
+    setInitial(name.substring(0,1))
+  }
+  
+  useEffect(()=>{
+    getProfile()
+  }, [])
   return (
     <View style={styles.contain}>
+      <View> 
+             <Image
+               source={require("../images/logOut.png")}
+               style={styles.logoutIMG}
+             />
+      </View>
       {/*---------------------------Header--------------------------*/}
-      <View
-        style={{
-          width: 350,
-          marginTop: 25,
-          flexDirection: "row",
-          alignItems: 'center',
-          justifyContent: "space-even",
-        }}
-      >
-        <View>
-          <Text style={styles.header}>What's Your</Text>
-          <Text style={styles.header}>EMERGENCY</Text>
+      <View style={{ flexDirection: 'row', width: 295, marginTop:40, justifyContent: 'flex-start' }}>
+        <View >
+          <Text style={styles.header}>
+            What's your
+          </Text>
+          <Text style={styles.header}>
+            EMERGENCY ?
+          </Text>
         </View>
-
-        <View>
-          <Avatar
-            style={styles.avatar}
+        <View style={{ marginTop: 50, marginLeft: 10 }}>
+          {image?(
+            <Avatar style={styles.avatar}
             rounded
             source={{
-              uri: "https://randomuser.me/api/portraits/men/41.jpg",
+              uri: image,
             }}
             size="large"
+          />
+          ):(
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}>
+                {initial}
+              </Text>
+            </View>
+          )}
+          <Badge
+            status="success"
+            containerStyle={{ position: 'absolute', top: -4, right: -4 }}
           />
         </View>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
+
   contain: {
-    width: 295,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff'
+  },
+
+  logoutIMG: {
+    width: 15,
+    height: 15,
+    
   },
 
   header: {
-    width: 240,
-    justifyContent: "flex-start",
-    flexDirection: "column",
-    color: "#F96056",
-    fontSize: 32,
-    //fontFamily: 'poor story'
+    flexDirection: 'column',
+    color: '#F96056',
+    fontSize: 36,
   },
 
   avatar: {
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 20,
+    margingTop: 80,
     borderBottomWidth: 3,
-    borderColor: "turquoise",
-    shadowColor: "grey",
+    borderColor: 'turquoise',
+    shadowColor: 'grey',
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.4,
     elevation: 1,
   },
-
-  shadowProp: {
-    shadowColor: "#171717",
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
+  temp:{
+    // flex: 1,
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    margingTop: 80,
+    backgroundColor: 'turquoise',
+    textAlign: 'center',
+    justifyContent: 'center'
   },
-});
+  temp_text:{
+    fontSize:40,
+    color: '#fff',
+  }
+})

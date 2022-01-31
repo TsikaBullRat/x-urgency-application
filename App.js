@@ -11,7 +11,7 @@
  * - Modification    :
  **/
 import React, { useState, useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, TabRouter } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 // You can import from local files
 import { auth, Detector } from './src/firebase'
@@ -31,7 +31,7 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
         {checked ? (
-          <Detector id={user} />
+          <Detector id={user} setChecked={setChecked} />
         ) : (
           // Login/Sign functions
           <View style={styles.loader}>

@@ -63,7 +63,7 @@ export default function VideoScreen({ navigation, route }) {
         })
       )
     },
-    Navigate = async () => {
+    Navigate = () => {
       let match = data.match
       navigation.navigate('Doctor', { match })
     };
