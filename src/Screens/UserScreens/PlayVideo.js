@@ -20,7 +20,10 @@ import { Avatar } from 'react-native-elements';
 import { Video, } from 'expo-av';
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
-import { auth, firestore, Collect, Post, ShareItem } from '../../firebase';
+import { auth, firestore } from '../../firebase'
+import {
+  Collect, Post, //ShareItem 
+} from '../../firebase';
 import { Comments } from '../../Components';
 
 export default function VideoScreen({ navigation, route }) {
@@ -82,69 +85,78 @@ export default function VideoScreen({ navigation, route }) {
           useNativeControls
           resizeMode="contain"
           isLooping
-          style={{ borderRadius: 25, width: 350, height: 180, }}
+          style={{ borderRadius: 25, width: 315, height: 180, }}
         />
       </View>
 
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
-          <View>
-            <View style={{ flexDirection: 'row', paddingLeft: 30, marginTop: 15 }}>
-              <Text style={{ fontWeight: 'bold' }}>{data.title}</Text>
-              <TouchableOpacity
-                title="topNav"
-                onPress={() => changeVisibilityStatusBar()}>
-                <AntDesign
-                  name="downcircle"
-                  size={18}
-                  color="black"
-                  style={styles.dropDown}
-                />
-              </TouchableOpacity>
-            </View>
-            <Text style={{ fontSize: 10, paddingLeft: 35 }}>
-              {data.views} views - {data.stamp}
-            </Text>
-
-            <Card
+          <View
+            style={{
+              marginTop: 15,
+              alignItems: 'center',
+            }}>
+            <View
               style={{
-                borderColor: 'black',
+                flexDirection: 'row',
                 width: 315,
-                marginTop: 5,
-                marginLeft: 25,
+                alignItems: 'center',
+                justifyContent: 'space-between',
               }}>
-              <View
-                style={{ flexDirection: 'row', marginTop: 5, marginLeft: 3 }}>
-                <View>
-                  <Likes data={data.firestore} />
-                </View>
 
-                <View style={{ marginLeft: 32, marginTop: 3 }}>
-                  <Dislikes data={data.firestore} />
-                </View>
-
-                <TouchableOpacity style={{ marginLeft: 40 }} onPress={() => ShareItem(data.url)}>
-                  <FontAwesome5
-                    name="share"
-                    size={20}
-                    color="black"
-                    style={{ marginLeft: 11 }}
-                    onPress={() => ShareItem(data.url)}
-                  />
-                  <Text style={{ paddingTop: 5 }}> Share </Text>
-                </TouchableOpacity>
-
-                <View style={{ marginLeft: 32 }}>
-                  <Entypo
-                    name="save"
-                    size={20}
-                    color="black"
-                    style={{ marginLeft: 8 }}
-                  />
-                  <Text style={{ paddingTop: 5 }}> Save </Text>
-                </View>
+              <View>
+                <Text style={{ fontWeight: 'bold' }}>{data.title}</Text>
+                <Text style={{ fontSize: 10 }}>
+                  {data.views} views - {data.stamp}
+                </Text>
               </View>
-            </Card>
+
+              <View>
+                <TouchableOpacity
+                  title="topNav"
+                  onPress={() => changeVisibilityStatusBar()}>
+                  <AntDesign
+                    name="downcircle"
+                    size={18}
+                    color="black"
+                    style={styles.dropDown}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+
+
+            <View
+              style={{ width: 345, flexDirection: 'row', marginTop: 25, alignItems: 'center', justifyContent: 'space-around' }}>
+              <View>
+                <Likes data={data.firestore} />
+              </View>
+
+              <View style={{ marginTop: 3 }}>
+                <Dislikes data={data.firestore} />
+              </View>
+
+              <TouchableOpacity onPress={() => ShareItem(data.url)}>
+                <FontAwesome5
+                  name="share"
+                  size={20}
+                  color="black"
+                  onPress={() => ShareItem(data.url)}
+                  style={{ marginLeft: 15 }}
+                />
+                <Text style={{ paddingTop: 5 }}> Share </Text>
+              </TouchableOpacity>
+
+              <View>
+                <Entypo
+                  name="save"
+                  size={20}
+                  color="black"
+                />
+                <Text style={{ paddingTop: 5 }}> Save </Text>
+              </View>
+            </View>
 
             <View
               style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
@@ -169,7 +181,7 @@ export default function VideoScreen({ navigation, route }) {
                   placeholder="Write a comment"
                   onChangeText={text => setComment(text)}
                 />
-                <View style={{ width: 90, height: 70, borderRadius: 25, marginTop: 7, marginRight: 10, }}>
+                <View style={{ width: 90, height: 70, borderRadius: 30, marginTop: 1, marginRight: 3, }}>
                   <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title='Comment'
                   />
                 </View>
@@ -212,20 +224,7 @@ export default function VideoScreen({ navigation, route }) {
                   />
                 </TouchableOpacity>
               </View>
-              <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
-                {data.views} views - {data.stamps}
-              </Text>
-              <Card
-                style={{
-                  marginTop: 10,
-                  marginLeft: 12,
-                  width: 255,
-                }}>
-                <Text>Stroke Emergency Video</Text>
-                <Text style={{ fontSize: 10, color: 'gray' }}>
-                  {data.views} Views
-                </Text>
-              </Card>
+
               <View
                 style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
                 <Avatar
@@ -243,12 +242,12 @@ export default function VideoScreen({ navigation, route }) {
       </View>
       {/* <Comments video={data.firestore} /> */}
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 15 }}>
+        <Card style={{ height: 335, width: 315, marginTop: 5, marginLeft: 15 }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
 
           {comments.map((item, index) =>
             <Card style={{
-              backgroundColor: 'silver', height: 100,
+              backgroundColor: '#e8d7cc', height: 100,
               marginTop: 10
             }}
               key={index}>
@@ -270,47 +269,27 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   dropDown: {
-    marginLeft: 110,
+    //marginTop: 10,
   },
   txtCards: {
-    marginLeft: 20,
-    backgroundColor: 'lightgrey',
-    width: 315,
-    height: 50,
+    backgroundColor: '#f5f4f2',
+    width: 295,
+    height: 40,
     borderRadius: 10,
     marginTop: 5,
     borderWidth: 1,
-    borderColor: '#F47066'
+    borderColor: '#F47066',
   },
 
   comment: {
-    width: 260,
+    width: 295,
     height: 38,
     borderRadius: 10,
-    outlineColor: 'transparent',
-    backgroundColor: 'lightgrey',
+    borderColor: '#F47066',
+    outlineColor: '#F47066',
+    backgroundColor: '#f5f4f2',
     paddingLeft: 10,
   },
 
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
-  comment: {
-    width: 260,
-    height: 38,
-    borderRadius: 10,
-    outlineColor: 'transparent',
-    backgroundColor: 'lightgrey',
-    paddingLeft: 10,
-  },
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
 });
 

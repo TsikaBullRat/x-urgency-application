@@ -18,9 +18,6 @@ export const UserScreens = () => {
             <Stack.Screen name="Home" options={{ headerShown: false }} >
                 {props => <Home {...props} setMatch={setMatch} />}
             </Stack.Screen>
-            <Stack.Screen name="Doctor" options={{ headerShown: false }} >
-                {props => <DoctorProfile {...props} match={match} />}
-            </Stack.Screen>
         </Stack.Navigator>
     )
 }

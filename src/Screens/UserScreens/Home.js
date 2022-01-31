@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  Image,
+  Image, ScrollView
 } from "react-native";
 import { Card } from "react-native-paper";
 import { auth, LoadSet, firestore } from "../../firebase";
@@ -51,28 +51,36 @@ export default function Home({ navigation, setMatch }) {
   const [status, setStatus] = React.useState({});
   return (
     <View style={styles.container}>
-      <View style={{ width: 295 }}>
+      <View style={{ width: 335 }}>
         <View
           style={{
-            flexDirection: "row",
             alignItems: "flex-end",
             justifyContent: "space-between",
           }}
         >
+          <TouchableOpacity
+            onPress={Logout}>
+            <Image
+              source={require("../../images/logOut.png")}
+              style={styles.logoutIMG}
+            />
+          </TouchableOpacity>
           <Header />
-          
+
         </View>
 
         <Menu list={videos} setVids={setLoad} />
         {/*---------------------- Video Scroll View--------------------*/}
-        {/* <ScrollView style={{height:555}} 
-      vertical={true} showsVerticalScrollIndicator={false}> */}
-        <Card style={styles.menu2}>
-          <View>
-            <VideoList videos={videos} VideoScreen={VideoScreen} />
-          </View>
-        </Card>
-        {/* </ScrollView> */}
+        <ScrollView style={{
+          height: 580, width: 335, //alignItems:'center'
+        }}
+          vertical={true} showsVerticalScrollIndicator={false}>
+          <Card style={styles.menu2}>
+            <View>
+              <VideoList videos={videos} VideoScreen={VideoScreen} />
+            </View>
+          </Card>
+        </ScrollView>
       </View>
     </View>
   );
@@ -80,12 +88,16 @@ export default function Home({ navigation, setMatch }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    height: 840,
+    backgroundColor: '#fff',
   },
 
-  
+  logoutIMG: {
+    width: 15,
+    height: 15,
+    marginTop: 25
+  },
 
   header: {
     fontWeight: "medium",

@@ -20,14 +20,15 @@ export default function Header() {
       {/*---------------------------Header--------------------------*/}
       <View
         style={{
-          width: 335,
+          width: 350,
+          marginTop: 25,
           flexDirection: "row",
           alignItems: 'center',
           justifyContent: "space-even",
         }}
       >
         <View>
-          <Text style={styles.header}>What's your</Text>
+          <Text style={styles.header}>What's Your</Text>
           <Text style={styles.header}>EMERGENCY</Text>
         </View>
 

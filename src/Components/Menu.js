@@ -39,7 +39,6 @@ export default function Header({ list, setVids }) {
             <Card style={{
               width: 50, height: 70, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7
             }}
-
             >
               <Image style={styles.strokeMenu} source={Stroke} />
               <Text style={{ fontSize: 12 }}>Stroke</Text>
