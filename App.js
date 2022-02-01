@@ -16,16 +16,17 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 // You can import from local files
 import { auth, Check, LoadSet } from './src/firebase'
 import { StyleSheet, NativeModules } from 'react-native';
-import { AuthScreens } from "./src/Screens";
+import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
 
 export default function App() {
   const [id, setID] = useState();
   const [details, setDetails] = useState(null);
-  const [mainComponent, setComponent] = useState(null);
 
   useEffect(() => {
     auth.onAuthStateChanged(user => user ? setID(user.uid) : null)
-  }, [ true ])
+  })
+
+  useEffect(()=>console.log("Im running"))
 
   return (
     <NavigationContainer>
