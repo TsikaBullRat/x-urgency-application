@@ -11,12 +11,12 @@
  * - Modification    :
  **/
 import React, { useState, useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, TabRouter } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 // You can import from local files
 import { auth, Detector } from './src/firebase'
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { EmergencyContacts } from "./src/Screens";
+import { DocSignUp } from "./src/Screens";
 
 export default function App() {
   const [user, setUser] = useState(),
@@ -25,12 +25,21 @@ export default function App() {
   useEffect(() => {
     auth.onAuthStateChanged(user => user ? setUser(user.uid) : null)
     setChecked(true)
-  })
+  }, [user])
 
   return (
-    <View>
-      <EmergencyContacts />
-    </View>
+    <NavigationContainer>
+      <KeyboardAwareScrollView>
+        {checked ? (
+          <Detector id={user} setChecked={setChecked} />
+        ) : (
+          // Login/Sign functions
+          <View style={styles.loader}>
+            <ActivityIndicator size="large" />
+          </View>
+        )}
+      </KeyboardAwareScrollView>
+    </NavigationContainer>
   );
 }
 

@@ -1,4 +1,5 @@
 import { auth } from "..";
+
 const Exit = () => {
     auth.signOut()
         .then(function () {
