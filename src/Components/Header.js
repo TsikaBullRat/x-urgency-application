@@ -16,6 +16,7 @@ import { Avatar } from "react-native-elements";
 
 export default function Header() {
   return (
+
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
       <View
@@ -25,10 +26,10 @@ export default function Header() {
           flexDirection: "row",
           alignItems: 'center',
           justifyContent: "space-even",
-        }}
-      >
+        }}>
+
         <View>
-          <Text style={styles.header}>What's Your</Text>
+          <Text style={styles.header}>WHAT'S YOUR</Text>
           <Text style={styles.header}>EMERGENCY</Text>
         </View>
 
@@ -36,11 +37,7 @@ export default function Header() {
           <Avatar
             style={styles.avatar}
             rounded
-            source={{
-              uri: "https://randomuser.me/api/portraits/men/41.jpg",
-            }}
-            size="large"
-          />
+            source={{ uri: "https://randomuser.me/api/portraits/men/41.jpg", }} size="large" />
         </View>
       </View>
     </View>
@@ -83,4 +80,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },
+
 });
+
