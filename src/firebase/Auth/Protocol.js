@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { AuthScreens, DoctorsScreens, UserScreens } from "../../Screens";
-import { firestore, auth } from "..";
+import { firestore } from "..";
 
 const Check = ({ details, id }) => {
 
@@ -9,6 +9,7 @@ const Check = ({ details, id }) => {
     const [busy, setBusy] = useState(true)
     // const What = firestore.collection("Doctors").doc(user).get()
     //     .then(doc=>doc.data())
+
     details ? (
         useEffect(() => {
             firestore.collection("Doctors").doc(id).set({
@@ -18,29 +19,31 @@ const Check = ({ details, id }) => {
                 Specilization: details.Specilization,
                 verified: details.verified,
             })
+
                 .then(doc => {
                     setStatement(true)
                     setBusy(false)
                 })
-        }, [])
-    ) : (
+        }, [])) : (
+
         useEffect(() => {
             firestore.collection("Doctors").doc(id).get()
                 .then(doc => {
                     setStatement(doc.exists)
                     setBusy(false)
                 })
-
-        }, [])
-    )
+        }, []))
 
     // console.log(What)
+
     return (
         busy ? (
             <View style={styles.loader}>
                 <ActivityIndicator size="large" />
             </View>
+
         ) : (
+
             statement ? (
                 <DoctorsScreens />
             ) : (
@@ -54,15 +57,15 @@ const Check = ({ details, id }) => {
 const Detector = ({ id, setChecked }) => {
 
     const [details, setDetails] = useState(null)
-    const Run = () =>{
-        id?(
+    const Run = () => {
+        id ? (
             setChecked(true)
-        ):(
+        ) : (
             setChecked(true)
         )
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         Run()
     }, [id])
 

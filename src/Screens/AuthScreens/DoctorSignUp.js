@@ -10,6 +10,7 @@
     * - Author          : TLeeuw
     * - Modification    : 
 **/
+
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
 import { Card } from 'react-native-paper';
@@ -42,27 +43,22 @@ export default function DoctorSignUp({ navigation, setDetails }) {
   }
 
   return (
+
     <View style={styles.container}>
       <AlertNote
         modalVisible={displayModal}
         setModalVisible={setDisplayModal}
-        msg={message}
-      />
+        msg={message} />
 
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
-        <Text style={{ color: "#fff", fontSize: 28, marginLeft: 8 }}>
-          {" "}
-          X-urgency
-        </Text>
+        <Text style={{ color: "#fff", fontSize: 28, marginLeft: 8 }}> {" "} X-urgency</Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: "bold", fontSize: 18, paddingLeft: 5 }}>
-          Doctor SignUp
-        </Text>
+        <Text style={{ fontWeight: "bold", fontSize: 18, paddingLeft: 5 }}>  Doctor SignUp </Text>
       </View>
 
       <View>
@@ -73,28 +69,27 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 style={styles.txtField}
                 name="Name"
                 placeholder="Name"
-                onChangeText={(text) => setName(text)}
-              />
+                onChangeText={(text) => setName(text)} />
             </View>
           </Card>
+
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
                 name="Surname"
                 placeholder="Surname"
-                onChangeText={(text) => setSurname(text)}
-              />
+                onChangeText={(text) => setSurname(text)} />
             </View>
           </Card>
+
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
                 name="Specialization"
                 placeholder="Specialization"
-                onChangeText={(text) => setSpecialization(text)}
-              />
+                onChangeText={(text) => setSpecialization(text)} />
             </View>
           </Card>
 
@@ -104,8 +99,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 style={styles.txtField}
                 name="Qualification"
                 placeholder="Qualification"
-                onChangeText={(text) => setQualification(text)}
-              />
+                onChangeText={(text) => setQualification(text)} />
             </View>
           </Card>
 
@@ -115,48 +109,47 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 style={styles.txtField}
                 name="Email"
                 placeholder="Email"
-                onChangeText={(text) => setEmail(text)}
-              />
+                onChangeText={(text) => setEmail(text)} />
             </View>
           </Card>
+
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
                 name="Branch"
                 placeholder="Branch"
-                onChangeText={(text) => setBranch(text)}
-              />
+                onChangeText={(text) => setBranch(text)} />
             </View>
           </Card>
+
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
                 name="Contact Details"
                 placeholder="Contact Details"
-                onChangeText={(text) => setContactDetails(text)}
-              />
+                onChangeText={(text) => setContactDetails(text)} />
             </View>
           </Card>
+
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
                 name="Password"
                 placeholder="Password"
-                onChangeText={(text) => setContactDetails(text)}
-              />
+                onChangeText={(text) => setContactDetails(text)} />
             </View>
           </Card>
+
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
                 name="Confirm password"
                 placeholder="Confirm password"
-                onChangeText={(text) => setContactDetails(text)}
-              />
+                onChangeText={(text) => setContactDetails(text)} />
             </View>
           </Card>
         </Card>
@@ -166,16 +159,19 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             <Text style={{ color: "#fff" }}>SIGNIN </Text>
           </TouchableOpacity>
         </View>
+
       </View>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     backgroundColor: '#fff',
     height: 850
   },
+
   card: {
     backgroundColor: "#F47066",
     width: 325,
@@ -186,14 +182,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
   },
+
   heartIcon: {
     alignItems: "center",
     justifyContent: "center",
     marginTop: 30,
   },
+
   header: {
     paddingTop: 10,
   },
+
   txtField: {
     width: 285,
     height: 35,
@@ -202,6 +201,7 @@ const styles = StyleSheet.create({
     backgroundColor: "lightgrey",
     paddingLeft: 10,
   },
+
   txtCards: {
     backgroundColor: "lightgrey",
     width: 285,
@@ -212,6 +212,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#F47066'
   },
+
   signIn: {
     height: 50,
     width: 200,

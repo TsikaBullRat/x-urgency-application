@@ -10,13 +10,12 @@
  * - Author          : TLeeuw
  * - Modification    :
  **/
+
 import React, { useState, useEffect } from "react";
-import { NavigationContainer, TabRouter } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-// You can import from local files
 import { auth, Detector } from './src/firebase'
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { DocSignUp } from "./src/Screens";
 
 export default function App() {
   const [user, setUser] = useState(),
@@ -28,6 +27,7 @@ export default function App() {
   }, [user])
 
   return (
+
     <NavigationContainer>
       <KeyboardAwareScrollView>
         {checked ? (
@@ -48,4 +48,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   }
+
 });

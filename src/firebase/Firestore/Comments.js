@@ -11,7 +11,9 @@ const Count = async doc => {
                 total += span
                 return total
             })
+
             return total
+
         })
 
     return count
@@ -24,7 +26,9 @@ const Collect = async (doc) => {
             let filter = doc.data()
             return filter.comments
         })
+
         return throwback
+
     })
 
     return comments

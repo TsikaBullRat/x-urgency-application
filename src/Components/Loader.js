@@ -16,12 +16,13 @@ export const ProgressBar = ({ status }) => {
             height: 15,
             backgroundColor: '#F47066'
         })
-    }, [status])
-    return (
-        <View style={styles.outer}>
-            <View style={inner}>
 
-            </View>
+    }, [status])
+
+    return (
+
+        <View style={styles.outer}>
+            <View style={inner}> </View>
         </View>
     )
 }
@@ -30,4 +31,5 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 15,
     backgroundColor: 'transparent'
+
 })

@@ -10,4 +10,5 @@ const Exit = () => {
             // An error happened.
         });
 }
+
 export default Exit;

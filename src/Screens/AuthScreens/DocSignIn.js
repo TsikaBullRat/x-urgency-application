@@ -49,20 +49,14 @@ export default function SignIn({ navigation, setDone }) {
         <Card style={[styles.txtCards, styles.shadowProp]}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={22} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
-            <TextInput style={styles.txtUser}
-              name='username' placeholder='Username' onChangeText={text => setEmail(text)}
-            />
+            <TextInput style={styles.txtUser} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
 
         <Card style={[styles.txtCards, styles.shadowProp]}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
-            <TextInput style={styles.txtPass}
-              name='password' placeholder='Password'
-              secureTextEntry={true}
-              onChangeText={text => setPassword(text)}
-            />
+            <TextInput style={styles.txtPass} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
           </View>
         </Card>
 
@@ -77,9 +71,7 @@ export default function SignIn({ navigation, setDone }) {
         </View>
 
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <Text style={{ paddingTop: 5 }}>
-            New?
-          </Text>
+          <Text style={{ paddingTop: 5 }}>  New? </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('DocSignUp') }}>
             <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
           </TouchableOpacity>
@@ -89,6 +81,7 @@ export default function SignIn({ navigation, setDone }) {
     </View>
   )
 }
+
 const styles = StyleSheet.create({
 
   container: {
@@ -163,4 +156,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });

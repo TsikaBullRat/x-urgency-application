@@ -1,12 +1,8 @@
-
-import React from 'react';
 import { Share } from 'react-native';
 
 const ShareItem = async (url) => {
   try {
-    const result = await Share.share({
-      url: url,
-    });
+    const result = await Share.share({ url: url, });
     if (result.action === Share.sharedAction) {
       if (result.activityType) {
         console.log("Shared with activity type") // shared with activity type of result.activityType
