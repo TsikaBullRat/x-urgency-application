@@ -11,10 +11,10 @@
     * - Modification    : 
 **/
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
-import { auth, firestore } from '../firebase'
+import { auth, firestore, LogOut } from '../firebase'
 
 export default function Header({done}) {
 
@@ -23,7 +23,6 @@ export default function Header({done}) {
   const getProfile = async () =>{
     let name
     setImage(auth.currentUser.photoURL)
-    // name = await firestore.collection("Users").doc(auth.currentUser.uid).get().then(()=>doc.data().username)
     name = auth.currentUser.displayName
     setInitial(name.substring(0,1))
   }
@@ -33,12 +32,14 @@ export default function Header({done}) {
   }, [])
   return (
     <View style={styles.contain}>
-      <View> 
+      <Pressable
+        onPress={LogOut}
+        > 
              <Image
                source={require("../images/logOut.png")}
                style={styles.logoutIMG}
              />
-      </View>
+      </Pressable>
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: 'row', width: 295, marginTop:40, justifyContent: 'flex-start' }}>
         <View >

@@ -34,9 +34,6 @@ export default function Home({ navigation, setMatch }) {
        cred: null
      })
      )
-    },
-    Logout = () => {
-      auth.signOut();
     };
 
  useEffect(()=>{
@@ -58,13 +55,6 @@ export default function Home({ navigation, setMatch }) {
             justifyContent: "space-between",
           }}
         >
-          <TouchableOpacity
-            onPress={Logout}>
-            <Image
-              source={require("../../images/logOut.png")}
-              style={styles.logoutIMG}
-            />
-          </TouchableOpacity>
           <Header />
 
         </View>
