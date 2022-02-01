@@ -31,6 +31,7 @@ export default function Header({done}) {
     getProfile()
   }, [])
   return (
+
     <View style={styles.contain}>
       <Pressable
         onPress={LogOut}
