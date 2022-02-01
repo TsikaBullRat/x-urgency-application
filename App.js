@@ -22,39 +22,21 @@ export default function App() {
   const [id, setID] = useState();
   const [details, setDetails] = useState(null);
   const [mainComponent, setComponent] = useState(null);
-  const Load = () =>{
-    if(id){
-      try{
-        return <Check id={id} details={details}/>
-      }catch(err){
-        return <AuthScreens setDetails={setDetails} />
-      }
-    }else{
-      return <AuthScreens setDetails={setDetails} />
-    }
-  }
 
   useEffect(() => {
     auth.onAuthStateChanged(user => user ? setID(user.uid) : null)
   }, [ true ])
 
-  useEffect(()=>{
-    console.log(id)
-  }, [id])
-
-  useEffect(()=>{
-    id?(
-    setComponent(Load())
-    ):(
-      NativeModules.DevSettings.reload(),
-      setComponent(Load())
-    )
-  }, [id])
-
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-      {mainComponent}
+      {
+        id?(
+          <Check id={id} details={details}/>
+        ):(
+          <AuthScreens setDetails={setDetails} />
+        )
+      }
       </KeyboardAwareScrollView>
     </NavigationContainer>
   );

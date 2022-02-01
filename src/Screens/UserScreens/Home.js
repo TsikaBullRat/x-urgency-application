@@ -16,8 +16,6 @@ export default function Home({ navigation, setMatch }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
-      let match = data.match
-      setMatch(match)
       navigation.navigate("PlayVideo", {data});
     },
     FirstTimeUser = async () =>{
