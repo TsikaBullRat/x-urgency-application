@@ -10,6 +10,7 @@
  * - Author          : TLeeuw
  * - Modification    :
  **/
+
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { SignIn, SignUp, DoctorSignUp, ForgotPassword } from '../'
@@ -22,8 +23,7 @@ export const AuthScreens = () => {
       <Stack.Screen
         name='Doctor SignIn'
         component={DoctorSignUp}
-        options={{ headerShown: false }}
-      />
+        options={{ headerShown: false }} />
 
       <Stack.Screen name='Sign In' options={{ headerShown: false }}>
         {(props) => <SignIn {...props} />}
@@ -36,14 +36,13 @@ export const AuthScreens = () => {
       <Stack.Screen
         name='Reset Password'
         component={ForgotPassword}
-        options={{ headerShown: false }}
-      />
+        options={{ headerShown: false }} />
 
       <Stack.Screen
         name='Doctor SignUp'
         component={DoctorSignUp}
-        options={{ headerShown: false }}
-      />
+        options={{ headerShown: false }} />
+
     </Stack.Navigator>
   )
 }

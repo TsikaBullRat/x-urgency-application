@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Image, ScrollView
-} from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { Card } from "react-native-paper";
 import { auth, LoadSet, firestore } from "../../firebase";
 import Header from "../../Components/Header";
@@ -16,13 +10,17 @@ export default function Home({ navigation, setMatch }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
-      navigation.navigate("PlayVideo", {data});
+      let match = data.match
+      setMatch(match)
+      navigation.navigate("PlayVideo", { data });
     },
-    FirstTimeUser = async () =>{
-     //  auth.currentUser.updateProfile({
-     //    displayName: await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.data().username)
-     //  })
-      await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.exists)?(
+
+    FirstTimeUser = async () => {
+      //  auth.currentUser.updateProfile({
+      //    displayName: await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.data().username)
+      //  })
+
+      await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
         null
       ):(
      firestore.collection("Users").doc(auth.currentUser.uid).set({
@@ -34,17 +32,19 @@ export default function Home({ navigation, setMatch }) {
      )
     };
 
- useEffect(()=>{
-   FirstTimeUser()
-   // console.log(auth.currentUser.displayName)
- }, [])
+  useEffect(() => {
+    FirstTimeUser()
+    // console.log(auth.currentUser.displayName)
+  }, [])
 
- useEffect(() => {
+  useEffect(() => {
     LoadSet(setLoad);
   }, []);
 
   const [status, setStatus] = React.useState({});
+
   return (
+
     <View style={styles.container}>
       <View style={{ width: 335 }}>
         <View
@@ -54,15 +54,13 @@ export default function Home({ navigation, setMatch }) {
           }}
         >
           <Header />
-
         </View>
 
         <Menu list={videos} setVids={setLoad} />
+
         {/*---------------------- Video Scroll View--------------------*/}
-        <ScrollView style={{
-          height: 580, width: 335, //alignItems:'center'
-        }}
-          vertical={true} showsVerticalScrollIndicator={false}>
+
+        <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
           <Card style={styles.menu2}>
             <View>
               <VideoList videos={videos} VideoScreen={VideoScreen} />
@@ -118,6 +116,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderRadius: 15,
   },
+
   menu2: {
     width: 320,
     height: 520,
@@ -127,6 +126,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+
   categoryListText: {
     paddingLeft: 15,
     fontSize: 17,
@@ -139,7 +139,8 @@ const styles = StyleSheet.create({
   },
 
   tag: {
-    paddingVertical:2,
+    paddingVertical: 2,
     fontSize: 12,
   },
+
 });

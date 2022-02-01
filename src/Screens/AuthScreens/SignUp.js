@@ -10,6 +10,7 @@
     * - Author          : MLab
     * - Modification    : 
 **/
+
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
@@ -25,14 +26,17 @@ export default function SignUp({ navigation }) {
     [ConfirmPassword, setConfirmPassword] = useState(""),
     [displayModal, setDisplayModal] = useState(false),
     [message, setMessage] = useState("")
+
   const Register = () => {
     handleSignUp(username, email, password, ConfirmPassword, setUserName, setEmail, setPassword, setConfirmPassword, setMessage,)
     setDisplayModal(true)
   }
-  return (
-    <View style={styles.container}>
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
 
+  return (
+
+    <View style={styles.container}>
+
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
       <Card style={[styles.card, styles.shadowProp]}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
@@ -43,12 +47,11 @@ export default function SignUp({ navigation }) {
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>SignUp</Text>
       </View>
+
       <Card style={[styles.txtCards, styles.shadowProp]}>
         <View style={{ flexDirection: 'row' }}>
           <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
-          <TextInput style={styles.txtUser}
-            name='username' placeholder='Username' onChangeText={text => setUserName(text)}
-          />
+          <TextInput style={styles.txtUser} name='username' placeholder='Username' onChangeText={text => setUserName(text)} />
         </View>
       </Card>
 
@@ -56,9 +59,7 @@ export default function SignUp({ navigation }) {
         <Card style={[styles.txtCards, styles.shadowProp]}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="mail" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
-            <TextInput style={styles.txtUser}
-              name='email' placeholder='Email' onChangeText={text => setEmail(text)}
-            />
+            <TextInput style={styles.txtUser} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
 
@@ -68,21 +69,17 @@ export default function SignUp({ navigation }) {
             <TextInput style={styles.txtPass}
               name='password' placeholder='Password'
               secureTextEntry={true}
-              onChangeText={text => setPassword(text)}
-            />
+              onChangeText={text => setPassword(text)} />
           </View>
         </Card>
 
         <Card style={[styles.txtCards, styles.shadowProp]}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black"
-              style={{ marginTop: 9, marginLeft: 4 }}
-            />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 9, marginLeft: 4 }} />
             <TextInput style={styles.txtRePass}
               name='password' placeholder='Re-enter Password'
               secureTextEntry={true}
-              onChangeText={text => setConfirmPassword(text)}
-            />
+              onChangeText={text => setConfirmPassword(text)} />
           </View>
         </Card>
 
@@ -91,10 +88,12 @@ export default function SignUp({ navigation }) {
             <Text style={{ color: '#fff' }} >SIGN_UP </Text>
           </TouchableOpacity>
         </View>
+
       </View>
     </View>
   )
 }
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -164,6 +163,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#F47066',
   },
+
   shadowProp: {
     shadowColor: '#171717',
     shadowOffset: { width: -2, height: 4 },
@@ -187,5 +187,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });
 

@@ -10,8 +10,9 @@
  * - Author          : TLeeuw
  * - Modification    :
  **/
+
 import React, { useState, useEffect } from "react";
-import { NavigationContainer, TabRouter } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 // You can import from local files
 import { auth, Check, LoadSet } from './src/firebase'
@@ -29,6 +30,7 @@ export default function App() {
   useEffect(()=>console.log("Im running"))
 
   return (
+
     <NavigationContainer>
       <KeyboardAwareScrollView>
       {
@@ -48,4 +50,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   }
+
 });

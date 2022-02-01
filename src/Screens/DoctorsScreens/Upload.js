@@ -11,21 +11,14 @@
  * - Modification    :
  **/
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Picker,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-} from "react-native";
-
+import { StyleSheet, Picker, Text, TouchableOpacity, View, TextInput, } from "react-native";
 import { Card } from "react-native-paper";
 import { UploadVideo } from "../../firebase";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function Clone({ navigation, Log }) {
+
   const [selectedValue, setSelectedValue] = useState("stroke"),
     [title, setTitle] = useState(),
     [description, setDescpription] = useState(),
@@ -44,6 +37,7 @@ export default function Clone({ navigation, Log }) {
       }
 
       setSelectedImage({ localUri: pickerResult.uri });
+
     },
     Run = () => {
       openImagePickerAsync();
@@ -55,7 +49,9 @@ export default function Clone({ navigation, Log }) {
     }
 
   return (
+
     <View style={styles.container}>
+
       <Text style={styles.header}>Upload or create your first aid video here</Text>
 
       <View style={{ flexDirection: "row" }}>
@@ -63,15 +59,14 @@ export default function Clone({ navigation, Log }) {
           style={[styles.txtField, styles.shadowProp]}
           name="username"
           placeholder="Title"
-          onChangeText={text => setTitle(text)}
-        />
+          onChangeText={text => setTitle(text)} />
       </View>
 
       <Picker
         selectedValue={selectedValue}
         style={[styles.picker, styles.shadowProp]}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-      >
+        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
+
         <Picker.Item label="Stroke" value="stroke" />
         <Picker.Item label="Heart-Attack" value="heart-attack" />
         <Picker.Item label="Epilepsy" value="epilepsy" />
@@ -87,8 +82,7 @@ export default function Clone({ navigation, Log }) {
           style={[styles.txtField, styles.shadowProp]}
           name="password"
           placeholder="Description"
-          onChangeText={text => setDescpription(text)}
-        />
+          onChangeText={text => setDescpription(text)} />
       </View>
 
       <View style={{ flexDirection: 'row' }}>
@@ -119,6 +113,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 800
   },
+
   header: {
     paddingTop: 60,
     fontSize: 25,
@@ -126,6 +121,7 @@ const styles = StyleSheet.create({
     color: "#F47066",
     fontWeight: "bold",
   },
+
   txtField: {
     width: 330,
     height: 60,
@@ -146,10 +142,12 @@ const styles = StyleSheet.create({
     paddingLeft: 100,
     marginTop: 60,
   },
+
   icon: {
     marginTop: 30,
     marginLeft: 40,
   },
+
   paragraph: {
     marginBottom: 350,
     fontSize: 18,
@@ -170,6 +168,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     outlineColor: 'transparent',
   },
+
   input2: {
     width: 280,
     height: 40,
@@ -182,6 +181,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     outlineColor: 'transparent',
   },
+
   iconContainer: {
     width: 60,
     height: 60,
@@ -194,12 +194,14 @@ const styles = StyleSheet.create({
     marginTop: -55,
     marginLeft: 250,
   },
+
   picker: {
     marginTop: 40,
     width: 330,
     height: 60,
     borderRadius: 20,
   },
+
   button: {
     backgroundColor: '#F47066',
     padding: 10,
@@ -210,9 +212,11 @@ const styles = StyleSheet.create({
     height: 50,
     marginTop: 40,
   },
+
   buttonText: {
     fontSize: 20,
     color: '#fff',
     marginTop: -5,
   },
+
 });

@@ -14,6 +14,7 @@ const Count = async doc => {
                 total += span
                 return total
             })
+
             return total
         })
 
@@ -41,18 +42,25 @@ export const Comments = ({ video }) => {
         <>{
             comments ? (
                 <ScrollView showsVerticalScrollIndicator={false}>
+
                     <Card style={{ height: 120, width: 315, marginTop: 5, marginLeft: 10 }}>
+
                         <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
+
                         <TextInput placeholder="Comment" />
+
                         <Card style={{ backgroundColor: 'silver', height: 100, marginTop: 10 }}>
+
                             <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
-                                <SafeAreaView style={{ color: 'red' }}>{user}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgb
-                                dfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+
+                                <SafeAreaView style={{ color: 'red' }}>{user}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgbdfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+
                             </Text>
+
                         </Card>
                     </Card>
+
                 </ScrollView>
-            ) : null
-        }</>
+            ) : null}</>
     )
 }

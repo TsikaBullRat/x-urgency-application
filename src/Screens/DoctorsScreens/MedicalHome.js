@@ -22,6 +22,7 @@
     * - Author          : MLab
     * - Modification    : 
 **/
+
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
@@ -57,6 +58,7 @@ export default function MedicalHome({ navigation, progress, Log }) {
   const video = React.useRef(
     "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
   );
+
   const [status, setStatus] = useState({}),
     [loading, setLoading] = useState(null);
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
@@ -74,6 +76,7 @@ export default function MedicalHome({ navigation, progress, Log }) {
   }, [])
 
   return (
+
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: "row" }}>
@@ -100,11 +103,9 @@ export default function MedicalHome({ navigation, progress, Log }) {
               textShadowColor: "grey",
               textShadowOffset: { width: 2, height: 2 },
               textShadowRadius: 1,
-            }}
-          >
-            In Da House
-          </Text>
+            }} > In Da House </Text>
         </View>
+
         {progress ? <ProgressBar status={progress} /> : null}
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
@@ -127,7 +128,9 @@ export default function MedicalHome({ navigation, progress, Log }) {
           </TouchableOpacity>
         </View>
       </View>
+
       {/*---------------------- Video Scroll View--------------------*/}
+
       {loading ? <ProgressBar status={loading} /> : null}
       <ScrollView style={{
           height: 580, width: 335, //alignItems:'center'
@@ -140,26 +143,26 @@ export default function MedicalHome({ navigation, progress, Log }) {
           </Card>
         </ScrollView>
       <TouchableOpacity
-        style={styles.btnUpload}
-        onPress={() => {
-          navigation.navigate("Upload");
-        }}
-      >
+        style={styles.btnUpload} onPress={() => { navigation.navigate("Upload"); }} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>
       </TouchableOpacity>
     </View>
+
   );
 }
+
 const styles = StyleSheet.create({
   contain: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
   },
+
   header: {
     flexDirection: 'column',
     paddingTop: 50,
   },
+
   avatar: {
     width: 70,
     height: 70,
@@ -172,6 +175,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
+
   menu2: {
     width: 355,
     height: 550,
@@ -179,12 +183,14 @@ const styles = StyleSheet.create({
     marginTop: 50,
     borderRadius: 15,
   },
+
   shadowProp: {
     shadowColor: '#171717',
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },
+
   btnUpload: {
     backgroundColor: '#F47066',
     height: 40,

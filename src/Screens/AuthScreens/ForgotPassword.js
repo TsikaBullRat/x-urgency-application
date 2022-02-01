@@ -10,6 +10,7 @@
     * - Author          : MLab
     * - Modification    : 
 **/
+
 import React from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
 import { Card } from 'react-native-paper';
@@ -26,6 +27,7 @@ export default function ForgotPassword({ navigation }) {
   const Exit = () => {
     alert("Successfully logged out")
   }
+
   return (
     <View >
       <Card style={styles.card}>
@@ -34,44 +36,47 @@ export default function ForgotPassword({ navigation }) {
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 20 }}> X-urgency </Text>
       </Card>
+
       <View style={styles.header} >
         <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5, marginLeft: 110 }}>Reset Password</Text>
       </View>
+
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={20} color="black" style={{ marginTop: 4, marginLeft: 5 }} />
-            <TextInput style={styles.txtUser}
-              name='email' placeholder='Email'
-            />
+            <TextInput style={styles.txtUser} name='email' placeholder='Email' />
           </View>
         </Card>
+
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 2, }} />
-            <TextInput style={styles.txtPass}
-              name='password' placeholder='New Password'
-            />
+            <TextInput style={styles.txtPass} name='password' placeholder='New Password' />
           </View>
         </Card>
+
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 2, }} />
-            <TextInput style={styles.txtRePass}
-              name='password' placeholder='Confirm Password'
-            />
+            <TextInput style={styles.txtRePass} name='password' placeholder='Confirm Password' />
           </View>
         </Card>
+
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
           <Text style={{ color: '#fff' }}>RESET PASSWORD </Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.signIn} onPress={Exit}>
           <Text style={{ color: '#fff' }}>EXIT</Text>
         </TouchableOpacity>
+
       </View>
     </View>
+
   )
 }
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -79,6 +84,7 @@ const styles = StyleSheet.create({
     height: 950,
     backgroundColor: '#fff'
   },
+
   card: {
     backgroundColor: '#F47066',
     width: 325,
@@ -117,7 +123,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     outlineColor: "transparent",
-
   },
 
   txtRePass: {
