@@ -22,18 +22,14 @@ export default function Home({ navigation, setMatch }) {
 
       await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
         null
-      ) : (
-        firestore.collection("Users").doc(auth.currentUser.uid).set({
-          username: auth.currentUser.displayName,
-          doctor: false,
-          email: auth.currentUser.email,
-          cred: null
-        })
-      )
-    },
-
-    Logout = () => {
-      auth.signOut();
+      ):(
+     firestore.collection("Users").doc(auth.currentUser.uid).set({
+       username: auth.currentUser.displayName,
+       doctor: false,
+       email: auth.currentUser.email,
+       cred: null
+     })
+     )
     };
 
   useEffect(() => {
@@ -51,10 +47,12 @@ export default function Home({ navigation, setMatch }) {
 
     <View style={styles.container}>
       <View style={{ width: 335 }}>
-        <View style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
-          <TouchableOpacity onPress={Logout}>
-            <Image source={require("../../images/logOut.png")} style={styles.logoutIMG} />
-          </TouchableOpacity>
+        <View
+          style={{
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+          }}
+        >
           <Header />
         </View>
 

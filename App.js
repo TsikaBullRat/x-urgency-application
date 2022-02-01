@@ -14,30 +14,31 @@
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { auth, Detector } from './src/firebase'
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+// You can import from local files
+import { auth, Check, LoadSet } from './src/firebase'
+import { StyleSheet, NativeModules } from 'react-native';
+import { AuthScreens } from "./src/Screens";
 
 export default function App() {
-  const [user, setUser] = useState(),
-    [checked, setChecked] = useState(false);
+  const [id, setID] = useState();
+  const [details, setDetails] = useState(null);
+  const [mainComponent, setComponent] = useState(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => user ? setUser(user.uid) : null)
-    setChecked(true)
-  }, [user])
+    auth.onAuthStateChanged(user => user ? setID(user.uid) : null)
+  }, [ true ])
 
   return (
 
     <NavigationContainer>
       <KeyboardAwareScrollView>
-        {checked ? (
-          <Detector id={user} setChecked={setChecked} />
-        ) : (
-          // Login/Sign functions
-          <View style={styles.loader}>
-            <ActivityIndicator size="large" />
-          </View>
-        )}
+      {
+        id?(
+          <Check id={id} details={details}/>
+        ):(
+          <AuthScreens setDetails={setDetails} />
+        )
+      }
       </KeyboardAwareScrollView>
     </NavigationContainer>
   );

@@ -54,30 +54,6 @@ const Check = ({ details, id }) => {
 
 }
 
-const Detector = ({ id, setChecked }) => {
-
-    const [details, setDetails] = useState(null)
-    const Run = () => {
-        id ? (
-            setChecked(true)
-        ) : (
-            setChecked(true)
-        )
-    }
-
-    useEffect(() => {
-        Run()
-    }, [id])
-
-    return (
-        id ? (
-            <Check id={id} details={details} />
-        ) : (
-            <AuthScreens setDetails={setDetails} />
-        )
-    )
-
-}
 
 const styles = StyleSheet.create({
     loader: {
@@ -86,4 +62,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export { Detector }
+export { Check }
