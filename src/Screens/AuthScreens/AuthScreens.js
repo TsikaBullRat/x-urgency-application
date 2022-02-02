@@ -13,16 +13,26 @@
 
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { SignIn, SignUp, DoctorSignUp, ForgotPassword } from '../'
+import { SignIn, SignUp, DoctorSignUp, DocSignUp, MedSignIn, ForgotPassword } from '../'
 
 const Stack = createNativeStackNavigator()
 
 export const AuthScreens = () => {
   return (
-    <Stack.Navigator initialRouteName='Sign In'>
+    <Stack.Navigator initialRouteName='Reset Password'>
       <Stack.Screen
         name='Doctor SignIn'
+        component={MedSignIn}
+        options={{ headerShown: false }} />
+
+        <Stack.Screen
+        name='Doctor SignUp'
         component={DoctorSignUp}
+        options={{ headerShown: false }} />
+
+        <Stack.Screen
+        name='Doc SignUp'
+        component={DocSignUp}
         options={{ headerShown: false }} />
 
       <Stack.Screen name='Sign In' options={{ headerShown: false }}>
@@ -38,10 +48,6 @@ export const AuthScreens = () => {
         component={ForgotPassword}
         options={{ headerShown: false }} />
 
-      <Stack.Screen
-        name='Doctor SignUp'
-        component={DoctorSignUp}
-        options={{ headerShown: false }} />
 
     </Stack.Navigator>
   )
