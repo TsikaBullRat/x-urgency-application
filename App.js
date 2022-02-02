@@ -29,16 +29,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <KeyboardAwareScrollView>
-        {checked ? (
-          <Detector id={user} />
-        ) : (
-          // Login/Sign functions
-          <View style={styles.loader}>
-            <ActivityIndicator size="large" />
-          </View>
-        )}
-      </KeyboardAwareScrollView>
+      <DocSignUp />
     </NavigationContainer>
   );
 }
