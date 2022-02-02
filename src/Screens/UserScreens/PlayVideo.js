@@ -54,15 +54,14 @@ export default function VideoScreen({ navigation, route}) {
         metadata.doc(auth.currentUser.uid).set({
           liked: false,
           disliked: false,
-          viewed: true,
           comments: [null],
-          user: auth.currentUser.email
+          ref: auth.currentUser.uid
         })
       )
     },
     Navigate = async() =>{
       let match = data.match
-      navigation.navigate('Doctor', {match})
+      navigation.navigate('Doctor', {match}) 
     };
 
   useEffect(() => {
@@ -103,7 +102,7 @@ export default function VideoScreen({ navigation, route}) {
               </TouchableOpacity>
             </View>
             <Text style={{ fontSize: 10, paddingLeft: 35 }}>
-              1.7M views - 2years ago
+              {data.views} views - {data.stamp}
             </Text>
 
             <Card
@@ -213,7 +212,7 @@ export default function VideoScreen({ navigation, route}) {
                 </TouchableOpacity>
               </View>
               <Text style={{ fontSize: 10, paddingLeft: 50, paddingTop: 5 }}>
-                1.7M views - {data.stamps}
+                {data.views} views - {data.stamps}
               </Text>
               <Card
                 style={{
@@ -223,7 +222,7 @@ export default function VideoScreen({ navigation, route}) {
                 }}>
                 <Text>Stroke Emergency Video</Text>
                 <Text style={{ fontSize: 10, color: 'gray' }}>
-                  1 000 000 Views
+                {data.views} Views
                 </Text>
               </Card>
               <View
@@ -260,7 +259,6 @@ export default function VideoScreen({ navigation, route}) {
 
         </Card>
       </ScrollView>
-      <TextInput placeholder="Comment" style={styles.commentBox} />
     </View>
   )
 }
@@ -288,7 +286,7 @@ const styles = StyleSheet.create({
     width: 260, 
     height: 38,
     borderRadius: 10,
-    outline: 'none',
+    outlineColor: 'transparent',
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   }, 
@@ -303,7 +301,7 @@ const styles = StyleSheet.create({
     width: 260,
     height: 38,
     borderRadius: 10,
-    outline: 'none',
+    outlineColor: 'transparent',
     backgroundColor: 'lightgrey',
     paddingLeft: 10,
   },

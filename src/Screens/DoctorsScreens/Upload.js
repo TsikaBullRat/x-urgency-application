@@ -126,7 +126,7 @@
       fontSize: 16,
       borderColor: '#F96056', 
       borderWidth: 1,
-      outline: 'none'
+      outlineColor: 'transparent',
     },
     input2:{
       width: 280,
@@ -138,6 +138,6 @@
       fontSize: 16,
       borderColor: '#F96056',
       borderWidth: 1,
-      outline: 'none'
+      outlineColor: 'transparent',
     },
   });

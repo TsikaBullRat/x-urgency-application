@@ -27,60 +27,42 @@ import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-nat
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
 import { Video, } from 'expo-av';
-import { auth, Exit } from '../../firebase';
+import { auth, LoadSet, firestore } from "../../firebase";
 import { ProgressBar } from '../../Components';
+import { VideoList } from "../../Components";
 
-export default function MedicalHome({ navigation, progress, Log }) {
+export default function MedicalHome({ navigation, progress, Log, setMatch }) {
+  const [videos, setLoad] = useState(null)
   const Logout = () => {
     auth.signOut();
     setDone(false);
+  },
+  FirstTimeUser = async () =>{
+    await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.exists)?(
+      null
+    ):(
+   firestore.collection("Users").doc(auth.currentUser.uid).set({
+     username: auth.currentUser.displayName,
+     doctor: false,
+     email: auth.currentUser.email,
+     cred: null
+   })
+   )
+  },
+  VideoScreen = (data) => {
+    let match = data.match
+    setMatch(match)
+    navigation.navigate("PlayVideo", {data});
   };
-  const videos = [
-    {
-      id: 1,
-      title: "Stroke",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 2,
-      title: "Heart-Attack",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 3,
-      title: "Epilepsy",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 4,
-      title: "CPR",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 5,
-      title: "Bleeding",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 6,
-      title: "Choking",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 7,
-      title: "Drowning",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 8,
-      title: "Burn",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-  ];
 
-  const video = React.useRef(
-    "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
-  );
+  useEffect(()=>{
+    FirstTimeUser()
+  }, [])
+
+  useEffect(() => {
+    LoadSet(setLoad);
+  }, []);
+
   const [status, setStatus] = useState({}),
     [loading, setLoading] = useState(null);
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
@@ -103,7 +85,7 @@ export default function MedicalHome({ navigation, progress, Log }) {
               textShadowOffset: { width: 2, height: 2 },
               textShadowRadius: 1,
             }}
-            onPress={Exit}
+            onPress={Logout}
           >
             Dr. DoLittle
           </Text>
@@ -133,6 +115,7 @@ export default function MedicalHome({ navigation, progress, Log }) {
               }}
               size="large"
             />
+
             <Badge
               status="success"
               containerStyle={{ position: "absolute", top: -4, right: -4 }}
@@ -142,36 +125,11 @@ export default function MedicalHome({ navigation, progress, Log }) {
       </View>
       {/*---------------------- Video Scroll View--------------------*/}
       {loading ? <ProgressBar status={loading} /> : null}
-      <ScrollView vertical={true} showsHorizontalScrollIndicator={false}>
-        <Card style={styles.menu2}>
-          <View style={{ alignItems: "center" }}>
-            {videos.map((vid) => (
-              <ol>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("Strokes");
-                  }}
-                >
-                  <Video
-                    ref={video}
-                    source={{ uri: link }}
-                    // useNativeControls
-                    resizeMode="contain"
-                    isLooping
-                    onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-                    style={{
-                      width: 315,
-                      marginLeft: -40,
-                      borderRadius: 25,
-                    }}
-                  />
-                  <h4>{vid.title}</h4>
-                </TouchableOpacity>
-              </ol>
-            ))}
-          </View>
-        </Card>
-      </ScrollView>
+      <Card style={styles.menu2}>
+        <View>
+          <VideoList videos={videos} VideoScreen={VideoScreen} />
+        </View>
+      </Card>
       <TouchableOpacity
         style={styles.btnUpload}
         onPress={() => {

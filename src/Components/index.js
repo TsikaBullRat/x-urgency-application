@@ -5,5 +5,5 @@ import Header from "./Header"
 import Socials from "./Socials"
 import { ProgressBar } from "./Loader"
 import { Comments } from "./CommentsSection"
-
-export { AlertNote, BottomNav, button, Header, Socials, ProgressBar, Comments }
+import { VideoList } from "./VideoList"
+export { AlertNote, BottomNav, button, Header, Socials, ProgressBar, Comments, VideoList }

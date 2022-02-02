@@ -18,6 +18,7 @@ const DoctorProfile = ({match, route}) => {
     const [Qalification, setQualification] = useState(false);
     const [Specialization, setSpecialization] = useState(false);
     const [Contact, setContact] = useState(false);
+    const [doctor, setDoctor] = useState("")
     const [data, setData] = useState(null);
 
     const check = (value) => {
@@ -53,15 +54,19 @@ const DoctorProfile = ({match, route}) => {
 
     }
     const getDoctorInfo = () =>{
-        firestore.collection("Doctors").doc(match.match).get()
+        firestore.collection("Users").doc(match).collection("cred").doc(match).get()
             .then(doc=>{
                 setData(doc.data())
             })
+        firestore.collection("Users").doc(match).get()
+            .then(doc=>{
+                setDoctor(doc.data().username)
+            })
+        
     }
 
     useEffect(()=>{
         getDoctorInfo()
-        console.log(match)
     }, [])
 
     return (
@@ -81,12 +86,12 @@ const DoctorProfile = ({match, route}) => {
                             containerStyle={{ position: 'absolute', top: -4, right: -4 }}
                         />
                     </View>
-                    <Text style={styles.textTitle}>Dr. {match.owner}</Text>
+                    <Text style={styles.textTitle}>Dr. {doctor}</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
                     <Socials text="Following" number="15" />
-                    <Socials text="Followers" number="3000K" />
+                    <Socials text="Followers" number={data.subscribers.length} />
                     <Socials text="Likes" number="3.1M" />
                 </View>
 
@@ -109,21 +114,21 @@ const DoctorProfile = ({match, route}) => {
             </View> : <View></View>}
             {Qalification ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    {data.Qualification}
+                    {data.qualification}
                 </Text>
             </View> : <View></View>}
             {Specialization ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    {data.Specilization}
+                    {data.specilization}
                 </Text>
             </View> : <View></View>}
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     Mr Sighn@gmail.com
                     {"\n"}
-                    {data.Contact}
+                    {data.contact}
                     {"\n"}
-                    {data.Branch}
+                    {data.branch}
                 </Text>
             </View> : <View></View>}
 

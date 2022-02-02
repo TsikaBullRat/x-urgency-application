@@ -19,13 +19,14 @@ import { AlertNote } from '../../Components/Alert';
 
 export default function SignUp({ navigation }) {
 
-  const [email, setEmail] = useState(""),
+  const [name, setName] = useState(""),
+    [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [ConfirmPassword, setConfirmPassword] = useState(""),
     [displayModal, setDisplayModal] = useState(false),
     [message, setMessage] = useState("")
-  const Register = () => {
-    handleSignUp(email, password, ConfirmPassword, setEmail, setPassword, setConfirmPassword, setMessage)
+  const Register = async () => {
+    handleSignUp(name, email, password, ConfirmPassword, setMessage)
     setDisplayModal(true)
   }
   return (
@@ -48,7 +49,16 @@ export default function SignUp({ navigation }) {
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
             <TextInput style={styles.txtUser}
-              name='username' placeholder='Username' onChangeText={text => setEmail(text)}
+              name='username' placeholder='Username' onChangeText={text => setName(text)}
+            />
+          </View>
+        </Card>
+
+        <Card style={[styles.txtCards, styles.shadowProp]}>
+          <View style={{ flexDirection: 'row' }}>
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <TextInput style={styles.txtUser}
+              name='eamil' placeholder='Email' onChangeText={text => setEmail(text)}
             />
           </View>
         </Card>
@@ -112,7 +122,7 @@ const styles = StyleSheet.create({
 
   header: {
     paddingTop: 205,
-    textAlign: 'center',  
+    textAlign: 'center',
   },
 
   txtUser: {

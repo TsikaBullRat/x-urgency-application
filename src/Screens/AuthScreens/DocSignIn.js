@@ -121,7 +121,13 @@ const styles = StyleSheet.create({
   txtUser: {
     width: 240,
     height: 38,
+<<<<<<< HEAD
     marginTop: 2,
+=======
+    borderRadius: 10,
+    outlineColor: 'transparent',
+    backgroundColor: 'lightgrey',
+>>>>>>> 7254b1f257bd91ee6d485b9b0b6474f51f09d120
     paddingLeft: 10,
     paddingTop: 8,
     borderRadius: 10,
@@ -135,7 +141,13 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     paddingTop: 8,
     borderRadius: 10,
+<<<<<<< HEAD
     outlineColor: '#fff',
+=======
+    outlineColor: 'transparent',
+    backgroundColor: 'lightgrey',
+    paddingLeft: 10,
+>>>>>>> 7254b1f257bd91ee6d485b9b0b6474f51f09d120
   },
 
   txtCards: {
