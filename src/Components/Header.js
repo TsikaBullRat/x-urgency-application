@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
 
   header: {
     flexDirection: 'column',
+    justifyContent: 'flex-start',
     color: '#F96056',
     fontSize: 36,
   },

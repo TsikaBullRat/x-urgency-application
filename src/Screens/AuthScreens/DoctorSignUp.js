@@ -24,11 +24,16 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     [name, setName] = useState(""),
     [surname, setSurname] = useState(""),
     [contactdetails, setContactDetails] = useState(""),
+    [qualification, setQualification] = useState(""),
+    [specialization, setSpecialization] = useState("Neuro-Surgent"),
+    [branch, setBranch] = useState(""),
+    [password, setPassword] = useState(""),
+    [confirmpassword, setConfirmPassword] = useState(""),
 
     [visibleStatusBar, setVisibleStatusBar] = useState(false)
 
     const changeVisibilityStatusBar = () => {
-      setVisibleStatusBar(!visibleStatuBar)
+      setVisibleStatusBar(!visibleStatusBar)
     }
 
   return (
@@ -46,7 +51,9 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         <Text style={{ fontWeight: "bold", fontSize: 18, paddingLeft: 5 }}>  {`Doctor SignUp`} </Text>
       </View>
 
+      {!visibleStatusBar ? (
         <View>
+
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
@@ -88,14 +95,87 @@ export default function DoctorSignUp({ navigation, setDetails }) {
           </Card>
 
           <View style={{ alignItems: "center" }}>
-          <TouchableOpacity style={styles.signIn} onPress={() => {navigation.navigate('DocSignIn')}}>
+          <TouchableOpacity style={styles.signIn} onPress={() => {changeVisibilityStatusBar()}}>
             <Text style={{ color: "#fff" }}>{`NEXT`} </Text>
           </TouchableOpacity>
         </View>
+
+        </View>
+
+      ) : (
+        <View>
+           <Card style={styles.txtCards}>
+            <View style={{ flexDirection: "row" }}>
+              <Picker
+                specialization={specialization}
+                style={styles.picker}
+                onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
+
+                <Picker.Item label="Neuro-Surgent" value="stroke" />
+                <Picker.Item label="General Practitioner" value="heart-attack" />
+                <Picker.Item label="Epilepsy" value="epilepsy" />
+                <Picker.Item label="CPR" value="cpr" />
+                <Picker.Item label="Drowning" value="drowning" />
+                <Picker.Item label="Choking" value="choking" />
+                <Picker.Item label="Java" value="java" />
+                <Picker.Item label="Burns" value="burns" />
+            </Picker>
+            </View>
+          </Card>
+
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: "row" }}>
+              <TextInput
+                style={styles.txtField}
+                name="Qualification"
+                placeholder="Qualification"
+                onChangeText={(text) => setQualification(text)} />
+            </View>
+          </Card>
+
+          
+
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: "row" }}>
+              <TextInput
+                style={styles.txtField}
+                name="Branch"
+                placeholder="Branch"
+                onChangeText={(text) => setBranch(text)} />
+            </View>
+          </Card>
+
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: "row" }}>
+              <TextInput
+                style={styles.txtField}
+                name="Password"
+                placeholder="Password"
+                onChangeText={(text) => setPassword(text)} />
+            </View>
+          </Card>
+
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: "row" }}>
+              <TextInput
+                style={styles.txtField}
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                onChangeText={(text) => setConfirmPassword(text)} />
+            </View>
+          </Card>
+
+
+        <View style={{ alignItems: "center" }}>
+          <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
+            <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
+          </TouchableOpacity>
+        </View>
+         </View>
+      )}
+        
         </View>
      
-
-    </View>
   );
 }
 
@@ -131,6 +211,7 @@ const styles = StyleSheet.create({
     width: 245,
     height: 30,
     marginTop: 2,
+    marginLeft: 2,
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,

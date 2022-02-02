@@ -12,7 +12,7 @@
 **/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Picker} from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
@@ -21,7 +21,7 @@ import { AlertNote } from '../../Components/Alert';
 export default function DoctorSignUp({ navigation, setDetails }) {
 
   const [qualification, setQualification] = useState(""),
-    [specialization, setSpecialization] = useState(""),
+    [specialization, setSpecialization] = useState("Neuro-Surgent"),
     [branch, setBranch] = useState(""),
     [password, setPassword] = useState(""),
     [confirmpassword, setConfirmPassword] = useState(""),
@@ -62,11 +62,20 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         <View>
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Specialization"
-                placeholder="Specialization"
-                onChangeText={(text) => setSpecialization(text)} />
+              {/* {<Picker
+                specialization={specialization}
+                style={styles.picker}
+                onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
+
+                <Picker.Item label="Neuro-Surgent" value="stroke" />
+                <Picker.Item label="General Practitioner" value="heart-attack" />
+                <Picker.Item label="Epilepsy" value="epilepsy" />
+                <Picker.Item label="CPR" value="cpr" />
+                <Picker.Item label="Drowning" value="drowning" />
+                <Picker.Item label="Choking" value="choking" />
+                <Picker.Item label="Java" value="java" />
+                <Picker.Item label="Burns" value="burns" />
+            </Picker>} */}
             </View>
           </Card>
 
