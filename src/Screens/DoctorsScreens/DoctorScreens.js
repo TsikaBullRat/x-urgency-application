@@ -17,7 +17,6 @@ export const DoctorsScreens = () => {
             <Stack.Screen name="Upload" options={{ headerShown: false }} >
                 {props => <Upload {...props} Log={setPerc} />}
             </Stack.Screen>
-            <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }} />
             <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
             <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
         </Stack.Navigator>

@@ -23,46 +23,30 @@ export default function DoctorSignUp({ navigation, setDetails }) {
   const [email, setEmail] = useState(""),
     [name, setName] = useState(""),
     [surname, setSurname] = useState(""),
-    [qualification, setQualification] = useState(""),
-    [specialization, setSpecialization] = useState(""),
-    [branch, setBranch] = useState(""),
     [contactdetails, setContactDetails] = useState(""),
-    [password, setPassword] = useState(""),
-    [confirmpassword, setConfirmPassword] = useState(""),
-    [displayModal, setDisplayModal] = useState(false),
-    [message, setMessage] = useState("")
 
-  const DoctorRegister = () => {
-    if (password !== confirmpassword) {
-      setMessage("Password Doesn't Match")
-      // setDisplaModal(true)
-    } else {
-      handleDoctorSignUp(email, password, name, confirmpassword + " " + surname, qualification, specialization, branch, contactdetails, setEmail, setPassword, setConfirmPassword, setMessage)
-      setDisplaModal(true)
+    [visibleStatusBar, setVisibleStatusBar] = useState(false)
+
+    const changeVisibilityStatusBar = () => {
+      setVisibleStatusBar(!visibleStatuBar)
     }
-  }
 
   return (
 
     <View style={styles.container}>
-      <AlertNote
-        modalVisible={displayModal}
-        setModalVisible={setDisplayModal}
-        msg={message} />
 
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
-        <Text style={{ color: "#fff", fontSize: 28, marginLeft: 8 }}> {" "} X-urgency</Text>
+        <Text style={{ color: "#fff", fontSize: 28, marginLeft: 8 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: "bold", fontSize: 18, paddingLeft: 5 }}>  Doctor SignUp </Text>
+        <Text style={{ fontWeight: "bold", fontSize: 18, paddingLeft: 5 }}>  {`Doctor SignUp`} </Text>
       </View>
 
-      <View>
-        <Card style={{ height: 230 }}>
+        <View>
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
@@ -87,19 +71,9 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
-                name="Specialization"
-                placeholder="Specialization"
-                onChangeText={(text) => setSpecialization(text)} />
-            </View>
-          </Card>
-
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Qualification"
-                placeholder="Qualification"
-                onChangeText={(text) => setQualification(text)} />
+                name="contactDetails"
+                placeholder="Contact Details"
+                onChangeText={(text) => setContactDetails(text)} />
             </View>
           </Card>
 
@@ -113,54 +87,14 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             </View>
           </Card>
 
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Branch"
-                placeholder="Branch"
-                onChangeText={(text) => setBranch(text)} />
-            </View>
-          </Card>
-
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Contact Details"
-                placeholder="Contact Details"
-                onChangeText={(text) => setContactDetails(text)} />
-            </View>
-          </Card>
-
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Password"
-                placeholder="Password"
-                onChangeText={(text) => setContactDetails(text)} />
-            </View>
-          </Card>
-
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Confirm password"
-                placeholder="Confirm password"
-                onChangeText={(text) => setContactDetails(text)} />
-            </View>
-          </Card>
-        </Card>
-
-        <View style={{ alignItems: "center" }}>
-          <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
-            <Text style={{ color: "#fff" }}>SIGNIN </Text>
+          <View style={{ alignItems: "center" }}>
+          <TouchableOpacity style={styles.signIn} onPress={() => {navigation.navigate('DocSignIn')}}>
+            <Text style={{ color: "#fff" }}>{`NEXT`} </Text>
           </TouchableOpacity>
         </View>
+        </View>
+     
 
-      </View>
     </View>
   );
 }
@@ -194,23 +128,23 @@ const styles = StyleSheet.create({
   },
 
   txtField: {
-    width: 285,
-    height: 35,
+    width: 245,
+    height: 30,
+    marginTop: 2,
+    paddingLeft: 10,
+    paddingTop: 15,
     borderRadius: 10,
     outlineColor: 'transparent',
-    backgroundColor: "lightgrey",
-    paddingLeft: 10,
   },
 
   txtCards: {
-    backgroundColor: "lightgrey",
     width: 285,
-    height: 40,
+    height: 50,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 15,
+    marginTop: 75,
     borderWidth: 1,
-    borderColor: '#F47066'
+    borderColor: '#F47066',
   },
 
   signIn: {
