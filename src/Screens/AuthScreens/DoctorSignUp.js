@@ -19,7 +19,6 @@ import { AlertNote } from '../../Components/Alert';
 
 export default function DoctorSignUp({ navigation, setDetails }) {
 
-<<<<<<< HEAD
     const [email, setEmail] = useState(""),
         [name, setName] = useState(""),
         [surname, setSurname] = useState(""),
@@ -36,21 +35,8 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar);
     },
-=======
-  const [email, setEmail] = useState(""),
-    [name, setName] = useState(""),
-    [surname, setSurname] = useState(""),
-    [qualification, setQualification] = useState(""),
-    [specialization, setSpecialization] = useState(""),
-    [branch, setBranch] = useState(""),
-    [contactdetails, setContactDetails] = useState(""),
-    [password, setPassword] = useState(""),
-    [confirmpassword, setConfirmPassword] = useState(""),
-    [displayModal, setDisplayModal] = useState(false),
-    [message, setMessage] = useState("")
->>>>>>> 7254b1f257bd91ee6d485b9b0b6474f51f09d120
 
-  const DoctorRegister = () => {
+   DoctorRegister = () => {
     if (password !== confirmpassword) {
       setMessage("Password Doesn't Match")
       // setDisplaModal(true)
@@ -129,10 +115,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               />
             </View>
           </Card>
-<<<<<<< HEAD
-=======
-
->>>>>>> 7254b1f257bd91ee6d485b9b0b6474f51f09d120
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
@@ -196,14 +178,8 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               />
             </View>
           </Card>
-<<<<<<< HEAD
 
           <View style={{ alignItems: "center" }}>
-=======
-        </Card>
-
-        <View style={{ alignItems: "center" }}>
->>>>>>> 7254b1f257bd91ee6d485b9b0b6474f51f09d120
           <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
             <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
           </TouchableOpacity>
