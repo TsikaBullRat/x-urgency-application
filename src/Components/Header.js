@@ -32,26 +32,21 @@ export default function Header({ done }) {
   return (
 
     <View style={styles.contain}>
-      <Pressable
-        onPress={LogOut}
-        > 
-             <Image
-               source={require("../images/logOut.png")}
-               style={styles.logoutIMG}
-             />
+      <Pressable onPress={LogOut} >
+
+        <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+
       </Pressable>
+
       {/*---------------------------Header--------------------------*/}
 
       <View style={{ flexDirection: 'row', width: 295, marginTop: 40, justifyContent: 'flex-start' }}>
+
         <View >
 
-          <Text style={styles.header}>
-            WHAT'S YOUR
-          </Text>
+          <Text style={styles.header}> WHAT'S YOUR</Text>
 
-          <Text style={styles.header}>
-            EMERGENCY ?
-          </Text>
+          <Text style={styles.header}> EMERGENCY ?</Text>
 
         </View>
 
@@ -63,8 +58,8 @@ export default function Header({ done }) {
         )}
           <Badge
             status="success"
-            containerStyle={{ position: 'absolute', top: -4, right: -4 }}
-          />
+            containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
+
         </View>
       </View>
     </View>

@@ -125,7 +125,7 @@ export default function MedicalHome({ navigation }) {
 
                 resizeMode="contain" isLooping onPlaybackStatusUpdate={status => setStatus(() => status)}
 
-                style={{ width: 315, marginLeft: -  40, borderRadius: 25 }} />
+                style={{ width: 315, marginLeft: -40, borderRadius: 25 }} />
 
               <h4>{vid.title}</h4>
 

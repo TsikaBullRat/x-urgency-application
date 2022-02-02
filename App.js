@@ -26,19 +26,19 @@ export default function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged(user => user ? setID(user.uid) : null)
-  }, [ true ])
+  }, [true])
 
   return (
 
     <NavigationContainer>
       <KeyboardAwareScrollView>
-      {
-        id?(
-          <Check id={id} details={details}/>
-        ):(
-          <AuthScreens setDetails={setDetails} />
-        )
-      }
+        {
+          id ? (
+            <Check id={id} details={details} />
+          ) : (
+            <AuthScreens setDetails={setDetails} />
+          )
+        }
       </KeyboardAwareScrollView>
     </NavigationContainer>
   );
