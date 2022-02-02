@@ -1,4 +1,5 @@
 import { auth } from '../config'
+
 const handleSignUp = (email, password, Confirmpassword, setMessage) => {
     if (password !== Confirmpassword) {
         setMessage("Password Doesn't Match")
@@ -18,11 +19,14 @@ const handleSignUp = (email, password, Confirmpassword, setMessage) => {
                         setMessage("Password too weak")
                         break
                 }
+
             });
     }
+
     // setEmail("")
     // setPassword("")
     // setConfirmPassword("")
+
 }
 
 const handleDoctorSignUp = (email, password, name, setMessage) => {
@@ -32,9 +36,11 @@ const handleDoctorSignUp = (email, password, name, setMessage) => {
             user.user.updateProfile({
                 displayName: name
             })
+
                 .then(console.log('I done'))
                 .catch(err => console.log(err))
         })
+
         .catch((error) => {
             switch (error.code) {
                 case 'auth/invalid-email':
@@ -46,4 +52,5 @@ const handleDoctorSignUp = (email, password, name, setMessage) => {
             }
         });
 }
+
 export { handleSignUp, handleDoctorSignUp }

@@ -1,19 +1,19 @@
 import React from 'react';
 import { Modal, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 const AlertNote = ({ modalVisible, setModalVisible, msg, excess }) => {
-    const Press = () => {
-        excess ? excess(true) : null
-        setModalVisible(false)
-    }
+    const Press = () => { excess ? excess(true) : nullsetModalVisible(false) }
+
     return (
+
         <Modal
             animationType="fade"
             transparent={true}
             visible={modalVisible}
-            onRequestClose={() => {
-                setModalVisible(!modalVisible);
-            }}>
+            onRequestClose={() => { setModalVisible(!modalVisible); }}>
+
             <Pressable style={styles.backdrop} onPress={() => setModalVisible(false)} ></Pressable>
+
             <View style={styles.modal}>
                 <View style={styles.alertBox}>
                     <Text style={styles.text}>{msg}</Text>
@@ -25,6 +25,7 @@ const AlertNote = ({ modalVisible, setModalVisible, msg, excess }) => {
         </Modal>
     )
 }
+
 const styles = StyleSheet.create({
     backdrop: {
         position: 'absolute',
@@ -37,20 +38,24 @@ const styles = StyleSheet.create({
                 backgroundColor: "#000000",
                 opacity: 0.3
             },
+
             android: {
                 backgroundColor: "#232f34",
                 opacity: 0.32
             },
+
             web: {
                 backgroundColor: '#000',
                 opacity: 0.3
             },
+
             default: {
                 backgroundColor: '#000',
                 opacity: 0.3
             }
         })
     },
+
     alertBox: {
         backgroundColor: '#F47066',
         width: '80%',
@@ -59,15 +64,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+
     modal: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
+
     text: {
         fontSize: 25,
         color: '#fff'
     },
+
     button: {
         backgroundColor: '#fff',
         justifyContent: 'center',
@@ -77,9 +85,12 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderRadius: 25,
     },
+
     btnText: {
         fontSize: 15,
         color: '#F47066'
     }
+
 })
+
 export { AlertNote }

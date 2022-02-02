@@ -10,6 +10,7 @@
     * - Author          : TLeeuw
     * - Modification    : 
 **/
+
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
@@ -42,8 +43,11 @@ export default function UploadVideo({ navigation }) {
 
   //   await Sharing.shareAsync(selectedImage.localUri);
   // };
+
   if (selectedImage !== null) {
+
     return (
+
       <View style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
         <TouchableOpacity onPress={() => { Upload(selectedImage.localUri) }} style={styles.button}>
@@ -54,6 +58,7 @@ export default function UploadVideo({ navigation }) {
   }
 
   return (
+
     <View style={styles.container}>
       <Text style={styles.instructions}>
         To upload a Video from your phone, just press the button below!
@@ -71,27 +76,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 850,
   },
+
   imgContainer: {
     alignItems: 'center',
   },
+
   instructions: {
     color: '#888',
     fontSize: 18,
     marginHorizontal: 15,
     paddingTop: 150,
   },
+
   logo: {
     width: 270,
     height: 270,
     marginLeft: 20,
     marginTop: 20,
   },
+
   thumbnail: {
     width: 300,
     height: 300,
     marginTop: 100,
     resizeMode: 'contain',
   },
+
   button1: {
     backgroundColor: '#F47066',
     padding: 20,
@@ -99,6 +109,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     borderRadius: 5,
   },
+
   button: {
     backgroundColor: '#F47066',
     padding: 20,
@@ -106,8 +117,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignSelf: 'center'
   },
+
   buttonText: {
     fontSize: 20,
     color: '#fff',
   },
+
 });

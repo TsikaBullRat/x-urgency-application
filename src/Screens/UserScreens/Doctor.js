@@ -5,19 +5,21 @@ import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
 import { firestore } from '../../firebase';
 
-const DoctorProfile = ({ match, route }) => {
+const DoctorProfile = ({ route }) => {
 
-    const info = route.params
+    const info = route.params.match
     const options = [
         { label: "About ", value: "About" },
         { label: "Qualification", value: "Qualification" },
         { label: "Specialization", value: "Specialization" },
-        { label: "Contact", value: "Contact" }
-    ];
+        { label: "Contact", value: "Contact" }];
+
     const [About, setAbout] = useState(true);
     const [Qalification, setQualification] = useState(false);
     const [Specialization, setSpecialization] = useState(false);
     const [Contact, setContact] = useState(false);
+    const [doctor, setDoctor] = useState("")
+    const [email, setEmail] = useState("")
     const [data, setData] = useState(null);
 
     const check = (value) => {
@@ -52,41 +54,47 @@ const DoctorProfile = ({ match, route }) => {
         }
 
     }
+
     const getDoctorInfo = () => {
-        firestore.collection("Doctors").doc(match.match).get()
+        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
             .then(doc => {
                 setData(doc.data())
             })
+        firestore.collection("Users").doc(info).get()
+            .then(doc => {
+                setDoctor(doc.data().username)
+                setEmail(doc.data().email)
+            })
+
     }
 
     useEffect(() => {
         getDoctorInfo()
-        console.log(match)
     }, [])
 
+    useEffect(() => {
+        console.log(data)
+    }, [data])
+
     return (
-        <>
+
+        data ? (<>
+
             <View>
                 <View style={styles.container}>
+
                     <View style={{ marginTop: 50, marginLeft: 10 }}>
-                        <Avatar style={styles.avatar}
-                            rounded
-                            source={{
-                                uri: 'https://randomuser.me/api/portraits/men/44.jpg',
-                            }}
-                            size="large"
-                        />
-                        <Badge
-                            status="success"
-                            containerStyle={{ position: 'absolute', top: -4, right: -4 }}
-                        />
+                        <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/44.jpg', }} size="large" />
+                        <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
                     </View>
-                    <Text style={styles.textTitle}>Dr. {match.owner}</Text>
+
+                    <Text style={styles.textTitle}>Dr. {doctor}</Text>
+
                 </View>
 
                 <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
                     <Socials text="Following" number="15" />
-                    <Socials text="Followers" number="3000K" />
+                    <Socials text="Followers" number={data.subscribers ? data.subscribers.length : 0} />
                     <Socials text="Likes" number="3.1M" />
                 </View>
 
@@ -98,36 +106,47 @@ const DoctorProfile = ({ match, route }) => {
                         onPress={value => check(value)}
                         testID="gender-switch-selector"
                         accessibilityLabel="gender-switch-selector"
-                        hasPadding
-                    />
+                        hasPadding />
                 </View>
             </View>
+
             {About ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     {data ? data.about : null}
                 </Text>
-            </View> : <View></View>}
+            </View>
+
+                : <View></View>}
+
             {Qalification ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    {data.Qualification}
+                    {data.qualification}
                 </Text>
-            </View> : <View></View>}
+            </View>
+
+                : <View></View>}
+
             {Specialization ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    {data.Specilization}
+                    {data.specilization}
                 </Text>
-            </View> : <View></View>}
+            </View>
+
+                : <View></View>}
+
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Mr Sighn@gmail.com
+                    {email}
                     {"\n"}
-                    {data.Contact}
+                    {data.contact}
                     {"\n"}
-                    {data.Branch}
+                    {data.branch}
                 </Text>
-            </View> : <View></View>}
+            </View>
 
-        </>
+                : <View></View>} </>
+
+        ) : null
     )
 }
 
@@ -141,23 +160,28 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         height: 850,
     },
+
     textTitle: {
         color: 'red',
         fontSize: 25,
         marginTop: 5,
     },
+
     textTitle2: {
         fontSize: 15,
         marginTop: 20,
         marginLeft: 5,
     },
+
     box: {
         flexDirection: 'row',
     },
+
     tab: {
         paddingLeft: 5,
         width: 380,
     },
+
     avatar: {
         width: 70,
         height: 70,
@@ -170,10 +194,12 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.4,
         elevation: 1,
     },
+
     words: {
         width: 250,
         textAlign: 'center',
         alignSelf: 'center'
     },
 });
+
 export default DoctorProfile;

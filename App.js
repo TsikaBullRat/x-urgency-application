@@ -10,26 +10,37 @@
  * - Author          : TLeeuw
  * - Modification    :
  **/
+
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 // You can import from local files
-import { auth, Detector } from './src/firebase'
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { DocSignUp } from "./src/Screens";
+import { auth, Check, LoadSet } from './src/firebase'
+import { StyleSheet, NativeModules } from 'react-native';
+import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
 
 export default function App() {
-  const [user, setUser] = useState(),
-    [checked, setChecked] = useState(false);
+  const [id, setID] = useState();
+  const [details, setDetails] = useState(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => user ? setUser(user.uid) : null)
-    setChecked(true)
+    auth.onAuthStateChanged(user => user ? setID(user.uid) : null)
   })
 
+  useEffect(()=>console.log("Im running"))
+
   return (
+
     <NavigationContainer>
-      <DocSignUp />
+      <KeyboardAwareScrollView>
+      {
+        id?(
+          <Check id={id} details={details}/>
+        ):(
+          <AuthScreens setDetails={setDetails} />
+        )
+      }
+      </KeyboardAwareScrollView>
     </NavigationContainer>
   );
 }
@@ -39,4 +50,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   }
+
 });

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { MedicalHome, Upload } from '..';
+import { MedicalHome, Upload, PlayVideo, DoctorProfile } from '..';
 
 const Stack = createNativeStackNavigator()
 
@@ -18,6 +18,8 @@ export const DoctorsScreens = () => {
                 {props => <Upload {...props} Log={setPerc} />}
             </Stack.Screen>
             <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }} />
+            <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+            <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

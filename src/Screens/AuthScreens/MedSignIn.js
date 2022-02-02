@@ -10,6 +10,7 @@
     * - Author          : MLab
     * - Modification    : 
 **/
+
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
@@ -18,6 +19,7 @@ import { handleSignIn } from '../firebase'
 import { AlertNote } from '../Components';
 
 export default function SignIn({ navigation, setDone }) {
+
   const
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
@@ -28,7 +30,9 @@ export default function SignIn({ navigation, setDone }) {
     setDisplaModal(true)
     navigation.navigate('MedicalHome')
   }
+
   return (
+
     <View style={styles.container}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
       <Card style={styles.card}>
@@ -46,9 +50,7 @@ export default function SignIn({ navigation, setDone }) {
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={22} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
-            <TextInput style={styles.txtUser}
-              name='username' placeholder='Username' onChangeText={text => setEmail(text)}
-            />
+            <TextInput style={styles.txtUser} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
 
@@ -58,8 +60,7 @@ export default function SignIn({ navigation, setDone }) {
             <TextInput style={styles.txtPass}
               name='password' placeholder='Password'
               secureTextEntry={true}
-              onChangeText={text => setPassword(text)}
-            />
+              onChangeText={text => setPassword(text)} />
           </View>
         </Card>
 
@@ -74,9 +75,7 @@ export default function SignIn({ navigation, setDone }) {
         </View>
 
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <Text style={{ paddingTop: 5 }}>
-            New?
-          </Text>
+          <Text style={{ paddingTop: 5 }}> New? </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
             <Text style={{ paddingTop: 5, color: '#F47066' }}> SignUp</Text>
           </TouchableOpacity>
@@ -86,6 +85,7 @@ export default function SignIn({ navigation, setDone }) {
     </View>
   )
 }
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center'
@@ -148,4 +148,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });

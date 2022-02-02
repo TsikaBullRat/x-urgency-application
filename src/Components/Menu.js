@@ -24,27 +24,26 @@ import burns from '../images/burn.png'
 
 export default function Header({ list, setVids }) {
 
-  const Sort = (match) => {
-    setVids(list.filter(item => item.tag === match))
-  }
+  const Sort = (match) => { setVids(list.filter(item => item.tag === match)) }
+
   return (
+
     <View style={styles.contain}>
+
       {/*----------------------Horizontal Menu----------------------*/}
 
       <ScrollView
-        style={{ maxWidth: 335 }}
-        horizontal={true} showsHorizontalScrollIndicator={false}>
+
+        style={{ maxWidth: 335 }} horizontal={true} showsHorizontalScrollIndicator={false}>
         <Pressable onPress={() => Sort("stroke")}>
           <View>
-            <Card style={{
-              width: 50, height: 70, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7
-            }}
-            >
+            <Card style={{ width: 50, height: 70, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }} >
               <Image style={styles.strokeMenu} source={Stroke} />
               <Text style={{ fontSize: 12 }}>Stroke</Text>
             </Card>
           </View>
         </Pressable>
+
         <Pressable onPress={() => Sort("heartattack")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7 }}>
@@ -53,6 +52,7 @@ export default function Header({ list, setVids }) {
             </Card>
           </View>
         </Pressable>
+
         <Pressable onPress={() => Sort("epilepsy")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
@@ -61,6 +61,7 @@ export default function Header({ list, setVids }) {
             </Card>
           </View>
         </Pressable>
+
         <Pressable onPress={() => Sort("cpr")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
@@ -69,6 +70,7 @@ export default function Header({ list, setVids }) {
             </Card>
           </View>
         </Pressable>
+
         <Pressable onPress={() => Sort("bleeding")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
@@ -77,6 +79,7 @@ export default function Header({ list, setVids }) {
             <Text style={{ paddingLeft: 28, fontSize: 12 }}>Bleeding</Text>
           </View>
         </Pressable>
+
         <Pressable onPress={() => Sort("choking")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
@@ -85,6 +88,7 @@ export default function Header({ list, setVids }) {
             </Card>
           </View>
         </Pressable>
+
         <Pressable onPress={() => Sort("drowning")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
@@ -93,16 +97,20 @@ export default function Header({ list, setVids }) {
             </Card>
           </View>
         </Pressable>
+
         <Pressable onPress={() => Sort("burn")}>
           <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
             <Image style={styles.burn} source={burns} />
             <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
           </Card>
         </Pressable>
+
       </ScrollView>
+
     </View>
   )
 }
+
 const styles = StyleSheet.create({
   contain: {
     alignItems: 'center',
@@ -179,4 +187,5 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginTop: 8
   },
+
 })

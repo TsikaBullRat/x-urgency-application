@@ -22,68 +22,43 @@
     * - Author          : MLab
     * - Modification    : 
 **/
+
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
 import { Video } from 'expo-av';
-import { auth, Exit } from '../../firebase';
-import { ProgressBar } from '../../Components';
+import { auth, LoadSet, LogOut,  firestore } from '../../firebase';
+import { ProgressBar, VideoList } from '../../Components';
 
 export default function MedicalHome({ navigation, progress, Log }) {
-  const [done, setDone] = useState(true),
-
+  const [done, setDone] = useState(true);
+  const [videos, setLoad] = useState(null),
+  VideoScreen = (data) => {
+    navigation.navigate("PlayVideo", {data});
+  },
     Logout = () => {
       auth.signOut();
       setDone(!done);
     };
 
-  const videos = [
-    {
-      id: 1,
-      title: "Stroke",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 2,
-      title: "Heart-Attack",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 3,
-      title: "Epilepsy",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 4,
-      title: "CPR",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 5,
-      title: "Bleeding",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 6,
-      title: "Choking",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 7,
-      title: "Drowning",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-    {
-      id: 8,
-      title: "Burn",
-      url: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    },
-  ];
+    const [image, setImage] = useState()
+    const [initial, setInitial] = useState()
+    const getProfile = async () =>{
+      let name
+      setImage(auth.currentUser.photoURL)
+      name = auth.currentUser.displayName
+      setInitial(name.substring(0,1))
+    }
+    
+    useEffect(()=>{
+      getProfile()
+    }, [])
 
   const video = React.useRef(
     "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
   );
+
   const [status, setStatus] = useState({}),
     [loading, setLoading] = useState(null);
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
@@ -92,7 +67,16 @@ export default function MedicalHome({ navigation, progress, Log }) {
     if (progress === 100) Log(null)
   }, [progress])
 
+  useEffect(() => {
+    LoadSet(setLoad);
+  }, []);
+
+  useEffect(()=>{
+    console.log(auth.currentUser.displayName.split(" ")[1])
+  }, [])
+
   return (
+
     <View style={styles.contain}>
       {/*---------------------------Header--------------------------*/}
       <View style={{ flexDirection: "row" }}>
@@ -106,9 +90,9 @@ export default function MedicalHome({ navigation, progress, Log }) {
               textShadowOffset: { width: 2, height: 2 },
               textShadowRadius: 1,
             }}
-            onPress={Exit}
+            onPress={LogOut}
           >
-            Dr. DoLittle
+            Dr. {auth.currentUser.displayName.split(" ")[1]}
           </Text>
 
           <Text
@@ -119,83 +103,66 @@ export default function MedicalHome({ navigation, progress, Log }) {
               textShadowColor: "grey",
               textShadowOffset: { width: 2, height: 2 },
               textShadowRadius: 1,
-            }}
-          >
-            In Da House
-          </Text>
+            }} > In Da House </Text>
         </View>
+
         {progress ? <ProgressBar status={progress} /> : null}
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <TouchableOpacity onPress={Logout}>
-            <Avatar
-              style={styles.avatar}
-              rounded
-              source={{
-                uri: "https://randomuser.me/api/portraits/men/45.jpg",
-              }}
-              size="large"
-            />
-            <Badge
-              status="success"
-              containerStyle={{ position: "absolute", top: -4, right: -4 }}
-            />
+          {image?(
+            <Avatar style={styles.avatar}
+            rounded
+            source={{
+              uri: image,
+            }}
+            size="large"
+          />
+          ):(
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}>
+                {initial}
+              </Text>
+            </View>
+          )}
           </TouchableOpacity>
         </View>
       </View>
+
       {/*---------------------- Video Scroll View--------------------*/}
+
       {loading ? <ProgressBar status={loading} /> : null}
-      <ScrollView vertical={true} showsHorizontalScrollIndicator={false}>
-        <Card style={styles.menu2}>
-          <View style={{ alignItems: "center" }}>
-            {videos.map((vid) => (
-              <ol>
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate("Strokes");
-                  }}
-                >
-                  <Video
-                    ref={video}
-                    source={{ uri: link }}
-                    // useNativeControls
-                    resizeMode="contain"
-                    isLooping
-                    onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-                    style={{
-                      width: 315,
-                      marginLeft: -40,
-                      borderRadius: 25,
-                    }}
-                  />
-                  <h4>{vid.title}</h4>
-                </TouchableOpacity>
-              </ol>
-            ))}
-          </View>
-        </Card>
-      </ScrollView>
-      <TouchableOpacity
-        style={styles.btnUpload}
-        onPress={() => {
-          navigation.navigate("Upload");
+      <ScrollView style={{
+          height: 580, width: 335, //alignItems:'center'
         }}
-      >
+          vertical={true} showsVerticalScrollIndicator={false}>
+          <Card style={styles.menu2}>
+            <View>
+              <VideoList videos={videos} VideoScreen={VideoScreen} />
+            </View>
+          </Card>
+        </ScrollView>
+      <TouchableOpacity
+        style={styles.btnUpload} onPress={() => { navigation.navigate("Upload"); }} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>
       </TouchableOpacity>
     </View>
+
   );
 }
+
 const styles = StyleSheet.create({
   contain: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
   },
+
   header: {
     flexDirection: 'column',
     paddingTop: 50,
   },
+
   avatar: {
     width: 70,
     height: 70,
@@ -208,6 +175,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
+
   menu2: {
     width: 355,
     height: 550,
@@ -215,12 +183,14 @@ const styles = StyleSheet.create({
     marginTop: 50,
     borderRadius: 15,
   },
+
   shadowProp: {
     shadowColor: '#171717',
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
   },
+
   btnUpload: {
     backgroundColor: '#F47066',
     height: 40,
@@ -230,4 +200,18 @@ const styles = StyleSheet.create({
     marginLeft: 290,
     marginTop: 15
   },
+  temp:{
+    // flex: 1,
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    margingTop: 80,
+    backgroundColor: 'turquoise',
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
+  temp_text:{
+    fontSize:40,
+    color: '#fff',
+  }
 });

@@ -28,37 +28,36 @@ function Counter({ video }) {
         firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
           liked: false
         }),
+
         setPressed(!pressed)
       ) : (
+
         thisDislike ? (
           firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
             liked: true,
             disliked: false
           }),
+
           setPressed(!pressed)
         ) : (
+
           firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
             liked: true
           }),
+
           setPressed(!pressed)
+
         )
       )
     };
 
-  useEffect(() => {
-    Check()
-  }, [pressed])
+  useEffect(() => { Check() }, [pressed])
 
   return (
     <View>
-
       <View>
         <TouchableOpacity onPress={Like}>
-          <Entypo
-            name="thumbs-up"
-            size={20}
-            color="black"
-          />
+          <Entypo name="thumbs-up" size={20} color="black" />
           <Text style={{ paddingTop: 6 }}> {count}</Text>
         </TouchableOpacity>
       </View>
@@ -67,9 +66,8 @@ function Counter({ video }) {
 }
 
 const Likes = ({ data }) => {
-  return (
-    <Counter video={data} />
-  )
+  return (<Counter video={data} />)
+
 };
 
 export { Likes }

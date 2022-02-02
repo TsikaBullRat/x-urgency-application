@@ -10,21 +10,15 @@
  * - Author          : TLeeuw
  * - Modification    :
  **/
-import React, { useState } from "react";
-import {
-    StyleSheet,
-    Picker,
-    Text,
-    TouchableOpacity,
-    View,
-    TextInput,
-} from "react-native";
 
+import React, { useState } from "react";
+import { StyleSheet, Picker, Text, TouchableOpacity, View, TextInput, } from "react-native";
 import { Card } from "react-native-paper";
 import { UploadVideo } from "../firebase";
 import * as ImagePicker from 'expo-image-picker';
 
 export default function Clone({ navigation }) {
+
     const [selectedValue, setSelectedValue] = useState("stroke"),
         [title, setTitle] = useState(),
         [description, setDescpription] = useState(),
@@ -44,31 +38,31 @@ export default function Clone({ navigation }) {
 
             setSelectedImage({ localUri: pickerResult.uri });
         },
+
         Run = () => {
             openImagePickerAsync();
             selectedImage ? UploadVideo(selectedImage.localUri, title, description, selectedValue) : null
         }
 
     return (
+
         <View style={styles.container}>
             <Text style={styles.header}>Fill in Info. below:</Text>
-
             <Card style={styles.txtCards}>
                 <View style={{ flexDirection: "row" }}>
                     <TextInput
                         style={styles.txtField}
                         name="username"
                         placeholder="Title"
-                        onChangeText={text => setTitle(text)}
-                    />
+                        onChangeText={text => setTitle(text)} />
                 </View>
             </Card>
 
             <Picker
                 selectedValue={selectedValue}
                 style={styles.picker}
-                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-            >
+                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
+
                 <Picker.Item label="Stroke" value="stroke" />
                 <Picker.Item label="Heart-Attack" value="heart-attack" />
                 <Picker.Item label="Epilepsy" value="epilepsy" />
@@ -85,15 +79,13 @@ export default function Clone({ navigation }) {
                         style={styles.txtField}
                         name="password"
                         placeholder="Description"
-                        onChangeText={text => setDescpription(text)}
-                    />
+                        onChangeText={text => setDescpription(text)} />
                 </View>
             </Card>
 
-            <TouchableOpacity onPress={Run} style={{ marginTop: 30 }}>
-                Upload
-            </TouchableOpacity>
+            <TouchableOpacity onPress={Run} style={{ marginTop: 30 }}> Upload</TouchableOpacity>
         </View>
+
     );
 }
 
@@ -148,4 +140,5 @@ const styles = StyleSheet.create({
         marginLeft: 2,
         marginTop: 15,
     },
+
 });
