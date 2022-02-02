@@ -59,7 +59,7 @@ const LoadSet = (Load, query) => {
     var content = []
     var i = 0
     var getLink
-    var data = firestore.collection('Videos')
+    var metadata = firestore.collection('Videos')
     const getTimeFrame = (date) => {
         let today = new Date()
         let frame
@@ -107,7 +107,7 @@ const LoadSet = (Load, query) => {
             .then(res => {
                 res.items.forEach(async itemRef => {
                     var views = 0
-                    views = await data.doc(itemRef.name.split('.')[0]).collection('Acts').get()
+                    views = await firestore.collection("Videos").doc(itemRef.name.split('.')[0]).collection("Acts").get()
                         .then(query => {
                             query.forEach(doc => {
                                 views = doc.exists ? views + 1 : null
@@ -116,10 +116,10 @@ const LoadSet = (Load, query) => {
                         })
                     getLink = itemRef.getDownloadURL().then(url => url)
                     let link = await getLink
-                    let find = await data.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
+                    let find = await firestore.collection("Videos").doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title
                     let match = find.match
-                    let owner = find.owner
+                    let owner = await firestore.collection("Users").doc(match).get().then(doc=>doc.data().username)
                     let firestore = itemRef.name.split('.')[0]
                     let description = find.description
                     let tag = find.tag
@@ -138,7 +138,7 @@ const LoadSet = (Load, query) => {
             .then(res => {
                 res.items.forEach(async itemRef => {
                     var views = 0
-                    views = await data.doc(itemRef.name.split('.')[0]).collection('Acts').get()
+                    views = await firestore.collection("Videos").doc(itemRef.name.split('.')[0]).collection("Acts").get()
                         .then(query => {
                             query.forEach(doc => {
                                 views = doc.exists ? views + 1 : null
@@ -147,12 +147,12 @@ const LoadSet = (Load, query) => {
                         })
                     getLink = itemRef.getDownloadURL().then(url => url)
                     let link = await getLink
-                    let find = await data.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
+                    let find = await firestore.collection("Videos").doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title
-                    let owner = find.owner
+                    let match = find.match
+                    let owner = await firestore.collection("Users").doc(match).get().then(doc=>doc.data().username)
                     let firestore = itemRef.name.split('.')[0]
                     let description = find.description
-                    let match = find.match
                     let tag = find.tag
                     let dateAdded = find.added.toDate()
                     let stamp = getTimeFrame(dateAdded)

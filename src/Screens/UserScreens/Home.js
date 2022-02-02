@@ -6,12 +6,10 @@ import Header from "../../Components/Header";
 import Menu from "../../Components/Menu";
 import { VideoList } from "../../Components";
 
-export default function Home({ navigation, setMatch }) {
+export default function Home({ navigation }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
-      let match = data.match
-      setMatch(match)
       navigation.navigate("PlayVideo", { data });
     },
 

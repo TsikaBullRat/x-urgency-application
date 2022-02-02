@@ -1,25 +1,29 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { MedicalHome, Upload, PlayVideo, DoctorProfile } from '..';
+import { Clone, MedicalHome, UploadVideo, Upload, VideoScreen, DoctorProfile } from '..';
 
 const Stack = createNativeStackNavigator()
 
 export const DoctorsScreens = () => {
 
     const [percentage, setPerc] = useState(null)
+    const [match, setMatch] = useState(null)
 
     return (
         <Stack.Navigator>
             <Stack.Screen name="DocHome" options={{ headerShown: false }} >
-                {props => <MedicalHome {...props} Log={setPerc} progress={percentage} />}
+                {props=><MedicalHome {...props} Log={setPerc} progress={percentage} setMatch={setMatch}/>}
             </Stack.Screen>
             <Stack.Screen name="Upload" options={{ headerShown: false }} >
-                {props => <Upload {...props} Log={setPerc} />}
+                {props=><Upload {...props} Log={setPerc}/>}
             </Stack.Screen>
-            <Stack.Screen name="MedicalHome" component={MedicalHome} options={{ headerShown: false }} />
-            <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
-            <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
+            <Stack.Screen name="PlayVideo" options={{ headerShown: false }} >
+                {props=><VideoScreen {...props} />}
+            </Stack.Screen>
+            <Stack.Screen name="Doctor" options={{ headerShown: false }} >
+                {props=><DoctorProfile {...props} match={match}/>}
+            </Stack.Screen>
         </Stack.Navigator>
     )
 }

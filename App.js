@@ -1,54 +1,53 @@
-/**
- * @description      :
- * @author           : TLeeuw
- * @group            :
- * @created          : 12/10/2021 - 16:06:47
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 12/10/2021 
- * - Author          : TLeeuw
- * - Modification    :
- **/
-
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-// You can import from local files
-import { auth, Check, LoadSet } from './src/firebase'
-import { StyleSheet, NativeModules } from 'react-native';
-import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { auth, Detector, firestore } from './src/firebase'
+import { ActivityIndicator, StyleSheet, View, Share } from 'react-native';
+import { AuthScreens, DoctorsScreens, UploadVideo, UserScreens } from "./src/Screens";
 
+const Stack = createNativeStackNavigator() 
 export default function App() {
-  const [id, setID] = useState();
-  const [details, setDetails] = useState(null);
+  
+  const [id, setID] = useState(null)
+  const [doctor, setDoctor] = useState(null)
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => user ? setID(user.uid) : null)
-  })
+    auth.onAuthStateChanged(user => user?setID(user.uid):null)
+  }, [id])
 
-  useEffect(()=>console.log("Im running"))
+  useEffect(()=>{
+    try{
+      firestore.collection("Users").doc(id).get().then(doc=>setDoctor(doc.data().doctor))
+    }
+    catch(err){
+      console.log(err)
+    }
+  }, [id])
 
-  return (
-
+    return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-      {
-        id?(
-          <Check id={id} details={details}/>
+        <Stack.Navigator>
+        {id?(
+          doctor?(
+            <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }}/>
+          ):(
+            <Stack.Screen name="doctor" component={UserScreens} options={{ headerShown: false }}/>
+          )
         ):(
-          <AuthScreens setDetails={setDetails} />
-        )
-      }
+          <Stack.Screen name="doctor" component={AuthScreens} options={{ headerShown: false }}/>
+        )}
+        </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
+    // <UploadVideo/>
   );
 }
 
 const styles = StyleSheet.create({
-  loader: {
-    alignItems: "center",
-    justifyContent: "center"
-  }
-
+    loader: {
+        alignItems: "center",
+        justifyContent: "center"
+    }
 });
