@@ -11,7 +11,6 @@ export default function Home({ navigation, setMatch }) {
     ref = useRef(null),
     VideoScreen = (data) => {
       let match = data.match
-      setMatch(match)
       navigation.navigate("PlayVideo", { data });
     },
 
