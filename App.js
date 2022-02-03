@@ -7,64 +7,64 @@ import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
 
-const Stack = createNativeStackNavigator() 
+const Stack = createNativeStackNavigator()
 
 export default function App() {
-  
+
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
   // const [done, setDone ] = useState(false)
-  const [check1, setCheck1 ] = useState(false)
-  const [check2, setCheck2 ] = useState(false)
+  const [check1, setCheck1] = useState(false)
+  const [check2, setCheck2] = useState(false)
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => user?setID(user.uid):setID(false))
+    auth.onAuthStateChanged(user => user ? setID(user.uid) : setID(false))
   })
 
-  useEffect(()=>{
-    try{
-      firestore.collection("Users").doc(id).get().then(doc=>setDoctor(doc.data().doctor))
+  useEffect(() => {
+    try {
+      firestore.collection("Users").doc(id).get().then(doc => setDoctor(doc.data().doctor))
     }
-    catch(err){
+    catch (err) {
       console.log(err)
     }
   }, [id])
 
-  useEffect(()=>{
-    id !== null?(
+  useEffect(() => {
+    id !== null ? (
       setCheck1(true)
-    ): null
+    ) : null
   }, [id])
 
-  useEffect(()=>{
-    doctor !== null?(
+  useEffect(() => {
+    doctor !== null ? (
       setCheck2(true)
-    ):(
+    ) : (
       null
     )
-  }, [ doctor])
+  }, [doctor])
 
-    return (
+  return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
-        {check1?(
-         id?(
-          check2?(
-            doctor?(
-              <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }}/>
-            ):(
-              <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }}/>
+          {check1 ? (
+            id ? (
+              check2 ? (
+                doctor ? (
+                  <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }} />
+                ) : (
+                  <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
+                )
+              ) : (
+                <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
+              )
+            ) : (
+              <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
             )
-          ):(
+          ) : (
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )
-        ):(
-          <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }}/>
-        ) 
-        ):(
-          <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-        )}
+          )}
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
@@ -72,8 +72,8 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-    loader: {
-        alignItems: "center",
-        justifyContent: "center"
-    }
+  loader: {
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
