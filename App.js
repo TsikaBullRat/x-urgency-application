@@ -68,7 +68,6 @@ export default function App() {
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
-    // <UploadVideo/>
   );
 }
 
