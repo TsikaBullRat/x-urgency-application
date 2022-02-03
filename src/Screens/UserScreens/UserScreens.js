@@ -18,7 +18,7 @@ export const UserScreens = ({ navigation }) => {
                 {props=><Home {...props} Exit={Exit}/>}
             </Stack.Screen>
             <Stack.Screen name="Doctor" options={{ headerShown: false }} >
-                {props=><DoctorProfile {...props} match={match} />}
+                {props=><DoctorProfile {...props} />}
             </Stack.Screen>
         </Stack.Navigator>
     )

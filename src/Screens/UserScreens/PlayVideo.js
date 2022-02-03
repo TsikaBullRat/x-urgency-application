@@ -67,6 +67,7 @@ export default function VideoScreen({ navigation, route }) {
     },
 
     Navigate = () => {
+      console.log(data.match)
       let match = data.match
       navigation.navigate('Doctor', { match })
     };
