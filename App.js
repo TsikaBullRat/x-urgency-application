@@ -18,6 +18,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { auth, Check, LoadSet } from './src/firebase'
 import { StyleSheet, NativeModules } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
+import SignIn from './src/Screens/AuthScreens/SignIn'
 
 
 export default function App() {
