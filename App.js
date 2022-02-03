@@ -32,7 +32,6 @@ export default function App() {
 
   return (
 
-
     <NavigationContainer>
       <KeyboardAwareScrollView>
         {
@@ -44,7 +43,6 @@ export default function App() {
         }
       </KeyboardAwareScrollView>
     </NavigationContainer>
-
 
   );
 }
