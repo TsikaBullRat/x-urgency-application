@@ -10,7 +10,6 @@ const ProgressBar = ({ status }) => {
     })
 
     useEffect(() => {
-        console.log(status)
         setInner({
             width: `${status}%`,
             height: 15,

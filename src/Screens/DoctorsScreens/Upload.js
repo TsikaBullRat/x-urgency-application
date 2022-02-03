@@ -11,15 +11,18 @@
  * - Modification    :
  **/
 
-import React, { useState } from "react";
-import { StyleSheet, Picker, Text, TouchableOpacity, View, TextInput, } from "react-native";
+import React, { useState, useRef } from "react";
+import { StyleSheet, Picker, Text, TouchableOpacity, View, TextInput, Pressable, } from "react-native";
 import { Card } from "react-native-paper";
 import { UploadVideo } from "../../firebase";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
+import { Video } from "expo-av";
 
 export default function Clone({ navigation, Log }) {
 
+  const ref = useRef(null);
+  const [status, setStatus] = useState({});
   const [selectedValue, setSelectedValue] = useState("stroke"),
     [title, setTitle] = useState(),
     [description, setDescpription] = useState(),
@@ -40,14 +43,21 @@ export default function Clone({ navigation, Log }) {
       setSelectedImage({ localUri: pickerResult.uri });
 
     },
-
     Run = () => {
-      openImagePickerAsync();
       selectedImage ? (
         UploadVideo(selectedImage.localUri, title, description, selectedValue, Log),
         navigation.goBack()
       ) : null
 
+    },
+    openCamera = async () => {
+      let result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+        allowsEditing: true
+      });
+      if (!result.cancelled) {
+        setSelectedImage({ localUri: result.uri})
+      }
     }
 
   return (
@@ -87,20 +97,33 @@ export default function Clone({ navigation, Log }) {
           onChangeText={text => setDescpription(text)} />
       </View>
 
-      <View style={{ flexDirection: 'row' }}>
-        <Card style={[styles.txtUser, styles.shadowProp]}>
-          <View>
-            <Text style={{ fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray' }}>Upload Video Here!</Text>
-          </View>
-          <Icon style={styles.icon} name="slideshow" color="#F47066" size={40} />
-        </Card>
-      </View>
+      {selectedImage?(
+        <Video ref={ref} source={{ uri: selectedImage.localUri }} resizeMode="stretch" isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+          style={{
+            width: "100%",
+            height: 165,
+            marginTop: 5,
+            alignSelf: "center",
+          }} />
+      ):(
+        <Pressable onPress={openImagePickerAsync} style={{ flexDirection: 'row' }}>
+          <Card style={[styles.txtUser, styles.shadowProp]}>
+            <View>
+              <Text style={{ fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray' }}>Upload Video Here!</Text>
+            </View>
+            <Icon style={styles.icon} name="slideshow" color="#F47066" size={40} />
+          </Card>
+        </Pressable>
+      )}
+      
 
-      <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
+      
+
+      <TouchableOpacity onPress={Run}  style={styles.button}>
         <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={openImagePickerAsync}>
+      <TouchableOpacity onPress={openCamera}>
         <View style={styles.iconContainer}>
           <Icon name="camera" color='white' size={30} />
         </View>

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
-import { Socials } from '../../Components';
-import { firestore } from '../../firebase';
+import { Socials,  } from '../../Components';
+import { auth, firestore } from '../../firebase';
+import Button from '../../Components/button';
 
 const DoctorProfile = ({ route }) => {
 
@@ -21,6 +22,7 @@ const DoctorProfile = ({ route }) => {
     const [doctor, setDoctor] = useState("")
     const [email, setEmail] = useState("")
     const [data, setData] = useState(null);
+    const [ subscription, setSubscription] = useState({text:"", Func:()=>null})
 
     const check = (value) => {
 
@@ -65,21 +67,67 @@ const DoctorProfile = ({ route }) => {
                 setDoctor(doc.data().username)
                 setEmail(doc.data().email)
             })
+    }
 
+    const Subscribe = async () =>{
+        let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+            .then(doc=>{
+              return doc.data().subscribers  
+            })
+        firestore.collection("Users").doc(info).collection("cred").doc(info).update({
+            subscribers: [...change, auth.currentUser.uid]
+        })
+
+        setSubscription({
+            Func: unSubscribe,
+            text: "unfollow"
+        })
+    }
+
+    const unSubscribe = async () =>{
+        let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+            .then(doc=>{
+              return doc.data().subscribers  
+            })
+        change = change.filter(item=>item !== auth.currentUser.uid)
+        firestore.collection("Users").doc(info).collection("cred").doc(info).update({
+            subscribers: change
+        })
+        setSubscription({
+            Func: Subscribe,
+            text: "follow"
+        })
     }
 
     useEffect(() => {
         getDoctorInfo()
     }, [])
 
-    useEffect(() => {
-        console.log(data)
-    }, [data])
+    useEffect(()=>{
+        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+            .then(doc=>{
+                let array = []
+                array = [...array, doc.data().subscribers]
+                let index = array.indexOf(auth.currentUser.uid)
+                if(index === -1){
+                    setSubscription({
+                        Func: unSubscribe,
+                        text: "unfollow"
+                    })
+                }else{
+                    
+                    setSubscription({
+                        Func: Subscribe,
+                        text: "follow"
+                    })
+                }
+            })
+    }, [])
 
     return (
 
         data ? (<>
-
+            
             <View>
                 <View style={styles.container}>
 
@@ -97,6 +145,8 @@ const DoctorProfile = ({ route }) => {
                     <Socials text="Followers" number={data.subscribers ? data.subscribers.length : 0} />
                     <Socials text="Likes" number="3.1M" />
                 </View>
+
+                <Button name={subscription.text} Run={subscription.Func} />
 
                 <View>
                     <SwitchSelector
