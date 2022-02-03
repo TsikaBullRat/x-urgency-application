@@ -5,7 +5,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules } from 'react-native';
+import { Upload } from "./src/Screens";
 import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
+
 
 const Stack = createNativeStackNavigator()
 
@@ -46,28 +48,28 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <KeyboardAwareScrollView>
-        <Stack.Navigator>
-          {check1 ? (
-            id ? (
-              check2 ? (
-                doctor ? (
-                  <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }} />
-                ) : (
-                  <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
-                )
+    <KeyboardAwareScrollView>
+      <Stack.Navigator>
+        {check1 ? (
+          id ? (
+            check2 ? (
+              doctor ? (
+                <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }} />
               ) : (
-                <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
+                <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
               )
             ) : (
-              <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
+              <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
             )
           ) : (
-            <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )}
-        </Stack.Navigator>
-      </KeyboardAwareScrollView>
-    </NavigationContainer>
+            <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
+          )
+        ) : (
+          <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
+        )}
+      </Stack.Navigator>
+    </KeyboardAwareScrollView>
+  </NavigationContainer>
   );
 }
 
