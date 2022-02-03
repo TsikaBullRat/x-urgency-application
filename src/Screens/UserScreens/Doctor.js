@@ -102,6 +102,18 @@ const DoctorProfile = ({ route }) => {
     useEffect(() => {
         getDoctorInfo()
     }, [])
+    const [image, setImage] = useState()
+    const [initial, setInitial] = useState()
+    const getProfile = async () => {
+        let name
+        setImage(auth.currentUser.photoURL)
+        name = auth.currentUser.displayName
+        setInitial(name.substring(0, 1))
+    }
+
+    useEffect(() => {
+        getProfile()
+    }, [])
 
     useEffect(()=>{
         firestore.collection("Users").doc(info).collection("cred").doc(info).get()
@@ -130,10 +142,15 @@ const DoctorProfile = ({ route }) => {
             
             <View>
                 <View style={styles.container}>
-
                     <View style={{ marginTop: 50, marginLeft: 10 }}>
-                        <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/44.jpg', }} size="large" />
-                        <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
+                    {
+                        image ? (
+                            <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+                        ):(
+                            <View style={styles.temp}>
+                                <Text style={styles.temp_text}> {initial} </Text>
+                            </View>
+                    )}
                     </View>
 
                     <Text style={styles.textTitle}>Dr. {doctor}</Text>
@@ -264,7 +281,21 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         alignItems: "center",
         justifyContent: "center"
-    }
+    },
+    temp: {
+        width: 70,
+        height: 70,
+        borderRadius: 50,
+        marginTop: 80,
+        backgroundColor: 'turquoise',
+        textAlign: 'center',
+        justifyContent: 'center'
+      },
+    
+      temp_text: {
+        fontSize: 40,
+        color: '#fff',
+      }
 });
 
 export default DoctorProfile;
