@@ -19,12 +19,7 @@ const Stack = createNativeStackNavigator()
 
 export const AuthScreens = () => {
   return (
-    <Stack.Navigator initialRouteName='Doctor SignUp'>
-      <Stack.Screen
-        name='Doctor SignIn'
-        component={MedSignIn}
-        options={{ headerShown: false }} />
-
+    <Stack.Navigator initialRouteName='Sign In'>
         <Stack.Screen
         name='Doctor SignUp'
         component={DoctorSignUp}
