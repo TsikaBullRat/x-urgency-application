@@ -117,12 +117,6 @@ export default function Clone({ navigation, Log }) {
       )}
       
 
-      
-
-      <TouchableOpacity onPress={Run}  style={styles.button}>
-        <Text style={styles.buttonText}>Upload Video</Text>
-      </TouchableOpacity>
-
       <TouchableOpacity onPress={openCamera}>
         <View style={styles.iconContainer}>
           <Icon name="camera" color='white' size={30} />
@@ -130,7 +124,7 @@ export default function Clone({ navigation, Log }) {
       </TouchableOpacity>
 
 
-      <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
+      <TouchableOpacity onPress={Run} style={styles.button}>
         <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>
 

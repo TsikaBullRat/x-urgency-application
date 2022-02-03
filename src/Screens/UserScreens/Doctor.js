@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, } from 'react-native';
+import { Text, View, StyleSheet, Pressable } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
 import { Socials,  } from '../../Components';
@@ -144,9 +144,14 @@ const DoctorProfile = ({ route }) => {
                     <Socials text="Following" number="15" />
                     <Socials text="Followers" number={data.subscribers ? data.subscribers.length : 0} />
                     <Socials text="Likes" number="3.1M" />
+                    <Pressable style={styles.follow} onPress={subscription.Func}>
+                        <Text>{subscription.text}</Text>
+                    </Pressable>
+                </View>
+                <View style={{marginTop: 20}}>
                 </View>
 
-                <Button name={subscription.text} Run={subscription.Func} />
+              
 
                 <View>
                     <SwitchSelector
@@ -250,6 +255,16 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center'
     },
+    follow:{
+        top: 10,
+        left: 5,
+        backgroundColor: "#f47066",
+        width: 70,
+        height: 40,
+        borderRadius: 15,
+        alignItems: "center",
+        justifyContent: "center"
+    }
 });
 
 export default DoctorProfile;
