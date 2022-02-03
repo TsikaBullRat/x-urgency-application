@@ -5,7 +5,7 @@ import { Video } from "expo-av";
 
 const ItemSeperatorView = () => {
   return (
-    <View style={{ height: 0.5, width: 335, backgroundColor: "#c8c8c8" }} />
+    <View style={{ height: 0.5, width: 380, backgroundColor: "#c8c8c8" }} />
   );
 };
 
@@ -13,18 +13,18 @@ export const VideoList = ({ videos, VideoScreen }) => {
   const [status, setStatus] = useState({});
   const ref = useRef(null);
 
-  return (
-    videos ? videos.map((vid) => (<View style={{ width: 295, alignItems: "center" }} key={vid.id}>
+  return videos ? videos.map((vid) => (<View style={{ width: 380, alignItems: "center" }} key={vid.id}>
+
     <Card
       style={{
         marginTop: 15,
-        width: 335,
+        width: 380,
         height: 245,
         alignItems: "center",
         backgroundColor: "#FAFAFA",
       }}>
 
-      <TouchableOpacity style={{ width: 335 }} onPress={() => VideoScreen(vid)}>
+      <TouchableOpacity style={{ width: 380 }} onPress={() => VideoScreen(vid)}>
         <Video ref={ref} source={{ uri: vid.url }} resizeMode="stretch" isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
           style={{
             width: "100%",
@@ -34,7 +34,7 @@ export const VideoList = ({ videos, VideoScreen }) => {
           }} />
       </TouchableOpacity>
 
-      <View style={{ justifyContent: 'space-evenly' }}>
+      <View style={{ justifyContent: 'space-between' }}>
         <Text style={styles.vidTitle}>{vid.title}</Text>
         <Text style={styles.tag}>{vid.owner}</Text>
 
@@ -54,13 +54,13 @@ export const VideoList = ({ videos, VideoScreen }) => {
 
 const styles = StyleSheet.create({
   vidTitle: {
-    paddingLeft: 23,
+    paddingLeft: 5,
     fontSize: 16,
     fontWeight: "bold",
   },
 
   tag: {
-    paddingLeft: 23,
+    paddingLeft: 5,
     fontSize: 12,
   },
 

@@ -35,7 +35,9 @@ export default function Header({ list, setVids }) {
 
       <ScrollView
 
-        style={{ maxWidth: 335 }} horizontal={true} showsHorizontalScrollIndicator={false}>
+        style={{ maxWidth: 380 }} horizontal={true} showsHorizontalScrollIndicator={false}>
+
+        <View style={{width: 380, flexDirection:'row', justifyContent:'space-around'}}>
         <Pressable onPress={() => Sort("stroke")}>
           <View>
             <Card style={{ width: 50, height: 70, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }} >
@@ -71,7 +73,9 @@ export default function Header({ list, setVids }) {
             </Card>
           </View>
         </Pressable>
+        </View>
 
+        <View style={{width: 380, flexDirection:'row', justifyContent:'space-around'}}>
         <Pressable onPress={() => Sort("bleeding")}>
           <View>
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
@@ -105,7 +109,8 @@ export default function Header({ list, setVids }) {
             <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
           </Card>
         </Pressable>
-
+        </View>
+        
       </ScrollView>
 
     </View>
@@ -114,13 +119,14 @@ export default function Header({ list, setVids }) {
 
 const styles = StyleSheet.create({
   contain: {
+    width: 380,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff'
   },
 
   menu: {
-    width: 335,
+    width: 300,
     alignItems: 'center',
     justifyContent: 'space-even',
     marginTop: 20,
