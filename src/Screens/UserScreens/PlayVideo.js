@@ -27,8 +27,8 @@ import { Collect, Post, } from '../../firebase';
 export default function VideoScreen({ navigation, route }) {
 
   const data = route.params.data
-  // const [userName, setUserName] = useState(data.owner)
-  // const [videoPlay, setVideoPlay] = useState(data.url)
+  const [userName, setUserName] = useState(data.owner)
+  const [videoPlay, setVideoPlay] = useState(data.url)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
   const refrence = useRef(data.url)

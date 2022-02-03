@@ -13,8 +13,8 @@ export const VideoList = ({ videos, VideoScreen }) => {
   const [status, setStatus] = useState({});
   const ref = useRef(null);
 
-  return videos ? videos.map((vid) => (<View style={{ width: 295, alignItems: "center" }} key={vid.id}>
-
+  return (
+    videos ? videos.map((vid) => (<View style={{ width: 295, alignItems: "center" }} key={vid.id}>
     <Card
       style={{
         marginTop: 15,
@@ -48,7 +48,7 @@ export const VideoList = ({ videos, VideoScreen }) => {
     <ItemSeperatorView />
 
   </View>))
-    : null;
+    : null)
 
 }
 
