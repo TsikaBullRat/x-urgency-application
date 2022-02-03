@@ -6,7 +6,7 @@ import Header from "../../Components/Header";
 import Menu from "../../Components/Menu";
 import { VideoList } from "../../Components/VideoList";
 
-export default function Home({ navigation }) {
+export default function Home({ navigation, Exit }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
@@ -48,8 +48,8 @@ export default function Home({ navigation }) {
 
         <View
           style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
-          <Header />
-        </View>       
+          <Header Exit={Exit}/>
+        </View>
 
         <View style={{width:380}}>
           <Menu list={videos} setVids={setLoad} />

@@ -81,7 +81,7 @@ export default function Clone({ navigation, Log }) {
 
       <View style={{ flexDirection: "row" }}>
         <TextInput
-          style={[styles.txtField, styles.shadowProp]}
+          style={[styles.txtField2, styles.shadowProp]}
           name="password"
           placeholder="Description"
           onChangeText={text => setDescpription(text)} />
@@ -128,21 +128,34 @@ const styles = StyleSheet.create({
     width: 330,
     height: 60,
     borderRadius: 10,
-    outlineColor: 'transparent',
     backgroundColor: 'white',
     paddingLeft: 20,
+    borderWidth: 1,
     color: "lightgrey",
-    marginTop: 50,
+    marginTop: 30,
+    fontSize: 16,
+  },
+
+  txtField2: {
+    width: 330,
+    height: 60,
+    borderRadius: 10,
+    backgroundColor: 'white',
+    paddingLeft: 20,
+    borderWidth: 1,
+    color: "lightgrey",
+    marginTop: 20,
+    fontSize: 16,
   },
 
   txtUser: {
     width: 330,
     height: 200,
     borderRadius: 10,
-    outlineColor: 'transparent',
     backgroundColor: 'white',
     paddingLeft: 100,
-    marginTop: 60,
+    marginTop: 40,
+    borderWidth: 1,
   },
 
   icon: {
@@ -198,10 +211,13 @@ const styles = StyleSheet.create({
   },
 
   picker: {
-    marginTop: 40,
+    borderWidth: 1,
+    marginTop: 20,
     width: 330,
     height: 60,
-    borderRadius: 20,
+    borderRadius: 10,
+    color: "000000",
+    paddingLeft: 20,
   },
 
   button: {

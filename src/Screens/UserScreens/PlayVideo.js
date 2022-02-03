@@ -26,7 +26,7 @@ import { Collect, Post, } from '../../firebase';
 
 export default function VideoScreen({ navigation, route }) {
 
-  const { data } = route.params
+  const data = route.params.data
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.url)
   const [videoVisible, setVideoVisible] = useState(true)
@@ -40,7 +40,6 @@ export default function VideoScreen({ navigation, route }) {
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar);
     },
-
     changeStyleStatusBar = () => {
       const styleId = styleTypes.indexOf(styleStatusBar) + 1;
       if (styleId === styleTypes.length) {
@@ -79,6 +78,10 @@ export default function VideoScreen({ navigation, route }) {
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
   }, [])
+
+  useEffect(()=>{
+    console.log(data)
+  }, [comments])
 
   return (
 
