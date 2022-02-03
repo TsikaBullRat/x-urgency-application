@@ -5,7 +5,7 @@ import { Video } from "expo-av";
 
 const ItemSeperatorView = () => {
   return (
-    <View style={{ height: 0.5, width: "100%", backgroundColor: "#c8c8c8" }} />
+    <View style={{ height: 0.5, width: 335, backgroundColor: "#c8c8c8" }} />
   );
 };
 
@@ -54,12 +54,13 @@ export const VideoList = ({ videos, VideoScreen }) => {
 
 const styles = StyleSheet.create({
   vidTitle: {
+    paddingLeft: 23,
     fontSize: 16,
     fontWeight: "bold",
   },
 
   tag: {
-    paddingVertical: 2,
+    paddingLeft: 23,
     fontSize: 12,
   },
 

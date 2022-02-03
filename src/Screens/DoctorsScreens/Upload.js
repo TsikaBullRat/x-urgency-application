@@ -10,6 +10,7 @@
  * - Author          : TLeeuw
  * - Modification    :
  **/
+
 import React, { useState } from "react";
 import { StyleSheet, Picker, Text, TouchableOpacity, View, TextInput, } from "react-native";
 import { Card } from "react-native-paper";
@@ -39,6 +40,7 @@ export default function Clone({ navigation, Log }) {
       setSelectedImage({ localUri: pickerResult.uri });
 
     },
+
     Run = () => {
       openImagePickerAsync();
       selectedImage ? (

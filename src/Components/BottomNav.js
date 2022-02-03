@@ -71,7 +71,9 @@ const BottomNav = () => {
         <View>
 
           <Card style={{
-            width: 315, height: 300, marginLeft: 28,
+            width: 315,
+            height: 300,
+            marginLeft: 28,
             borderRadius: 20,
             backgroundColor: '#fff',
             marginTop: 20
@@ -87,6 +89,7 @@ const BottomNav = () => {
                 }}>
 
                 Description:
+
               </Text>
               <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
                 <AntDesign name="closecircle" size={18} color="black" style={{ marginLeft: 180, marginTop: 15 }} />

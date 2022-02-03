@@ -93,10 +93,20 @@ export default function MedicalProfile({ navigation, setDone }) {
   return (
 
     <View style={styles.contain}>
+
       {/*---------------------------Header--------------------------*/}
+
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
-          <Text style={{ fontSize: 36, paddingLeft: 30, color: 'turquoise', textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1 }} >  Dr. DoLittle </Text>
+          <Text style={{
+            fontSize: 36,
+            paddingLeft: 30,
+            color: 'turquoise',
+            textShadowColor: 'grey',
+            textShadowOffset: { width: 2, height: 2 },
+            textShadowRadius: 1
+          }}
+          >  Dr. DoLittle </Text>
         </View>
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
@@ -106,6 +116,7 @@ export default function MedicalProfile({ navigation, setDone }) {
       </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
+
       <ScrollView vertical={true} >
         <Card style={styles.menu2}>
           <View>

@@ -4,9 +4,9 @@ import { Card } from "react-native-paper";
 import { auth, LoadSet, firestore } from "../../firebase";
 import Header from "../../Components/Header";
 import Menu from "../../Components/Menu";
-import { VideoList } from "../../Components";
+import { VideoList } from "../../Components/VideoList";
 
-export default function Home({ navigation, setMatch }) {
+export default function Home({ navigation }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
@@ -15,20 +15,20 @@ export default function Home({ navigation, setMatch }) {
     },
 
     FirstTimeUser = async () => {
-      //  auth.currentUser.updateProfile({
-      //    displayName: await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.data().username)
-      //  })
+       auth.currentUser.updateProfile({
+         displayName: await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.data().username)
+       })
 
       await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
         null
-      ):(
-     firestore.collection("Users").doc(auth.currentUser.uid).set({
-       username: auth.currentUser.displayName,
-       doctor: false,
-       email: auth.currentUser.email,
-       cred: null
-     })
-     )
+      ) : (
+        firestore.collection("Users").doc(auth.currentUser.uid).set({
+          username: auth.currentUser.displayName,
+          doctor: false,
+          email: auth.currentUser.email,
+          cred: null
+        })
+      )
     };
 
   useEffect(() => {
@@ -47,11 +47,7 @@ export default function Home({ navigation, setMatch }) {
     <View style={styles.container}>
       <View style={{ width: 335 }}>
         <View
-          style={{
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-          }}
-        >
+          style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
           <Header />
         </View>
 
@@ -62,7 +58,9 @@ export default function Home({ navigation, setMatch }) {
         <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
           <Card style={styles.menu2}>
             <View>
+            
               <VideoList videos={videos} VideoScreen={VideoScreen} />
+     
             </View>
           </Card>
         </ScrollView>

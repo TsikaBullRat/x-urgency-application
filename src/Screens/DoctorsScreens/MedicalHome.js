@@ -27,33 +27,32 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
-import { Video } from 'expo-av';
-import { auth, LoadSet, LogOut,  firestore } from '../../firebase';
+import { auth, LoadSet, LogOut, firestore } from '../../firebase';
 import { ProgressBar, VideoList } from '../../Components';
 
 export default function MedicalHome({ navigation, progress, Log }) {
   const [done, setDone] = useState(true);
   const [videos, setLoad] = useState(null),
-  VideoScreen = (data) => {
-    navigation.navigate("PlayVideo", {data});
-  },
+    VideoScreen = (data) => {
+      navigation.navigate("PlayVideo", { data });
+    },
     Logout = () => {
       auth.signOut();
       setDone(!done);
     };
 
-    const [image, setImage] = useState()
-    const [initial, setInitial] = useState()
-    const getProfile = async () =>{
-      let name
-      setImage(auth.currentUser.photoURL)
-      name = auth.currentUser.displayName
-      setInitial(name.substring(0,1))
-    }
-    
-    useEffect(()=>{
-      getProfile()
-    }, [])
+  const [image, setImage] = useState()
+  const [initial, setInitial] = useState()
+  const getProfile = async () => {
+    let name
+    setImage(auth.currentUser.photoURL)
+    name = auth.currentUser.displayName
+    setInitial(name.substring(0, 1))
+  }
+
+  useEffect(() => {
+    getProfile()
+  }, [])
 
   const video = React.useRef(
     "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
@@ -71,14 +70,16 @@ export default function MedicalHome({ navigation, progress, Log }) {
     LoadSet(setLoad);
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(auth.currentUser.displayName.split(" ")[1])
   }, [])
 
   return (
 
     <View style={styles.contain}>
+
       {/*---------------------------Header--------------------------*/}
+
       <View style={{ flexDirection: "row" }}>
         <View style={styles.header}>
           <Text
@@ -90,8 +91,7 @@ export default function MedicalHome({ navigation, progress, Log }) {
               textShadowOffset: { width: 2, height: 2 },
               textShadowRadius: 1,
             }}
-            onPress={LogOut}
-          >
+            onPress={LogOut}>
             Dr. {auth.currentUser.displayName.split(" ")[1]}
           </Text>
 
@@ -103,28 +103,23 @@ export default function MedicalHome({ navigation, progress, Log }) {
               textShadowColor: "grey",
               textShadowOffset: { width: 2, height: 2 },
               textShadowRadius: 1,
-            }} > In Da House </Text>
+            }}
+          > In Da House
+          </Text>
         </View>
 
         {progress ? <ProgressBar status={progress} /> : null}
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <TouchableOpacity onPress={Logout}>
-          {image?(
-            <Avatar style={styles.avatar}
-            rounded
-            source={{
-              uri: image,
-            }}
-            size="large"
-          />
-          ):(
-            <View style={styles.temp}>
-              <Text style={styles.temp_text}>
-                {initial}
-              </Text>
-            </View>
-          )}
+            {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+
+            ) : (
+
+              <View style={styles.temp}>
+                <Text style={styles.temp_text}> {initial} </Text>
+              </View>
+            )}
           </TouchableOpacity>
         </View>
       </View>
@@ -132,16 +127,17 @@ export default function MedicalHome({ navigation, progress, Log }) {
       {/*---------------------- Video Scroll View--------------------*/}
 
       {loading ? <ProgressBar status={loading} /> : null}
-      <ScrollView style={{
-          height: 580, width: 335, //alignItems:'center'
-        }}
-          vertical={true} showsVerticalScrollIndicator={false}>
-          <Card style={styles.menu2}>
-            <View>
-              <VideoList videos={videos} VideoScreen={VideoScreen} />
-            </View>
-          </Card>
-        </ScrollView>
+
+      <ScrollView style={{ height: 580, width: 335, }}
+
+        vertical={true} showsVerticalScrollIndicator={false}>
+
+        <Card style={styles.menu2}>
+          <View>
+            <VideoList videos={videos} VideoScreen={VideoScreen} />
+          </View>
+        </Card>
+      </ScrollView>
       <TouchableOpacity
         style={styles.btnUpload} onPress={() => { navigation.navigate("Upload"); }} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>
@@ -200,7 +196,8 @@ const styles = StyleSheet.create({
     marginLeft: 290,
     marginTop: 15
   },
-  temp:{
+
+  temp: {
     // flex: 1,
     width: 70,
     height: 70,
@@ -210,8 +207,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center'
   },
-  temp_text:{
-    fontSize:40,
+
+  temp_text: {
+    fontSize: 40,
     color: '#fff',
   }
+
 });

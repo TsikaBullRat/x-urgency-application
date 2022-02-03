@@ -5,7 +5,7 @@ import { Card } from "react-native-paper";
 
 const Emergency = ({ navigation }) => {
 
-    const Call = (number) =>{
+    const Call = (number) => {
         Linking.openURL(`tel:${number}`)
     }
 
@@ -19,32 +19,26 @@ const Emergency = ({ navigation }) => {
 
             <View>
 
-                <TouchableOpacity
-                    onPress={()=>Call("112")}
-                >
+                <TouchableOpacity onPress={() => Call("112")} >
                     <Card style={[styles.card7, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 150, fontWeight: "bold", fontSize: 18, marginTop: 5, }}>Nationwide</Text>
-                        <FontAwesome name="world" size={30} color="black" style={{ marginTop: 1, marginLeft: 190 }} />
+                        <FontAwesome name="world" size={30} color="white" style={{ marginTop: 1, marginLeft: 190 }} />
                         <Text style={{ marginLeft: 180, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>112</Text>
                     </Card>
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                    onPress={()=>Call("10111")}
-                >
+                <TouchableOpacity onPress={() => Call("10111")}>
                     <Card style={[styles.card, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 60, fontWeight: "bold", fontSize: 15, marginTop: 5, }}>Police</Text>
-                        <FontAwesome name="car" size={30} color="black" style={{ marginTop: 1, marginLeft: 70 }} />
+                        <FontAwesome name="car" size={30} color="white" style={{ marginTop: 1, marginLeft: 70 }} />
                         <Text style={{ marginLeft: 52, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>10111</Text>
                     </Card>
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                    onPress={()=>Call("10177")}
-                >
+                <TouchableOpacity onPress={() => Call("10177")} >
                     <Card style={[styles.card1, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 40, fontWeight: "bold", fontSize: 16, marginTop: 5, }}>Ambulance</Text>
-                        <FontAwesome name="ambulance" size={30} color="black" style={{ marginTop: 1, marginLeft: 60 }} />
+                        <FontAwesome name="ambulance" size={30} color="white" style={{ marginTop: 1, marginLeft: 60 }} />
                         <Text style={{ marginLeft: 50, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>10177</Text>
                     </Card>
                 </TouchableOpacity>
@@ -53,22 +47,18 @@ const Emergency = ({ navigation }) => {
 
             <View>
 
-                <TouchableOpacity
-                    onPress={()=>Call("999")}
-                >
+                <TouchableOpacity onPress={() => Call("999")} >
                     <Card style={[styles.card2, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 60, fontWeight: "bold", fontSize: 18, marginTop: 5, }}>Fire</Text>
-                        <FontAwesome name="fire" size={30} color="black" style={{ marginTop: 1, marginLeft: 65 }} />
+                        <FontAwesome name="fire" size={30} color="white" style={{ marginTop: 1, marginLeft: 65 }} />
                         <Text style={{ marginLeft: 55, fontWeight: "bold", fontSize: 24, marginTop: -1, }}>999</Text>
                     </Card>
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                    onPress={()=>Call("0831999")}
-                >
+                <TouchableOpacity onPress={() => Call("0831999")} >
                     <Card style={[styles.card3, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 50, fontWeight: "bold", fontSize: 15, marginTop: 5, }}>Air Rescue</Text>
-                        <FontAwesome name="plane" size={30} color="black" style={{ marginTop: 1, marginLeft: 70 }} />
+                        <FontAwesome name="plane" size={30} color="white" style={{ marginTop: 1, marginLeft: 70 }} />
                         <Text style={{ marginLeft: 40, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>083 1999</Text>
                     </Card>
                 </TouchableOpacity>
@@ -77,22 +67,18 @@ const Emergency = ({ navigation }) => {
 
             <View>
 
-                <TouchableOpacity
-                    onPress={()=>Call("0800055555")}
-                >
+                <TouchableOpacity onPress={() => Call("0800055555")}>
                     <Card style={[styles.card4, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 50, fontWeight: "bold", fontSize: 15, marginTop: 5, }}>Childline</Text>
-                        <FontAwesome name="child" size={30} color="black" style={{ marginTop: 1, marginLeft: 70 }} />
+                        <FontAwesome name="child" size={30} color="white" style={{ marginTop: 1, marginLeft: 70 }} />
                         <Text style={{ marginLeft: 20, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>0800 055 555</Text>
                     </Card>
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                    onPress={()=>Call("0800567567")}
-                >
+                <TouchableOpacity onPress={() => Call("0800567567")}>
                     <Card style={[styles.card5, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, }}>Suicide Crisis Line</Text>
-                        <FontAwesome name=" lifering " size={30} color="black" style={{ marginTop: 1, marginLeft: 80 }} />
+                        <FontAwesome name=" lifering " size={30} color="white" style={{ marginTop: 1, marginLeft: 80 }} />
                         <Text style={{ marginLeft: 20, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>0800 567 567</Text>
                     </Card>
                 </TouchableOpacity>
@@ -101,12 +87,10 @@ const Emergency = ({ navigation }) => {
 
             <View>
 
-                <TouchableOpacity
-                    onPress={()=>Call("0800428428")}
-                >
+                <TouchableOpacity onPress={() => Call("0800428428")} >
                     <Card style={[styles.card6, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, }}>Gender Based Violence Command Center</Text>
-                        <FontAwesome name="transgender" size={30} color="black" style={{ marginTop: 1, marginLeft: 160 }} />
+                        <FontAwesome name="transgender" size={30} color="white" style={{ marginTop: 1, marginLeft: 160 }} />
                         <Text style={{ marginLeft: 100, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>0800 428 428</Text>
                     </Card>
                 </TouchableOpacity>
@@ -115,12 +99,10 @@ const Emergency = ({ navigation }) => {
 
             <View>
 
-                <TouchableOpacity
-                    onPress={()=>Call("0800029999")}
-                >
+                <TouchableOpacity onPress={() => Call("0800029999")} >
                     <Card style={[styles.card7, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, }}>National Institute For Communicable Diseases</Text>
-                        <FontAwesome name=" virus " size={30} color="black" style={{ marginTop: 1, marginLeft: 160 }} />
+                        <FontAwesome name=" virus " size={30} color="white" style={{ marginTop: 1, marginLeft: 160 }} />
                         <Text style={{ marginLeft: 100, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>0800 029 999</Text>
                     </Card>
                 </TouchableOpacity>

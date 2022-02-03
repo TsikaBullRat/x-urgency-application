@@ -18,8 +18,8 @@ import { auth, firestore, LogOut } from '../firebase'
 
 export default function Header({ done }) {
 
-  const [image, setImage] = useState()
-  const [initial, setInitial] = useState()
+  const [image, setImage] = useState('')
+  const [initial, setInitial] = useState('')
   const getProfile = async () => {
     let name
     setImage(auth.currentUser.photoURL)
@@ -32,30 +32,25 @@ export default function Header({ done }) {
   return (
 
     <View style={styles.contain}>
-      <Pressable
-        onPress={LogOut}
-        > 
-             <Image
-               source={require("../images/logOut.png")}
-               style={styles.logoutIMG}
-             />
+      <Pressable onPress={LogOut} >
+
+        <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+
       </Pressable>
+
       {/*---------------------------Header--------------------------*/}
 
-      <View style={{ flexDirection: 'row', width: 295, marginTop: 40, justifyContent: 'flex-start' }}>
+      <View style={{ flexDirection: 'row', width: 335, marginTop: 40, justifyContent: 'flex-start' }}>
+
         <View >
 
-          <Text style={styles.header}>
-            WHAT'S YOUR
-          </Text>
+          <Text style={styles.header}> WHAT'S YOUR</Text>
 
-          <Text style={styles.header}>
-            EMERGENCY ?
-          </Text>
+          <Text style={styles.header}> EMERGENCY ?</Text>
 
         </View>
 
-        <View style={{ marginTop: 50, marginLeft: 10 }}> {image ? (
+        <View style={{ marginTop: 18, marginLeft: 10 }}> {image ? (
           <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />) : (
           <View style={styles.temp}>
             <Text style={styles.temp_text}> {initial} </Text>
@@ -63,8 +58,8 @@ export default function Header({ done }) {
         )}
           <Badge
             status="success"
-            containerStyle={{ position: 'absolute', top: -4, right: -4 }}
-          />
+            containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
+
         </View>
       </View>
     </View>
@@ -86,6 +81,7 @@ const styles = StyleSheet.create({
 
   header: {
     flexDirection: 'column',
+    justifyContent: 'flex-start',
     color: '#F96056',
     fontSize: 36,
   },

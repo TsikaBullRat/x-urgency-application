@@ -18,7 +18,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { auth, Check, LoadSet } from './src/firebase'
 import { StyleSheet, NativeModules } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
-import { Upload } from "./src/Screens";
+
 
 export default function App() {
   const [id, setID] = useState();
@@ -26,26 +26,25 @@ export default function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged(user => user ? setID(user.uid) : null)
-  })
+  }, [true])
 
-  useEffect(()=>console.log("Im running"))
+  useEffect(() => console.log("Im running"))
 
   return (
-  
-  
+ 
     <NavigationContainer>
-    <KeyboardAwareScrollView>
-    {
-      id?(
-        <Check id={id} details={details}/>
-      ):(
-        <AuthScreens setDetails={setDetails} />
-      )
-    }
-    </KeyboardAwareScrollView>
-  </NavigationContainer>
+      <KeyboardAwareScrollView>
+        {
+          id ? (
+            <Check id={id} details={details} />
+          ) : (
+            <AuthScreens setDetails={setDetails} />
+          )
+        }
+      </KeyboardAwareScrollView>
+    </NavigationContainer>
 
-  
+
   );
 }
 
