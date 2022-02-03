@@ -16,7 +16,7 @@ import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
 
-export default function Header({ done }) {
+export default function Header({ done, Exit }) {
 
   const [image, setImage] = useState('')
   const [initial, setInitial] = useState('')
@@ -32,7 +32,7 @@ export default function Header({ done }) {
   return (
 
     <View style={styles.contain}>
-      <Pressable onPress={LogOut} >
+      <Pressable onPress={()=>{LogOut();Exit()}} >
 
         <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
 

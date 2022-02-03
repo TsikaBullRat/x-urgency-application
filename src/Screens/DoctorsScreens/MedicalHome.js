@@ -30,15 +30,15 @@ import { Card } from 'react-native-paper';
 import { auth, LoadSet, LogOut, firestore } from '../../firebase';
 import { ProgressBar, VideoList } from '../../Components';
 
-export default function MedicalHome({ navigation, progress, Log }) {
+export default function MedicalHome({ navigation, progress, Log, Exit }) {
   const [done, setDone] = useState(true);
   const [videos, setLoad] = useState(null),
     VideoScreen = (data) => {
       navigation.navigate("PlayVideo", { data });
     },
     Logout = () => {
-      auth.signOut();
-      setDone(!done);
+      LogOut()
+      Exit()
     };
 
   const [image, setImage] = useState()
@@ -91,7 +91,7 @@ export default function MedicalHome({ navigation, progress, Log }) {
               textShadowOffset: { width: 2, height: 2 },
               textShadowRadius: 1,
             }}
-            onPress={LogOut}>
+            onPress={Logout}>
             Dr. {auth.currentUser.displayName.split(" ")[1]}
           </Text>
 
