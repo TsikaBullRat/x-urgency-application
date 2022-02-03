@@ -22,7 +22,7 @@ const Emergency = ({ navigation }) => {
                 <TouchableOpacity onPress={() => Call("112")} >
                     <Card style={[styles.card7, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 150, fontWeight: "bold", fontSize: 18, marginTop: 5, }}>Nationwide</Text>
-                        <FontAwesome name="world" size={30} color="white" style={{ marginTop: 1, marginLeft: 190 }} />
+                        <FontAwesome name="arrows" size={30} color="white" style={{ marginTop: 1, marginLeft: 190 }} />
                         <Text style={{ marginLeft: 180, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>112</Text>
                     </Card>
                 </TouchableOpacity>
@@ -78,7 +78,7 @@ const Emergency = ({ navigation }) => {
                 <TouchableOpacity onPress={() => Call("0800567567")}>
                     <Card style={[styles.card5, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, }}>Suicide Crisis Line</Text>
-                        <FontAwesome name=" lifering " size={30} color="white" style={{ marginTop: 1, marginLeft: 80 }} />
+                        <FontAwesome name="anchor" size={30} color="white" style={{ marginTop: 1, marginLeft: 80 }} />
                         <Text style={{ marginLeft: 20, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>0800 567 567</Text>
                     </Card>
                 </TouchableOpacity>
@@ -102,7 +102,7 @@ const Emergency = ({ navigation }) => {
                 <TouchableOpacity onPress={() => Call("0800029999")} >
                     <Card style={[styles.card7, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, }}>National Institute For Communicable Diseases</Text>
-                        <FontAwesome name=" virus " size={30} color="white" style={{ marginTop: 1, marginLeft: 160 }} />
+                        <FontAwesome name="plus-square" size={30} color="white" style={{ marginTop: 1, marginLeft: 160 }} />
                         <Text style={{ marginLeft: 100, fontWeight: "bold", fontSize: 20, marginTop: -1, }}>0800 029 999</Text>
                     </Card>
                 </TouchableOpacity>

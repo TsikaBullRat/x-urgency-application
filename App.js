@@ -36,7 +36,7 @@ export default function App() {
       <KeyboardAwareScrollView>
         {
           id ? (
-            <Check id={id} details={details} />
+            <UserScreens/>
           ) : (
             <AuthScreens setDetails={setDetails} />
           )
