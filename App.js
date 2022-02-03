@@ -4,19 +4,10 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
-<<<<<<< HEAD
-import { StyleSheet, NativeModules } from 'react-native';
-import { Upload } from "./src/Screens";
-import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
-<<<<<<< HEAD
-import SignIn from './src/Screens/AuthScreens/SignIn'
-=======
-=======
-import { StyleSheet, NativeModules, View } from 'react-native';
-import { AuthScreens, UserScreens, DoctorsScreens, EmergencyContacts } from "./src/Screens";
->>>>>>> 196cbe08c97edec4d2cb043473c240941fefe9ac
 
->>>>>>> 84ea4463f018a98cd1e37ef156d26f2050d173eb
+import { StyleSheet, NativeModules } from 'react-native';
+//import { Upload } from "./src/Screens";
+import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
 
 const Stack = createNativeStackNavigator()
 

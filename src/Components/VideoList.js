@@ -48,7 +48,7 @@ export const VideoList = ({ videos, VideoScreen }) => {
     <ItemSeperatorView />
 
   </View>))
-    : null)
+    : (null)
 
 }
 
