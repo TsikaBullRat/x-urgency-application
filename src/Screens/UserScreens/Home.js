@@ -45,17 +45,19 @@ export default function Home({ navigation, Exit }) {
   return (
 
     <View style={styles.container}>
-      <View style={{ width: 335 }}>
+
         <View
           style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
           <Header Exit={Exit}/>
         </View>
 
-        <Menu list={videos} setVids={setLoad} />
+        <View style={{width:380}}>
+          <Menu list={videos} setVids={setLoad} />
+        </View>
 
         {/*---------------------- Video Scroll View--------------------*/}
 
-        <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
+        <ScrollView style={{ height: 580, width: 380, }} vertical={true} showsVerticalScrollIndicator={false}>
           <Card style={styles.menu2}>
             <View>
             
@@ -64,15 +66,15 @@ export default function Home({ navigation, Exit }) {
             </View>
           </Card>
         </ScrollView>
+
       </View>
-    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    height: 840,
+    height: 815,
     backgroundColor: '#fff',
   },
 

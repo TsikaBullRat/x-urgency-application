@@ -16,7 +16,7 @@ import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
 
-export default function Header({ done, Exit }) {
+export default function Header({ done, navigation }) {
 
   const [image, setImage] = useState('')
   const [initial, setInitial] = useState('')
@@ -32,17 +32,37 @@ export default function Header({ done, Exit }) {
   return (
 
     <View style={styles.contain}>
-      <Pressable onPress={()=>{LogOut();Exit()}} >
+
+    <View style={{width:370, marginTop: 10,
+    flexDirection: 'row', alignItems:'center',
+                  justifyContent: 'space-between'}}>
+      
+      <Pressable onPress={() => {navigation.navigate('EmergencyContacts')}}
+      >
+      <View style={{flexDirection:'row'}}>
+        <Image source={require('../../img/siren.jpg')} 
+               style={{width:30, height:30}}/>
+
+               <View style={{paddingHorizontal:10}}>
+               <Text>{`Call`}</Text>
+               <Text>{`Now`}</Text>
+               </View>
+      </View>
+      </Pressable>
+
+      <Pressable onPress={LogOut} >
 
         <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
 
       </Pressable>
+    </View>
 
       {/*---------------------------Header--------------------------*/}
 
-      <View style={{ flexDirection: 'row', width: 335, marginTop: 40, justifyContent: 'flex-start' }}>
+    <View style={{ flexDirection: 'row', width: 380, 
+    marginLeft:-12, marginTop: 20, alignItems:'center', justifyContent: 'space-between' }}>
 
-        <View >
+        <View>
 
           <Text style={styles.header}> WHAT'S YOUR</Text>
 
@@ -50,7 +70,7 @@ export default function Header({ done, Exit }) {
 
         </View>
 
-        <View style={{ marginTop: 18, marginLeft: 10 }}> {image ? (
+        <View> {image ? (
           <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />) : (
           <View style={styles.temp}>
             <Text style={styles.temp_text}> {initial} </Text>
@@ -61,14 +81,14 @@ export default function Header({ done, Exit }) {
             containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
 
         </View>
-      </View>
     </View>
+  </View>
   )
 }
 
 const styles = StyleSheet.create({
 
-  contain: {
+  contain: {    
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff'
@@ -80,15 +100,14 @@ const styles = StyleSheet.create({
   },
 
   header: {
+  
     flexDirection: 'column',
     justifyContent: 'flex-start',
     color: '#F96056',
-    fontSize: 36,
+    fontSize: 28,
   },
 
   avatar: {
-    width: 70,
-    height: 70,
     borderRadius: 50,
     margingTop: 80,
     borderBottomWidth: 3,
@@ -100,7 +119,6 @@ const styles = StyleSheet.create({
   },
 
   temp: {
-    // flex: 1,
     width: 70,
     height: 70,
     borderRadius: 50,
