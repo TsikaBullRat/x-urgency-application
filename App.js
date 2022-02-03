@@ -47,7 +47,7 @@ export default function App() {
 
   return (
     <View>
-       <NavigationContainer>
+   <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
           {check1 ? (
@@ -80,3 +80,4 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 });
+
