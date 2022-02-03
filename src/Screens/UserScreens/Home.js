@@ -10,6 +10,7 @@ export default function Home({ navigation }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
+      let match = data.match
       navigation.navigate("PlayVideo", { data });
     },
 
@@ -20,14 +21,14 @@ export default function Home({ navigation }) {
 
       await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
         null
-      ):(
-     firestore.collection("Users").doc(auth.currentUser.uid).set({
-       username: auth.currentUser.displayName,
-       doctor: false,
-       email: auth.currentUser.email,
-       cred: null
-     })
-     )
+      ) : (
+        firestore.collection("Users").doc(auth.currentUser.uid).set({
+          username: auth.currentUser.displayName,
+          doctor: false,
+          email: auth.currentUser.email,
+          cred: null
+        })
+      )
     };
 
   useEffect(() => {
@@ -46,11 +47,7 @@ export default function Home({ navigation }) {
     <View style={styles.container}>
       <View style={{ width: 335 }}>
         <View
-          style={{
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-          }}
-        >
+          style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
           <Header />
         </View>
 

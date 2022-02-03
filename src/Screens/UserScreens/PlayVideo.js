@@ -176,6 +176,7 @@ export default function VideoScreen({ navigation, route }) {
                     fontWeight: 'bold',
                     fontSize: 16,
                   }}>
+
                   Description:
                   <Text>
                     {data.description}

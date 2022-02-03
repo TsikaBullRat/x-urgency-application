@@ -29,49 +29,54 @@ export default function ForgotPassword({ navigation }) {
   }
 
   return (
-    <View >
+    <View style={styles.container}>
+
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={76} color="#fff" />
+          <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 20 }}> X-urgency </Text>
+        <Text style={{ color: '#fff', fontSize: 28}}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header} >
-        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5, marginLeft: 110 }}>Reset Password</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 36, color: '#51535D' }}>{`Reset Password`}</Text>
       </View>
 
-      <View>
+      <View style={{alignItems:'center'}}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 4, marginLeft: 5 }} />
-            <TextInput style={styles.txtUser} name='email' placeholder='Email' />
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='email' placeholder='Email' />
           </View>
         </Card>
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 2, }} />
-            <TextInput style={styles.txtPass} name='password' placeholder='New Password' />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 9, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='password' placeholder='New Password' />
           </View>
         </Card>
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 2, }} />
-            <TextInput style={styles.txtRePass} name='password' placeholder='Confirm Password' />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 9, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='password' placeholder='Confirm Password' />
           </View>
         </Card>
 
+        </View>
+
+        <View style={{alignItems:'center'}}>
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
-          <Text style={{ color: '#fff' }}>RESET PASSWORD </Text>
+          <Text style={{ color: '#fff' }}>{`RESET PASSWORD`} </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.signIn} onPress={Exit}>
-          <Text style={{ color: '#fff' }}>EXIT</Text>
+          <Text style={{ color: '#fff' }}>{`EXIT`}</Text>
         </TouchableOpacity>
 
       </View>
+
     </View>
 
   )
@@ -80,9 +85,8 @@ export default function ForgotPassword({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    textAlign: 'center',
-    height: 950,
-    backgroundColor: '#fff'
+    height: 979,
+    backgroundColor: '#fff',
   },
 
   card: {
@@ -94,7 +98,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    marginLeft: 30,
   },
 
   heartIcon: {
@@ -104,56 +107,39 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    paddingTop: 5
+    paddingTop: 25,
+    textAlign: 'center'
   },
 
-  txtUser: {
-    width: 260,
-    height: 38,
+  txtField: {
+    width: 245,
+    height: 30,
+    marginTop: 3,
+    marginLeft: 2,
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
     outlineColor: 'transparent',
   },
 
-  txtPass: {
-    width: 260,
-    height: 38,
-    paddingLeft: 8,
-    paddingTop: 15,
-    borderRadius: 10,
-    outlineColor: "transparent",
-  },
-
-  txtRePass: {
-    width: 260,
-    height: 38,
-    borderRadius: 10,
-    padding: 5,
-    paddingTop: 5,
-    outlineColor: 'transparent',
-  },
-
   txtCards: {
-    backgroundColor: '#fff',
-    width: 280,
+    width: 285,
     height: 50,
     borderRadius: 10,
-    marginTop: 25,
-    borderWidth: 2,
+    marginLeft: 2,
+    marginTop: 75,
+    borderWidth: 1,
     borderColor: '#F47066',
-    marginLeft: 50,
   },
 
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 50,
+    marginTop: 60,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 80,
   },
 
 });

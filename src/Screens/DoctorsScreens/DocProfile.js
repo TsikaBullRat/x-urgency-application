@@ -92,7 +92,9 @@ export default function MedicalHome({ navigation }) {
   return (
 
     <View style={styles.contain}>
+
       {/*---------------------------Header--------------------------*/}
+
       <View style={{ marginTop: 50, marginLeft: 10 }}>
         <Avatar style={styles.avatar} source={{ uri: 'https://randomuser.me/api/portraits/men/28.jpg', }} />
       </View>

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { auth, Detector, firestore } from './src/firebase'
-import { ActivityIndicator, StyleSheet, View, Share } from 'react-native';
-import { AuthScreens, DoctorsScreens, UploadVideo, UserScreens } from "./src/Screens";
+import { auth, Check, LoadSet } from './src/firebase'
+import { StyleSheet, NativeModules } from 'react-native';
+import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
 
 const Stack = createNativeStackNavigator() 
+
 export default function App() {
   
   const [id, setID] = useState(null)
@@ -33,10 +34,10 @@ export default function App() {
           doctor?(
             <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }}/>
           ):(
-            <Stack.Screen name="doctor" component={UserScreens} options={{ headerShown: false }}/>
+            <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }}/>
           )
         ):(
-          <Stack.Screen name="doctor" component={AuthScreens} options={{ headerShown: false }}/>
+          <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }}/>
         )}
         </Stack.Navigator>
       </KeyboardAwareScrollView>

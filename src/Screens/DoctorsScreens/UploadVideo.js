@@ -60,9 +60,7 @@ export default function UploadVideo({ navigation }) {
   return (
 
     <View style={styles.container}>
-      <Text style={styles.instructions}>
-        To upload a Video from your phone, just press the button below!
-      </Text>
+      <Text style={styles.instructions}> To upload a Video from your phone, just press the button below! </Text>
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
         <Text style={styles.buttonText}>Pick a photo</Text>
       </TouchableOpacity>
