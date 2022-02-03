@@ -4,7 +4,7 @@ import { Card } from "react-native-paper";
 import { auth, LoadSet, firestore } from "../../firebase";
 import Header from "../../Components/Header";
 import Menu from "../../Components/Menu";
-import { VideoList } from "../../Components";
+import { VideoList } from "../../Components/VideoList";
 
 export default function Home({ navigation }) {
   const [videos, setLoad] = useState(null),
@@ -15,9 +15,9 @@ export default function Home({ navigation }) {
     },
 
     FirstTimeUser = async () => {
-      //  auth.currentUser.updateProfile({
-      //    displayName: await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.data().username)
-      //  })
+       auth.currentUser.updateProfile({
+         displayName: await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.data().username)
+       })
 
       await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
         null
@@ -58,7 +58,9 @@ export default function Home({ navigation }) {
         <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
           <Card style={styles.menu2}>
             <View>
+            
               <VideoList videos={videos} VideoScreen={VideoScreen} />
+     
             </View>
           </Card>
         </ScrollView>

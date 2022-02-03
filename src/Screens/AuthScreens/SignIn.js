@@ -24,6 +24,7 @@ export default function SignIn({ navigation, setDone }) {
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
+    
   const Login = () => {
     handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
@@ -124,6 +125,7 @@ const styles = StyleSheet.create({
     width: 245,
     height: 30,
     marginTop: 2,
+    marginLeft: 2,
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
@@ -133,9 +135,12 @@ const styles = StyleSheet.create({
   txtPass: {
     width: 245,
     height: 30,
+    marginTop: 2,
+    marginLeft: 2,
     paddingLeft: 8,
     paddingTop: 15,
     borderRadius: 10,
+    //backgroundColor: '#fff',
     outlineColor: "transparent",
   },
 

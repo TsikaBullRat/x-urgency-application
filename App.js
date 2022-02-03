@@ -16,9 +16,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 // You can import from local files
 import { auth, Check, LoadSet } from './src/firebase'
-import { StyleSheet, NativeModules } from 'react-native';
+import { StyleSheet, NativeModules, View } from 'react-native'; 
+import { EmergencyContacts } from "./src/Screens";
 import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
-import { Upload } from "./src/Screens";
+
 
 export default function App() {
   const [id, setID] = useState();
@@ -32,17 +33,9 @@ export default function App() {
 
   return (
 
-    <NavigationContainer>
-      <KeyboardAwareScrollView>
-        {
-          id ? (
-            <Check id={id} details={details} />
-          ) : (
-            <AuthScreens setDetails={setDetails} />
-          )
-        }
-      </KeyboardAwareScrollView>
-    </NavigationContainer>
+    <View>
+      <EmergencyContacts />
+    </View>
 
   );
 }
