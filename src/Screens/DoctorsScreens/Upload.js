@@ -128,6 +128,12 @@ export default function Clone({ navigation, Log }) {
           <Icon name="camera" color='white' size={30} />
         </View>
       </TouchableOpacity>
+
+
+      <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
+        <Text style={styles.buttonText}>Upload Video</Text>
+      </TouchableOpacity>
+
     </View>
   );
 }
@@ -140,11 +146,12 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    paddingTop: 60,
+    paddingTop: 100,
     fontSize: 25,
     textAlign: "center",
     color: "#F47066",
     fontWeight: "bold",
+    marginBottom: 30,
   },
 
   txtField: {
@@ -155,7 +162,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderWidth: 1,
     color: "lightgrey",
-    marginTop: 30,
+    marginBottom: 20,
     fontSize: 16,
   },
 
@@ -167,7 +174,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderWidth: 1,
     color: "lightgrey",
-    marginTop: 20,
+    marginTop: 10,
     fontSize: 16,
   },
 
@@ -177,7 +184,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'white',
     paddingLeft: 100,
-    marginTop: 40,
+    marginTop: 10,
     borderWidth: 1,
   },
 
@@ -229,15 +236,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: 'white',
     borderWidth: 3,
-    marginTop: -55,
-    marginLeft: 250,
+    marginTop: 40,
+    marginLeft: -8,
   },
+
+
+
+
+
 
   picker: {
     borderWidth: 1,
-    marginTop: 20,
+    marginTop: -10,
     width: 330,
-    height: 60,
+    height: 70,
     borderRadius: 10,
     color: "000000",
     paddingLeft: 20,
@@ -249,7 +261,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 3,
     borderColor: "white",
-    marginRight: 150,
+    marginRight: 20,
     height: 50,
     marginTop: 40,
   },
