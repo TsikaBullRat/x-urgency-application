@@ -77,7 +77,7 @@ export default function Header({ list, setVids }) {
             <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
               <Image style={styles.bloodMenu} source={bleeding} />
             </Card>
-            <Text style={{ paddingLeft: 28, fontSize: 12 }}>Bleeding</Text>
+            <Text style={{ paddingLeft: 30, fontSize: 12, paddingBottom: 20 }}>Bleeding</Text>
           </View>
         </Pressable>
 
