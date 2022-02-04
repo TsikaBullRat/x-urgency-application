@@ -102,12 +102,13 @@ const DoctorProfile = ({ route }) => {
     useEffect(() => {
         getDoctorInfo()
     }, [])
+
     const [image, setImage] = useState()
     const [initial, setInitial] = useState()
     const getProfile = async () => {
         let name
-        setImage(auth.currentUser.photoURL)
-        name = auth.currentUser.displayName
+        setImage(false)
+        name = await firestore.collection("Users").doc(info).get().then(doc=>doc.data().username)
         setInitial(name.substring(0, 1))
     }
 
@@ -143,14 +144,15 @@ const DoctorProfile = ({ route }) => {
             <View>
                 <View style={styles.container}>
                     <View style={{ marginTop: 50, marginLeft: 10 }}>
-                    {
+                    {/* {
                         image ? (
                             <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
                         ):(
                             <View style={styles.temp}>
                                 <Text style={styles.temp_text}> {initial} </Text>
                             </View>
-                    )}
+                    )} */}
+                    <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
                     </View>
 
                     <Text style={styles.textTitle}>Dr. {doctor}</Text>
@@ -258,7 +260,7 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 50,
-        margingTop: 80,
+        marginTop: 80,
         borderBottomWidth: 3,
         borderColor: 'turquoise',
         shadowColor: 'grey',
