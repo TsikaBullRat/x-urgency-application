@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   menu: {
     width: 300,
     alignItems: 'center',
-    justifyContent: 'space-even',
+    justifyContent: 'space-evenly',
     marginTop: 20,
     borderRadius: 15,
   },

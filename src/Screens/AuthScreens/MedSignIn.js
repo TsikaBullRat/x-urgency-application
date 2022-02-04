@@ -12,7 +12,7 @@
 **/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignIn } from '../../firebase'
@@ -120,7 +120,11 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
-    outlineColor: 'transparent',
+    ...Platform.select({
+      web:{
+        outlineColor: 'transparent'
+      }
+    })
   },
 
   txtCards: {

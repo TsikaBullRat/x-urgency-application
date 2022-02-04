@@ -7,4 +7,4 @@ export { ShareItem } from "./Functions/Share"
 export { Check } from './Auth/Protocol'
 import LogOut from "./Auth/LogOut"
 export { LogOut }
-export { Count } from './Firestore/Comments'
+
