@@ -24,7 +24,7 @@ export default function SignIn({ navigation, setDone }) {
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
-    
+
   const Login = () => {
     handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
@@ -84,7 +84,7 @@ export default function SignIn({ navigation, setDone }) {
 
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignIn') }}>
-            <Text style={{fontSize: 18, color: '#F47066' }}> {`SignIn`} </Text>
+            <Text style={{ fontSize: 18, color: '#F47066' }}> {`SignIn`} </Text>
           </TouchableOpacity>
         </View>
 

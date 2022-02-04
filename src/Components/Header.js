@@ -33,34 +33,43 @@ export default function Header({ done, navigation }) {
 
     <View style={styles.contain}>
 
-    <View style={{width:370, marginTop: 10,
-    flexDirection: 'row', alignItems:'center',
-                  justifyContent: 'space-between'}}>
-      
-      <Pressable onPress={() => {navigation.navigate('EmergencyContacts')}}
-      >
-      <View style={{flexDirection:'row'}}>
-        <Image source={require('../../img/siren.jpg')} 
-               style={{width:30, height:30}}/>
+      <View style={{
+        width: 370, marginTop: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
 
-               <View style={{paddingHorizontal:10}}>
-               <Text>{`Call`}</Text>
-               <Text>{`Now`}</Text>
-               </View>
+        <Pressable onPress={() => { navigation.navigate('EmergencyContacts') }}>
+
+          <View style={{ flexDirection: 'row' }}>
+            <Image source={require('../../img/siren.jpg')}
+              style={{ width: 30, height: 30 }} />
+
+            <View style={{ paddingHorizontal: 10 }}>
+              <Text>{`Call`}</Text>
+              <Text>{`Now`}</Text>
+            </View>
+          </View>
+        </Pressable>
+
+        <Pressable onPress={LogOut} >
+
+          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+
+        </Pressable>
       </View>
-      </Pressable>
-
-      <Pressable onPress={LogOut} >
-
-        <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-
-      </Pressable>
-    </View>
 
       {/*---------------------------Header--------------------------*/}
 
-    <View style={{ flexDirection: 'row', width: 380, 
-    marginLeft:-12, marginTop: 20, alignItems:'center', justifyContent: 'space-between' }}>
+      <View style={{
+        flexDirection: 'row',
+        width: 380,
+        marginLeft: -12,
+        marginTop: 20,
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
 
         <View>
 
@@ -81,14 +90,14 @@ export default function Header({ done, navigation }) {
             containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
 
         </View>
+      </View>
     </View>
-  </View>
   )
 }
 
 const styles = StyleSheet.create({
 
-  contain: {    
+  contain: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff'
@@ -100,7 +109,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-  
+
     flexDirection: 'column',
     justifyContent: 'flex-start',
     color: '#F96056',

@@ -26,25 +26,25 @@ const ProgressBar = ({ status }) => {
     )
 }
 
-const Loading = () =>{
-    return(
+const Loading = () => {
+    return (
         <View style={styles.loading}>
-            <ActivityIndicator size={60}/>
+            <ActivityIndicator size={60} />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    bar:{
+    bar: {
         width: '100%',
-    height: 15,
-    backgroundColor: 'transparent'
+        height: 15,
+        backgroundColor: 'transparent'
     },
-    loading:{
+    loading: {
         alignItems: 'center',
         justifyContent: 'center',
         top: 450
     }
 })
 
-export {ProgressBar, Loading}
+export { ProgressBar, Loading }

@@ -55,7 +55,7 @@ const Emergency = ({ navigation }) => {
                     </Card>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => Call("0831999")} >
+                <TouchableOpacity onPress={() => Call("083 1999")} >
                     <Card style={[styles.card3, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 50, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>Air Rescue</Text>
                         <FontAwesome name="plane" size={30} color="#fde9e7" style={{ marginTop: 1, marginLeft: 70 }} />
@@ -67,7 +67,7 @@ const Emergency = ({ navigation }) => {
 
             <View>
 
-                <TouchableOpacity onPress={() => Call("0800055555")}>
+                <TouchableOpacity onPress={() => Call("0800 055 555")}>
                     <Card style={[styles.card4, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 55, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>Childline</Text>
                         <FontAwesome name="child" size={30} color="#fde9e7" style={{ marginTop: 1, marginLeft: 70 }} />
@@ -75,7 +75,7 @@ const Emergency = ({ navigation }) => {
                     </Card>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => Call("0800567567")}>
+                <TouchableOpacity onPress={() => Call("0800 567 567")}>
                     <Card style={[styles.card5, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>Suicide Crisis Line</Text>
                         <FontAwesome name="anchor" size={25} color="#fde9e7" style={{ marginTop: 1, marginLeft: 75 }} />
@@ -87,7 +87,7 @@ const Emergency = ({ navigation }) => {
 
             <View>
 
-                <TouchableOpacity onPress={() => Call("0800428428")} >
+                <TouchableOpacity onPress={() => Call("0800 428 428")} >
                     <Card style={[styles.card6, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>Gender Based Violence Command Center</Text>
                         <FontAwesome name="transgender" size={30} color="#fde9e7" style={{ marginTop: 1, marginLeft: 160 }} />
@@ -99,7 +99,7 @@ const Emergency = ({ navigation }) => {
 
             <View>
 
-                <TouchableOpacity onPress={() => Call("0800029999")} >
+                <TouchableOpacity onPress={() => Call("0800 029 999")} >
                     <Card style={[styles.card7, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>National Institute For Communicable Diseases</Text>
                         <FontAwesome name="plus-square" size={30} color="#fde9e7" style={{ marginTop: 1, marginLeft: 160 }} />

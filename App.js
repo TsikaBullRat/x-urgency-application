@@ -45,7 +45,7 @@ export default function App() {
   }, [doctor])
 
   return (
-  <NavigationContainer>
+    <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
           {check1 ? (
