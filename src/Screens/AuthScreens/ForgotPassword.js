@@ -56,14 +56,14 @@ export default function ForgotPassword({ navigation }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={90} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28}}> {`X-urgency`} </Text>
+        <Text style={{ color: '#fff', fontSize: 28 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header} >
         <Text style={{ fontWeight: 'bold', fontSize: 36, color: '#51535D' }}>{`Reset Password`}</Text>
       </View>
 
-      <View style={{alignItems:'center'}}>
+      <View style={{ alignItems: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
@@ -88,9 +88,9 @@ export default function ForgotPassword({ navigation }) {
         </Card>
         {prompt3?<Text style={styles.prompt}>{prompt3}</Text>:null}
 
-        </View>
+      </View>
 
-        <View style={{alignItems:'center'}}>
+      <View style={{ alignItems: 'center' }}>
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
           <Text style={{ color: '#fff' }}>{`RESET PASSWORD`} </Text>
         </TouchableOpacity>

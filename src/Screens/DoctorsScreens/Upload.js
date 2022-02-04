@@ -56,7 +56,7 @@ export default function Clone({ navigation, Log }) {
         allowsEditing: true
       });
       if (!result.cancelled) {
-        setSelectedImage({ localUri: result.uri})
+        setSelectedImage({ localUri: result.uri })
       }
     }
 
@@ -78,7 +78,6 @@ export default function Clone({ navigation, Log }) {
         selectedValue={selectedValue}
         style={[styles.picker, styles.shadowProp]}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
-
         <Picker.Item label="Stroke" value="stroke" />
         <Picker.Item label="Heart-Attack" value="heart-attack" />
         <Picker.Item label="Epilepsy" value="epilepsy" />
@@ -97,7 +96,7 @@ export default function Clone({ navigation, Log }) {
           onChangeText={text => setDescpription(text)} />
       </View>
 
-      {selectedImage?(
+      {selectedImage ? (
         <Video ref={ref} source={{ uri: selectedImage.localUri }} resizeMode="stretch" isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
           style={{
             width: "100%",
@@ -105,7 +104,9 @@ export default function Clone({ navigation, Log }) {
             marginTop: 5,
             alignSelf: "center",
           }} />
-      ):(
+
+      ) : (
+
         <Pressable onPress={openImagePickerAsync} style={{ flexDirection: 'row' }}>
           <Card style={[styles.txtUser, styles.shadowProp]}>
             <View>
@@ -115,13 +116,6 @@ export default function Clone({ navigation, Log }) {
           </Card>
         </Pressable>
       )}
-      
-
-      
-
-      <TouchableOpacity onPress={Run}  style={styles.button}>
-        <Text style={styles.buttonText}>Upload Video</Text>
-      </TouchableOpacity>
 
       <TouchableOpacity onPress={openCamera}>
         <View style={styles.iconContainer}>
@@ -130,7 +124,7 @@ export default function Clone({ navigation, Log }) {
       </TouchableOpacity>
 
 
-      <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
+      <TouchableOpacity onPress={Run} style={styles.button}>
         <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>
 

@@ -79,7 +79,7 @@ export default function VideoScreen({ navigation, route }) {
     addAct()
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(data)
   }, [comments])
 

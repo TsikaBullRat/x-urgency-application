@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, } from 'react-native';
+import { Text, View, StyleSheet, Pressable } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
-import { Socials,  } from '../../Components';
+import { Socials, } from '../../Components';
 import { auth, firestore } from '../../firebase';
 import Button from '../../Components/button';
 
@@ -22,7 +22,7 @@ const DoctorProfile = ({ route }) => {
     const [doctor, setDoctor] = useState("")
     const [email, setEmail] = useState("")
     const [data, setData] = useState(null);
-    const [ subscription, setSubscription] = useState({text:"", Func:()=>null})
+    const [subscription, setSubscription] = useState({ text: "", Func: () => null })
 
     const check = (value) => {
 
@@ -69,10 +69,10 @@ const DoctorProfile = ({ route }) => {
             })
     }
 
-    const Subscribe = async () =>{
+    const Subscribe = async () => {
         let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
-            .then(doc=>{
-              return doc.data().subscribers  
+            .then(doc => {
+                return doc.data().subscribers
             })
         firestore.collection("Users").doc(info).collection("cred").doc(info).update({
             subscribers: [...change, auth.currentUser.uid]
@@ -84,12 +84,12 @@ const DoctorProfile = ({ route }) => {
         })
     }
 
-    const unSubscribe = async () =>{
+    const unSubscribe = async () => {
         let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
-            .then(doc=>{
-              return doc.data().subscribers  
+            .then(doc => {
+                return doc.data().subscribers
             })
-        change = change.filter(item=>item !== auth.currentUser.uid)
+        change = change.filter(item => item !== auth.currentUser.uid)
         firestore.collection("Users").doc(info).collection("cred").doc(info).update({
             subscribers: change
         })
@@ -102,12 +102,13 @@ const DoctorProfile = ({ route }) => {
     useEffect(() => {
         getDoctorInfo()
     }, [])
+
     const [image, setImage] = useState()
     const [initial, setInitial] = useState()
     const getProfile = async () => {
         let name
-        setImage(auth.currentUser.photoURL)
-        name = auth.currentUser.displayName
+        setImage(false)
+        name = await firestore.collection("Users").doc(info).get().then(doc=>doc.data().username)
         setInitial(name.substring(0, 1))
     }
 
@@ -115,19 +116,19 @@ const DoctorProfile = ({ route }) => {
         getProfile()
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         firestore.collection("Users").doc(info).collection("cred").doc(info).get()
-            .then(doc=>{
+            .then(doc => {
                 let array = []
                 array = [...array, doc.data().subscribers]
                 let index = array.indexOf(auth.currentUser.uid)
-                if(index === -1){
+                if (index === -1) {
                     setSubscription({
                         Func: unSubscribe,
                         text: "unfollow"
                     })
-                }else{
-                    
+                } else {
+
                     setSubscription({
                         Func: Subscribe,
                         text: "follow"
@@ -139,18 +140,18 @@ const DoctorProfile = ({ route }) => {
     return (
 
         data ? (<>
-            
+
             <View>
                 <View style={styles.container}>
                     <View style={{ marginTop: 50, marginLeft: 10 }}>
-                    {
-                        image ? (
-                            <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
-                        ):(
-                            <View style={styles.temp}>
-                                <Text style={styles.temp_text}> {initial} </Text>
-                            </View>
-                    )}
+                        {
+                            image ? (
+                                <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+                            ) : (
+                                <View style={styles.temp}>
+                                    <Text style={styles.temp_text}> {initial} </Text>
+                                </View>
+                            )}
                     </View>
 
                     <Text style={styles.textTitle}>Dr. {doctor}</Text>
@@ -161,9 +162,12 @@ const DoctorProfile = ({ route }) => {
                     <Socials text="Following" number="15" />
                     <Socials text="Followers" number={data.subscribers ? data.subscribers.length : 0} />
                     <Socials text="Likes" number="3.1M" />
+                    <Pressable style={styles.follow} onPress={subscription.Func}>
+                        <Text>{subscription.text}</Text>
+                    </Pressable>
                 </View>
-
-                <Button name={subscription.text} Run={subscription.Func} />
+                <View style={{ marginTop: 20 }}>
+                </View>
 
                 <View>
                     <SwitchSelector
@@ -267,6 +271,18 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center'
     },
+
+    follow: {
+        top: 10,
+        left: 5,
+        backgroundColor: "#f47066",
+        width: 70,
+        height: 40,
+        borderRadius: 15,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+
     temp: {
         width: 70,
         height: 70,
@@ -275,12 +291,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'turquoise',
         textAlign: 'center',
         justifyContent: 'center'
-      },
-    
-      temp_text: {
+    },
+
+    temp_text: {
         fontSize: 40,
         color: '#fff',
-      }
+    }
 });
 
 export default DoctorProfile;

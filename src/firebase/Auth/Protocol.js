@@ -5,11 +5,8 @@ import { firestore } from "..";
 
 const Check = ({ details, id }) => {
 
-    
     // const What = firestore.collection("Doctors").doc(user).get()
     //     .then(doc=>doc.data())
-
-    
 
     // console.log(What)
 
@@ -18,7 +15,6 @@ const Check = ({ details, id }) => {
     )
 
 }
-
 
 const styles = StyleSheet.create({
     loader: {

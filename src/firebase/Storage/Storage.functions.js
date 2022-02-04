@@ -123,7 +123,7 @@ const LoadSet = (Load, query) => {
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title
                     let match = find.ref
-                    let owner = await info.doc(match).get().then(doc=>doc.data().username)
+                    let owner = await info.doc(match).get().then(doc => doc.data().username)
                     let firestore = itemRef.name.split('.')[0]
                     let description = find.description
                     let tag = find.tag
@@ -155,7 +155,7 @@ const LoadSet = (Load, query) => {
                     console.log(find)
                     let name = find.title
                     let match = find.ref
-                    let owner = await info.doc(match).get().then(doc=>doc.data().username)
+                    let owner = await info.doc(match).get().then(doc => doc.data().username)
                     let firestore = itemRef.name.split('.')[0]
                     let description = find.description
                     let tag = find.tag

@@ -62,7 +62,6 @@ export default function Clone({ navigation }) {
                 selectedValue={selectedValue}
                 style={styles.picker}
                 onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
-
                 <Picker.Item label="Stroke" value="stroke" />
                 <Picker.Item label="Heart-Attack" value="heart-attack" />
                 <Picker.Item label="Epilepsy" value="epilepsy" />

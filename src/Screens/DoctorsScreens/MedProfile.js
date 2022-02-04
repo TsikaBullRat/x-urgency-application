@@ -107,8 +107,8 @@ export default function MedicalProfile({ navigation, setDone }) {
             textShadowRadius: 1
           }}
           >  Dr. DoLittle </Text>
-        </View>
 
+        </View>
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/40.jpg', }} size="large" />
           <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />

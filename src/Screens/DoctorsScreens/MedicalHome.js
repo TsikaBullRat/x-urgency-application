@@ -106,10 +106,12 @@ export default function MedicalHome({ navigation, progress, Log, Exit }) {
             }}
           > In Da House
           </Text>
+
         </View>
         <>
-          {progress? <ProgressBar status={progress} /> : null}
+          {progress ? <ProgressBar status={progress} /> : null}
         </>
+
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <TouchableOpacity onPress={Logout}>
             {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />

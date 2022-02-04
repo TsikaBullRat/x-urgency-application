@@ -10,4 +10,5 @@ const LogOut = () => {
             // An error happened.
         });
 }
+
 export default LogOut;
