@@ -32,9 +32,9 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
     [visibleStatusBar, setVisibleStatusBar] = useState(false)
 
-    const changeVisibilityStatusBar = () => {
-      setVisibleStatusBar(!visibleStatusBar)
-    }
+  const changeVisibilityStatusBar = () => {
+    setVisibleStatusBar(!visibleStatusBar)
+  }
 
   return (
 
@@ -95,22 +95,21 @@ export default function DoctorSignUp({ navigation, setDetails }) {
           </Card>
 
           <View style={{ alignItems: "center" }}>
-          <TouchableOpacity style={styles.signIn} onPress={() => {changeVisibilityStatusBar()}}>
-            <Text style={{ color: "#fff" }}>{`NEXT`} </Text>
-          </TouchableOpacity>
-        </View>
+            <TouchableOpacity style={styles.signIn} onPress={() => { changeVisibilityStatusBar() }}>
+              <Text style={{ color: "#fff" }}>{`NEXT`} </Text>
+            </TouchableOpacity>
+          </View>
 
         </View>
 
       ) : (
         <View>
-           <Card style={styles.txtCards}>
+          <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <Picker
                 specialization={specialization}
                 style={styles.picker}
                 onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
-
                 <Picker.Item label="Neuro-Surgent" value="stroke" />
                 <Picker.Item label="General Practitioner" value="heart-attack" />
                 <Picker.Item label="Epilepsy" value="epilepsy" />
@@ -119,7 +118,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 <Picker.Item label="Choking" value="choking" />
                 <Picker.Item label="Java" value="java" />
                 <Picker.Item label="Burns" value="burns" />
-            </Picker>
+              </Picker>
             </View>
           </Card>
 
@@ -132,8 +131,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setQualification(text)} />
             </View>
           </Card>
-
-          
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -165,17 +162,16 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             </View>
           </Card>
 
-
-        <View style={{ alignItems: "center" }}>
-          <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
-            <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
-          </TouchableOpacity>
+          <View style={{ alignItems: "center" }}>
+            <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
+              <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-         </View>
       )}
-        
-        </View>
-     
+
+    </View>
+
   );
 }
 

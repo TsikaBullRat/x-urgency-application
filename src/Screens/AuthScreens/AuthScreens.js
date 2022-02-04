@@ -20,12 +20,12 @@ const Stack = createNativeStackNavigator()
 export const AuthScreens = () => {
   return (
     <Stack.Navigator initialRouteName='Sign In'>
-        <Stack.Screen
+      <Stack.Screen
         name='Doctor SignUp'
         component={DoctorSignUp}
         options={{ headerShown: false }} />
 
-        <Stack.Screen
+      <Stack.Screen
         name='Doc SignUp'
         component={DocSignUp}
         options={{ headerShown: false }} />
@@ -42,7 +42,6 @@ export const AuthScreens = () => {
         name='Reset Password'
         component={ForgotPassword}
         options={{ headerShown: false }} />
-
 
     </Stack.Navigator>
   )
