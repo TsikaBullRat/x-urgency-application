@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 75,
+    marginTop: 35,
     borderWidth: 1,
     borderColor: '#F47066',
   },
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 60,
+    marginTop: 30,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
