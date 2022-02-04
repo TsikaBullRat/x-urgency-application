@@ -102,12 +102,13 @@ const DoctorProfile = ({ route }) => {
     useEffect(() => {
         getDoctorInfo()
     }, [])
+
     const [image, setImage] = useState()
     const [initial, setInitial] = useState()
     const getProfile = async () => {
         let name
-        setImage(auth.currentUser.photoURL)
-        name = auth.currentUser.displayName
+        setImage(false)
+        name = await firestore.collection("Users").doc(info).get().then(doc=>doc.data().username)
         setInitial(name.substring(0, 1))
     }
 
@@ -256,7 +257,7 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 50,
-        margingTop: 80,
+        marginTop: 80,
         borderBottomWidth: 3,
         borderColor: 'turquoise',
         shadowColor: 'grey',
