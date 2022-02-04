@@ -64,7 +64,7 @@ export default function SignIn({ navigation, setDone }) {
         </Card>
 
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
-          <Text style={{ paddingLeft: 175, paddingTop: 10, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
+          <Text style={{ paddingLeft: 170, paddingTop: 20, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
         </TouchableOpacity>
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
@@ -96,14 +96,14 @@ export default function SignIn({ navigation, setDone }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    height: 815,
+    height: 800,
     backgroundColor: '#fff',
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: 380,
-    height: 246.7,
+    width: 300,
+    height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     height: 30,
     marginTop: 7,
     marginLeft: 2,
-    paddingLeft: 10,
+    paddingLeft: 8,
     paddingTop: 15,
     borderRadius: 10,
     outlineColor: 'transparent',
@@ -140,16 +140,16 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     paddingTop: 15,
     borderRadius: 10,
-    //backgroundColor: '#fff',
     outlineColor: "transparent",
   },
 
   txtCards: {
-    width: 315,
+    width: 300,
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 75,
+    marginTop: 35,
+    paddingTop: 5,
     borderWidth: 1,
     borderColor: '#F47066',
   },
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 60,
+    marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
