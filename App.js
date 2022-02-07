@@ -55,7 +55,7 @@ export default function App() {
       <KeyboardAwareScrollView>
         <Stack.Navigator>
         <Stack.Screen name="signin" component={DoctorSignUp} options={{ headerShown: false }} />
-          {check1 ? (
+         {check1 ? (
             id ? (
               check2 ? (
                 doctor ? (
