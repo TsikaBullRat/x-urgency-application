@@ -113,9 +113,9 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
                 <Picker.Item label="Neuro-Surgent" value="stroke" />
                 <Picker.Item label="General Practitioner" value="heart-attack" />
-                <Picker.Item label="Epilepsy" value="epilepsy" />
+                <Picker.Item label="Dentist" value="dentist" />
                 <Picker.Item label="CPR" value="cpr" />
-                <Picker.Item label="Drowning" value="drowning" />
+                <Picker.Item label="Pediatrician" value="pediatrician" />
                 <Picker.Item label="Choking" value="choking" />
                 <Picker.Item label="Java" value="java" />
                 <Picker.Item label="Burns" value="burns" />
