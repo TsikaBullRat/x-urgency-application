@@ -17,7 +17,6 @@ import Home from "./UserScreens/Home"
 import VideoScreen from "./UserScreens/PlayVideo"
 import UploadVideo from "./DoctorsScreens/UploadVideo"
 import DoctorSignUp from "./AuthScreens/DoctorSignUp"
-import DocSignUp from "./AuthScreens/DocSignUp"
 import MedSignIn from "./AuthScreens/MedSignIn"
 import MedicalHome from "./DoctorsScreens/MedicalHome"
 import DoctorProfile from "./UserScreens/Doctor"
@@ -25,7 +24,7 @@ import Upload from "./DoctorsScreens/Upload"
 import Clone from "./Clone"
 import EmergencyContacts from "../Components/EmergencyContacts";
 
-export { SignIn, SignUp, ForgotPassword, Home, VideoScreen, UploadVideo, DoctorProfile, DoctorSignUp, DocSignUp, MedicalHome, Upload, Clone, EmergencyContacts }
+export { SignIn, SignUp, ForgotPassword, Home, VideoScreen, UploadVideo, DoctorProfile, DoctorSignUp, MedicalHome, Upload, Clone, EmergencyContacts }
 
 export { UserScreens } from './UserScreens/UserScreens'
 export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'
