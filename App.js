@@ -7,7 +7,7 @@ import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens, EmergencyContacts } from "./src/Screens";
 
-import Home from './src/Screens/UserScreens/Home'
+import SignIn from './src/Screens/AuthScreens/SignIn'
 
 const Stack = createNativeStackNavigator()
 
@@ -15,8 +15,8 @@ export default function App() {
 
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
-  //const [done, setDone ] = useState(false)
-  const [check1, setCheck1] = useState(false)
+  const [done, setDone ] = useState(true)
+  const [check1, setCheck1] = useState(true)
   const [check2, setCheck2] = useState(false)
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
-    
+  
           {check1 ? (
             id ? (
               check2 ? (
