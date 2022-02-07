@@ -14,22 +14,22 @@ const DoctorProfile = () => {
                         <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/44.jpg', }} size="large" />
                         <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
                     </View>
-                    <Text style={styles.textTitle}>Dr Sighn</Text>
+                    <Text style={styles.textTitle}>{`Dr Sighn`}</Text>
+
+                    <View style={{marginTop:20}}>
+                      <Text style={{ paddingTop: 10, fontSize: 26, color:'#F47066' }}>
+                        {`Pediatrician`}
+                      </Text>
+                    </View> 
                 
 
-                <View style={{flexDirection: 'row', marginBottom: 20, justifyContent: 'center', alignItems: 'center' }}>
-                    <Socials text="Following" number="15" />
-                    <View style={styles.pole} />
-                    <Socials text="Followers" number="3000K" />
-                    <View style={styles.pole} />
-                    <Socials text="Likes" number="3.1M" />
-                </View>
-
-                
-
-                <View style={{marginTop:20, width: 355,  justifyContent: 'flex-start' }}>
-                  <Text style={{ paddingTop: 10, fontSize: 26, color:'#F47066' }}>Pediatrician</Text>
-                </View>       
+                    <View style={{flexDirection: 'row', marginBottom: 20, justifyContent: 'center', alignItems: 'center' }}>
+                       <Socials text="Following" number="15" />
+                       <View style={styles.pole} />
+                       <Socials text="Followers" number="3000K" />
+                       <View style={styles.pole} />
+                        <Socials text="Likes" number="3.1M" />
+                    </View>                  
 
         <View
           style={{
@@ -47,7 +47,7 @@ const DoctorProfile = () => {
                 style={{ width: 35, height: 35, color:'#fff' }}
               />
            
-                <Text style={{ paddingTop: 25, fontSize: 16, color:'#fff' }}>
+                <Text style={{ paddingTop: 10, fontSize: 16, color:'#fff' }}>
                   {`Qualifiation`}
                 </Text>            
             </View>
@@ -60,7 +60,7 @@ const DoctorProfile = () => {
                 style={{ width: 45, height: 45, color:'#fff' }}
               />
            
-                <Text style={{ paddingTop: 25, fontSize: 16, color:'#fff' }}>
+                <Text style={{ paddingTop: 10, fontSize: 16, color:'#fff' }}>
                   {`Experience`}
                 </Text>            
             </View>
@@ -73,7 +73,7 @@ const DoctorProfile = () => {
                 style={{ width: 35, height: 35, color:'#fff' }}
               />
            
-                <Text style={{ paddingTop: 25, fontSize: 16, color:'#fff' }}>
+                <Text style={{ paddingTop: 10, fontSize: 16, color:'#fff' }}>
                   {`Awards`}
                 </Text>            
             </View>
@@ -88,7 +88,10 @@ const DoctorProfile = () => {
       </View>
 
       <View style={{ width: 355, marginTop: 35, justifyContent: 'flex-start' }}>
-        <View style={{ flexDirection: 'row' }}>
+
+      <Text style={styles.txtHead}>{`Communication`}</Text>
+
+        <View style={{ flexDirection: 'row', marginTop: 15 }}>
           <Feather name="phone" size={20} color="black" />
           <Text
             style={{
@@ -166,7 +169,6 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 50,
-        marginTop: 80,
         borderBottomWidth: 3,
         borderColor: 'turquoise',
         shadowColor: 'grey',
@@ -184,7 +186,7 @@ const styles = StyleSheet.create({
 
     docCards: {
     width: 100,
-    height: 100,
+    height: 80,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#F47066',
