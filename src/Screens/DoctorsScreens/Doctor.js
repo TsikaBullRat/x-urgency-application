@@ -47,8 +47,8 @@ const DoctorProfile = () => {
                 style={{ width: 35, height: 35, color:'#fff' }}
               />
            
-                <Text style={{ paddingTop: 10, fontSize: 16, color:'#fff' }}>
-                  {`Qualifiation`}
+                <Text style={{ paddingTop: 5, color:'#fff' }}>
+                  {`PHD`}
                 </Text>            
             </View>
           </Card>
@@ -60,8 +60,8 @@ const DoctorProfile = () => {
                 style={{ width: 45, height: 45, color:'#fff' }}
               />
            
-                <Text style={{ paddingTop: 10, fontSize: 16, color:'#fff' }}>
-                  {`Experience`}
+                <Text style={{ maxWidth: 80, paddingTop: 5,textAlign:'center', color:'#fff' }}>
+                  {`15yrs Experience`}
                 </Text>            
             </View>
           </Card>
@@ -73,8 +73,8 @@ const DoctorProfile = () => {
                 style={{ width: 35, height: 35, color:'#fff' }}
               />
            
-                <Text style={{ paddingTop: 10, fontSize: 16, color:'#fff' }}>
-                  {`Awards`}
+                <Text style={{ paddingTop: 5, color:'#fff' }}>
+                  {`10 Awards`}
                 </Text>            
             </View>
           </Card>
@@ -100,15 +100,11 @@ const DoctorProfile = () => {
               fontSize: 16,
               color: '#F47066',
             }}>
-            {`Call Now `}
+            {`Call`}
           </Text>
           <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
             {`(053) 871 2956`}
           </Text>
-        </View>
-
-        <View>
-          <Text style={{ paddingLeft: 35, paddingTop: 5 }}>{`OR`}</Text>
         </View>
 
         <View style={{ flexDirection: 'row' }}>         
@@ -120,7 +116,7 @@ const DoctorProfile = () => {
               fontSize: 16,
               color: '#F47066',
             }}>
-            {`SMS`}
+            {`Email`}
           </Text>
           <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
             {`078 454 2123`}
@@ -186,7 +182,7 @@ const styles = StyleSheet.create({
 
     docCards: {
     width: 100,
-    height: 80,
+    height: 90,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#F47066',
