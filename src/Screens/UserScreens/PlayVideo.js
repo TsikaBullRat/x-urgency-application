@@ -141,12 +141,13 @@ export default function VideoScreen({ navigation, route }) {
             </View>
 
             <Card style={[styles.txtCards, styles.shadowProp]}>
-              <View style={{ flexDirection: 'row' }}>
-                <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
-                <View style={{ width: 90, height: 70, borderRadius: 30, marginTop: 1, marginRight: 3, }}>
+            <View style={{ width: 90, height: 70, borderRadius: 30, marginTop: 2, marginLeft: 200, }}>
                   <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title='Comment' />
                 </View>
+              <View style={{ flexDirection: 'row' }}>
+                <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
               </View>
+             
             </Card>
 
           </View>
