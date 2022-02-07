@@ -80,10 +80,6 @@ export default function VideoScreen({ navigation, route }) {
     Collect(data.firestore, setComments, setCount)
   }, [])
 
-  useEffect(() => {
-    console.log(data)
-  }, [comments])
-
   return (
 
     <View style={styles.contain}>
