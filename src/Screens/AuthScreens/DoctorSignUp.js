@@ -12,7 +12,7 @@
 **/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, Picker } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
@@ -25,16 +25,104 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     [surname, setSurname] = useState(""),
     [contactdetails, setContactDetails] = useState(""),
     [qualification, setQualification] = useState(""),
-    [specialization, setSpecialization] = useState("Neuro-Surgent"),
+    [specialization, setSpecialization] = useState(""),
     [branch, setBranch] = useState(""),
     [password, setPassword] = useState(""),
     [confirmpassword, setConfirmPassword] = useState(""),
-
-    [visibleStatusBar, setVisibleStatusBar] = useState(false)
+    [prompt1, setPrompt1] = useState(null),
+    [prompt2, setPrompt2] = useState(null),
+    [prompt3, setPrompt3] = useState(null),
+    [prompt4, setPrompt4] = useState(null),
+    [prompt5, setPrompt5] = useState(null),
+    [prompt6, setPrompt6] = useState(null),
+    [prompt7, setPrompt7] = useState(null),
+    [prompt8, setPrompt8] = useState(null),
+    [visibleStatusBar, setVisibleStatusBar] = useState(true)
 
   const changeVisibilityStatusBar = () => {
-    setVisibleStatusBar(!visibleStatusBar)
+    // if(name === ""){
+    //   setPrompt1("Please enter name")
+    //   setPrompt2(null)
+    //   setPrompt3(null)
+    //   setPrompt4(null)
+    //   setPrompt5(null)
+    //   setPrompt6(null)
+    //   setPrompt7(null)
+    //   setPrompt8(null)
+    // }else if(surname === ""){
+    //   setPrompt1(null)
+    //   setPrompt2("Please enter surname")
+    //   setPrompt3(null)
+    //   setPrompt4(null)
+    //   setPrompt5(null)
+    //   setPrompt6(null)
+    //   setPrompt7(null)
+    //   setPrompt8(null)
+    // }else if(contactdetails === ""){
+    //   setPrompt1(null)
+    //   setPrompt2(null)
+    //   setPrompt3("Please enter contact details")
+    //   setPrompt4(null)
+    //   setPrompt5(null)
+    //   setPrompt6(null)
+    //   setPrompt7(null)
+    //   setPrompt8(null)
+    // }else if(email === ""){
+    //   setPrompt1(null)
+    //   setPrompt2(null)
+    //   setPrompt3(null)
+    //   setPrompt4("Please enter email address")
+    //   setPrompt5(null)
+    //   setPrompt6(null)
+    //   setPrompt7(null)
+    //   setPrompt8(null)
+    // }else{
+      setVisibleStatusBar(!visibleStatusBar)
+    // }
   }
+
+  const Register = () =>{
+       if(qualification === ""){
+        setPrompt1(null)
+        setPrompt2(null)
+        setPrompt3(null)
+        setPrompt4(null)
+        setPrompt5("Please enter qualification")
+        setPrompt6(null)
+        setPrompt7(null)
+        setPrompt8(null)
+      }else if(branch === ""){
+        setPrompt1(null)
+        setPrompt2(null)
+        setPrompt3(null)
+        setPrompt4(null)
+        setPrompt5(null)
+        setPrompt6("Please enter branch name")
+        setPrompt7(null)
+        setPrompt8(null)
+      }else if(password === ""){
+        setPrompt1(null)
+        setPrompt2(null)
+        setPrompt3(null)
+        setPrompt4(null)
+        setPrompt5(null)
+        setPrompt6(null)
+        setPrompt7("Please enter password")
+        setPrompt8(null)
+      }else if(confirmpassword === ""){
+        setPrompt1(null)
+        setPrompt2(null)
+        setPrompt3(null)
+        setPrompt4(null)
+        setPrompt5(null)
+        setPrompt6(null)
+        setPrompt7(null)
+        setPrompt8("Please re-enter password")
+      }else{
+        
+        setDisplayModal(true)
+      }
+    }
 
   return (
 
@@ -51,7 +139,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         <Text style={{ fontWeight: "bold", fontSize: 18, paddingLeft: 5 }}>  {`Doctor SignUp`} </Text>
       </View>
 
-      {!visibleStatusBar ? (
+      {visibleStatusBar ? (
         <View>
 
           <Card style={styles.txtCards}>
@@ -162,11 +250,12 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             </View>
           </Card>
 
-          <View style={{ alignItems: "center" }}>
-            <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
-              <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
-            </TouchableOpacity>
-          </View>
+
+        <View style={{ alignItems: "center" }}>
+          <TouchableOpacity style={styles.signIn} onPress={null}>
+            <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
+          </TouchableOpacity>
+        </View>
         </View>
       )}
 
@@ -211,7 +300,11 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
-    outlineColor: 'transparent',
+    ...Platform.select({
+      web:{
+        outlineColor: 'transparent'
+      }
+    })
   },
 
   txtCards: {

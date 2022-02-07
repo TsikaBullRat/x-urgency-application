@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderColor: '#F96056',
     borderWidth: 1,
-    outlineColor: 'transparent',
+    //outlineColor: 'transparent',
   },
 
   input2: {
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderColor: '#F96056',
     borderWidth: 1,
-    outlineColor: 'transparent',
+    //outlineColor: 'transparent',
   },
 
   iconContainer: {
@@ -233,14 +233,13 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginLeft: -8,
   },
-
   picker: {
     borderWidth: 1,
     marginTop: -10,
     width: 330,
     height: 70,
     borderRadius: 10,
-    color: "000000",
+    color: "#000",
     paddingLeft: 20,
   },
 

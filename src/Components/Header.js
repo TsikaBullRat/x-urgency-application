@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
 
   avatar: {
     borderRadius: 50,
-    margingTop: 80,
+    marginTop: 80,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
     shadowColor: 'grey',
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    margingTop: 80,
+    marginTop: 80,
     backgroundColor: 'turquoise',
     textAlign: 'center',
     justifyContent: 'center'

@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Platform, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const AlertNote = ({ modalVisible, setModalVisible, msg, excess }) => {
-    const Press = () => { excess ? excess(true) : nullsetModalVisible(false) }
+    const Press = () => { excess ? excess(true) : setModalVisible(false) }
 
     return (
 

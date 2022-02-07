@@ -47,6 +47,8 @@ export default function Header({ list, setVids }) {
             </View>
           </Pressable>
 
+
+
           <Pressable onPress={() => Sort("heartattack")}>
             <View>
               <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7 }}>
@@ -81,7 +83,7 @@ export default function Header({ list, setVids }) {
               <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
                 <Image style={styles.bloodMenu} source={bleeding} />
               </Card>
-              <Text style={{ paddingLeft: 30, fontSize: 12, paddingBottom: 20 }}>Bleeding</Text>
+              <Text style={{ paddingLeft: 30, fontSize: 12, paddingBottom: 50 }}>Bleeding</Text>
             </View>
           </Pressable>
 
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
   menu: {
     width: 300,
     alignItems: 'center',
-    justifyContent: 'space-even',
+    justifyContent: 'space-evenly',
     marginTop: 20,
     borderRadius: 15,
   },
@@ -168,6 +170,7 @@ const styles = StyleSheet.create({
     height: 35,
     width: 35,
     borderRadius: 15,
+    marginLeft: 8,
     marginTop: 8
   },
 
