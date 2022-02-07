@@ -90,7 +90,7 @@ const Emergency = ({ navigation }) => {
                 <TouchableOpacity onPress={() => Call("0800 428 428")} >
                     <Card style={[styles.card6, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>Gender Based Violence Command Center</Text>
-                        <FontAwesome name="transgender" size={30} color="#fcbab5" style={{ marginTop: 1, marginLeft: 160 }} />
+                        <FontAwesome name="venus-mars" size={30} color="#fcbab5" style={{ marginTop: 1, marginLeft: 160 }} />
                         <Text style={{ marginLeft: 120, fontWeight: "bold", fontSize: 16, marginTop: -1, color: "white" }}>0800 428 428</Text>
                     </Card>
                 </TouchableOpacity>
@@ -102,7 +102,7 @@ const Emergency = ({ navigation }) => {
                 <TouchableOpacity onPress={() => Call("0800 029 999")} >
                     <Card style={[styles.card7, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>National Institute For Communicable Diseases</Text>
-                        <FontAwesome name="plus-square" size={30} color="#fcbab5" style={{ marginTop: 1, marginLeft: 160 }} />
+                        <FontAwesome name="snowflake-o" size={30} color="#fcbab5" style={{ marginTop: 1, marginLeft: 160 }} />
                         <Text style={{ marginLeft: 120, fontWeight: "bold", fontSize: 16, marginTop: -1, color: "white" }}>0800 029 999</Text>
                     </Card>
                 </TouchableOpacity>

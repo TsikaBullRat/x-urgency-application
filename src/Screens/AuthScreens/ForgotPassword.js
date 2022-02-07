@@ -14,9 +14,7 @@
 import React, {useState} from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
-import { FontAwesome } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { EvilIcons } from '@expo/vector-icons';
+import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
 export default function ForgotPassword({ navigation }) {
@@ -82,7 +80,7 @@ export default function ForgotPassword({ navigation }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 9, marginLeft: 8 }} />
+            <EvilIcons name="unlock" size={28} color="black" style={{ marginTop: 9, marginLeft: 8 }} />
             <TextInput style={styles.txtField} name='password' placeholder='Confirm Password'  onChangeText={text=>setConfirmPassword(text)}/>
           </View>
         </Card>

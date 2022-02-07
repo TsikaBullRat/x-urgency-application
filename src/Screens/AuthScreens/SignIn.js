@@ -66,7 +66,7 @@ export default function SignIn({ navigation, setDone }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={30} color="black" style={{ marginTop: 10, marginLeft: 4 }} />
+            <EvilIcons name="unlock" size={30} color="black" style={{ marginTop: 10, marginLeft: 4 }} />
             <TextInput style={styles.txtPass}
               name='password' placeholder='Password'
               secureTextEntry={true}
