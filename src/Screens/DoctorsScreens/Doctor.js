@@ -1,68 +1,23 @@
 import React from 'react';
-import { Text, View, StyleSheet, } from 'react-native';
-import SwitchSelector from "react-native-switch-selector";
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
+import {Card} from 'react-native-paper'
+import { AntDesign, Feather } from '@expo/vector-icons';
 
 const DoctorProfile = () => {
 
-    const options = [
-        { label: "About ", value: "About" },
-        { label: "Qualification", value: "Qualification" },
-        { label: "Specialization", value: "Specialization" },
-        { label: "Contact", value: "Contact" }
-    ];
-
-    const [About, setAbout] = React.useState(true);
-    const [Qalification, setQualification] = React.useState(false);
-    const [Specialization, setSpecialization] = React.useState(false);
-    const [Contact, setContact] = React.useState(false);
-
-    const check = ((value) => {
-
-        if (value == 'About') {
-            setAbout(true)
-            setQualification(false)
-            setSpecialization(false)
-            setContact(false)
-        }
-
-        if (value == 'Qualification') {
-            setQualification(true)
-            setAbout(false)
-            setSpecialization(false)
-            setContact(false)
-        }
-
-        if (value == 'Specialization') {
-            setSpecialization(true)
-            setAbout(false)
-            setQualification(false)
-            setContact(false)
-        }
-
-        if (value == 'Contact') {
-            setContact(true)
-            setAbout(false)
-            setQualification(false)
-            setSpecialization(false)
-
-        }
-
-    })
-
     return (
-        <>
             <View>
                 <View style={styles.container}>
-                    <View style={{ marginTop: 50, marginLeft: 10 }}>
+                    <View style={{ marginTop: 50}}>
                         <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/44.jpg', }} size="large" />
                         <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
                     </View>
                     <Text style={styles.textTitle}>Dr Sighn</Text>
-                </View>
+                
 
-                <View style={{ flexDirection: 'row', marginBottom: 20, justifyContent: 'center', alignItems: 'center' }}>
+                <View style={{flexDirection: 'row', marginBottom: 20, justifyContent: 'center', alignItems: 'center' }}>
                     <Socials text="Following" number="15" />
                     <View style={styles.pole} />
                     <Socials text="Followers" number="3000K" />
@@ -70,60 +25,111 @@ const DoctorProfile = () => {
                     <Socials text="Likes" number="3.1M" />
                 </View>
 
-                <View>
-                    <SwitchSelector
-                        options={options}
-                        initial={0}
-                        style={styles.tab}
-                        onPress={value => check(value)}
-                        testID="gender-switch-selector"
-                        accessibilityLabel="gender-switch-selector"
-                        hasPadding />
-                </View>
+                
 
+                <View style={{marginTop:20, width: 355,  justifyContent: 'flex-start' }}>
+                  <Text style={{ paddingTop: 10, fontSize: 26, color:'#F47066' }}>Pediatrician</Text>
+                </View>       
+
+        <View
+          style={{
+            width: 380,
+            marginTop:10,
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            flexDirection: 'row',
+          }}>
+
+          <Card style={styles.docCards}>
+            <View style={{marginTop:10, alignItems:'center'}}>
+              <Image
+                source={require('../../images/certificate.png')}
+                style={{ width: 35, height: 35, color:'#fff' }}
+              />
+           
+                <Text style={{ paddingTop: 25, fontSize: 16, color:'#fff' }}>
+                  {`Qualifiation`}
+                </Text>            
             </View>
+          </Card>
 
-            {About ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    Hi I am Dr Sighn , I have a major in neurosurgery.
-                    To become a nuerosurgent you have to study for 7to8 years in residency to optain a degree in Doctor of medicine(M.D).
-                    I really love the work I do , I'm a very determined person and devoted to being a Dr.
-                </Text>
+          <Card style={styles.docCards}>
+            <View style={{alignItems:'center'}}>
+              <Image
+                source={require('../../images/briefcase.png')}
+                style={{ width: 45, height: 45, color:'#fff' }}
+              />
+           
+                <Text style={{ paddingTop: 25, fontSize: 16, color:'#fff' }}>
+                  {`Experience`}
+                </Text>            
             </View>
+          </Card>
 
-                : <View></View>}
-
-            {Qalification ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    Becoming a doctor isn’t just a career move. Medicine is something that you devote your life to studying and practising
-                    After all, you will be making decisions that directly impact patients’ lives.
-                    It’s therefore essential that you understand the intricacies of the human body and have undergone the highest level of training.
-                    As such, a career in medicine is academically rigorous.
-                </Text>
+          <Card style={styles.docCards}>
+            <View style={{marginTop:10, alignItems:'center'}}>
+              <Image
+                source= {require('../../images/success.png')}
+                style={{ width: 35, height: 35, color:'#fff' }}
+              />
+           
+                <Text style={{ paddingTop: 25, fontSize: 16, color:'#fff' }}>
+                  {`Awards`}
+                </Text>            
             </View>
+          </Card>
+        </View>   
 
-                : <View></View>}
+        <View style={{ marginTop: 35, width: 355 }}>
+        <Text style={styles.txtHead}>{`About`}</Text>
+        <Text style={styles.txtAbout}>
+          {`Neurologists These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.`}
+        </Text>
+      </View>
 
-            {Specialization ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    Neurologists
-                    These are specialists in the nervous system, which includes the brain, spinal cord, and nerves.
-                    They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.
-                </Text>
-            </View>
+      <View style={{ width: 355, marginTop: 35, justifyContent: 'flex-start' }}>
+        <View style={{ flexDirection: 'row' }}>
+          <Feather name="phone" size={20} color="black" />
+          <Text
+            style={{
+              paddingLeft: 10,
+              paddingTop: 2,
+              fontSize: 16,
+              color: '#F47066',
+            }}>
+            {`Call Now `}
+          </Text>
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+            {`(053) 871 2956`}
+          </Text>
+        </View>
 
-                : <View></View>}
+        <View>
+          <Text style={{ paddingLeft: 35, paddingTop: 5 }}>{`OR`}</Text>
+        </View>
 
-            {Contact ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    Mr Sighn@gmail.com
-                    0000000000
-                </Text>
-            </View>
+        <View style={{ flexDirection: 'row' }}>         
+          <AntDesign name="mail" size={20} color="black" />
+          <Text
+            style={{
+              paddingLeft: 10,
+              paddingTop: 2,
+              fontSize: 16,
+              color: '#F47066',
+            }}>
+            {`SMS`}
+          </Text>
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+            {`078 454 2123`}
+          </Text>
+        </View>
 
-                : <View></View>}
+        </View>
+  
+            
+        </View>
+    </View>
 
-        </>
     )
 }
 
@@ -169,19 +175,32 @@ const styles = StyleSheet.create({
         elevation: 1,
     },
 
-    words: {
-        width: 250,
-        marginLeft: 20,
-    },
-
     pole: {
         borderLeftWidth: 1,
         borderLeftColor: 'grey',
         height: 40,
         alignSelf: 'center',
-        marginRight: 10,
-        marginLeft: 0
-    }
+    },
+
+    docCards: {
+    width: 100,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F47066',
+  },
+
+  txtAbout: {
+    width: 372,
+    justifyContent: 'flex-start',
+    fontSize: 15,
+  },
+
+  txtHead: {
+    justifyContent: 'flex-start',
+    color: '#F47066',
+    fontSize: 26,
+  },
 
 })
 
