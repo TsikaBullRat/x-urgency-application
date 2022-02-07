@@ -82,9 +82,9 @@ export default function Clone({ navigation, Log }) {
         <Picker.Item label="Heart-Attack" value="heart-attack" />
         <Picker.Item label="Epilepsy" value="epilepsy" />
         <Picker.Item label="CPR" value="cpr" />
+        <Picker.Item label="Bleeding" value="bleeding" />
         <Picker.Item label="Drowning" value="drowning" />
         <Picker.Item label="Choking" value="choking" />
-        <Picker.Item label="Java" value="java" />
         <Picker.Item label="Burns" value="burns" />
       </Picker>
 

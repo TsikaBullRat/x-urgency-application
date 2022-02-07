@@ -51,30 +51,7 @@ export default function App() {
   }, [doctor])
 
   return (
-    <NavigationContainer>
-      <KeyboardAwareScrollView>
-        <Stack.Navigator>
-
-          {check1 ? (
-            id ? (
-              check2 ? (
-                doctor ? (
-                  <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }} />
-                ) : (
-                  <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
-                )
-              ) : (
-                <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-              )
-            ) : (
-              <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
-            )
-          ) : (
-            <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )}
-        </Stack.Navigator>
-      </KeyboardAwareScrollView>
-    </NavigationContainer>
+ <Doctor />
   );
 }
 
