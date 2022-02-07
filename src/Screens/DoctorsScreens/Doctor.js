@@ -93,33 +93,16 @@ const DoctorProfile = () => {
 
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
           <Feather name="phone" size={20} color="black" />
-          <Text
-            style={{
-              paddingLeft: 10,
-              paddingTop: 2,
-              fontSize: 16,
-              color: '#F47066',
-            }}>
-            {`Call`}
-          </Text>
+
           <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
-            {`(053) 871 2956`}
+            {`(053) 871 2545`}
           </Text>
         </View>
 
         <View style={{ flexDirection: 'row' }}>         
           <AntDesign name="mail" size={20} color="black" />
-          <Text
-            style={{
-              paddingLeft: 10,
-              paddingTop: 2,
-              fontSize: 16,
-              color: '#F47066',
-            }}>
-            {`Email`}
-          </Text>
           <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
-            {`078 454 2123`}
+            {`sighn@gmail.com`}
           </Text>
         </View>
 
