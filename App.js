@@ -21,6 +21,10 @@ export default function App() {
     auth.onAuthStateChanged(user => user ? setID(user.uid) : setID(false))
   })
 
+  useEffect(()=>{
+    id?null:setCheck2(false),setDoctor(null)
+  }, [id])
+
   useEffect(() => {
     try {
       firestore.collection("Users").doc(id).get().then(doc => setDoctor(doc.data().doctor))
@@ -77,3 +81,4 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   }
 });
+

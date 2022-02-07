@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, } from 'react-native';
+import { Text, View, StyleSheet, Pressable } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
-import { Socials } from '../../Components';
-import { firestore } from '../../firebase';
+import { Socials, } from '../../Components';
+import { auth, firestore } from '../../firebase';
+import Button from '../../Components/button';
 
 const DoctorProfile = ({ route }) => {
 
@@ -21,6 +22,7 @@ const DoctorProfile = ({ route }) => {
     const [doctor, setDoctor] = useState("")
     const [email, setEmail] = useState("")
     const [data, setData] = useState(null);
+    const [subscription, setSubscription] = useState({ text: "", Func: () => null })
 
     const check = (value) => {
 
@@ -65,16 +67,75 @@ const DoctorProfile = ({ route }) => {
                 setDoctor(doc.data().username)
                 setEmail(doc.data().email)
             })
+    }
 
+    const Subscribe = async () => {
+        let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+            .then(doc => {
+                return doc.data().subscribers
+            })
+        firestore.collection("Users").doc(info).collection("cred").doc(info).update({
+            subscribers: [...change, auth.currentUser.uid]
+        })
+
+        setSubscription({
+            Func: unSubscribe,
+            text: "unfollow"
+        })
+    }
+
+    const unSubscribe = async () => {
+        let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+            .then(doc => {
+                return doc.data().subscribers
+            })
+        change = change.filter(item => item !== auth.currentUser.uid)
+        firestore.collection("Users").doc(info).collection("cred").doc(info).update({
+            subscribers: change
+        })
+        setSubscription({
+            Func: Subscribe,
+            text: "follow"
+        })
     }
 
     useEffect(() => {
         getDoctorInfo()
     }, [])
 
+    const [image, setImage] = useState()
+    const [initial, setInitial] = useState()
+    const getProfile = async () => {
+        let name
+        setImage(false)
+        name = await firestore.collection("Users").doc(info).get().then(doc=>doc.data().username)
+        setInitial(name.substring(0, 1))
+    }
+
     useEffect(() => {
-        console.log(data)
-    }, [data])
+        getProfile()
+    }, [])
+
+    useEffect(() => {
+        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+            .then(doc => {
+                let array = []
+                array = [...array, doc.data().subscribers]
+                let index = array.indexOf(auth.currentUser.uid)
+                if (index === -1) {
+                    setSubscription({
+                        Func: unSubscribe,
+                        text: "unfollow"
+                    })
+                } else {
+
+                    setSubscription({
+                        Func: Subscribe,
+                        text: "follow"
+                    })
+                }
+            })
+    }, [])
 
     return (
 
@@ -82,10 +143,15 @@ const DoctorProfile = ({ route }) => {
 
             <View>
                 <View style={styles.container}>
-
                     <View style={{ marginTop: 50, marginLeft: 10 }}>
-                        <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/44.jpg', }} size="large" />
-                        <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
+                        {
+                            image ? (
+                                <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+                            ) : (
+                                <View style={styles.temp}>
+                                    <Text style={styles.temp_text}> {initial} </Text>
+                                </View>
+                            )}
                     </View>
 
                     <Text style={styles.textTitle}>Dr. {doctor}</Text>
@@ -96,6 +162,11 @@ const DoctorProfile = ({ route }) => {
                     <Socials text="Following" number="15" />
                     <Socials text="Followers" number={data.subscribers ? data.subscribers.length : 0} />
                     <Socials text="Likes" number="3.1M" />
+                    <Pressable style={styles.follow} onPress={subscription.Func}>
+                        <Text>{subscription.text}</Text>
+                    </Pressable>
+                </View>
+                <View style={{ marginTop: 20 }}>
                 </View>
 
                 <View>
@@ -186,7 +257,7 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 50,
-        margingTop: 80,
+        marginTop: 80,
         borderBottomWidth: 3,
         borderColor: 'turquoise',
         shadowColor: 'grey',
@@ -200,6 +271,32 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center'
     },
+
+    follow: {
+        top: 10,
+        left: 5,
+        backgroundColor: "#f47066",
+        width: 70,
+        height: 40,
+        borderRadius: 15,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+
+    temp: {
+        width: 70,
+        height: 70,
+        borderRadius: 50,
+        marginTop: 80,
+        backgroundColor: 'turquoise',
+        textAlign: 'center',
+        justifyContent: 'center'
+    },
+
+    temp_text: {
+        fontSize: 40,
+        color: '#fff',
+    }
 });
 
 export default DoctorProfile;

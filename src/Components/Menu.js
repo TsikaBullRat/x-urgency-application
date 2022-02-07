@@ -37,80 +37,82 @@ export default function Header({ list, setVids }) {
 
         style={{ maxWidth: 380 }} horizontal={true} showsHorizontalScrollIndicator={false}>
 
-        <View style={{width: 380, flexDirection:'row', justifyContent:'space-around'}}>
-        <Pressable onPress={() => Sort("stroke")}>
-          <View>
-            <Card style={{ width: 50, height: 70, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }} >
-              <Image style={styles.strokeMenu} source={Stroke} />
-              <Text style={{ fontSize: 12 }}>Stroke</Text>
-            </Card>
-          </View>
-        </Pressable>
+        <View style={{ width: 380, flexDirection: 'row', justifyContent: 'space-around' }}>
+          <Pressable onPress={() => Sort("stroke")}>
+            <View>
+              <Card style={{ width: 50, height: 70, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }} >
+                <Image style={styles.strokeMenu} source={Stroke} />
+                <Text style={{ fontSize: 12 }}>Stroke</Text>
+              </Card>
+            </View>
+          </Pressable>
 
-        <Pressable onPress={() => Sort("heartattack")}>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7 }}>
-              <Image style={styles.heartMenu} source={heart} />
-              <Text style={{ paddingLeft: 10, fontSize: 12 }}>Heart-Attack</Text>
-            </Card>
-          </View>
-        </Pressable>
 
-        <Pressable onPress={() => Sort("epilepsy")}>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.epilepsyMenu} source={epilepsy} />
-              <Text style={{ fontSize: 12 }}>Epilepsy</Text>
-            </Card>
-          </View>
-        </Pressable>
 
-        <Pressable onPress={() => Sort("cpr")}>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.cprMenu} source={cpr} />
-              <Text style={{ paddingTop: 8, fontSize: 12 }}>CPR</Text>
-            </Card>
-          </View>
-        </Pressable>
+          <Pressable onPress={() => Sort("heartattack")}>
+            <View>
+              <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7 }}>
+                <Image style={styles.heartMenu} source={heart} />
+                <Text style={{ paddingLeft: 10, fontSize: 12 }}>Heart-Attack</Text>
+              </Card>
+            </View>
+          </Pressable>
+
+          <Pressable onPress={() => Sort("epilepsy")}>
+            <View>
+              <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
+                <Image style={styles.epilepsyMenu} source={epilepsy} />
+                <Text style={{ fontSize: 12 }}>Epilepsy</Text>
+              </Card>
+            </View>
+          </Pressable>
+
+          <Pressable onPress={() => Sort("cpr")}>
+            <View>
+              <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
+                <Image style={styles.cprMenu} source={cpr} />
+                <Text style={{ paddingTop: 8, fontSize: 12 }}>CPR</Text>
+              </Card>
+            </View>
+          </Pressable>
         </View>
 
-        <View style={{width: 380, flexDirection:'row', justifyContent:'space-around'}}>
-        <Pressable onPress={() => Sort("bleeding")}>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.bloodMenu} source={bleeding} />
-            </Card>
-            <Text style={{ paddingLeft: 30, fontSize: 12, paddingBottom: 20 }}>Bleeding</Text>
-          </View>
-        </Pressable>
+        <View style={{ width: 380, flexDirection: 'row', justifyContent: 'space-around' }}>
+          <Pressable onPress={() => Sort("bleeding")}>
+            <View>
+              <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
+                <Image style={styles.bloodMenu} source={bleeding} />
+              </Card>
+              <Text style={{ paddingLeft: 30, fontSize: 12, paddingBottom: 50 }}>Bleeding</Text>
+            </View>
+          </Pressable>
 
-        <Pressable onPress={() => Sort("choking")}>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.conImg} source={choking} />
-              <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Choking</Text>
-            </Card>
-          </View>
-        </Pressable>
+          <Pressable onPress={() => Sort("choking")}>
+            <View>
+              <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
+                <Image style={styles.conImg} source={choking} />
+                <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Choking</Text>
+              </Card>
+            </View>
+          </Pressable>
 
-        <Pressable onPress={() => Sort("drowning")}>
-          <View>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-              <Image style={styles.drown} source={drown} />
-              <Text style={{ paddingLeft: 7, paddingTop: 3, fontSize: 12 }}>Drowning</Text>
-            </Card>
-          </View>
-        </Pressable>
+          <Pressable onPress={() => Sort("drowning")}>
+            <View>
+              <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
+                <Image style={styles.drown} source={drown} />
+                <Text style={{ paddingLeft: 7, paddingTop: 3, fontSize: 12 }}>Drowning</Text>
+              </Card>
+            </View>
+          </Pressable>
 
-        <Pressable onPress={() => Sort("burn")}>
-          <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
-            <Image style={styles.burn} source={burns} />
-            <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
-          </Card>
-        </Pressable>
+          <Pressable onPress={() => Sort("burn")}>
+            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
+              <Image style={styles.burn} source={burns} />
+              <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}>Burns</Text>
+            </Card>
+          </Pressable>
         </View>
-        
+
       </ScrollView>
 
     </View>
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
   menu: {
     width: 300,
     alignItems: 'center',
-    justifyContent: 'space-even',
+    justifyContent: 'space-evenly',
     marginTop: 20,
     borderRadius: 15,
   },
@@ -168,6 +170,7 @@ const styles = StyleSheet.create({
     height: 35,
     width: 35,
     borderRadius: 15,
+    marginLeft: 8,
     marginTop: 8
   },
 

@@ -15,9 +15,9 @@ export default function Home({ navigation, Exit }) {
     },
 
     FirstTimeUser = async () => {
-       auth.currentUser.updateProfile({
-         displayName: await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.data().username)
-       })
+      auth.currentUser.updateProfile({
+        displayName: await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.data().username)
+      })
 
       await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
         null
@@ -46,28 +46,28 @@ export default function Home({ navigation, Exit }) {
 
     <View style={styles.container}>
 
-        <View
-          style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
-          <Header Exit={Exit}/>
-        </View>
-
-        <View style={{width:380}}>
-          <Menu list={videos} setVids={setLoad} />
-        </View>
-
-        {/*---------------------- Video Scroll View--------------------*/}
-
-        <ScrollView style={{ height: 580, width: 380, }} vertical={true} showsVerticalScrollIndicator={false}>
-          <Card style={styles.menu2}>
-            <View>
-            
-              <VideoList videos={videos} VideoScreen={VideoScreen} />
-     
-            </View>
-          </Card>
-        </ScrollView>
-
+      <View
+        style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
+        <Header Exit={Exit} />
       </View>
+
+      <View style={{ width: 380 }}>
+        <Menu list={videos} setVids={setLoad} />
+      </View>
+
+      {/*---------------------- Video Scroll View--------------------*/}
+
+      <ScrollView style={{ height: 580, width: 380, }} vertical={true} showsVerticalScrollIndicator={false}>
+        <Card style={styles.menu2}>
+          <View>
+
+            <VideoList videos={videos} VideoScreen={VideoScreen} />
+
+          </View>
+        </Card>
+      </ScrollView>
+
+    </View>
   );
 }
 
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    fontWeight: "medium",
+    fontWeight: "200",
     fontSize: 18,
     color: "#F96056",
     paddingTop: 20,

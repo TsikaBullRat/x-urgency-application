@@ -12,7 +12,7 @@
 **/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignUp } from '../../firebase';
@@ -25,11 +25,38 @@ export default function SignUp({ navigation }) {
     [password, setPassword] = useState(""),
     [ConfirmPassword, setConfirmPassword] = useState(""),
     [displayModal, setDisplayModal] = useState(false),
-    [message, setMessage] = useState("")
+    [message, setMessage] = useState(""),
+    [prompt1, setPrompt1] = useState(null),
+    [prompt2, setPrompt2] = useState(null),
+    [prompt3, setPrompt3] = useState(null),
+    [prompt4, setPrompt4] = useState(null)
 
   const Register = () => {
-    handleSignUp(username, email, password, ConfirmPassword, setUserName, setEmail, setPassword, setConfirmPassword, setMessage,)
-    setDisplayModal(true)
+    if(username === ""){
+      setPrompt1("Please enter username")
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4(null)
+    }else if(email === ""){
+      setPrompt1(null)
+      setPrompt2("Please enter email address")
+      setPrompt3(null)
+      setPrompt4(null)
+    }else if(password === ""){
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3("Please enter password")
+      setPrompt4(null)
+    }else if(ConfirmPassword === ""){
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4("Please re-enter password")
+    }else{
+      handleSignUp(username, email, password, ConfirmPassword, setUserName, setEmail, setPassword, setConfirmPassword, setMessage,)
+      setDisplayModal(true)
+    }
+    
   }
 
   return (
@@ -54,6 +81,7 @@ export default function SignUp({ navigation }) {
           <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setUserName(text)} />
         </View>
       </Card>
+      {prompt1?<Text style={styles.prompt}>{prompt1}</Text>:null}
 
       <View>
         <Card style={styles.txtCards}>
@@ -62,6 +90,7 @@ export default function SignUp({ navigation }) {
             <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
+        {prompt2?<Text style={styles.prompt}>{prompt2}</Text>:null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -72,6 +101,7 @@ export default function SignUp({ navigation }) {
               onChangeText={text => setPassword(text)} />
           </View>
         </Card>
+        {prompt3?<Text style={styles.prompt}>{prompt3}</Text>:null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -82,9 +112,10 @@ export default function SignUp({ navigation }) {
               onChangeText={text => setConfirmPassword(text)} />
           </View>
         </Card>
+        {prompt4?<Text style={styles.prompt}>{prompt4}</Text>:null}
 
         <View style={{ alignItems: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={() => { navigation.navigate('Home') }}>
+          <TouchableOpacity style={styles.signIn} onPress={Register}>
             <Text style={{ color: '#fff' }} >{`SIGN_UP`} </Text>
           </TouchableOpacity>
         </View>
@@ -122,7 +153,10 @@ const styles = StyleSheet.create({
     paddingTop: 205,
     textAlign: 'center',
   },
-
+  prompt:{
+    color:'#F47066',
+    textAlign: "center"
+  },
   txtField: {
     width: 245,
     height: 30,
@@ -131,7 +165,11 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
-    outlineColor: 'transparent',
+    ...Platform.select({
+      web:{
+        outlineColor: 'transparent'
+      }
+    })
   },
 
   txtCards: {
@@ -139,7 +177,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 75,
+    marginTop: 35,
     borderWidth: 1,
     borderColor: '#F47066',
   },

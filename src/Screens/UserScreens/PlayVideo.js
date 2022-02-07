@@ -29,6 +29,7 @@ export default function VideoScreen({ navigation, route }) {
   const data = route.params.data
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.url)
+  const [views, setViews] = useState(data.views)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
   const refrence = useRef(data.url)
@@ -55,31 +56,30 @@ export default function VideoScreen({ navigation, route }) {
       found ? (
         null
       ) : (
-
         metadata.doc(auth.currentUser.uid).set({
           liked: false,
           disliked: false,
-          viewed: true,
           comments: [null],
-          user: auth.currentUser.email
-        })
+          ref: auth.currentUser.uid
+        }),
+        setViews(views+1)
       )
     },
 
     Navigate = () => {
+      console.log(data.match)
       let match = data.match
       navigation.navigate('Doctor', { match })
     };
+  useEffect(() => {
+    Collect(data.firestore, setComments, setCount)
+  }, [])
 
   useEffect(() => {
     addAct()
   }, [])
 
   useEffect(() => {
-    Collect(data.firestore, setComments, setCount)
-  }, [])
-
-  useEffect(()=>{
     console.log(data)
   }, [comments])
 
@@ -98,7 +98,7 @@ export default function VideoScreen({ navigation, route }) {
 
               <View>
                 <Text style={{ fontWeight: 'bold' }}>{data.title}</Text>
-                <Text style={{ fontSize: 10 }}> {data.views} views - {data.stamp} </Text>
+                <Text style={{ fontSize: 10 }}> {views} views - {data.stamp} </Text>
               </View>
 
               <View>
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     height: 38,
     borderRadius: 10,
     borderColor: '#F47066',
-    outlineColor: '#F47066',
+    //outlineColor: '#F47066',
     backgroundColor: '#f5f4f2',
     paddingLeft: 10,
   },

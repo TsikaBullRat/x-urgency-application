@@ -12,7 +12,7 @@
  **/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignIn } from '../../firebase'
@@ -23,11 +23,21 @@ export default function SignIn({ navigation, setDone }) {
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
-    [message, setMessage] = useState("");
+    [message, setMessage] = useState(""),
+    [prompt1, setPrompt1] = useState(null),
+    [prompt2, setPrompt2] = useState(null);
     
   const Login = () => {
-    handleSignIn(email, password, setMessage, setDone)
-    setDisplaModal(true)
+    if(email === ""){
+      setPrompt1("Please enter email address")
+      setPrompt2(null)
+    }else if(password === ""){
+      setPrompt1(null)
+      setPrompt2("Please enter password")
+    }else{
+      handleSignIn(email, password, setMessage, setDone)
+      setDisplaModal(true)
+    }
   }
 
   return (
@@ -52,6 +62,7 @@ export default function SignIn({ navigation, setDone }) {
             <TextInput style={styles.txtUser} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
+        {prompt1?<Text style={styles.prompt}>{prompt1}</Text>:null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -62,9 +73,10 @@ export default function SignIn({ navigation, setDone }) {
               onChangeText={text => setPassword(text)} />
           </View>
         </Card>
+        {prompt2?<Text style={styles.prompt}>{prompt2}</Text>:null}
 
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
-          <Text style={{ paddingLeft: 175, paddingTop: 10, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
+          <Text style={{ paddingLeft: 170, paddingTop: 20, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
         </TouchableOpacity>
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
@@ -83,8 +95,8 @@ export default function SignIn({ navigation, setDone }) {
         <Text style={{ paddingTop: 10, fontSize: 18, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
 
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignIn') }}>
-            <Text style={{fontSize: 18, color: '#F47066' }}> {`SignIn`} </Text>
+          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
+            <Text style={{fontSize: 18, color: '#F47066' }}> {`SignUp`} </Text>
           </TouchableOpacity>
         </View>
 
@@ -96,14 +108,14 @@ export default function SignIn({ navigation, setDone }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    height: 815,
+    height: 800,
     backgroundColor: '#fff',
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: 380,
-    height: 246.7,
+    width: 300,
+    height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
@@ -126,12 +138,19 @@ const styles = StyleSheet.create({
     height: 30,
     marginTop: 7,
     marginLeft: 2,
-    paddingLeft: 10,
+    paddingLeft: 8,
     paddingTop: 15,
     borderRadius: 10,
-    outlineColor: 'transparent',
+    ...Platform.select({
+      web:{
+        outlineColor: 'transparent'
+      }
+    })
   },
-
+  prompt:{
+    color:'#F47066',
+    textAlign: "center"
+  },
   txtPass: {
     width: 245,
     height: 30,
@@ -141,15 +160,20 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     //backgroundColor: '#fff',
-    outlineColor: "transparent",
+    ...Platform.select({
+      web:{
+        outlineColor: 'transparent'
+      }
+    })
   },
 
   txtCards: {
-    width: 315,
+    width: 300,
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 75,
+    marginTop: 35,
+    paddingTop: 5,
     borderWidth: 1,
     borderColor: '#F47066',
   },
@@ -157,7 +181,7 @@ const styles = StyleSheet.create({
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 60,
+    marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',

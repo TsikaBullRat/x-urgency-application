@@ -62,7 +62,6 @@ export default function Clone({ navigation }) {
                 selectedValue={selectedValue}
                 style={styles.picker}
                 onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
-
                 <Picker.Item label="Stroke" value="stroke" />
                 <Picker.Item label="Heart-Attack" value="heart-attack" />
                 <Picker.Item label="Epilepsy" value="epilepsy" />
@@ -118,7 +117,7 @@ const styles = StyleSheet.create({
         width: 285,
         height: 40,
         borderRadius: 10,
-        outlineColor: 'transparent',
+        //outlineColor: 'transparent',
         backgroundColor: "lightgrey",
         paddingLeft: 10,
     },

@@ -106,9 +106,11 @@ export default function MedicalHome({ navigation, progress, Log, Exit }) {
             }}
           > In Da House
           </Text>
-        </View>
 
-        {progress ? <ProgressBar status={progress} /> : null}
+        </View>
+        <>
+          {progress ? <ProgressBar status={progress} /> : null}
+        </>
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <TouchableOpacity onPress={Logout}>
@@ -202,7 +204,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    margingTop: 80,
+    marginTop: 80,
     backgroundColor: 'turquoise',
     textAlign: 'center',
     justifyContent: 'center'

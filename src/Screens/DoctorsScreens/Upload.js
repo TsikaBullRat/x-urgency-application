@@ -11,15 +11,18 @@
  * - Modification    :
  **/
 
-import React, { useState } from "react";
-import { StyleSheet, Picker, Text, TouchableOpacity, View, TextInput, } from "react-native";
+import React, { useState, useRef } from "react";
+import { StyleSheet, Picker, Text, TouchableOpacity, View, TextInput, Pressable, } from "react-native";
 import { Card } from "react-native-paper";
 import { UploadVideo } from "../../firebase";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
+import { Video } from "expo-av";
 
 export default function Clone({ navigation, Log }) {
 
+  const ref = useRef(null);
+  const [status, setStatus] = useState({});
   const [selectedValue, setSelectedValue] = useState("stroke"),
     [title, setTitle] = useState(),
     [description, setDescpription] = useState(),
@@ -40,14 +43,21 @@ export default function Clone({ navigation, Log }) {
       setSelectedImage({ localUri: pickerResult.uri });
 
     },
-
     Run = () => {
-      openImagePickerAsync();
       selectedImage ? (
         UploadVideo(selectedImage.localUri, title, description, selectedValue, Log),
         navigation.goBack()
       ) : null
 
+    },
+    openCamera = async () => {
+      let result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+        allowsEditing: true
+      });
+      if (!result.cancelled) {
+        setSelectedImage({ localUri: result.uri })
+      }
     }
 
   return (
@@ -68,7 +78,6 @@ export default function Clone({ navigation, Log }) {
         selectedValue={selectedValue}
         style={[styles.picker, styles.shadowProp]}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
-
         <Picker.Item label="Stroke" value="stroke" />
         <Picker.Item label="Heart-Attack" value="heart-attack" />
         <Picker.Item label="Epilepsy" value="epilepsy" />
@@ -87,24 +96,38 @@ export default function Clone({ navigation, Log }) {
           onChangeText={text => setDescpription(text)} />
       </View>
 
-      <View style={{ flexDirection: 'row' }}>
-        <Card style={[styles.txtUser, styles.shadowProp]}>
-          <View>
-            <Text style={{ fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray' }}>Upload Video Here!</Text>
-          </View>
-          <Icon style={styles.icon} name="slideshow" color="#F47066" size={40} />
-        </Card>
-      </View>
+      {selectedImage ? (
+        <Video ref={ref} source={{ uri: selectedImage.localUri }} resizeMode="stretch" isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+          style={{
+            width: "100%",
+            height: 165,
+            marginTop: 5,
+            alignSelf: "center",
+          }} />
 
-      <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-        <Text style={styles.buttonText}>Upload Video</Text>
-      </TouchableOpacity>
+      ) : (
 
-      <TouchableOpacity onPress={openImagePickerAsync}>
+        <Pressable onPress={openImagePickerAsync} style={{ flexDirection: 'row' }}>
+          <Card style={[styles.txtUser, styles.shadowProp]}>
+            <View>
+              <Text style={{ fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray' }}>Upload Video Here!</Text>
+            </View>
+            <Icon style={styles.icon} name="slideshow" color="#F47066" size={40} />
+          </Card>
+        </Pressable>
+      )}
+
+      <TouchableOpacity onPress={openCamera}>
         <View style={styles.iconContainer}>
           <Icon name="camera" color='white' size={30} />
         </View>
       </TouchableOpacity>
+
+
+      <TouchableOpacity onPress={Run} style={styles.button}>
+        <Text style={styles.buttonText}>Upload Video</Text>
+      </TouchableOpacity>
+
     </View>
   );
 }
@@ -117,11 +140,12 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    paddingTop: 60,
+    paddingTop: 100,
     fontSize: 25,
     textAlign: "center",
     color: "#F47066",
     fontWeight: "bold",
+    marginBottom: 30,
   },
 
   txtField: {
@@ -132,7 +156,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderWidth: 1,
     color: "lightgrey",
-    marginTop: 30,
+    marginBottom: 20,
     fontSize: 16,
   },
 
@@ -144,7 +168,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderWidth: 1,
     color: "lightgrey",
-    marginTop: 20,
+    marginTop: 10,
     fontSize: 16,
   },
 
@@ -154,7 +178,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'white',
     paddingLeft: 100,
-    marginTop: 40,
+    marginTop: 10,
     borderWidth: 1,
   },
 
@@ -181,7 +205,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderColor: '#F96056',
     borderWidth: 1,
-    outlineColor: 'transparent',
+    //outlineColor: 'transparent',
   },
 
   input2: {
@@ -194,7 +218,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderColor: '#F96056',
     borderWidth: 1,
-    outlineColor: 'transparent',
+    //outlineColor: 'transparent',
   },
 
   iconContainer: {
@@ -206,17 +230,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: 'white',
     borderWidth: 3,
-    marginTop: -55,
-    marginLeft: 250,
+    marginTop: 40,
+    marginLeft: -8,
   },
-
   picker: {
     borderWidth: 1,
-    marginTop: 20,
+    marginTop: -10,
     width: 330,
-    height: 60,
+    height: 70,
     borderRadius: 10,
-    color: "000000",
+    color: "#000",
     paddingLeft: 20,
   },
 
@@ -226,7 +249,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 3,
     borderColor: "white",
-    marginRight: 150,
+    marginRight: 20,
     height: 50,
     marginTop: 40,
   },

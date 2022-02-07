@@ -12,7 +12,7 @@
 **/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Picker} from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Picker, Platform} from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
@@ -28,15 +28,15 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     [displayModal, setDisplayModal] = useState(false),
     [message, setMessage] = useState(""),
 
-   DoctorRegister = () => {
-    if (password !== confirmpassword) {
-      setMessage("Password Doesn't Match")
-      // setDisplaModal(true)
-    } else {
-      handleDoctorSignUp(email, password, name, confirmpassword + " " + surname, qualification, specialization, branch, contactdetails, setEmail, setPassword, setConfirmPassword, setMessage)
-      setDisplaModal(true)
+    DoctorRegister = () => {
+      if (password !== confirmpassword) {
+        setMessage("Password Doesn't Match")
+        // setDisplaModal(true)
+      } else {
+        handleDoctorSignUp(email, password, name, confirmpassword + " " + surname, qualification, specialization, branch, contactdetails, setEmail, setPassword, setConfirmPassword, setMessage)
+        setDisplaModal(true)
+      }
     }
-  }
 
   return (
 
@@ -57,16 +57,13 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         <Text style={{ fontWeight: "bold", fontSize: 18, paddingLeft: 5 }}>  {`Doctor SignUp`} </Text>
       </View>
 
-      
-      
-        <View>
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              {/* {<Picker
+      <View>
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: "row" }}>
+            {/* {<Picker
                 specialization={specialization}
                 style={styles.picker}
                 onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
-
                 <Picker.Item label="Neuro-Surgent" value="stroke" />
                 <Picker.Item label="General Practitioner" value="heart-attack" />
                 <Picker.Item label="Epilepsy" value="epilepsy" />
@@ -76,59 +73,55 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 <Picker.Item label="Java" value="java" />
                 <Picker.Item label="Burns" value="burns" />
             </Picker>} */}
-            </View>
-          </Card>
+          </View>
+        </Card>
 
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Qualification"
-                placeholder="Qualification"
-                onChangeText={(text) => setQualification(text)} />
-            </View>
-          </Card>
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: "row" }}>
+            <TextInput
+              style={styles.txtField}
+              name="Qualification"
+              placeholder="Qualification"
+              onChangeText={(text) => setQualification(text)} />
+          </View>
+        </Card>
 
-          
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: "row" }}>
+            <TextInput
+              style={styles.txtField}
+              name="Branch"
+              placeholder="Branch"
+              onChangeText={(text) => setBranch(text)} />
+          </View>
+        </Card>
 
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Branch"
-                placeholder="Branch"
-                onChangeText={(text) => setBranch(text)} />
-            </View>
-          </Card>
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: "row" }}>
+            <TextInput
+              style={styles.txtField}
+              name="Password"
+              placeholder="Password"
+              onChangeText={(text) => setPassword(text)} />
+          </View>
+        </Card>
 
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Password"
-                placeholder="Password"
-                onChangeText={(text) => setPassword(text)} />
-            </View>
-          </Card>
-
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                onChangeText={(text) => setConfirmPassword(text)} />
-            </View>
-          </Card>
-
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: "row" }}>
+            <TextInput
+              style={styles.txtField}
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              onChangeText={(text) => setConfirmPassword(text)} />
+          </View>
+        </Card>
 
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity style={styles.signIn} onPress={DoctorRegister}>
             <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
           </TouchableOpacity>
         </View>
-        </View>
-
+      </View>
 
     </View>
   );
@@ -169,7 +162,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
-    outlineColor: 'transparent',
+    ...Platform.select({
+      web:{
+        outlineColor: 'transparent'
+      }
+    })
+
   },
 
   txtCards: {
