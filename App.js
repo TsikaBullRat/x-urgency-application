@@ -54,8 +54,16 @@ export default function App() {
   }, [doctor])
 
   return (
-  <Upload />
-   <UploadVideo />
+    <NavigationContainer>
+      <KeyboardAwareScrollView>
+        <Stack.Navigator>
+  <Stack.Screen name="doctor" component={Doctor} options={{ headerShown: false }} />
+
+  <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
+ 
+        </Stack.Navigator>
+      </KeyboardAwareScrollView>
+    </NavigationContainer>
   );
 }
 
