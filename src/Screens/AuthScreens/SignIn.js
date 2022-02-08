@@ -26,15 +26,15 @@ export default function SignIn({ navigation, setDone }) {
     [message, setMessage] = useState(""),
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null);
-    
+
   const Login = () => {
-    if(email === ""){
+    if (email === "") {
       setPrompt1("Please enter email address")
       setPrompt2(null)
-    }else if(password === ""){
+    } else if (password === "") {
       setPrompt1(null)
       setPrompt2("Please enter password")
-    }else{
+    } else {
       handleSignIn(email, password, setMessage, setDone)
       setDisplaModal(true)
     }
@@ -62,7 +62,7 @@ export default function SignIn({ navigation, setDone }) {
             <TextInput style={styles.txtUser} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
-        {prompt1?<Text style={styles.prompt}>{prompt1}</Text>:null}
+        {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -73,7 +73,7 @@ export default function SignIn({ navigation, setDone }) {
               onChangeText={text => setPassword(text)} />
           </View>
         </Card>
-        {prompt2?<Text style={styles.prompt}>{prompt2}</Text>:null}
+        {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
           <Text style={{ paddingLeft: 160, paddingTop: 20, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
@@ -96,7 +96,7 @@ export default function SignIn({ navigation, setDone }) {
 
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
-            <Text style={{fontSize: 18, color: '#F47066' }}> {`SignUp`} </Text>
+            <Text style={{ fontSize: 18, color: '#F47066' }}> {`SignUp`} </Text>
           </TouchableOpacity>
         </View>
 
@@ -142,15 +142,17 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     borderRadius: 10,
     ...Platform.select({
-      web:{
+      web: {
         outlineColor: 'transparent'
       }
     })
   },
-  prompt:{
-    color:'#F47066',
+
+  prompt: {
+    color: '#F47066',
     textAlign: "center"
   },
+
   txtPass: {
     width: 245,
     height: 35,
@@ -161,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     //backgroundColor: '#fff',
     ...Platform.select({
-      web:{
+      web: {
         outlineColor: 'transparent'
       }
     })

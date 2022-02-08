@@ -74,6 +74,7 @@ const DoctorProfile = ({ route }) => {
             .then(doc => {
                 return doc.data().subscribers
             })
+
         firestore.collection("Users").doc(info).collection("cred").doc(info).update({
             subscribers: [...change, auth.currentUser.uid]
         })
@@ -89,10 +90,12 @@ const DoctorProfile = ({ route }) => {
             .then(doc => {
                 return doc.data().subscribers
             })
+
         change = change.filter(item => item !== auth.currentUser.uid)
         firestore.collection("Users").doc(info).collection("cred").doc(info).update({
             subscribers: change
         })
+
         setSubscription({
             Func: Subscribe,
             text: "follow"
@@ -108,7 +111,7 @@ const DoctorProfile = ({ route }) => {
     const getProfile = async () => {
         let name
         setImage(false)
-        name = await firestore.collection("Users").doc(info).get().then(doc=>doc.data().username)
+        name = await firestore.collection("Users").doc(info).get().then(doc => doc.data().username)
         setInitial(name.substring(0, 1))
     }
 
@@ -127,6 +130,7 @@ const DoctorProfile = ({ route }) => {
                         Func: unSubscribe,
                         text: "unfollow"
                     })
+
                 } else {
 
                     setSubscription({

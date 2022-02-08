@@ -53,7 +53,7 @@ export const Comments = ({ video }) => {
 
                             <Text style={{ paddingLeft: 20, paddingTop: 10 }}>
 
-                                <SafeAreaView style={{ color: 'red' }}>{user}</SafeAreaView>: dfhbdnd dgnsgn gfsnxgbdfdbxgb fgbgb fgnjdcg nchgn gnfg gbgf fgfxxfngn xgngfn hnhnhn.
+                                <SafeAreaView style={{ color: 'red' }}>{user}</SafeAreaView>: dfhbdnddgnsgngfsnxgbdfdbxgbfgbgbfgnjdcgnchgngnfggbgffgfxxfngnxgngfnhnhnhn.
 
                             </Text>
 

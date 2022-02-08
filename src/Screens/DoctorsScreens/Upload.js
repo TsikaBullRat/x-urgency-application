@@ -64,7 +64,7 @@ export default function Clone({ navigation, Log }) {
 
     <View style={styles.container}>
 
-      <Text style={styles.header}>Upload or create your first aid video here</Text>
+      <Text style={styles.header}>Upload Or Create Your First Aid Video Here</Text>
 
       <View style={{ flexDirection: "row" }}>
         <TextInput
@@ -233,6 +233,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginLeft: -8,
   },
+
   picker: {
     borderWidth: 1,
     marginTop: -10,
