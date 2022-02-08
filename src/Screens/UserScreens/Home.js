@@ -10,7 +10,6 @@ export default function Home({ navigation, Exit }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
-      let match = data.match
       navigation.navigate("PlayVideo", { data });
     },
 
@@ -21,7 +20,9 @@ export default function Home({ navigation, Exit }) {
 
       await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
         null
+
       ) : (
+
         firestore.collection("Users").doc(auth.currentUser.uid).set({
           username: auth.currentUser.displayName,
           doctor: false,
@@ -33,7 +34,6 @@ export default function Home({ navigation, Exit }) {
 
   useEffect(() => {
     FirstTimeUser()
-    // console.log(auth.currentUser.displayName)
   }, [])
 
   useEffect(() => {
@@ -60,13 +60,10 @@ export default function Home({ navigation, Exit }) {
       <ScrollView style={{ height: 580, width: 380, }} vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
-
             <VideoList videos={videos} VideoScreen={VideoScreen} />
-
           </View>
         </Card>
       </ScrollView>
-
     </View>
   );
 }

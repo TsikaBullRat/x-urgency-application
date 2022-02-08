@@ -61,7 +61,7 @@ const BottomNav = () => {
 
           <View style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
             <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg', }} size="medium" />
-            <Text style={{ paddingTop: 15, paddingLeft: 15 }}>Rando123</Text>
+            <Text style={{ paddingTop: 15, paddingLeft: 15 }}> Rando123 </Text>
           </View>
         </View>
       )
@@ -105,7 +105,7 @@ const BottomNav = () => {
 
               <Text > Stroke Emergency Video </Text>
 
-              <Text style={{ fontSize: 10, color: 'grey' }}> 1 000 000 Views</Text>
+              <Text style={{ fontSize: 10, color: 'grey' }}> 1 000 000 Views </Text>
             </View>
 
             <View
@@ -116,11 +116,11 @@ const BottomNav = () => {
               }}>
 
               <Text style={{ paddingTop: 10 }}>
-                Lost your faith in ambulances' response time?
+                Lost your faith in ambulance response time?
                 You can play doctor and help save a life by just
                 following the instructions of this video.
                 This video is accredited by the Department of Health
-                and Social Development, for critical emergencies only.
+                and Social Development, for critical Emergencies only.
               </Text>
 
               <Text style={{ paddingTop: 10, fontWeight: 'bold' }}>Thank you for your support.</Text>

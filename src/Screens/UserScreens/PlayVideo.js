@@ -12,7 +12,7 @@
 **/
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button, Pressable } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -41,6 +41,7 @@ export default function VideoScreen({ navigation, route }) {
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar);
     },
+
     changeStyleStatusBar = () => {
       const styleId = styleTypes.indexOf(styleStatusBar) + 1;
       if (styleId === styleTypes.length) {
@@ -55,14 +56,17 @@ export default function VideoScreen({ navigation, route }) {
       let found = (await metadata.doc(auth.currentUser.uid).get()).exists
       found ? (
         null
+
       ) : (
+
         metadata.doc(auth.currentUser.uid).set({
           liked: false,
           disliked: false,
           comments: [null],
           ref: auth.currentUser.uid
         }),
-        setViews(views+1)
+
+        setViews(views + 1)
       )
     },
 
@@ -70,7 +74,23 @@ export default function VideoScreen({ navigation, route }) {
       console.log(data.match)
       let match = data.match
       navigation.navigate('Doctor', { match })
+    },
+    Delete = remove =>{
+      firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).get()
+        .then(doc=>{
+          return doc.data().comments
+        })
+        .then(item=>{
+          let update = item.filter(item=>item.comment !== remove )
+          return update
+        })
+        .then(update=>{
+          firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).update({
+            comments: update
+          })
+        })
     };
+
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
   }, [])
@@ -212,6 +232,7 @@ export default function VideoScreen({ navigation, route }) {
             <Card style={{ backgroundColor: '#e8d7cc', height: 100, marginTop: 10 }} key={index}>
               <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
                 <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>
+                {item.user === auth.currentUser.displayName?<Pressable onPress={()=>Delete(item.comment)}><Text>remove</Text></Pressable>:null}
               </SafeAreaView>
             </Card>
           )}

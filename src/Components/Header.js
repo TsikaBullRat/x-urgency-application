@@ -47,8 +47,8 @@ export default function Header({ done, navigation }) {
               style={{ width: 30, height: 30 }} />
 
             <View style={{ paddingHorizontal: 10 }}>
-              <Text>{`Call`}</Text>
-              <Text>{`Now`}</Text>
+              <Text>Call</Text>
+              <Text>Now</Text>
             </View>
           </View>
         </Pressable>
@@ -74,7 +74,6 @@ export default function Header({ done, navigation }) {
         <View>
 
           <Text style={styles.header}> WHAT'S YOUR</Text>
-
           <Text style={styles.header}> EMERGENCY ?</Text>
 
         </View>

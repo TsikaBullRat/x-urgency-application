@@ -191,6 +191,7 @@ const [hasPermission, setHasPermission] = useState(null);
 
   if (selectedImage !== null) {
     return (
+<<<<<<< HEAD
       
       <View style={styles.imgContainer}>
         <Image
@@ -205,6 +206,14 @@ const [hasPermission, setHasPermission] = useState(null);
           style={styles.button}>
           <Text style={styles.buttonText}>Share this video</Text>
         </TouchableOpacity>  
+=======
+
+      <View style={styles.container}>
+        <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
+        <TouchableOpacity onPress={() => { Upload(selectedImage.localUri) }} style={styles.button}>
+          <Text style={styles.buttonText}>Share This Photo</Text>
+        </TouchableOpacity>
+>>>>>>> 2dfd4deacde9a840007b6d616069aead095e818c
       </View>
     );
   }
@@ -212,6 +221,7 @@ const [hasPermission, setHasPermission] = useState(null);
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.container}>
+<<<<<<< HEAD
       <Text style={styles.instructions}>
         To upload a Video from your phone, just press the button below!
       </Text>
@@ -245,6 +255,11 @@ const [hasPermission, setHasPermission] = useState(null);
       <View>
       <TouchableOpacity onPress={() => {setVisible(!visible)}}>
         <Text>Close</Text>
+=======
+      <Text style={styles.instructions}> To Upload A Video From Your Phone, Just Press The Button Below! </Text>
+      <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
+        <Text style={styles.buttonText}>Pick A Photo</Text>
+>>>>>>> 2dfd4deacde9a840007b6d616069aead095e818c
       </TouchableOpacity>
 
       <SafeAreaView //style={styles.container}

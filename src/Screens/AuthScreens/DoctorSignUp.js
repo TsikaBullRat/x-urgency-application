@@ -78,52 +78,52 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     //   setPrompt7(null)
     //   setPrompt8(null)
     // }else{
-      setVisibleStatusBar(!visibleStatusBar)
+    setVisibleStatusBar(!visibleStatusBar)
     // }
   }
 
-  const Register = () =>{
-       if(qualification === ""){
-        setPrompt1(null)
-        setPrompt2(null)
-        setPrompt3(null)
-        setPrompt4(null)
-        setPrompt5("Please enter qualification")
-        setPrompt6(null)
-        setPrompt7(null)
-        setPrompt8(null)
-      }else if(branch === ""){
-        setPrompt1(null)
-        setPrompt2(null)
-        setPrompt3(null)
-        setPrompt4(null)
-        setPrompt5(null)
-        setPrompt6("Please enter branch name")
-        setPrompt7(null)
-        setPrompt8(null)
-      }else if(password === ""){
-        setPrompt1(null)
-        setPrompt2(null)
-        setPrompt3(null)
-        setPrompt4(null)
-        setPrompt5(null)
-        setPrompt6(null)
-        setPrompt7("Please enter password")
-        setPrompt8(null)
-      }else if(confirmpassword === ""){
-        setPrompt1(null)
-        setPrompt2(null)
-        setPrompt3(null)
-        setPrompt4(null)
-        setPrompt5(null)
-        setPrompt6(null)
-        setPrompt7(null)
-        setPrompt8("Please re-enter password")
-      }else{
-        
-        setDisplayModal(true)
-      }
+  const Register = () => {
+    if (qualification === "") {
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4(null)
+      setPrompt5("Please enter qualification")
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8(null)
+    } else if (branch === "") {
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4(null)
+      setPrompt5(null)
+      setPrompt6("Please enter branch name")
+      setPrompt7(null)
+      setPrompt8(null)
+    } else if (password === "") {
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4(null)
+      setPrompt5(null)
+      setPrompt6(null)
+      setPrompt7("Please enter password")
+      setPrompt8(null)
+    } else if (confirmpassword === "") {
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4(null)
+      setPrompt5(null)
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8("Please re-enter password")
+    } else {
+
+      setDisplayModal(true)
     }
+  }
 
   return (
 
@@ -167,7 +167,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
-                name="contactDetails"
+                name="ContactDetails"
                 placeholder="Contact Details"
                 onChangeText={(text) => setContactDetails(text)} />
             </View>
@@ -183,19 +183,17 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             </View>
           </Card>
 
-
-            <View style={{ flexDirection: "row" }}>
-              <Picker
-                specialization={specialization}
-                style={styles.picker}
-                onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
-                <Picker.Item label="Neuro-Surgent" value="stroke" />
-                <Picker.Item label="General Practitioner" value="heart-attack" />
-                <Picker.Item label="Dentist" value="dentist" />
-                <Picker.Item label="Pediatrician" value="pediatrician" />
-              </Picker>
-            </View>
-
+          <View style={{ flexDirection: "row" }}>
+            <Picker
+              specialization={specialization}
+              style={styles.picker}
+              onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
+              <Picker.Item label="Neuro-Surgent" value="Stroke" />
+              <Picker.Item label="General Practitioner" value="Heart-Attack" />
+              <Picker.Item label="Dentist" value="Dentist" />
+              <Picker.Item label="Pediatrician" value="Pediatrician" />
+            </Picker>
+          </View>
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -222,7 +220,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
-                name="description"
+                name="Description"
                 placeholder="Description"
                 onChangeText={(text) => setDescription(text)} />
             </View>
@@ -252,18 +250,17 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
-                name="confirmPassword"
+                name="ConfirmPassword"
                 placeholder="Confirm Password"
                 onChangeText={(text) => setConfirmPassword(text)} />
             </View>
           </Card>
 
-
-        <View style={{ alignItems: "center" }}>
-          <TouchableOpacity style={styles.signIn} onPress={null}>
-            <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
-          </TouchableOpacity>
-        </View>
+          <View style={{ alignItems: "center" }}>
+            <TouchableOpacity style={styles.signIn} onPress={null}>
+              <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       )}
 
@@ -309,7 +306,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     ...Platform.select({
-      web:{
+      web: {
         outlineColor: 'transparent'
       }
     })

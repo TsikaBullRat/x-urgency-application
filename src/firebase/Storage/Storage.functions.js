@@ -25,10 +25,9 @@ const Collect = async (doc, SetCollection, Count) => {
                     if (doc.data().comments[0] !== null) {
                         for (var i = 0; i < doc.data().comments.length; i++) {
                             locator = doc.data().ref
-                            user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username?doc.data().username:null)
+                            user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username ? doc.data().username : null)
                             comment = doc.data().comments[i].comment
                             time = doc.data().comments[i].time.toDate()
-                            
                             load = [...load, { user, comment, time }]
                         }
                     }
@@ -106,7 +105,7 @@ const LoadSet = (Load, query) => {
     }
 
     query ? (
-        storage.ref().child('').listAll()
+        storage.ref().child('/Videos').listAll()
             .then(res => {
                 res.items.forEach(async itemRef => {
                     var views = 0
@@ -138,7 +137,7 @@ const LoadSet = (Load, query) => {
                 return null
             })
     ) : (
-        storage.ref().child('').listAll()
+        storage.ref().child('/Videos').listAll()
             .then(res => {
                 res.items.forEach(async itemRef => {
                     var views = 0
@@ -152,7 +151,6 @@ const LoadSet = (Load, query) => {
                     getLink = itemRef.getDownloadURL().then(url => url)
                     let link = await getLink
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
-                    console.log(find)
                     let name = find.title
                     let match = find.ref
                     let owner = await info.doc(match).get().then(doc => doc.data().username)
@@ -184,7 +182,7 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
     }
 
     var bb = new Blob([ab], { type: MIMEstring })
-    var upload = storage.ref().child(`${id}.mp4`).put(bb)
+    var upload = storage.ref().child(`/Videos/${id}.mp4`).put(bb)
 
     firestore.collection('Videos').doc(id).set({
         title: title,

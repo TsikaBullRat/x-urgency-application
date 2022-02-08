@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
@@ -29,19 +29,19 @@ export default function ForgotPassword({ navigation }) {
     [prompt3, setPrompt3] = useState(null);
 
   const forgotPassword = () => {
-    if(email === ""){
+    if (email === "") {
       setPrompt1("Please enter email address")
       setPrompt2(null)
       setPrompt3(null)
-    }else if(password === ""){
+    } else if (password === "") {
       setPrompt1(null)
       setPrompt2("Please enter password")
       setPrompt3(null)
-    }else if(ConfirmPassword === ""){
+    } else if (ConfirmPassword === "") {
       setPrompt1(null)
       setPrompt2(null)
       setPrompt3("Please re-enter password")
-    }else{
+    } else {
       handleResetPassword("lindiwe.mpondo@gmail.com")
     }
   }
@@ -67,26 +67,26 @@ export default function ForgotPassword({ navigation }) {
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text=>setEmail(text)}/>
+            <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
-        {prompt1?<Text style={styles.prompt}>{prompt1}</Text>:null}
+        {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 9, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='password' placeholder='New Password'  onChangeText={text=>setPassword(text)}/>
+            <TextInput style={styles.txtField} name='password' placeholder='New Password' onChangeText={text => setPassword(text)} />
           </View>
         </Card>
-        {prompt2?<Text style={styles.prompt}>{prompt2}</Text>:null}
+        {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 9, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='password' placeholder='Confirm Password'  onChangeText={text=>setConfirmPassword(text)}/>
+            <TextInput style={styles.txtField} name='password' placeholder='Confirm Password' onChangeText={text => setConfirmPassword(text)} />
           </View>
         </Card>
-        {prompt3?<Text style={styles.prompt}>{prompt3}</Text>:null}
+        {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
       </View>
 
@@ -123,10 +123,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
   },
-  prompt:{
-    color:'#F47066',
+
+  prompt: {
+    color: '#F47066',
     textAlign: "center"
   },
+
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -147,7 +149,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     ...Platform.select({
-      web:{
+      web: {
         outlineColor: 'transparent'
       }
     })
