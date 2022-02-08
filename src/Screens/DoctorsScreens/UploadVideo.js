@@ -20,6 +20,44 @@ const [hasPermission, setHasPermission] = useState(null);
   const [videoSource, setVideoSource] = useState(null);
   const cameraRef = useRef();
 
+  const ref = useRef(null);
+  const [status, setStatus] = useState({});
+  const [selectedValue, setSelectedValue] = useState("stroke"),
+    [title, setTitle] = useState(),
+    [description, setDescpription] = useState(),
+    openImagePickerAsync = async () => {
+      let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+
+      if (permissionResult.granted === false) {
+        alert('Permission to access camera roll is required!');
+        return;
+      }
+
+      let pickerResult = await ImagePicker.launchImageLibraryAsync({ mediaTypes: 'Videos' });
+      if (pickerResult.cancelled === true) {
+        return;
+      }
+
+      setSelectedImage({ localUri: pickerResult.uri });
+
+    },
+    Run = () => {
+      selectedImage ? (
+        UploadVideo(selectedImage.localUri, title, description, selectedValue, Log),
+        navigation.goBack()
+      ) : null
+
+    },
+    openCamera = async () => {
+      let result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+        allowsEditing: true
+      });
+      if (!result.cancelled) {
+        setSelectedImage({ localUri: result.uri })
+      }
+    }
+
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestPermissionsAsync();
@@ -30,7 +68,6 @@ const [hasPermission, setHasPermission] = useState(null);
   const onCameraReady = () => {
     setIsCameraReady(true);
   };
-
 
   const takePicture = async () => {
     if (cameraRef.current) {
@@ -156,39 +193,13 @@ const [hasPermission, setHasPermission] = useState(null);
       </View>
 
       <View style= {{alignItems: 'center', marginBottom: 30}}>
-        <TouchableOpacity onPress={openImagePickerAsync} style={styles.button1}>
+        <TouchableOpacity onPress={openCamera} style={styles.button1}>
           <Text style={styles.buttonText}>Pick a video</Text> 
         </TouchableOpacity>
       </View>
     </View>
     )
   }
-  
-  let openImagePickerAsync = async () => {
-    let permissionResult =
-      await ImagePicker.requestCameraRollPermissionsAsync();
-
-    if (permissionResult.granted === false) {
-      alert('Permission to access camera roll is required!');
-      return;
-    }
-
-    let pickerResult = await ImagePicker.launchImageLibraryAsync();
-    if (pickerResult.cancelled === true) {
-      return;
-    }
-
-    setSelectedImage({ localUri: pickerResult.uri });
-  };
-
-  let openShareDialogAsync = async () => {
-    if (!(await Sharing.isAvailableAsync())) {
-      alert(`Uh oh, sharing isn't available on your platform`);
-      return;
-    }
-
-    await Sharing.shareAsync(selectedImage.localUri);
-  };
 
   if (selectedImage !== null) {
     return (

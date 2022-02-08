@@ -9,6 +9,8 @@ import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScr
 
 import Doctor from './src/Screens/DoctorsScreens/Upload'
 import UploadVideo from './src/Screens/DoctorsScreens/UploadVideo'
+import Home from './src/Screens/UserScreens/Home'
+import PlayVideo from './src/Screens/UserScreens/PlayVideo'
 
 const Stack = createNativeStackNavigator()
 

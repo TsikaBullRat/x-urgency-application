@@ -108,7 +108,7 @@ export default function Upload({ navigation, Log }) {
       ) : (
 
         <Pressable onPress={openImagePickerAsync} style={{ flexDirection: 'row' }}>
-          <Card style={[styles.txtUser, styles.shadowProp]}>
+          <Card style={styles.txtUser}>
             <View>
               <Text style={{ fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray' }}>Upload Video Here!</Text>
             </View>
