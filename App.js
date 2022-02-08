@@ -7,6 +7,10 @@ import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile } from "./src/Screens";
 
+import SignIn from './src/Screens/AuthScreens/SignIn'
+import SignUp from './src/Screens/AuthScreens/SignUp'
+import ForgotPassword from './src/Screens/AuthScreens/ForgotPassword'
+
 import Doctor from './src/Screens/DoctorsScreens/Upload'
 import UploadVideo from './src/Screens/DoctorsScreens/UploadVideo'
 import Home from './src/Screens/UserScreens/Home'
@@ -59,13 +63,17 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
+        <Stack.Screen name="SignIn" component={ForgotPassword} options={{ headerShown: false }} />
+        <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
+        <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
   <Stack.Screen name="doctor" component={Doctor} options={{ headerShown: false }} />
 
   <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
 
-  <Stack.Screen name="Home" component={UploadVideo} options={{ headerShown: false }} />
+  
 
-  <Stack.Screen name="PlayVideo" component={UploadVideo} options={{ headerShown: false }} />
+  <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
  
         </Stack.Navigator>
       </KeyboardAwareScrollView>
