@@ -9,6 +9,8 @@ import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScr
 
 import Doctor from './src/Screens/DoctorsScreens/Upload'
 import UploadVideo from './src/Screens/DoctorsScreens/UploadVideo'
+import Home from './src/Screens/UserScreens/Home'
+import PlayVideo from './src/Screens/UserScreens/PlayVideo'
 
 const Stack = createNativeStackNavigator()
 
@@ -60,6 +62,10 @@ export default function App() {
   <Stack.Screen name="doctor" component={Doctor} options={{ headerShown: false }} />
 
   <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
+
+  <Stack.Screen name="Home" component={UploadVideo} options={{ headerShown: false }} />
+
+  <Stack.Screen name="PlayVideo" component={UploadVideo} options={{ headerShown: false }} />
  
         </Stack.Navigator>
       </KeyboardAwareScrollView>
