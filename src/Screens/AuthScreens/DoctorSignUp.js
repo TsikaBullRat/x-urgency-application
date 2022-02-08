@@ -104,9 +104,10 @@ export default function DoctorSignUp({ authNavigation  }) {
         // authNavigation.navigate("doctor", {qualification, specialization, branch})
       }
     }
-  }
+
 
   return (
+    
 
     <View style={styles.container}>
 
@@ -257,7 +258,7 @@ export default function DoctorSignUp({ authNavigation  }) {
     </View>
 
   );
-
+}
 
 const styles = StyleSheet.create({
   container: {
