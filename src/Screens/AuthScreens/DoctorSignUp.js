@@ -257,7 +257,7 @@ export default function DoctorSignUp({ authNavigation  }) {
     </View>
 
   );
-}
+
 
 const styles = StyleSheet.create({
   container: {
