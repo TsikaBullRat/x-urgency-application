@@ -89,6 +89,7 @@ export default function VideoScreen({ navigation, route }) {
             comments: update
           })
         })
+      setComments(comments.filter(item=>item.comment !== remove))
     };
 
   useEffect(() => {
@@ -98,10 +99,6 @@ export default function VideoScreen({ navigation, route }) {
   useEffect(() => {
     addAct()
   }, [])
-
-  useEffect(() => {
-    console.log(data)
-  }, [comments])
 
   return (
 

@@ -38,91 +38,77 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     [prompt6, setPrompt6] = useState(null),
     [prompt7, setPrompt7] = useState(null),
     [prompt8, setPrompt8] = useState(null),
-    [visibleStatusBar, setVisibleStatusBar] = useState(true)
+    [visibleStatusBar, setVisibleStatusBar] = useState(true);
 
   const changeVisibilityStatusBar = () => {
-    // if(name === ""){
-    //   setPrompt1("Please enter name")
-    //   setPrompt2(null)
-    //   setPrompt3(null)
-    //   setPrompt4(null)
-    //   setPrompt5(null)
-    //   setPrompt6(null)
-    //   setPrompt7(null)
-    //   setPrompt8(null)
-    // }else if(surname === ""){
-    //   setPrompt1(null)
-    //   setPrompt2("Please enter surname")
-    //   setPrompt3(null)
-    //   setPrompt4(null)
-    //   setPrompt5(null)
-    //   setPrompt6(null)
-    //   setPrompt7(null)
-    //   setPrompt8(null)
-    // }else if(contactdetails === ""){
-    //   setPrompt1(null)
-    //   setPrompt2(null)
-    //   setPrompt3("Please enter contact details")
-    //   setPrompt4(null)
-    //   setPrompt5(null)
-    //   setPrompt6(null)
-    //   setPrompt7(null)
-    //   setPrompt8(null)
-    // }else if(email === ""){
-    //   setPrompt1(null)
-    //   setPrompt2(null)
-    //   setPrompt3(null)
-    //   setPrompt4("Please enter email address")
-    //   setPrompt5(null)
-    //   setPrompt6(null)
-    //   setPrompt7(null)
-    //   setPrompt8(null)
-    // }else{
+    if(name === ""){
+      setPrompt1("Please enter name")
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4(null)
+      setPrompt5(null)
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8(null)
+    }else if(surname === ""){
+      setPrompt1(null)
+      setPrompt2("Please enter surname")
+      setPrompt3(null)
+      setPrompt4(null)
+      setPrompt5(null)
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8(null)
+    }else if(contactdetails === ""){
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3("Please enter contact details")
+      setPrompt4(null)
+      setPrompt5(null)
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8(null)
+    }else if(email === ""){
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4("Please enter email address")
+      setPrompt5(null)
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8(null)
+    }else{
     setVisibleStatusBar(!visibleStatusBar)
-    // }
+    }
   }
 
-  const Register = () => {
-    if (qualification === "") {
-      setPrompt1(null)
-      setPrompt2(null)
-      setPrompt3(null)
-      setPrompt4(null)
-      setPrompt5("Please enter qualification")
-      setPrompt6(null)
-      setPrompt7(null)
-      setPrompt8(null)
-    } else if (branch === "") {
-      setPrompt1(null)
-      setPrompt2(null)
-      setPrompt3(null)
-      setPrompt4(null)
-      setPrompt5(null)
-      setPrompt6("Please enter branch name")
-      setPrompt7(null)
-      setPrompt8(null)
-    } else if (password === "") {
-      setPrompt1(null)
-      setPrompt2(null)
-      setPrompt3(null)
-      setPrompt4(null)
-      setPrompt5(null)
-      setPrompt6(null)
-      setPrompt7("Please enter password")
-      setPrompt8(null)
-    } else if (confirmpassword === "") {
-      setPrompt1(null)
-      setPrompt2(null)
-      setPrompt3(null)
-      setPrompt4(null)
-      setPrompt5(null)
-      setPrompt6(null)
-      setPrompt7(null)
-      setPrompt8("Please re-enter password")
-    } else {
-
-      setDisplayModal(true)
-    }
+  const Register = () =>{
+      if(qualification === "" && branch === "" && password === "" && confirmpassword === ""){
+        setPrompt("Please enter thr requested information")
+      }else if(qualification === ""){
+        setPrompt5("Please enter qualification")
+        setPrompt6(null)
+        setPrompt7(null)
+        setPrompt8(null)
+      }else if(branch === ""){
+        setPrompt5(null)
+        setPrompt6("Please enter branch name")
+        setPrompt7(null)
+        setPrompt8(null)
+      }else if(password === ""){
+        setPrompt5(null)
+        setPrompt6(null)
+        setPrompt7("Please enter password")
+        setPrompt8(null)
+      }else if(confirmpassword === ""){
+        setPrompt5(null)
+        setPrompt6(null)
+        setPrompt7(null)
+        setPrompt8("Please re-enter password")
+      }else{
+        handleDoctorSignUp(email, password, name + " " + surname, setMessage, qualification, specialization, branch, contactdetails)
+        setDisplayModal(true)
+      }
   }
 
   return (
