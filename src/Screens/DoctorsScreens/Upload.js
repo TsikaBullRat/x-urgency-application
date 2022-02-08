@@ -123,7 +123,6 @@ export default function Clone({ navigation, Log }) {
         </View>
       </TouchableOpacity>
 
-
       <TouchableOpacity onPress={Run} style={styles.button}>
         <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>

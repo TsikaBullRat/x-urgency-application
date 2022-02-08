@@ -121,10 +121,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
   },
+
   prompt: {
     color: '#F47066',
     textAlign: "center"
   },
+
   heartIcon: {
     alignItems: 'center',
     justifyContent: 'center',
