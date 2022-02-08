@@ -20,7 +20,9 @@ export default function Home({ navigation, Exit }) {
 
       await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
         null
+
       ) : (
+
         firestore.collection("Users").doc(auth.currentUser.uid).set({
           username: auth.currentUser.displayName,
           doctor: false,

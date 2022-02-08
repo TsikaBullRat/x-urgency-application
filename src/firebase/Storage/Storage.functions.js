@@ -25,10 +25,9 @@ const Collect = async (doc, SetCollection, Count) => {
                     if (doc.data().comments[0] !== null) {
                         for (var i = 0; i < doc.data().comments.length; i++) {
                             locator = doc.data().ref
-                            user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username?doc.data().username:null)
+                            user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username ? doc.data().username : null)
                             comment = doc.data().comments[i].comment
                             time = doc.data().comments[i].time.toDate()
-                            
                             load = [...load, { user, comment, time }]
                         }
                     }

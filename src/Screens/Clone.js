@@ -47,7 +47,7 @@ export default function Clone({ navigation }) {
     return (
 
         <View style={styles.container}>
-            <Text style={styles.header}>Fill in Info. below:</Text>
+            <Text style={styles.header}>Fill In Information below:</Text>
             <Card style={styles.txtCards}>
                 <View style={{ flexDirection: "row" }}>
                     <TextInput

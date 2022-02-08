@@ -51,7 +51,7 @@ export default function UploadVideo({ navigation }) {
       <View style={styles.container}>
         <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
         <TouchableOpacity onPress={() => { Upload(selectedImage.localUri) }} style={styles.button}>
-          <Text style={styles.buttonText}>Share this photo</Text>
+          <Text style={styles.buttonText}>Share This Photo</Text>
         </TouchableOpacity>
       </View>
     );
@@ -60,9 +60,9 @@ export default function UploadVideo({ navigation }) {
   return (
 
     <View style={styles.container}>
-      <Text style={styles.instructions}> To upload a Video from your phone, just press the button below! </Text>
+      <Text style={styles.instructions}> To Upload A Video From Your Phone, Just Press The Button Below! </Text>
       <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-        <Text style={styles.buttonText}>Pick a photo</Text>
+        <Text style={styles.buttonText}>Pick A Photo</Text>
       </TouchableOpacity>
     </View>
   );

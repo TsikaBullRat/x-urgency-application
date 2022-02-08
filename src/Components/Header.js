@@ -74,7 +74,6 @@ export default function Header({ done, navigation }) {
         <View>
 
           <Text style={styles.header}> WHAT'S YOUR</Text>
-
           <Text style={styles.header}> EMERGENCY ?</Text>
 
         </View>

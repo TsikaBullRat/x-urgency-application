@@ -104,6 +104,7 @@ export default function DoctorSignUp({ authNavigation  }) {
         // authNavigation.navigate("doctor", {qualification, specialization, branch})
       }
     }
+  }
 
   return (
 
@@ -149,7 +150,7 @@ export default function DoctorSignUp({ authNavigation  }) {
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
-                name="contactDetails"
+                name="ContactDetails"
                 placeholder="Contact Details"
                 onChangeText={(text) => setContactDetails(text)} />
             </View>
@@ -167,19 +168,17 @@ export default function DoctorSignUp({ authNavigation  }) {
           </Card>
           {prompt4?<Text style={styles.prompt}>{prompt4}</Text>:null}
 
-
-            <View style={{ flexDirection: "row" }}>
-              <Picker
-                specialization={specialization}
-                style={styles.picker}
-                onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
-                <Picker.Item label="Neuro-Surgent" value="stroke" />
-                <Picker.Item label="General Practitioner" value="heart-attack" />
-                <Picker.Item label="Dentist" value="dentist" />
-                <Picker.Item label="Pediatrician" value="pediatrician" />
-              </Picker>
-            </View>
-
+          <View style={{ flexDirection: "row" }}>
+            <Picker
+              specialization={specialization}
+              style={styles.picker}
+              onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
+              <Picker.Item label="Neuro-Surgent" value="Stroke" />
+              <Picker.Item label="General Practitioner" value="Heart-Attack" />
+              <Picker.Item label="Dentist" value="Dentist" />
+              <Picker.Item label="Pediatrician" value="Pediatrician" />
+            </Picker>
+          </View>
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -207,7 +206,7 @@ export default function DoctorSignUp({ authNavigation  }) {
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
-                name="description"
+                name="Description"
                 placeholder="Description"
                 onChangeText={(text) => setDescription(text)} />
             </View>
@@ -239,7 +238,7 @@ export default function DoctorSignUp({ authNavigation  }) {
             <View style={{ flexDirection: "row" }}>
               <TextInput
                 style={styles.txtField}
-                name="confirmPassword"
+                name="ConfirmPassword"
                 placeholder="Confirm Password"
                 onChangeText={(text) => setConfirmPassword(text)} />
             </View>
@@ -297,7 +296,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     ...Platform.select({
-      web:{
+      web: {
         outlineColor: 'transparent'
       }
     })

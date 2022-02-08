@@ -41,6 +41,7 @@ export default function VideoScreen({ navigation, route }) {
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar);
     },
+
     changeStyleStatusBar = () => {
       const styleId = styleTypes.indexOf(styleStatusBar) + 1;
       if (styleId === styleTypes.length) {
@@ -55,14 +56,17 @@ export default function VideoScreen({ navigation, route }) {
       let found = (await metadata.doc(auth.currentUser.uid).get()).exists
       found ? (
         null
+
       ) : (
+
         metadata.doc(auth.currentUser.uid).set({
           liked: false,
           disliked: false,
           comments: [null],
           ref: auth.currentUser.uid
         }),
-        setViews(views+1)
+
+        setViews(views + 1)
       )
     },
 
@@ -86,6 +90,7 @@ export default function VideoScreen({ navigation, route }) {
           })
         })
     };
+
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
   }, [])

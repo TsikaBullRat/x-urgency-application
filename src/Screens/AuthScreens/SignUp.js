@@ -59,11 +59,11 @@ export default function SignUp({ navigation }) {
       setPrompt2(null)
       setPrompt3(null)
       setPrompt4("Please re-enter password")
-    }else{
+    } else {
       handleSignUp(username, email, password, ConfirmPassword, setUserName, setEmail, setPassword, setConfirmPassword, setMessage,)
       setDisplayModal(true)
     }
-    
+
   }
 
   return (
@@ -90,7 +90,7 @@ export default function SignUp({ navigation }) {
           <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setUserName(text)} />
         </View>
       </Card>
-      {prompt1?<Text style={styles.prompt}>{prompt1}</Text>:null}
+      {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
       <View>
         <Card style={styles.txtCards}>
@@ -99,7 +99,7 @@ export default function SignUp({ navigation }) {
             <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
-        {prompt2?<Text style={styles.prompt}>{prompt2}</Text>:null}
+        {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -110,7 +110,7 @@ export default function SignUp({ navigation }) {
               onChangeText={text => setPassword(text)} />
           </View>
         </Card>
-        {prompt3?<Text style={styles.prompt}>{prompt3}</Text>:null}
+        {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -121,7 +121,7 @@ export default function SignUp({ navigation }) {
               onChangeText={text => setConfirmPassword(text)} />
           </View>
         </Card>
-        {prompt4?<Text style={styles.prompt}>{prompt4}</Text>:null}
+        {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
 
         <View style={{ alignItems: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Register}>
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     ...Platform.select({
-      web:{
+      web: {
         outlineColor: 'transparent'
       }
     })
