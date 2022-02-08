@@ -55,7 +55,7 @@ export default function App() {
       <KeyboardAwareScrollView>
         <Stack.Navigator>
   <Stack.Screen name="doctor" component={Doctor} options={{ headerShown: false }} />
-           
+          
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
