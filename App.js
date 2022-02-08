@@ -7,7 +7,7 @@ import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens, EmergencyContacts } from "./src/Screens";
 
-import Doctor from './src/Screens/DoctorsScreens/Doctor'
+import Doctor from './src/Screens/DoctorsScreens/UploadVideo'
 
 const Stack = createNativeStackNavigator()
 
