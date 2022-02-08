@@ -50,15 +50,15 @@ export default function Clone({ navigation, Log }) {
       ) : null
 
     },
-    openCamera = async () => {
-      let result = await ImagePicker.launchCameraAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Videos,
-        allowsEditing: true
-      });
-      if (!result.cancelled) {
-        setSelectedImage({ localUri: result.uri })
-      }
-    }
+    // openCamera = async () => {
+    //   let result = await ImagePicker.launchCameraAsync({
+    //     mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+    //     allowsEditing: true
+    //   });
+    //   if (!result.cancelled) {
+    //     setSelectedImage({ localUri: result.uri })
+    //   }
+    // }
 
   return (
 
