@@ -7,7 +7,8 @@ import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile } from "./src/Screens";
 
-import Doctor from './src/Screens/DoctorsScreens/UploadVideo'
+import Doctor from './src/Screens/DoctorsScreens/Upload'
+import UploadVideo from './src/Screens/DoctorsScreens/UploadVideo'
 
 const Stack = createNativeStackNavigator()
 
@@ -57,7 +58,9 @@ export default function App() {
       <KeyboardAwareScrollView>
         <Stack.Navigator>
   <Stack.Screen name="doctor" component={Doctor} options={{ headerShown: false }} />
-          
+
+  <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
+ 
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>

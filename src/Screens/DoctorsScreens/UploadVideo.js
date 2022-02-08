@@ -31,6 +31,7 @@ const [hasPermission, setHasPermission] = useState(null);
     setIsCameraReady(true);
   };
 
+
   const takePicture = async () => {
     if (cameraRef.current) {
       const options = { quality: 0.5, base64: true, skipProcessing: true };
@@ -139,7 +140,7 @@ const [hasPermission, setHasPermission] = useState(null);
   if (hasPermission === false) {
     return (
     <View>
-    <Text style={styles.text}>No access to camera</Text>
+    <Text style={styles.text}>No access to camera!</Text>
  
       <Text style={styles.instructions}>
         To upload a Video from your phone, just press the button below!
@@ -204,8 +205,15 @@ const [hasPermission, setHasPermission] = useState(null);
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.container}>
-      <Text style={styles.instructions}>
-        To upload a Video from your phone, just press the button below!
+      
+      <SafeAreaView>
+
+    {!visible ? (
+      <SafeAreaView //style={styles.container}
+    >
+
+    <Text style={styles.instructions}>
+        {`To upload a Video from your phone, open camera.`}
       </Text>
 
       <View style= {{alignItems: 'center'}}>
@@ -216,27 +224,15 @@ const [hasPermission, setHasPermission] = useState(null);
           style={styles.logo}
         />
       </View>
-
-      <View style= {{alignItems: 'center', marginBottom: 30}}>
-        <TouchableOpacity onPress={openImagePickerAsync} style={styles.button1}>
-          <Text style={styles.buttonText}>Pick a video</Text> 
-        </TouchableOpacity>
-      </View>
- 
-      <SafeAreaView>
-
-    {!visible ? (
-      <SafeAreaView //style={styles.container}
-    >
         <TouchableOpacity onPress={() => {setVisible(!visible)}}>
-        <Text>Cam</Text>
+        <Text>{`Open Camera`}</Text>
         </TouchableOpacity>
       </SafeAreaView>
     ) : (
 
       <View>
       <TouchableOpacity onPress={() => {setVisible(!visible)}}>
-        <Text>Close</Text>
+        <Text>{`Close`}</Text>
       </TouchableOpacity>
 
       <SafeAreaView //style={styles.container}
@@ -300,13 +296,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 
-  thumbnail: {
-    width: 300,
-    height: 300,
-    marginTop: 100,
-    resizeMode: 'contain',
-  },
-
   button1: {
     backgroundColor: '#F47066',
     padding: 20,
@@ -314,14 +303,6 @@ const styles = StyleSheet.create({
     marginLeft: 20, 
     borderRadius: 5,  
 
-  },
-
-  button: {
-    backgroundColor: '#F47066',
-    padding: 20,
-    marginTop: 30,
-    borderRadius: 5,  
-    alignSelf: 'center'
   },
 
   buttonText: {
@@ -392,6 +373,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   text: {
-    textAlign:'center'
+    textAlign:'center',
+    fontSize: 24,
+     color:'red'
   },
 });
