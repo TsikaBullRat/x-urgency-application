@@ -40,7 +40,7 @@ export default function DoctorSignUp({ authNavigation  }) {
     [prompt6, setPrompt6] = useState(null),
     [prompt7, setPrompt7] = useState(null),
     [prompt8, setPrompt8] = useState(null),
-    [visibleStatusBar, setVisibleStatusBar] = useState(true)
+    [visibleStatusBar, setVisibleStatusBar] = useState(true);
 
   const changeVisibilityStatusBar = () => {
     if(name === "" && surname === "" && contactdetails === "" && email === ""){
@@ -103,7 +103,6 @@ export default function DoctorSignUp({ authNavigation  }) {
         setDisplayModal(true)
         // authNavigation.navigate("doctor", {qualification, specialization, branch})
       }
-    }
   }
 
   return (

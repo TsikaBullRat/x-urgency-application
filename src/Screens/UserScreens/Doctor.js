@@ -8,7 +8,7 @@ import Button from '../../Components/button';
 
 const DoctorProfile = ({ route }) => {
 
-    // const info = route.params.match
+    const info = route.params.match
     const options = [
         { label: "About ", value: "About" },
         { label: "Qualification", value: "Qualification" },
@@ -102,9 +102,9 @@ const DoctorProfile = ({ route }) => {
         })
     }
 
-    // useEffect(() => {
-    //     getDoctorInfo()
-    // }, [])
+    useEffect(() => {
+        getDoctorInfo()
+    }, [])
 
     const [image, setImage] = useState(null)
     const [initial, setInitial] = useState("N")
