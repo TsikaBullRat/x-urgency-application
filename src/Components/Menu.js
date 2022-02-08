@@ -168,7 +168,6 @@ const styles = StyleSheet.create({
     height: 35,
     width: 35,
     borderRadius: 15,
-    marginLeft: 8,
     marginTop: 8
   },
 

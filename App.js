@@ -22,8 +22,8 @@ export default function App() {
 
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
-  //const [done, setDone ] = useState(true)
-  const [check1, setCheck1] = useState(true)
+  // const [done, setDone ] = useState(false)
+  const [check1, setCheck1] = useState(false)
   const [check2, setCheck2] = useState(false)
 
   useEffect(() => {
@@ -63,18 +63,23 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
-        <Stack.Screen name="SignIn" component={ForgotPassword} options={{ headerShown: false }} />
-        <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-  <Stack.Screen name="doctor" component={Doctor} options={{ headerShown: false }} />
-
-  <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
-
-  
-
-  <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
- 
+          {check1 ? (
+            id ? (
+              check2 ? (
+                doctor ? (
+                  <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }} />
+                ) : (
+                  <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
+                )
+              ) : (
+                <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
+              )
+            ) : (
+              <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
+            )
+          ) : (
+            <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
+          )}
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>

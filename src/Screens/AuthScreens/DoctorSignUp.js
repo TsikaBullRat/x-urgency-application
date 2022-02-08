@@ -26,7 +26,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     [contactdetails, setContactDetails] = useState(""),
     [qualification, setQualification] = useState(""),
     [specialization, setSpecialization] = useState(""),
-    [description, setDescription] = useState(""),
     [branch, setBranch] = useState(""),
     [password, setPassword] = useState(""),
     [confirmpassword, setConfirmPassword] = useState(""),
@@ -123,7 +122,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 36, color: '#51535D' }}>{`Doctor SignUp`}</Text>
+        <Text style={{ fontWeight: "bold", fontSize: 18, paddingLeft: 5 }}>  {`Doctor SignUp`} </Text>
       </View>
 
       {visibleStatusBar ? (
@@ -257,30 +256,30 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    height: 800,
+    alignItems: "center",
     backgroundColor: '#fff',
+    height: 850
   },
 
   card: {
-    backgroundColor: '#F47066',
-    width: 380,
+    backgroundColor: "#F47066",
+    width: 325,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
   },
 
   heartIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 30,
   },
 
   header: {
-    paddingTop: 25,
+    paddingTop: 10,
   },
 
   txtField: {
@@ -299,20 +298,11 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 300,
+    width: 285,
     height: 50,
     borderRadius: 10,
-    marginTop: 35,
-    paddingTop: 5,
-    borderWidth: 1,
-    borderColor: '#F47066',
-  },
-
-  picker: {
-    width: 300,
-    height: 50,
-    marginTop: 35,
-    borderRadius: 10,
+    marginLeft: 2,
+    marginTop: 75,
     borderWidth: 1,
     borderColor: '#F47066',
   },
@@ -320,11 +310,11 @@ const styles = StyleSheet.create({
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 40,
+    marginTop: 280,
     borderRadius: 10,
-    backgroundColor: '#F47066',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#F47066",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
 });
