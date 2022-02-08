@@ -1,16 +1,66 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, } from 'react-native';
+import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
+<<<<<<< HEAD
 import {Card} from 'react-native-paper'
 import { AntDesign, Feather, MaterialCommunityIcons, FontAwesome5  } from '@expo/vector-icons';
+=======
+>>>>>>> parent of 9ccbfb6... Prompt + update profile page + Remove Comment done
 
 const DoctorProfile = () => {
 
+    const options = [
+        { label: "About ", value: "About" },
+        { label: "Qualification", value: "Qualification" },
+        { label: "Specialization", value: "Specialization" },
+        { label: "Contact", value: "Contact" }
+    ];
+
+    const [About, setAbout] = React.useState(true);
+    const [Qalification, setQualification] = React.useState(false);
+    const [Specialization, setSpecialization] = React.useState(false);
+    const [Contact, setContact] = React.useState(false);
+
+    const check = ((value) => {
+
+        if (value == 'About') {
+            setAbout(true)
+            setQualification(false)
+            setSpecialization(false)
+            setContact(false)
+        }
+
+        if (value == 'Qualification') {
+            setQualification(true)
+            setAbout(false)
+            setSpecialization(false)
+            setContact(false)
+        }
+
+        if (value == 'Specialization') {
+            setSpecialization(true)
+            setAbout(false)
+            setQualification(false)
+            setContact(false)
+        }
+
+        if (value == 'Contact') {
+            setContact(true)
+            setAbout(false)
+            setQualification(false)
+            setSpecialization(false)
+
+        }
+
+    })
+
     return (
+        <>
             <View>
                 <View style={styles.container}>
-                    <View style={{ marginTop: 50}}>
+                    <View style={{ marginTop: 50, marginLeft: 10 }}>
                         <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/44.jpg', }} size="large" />
                         <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
                     </View>

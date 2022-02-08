@@ -79,7 +79,7 @@ export default function SignUp({ navigation }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 36, color: '#51535D' }}>{`SignUp`}</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>{`SignUp`}</Text>
       </View>
 
       {prompt?<Text style={styles.prompt} >{prompt}</Text>:null}
@@ -137,19 +137,19 @@ export default function SignUp({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    height: 800,
+    height: 850,
     backgroundColor: '#fff',
   },
 
   card: {
+    position: 'absolute',
     backgroundColor: '#F47066',
-    width: 380,
+    width: 325,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    textAlign: 'center',
   },
 
   heartIcon: {
@@ -159,9 +159,13 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    paddingTop: 25,
+    paddingTop: 205,
+    textAlign: 'center',
   },
-
+  prompt:{
+    color:'#F47066',
+    textAlign: "center"
+  },
   txtField: {
     width: 245,
     height: 30,
@@ -178,24 +182,24 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 300,
+    width: 285,
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 35,
-    paddingTop: 5,
     borderWidth: 1,
     borderColor: '#F47066',
   },
 
   signIn: {
-    height: 50,
-    width: 200,
-    marginTop: 40,
+    height: 40,
+    width: 150,
+    marginTop: 45,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });
 
