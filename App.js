@@ -54,7 +54,8 @@ export default function App() {
   }, [doctor])
 
   return (
-  <UpdateProfile />
+  <Upload />
+   <UploadVideo />
   );
 }
 

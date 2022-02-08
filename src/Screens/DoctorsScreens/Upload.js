@@ -117,7 +117,7 @@ export default function Upload({ navigation, Log }) {
         </Pressable>
       )}
 
-      <TouchableOpacity onPress={() => {navigation.navigate('UploadVideo')}}>
+      <TouchableOpacity onPress={() => {Run}}>
         <View style={styles.iconContainer}>
           <Icon name="camera" color='white' size={30} />
         </View>
