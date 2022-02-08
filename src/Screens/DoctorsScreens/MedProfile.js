@@ -28,7 +28,7 @@ import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-nat
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
 import { Video, } from 'expo-av';
-import { auth } from '../firebase';
+//import { auth } from '../firebase';
 
 export default function MedicalProfile({ navigation, setDone }) {
   const Logout = () => {

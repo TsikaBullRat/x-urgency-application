@@ -37,7 +37,7 @@ export default function Header({ list, setVids }) {
 
         style={{ maxWidth: 380 }} horizontal={true} showsHorizontalScrollIndicator={false}>
 
-        <View style={{ width: 380, flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={{  width: 380, flexDirection: 'row', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
             <View>
               <Card style={{ width: 50, height: 70, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }} >
@@ -46,6 +46,8 @@ export default function Header({ list, setVids }) {
               </Card>
             </View>
           </Pressable>
+
+
 
           <Pressable onPress={() => Sort("heartattack")}>
             <View>
@@ -81,7 +83,7 @@ export default function Header({ list, setVids }) {
               <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
                 <Image style={styles.bloodMenu} source={bleeding} />
               </Card>
-              <Text style={{ paddingLeft: 30, fontSize: 12, paddingBottom: 20 }}>Bleeding</Text>
+              <Text style={{ paddingLeft: 30, fontSize: 12, paddingBottom: 50 }}>Bleeding</Text>
             </View>
           </Pressable>
 
@@ -168,6 +170,7 @@ const styles = StyleSheet.create({
     height: 35,
     width: 35,
     borderRadius: 15,
+    marginLeft: 8,
     marginTop: 8
   },
 

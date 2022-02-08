@@ -83,7 +83,7 @@ export default function SignIn({ navigation, setDone }) {
         {prompt2?<Text style={styles.prompt}>{prompt2}</Text>:null}
 
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
-          <Text style={{ paddingLeft: 170, paddingTop: 20, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
+          <Text style={{ paddingLeft: 160, paddingTop: 20, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
         </TouchableOpacity>
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: '#F47066',
-    width: 300,
+    width: 380,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -142,11 +142,11 @@ const styles = StyleSheet.create({
 
   txtUser: {
     width: 245,
-    height: 30,
-    marginTop: 7,
+    height: 35,
+    marginTop: 5,
     marginLeft: 2,
     paddingLeft: 8,
-    paddingTop: 15,
+    paddingTop: 12,
     borderRadius: 10,
     ...Platform.select({
       web:{
@@ -160,11 +160,11 @@ const styles = StyleSheet.create({
   },
   txtPass: {
     width: 245,
-    height: 30,
-    marginTop: 7,
+    height: 35,
+    marginTop: 5,
     marginLeft: 2,
     paddingLeft: 8,
-    paddingTop: 15,
+    paddingTop: 12,
     borderRadius: 10,
     //backgroundColor: '#fff',
     ...Platform.select({
