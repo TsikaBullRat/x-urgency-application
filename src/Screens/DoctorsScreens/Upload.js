@@ -19,7 +19,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
 import { Video } from "expo-av";
 
-export default function Clone({ navigation, Log }) {
+export default function Upload({ navigation, Log }) {
 
   const ref = useRef(null);
   const [status, setStatus] = useState({});
@@ -117,14 +117,13 @@ export default function Clone({ navigation, Log }) {
         </Pressable>
       )}
 
-      <TouchableOpacity onPress={openCamera}>
+      <TouchableOpacity onPress={() => {navigation.navigate('UploadVideo')}}>
         <View style={styles.iconContainer}>
           <Icon name="camera" color='white' size={30} />
         </View>
       </TouchableOpacity>
 
-
-      <TouchableOpacity onPress={Run} style={styles.button}>
+      <TouchableOpacity onPress={openCamera} style={styles.button}>
         <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>
 

@@ -7,7 +7,8 @@ import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile } from "./src/Screens";
 
-import Doctor from './src/Screens/DoctorsScreens/Doctor'
+import Doctor from './src/Screens/DoctorsScreens/Upload'
+import UploadVideo from './src/Screens/DoctorsScreens/UploadVideo'
 
 const Stack = createNativeStackNavigator()
 
@@ -56,24 +57,10 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
+  <Stack.Screen name="doctor" component={Doctor} options={{ headerShown: false }} />
 
-          {check1 ? (
-            id ? (
-              check2 ? (
-                doctor ? (
-                  <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }} />
-                ) : (
-                  <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
-                )
-              ) : (
-                <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-              )
-            ) : (
-              <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
-            )
-          ) : (
-            <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )}
+  <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
+ 
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
