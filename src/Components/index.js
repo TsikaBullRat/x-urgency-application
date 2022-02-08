@@ -6,5 +6,7 @@ import Socials from "./Socials"
 import { ProgressBar, Loading } from "./Loader"
 import { Comments } from "./CommentsSection"
 import { VideoList } from "./VideoList"
+import { DisplayPicture } from "./DisplayPicture"
+import { LargeInput } from "./LargeInput"
 
-export { AlertNote, BottomNav, button, Header, Socials, ProgressBar, Comments, VideoList, Loading }
+export { AlertNote, BottomNav, button, Header, Socials, ProgressBar, Comments, VideoList, Loading, DisplayPicture, LargeInput }

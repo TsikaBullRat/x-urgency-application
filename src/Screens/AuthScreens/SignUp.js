@@ -26,37 +26,44 @@ export default function SignUp({ navigation }) {
     [ConfirmPassword, setConfirmPassword] = useState(""),
     [displayModal, setDisplayModal] = useState(false),
     [message, setMessage] = useState(""),
+    [prompt, setPrompt] = useState(null),
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null),
     [prompt3, setPrompt3] = useState(null),
     [prompt4, setPrompt4] = useState(null)
 
   const Register = () => {
-    if(username === ""){
+    if(username === "" && ConfirmPassword === "" && password === "" && email === ""){
+      setPrompt("Please enter thr requested information")
+    }else if(username === ""){
+      setPrompt(null)
       setPrompt1("Please enter username")
       setPrompt2(null)
       setPrompt3(null)
       setPrompt4(null)
     }else if(email === ""){
+      setPrompt(null)
       setPrompt1(null)
       setPrompt2("Please enter email address")
       setPrompt3(null)
       setPrompt4(null)
     }else if(password === ""){
+      setPrompt(null)
       setPrompt1(null)
       setPrompt2(null)
       setPrompt3("Please enter password")
       setPrompt4(null)
     }else if(ConfirmPassword === ""){
+      setPrompt(null)
       setPrompt1(null)
       setPrompt2(null)
       setPrompt3(null)
       setPrompt4("Please re-enter password")
-    }else{
+    } else {
       handleSignUp(username, email, password, ConfirmPassword, setUserName, setEmail, setPassword, setConfirmPassword, setMessage,)
       setDisplayModal(true)
     }
-    
+
   }
 
   return (
@@ -75,13 +82,15 @@ export default function SignUp({ navigation }) {
         <Text style={{ fontWeight: 'bold', fontSize: 36, color: '#51535D' }}>{`SignUp`}</Text>
       </View>
 
+      {prompt?<Text style={styles.prompt} >{prompt}</Text>:null}
+
       <Card style={styles.txtCards}>
         <View style={{ flexDirection: 'row' }}>
           <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
           <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setUserName(text)} />
         </View>
       </Card>
-      {prompt1?<Text style={styles.prompt}>{prompt1}</Text>:null}
+      {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
       <View>
         <Card style={styles.txtCards}>
@@ -90,7 +99,7 @@ export default function SignUp({ navigation }) {
             <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
-        {prompt2?<Text style={styles.prompt}>{prompt2}</Text>:null}
+        {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -101,7 +110,7 @@ export default function SignUp({ navigation }) {
               onChangeText={text => setPassword(text)} />
           </View>
         </Card>
-        {prompt3?<Text style={styles.prompt}>{prompt3}</Text>:null}
+        {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -112,7 +121,7 @@ export default function SignUp({ navigation }) {
               onChangeText={text => setConfirmPassword(text)} />
           </View>
         </Card>
-        {prompt4?<Text style={styles.prompt}>{prompt4}</Text>:null}
+        {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
 
         <View style={{ alignItems: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Register}>
@@ -162,7 +171,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     ...Platform.select({
-      web:{
+      web: {
         outlineColor: 'transparent'
       }
     })

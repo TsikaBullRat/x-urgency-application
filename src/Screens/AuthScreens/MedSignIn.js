@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     ...Platform.select({
-      web:{
+      web: {
         outlineColor: 'transparent'
       }
     })

@@ -8,7 +8,7 @@ import Button from '../../Components/button';
 
 const DoctorProfile = ({ route }) => {
 
-    const info = route.params.match
+    // const info = route.params.match
     const options = [
         { label: "About ", value: "About" },
         { label: "Qualification", value: "Qualification" },
@@ -74,6 +74,7 @@ const DoctorProfile = ({ route }) => {
             .then(doc => {
                 return doc.data().subscribers
             })
+
         firestore.collection("Users").doc(info).collection("cred").doc(info).update({
             subscribers: [...change, auth.currentUser.uid]
         })
@@ -89,26 +90,28 @@ const DoctorProfile = ({ route }) => {
             .then(doc => {
                 return doc.data().subscribers
             })
+
         change = change.filter(item => item !== auth.currentUser.uid)
         firestore.collection("Users").doc(info).collection("cred").doc(info).update({
             subscribers: change
         })
+
         setSubscription({
             Func: Subscribe,
             text: "follow"
         })
     }
 
-    useEffect(() => {
-        getDoctorInfo()
-    }, [])
+    // useEffect(() => {
+    //     getDoctorInfo()
+    // }, [])
 
-    const [image, setImage] = useState()
-    const [initial, setInitial] = useState()
+    const [image, setImage] = useState(null)
+    const [initial, setInitial] = useState("N")
     const getProfile = async () => {
         let name
         setImage(false)
-        name = await firestore.collection("Users").doc(info).get().then(doc=>doc.data().username)
+        name = await firestore.collection("Users").doc(info).get().then(doc => doc.data().username)
         setInitial(name.substring(0, 1))
     }
 
@@ -127,6 +130,7 @@ const DoctorProfile = ({ route }) => {
                         Func: unSubscribe,
                         text: "unfollow"
                     })
+
                 } else {
 
                     setSubscription({
@@ -139,7 +143,7 @@ const DoctorProfile = ({ route }) => {
 
     return (
 
-        data ? (<>
+        /*data ? (*/<>
 
             <View>
                 <View style={styles.container}>
@@ -160,7 +164,7 @@ const DoctorProfile = ({ route }) => {
 
                 <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
                     <Socials text="Following" number="15" />
-                    <Socials text="Followers" number={data.subscribers ? data.subscribers.length : 0} />
+                    <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
                     <Socials text="Likes" number="3.1M" />
                     <Pressable style={styles.follow} onPress={subscription.Func}>
                         <Text>{subscription.text}</Text>
@@ -217,7 +221,7 @@ const DoctorProfile = ({ route }) => {
 
                 : <View></View>} </>
 
-        ) : null
+        // ) : null
     )
 }
 
