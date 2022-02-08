@@ -24,14 +24,19 @@ export default function SignIn({ navigation, setDone }) {
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState(""),
+    [prompt, setPrompt] = useState(null),
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null);
     
   const Login = () => {
-    if(email === ""){
+    if(email === "" && password === ""){
+      setPrompt("Please enter thr requested information")
+    }else if(email === ""){
+      setPrompt(null)
       setPrompt1("Please enter email address")
       setPrompt2(null)
     }else if(password === ""){
+      setPrompt(null)
       setPrompt1(null)
       setPrompt2("Please enter password")
     }else{
@@ -54,6 +59,8 @@ export default function SignIn({ navigation, setDone }) {
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 36, color: '#51535D' }}>{`LogIn`}</Text>
       </View>
+
+      {prompt?<Text style={styles.prompt} >{prompt}</Text>:null}
 
       <View>
         <Card style={styles.txtCards}>

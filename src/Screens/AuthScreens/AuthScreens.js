@@ -17,18 +17,15 @@ import { SignIn, SignUp, DoctorSignUp, DocSignUp, MedSignIn, ForgotPassword } fr
 
 const Stack = createNativeStackNavigator()
 
-export const AuthScreens = () => {
+export const AuthScreens = ({ navigation }) => {
   return (
     <Stack.Navigator initialRouteName='Sign In'>
-      <Stack.Screen
-        name='Doctor SignUp'
-        component={DoctorSignUp}
-        options={{ headerShown: false }} />
 
       <Stack.Screen
-        name='Doc SignUp'
-        component={DocSignUp}
-        options={{ headerShown: false }} />
+        name='Doctor SignUp'
+        options={{ headerShown: false }} >
+          {props=><DoctorSignUp {...props} authNavigation={navigation}/>}
+        </Stack.Screen>
 
       <Stack.Screen name='Sign In' options={{ headerShown: false }}>
         {(props) => <SignIn {...props} />}

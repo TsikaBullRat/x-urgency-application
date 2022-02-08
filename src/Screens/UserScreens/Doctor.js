@@ -8,7 +8,7 @@ import Button from '../../Components/button';
 
 const DoctorProfile = ({ route }) => {
 
-    const info = route.params.match
+    // const info = route.params.match
     const options = [
         { label: "About ", value: "About" },
         { label: "Qualification", value: "Qualification" },
@@ -99,12 +99,12 @@ const DoctorProfile = ({ route }) => {
         })
     }
 
-    useEffect(() => {
-        getDoctorInfo()
-    }, [])
+    // useEffect(() => {
+    //     getDoctorInfo()
+    // }, [])
 
-    const [image, setImage] = useState()
-    const [initial, setInitial] = useState()
+    const [image, setImage] = useState(null)
+    const [initial, setInitial] = useState("N")
     const getProfile = async () => {
         let name
         setImage(false)
@@ -112,34 +112,34 @@ const DoctorProfile = ({ route }) => {
         setInitial(name.substring(0, 1))
     }
 
-    useEffect(() => {
-        getProfile()
-    }, [])
+    // useEffect(() => {
+    //     getProfile()
+    // }, [])
 
-    useEffect(() => {
-        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
-            .then(doc => {
-                let array = []
-                array = [...array, doc.data().subscribers]
-                let index = array.indexOf(auth.currentUser.uid)
-                if (index === -1) {
-                    setSubscription({
-                        Func: unSubscribe,
-                        text: "unfollow"
-                    })
-                } else {
+    // useEffect(() => {
+    //     firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+    //         .then(doc => {
+    //             let array = []
+    //             array = [...array, doc.data().subscribers]
+    //             let index = array.indexOf(auth.currentUser.uid)
+    //             if (index === -1) {
+    //                 setSubscription({
+    //                     Func: unSubscribe,
+    //                     text: "unfollow"
+    //                 })
+    //             } else {
 
-                    setSubscription({
-                        Func: Subscribe,
-                        text: "follow"
-                    })
-                }
-            })
-    }, [])
+    //                 setSubscription({
+    //                     Func: Subscribe,
+    //                     text: "follow"
+    //                 })
+    //             }
+    //         })
+    // }, [])
 
     return (
 
-        data ? (<>
+        /*data ? (*/<>
 
             <View>
                 <View style={styles.container}>
@@ -160,7 +160,7 @@ const DoctorProfile = ({ route }) => {
 
                 <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
                     <Socials text="Following" number="15" />
-                    <Socials text="Followers" number={data.subscribers ? data.subscribers.length : 0} />
+                    <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
                     <Socials text="Likes" number="3.1M" />
                     <Pressable style={styles.follow} onPress={subscription.Func}>
                         <Text>{subscription.text}</Text>
@@ -217,7 +217,7 @@ const DoctorProfile = ({ route }) => {
 
                 : <View></View>} </>
 
-        ) : null
+        // ) : null
     )
 }
 
