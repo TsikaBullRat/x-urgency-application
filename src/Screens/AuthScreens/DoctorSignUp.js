@@ -18,7 +18,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
 import { AlertNote } from '../../Components/Alert';
 
-export default function DoctorSignUp({ navigation, setDetails }) {
+export default function DoctorSignUp({ authNavigation  }) {
 
   const [email, setEmail] = useState(""),
     [name, setName] = useState(""),
@@ -30,6 +30,8 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     [branch, setBranch] = useState(""),
     [password, setPassword] = useState(""),
     [confirmpassword, setConfirmPassword] = useState(""),
+    [message, setMessage] = useState(null),
+    [prompt, setPrompt] = useState(null),
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null),
     [prompt3, setPrompt3] = useState(null),
@@ -41,87 +43,66 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     [visibleStatusBar, setVisibleStatusBar] = useState(true)
 
   const changeVisibilityStatusBar = () => {
-    // if(name === ""){
-    //   setPrompt1("Please enter name")
-    //   setPrompt2(null)
-    //   setPrompt3(null)
-    //   setPrompt4(null)
-    //   setPrompt5(null)
-    //   setPrompt6(null)
-    //   setPrompt7(null)
-    //   setPrompt8(null)
-    // }else if(surname === ""){
-    //   setPrompt1(null)
-    //   setPrompt2("Please enter surname")
-    //   setPrompt3(null)
-    //   setPrompt4(null)
-    //   setPrompt5(null)
-    //   setPrompt6(null)
-    //   setPrompt7(null)
-    //   setPrompt8(null)
-    // }else if(contactdetails === ""){
-    //   setPrompt1(null)
-    //   setPrompt2(null)
-    //   setPrompt3("Please enter contact details")
-    //   setPrompt4(null)
-    //   setPrompt5(null)
-    //   setPrompt6(null)
-    //   setPrompt7(null)
-    //   setPrompt8(null)
-    // }else if(email === ""){
-    //   setPrompt1(null)
-    //   setPrompt2(null)
-    //   setPrompt3(null)
-    //   setPrompt4("Please enter email address")
-    //   setPrompt5(null)
-    //   setPrompt6(null)
-    //   setPrompt7(null)
-    //   setPrompt8(null)
-    // }else{
-    setVisibleStatusBar(!visibleStatusBar)
-    // }
+    if(name === "" && surname === "" && contactdetails === "" && email === ""){
+      setPrompt("Please enter thr requested information")
+    }else if(name === ""){
+      setPrompt(null)
+      setPrompt1("Please enter name")
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4(null)
+    }else if(surname === ""){
+      setPrompt(null)
+      setPrompt1(null)
+      setPrompt2("Please enter surname")
+      setPrompt3(null)
+      setPrompt4(null)
+    }else if(contactdetails === ""){
+      setPrompt(null)
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3("Please enter contact details")
+      setPrompt4(null)
+    }else if(email === ""){
+      setPrompt(null)
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4("Please enter email address")
+    }else{
+      setPrompt(null)
+      setVisibleStatusBar(!visibleStatusBar)
+    }
   }
 
-  const Register = () => {
-    if (qualification === "") {
-      setPrompt1(null)
-      setPrompt2(null)
-      setPrompt3(null)
-      setPrompt4(null)
-      setPrompt5("Please enter qualification")
-      setPrompt6(null)
-      setPrompt7(null)
-      setPrompt8(null)
-    } else if (branch === "") {
-      setPrompt1(null)
-      setPrompt2(null)
-      setPrompt3(null)
-      setPrompt4(null)
-      setPrompt5(null)
-      setPrompt6("Please enter branch name")
-      setPrompt7(null)
-      setPrompt8(null)
-    } else if (password === "") {
-      setPrompt1(null)
-      setPrompt2(null)
-      setPrompt3(null)
-      setPrompt4(null)
-      setPrompt5(null)
-      setPrompt6(null)
-      setPrompt7("Please enter password")
-      setPrompt8(null)
-    } else if (confirmpassword === "") {
-      setPrompt1(null)
-      setPrompt2(null)
-      setPrompt3(null)
-      setPrompt4(null)
-      setPrompt5(null)
-      setPrompt6(null)
-      setPrompt7(null)
-      setPrompt8("Please re-enter password")
-    } else {
-
-      setDisplayModal(true)
+  const Register = () =>{
+      if(qualification === "" && branch === "" && password === "" && confirmpassword === ""){
+        setPrompt("Please enter thr requested information")
+      }else if(qualification === ""){
+        setPrompt5("Please enter qualification")
+        setPrompt6(null)
+        setPrompt7(null)
+        setPrompt8(null)
+      }else if(branch === ""){
+        setPrompt5(null)
+        setPrompt6("Please enter branch name")
+        setPrompt7(null)
+        setPrompt8(null)
+      }else if(password === ""){
+        setPrompt5(null)
+        setPrompt6(null)
+        setPrompt7("Please enter password")
+        setPrompt8(null)
+      }else if(confirmpassword === ""){
+        setPrompt5(null)
+        setPrompt6(null)
+        setPrompt7(null)
+        setPrompt8("Please re-enter password")
+      }else{
+        handleDoctorSignUp(email, password, name + " " + surname, setMessage, qualification, specialization, branch, contactdetails)
+        setDisplayModal(true)
+        // authNavigation.navigate("doctor", {qualification, specialization, branch})
+      }
     }
   }
 
@@ -142,7 +123,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
       {visibleStatusBar ? (
         <View>
-
+          {prompt?<Text style={styles.prompt} >{prompt}</Text>:null}
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
               <TextInput
@@ -152,6 +133,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setName(text)} />
             </View>
           </Card>
+          {prompt1?<Text style={styles.prompt}>{prompt1}</Text>:null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -162,6 +144,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setSurname(text)} />
             </View>
           </Card>
+          {prompt2?<Text style={styles.prompt}>{prompt2}</Text>:null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -172,6 +155,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setContactDetails(text)} />
             </View>
           </Card>
+          {prompt3?<Text style={styles.prompt}>{prompt3}</Text>:null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -182,6 +166,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setEmail(text)} />
             </View>
           </Card>
+          {prompt4?<Text style={styles.prompt}>{prompt4}</Text>:null}
 
           <View style={{ flexDirection: "row" }}>
             <Picker
@@ -204,6 +189,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setQualification(text)} />
             </View>
           </Card>
+          {prompt5?<Text style={styles.prompt}>{prompt5}</Text>:null}
 
           <View style={{ alignItems: "center" }}>
             <TouchableOpacity style={styles.signIn} onPress={() => { changeVisibilityStatusBar() }}>
@@ -235,6 +221,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setBranch(text)} />
             </View>
           </Card>
+          {prompt6?<Text style={styles.prompt}>{prompt6}</Text>:null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -245,6 +232,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setPassword(text)} />
             </View>
           </Card>
+          {prompt7?<Text style={styles.prompt}>{prompt7}</Text>:null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -255,12 +243,14 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setConfirmPassword(text)} />
             </View>
           </Card>
+          {prompt8?<Text style={styles.prompt}>{prompt8}</Text>:null}
 
-          <View style={{ alignItems: "center" }}>
-            <TouchableOpacity style={styles.signIn} onPress={null}>
-              <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
-            </TouchableOpacity>
-          </View>
+
+        <View style={{ alignItems: "center" }}>
+          <TouchableOpacity style={styles.signIn} onPress={Register}>
+            <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
+          </TouchableOpacity>
+        </View>
         </View>
       )}
 
@@ -311,7 +301,10 @@ const styles = StyleSheet.create({
       }
     })
   },
-
+  prompt:{
+    color:'#F47066',
+    textAlign: "center"
+  },
   txtCards: {
     width: 300,
     height: 50,

@@ -12,7 +12,7 @@
 **/
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button, Pressable } from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -74,6 +74,21 @@ export default function VideoScreen({ navigation, route }) {
       console.log(data.match)
       let match = data.match
       navigation.navigate('Doctor', { match })
+    },
+    Delete = remove =>{
+      firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).get()
+        .then(doc=>{
+          return doc.data().comments
+        })
+        .then(item=>{
+          let update = item.filter(item=>item.comment !== remove )
+          return update
+        })
+        .then(update=>{
+          firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).update({
+            comments: update
+          })
+        })
     };
 
   useEffect(() => {
@@ -217,6 +232,7 @@ export default function VideoScreen({ navigation, route }) {
             <Card style={{ backgroundColor: '#e8d7cc', height: 100, marginTop: 10 }} key={index}>
               <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
                 <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>
+                {item.user === auth.currentUser.displayName?<Pressable onPress={()=>Delete(item.comment)}><Text>remove</Text></Pressable>:null}
               </SafeAreaView>
             </Card>
           )}

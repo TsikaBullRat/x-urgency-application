@@ -24,13 +24,14 @@
 **/
 
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Pressable } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
 import { auth, LoadSet, LogOut, firestore } from '../../firebase';
 import { ProgressBar, VideoList } from '../../Components';
+import { Feather } from '@expo/vector-icons'; 
 
-export default function MedicalHome({ navigation, progress, Log, Exit }) {
+export default function MedicalHome({ navigation, progress, Log, Exit, credentials }) {
   const [done, setDone] = useState(true);
   const [videos, setLoad] = useState(null),
     VideoScreen = (data) => {
@@ -61,6 +62,14 @@ export default function MedicalHome({ navigation, progress, Log, Exit }) {
   const [status, setStatus] = useState({}),
     [loading, setLoading] = useState(null);
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
+
+  const setDoctor = () =>{
+    firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get().then(doc=>doc.exists)?(
+      null
+    ):(
+      firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).set(credentials)
+    )
+  }
 
   useEffect(() => {
     if (progress === 100) Log(null)
@@ -123,6 +132,9 @@ export default function MedicalHome({ navigation, progress, Log, Exit }) {
               </View>
             )}
           </TouchableOpacity>
+          <Pressable onPress={()=>navigation.navigate("update")} >
+            <Feather name="edit" size={24} color="#F47066" style={{left:120, top:-20}}/>
+          </Pressable>
         </View>
       </View>
 

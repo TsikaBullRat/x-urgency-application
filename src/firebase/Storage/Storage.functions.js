@@ -105,7 +105,7 @@ const LoadSet = (Load, query) => {
     }
 
     query ? (
-        storage.ref().child('').listAll()
+        storage.ref().child('/Videos').listAll()
             .then(res => {
                 res.items.forEach(async itemRef => {
                     var views = 0
@@ -137,7 +137,7 @@ const LoadSet = (Load, query) => {
                 return null
             })
     ) : (
-        storage.ref().child('').listAll()
+        storage.ref().child('/Videos').listAll()
             .then(res => {
                 res.items.forEach(async itemRef => {
                     var views = 0
@@ -151,7 +151,6 @@ const LoadSet = (Load, query) => {
                     getLink = itemRef.getDownloadURL().then(url => url)
                     let link = await getLink
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
-                    console.log(find)
                     let name = find.title
                     let match = find.ref
                     let owner = await info.doc(match).get().then(doc => doc.data().username)
@@ -183,7 +182,7 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
     }
 
     var bb = new Blob([ab], { type: MIMEstring })
-    var upload = storage.ref().child(`${id}.mp4`).put(bb)
+    var upload = storage.ref().child(`/Videos/${id}.mp4`).put(bb)
 
     firestore.collection('Videos').doc(id).set({
         title: title,
