@@ -3,11 +3,6 @@ import { Text, View, StyleSheet, } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
-<<<<<<< HEAD
-import {Card} from 'react-native-paper'
-import { AntDesign, Feather, MaterialCommunityIcons, FontAwesome5  } from '@expo/vector-icons';
-=======
->>>>>>> parent of 9ccbfb6... Prompt + update profile page + Remove Comment done
 
 const DoctorProfile = () => {
 
