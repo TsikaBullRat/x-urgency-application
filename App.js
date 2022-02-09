@@ -63,8 +63,6 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
-
-        
            
           {check1 ? (
             id ? (
