@@ -34,7 +34,8 @@ export default function Header({ done, navigation }) {
     <View style={styles.contain}>
 
       <View style={{
-        width: 370, marginTop: 10,
+        width: 370,
+        marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
@@ -78,15 +79,12 @@ export default function Header({ done, navigation }) {
 
         </View>
 
-        <View> {image ? (
-          <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />) : (
+        <View style={styles.avatar}> {image ? (
+          <Avatar rounded source={{ uri: image, }} size="medium" />) : (
           <View style={styles.temp}>
             <Text style={styles.temp_text}> {initial} </Text>
           </View>
         )}
-          <Badge
-            status="success"
-            containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
 
         </View>
       </View>
@@ -103,27 +101,20 @@ const styles = StyleSheet.create({
   },
 
   logoutIMG: {
-    width: 15,
-    height: 15,
+    width: 20,
+    height: 20,
   },
 
   header: {
-
-    flexDirection: 'column',
     justifyContent: 'flex-start',
     color: '#F96056',
-    fontSize: 28,
+    fontSize: 30,
   },
 
   avatar: {
-    borderRadius: 50,
-    marginTop: 80,
-    borderBottomWidth: 3,
-    borderColor: 'turquoise',
-    shadowColor: 'grey',
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-    elevation: 1,
+    marginBottom: 80,
+    paddingRight: 40,
+
   },
 
   temp: {

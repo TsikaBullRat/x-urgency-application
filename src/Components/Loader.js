@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         height: 15,
         backgroundColor: 'transparent'
     },
+
     loading: {
         alignItems: 'center',
         justifyContent: 'center',

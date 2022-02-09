@@ -89,14 +89,14 @@ export default function Upload({ navigation, Log }) {
         selectedValue={selectedValue}
         style={styles.picker}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
-        <Picker.Item label="Stroke" value="stroke" />
-        <Picker.Item label="Heart-Attack" value="heart-attack" />
-        <Picker.Item label="Epilepsy" value="epilepsy" />
-        <Picker.Item label="CPR" value="cpr" />
-        <Picker.Item label="Drowning" value="drowning" />
-        <Picker.Item label="Choking" value="choking" />
-        <Picker.Item label="Java" value="java" />
-        <Picker.Item label="Burns" value="burns" />
+        <Picker.Item label="Stroke" value="Stroke" />
+        <Picker.Item label="Heart-Attack" value="Heart-Attack" />
+        <Picker.Item label="Epilepsy" value="Epilepsy" />
+        <Picker.Item label="CPR" value="CPR" />
+        <Picker.Item label="Drowning" value="Drowning" />
+        <Picker.Item label="Choking" value="Choking" />
+        <Picker.Item label="Java" value="Java" />
+        <Picker.Item label="Burns" value="Burns" />
       </Picker>
       </View>
 
@@ -129,7 +129,11 @@ export default function Upload({ navigation, Log }) {
         </Pressable>
       )}
 
+<<<<<<< HEAD
       <TouchableOpacity onPress={() => {navigation.navigate('uploadVideo')}}>
+=======
+      <TouchableOpacity onPress={() => { navigation.navigate('UploadVideo') }}>
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
         <View style={styles.iconContainer}>
           <Icon name="camera" color='white' size={30} />
         </View>

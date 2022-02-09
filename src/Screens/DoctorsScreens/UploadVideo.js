@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+<<<<<<< HEAD
 import {
   Image,
   StyleSheet,
@@ -31,6 +32,32 @@ export default function UploadVideo ({ navigation }) {
   const ref = useRef(null)
   const [status, setStatus] = useState({})
   const [selectedValue, setSelectedValue] = useState('stroke'),
+=======
+import { Image, StyleSheet, Text, TouchableOpacity, View, SafeAreaView, Dimensions, ScrollView } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import { Camera } from "expo-camera";
+import { Video } from "expo-av";
+
+const WINDOW_HEIGHT = Dimensions.get("window").height;
+
+const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);
+const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
+
+export default function UploadVideo({ navigation }) {
+
+  const [visible, setVisible] = useState(false)
+  const [hasPermission, setHasPermission] = useState(null);
+  const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
+  const [isPreview, setIsPreview] = useState(false);
+  const [isCameraReady, setIsCameraReady] = useState(false);
+  const [isVideoRecording, setIsVideoRecording] = useState(false);
+  const [videoSource, setVideoSource] = useState(null);
+  const cameraRef = useRef();
+
+  const ref = useRef(null);
+  const [status, setStatus] = useState({});
+  const [selectedValue, setSelectedValue] = useState("stroke"),
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
     [title, setTitle] = useState(),
     [description, setDescpription] = useState(),
 
@@ -144,10 +171,15 @@ export default function UploadVideo ({ navigation }) {
 
   const renderCancelPreviewButton = () => (
     <TouchableOpacity onPress={cancelPreview} style={styles.closeButton}>
+<<<<<<< HEAD
       <View style={[styles.closeCross, { transform: [{ rotate: '45deg' }] }]} />
       <View
         style={[styles.closeCross, { transform: [{ rotate: '-45deg' }] }]}
       />
+=======
+      <View style={[styles.closeCross, { transform: [{ rotate: "45deg" }] }]} /> <View
+        style={[styles.closeCross, { transform: [{ rotate: "-45deg" }] }]} />
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
     </TouchableOpacity>
   )
 
@@ -193,28 +225,44 @@ export default function UploadVideo ({ navigation }) {
   if (hasPermission === false) {
     return (
       <View>
+<<<<<<< HEAD
         <Text style={styles.text}>No access to camera!</Text>
 
         <Text style={styles.instructions}>
           To upload a Video from your phone, just press the button below!
+=======
+        <Text style={styles.text}>No Access To Camera!</Text>
+
+        <Text style={styles.instructions}>
+          To Upload A Video From Your Phone, Just Press The Button Below!
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
         </Text>
 
         <View style={{ alignItems: 'center' }}>
           <Image
             source={{
+<<<<<<< HEAD
               uri:
                 'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7'
+=======
+              uri: 'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7',
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
             }}
             style={styles.logo}
           />
         </View>
 
         <View style={{ alignItems: 'center', marginBottom: 30 }}>
+<<<<<<< HEAD
           <TouchableOpacity
             onPress={Run}
             style={styles.button1}
           >
             <Text style={styles.buttonText}>Pick a video</Text>
+=======
+          <TouchableOpacity onPress={openCamera} style={styles.button1}>
+            <Text style={styles.buttonText}>Pick A Video</Text>
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
           </TouchableOpacity>
         </View>
       </View>
@@ -243,23 +291,38 @@ export default function UploadVideo ({ navigation }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
+<<<<<<< HEAD
         <SafeAreaView>
+=======
+
+        <SafeAreaView>
+
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
           {!visible ? (
             <SafeAreaView //style={styles.container}
             >
               <Text style={styles.instructions}>
+<<<<<<< HEAD
                 {`To upload a Video from your phone, open camera.`}
+=======
+                {`To Upload A Video From Your Phone, Open Camera.`}
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
               </Text>
 
               <View style={{ alignItems: 'center' }}>
                 <Image
                   source={{
+<<<<<<< HEAD
                     uri:
                       'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7'
+=======
+                    uri: 'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7',
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
                   }}
                   style={styles.logo}
                 />
               </View>
+<<<<<<< HEAD
               <TouchableOpacity
                 style={styles.button1}
                 onPress={() => {
@@ -273,14 +336,38 @@ export default function UploadVideo ({ navigation }) {
             <View>
               <SafeAreaView //style={styles.container}
               >
+=======
+
+              <TouchableOpacity onPress={() => { setVisible(!visible) }}>
+                <Text>{`Open Camera`}</Text>
+              </TouchableOpacity>
+
+            </SafeAreaView>
+
+          ) : (
+
+            <View>
+              <TouchableOpacity onPress={() => { setVisible(!visible) }}>
+                <Text>{`Close`}</Text>
+              </TouchableOpacity>
+
+              <SafeAreaView //style={styles.container}
+              >
+
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
                 <Camera
                   ref={cameraRef}
                   style={styles.contain}
                   type={cameraType}
                   flashMode={Camera.Constants.FlashMode.on}
                   onCameraReady={onCameraReady}
+<<<<<<< HEAD
                   onMountError={error => {
                     console.log('cammera error', error)
+=======
+                  onMountError={(error) => {
+                    console.log("cammera error", error);
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
                   }}
                 />
 
@@ -291,6 +378,7 @@ export default function UploadVideo ({ navigation }) {
                   {!videoSource && !isPreview && renderCaptureControl()}
                 </View>
 
+<<<<<<< HEAD
                 <View
                   style={{
                     width: 380,
@@ -330,6 +418,15 @@ export default function UploadVideo ({ navigation }) {
           )}
         </SafeAreaView>
       </View>
+=======
+              </SafeAreaView>
+            </View>
+          )}
+
+        </SafeAreaView>
+      </View>
+
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
     </ScrollView>
   )
 }
@@ -350,6 +447,7 @@ const styles = StyleSheet.create({
     color: '#888',
     fontSize: 18,
     marginHorizontal: 15,
+<<<<<<< HEAD
     paddingTop: 35
   },
 
@@ -358,6 +456,9 @@ const styles = StyleSheet.create({
     height: 300,
     marginTop: 100,
     resizeMode: 'contain',
+=======
+    paddingTop: 150,
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
   },
 
   logo: {
@@ -370,20 +471,34 @@ const styles = StyleSheet.create({
     backgroundColor: '#F47066',
     padding: 20,
     marginTop: 30,
+<<<<<<< HEAD
     borderRadius: 5
+=======
+    marginLeft: 20,
+    borderRadius: 5,
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
   },
 
   buttonText: {
     fontSize: 20,
+<<<<<<< HEAD
     color: '#fff'
+=======
+    color: '#fff',
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
   },
 
   contain: {
     flex: 1,
     alignItems: 'center'
   },
+
   closeButton: {
+<<<<<<< HEAD
     position: 'absolute',
+=======
+    position: "absolute",
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
     top: 35,
     left: 15,
     height: closeButtonSize,
@@ -395,14 +510,17 @@ const styles = StyleSheet.create({
     opacity: 0.7,
     zIndex: 2
   },
+
   media: {
     ...StyleSheet.absoluteFillObject
   },
+
   closeCross: {
     width: '68%',
     height: 1,
     backgroundColor: 'black'
   },
+
   control: {
     position: 'absolute',
     flexDirection: 'row',
@@ -411,6 +529,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+
   capture: {
     backgroundColor: '#f5f6f5',
     height: captureSize,
@@ -418,6 +537,7 @@ const styles = StyleSheet.create({
     borderRadius: Math.floor(captureSize / 2),
     marginHorizontal: 31
   },
+
   recordIndicatorContainer: {
     flexDirection: 'row',
     position: 'absolute',
@@ -428,11 +548,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     opacity: 0.7
   },
+
   recordTitle: {
     fontSize: 14,
     color: '#ffffff',
     textAlign: 'center'
   },
+
   recordDot: {
     borderRadius: 3,
     height: 6,
@@ -440,9 +562,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#ff0000',
     marginHorizontal: 5
   },
+
   text: {
     textAlign: 'center',
     fontSize: 24,
     color: 'red'
+<<<<<<< HEAD
   }
 })
+=======
+  },
+
+});
+>>>>>>> 2e5aff5bef9981c8f45fac7a4b5778c110a2043b
