@@ -28,11 +28,12 @@ import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Pressable } from 
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
 import { auth, LoadSet, LogOut, firestore } from '../../firebase';
-import { ProgressBar, VideoList } from '../../Components';
+import { ProgressBar, VideoList, AlertNote } from '../../Components'
 import { Feather } from '@expo/vector-icons'; 
 
 export default function MedicalHome({ navigation, progress, Log, Exit, credentials }) {
   const [done, setDone] = useState(true);
+  const [display, setDisplayModal] = useState(true)
   const [videos, setLoad] = useState(null),
     VideoScreen = (data) => {
       navigation.navigate("PlayVideo", { data });
@@ -79,14 +80,14 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
     LoadSet(setLoad);
   }, []);
 
-  useEffect(() => {
-    console.log(auth.currentUser.displayName.split(" ")[1])
+  useEffect(()=>{
+    // if()
   }, [])
 
   return (
 
     <View style={styles.contain}>
-
+      <AlertNote modalVisible={display} setModalVisible={setDisplayModal} msg="Hey doc why not add your first video" />
       {/*---------------------------Header--------------------------*/}
 
       <View style={{ flexDirection: "row" }}>

@@ -86,7 +86,7 @@ export default function Header({ done, navigation }) {
         )}
           <Badge
             status="success"
-            containerStyle={{ position: 'absolute', right: -4 }} />
+            containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
 
         </View>
       </View>
@@ -103,8 +103,8 @@ const styles = StyleSheet.create({
   },
 
   logoutIMG: {
-    width: 25,
-    height: 25,
+    width: 15,
+    height: 15,
   },
 
   header: {
@@ -117,14 +117,20 @@ const styles = StyleSheet.create({
 
   avatar: {
     borderRadius: 50,
+    marginTop: 80,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
+    shadowColor: 'grey',
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.4,
+    elevation: 1,
   },
 
   temp: {
     width: 70,
     height: 70,
     borderRadius: 50,
+    marginTop: 80,
     backgroundColor: 'turquoise',
     textAlign: 'center',
     justifyContent: 'center'

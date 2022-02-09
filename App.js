@@ -5,10 +5,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile, EmergencyContacts, Home } from "./src/Screens";
+import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile, EmergencyContacts } from "./src/Screens";
 
 import Doctor from './src/Screens/DoctorsScreens/Upload'
 import UploadVideo from './src/Screens/DoctorsScreens/UploadVideo'
+import Home from './src/Screens/UserScreens/Home'
+import PlayVideo from './src/Screens/UserScreens/PlayVideo'
 
 const Stack = createNativeStackNavigator()
 
@@ -16,8 +18,8 @@ export default function App() {
 
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
-  //const [done, setDone ] = useState(true)
-  const [check1, setCheck1] = useState(true)
+  // const [done, setDone ] = useState(false)
+  const [check1, setCheck1] = useState(false)
   const [check2, setCheck2] = useState(false)
 
   useEffect(() => {
@@ -57,10 +59,23 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
-  <Stack.Screen name="doctor" component={Doctor} options={{ headerShown: false }} />
-
-  <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
- 
+          {check1 ? (
+            id ? (
+              check2 ? (
+                doctor ? (
+                  <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }} />
+                ) : (
+                  <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
+                )
+              ) : (
+                <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
+              )
+            ) : (
+              <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
+            )
+          ) : (
+            <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
+          )}
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>

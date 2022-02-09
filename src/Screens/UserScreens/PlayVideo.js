@@ -89,6 +89,7 @@ export default function VideoScreen({ navigation, route }) {
             comments: update
           })
         })
+      setComments(comments.filter(item=>item.comment !== remove))
     };
 
   useEffect(() => {

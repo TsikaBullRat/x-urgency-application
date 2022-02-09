@@ -1,14 +1,25 @@
 import { auth, firestore } from '../config'
 
-const handleSignUp = (email, password, Confirmpassword, setMessage) => {
+const handleSignUp = (username, email, password, Confirmpassword, setMessage) => {
     if (password !== Confirmpassword) {
         setMessage("Password Doesn't Match")
     }
     else {
         auth.createUserWithEmailAndPassword(email, password)
-            .then(
+            .then(user=>{
+                user.user.updateProfile({
+                    displayName: username
+                })
                 setMessage("Welcome")
-            )
+            })
+            .then(()=>{
+                firestore.collection("Users").doc(auth.currentUser.uid).set({
+                    username: auth.currentUser.displayName,
+                    doctor: false,
+                    email: auth.currentUser.email,
+                    cred: null
+                  })
+            })
             .catch((error) => {
                 console.log(error);
                 switch (error.code) {

@@ -11,34 +11,15 @@ export default function Home({ navigation, Exit }) {
     ref = useRef(null),
     VideoScreen = (data) => {
       navigation.navigate("PlayVideo", { data });
-    },
-
-    FirstTimeUser = async () => {
-      auth.currentUser.updateProfile({
-        displayName: await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.data().username)
-      })
-
-      await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
-        null
-
-      ) : (
-
-        firestore.collection("Users").doc(auth.currentUser.uid).set({
-          username: auth.currentUser.displayName,
-          doctor: false,
-          email: auth.currentUser.email,
-          cred: null
-        })
-      )
     };
-
-  useEffect(() => {
-    FirstTimeUser()
-  }, [])
 
   useEffect(() => {
     LoadSet(setLoad);
   }, []);
+
+  useEffect(()=>{
+    console.log(auth.currentUser)
+  }, [])
 
   const [status, setStatus] = React.useState({});
 
@@ -51,7 +32,7 @@ export default function Home({ navigation, Exit }) {
         <Header Exit={Exit} />
       </View>
 
-      <View style={{ width: 380, marginTop: 20 }}>
+      <View style={{ width: 380 }}>
         <Menu list={videos} setVids={setLoad} />
       </View>
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Clone, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile } from '..';
+import { Clone, MedicalHome, Upload, UploadVideo, VideoScreen, DoctorProfile, UpdateProfile } from '..';
 
 const Stack = createNativeStackNavigator()
 
@@ -22,6 +22,7 @@ export const DoctorsScreens = ({ navigation, route }) => {
             <Stack.Screen name="Upload" options={{ headerShown: false }} >
                 {props => <Upload {...props} Log={setPerc} />}
             </Stack.Screen>
+            <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
             <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
             <Stack.Screen name="update" component={UpdateProfile} options={{ headerShown: false }} />
