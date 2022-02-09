@@ -5,10 +5,8 @@ const Socials = ({ text, number }) => {
     return (
 
         <View style={styles.socials}>
-
             <Text style={{ textAlign: 'center' }}>{number}</Text>
             <Text style={{ textAlign: 'center' }}>{text}</Text>
-
         </View>
 
     )

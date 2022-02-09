@@ -128,9 +128,7 @@ const BottomNav = () => {
           </Card>
         </View>
       }
-
     </View>
-
   )
 }
 

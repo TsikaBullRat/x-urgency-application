@@ -32,7 +32,6 @@ export default function Header({ done, navigation }) {
   return (
 
     <View style={styles.contain}>
-
       <View style={{
         width: 370,
         marginTop: 10,
@@ -51,6 +50,7 @@ export default function Header({ done, navigation }) {
               <Text>Call</Text>
               <Text>Now</Text>
             </View>
+
           </View>
         </TouchableOpacity>
 
@@ -73,10 +73,8 @@ export default function Header({ done, navigation }) {
       }}>
 
         <View>
-
           <Text style={styles.header}> WHAT'S YOUR</Text>
           <Text style={styles.header}> EMERGENCY ?</Text>
-
         </View>
 
         <View style={styles.avatar}> {image ? (
@@ -113,7 +111,7 @@ const styles = StyleSheet.create({
 
   avatar: {
     marginBottom: 80,
-    paddingRight: 40,
+    paddingRight: 50,
 
   },
 
