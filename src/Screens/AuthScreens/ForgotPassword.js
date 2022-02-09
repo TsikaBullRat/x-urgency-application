@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: '#F47066',
-    width: 325,
+    width: 380,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -174,3 +174,9 @@ const styles = StyleSheet.create({
   },
 
 });
+
+
+
+  
+
+  

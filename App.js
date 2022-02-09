@@ -7,6 +7,10 @@ import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile, EmergencyContacts } from "./src/Screens";
 
+import SignIn from './src/Screens/AuthScreens/SignIn'
+import SignUp from './src/Screens/AuthScreens/SignUp'
+import ForgotPassword from './src/Screens/AuthScreens/ForgotPassword'
+
 import Doctor from './src/Screens/DoctorsScreens/Upload'
 import UploadVideo from './src/Screens/DoctorsScreens/UploadVideo'
 import Home from './src/Screens/UserScreens/Home'
@@ -18,9 +22,9 @@ export default function App() {
 
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
-  // const [done, setDone ] = useState(false)
-  const [check1, setCheck1] = useState(false)
-  const [check2, setCheck2] = useState(false)
+  const [done, setDone ] = useState(true)
+  const [check1, setCheck1] = useState(true)
+  const [check2, setCheck2] = useState(true)
 
   useEffect(() => {
     auth.onAuthStateChanged(user => user ? setID(user.uid) : setID(false))
@@ -59,7 +63,12 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
-          {check1 ? (
+
+          <Stack.Screen name= 'upload' component={Upload} />
+
+          <Stack.Screen name= 'uploadVideo' component={UploadVideo} />
+           
+          {/* {check1 ? (
             id ? (
               check2 ? (
                 doctor ? (
@@ -75,7 +84,7 @@ export default function App() {
             )
           ) : (
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )}
+          )} */}
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
