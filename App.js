@@ -63,7 +63,12 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
         <Stack.Navigator>
-          {check1 ? (
+
+          <Stack.Screen name= 'upload' component={Upload} />
+
+          <Stack.Screen name= 'uploadVideo' component={UploadVideo} />
+           
+          {/* {check1 ? (
             id ? (
               check2 ? (
                 doctor ? (
@@ -79,7 +84,7 @@ export default function App() {
             )
           ) : (
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )}
+          )} */}
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
