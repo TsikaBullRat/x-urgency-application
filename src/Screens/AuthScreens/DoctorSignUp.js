@@ -40,7 +40,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     [visibleStatusBar, setVisibleStatusBar] = useState(true);
 
   const changeVisibilityStatusBar = () => {
-    if(name === ""){
+    if (name === "") {
       setPrompt1("Please enter name")
       setPrompt2(null)
       setPrompt3(null)
@@ -49,7 +49,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt6(null)
       setPrompt7(null)
       setPrompt8(null)
-    }else if(surname === ""){
+    } else if (surname === "") {
       setPrompt1(null)
       setPrompt2("Please enter surname")
       setPrompt3(null)
@@ -58,7 +58,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt6(null)
       setPrompt7(null)
       setPrompt8(null)
-    }else if(contactdetails === ""){
+    } else if (contactdetails === "") {
       setPrompt1(null)
       setPrompt2(null)
       setPrompt3("Please enter contact details")
@@ -67,7 +67,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt6(null)
       setPrompt7(null)
       setPrompt8(null)
-    }else if(email === ""){
+    } else if (email === "") {
       setPrompt1(null)
       setPrompt2(null)
       setPrompt3(null)
@@ -76,38 +76,38 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt6(null)
       setPrompt7(null)
       setPrompt8(null)
-    }else{
-    setVisibleStatusBar(!visibleStatusBar)
+    } else {
+      setVisibleStatusBar(!visibleStatusBar)
     }
   }
 
-  const Register = () =>{
-      if(qualification === "" && branch === "" && password === "" && confirmpassword === ""){
-        setPrompt("Please enter thr requested information")
-      }else if(qualification === ""){
-        setPrompt5("Please enter qualification")
-        setPrompt6(null)
-        setPrompt7(null)
-        setPrompt8(null)
-      }else if(branch === ""){
-        setPrompt5(null)
-        setPrompt6("Please enter branch name")
-        setPrompt7(null)
-        setPrompt8(null)
-      }else if(password === ""){
-        setPrompt5(null)
-        setPrompt6(null)
-        setPrompt7("Please enter password")
-        setPrompt8(null)
-      }else if(confirmpassword === ""){
-        setPrompt5(null)
-        setPrompt6(null)
-        setPrompt7(null)
-        setPrompt8("Please re-enter password")
-      }else{
-        handleDoctorSignUp(email, password, name + " " + surname, setMessage, qualification, specialization, branch, contactdetails)
-        setDisplayModal(true)
-      }
+  const Register = () => {
+    if (qualification === "" && branch === "" && password === "" && confirmpassword === "") {
+      setPrompt("Please enter thr requested information")
+    } else if (qualification === "") {
+      setPrompt5("Please enter qualification")
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8(null)
+    } else if (branch === "") {
+      setPrompt5(null)
+      setPrompt6("Please enter branch name")
+      setPrompt7(null)
+      setPrompt8(null)
+    } else if (password === "") {
+      setPrompt5(null)
+      setPrompt6(null)
+      setPrompt7("Please enter password")
+      setPrompt8(null)
+    } else if (confirmpassword === "") {
+      setPrompt5(null)
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8("Please re-enter password")
+    } else {
+      handleDoctorSignUp(email, password, name + " " + surname, setMessage, qualification, specialization, branch, contactdetails)
+      setDisplayModal(true)
+    }
   }
 
   return (
@@ -302,7 +302,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 75,
+    marginTop: 35,
     borderWidth: 1,
     borderColor: '#F47066',
   },

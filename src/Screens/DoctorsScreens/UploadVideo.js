@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View, SafeAreaView, Dimensions, ScrollView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Camera } from "expo-camera";
@@ -6,13 +6,13 @@ import { Video } from "expo-av";
 
 const WINDOW_HEIGHT = Dimensions.get("window").height;
 
-const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);  
+const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);
 const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
 
 export default function UploadVideo({ navigation }) {
 
-const [visible, setVisible] = useState(false)
-const [hasPermission, setHasPermission] = useState(null);
+  const [visible, setVisible] = useState(false)
+  const [hasPermission, setHasPermission] = useState(null);
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
   const [isPreview, setIsPreview] = useState(false);
   const [isCameraReady, setIsCameraReady] = useState(false);
@@ -130,10 +130,8 @@ const [hasPermission, setHasPermission] = useState(null);
 
   const renderCancelPreviewButton = () => (
     <TouchableOpacity onPress={cancelPreview} style={styles.closeButton}>
-      <View style={[styles.closeCross, { transform: [{ rotate: "45deg" }] }]} />
-      <View
-        style={[styles.closeCross, { transform: [{ rotate: "-45deg" }] }]}
-      />
+      <View style={[styles.closeCross, { transform: [{ rotate: "45deg" }] }]} /> <View
+        style={[styles.closeCross, { transform: [{ rotate: "-45deg" }] }]} />
     </TouchableOpacity>
   );
 
@@ -176,28 +174,28 @@ const [hasPermission, setHasPermission] = useState(null);
 
   if (hasPermission === false) {
     return (
-    <View>
-    <Text style={styles.text}>No access to camera!</Text>
- 
-      <Text style={styles.instructions}>
-        To upload a Video from your phone, just press the button below!
-      </Text>
+      <View>
+        <Text style={styles.text}>No Access To Camera!</Text>
 
-      <View style= {{alignItems: 'center'}}>
-        <Image
-          source={{
-            uri: 'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7',
-          }}
-          style={styles.logo}
-        />
-      </View>
+        <Text style={styles.instructions}>
+          To Upload A Video From Your Phone, Just Press The Button Below!
+        </Text>
 
-      <View style= {{alignItems: 'center', marginBottom: 30}}>
-        <TouchableOpacity onPress={openCamera} style={styles.button1}>
-          <Text style={styles.buttonText}>Pick a video</Text> 
-        </TouchableOpacity>
+        <View style={{ alignItems: 'center' }}>
+          <Image
+            source={{
+              uri: 'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7',
+            }}
+            style={styles.logo}
+          />
+        </View>
+
+        <View style={{ alignItems: 'center', marginBottom: 30 }}>
+          <TouchableOpacity onPress={openCamera} style={styles.button1}>
+            <Text style={styles.buttonText}>Pick A Video</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
     )
   }
 
@@ -215,67 +213,66 @@ const [hasPermission, setHasPermission] = useState(null);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-    <View style={styles.container}>
-      
-      <SafeAreaView>
+      <View style={styles.container}>
 
-    {!visible ? (
-      <SafeAreaView //style={styles.container}
-    >
+        <SafeAreaView>
 
-    <Text style={styles.instructions}>
-        {`To upload a Video from your phone, open camera.`}
-      </Text>
+          {!visible ? (
+            <SafeAreaView //style={styles.container}
+            >
+              <Text style={styles.instructions}>
+                {`To Upload A Video From Your Phone, Open Camera.`}
+              </Text>
 
-      <View style= {{alignItems: 'center'}}>
-        <Image
-          source={{
-            uri: 'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7',
-          }}
-          style={styles.logo}
-        />
+              <View style={{ alignItems: 'center' }}>
+                <Image
+                  source={{
+                    uri: 'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7',
+                  }}
+                  style={styles.logo}
+                />
+              </View>
+
+              <TouchableOpacity onPress={() => { setVisible(!visible) }}>
+                <Text>{`Open Camera`}</Text>
+              </TouchableOpacity>
+
+            </SafeAreaView>
+
+          ) : (
+
+            <View>
+              <TouchableOpacity onPress={() => { setVisible(!visible) }}>
+                <Text>{`Close`}</Text>
+              </TouchableOpacity>
+
+              <SafeAreaView //style={styles.container}
+              >
+
+                <Camera
+                  ref={cameraRef}
+                  style={styles.contain}
+                  type={cameraType}
+                  flashMode={Camera.Constants.FlashMode.on}
+                  onCameraReady={onCameraReady}
+                  onMountError={(error) => {
+                    console.log("cammera error", error);
+                  }}
+                />
+
+                <View style={styles.contain}>
+                  {isVideoRecording && renderVideoRecordIndicator()}
+                  {videoSource && renderVideoPlayer()}
+                  {isPreview && renderCancelPreviewButton()}
+                  {!videoSource && !isPreview && renderCaptureControl()}
+                </View>
+
+              </SafeAreaView>
+            </View>
+          )}
+
+        </SafeAreaView>
       </View>
-        <TouchableOpacity onPress={() => {setVisible(!visible)}}>
-        <Text>{`Open Camera`}</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
-    ) : (
-
-      <View>
-      <TouchableOpacity onPress={() => {setVisible(!visible)}}>
-        <Text>{`Close`}</Text>
-      </TouchableOpacity>
-
-      <SafeAreaView //style={styles.container}
-    >
-    
-
-      <Camera
-        ref={cameraRef}
-        style={styles.contain}
-        type={cameraType}
-        flashMode={Camera.Constants.FlashMode.on}
-        onCameraReady={onCameraReady}
-        onMountError={(error) => {
-          console.log("cammera error", error);
-        }}
-      />
-      
-      <View style={styles.contain}>
-        {isVideoRecording && renderVideoRecordIndicator()}
-        {videoSource && renderVideoPlayer()}
-        {isPreview && renderCancelPreviewButton()}
-        {!videoSource && !isPreview && renderCaptureControl()}
-      </View>
-
-      
-
-</SafeAreaView>
-</View>
-    )}
-
-    </SafeAreaView>
-    </View>
 
     </ScrollView>
   );
@@ -293,12 +290,12 @@ const styles = StyleSheet.create({
   },
 
   instructions: {
-    textAlign:'center',
+    textAlign: 'center',
     color: '#888',
     fontSize: 18,
     marginHorizontal: 15,
-    paddingTop: 150, 
-  }, 
+    paddingTop: 150,
+  },
 
   logo: {
     width: 270,
@@ -311,22 +308,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#F47066',
     padding: 20,
     marginTop: 30,
-    marginLeft: 20, 
-    borderRadius: 5,  
-
+    marginLeft: 20,
+    borderRadius: 5,
   },
 
   buttonText: {
     fontSize: 20,
-    color: '#fff',   
+    color: '#fff',
   },
 
   contain: {
-    flex:1, 
-    alignItems:'center'  
+    flex: 1,
+    alignItems: 'center'
   },
+
   closeButton: {
-    position: "absolute",  
+    position: "absolute",
     top: 35,
     left: 15,
     height: closeButtonSize,
@@ -338,14 +335,17 @@ const styles = StyleSheet.create({
     opacity: 0.7,
     zIndex: 2,
   },
+
   media: {
     ...StyleSheet.absoluteFillObject,
   },
+
   closeCross: {
     width: "68%",
     height: 1,
     backgroundColor: "black",
   },
+
   control: {
     position: "absolute",
     flexDirection: "row",
@@ -354,6 +354,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
   capture: {
     backgroundColor: "#f5f6f5",
     height: captureSize,
@@ -361,6 +362,7 @@ const styles = StyleSheet.create({
     borderRadius: Math.floor(captureSize / 2),
     marginHorizontal: 31,
   },
+
   recordIndicatorContainer: {
     flexDirection: "row",
     position: "absolute",
@@ -371,11 +373,13 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     opacity: 0.7,
   },
+
   recordTitle: {
     fontSize: 14,
     color: "#ffffff",
     textAlign: "center",
   },
+
   recordDot: {
     borderRadius: 3,
     height: 6,
@@ -383,9 +387,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#ff0000",
     marginHorizontal: 5,
   },
+
   text: {
-    textAlign:'center',
+    textAlign: 'center',
     fontSize: 24,
-     color:'red'
+    color: 'red'
   },
+
 });

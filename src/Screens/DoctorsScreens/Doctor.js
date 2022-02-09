@@ -3,83 +3,77 @@ import { Text, View, StyleSheet, } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
-<<<<<<< HEAD
-import {Card} from 'react-native-paper'
-import { AntDesign, Feather, MaterialCommunityIcons, FontAwesome5  } from '@expo/vector-icons';
-=======
->>>>>>> parent of 9ccbfb6... Prompt + update profile page + Remove Comment done
 
 const DoctorProfile = () => {
 
-    const options = [
-        { label: "About ", value: "About" },
-        { label: "Qualification", value: "Qualification" },
-        { label: "Specialization", value: "Specialization" },
-        { label: "Contact", value: "Contact" }
-    ];
+  const options = [
+    { label: "About ", value: "About" },
+    { label: "Qualification", value: "Qualification" },
+    { label: "Specialization", value: "Specialization" },
+    { label: "Contact", value: "Contact" }
+  ];
 
-    const [About, setAbout] = React.useState(true);
-    const [Qalification, setQualification] = React.useState(false);
-    const [Specialization, setSpecialization] = React.useState(false);
-    const [Contact, setContact] = React.useState(false);
+  const [About, setAbout] = React.useState(true);
+  const [Qalification, setQualification] = React.useState(false);
+  const [Specialization, setSpecialization] = React.useState(false);
+  const [Contact, setContact] = React.useState(false);
 
-    const check = ((value) => {
+  const check = ((value) => {
 
-        if (value == 'About') {
-            setAbout(true)
-            setQualification(false)
-            setSpecialization(false)
-            setContact(false)
-        }
+    if (value == 'About') {
+      setAbout(true)
+      setQualification(false)
+      setSpecialization(false)
+      setContact(false)
+    }
 
-        if (value == 'Qualification') {
-            setQualification(true)
-            setAbout(false)
-            setSpecialization(false)
-            setContact(false)
-        }
+    if (value == 'Qualification') {
+      setQualification(true)
+      setAbout(false)
+      setSpecialization(false)
+      setContact(false)
+    }
 
-        if (value == 'Specialization') {
-            setSpecialization(true)
-            setAbout(false)
-            setQualification(false)
-            setContact(false)
-        }
+    if (value == 'Specialization') {
+      setSpecialization(true)
+      setAbout(false)
+      setQualification(false)
+      setContact(false)
+    }
 
-        if (value == 'Contact') {
-            setContact(true)
-            setAbout(false)
-            setQualification(false)
-            setSpecialization(false)
+    if (value == 'Contact') {
+      setContact(true)
+      setAbout(false)
+      setQualification(false)
+      setSpecialization(false)
 
-        }
+    }
 
-    })
+  })
 
-    return (
-        <>
-            <View>
-                <View style={styles.container}>
-                    <View style={{ marginTop: 50, marginLeft: 10 }}>
-                        <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/44.jpg', }} size="large" />
-                        <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
-                    </View>
-                    <Text style={styles.textTitle}>{`Dr Sighn`}</Text>
+  return (
 
-                    <View style={{marginTop:20}}>
-                      <Text style={{ paddingTop: 10, fontSize: 26, color:'#F47066' }}>
-                        {`Neurologist`}
-                      </Text>
-                    </View> 
-                
+    <View>
+      <View style={styles.container}>
+        <View style={{ marginTop: 50, marginLeft: 10 }}>
+          <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/44.jpg', }} size="large" />
+          <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
+        </View>
+        <Text style={styles.textTitle}>{`Dr Sighn`}</Text>
 
-                    <View style={{flexDirection: 'row', marginBottom: 20, justifyContent: 'center', alignItems: 'center' }}>
-                       <Socials text="Following" number="15" />
-                       <View style={styles.pole} />
-                       <Socials text="Followers" number="3000K" />
-                       <View style={styles.pole} />
-                        <Socials text="Likes" number="3.1M" />
-                    </View>                  
+        <View style={{ marginTop: 20 }}>
+          <Text style={{ paddingTop: 10, fontSize: 26, color: '#F47066' }}>
+            {`Neurologist`}
+          </Text>
+        </View>
+
+        <View style={{ flexDirection: 'row', marginBottom: 20, justifyContent: 'center', alignItems: 'center' }}>
+          <Socials text="Following" number="15" />
+          <View style={styles.pole} />
+          <Socials text="Followers" number="3000K" />
+          <View style={styles.pole} />
+          <Socials text="Likes" number="3.1M" />
+        </View>
 
         <View
           style={{
@@ -91,32 +85,32 @@ const DoctorProfile = () => {
           }}>
 
           <Card style={styles.docCards}>
-            <View style={{marginTop:10, alignItems:'center'}}>
+            <View style={{ marginTop: 10, alignItems: 'center' }}>
               <MaterialCommunityIcons name="certificate-outline" size={40} color="#fff" />
-           
-                <Text style={{ paddingTop: 10, color:'#fff' }}>
-                  {`PHD`}
-                </Text>            
+
+              <Text style={{ paddingTop: 10, color: '#fff' }}>
+                {`PHD`}
+              </Text>
             </View>
           </Card>
 
           <Card style={styles.docCards}>
-            <View style={{alignItems:'center', marginTop: 10}}>
-             <MaterialCommunityIcons name="briefcase-clock-outline" size={35} color="#fff" />
-           
-                <Text style={{ maxWidth: 80, paddingTop: 5,textAlign:'center', color:'#fff' }}>
-                  {`15yrs Experience`}
-                </Text>            
+            <View style={{ alignItems: 'center', marginTop: 10 }}>
+              <MaterialCommunityIcons name="briefcase-clock-outline" size={35} color="#fff" />
+
+              <Text style={{ maxWidth: 80, paddingTop: 5, textAlign: 'center', color: '#fff' }}>
+                {`15yrs Experience`}
+              </Text>
             </View>
           </Card>
 
           <Card style={styles.docCards}>
-            <View style={{marginTop:10, alignItems:'center'}}>
+            <View style={{ marginTop: 10, alignItems: 'center' }}>
               <FontAwesome5 name="award" size={35} color="#fff" />
-           
-                <Text style={{ paddingTop: 10, color:'#fff' }}>
-                  {`10 Awards`}
-                </Text>            
+
+              <Text style={{ paddingTop: 10, color: '#fff' }}>
+                {`10 Awards`}
+              </Text>
             </View>
           </Card>
         </View>
@@ -135,17 +129,17 @@ const DoctorProfile = () => {
           <View style={{ flexDirection: 'row', marginTop: 15 }}>
             <Feather name="phone" size={20} color="black" />
 
-          <Text style={{ paddingLeft: 10, fontSize: 16 }}>
-            {`(053) 871 2545`}
-          </Text>
-        </View>
+            <Text style={{ paddingLeft: 10, fontSize: 16 }}>
+              {`(053) 871 2545`}
+            </Text>
+          </View>
 
-        <View style={{ flexDirection: 'row' }}>         
-          <AntDesign name="mail" size={20} color="black" />
-          <Text style={{ paddingLeft: 10, fontSize: 16 }}>
-            {`sighn@gmail.com`}
-          </Text>
-        </View>
+          <View style={{ flexDirection: 'row' }}>
+            <AntDesign name="mail" size={20} color="black" />
+            <Text style={{ paddingLeft: 10, fontSize: 16 }}>
+              {`sighn@gmail.com`}
+            </Text>
+          </View>
 
         </View>
 

@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import { View, Text, StyleSheet } from 'react-native'
 import { auth } from "../firebase"
 import { Avatar } from 'react-native-elements'
 
-export const DisplayPicture = () =>{
+export const DisplayPicture = () => {
 
     const [image, setImage] = useState(null)
     const [initial, setInitial] = useState('')
@@ -15,10 +15,10 @@ export const DisplayPicture = () =>{
         setInitial(name.substring(0, 1))
     }
 
-    useEffect(() => { 
+    useEffect(() => {
         getProfile()
     }, [])
-    return(
+    return (
         <>
             <View>
                 {image ? (

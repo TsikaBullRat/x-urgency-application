@@ -33,27 +33,27 @@ export default function SignUp({ navigation }) {
     [prompt4, setPrompt4] = useState(null)
 
   const Register = () => {
-    if(username === "" && ConfirmPassword === "" && password === "" && email === ""){
+    if (username === "" && ConfirmPassword === "" && password === "" && email === "") {
       setPrompt("Please enter thr requested information")
-    }else if(username === ""){
+    } else if (username === "") {
       setPrompt(null)
       setPrompt1("Please enter username")
       setPrompt2(null)
       setPrompt3(null)
       setPrompt4(null)
-    }else if(email === ""){
+    } else if (email === "") {
       setPrompt(null)
       setPrompt1(null)
       setPrompt2("Please enter email address")
       setPrompt3(null)
       setPrompt4(null)
-    }else if(password === ""){
+    } else if (password === "") {
       setPrompt(null)
       setPrompt1(null)
       setPrompt2(null)
       setPrompt3("Please enter password")
       setPrompt4(null)
-    }else if(ConfirmPassword === ""){
+    } else if (ConfirmPassword === "") {
       setPrompt(null)
       setPrompt1(null)
       setPrompt2(null)
@@ -82,7 +82,7 @@ export default function SignUp({ navigation }) {
         <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>{`SignUp`}</Text>
       </View>
 
-      {prompt?<Text style={styles.prompt} >{prompt}</Text>:null}
+      {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 
       <Card style={styles.txtCards}>
         <View style={{ flexDirection: 'row' }}>
@@ -162,8 +162,8 @@ const styles = StyleSheet.create({
     paddingTop: 205,
     textAlign: 'center',
   },
-  prompt:{
-    color:'#F47066',
+  prompt: {
+    color: '#F47066',
     textAlign: "center"
   },
   txtField: {
