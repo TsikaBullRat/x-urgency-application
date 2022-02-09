@@ -24,8 +24,8 @@ export const AuthScreens = ({ navigation }) => {
       <Stack.Screen
         name='Doctor SignUp'
         options={{ headerShown: false }} >
-          {props=><DoctorSignUp {...props} authNavigation={navigation}/>}
-        </Stack.Screen>
+        {props => <DoctorSignUp {...props} authNavigation={navigation} />}
+      </Stack.Screen>
 
       <Stack.Screen name='Sign In' options={{ headerShown: false }}>
         {(props) => <SignIn {...props} />}

@@ -1,15 +1,14 @@
 import React from "react"
 import { TextInput, StyleSheet } from 'react-native'
 
-
-export const LargeInput = () =>{
-    return(
+export const LargeInput = () => {
+    return (
         <TextInput style={styles.input} placeholder="Tell us about yourself" multiline />
     )
 }
 
 const styles = StyleSheet.create({
-    input:{
+    input: {
         width: 300,
         height: 250,
         borderRadius: 10,

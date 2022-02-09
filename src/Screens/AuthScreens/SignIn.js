@@ -29,13 +29,13 @@ export default function SignIn({ navigation, setDone }) {
     [prompt2, setPrompt2] = useState(null);
 
   const Login = () => {
-    if(email === "" && password === ""){
+    if (email === "" && password === "") {
       setPrompt("Please enter thr requested information")
-    }else if(email === ""){
+    } else if (email === "") {
       setPrompt(null)
       setPrompt1("Please enter email address")
       setPrompt2(null)
-    }else if(password === ""){
+    } else if (password === "") {
       setPrompt(null)
       setPrompt1(null)
       setPrompt2("Please enter password")
@@ -59,8 +59,7 @@ export default function SignIn({ navigation, setDone }) {
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 36, color: '#51535D' }}>{`LogIn`}</Text>
       </View>
-
-      {prompt?<Text style={styles.prompt} >{prompt}</Text>:null}
+      {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 
       <View>
         <Card style={styles.txtCards}>

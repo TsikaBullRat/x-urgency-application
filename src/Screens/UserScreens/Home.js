@@ -17,7 +17,7 @@ export default function Home({ navigation, Exit }) {
     LoadSet(setLoad);
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(auth.currentUser)
   }, [])
 

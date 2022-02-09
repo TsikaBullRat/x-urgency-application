@@ -62,6 +62,7 @@ const DoctorProfile = ({ route }) => {
             .then(doc => {
                 setData(doc.data())
             })
+
         firestore.collection("Users").doc(info).get()
             .then(doc => {
                 setDoctor(doc.data().username)
@@ -132,7 +133,6 @@ const DoctorProfile = ({ route }) => {
                     })
 
                 } else {
-
                     setSubscription({
                         Func: Subscribe,
                         text: "follow"

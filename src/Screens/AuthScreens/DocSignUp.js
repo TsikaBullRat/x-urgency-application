@@ -12,7 +12,7 @@
 **/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Picker, Platform} from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Picker, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderRadius: 10,
     ...Platform.select({
-      web:{
+      web: {
         outlineColor: 'transparent'
       }
     })
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
-    marginTop: 75,
+    marginTop: 35,
     borderWidth: 1,
     borderColor: '#F47066',
   },

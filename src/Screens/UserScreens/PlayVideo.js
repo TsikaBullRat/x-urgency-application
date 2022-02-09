@@ -75,21 +75,25 @@ export default function VideoScreen({ navigation, route }) {
       let match = data.match
       navigation.navigate('Doctor', { match })
     },
-    Delete = remove =>{
+
+    Delete = remove => {
       firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).get()
-        .then(doc=>{
+        .then(doc => {
           return doc.data().comments
         })
-        .then(item=>{
-          let update = item.filter(item=>item.comment !== remove )
+
+        .then(item => {
+          let update = item.filter(item => item.comment !== remove)
           return update
         })
-        .then(update=>{
+
+        .then(update => {
           firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).update({
             comments: update
           })
         })
-      setComments(comments.filter(item=>item.comment !== remove))
+
+      setComments(comments.filter(item => item.comment !== remove))
     };
 
   useEffect(() => {
@@ -230,7 +234,7 @@ export default function VideoScreen({ navigation, route }) {
             <Card style={{ backgroundColor: '#e8d7cc', height: 100, marginTop: 10 }} key={index}>
               <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
                 <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>
-                {item.user === auth.currentUser.displayName?<Pressable onPress={()=>Delete(item.comment)}><Text>remove</Text></Pressable>:null}
+                {item.user === auth.currentUser.displayName ? <Pressable onPress={() => Delete(item.comment)}><Text>remove</Text></Pressable> : null}
               </SafeAreaView>
             </Card>
           )}
