@@ -29,7 +29,7 @@ import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
 import { auth, LoadSet, LogOut, firestore } from '../../firebase';
 import { ProgressBar, VideoList, AlertNote } from '../../Components'
-import { Feather } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons';
 
 export default function MedicalHome({ navigation, progress, Log, Exit, credentials }) {
   const [done, setDone] = useState(true);
@@ -64,10 +64,10 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
     [loading, setLoading] = useState(null);
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
 
-  const setDoctor = () =>{
-    firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get().then(doc=>doc.exists)?(
+  const setDoctor = () => {
+    firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
       null
-    ):(
+    ) : (
       firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).set(credentials)
     )
   }
@@ -80,14 +80,16 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
     LoadSet(setLoad);
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     // if()
   }, [])
 
   return (
 
     <View style={styles.contain}>
+
       <AlertNote modalVisible={display} setModalVisible={setDisplayModal} msg="Hey doc why not add your first video" />
+
       {/*---------------------------Header--------------------------*/}
 
       <View style={{ flexDirection: "row" }}>
@@ -132,9 +134,10 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
                 <Text style={styles.temp_text}> {initial} </Text>
               </View>
             )}
+
           </TouchableOpacity>
-          <Pressable onPress={()=>navigation.navigate("update")} >
-            <Feather name="edit" size={24} color="#F47066" style={{left:120, top:-20}}/>
+          <Pressable onPress={() => navigation.navigate("update")} >
+            <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
           </Pressable>
         </View>
       </View>
@@ -152,6 +155,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
             <VideoList videos={videos} VideoScreen={VideoScreen} />
           </View>
         </Card>
+
       </ScrollView>
       <TouchableOpacity
         style={styles.btnUpload} onPress={() => { navigation.navigate("Upload"); }} >
