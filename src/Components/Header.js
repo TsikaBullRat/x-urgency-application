@@ -33,12 +33,11 @@ export default function Header({ done, navigation }) {
 
     <View style={styles.contain}>
       <View style={{
-        width: 370,
+        width: 335,
         marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
+        justifyContent: 'space-between'}}>
 
         <Pressable onPress={() => { navigation.navigate('EmergencyContacts') }}>
 
@@ -55,9 +54,7 @@ export default function Header({ done, navigation }) {
         </Pressable>
 
         <Pressable onPress={LogOut} >
-
           <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-
         </Pressable>
       </View>
 
@@ -65,26 +62,28 @@ export default function Header({ done, navigation }) {
 
       <View style={{
         flexDirection: 'row',
-        width: 380,
-        marginLeft: -12,
-        marginTop: 20,
+        width: 335,
+        marginTop:45,
         alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
+        justifyContent: 'space-between'}}>
 
-        <View>
+        <View style={{top:-20}}>
           <Text style={styles.header}> WHAT'S YOUR</Text>
           <Text style={styles.header}> EMERGENCY ?</Text>
         </View>
 
-        <View style={styles.avatar}> {image ? (
-          <Avatar rounded source={{ uri: image, }} size="medium" />) : (
+        <View style={styles.avatar}> 
+        {image ? (
+          <View>
+          <Avatar rounded source={{ uri: image, }} size="medium" />
+          </View>
+          ) : (
           <View style={styles.temp}>
             <Text style={styles.temp_text}> {initial} </Text>
           </View>
         )}
-
         </View>
+
       </View>
     </View>
   )
@@ -104,15 +103,12 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    justifyContent: 'flex-start',
     color: '#F96056',
     fontSize: 30,
   },
 
   avatar: {
-    marginBottom: 80,
-    paddingRight: 50,
-
+    marginTop: -80,
   },
 
   temp: {

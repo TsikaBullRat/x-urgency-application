@@ -13,18 +13,18 @@ export const VideoList = ({ videos, VideoScreen }) => {
   const [status, setStatus] = useState({});
   const ref = useRef(null);
 
-  return videos ? videos.map((vid) => (<View style={{ width: 380, alignItems: "center" }} key={vid.id}>
+  return videos ? videos.map((vid) => (<View style={{ width: 335, alignItems: "center" }} key={vid.id}>
 
     <Card
       style={{
         marginTop: 15,
-        width: 380,
+        width: 335,
         height: 245,
         alignItems: "center",
         backgroundColor: "#FAFAFA",
       }}>
 
-      <TouchableOpacity style={{ width: 380 }} onPress={() => VideoScreen(vid)}>
+      <TouchableOpacity style={{ width: 335 }} onPress={() => VideoScreen(vid)}>
         <Video ref={ref} source={{ uri: vid.url }} resizeMode="stretch" isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
           style={{
             width: "100%",

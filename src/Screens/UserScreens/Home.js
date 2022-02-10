@@ -32,13 +32,13 @@ export default function Home({ navigation, Exit }) {
         <Header Exit={Exit} />
       </View>
 
-      <View style={{ width: 380 }}>
+      <View style={{ width: 335, alignItems:'center' }}>
         <Menu list={videos} setVids={setLoad} />
       </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
 
-      <ScrollView style={{ height: 580, width: 380, }} vertical={true} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
         <Card style={styles.menu2}>
           <View>
             <VideoList videos={videos} VideoScreen={VideoScreen} />
@@ -85,13 +85,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 },
     shadowOpacity: 0.4,
     elevation: 1,
-  },
-
-  menu: {
-    flexDirection: "row",
-    width: 320,
-    marginTop: 20,
-    borderRadius: 15,
   },
 
   menu2: {
