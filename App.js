@@ -22,7 +22,7 @@ export default function App() {
 
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
-  const [done, setDone ] = useState(true)
+  const [done, setDone] = useState(true)
   const [check1, setCheck1] = useState(true)
   const [check2, setCheck2] = useState(true)
 
@@ -64,11 +64,11 @@ export default function App() {
       <KeyboardAwareScrollView>
         <Stack.Navigator>
 
-          <Stack.Screen name= 'upload' component={Upload} />
+          <Stack.Screen name='upload' component={Upload} />
 
-          <Stack.Screen name= 'uploadVideo' component={UploadVideo} />
-           
-          {/* {check1 ? (
+          <Stack.Screen name='uploadVideo' component={UploadVideo} />
+
+          {check1 ? (
             id ? (
               check2 ? (
                 doctor ? (
@@ -84,7 +84,7 @@ export default function App() {
             )
           ) : (
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )} */}
+          )}
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
