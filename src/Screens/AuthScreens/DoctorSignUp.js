@@ -319,6 +319,7 @@ const styles = StyleSheet.create({
     marginTop: 35,
     borderWidth: 1,
     borderColor: '#F47066',
+    opacity:0.8
   },
 
   signIn: {
