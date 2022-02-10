@@ -32,13 +32,12 @@ export default function Header({ done, navigation }) {
   return (
 
     <View style={styles.contain}>
-
       <View style={{
-        width: 370, marginTop: 10,
+        width: 335,
+        marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
+        justifyContent: 'space-between'}}>
 
         <Pressable onPress={() => { navigation.navigate('EmergencyContacts') }}>
 
@@ -50,13 +49,12 @@ export default function Header({ done, navigation }) {
               <Text>Call</Text>
               <Text>Now</Text>
             </View>
+
           </View>
         </Pressable>
 
         <Pressable onPress={LogOut} >
-
           <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-
         </Pressable>
       </View>
 
@@ -64,31 +62,28 @@ export default function Header({ done, navigation }) {
 
       <View style={{
         flexDirection: 'row',
-        width: 380,
-        marginLeft: -12,
-        marginTop: 20,
+        width: 335,
+        marginTop:45,
         alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
+        justifyContent: 'space-between'}}>
 
-        <View>
-
+        <View style={{top:-20}}>
           <Text style={styles.header}> WHAT'S YOUR</Text>
           <Text style={styles.header}> EMERGENCY ?</Text>
-
         </View>
 
-        <View> {image ? (
-          <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />) : (
+        <View style={styles.avatar}> 
+        {image ? (
+          <View>
+          <Avatar rounded source={{ uri: image, }} size="medium" />
+          </View>
+          ) : (
           <View style={styles.temp}>
             <Text style={styles.temp_text}> {initial} </Text>
           </View>
         )}
-          <Badge
-            status="success"
-            containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
-
         </View>
+
       </View>
     </View>
   )
@@ -103,27 +98,17 @@ const styles = StyleSheet.create({
   },
 
   logoutIMG: {
-    width: 15,
-    height: 15,
+    width: 20,
+    height: 20,
   },
 
   header: {
-
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
     color: '#F96056',
-    fontSize: 28,
+    fontSize: 30,
   },
 
   avatar: {
-    borderRadius: 50,
-    marginTop: 80,
-    borderBottomWidth: 3,
-    borderColor: 'turquoise',
-    shadowColor: 'grey',
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-    elevation: 1,
+    marginTop: -80,
   },
 
   temp: {

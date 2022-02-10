@@ -14,18 +14,11 @@
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView, Image, Pressable } from 'react-native';
 import { Card } from 'react-native-paper';
-import Stroke from '../images/stokeIc.png';
-import heart from '../images/heartAttack.png';
-import bleeding from '../images/bleed.png'
-import epilepsy from '../images/Epilepsy.png'
-import cpr from '../images/cprIcon.png'
-import choking from '../images/choke.png'
-import drown from '../images/drown.png'
-import burns from '../images/burn.png'
 
-export default function Header({ list, setVids }) {
+export default function Header({ list, setVids, navigation }) {
 
-  const Sort = (match) => { setVids(list.filter(item => item.tag === match)) }
+  const Sort = (match) => { setVids(list.filter(item => item.tag === match)) 
+  navigation.navigate('PlayVideo')}
 
   return (
 
@@ -35,80 +28,65 @@ export default function Header({ list, setVids }) {
 
       <ScrollView
 
-        style={{ maxWidth: 380 }} horizontal={true} showsHorizontalScrollIndicator={false}>
+        style={{ width: 350 }} horizontal={true} showsHorizontalScrollIndicator={false}>
 
-        <View style={{ width: 380, flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={{ width: 705, flexDirection: 'row', alignItems:'center', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
-            <View>
-              <Card style={{ width: 50, height: 70, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }} >
-                <Image style={styles.strokeMenu} source={Stroke} />
-                <Text style={{ fontSize: 12 }}> Stroke </Text>
+              <Card style={styles.menuCard}>
+                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+                <Text style={{ fontSize: 12, paddingTop:8 }}> {`Stroke`} </Text>
               </Card>
-            </View>
           </Pressable>
 
           <Pressable onPress={() => Sort("heartattack")}>
-            <View>
-              <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', marginTop: 7 }}>
-                <Image style={styles.heartMenu} source={heart} />
-                <Text style={{ paddingLeft: 10, fontSize: 12 }}> Heart-Attack </Text>
-              </Card>
-            </View>
+              <Card style={styles.menuCard}>
+                <Image style={styles.menuIcons} source={require('../images/Heart-AttackIcon.png')} />
+                <Text style={{ fontSize: 12,}}> {`Heart Attack`} </Text>
+                </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("epilepsy")}>
-            <View>
-              <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-                <Image style={styles.epilepsyMenu} source={epilepsy} />
-                <Text style={{ fontSize: 12 }}> Epilepsy </Text>
-              </Card>
-            </View>
+              <Card style={styles.menuCard}>
+                <Image style={styles.menuIcons} source={require('../images/EpilepsyIcon.png')} />
+                <Text style={{ fontSize: 12, paddingTop:8 }}> {`Epilepsy`} </Text>
+                </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("cpr")}>
-            <View>
-              <Card style={{ width: 50, height: 70, marginLeft: 40, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-                <Image style={styles.cprMenu} source={cpr} />
-                <Text style={{ paddingTop: 8, fontSize: 12 }}> CPR </Text>
-              </Card>
-            </View>
+              <Card style={styles.menuCard}>
+                <Image style={styles.menuIcons} source={require('../images/CPRIcon.png')} />
+                <Text style={{ fontSize: 12, paddingTop:8 }}> {`CPR`} </Text>
+                </Card>
           </Pressable>
-        </View>
 
-        <View style={{ width: 380, flexDirection: 'row', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("bleeding")}>
-            <View>
-              <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-                <Image style={styles.bloodMenu} source={bleeding} />
-              </Card>
-              <Text style={{ paddingLeft: 30, fontSize: 12, paddingBottom: 50 }}> Bleeding </Text>
-            </View>
+              <Card style={styles.menuCard}>
+                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+              <Text style={{fontSize: 12, paddingTop:8}}>{`Choking`} </Text>
+                </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("choking")}>
-            <View>
-              <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-                <Image style={styles.conImg} source={choking} />
-                <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}> Choking </Text>
+              <Card style={styles.menuCard}>
+                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+                <Text style={{ fontSize: 12, paddingTop:8, }}> {`Choking`} </Text>
               </Card>
-            </View>
           </Pressable>
 
           <Pressable onPress={() => Sort("drowning")}>
-            <View>
-              <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', textAlign: 'center', marginTop: 7 }}>
-                <Image style={styles.drown} source={drown} />
-                <Text style={{ paddingLeft: 7, paddingTop: 3, fontSize: 12 }}> Drowning </Text>
+              <Card style={styles.menuCard}>
+                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+                <Text style={{ fontSize: 12, paddingTop:8 }}> {`Drowning`} </Text>
               </Card>
-            </View>
           </Pressable>
 
           <Pressable onPress={() => Sort("burn")}>
-            <Card style={{ width: 50, height: 70, marginLeft: 33, borderRadius: 15, alignItems: 'center', alignText: 'center', marginTop: 7 }}>
-              <Image style={styles.burn} source={burns} />
-              <Text style={{ paddingLeft: 5, paddingTop: 8, fontSize: 12 }}> Burns </Text>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/BurnsIcon.png')} />
+              <Text style={{ fontSize: 12, paddingTop:8, }}> {`Burns`} </Text>
             </Card>
           </Pressable>
+          
         </View>
 
       </ScrollView>
@@ -119,7 +97,7 @@ export default function Header({ list, setVids }) {
 
 const styles = StyleSheet.create({
   contain: {
-    width: 380,
+    width: 375,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff'
@@ -129,70 +107,25 @@ const styles = StyleSheet.create({
     width: 300,
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    marginTop: 20,
     borderRadius: 15,
   },
 
-  strokeMenu: {
+  menuIcons: {
     height: 30,
     width: 30,
+    alignSelf:'center',
     borderRadius: 15,
-    marginTop: 10,
+    marginTop: 2,
     color: '#fff',
   },
 
-  heartMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginTop: 5,
-    marginLeft: 10
-  },
-
-  epilepsyMenu: {
-    height: 50,
-    width: 50,
-    borderRadius: 15,
-    marginLeft: 6
-  },
-
-  cprMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 5,
-    marginTop: 8
-  },
-
-  bloodMenu: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginTop: 8
-  },
-
-  conImg: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 15,
-    marginTop: 8
-  },
-
-  drown: {
-    height: 40,
-    width: 40,
-    borderRadius: 15,
-    marginLeft: 15,
-    marginTop: 8,
-  },
-
-  burn: {
-    height: 35,
-    width: 35,
-    borderRadius: 15,
-    marginLeft: 5,
-    marginTop: 8
+menuCard: { 
+  width: 65, 
+  height: 65, 
+  borderRadius: 5, 
+  alignItems: 'center', 
+  textAlign: 'center', 
+  backgroundColor: '#f96056' 
   },
 
 })

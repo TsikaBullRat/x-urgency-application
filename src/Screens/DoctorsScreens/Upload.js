@@ -27,6 +27,7 @@ export default function Upload({ navigation, Log }) {
     [title, setTitle] = useState(),
     [description, setDescpription] = useState(),
     [selectedImage, setSelectedImage] = useState(null),
+
     openImagePickerAsync = async () => {
       let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
@@ -41,15 +42,24 @@ export default function Upload({ navigation, Log }) {
       }
 
       setSelectedImage({ localUri: pickerResult.uri });
-
     },
+
     Run = () => {
-      selectedImage ? (
-        UploadVideo(selectedImage.localUri, title, description, selectedValue, Log),
-        navigation.goBack()
-      ) : null
+      selectedImage ? (UploadVideo(
+            selectedImage.localUri,
+            title,
+            description,
+            selectedValue,
+            Log
+          ),
+          
+          navigation.goBack(),      
+          alert('Uploaded Video')
+      ) : (null)    
 
+            
     },
+
     openCamera = async () => {
       let result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Videos,
@@ -68,15 +78,16 @@ export default function Upload({ navigation, Log }) {
 
       <View style={{ flexDirection: "row" }}>
         <TextInput
-          style={[styles.txtField, styles.shadowProp]}
+          style={styles.txtField}
           name="username"
           placeholder="Title"
           onChangeText={text => setTitle(text)} />
       </View>
 
+    <View>
       <Picker
         selectedValue={selectedValue}
-        style={[styles.picker, styles.shadowProp]}
+        style={styles.picker}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
         <Picker.Item label="Stroke" value="Stroke" />
         <Picker.Item label="Heart-Attack" value="Heart-Attack" />
@@ -87,10 +98,11 @@ export default function Upload({ navigation, Log }) {
         <Picker.Item label="Java" value="Java" />
         <Picker.Item label="Burns" value="Burns" />
       </Picker>
+      </View>
 
       <View style={{ flexDirection: "row" }}>
         <TextInput
-          style={[styles.txtField2, styles.shadowProp]}
+          style={styles.txtField}
           name="password"
           placeholder="Description"
           onChangeText={text => setDescpription(text)} />
@@ -99,8 +111,8 @@ export default function Upload({ navigation, Log }) {
       {selectedImage ? (
         <Video ref={ref} source={{ uri: selectedImage.localUri }} resizeMode="stretch" isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
           style={{
-            width: "100%",
-            height: 165,
+            width: 380,
+            height: 220,
             marginTop: 5,
             alignSelf: "center",
           }} />
@@ -117,13 +129,13 @@ export default function Upload({ navigation, Log }) {
         </Pressable>
       )}
 
-      <TouchableOpacity onPress={() => { navigation.navigate('UploadVideo') }}>
+      <TouchableOpacity onPress={() => {navigation.navigate('uploadVideo')}}>
         <View style={styles.iconContainer}>
           <Icon name="camera" color='white' size={30} />
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={openCamera} style={styles.button}>
+      <TouchableOpacity onPress={Run} style={styles.button}>
         <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>
 
@@ -150,24 +162,13 @@ const styles = StyleSheet.create({
   txtField: {
     width: 330,
     height: 60,
+    marginTop: 20, 
     borderRadius: 10,
     backgroundColor: 'white',
     paddingLeft: 20,
     borderWidth: 1,
-    color: "lightgrey",
+    borderColor: "#F47066",
     marginBottom: 20,
-    fontSize: 16,
-  },
-
-  txtField2: {
-    width: 330,
-    height: 60,
-    borderRadius: 10,
-    backgroundColor: 'white',
-    paddingLeft: 20,
-    borderWidth: 1,
-    color: "lightgrey",
-    marginTop: 10,
     fontSize: 16,
   },
 
@@ -179,6 +180,7 @@ const styles = StyleSheet.create({
     paddingLeft: 100,
     marginTop: 10,
     borderWidth: 1,
+    borderColor: "#F47066"
   },
 
   icon: {
@@ -233,13 +235,12 @@ const styles = StyleSheet.create({
     marginLeft: -8,
   },
 
-  picker: {
-    borderWidth: 1,
-    marginTop: -10,
+  picker: { 
     width: 330,
-    height: 70,
+    height: 60,
+    margin: 10,
     borderRadius: 10,
-    color: "#000",
+    borderColor: "#F47066",
     paddingLeft: 20,
   },
 
