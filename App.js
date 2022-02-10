@@ -16,9 +16,12 @@ import UploadVideo from './src/Screens/DoctorsScreens/UploadVideo'
 import Home from './src/Screens/UserScreens/Home'
 import PlayVideo from './src/Screens/UserScreens/PlayVideo'
 
+
 const Stack = createNativeStackNavigator()
 
 export default function App() {
+  
+
 
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
@@ -62,8 +65,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-        <Stack.Navigator>
-           
+         <Stack.Navigator> 
+
+         
           {check1 ? (
             id ? (
               check2 ? (
