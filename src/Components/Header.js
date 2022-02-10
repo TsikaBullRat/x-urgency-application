@@ -37,7 +37,8 @@ export default function Header({ done, navigation }) {
         marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'}}>
+        justifyContent: 'space-between'
+      }}>
 
         <Pressable onPress={() => { navigation.navigate('EmergencyContacts') }}>
 
@@ -63,25 +64,26 @@ export default function Header({ done, navigation }) {
       <View style={{
         flexDirection: 'row',
         width: 335,
-        marginTop:45,
+        marginTop: 45,
         alignItems: 'center',
-        justifyContent: 'space-between'}}>
+        justifyContent: 'space-between'
+      }}>
 
-        <View style={{top:-20}}>
+        <View style={{ top: -20 }}>
           <Text style={styles.header}> WHAT'S YOUR</Text>
           <Text style={styles.header}> EMERGENCY ?</Text>
         </View>
 
-        <View style={styles.avatar}> 
-        {image ? (
-          <View>
-          <Avatar rounded source={{ uri: image, }} size="medium" />
-          </View>
+        <View style={styles.avatar}>
+          {image ? (
+            <View>
+              <Avatar rounded source={{ uri: image, }} size="medium" />
+            </View>
           ) : (
-          <View style={styles.temp}>
-            <Text style={styles.temp_text}> {initial} </Text>
-          </View>
-        )}
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
         </View>
 
       </View>

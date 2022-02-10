@@ -17,8 +17,10 @@ import { Card } from 'react-native-paper';
 
 export default function Header({ list, setVids, navigation }) {
 
-  const Sort = (match) => { setVids(list.filter(item => item.tag === match)) 
-  navigation.navigate('PlayVideo')}
+  const Sort = (match) => {
+    setVids(list.filter(item => item.tag === match))
+    navigation.navigate('PlayVideo')
+  }
 
   return (
 
@@ -30,63 +32,63 @@ export default function Header({ list, setVids, navigation }) {
 
         style={{ width: 350 }} horizontal={true} showsHorizontalScrollIndicator={false}>
 
-        <View style={{ width: 705, flexDirection: 'row', alignItems:'center', justifyContent: 'space-around' }}>
+        <View style={{ width: 705, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
-                <Text style={{ fontSize: 12, paddingTop:8 }}> {`Stroke`} </Text>
-              </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+              <Text style={{ fontSize: 12, paddingTop: 8 }}> {`Stroke`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("heartattack")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/Heart-AttackIcon.png')} />
-                <Text style={{ fontSize: 12,}}> {`Heart Attack`} </Text>
-                </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/Heart-AttackIcon.png')} />
+              <Text style={{ fontSize: 12, }}> {`Heart Attack`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("epilepsy")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/EpilepsyIcon.png')} />
-                <Text style={{ fontSize: 12, paddingTop:8 }}> {`Epilepsy`} </Text>
-                </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/EpilepsyIcon.png')} />
+              <Text style={{ fontSize: 12, paddingTop: 8 }}> {`Epilepsy`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("cpr")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/CPRIcon.png')} />
-                <Text style={{ fontSize: 12, paddingTop:8 }}> {`CPR`} </Text>
-                </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/CPRIcon.png')} />
+              <Text style={{ fontSize: 12, paddingTop: 8 }}> {`CPR`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("bleeding")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
-              <Text style={{fontSize: 12, paddingTop:8}}>{`Choking`} </Text>
-                </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+              <Text style={{ fontSize: 12, paddingTop: 8 }}>{`Choking`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("choking")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
-                <Text style={{ fontSize: 12, paddingTop:8, }}> {`Choking`} </Text>
-              </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+              <Text style={{ fontSize: 12, paddingTop: 8, }}> {`Choking`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("drowning")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
-                <Text style={{ fontSize: 12, paddingTop:8 }}> {`Drowning`} </Text>
-              </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+              <Text style={{ fontSize: 12, paddingTop: 8 }}> {`Drowning`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("burn")}>
             <Card style={styles.menuCard}>
               <Image style={styles.menuIcons} source={require('../images/BurnsIcon.png')} />
-              <Text style={{ fontSize: 12, paddingTop:8, }}> {`Burns`} </Text>
+              <Text style={{ fontSize: 12, paddingTop: 8, }}> {`Burns`} </Text>
             </Card>
           </Pressable>
-          
+
         </View>
 
       </ScrollView>
@@ -113,19 +115,19 @@ const styles = StyleSheet.create({
   menuIcons: {
     height: 30,
     width: 30,
-    alignSelf:'center',
+    alignSelf: 'center',
     borderRadius: 15,
     marginTop: 2,
     color: '#fff',
   },
 
-menuCard: { 
-  width: 65, 
-  height: 65, 
-  borderRadius: 5, 
-  alignItems: 'center', 
-  textAlign: 'center', 
-  backgroundColor: '#f96056' 
+  menuCard: {
+    width: 65,
+    height: 65,
+    borderRadius: 5,
+    alignItems: 'center',
+    textAlign: 'center',
+    backgroundColor: '#f96056'
   },
 
 })

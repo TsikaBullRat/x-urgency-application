@@ -32,7 +32,7 @@ export default function Home({ navigation, Exit }) {
         <Header Exit={Exit} />
       </View>
 
-      <View style={{ width: 335, alignItems:'center' }}>
+      <View style={{ width: 335, alignItems: 'center' }}>
         <Menu list={videos} setVids={setLoad} />
       </View>
 
