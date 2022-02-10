@@ -196,8 +196,8 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
 
 const styles = StyleSheet.create({
   contain: {
+     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#fff',
   },
 

@@ -136,8 +136,8 @@ export default function SignUp({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
-    height: 850,
     backgroundColor: '#fff',
   },
 

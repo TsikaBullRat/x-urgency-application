@@ -40,7 +40,6 @@ export default function App() {
     try {
       firestore.collection("Users").doc(id).get().then(doc => setDoctor(doc.data().doctor))
     }
-
     catch (err) {
       console.log(err)
     }
@@ -66,13 +65,13 @@ export default function App() {
       <KeyboardAwareScrollView>
          <Stack.Navigator>
 
-          <Stack.Screen name= 'home' component={Home} />
+           {/*<Stack.Screen name= 'signUp' component={SignIn} />
 
-          <Stack.Screen name= 'PlayVideo' component={PlayVideo} /> 
+          <Stack.Screen name= 'home' component={Home} /> 
 
-          <Stack.Screen name= 'uploadVideo' component={UploadVideo} />
+          <Stack.Screen name= 'uploadVideo' component={UploadVideo} /> */}
            
-          {/* {check1 ? (
+          {check1 ? (
             id ? (
               check2 ? (
                 doctor ? (
@@ -88,7 +87,7 @@ export default function App() {
             )
           ) : (
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )} */}
+          )}
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>

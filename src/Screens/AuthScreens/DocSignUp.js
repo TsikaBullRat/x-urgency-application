@@ -129,9 +129,9 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
+     flex: 1,
+    alignItems: 'center',
     backgroundColor: '#fff',
-    height: 850
   },
 
   card: {
