@@ -31,7 +31,6 @@ export default function App() {
     catch (err) {
       console.log(err)
     }
-
   }, [id])
 
   useEffect(() => {
@@ -52,13 +51,6 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
          <Stack.Navigator>
-
-           {/*<Stack.Screen name= 'UpdateProfile' component={UpdateProfile} />
-
-          <Stack.Screen name= 'home' component={Home} /> 
-
-          <Stack.Screen name= 'uploadVideo' component={UploadVideo} /> */}
-           
           {check1 ? (
             id ? (
               check2 ? (

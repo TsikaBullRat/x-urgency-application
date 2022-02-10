@@ -11,30 +11,21 @@ export const DoctorsScreens = ({ navigation, route }) => {
     const Exit = () => {
         navigation.navigate("auth")
     }
-
     const [percentage, setPerc] = useState(null)
     const [match, setMatch] = useState(null)
 
-    useEffect(()=>{
-        console.log(<UpdateProfile/>)
-    }, )
     return (
-        // <UpdateProfile/>
-        <Stack.Navigator>
-
+        <Stack.Navigator initialRouteName='Update'>
             <Stack.Screen name="DocHome" options={{ headerShown: false }} >
                 {props => <MedicalHome {...props} Log={setPerc} progress={percentage} setMatch={setMatch} Exit={Exit} credentials={credentials} />}
             </Stack.Screen>
-
             <Stack.Screen name="Upload" options={{ headerShown: false }} >
                 {props => <Upload {...props} Log={setPerc} />}
             </Stack.Screen>
-
+            <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false, headerBackVisible: false  }} />
             <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
             <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
-            <Stack.Screen name="update" component={UpdateProfile} options={{ headerShown: false }} />
-
         </Stack.Navigator>
     )
 }
