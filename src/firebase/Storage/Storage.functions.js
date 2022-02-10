@@ -154,6 +154,7 @@ const LoadSet = (Load, query) => {
                     getLink = itemRef.getDownloadURL().then(url => url)
                     let link = await getLink
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
+                    console.log(find)
                     let name = find.title
                     let match = find.ref
                     let owner = await info.doc(match).get().then(doc => doc.data().username)

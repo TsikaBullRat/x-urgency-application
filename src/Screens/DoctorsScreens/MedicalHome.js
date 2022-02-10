@@ -41,41 +41,39 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
     Logout = () => {
       LogOut()
       Exit()
+    },
+    VideoNotifier = () =>{
+      let today = new Date()
+      firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
+        .then(query=>{
+          var data = []
+          query.forEach(doc=>{
+            data = [...data, doc.data().added.toDate() ]
+            return data
+          })
+          return data
+        })
+        .then(dateList=>{
+          console.log(dateList)
+          dateList = dateList.sort((a,b)=>b-a)
+          console.log(dateList)
+          // if(dateList.g)
+        })
+        // .then(dateList=>{
+        //   console.log(dateList)
+        //   dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
+        //   return dateList
+        // })
+        // .then(dateList=>{
+        //   console.log(dateList)
+        // })
     };
-    // VideoNotifier = () =>{
-    //   let today = new Date()
-    //   firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
-    //     .then(query=>{
-    //       var data = []
-    //       query.forEach(doc=>{
-    //         data = [...data, doc.data().added.toDate() ]
-    //         return data
-    //       })
-    //       return data
-    //     })
-    //     .then(dateList=>{
-    //       dateList = dateList.filter(item=>item.getFullYear() === today.getFullYear())
-    //       if(true){
-    //         break
-    //       }else{
-    //         return dateList
-    //       }
-    //     })
-    //     .then(dateList=>{
-    //       console.log(dateList)
-    //       dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
-    //       return dateList
-    //     })
-    //     .then(dateList=>{
-    //       console.log(dateList)
-    //     })
-    // };
 
   const [image, setImage] = useState()
   const [initial, setInitial] = useState()
   const getProfile = async () => {
     let name
-    setImage(auth.currentUser.photoURL)
+    // setImage(auth.currentUser.photoURL)
     name = auth.currentUser.displayName
     setInitial(name.substring(0, 1))
   }
@@ -108,9 +106,9 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
     LoadSet(setLoad);
   }, []);
 
-  // useEffect(()=>{
-  //   VideoNotifier()
-  // }, [])
+  useEffect(()=>{
+    VideoNotifier()
+  }, [])
 
   return (
 

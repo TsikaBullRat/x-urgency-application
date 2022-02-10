@@ -18,7 +18,6 @@ export default function App() {
 
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
-  // const [done, setDone ] = useState(false)
   const [check1, setCheck1] = useState(false)
   const [check2, setCheck2] = useState(false)
 
@@ -79,6 +78,7 @@ export default function App() {
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
+    // <UpdateProfile/>
   );
 }
 

@@ -15,7 +15,11 @@ export const DoctorsScreens = ({ navigation, route }) => {
     const [percentage, setPerc] = useState(null)
     const [match, setMatch] = useState(null)
 
+    useEffect(()=>{
+        console.log(<UpdateProfile/>)
+    }, )
     return (
+        // <UpdateProfile/>
         <Stack.Navigator>
 
             <Stack.Screen name="DocHome" options={{ headerShown: false }} >
