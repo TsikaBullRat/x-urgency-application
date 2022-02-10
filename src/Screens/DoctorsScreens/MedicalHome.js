@@ -42,34 +42,34 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
       LogOut()
       Exit()
     };
-    // VideoNotifier = () =>{
-    //   let today = new Date()
-    //   firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
-    //     .then(query=>{
-    //       var data = []
-    //       query.forEach(doc=>{
-    //         data = [...data, doc.data().added.toDate() ]
-    //         return data
-    //       })
-    //       return data
-    //     })
-    //     .then(dateList=>{
-    //       dateList = dateList.filter(item=>item.getFullYear() === today.getFullYear())
-    //       if(true){
-    //         break
-    //       }else{
-    //         return dateList
-    //       }
-    //     })
-    //     .then(dateList=>{
-    //       console.log(dateList)
-    //       dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
-    //       return dateList
-    //     })
-    //     .then(dateList=>{
-    //       console.log(dateList)
-    //     })
-    // };
+  // VideoNotifier = () =>{
+  //   let today = new Date()
+  //   firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
+  //     .then(query=>{
+  //       var data = []
+  //       query.forEach(doc=>{
+  //         data = [...data, doc.data().added.toDate() ]
+  //         return data
+  //       })
+  //       return data
+  //     })
+  //     .then(dateList=>{
+  //       dateList = dateList.filter(item=>item.getFullYear() === today.getFullYear())
+  //       if(true){
+  //         break
+  //       }else{
+  //         return dateList
+  //       }
+  //     })
+  //     .then(dateList=>{
+  //       console.log(dateList)
+  //       dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
+  //       return dateList
+  //     })
+  //     .then(dateList=>{
+  //       console.log(dateList)
+  //     })
+  // };
 
   const [image, setImage] = useState()
   const [initial, setInitial] = useState()

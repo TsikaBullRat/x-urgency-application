@@ -32,7 +32,6 @@ export default function Header({ done, navigation }) {
   return (
 
     <View style={styles.contain}>
-
       <View style={{
         width: 335,
         marginTop: 10,
@@ -50,6 +49,7 @@ export default function Header({ done, navigation }) {
               <Text>Call</Text>
               <Text>Now</Text>
             </View>
+
           </View>
         </Pressable>
 

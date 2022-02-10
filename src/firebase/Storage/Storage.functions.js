@@ -69,9 +69,9 @@ const LoadSet = (Load, query) => {
         if (today.getFullYear() === date.getFullYear()) {
             if (today.getMonth() === date.getMonth()) {
                 if (date.getDay() !== today.getDay()) {
-                    if(today.getDate() - date.getDate() >= 7){
+                    if (today.getDate() - date.getDate() >= 7) {
                         frame = ((today.getDate() - date.getDate()) / 7) !== 1 ? ((today.getDate() - date.getDate()) / 7) + " weeks ago." : ((today.getDate() - date.getDate()) / 7) + " weeks ago."
-                    }else if (today.getDate() === date.getDate()) {
+                    } else if (today.getDate() === date.getDate()) {
                         if (today.getHours() === date.getHours()) {
                             if (today.getMinutes() === date.getMinutes()) {
                                 if (today.getSeconds() === date.getSeconds()) {
@@ -105,7 +105,7 @@ const LoadSet = (Load, query) => {
         }
         return frame
     }
-    
+
 
     query ? (
         storage.ref().child('/Videos').listAll()
