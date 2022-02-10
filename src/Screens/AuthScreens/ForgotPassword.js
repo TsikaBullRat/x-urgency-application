@@ -61,7 +61,7 @@ export default function ForgotPassword({ navigation }) {
 
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
-        color: '#51535D' }}>{`Reset Password`}</Text>
+        color: '#F47066' }}>{`Reset Password`}</Text>
       </View>
 
       <View style={{ alignItems: 'center' }}>

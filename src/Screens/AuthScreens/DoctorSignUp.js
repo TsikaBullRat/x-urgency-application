@@ -126,7 +126,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
-        color: '#51535D' }}>{`Doctor SignUp`}</Text>
+        color: '#F47066' }}>{`Doctor SignUp`}</Text>
       </View>
 
       {visibleStatusBar ? (
