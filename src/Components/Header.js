@@ -63,8 +63,7 @@ export default function Header({ done, navigation }) {
 
       <View style={{
         flexDirection: 'row',
-        width: 335,
-        marginTop: 45,
+        width: 340,
         alignItems: 'center',
         justifyContent: 'space-between'
       }}>
@@ -110,7 +109,8 @@ const styles = StyleSheet.create({
   },
 
   avatar: {
-    marginTop: -80,
+    top: -60,
+    left: -3
   },
 
   temp: {

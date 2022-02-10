@@ -108,8 +108,8 @@ export default function ForgotPassword({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+     flex: 1,
     alignItems: 'center',
-    height: 979,
     backgroundColor: '#fff',
   },
 

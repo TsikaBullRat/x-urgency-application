@@ -336,9 +336,9 @@ export default function UploadVideo({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    flex: 1,
     alignItems: 'center',
-    height: 850
+    backgroundColor: '#fff',
   },
 
   imgContainer: {

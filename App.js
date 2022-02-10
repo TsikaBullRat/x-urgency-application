@@ -39,7 +39,6 @@ export default function App() {
     try {
       firestore.collection("Users").doc(id).get().then(doc => setDoctor(doc.data().doctor))
     }
-
     catch (err) {
       console.log(err)
     }
@@ -63,8 +62,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-        <Stack.Navigator>
+         <Stack.Navigator>
 
+           {/*<Stack.Screen name= 'signUp' component={SignIn} />
+
+          <Stack.Screen name= 'home' component={Home} /> 
+
+          <Stack.Screen name= 'uploadVideo' component={UploadVideo} /> */}
+           
           {check1 ? (
             id ? (
               check2 ? (

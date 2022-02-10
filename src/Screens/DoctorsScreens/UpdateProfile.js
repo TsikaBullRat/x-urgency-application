@@ -184,8 +184,9 @@ export const UpdateProfile = () => {
 
 const styles = StyleSheet.create({
     body: {
-        alignItems: "center",
-        justifyContent: "center"
+        flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#fff',
     },
     button: {
         height: 50,

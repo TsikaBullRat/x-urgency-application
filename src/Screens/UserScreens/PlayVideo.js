@@ -107,14 +107,14 @@ export default function VideoScreen({ navigation, route }) {
   return (
 
     <View style={styles.contain}>
-      <View style={{ width: 315, marginLeft: 10, marginTop: 50 }}>
-        <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="contain" isLooping
-          style={{ borderRadius: 25, width: 315, height: 180, }} />
+      <View style={{ width: 335, marginTop: 50 }}>
+        <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping
+          style={{width: 335, height: 180, }} />
       </View>
 
       <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
-          <View style={{ marginTop: 15, alignItems: 'center', }}>
+          <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent:'space-between'}}>
             <View style={{ flexDirection: 'row', width: 315, alignItems: 'center', justifyContent: 'space-between', }}>
 
               <View>
@@ -246,13 +246,13 @@ export default function VideoScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   contain: {
+     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#fff',
   },
 
-  dropDown: {
-    //marginTop: 10,
+  descriptionContainer: {
+    width: 335
   },
 
   txtCards: {
