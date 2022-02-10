@@ -33,7 +33,7 @@ import { Feather } from '@expo/vector-icons';
 
 export default function MedicalHome({ navigation, progress, Log, Exit, credentials }) {
   const [done, setDone] = useState(true);
-  const [display, setDisplayModal] = useState(true)
+  const [display, setDisplayModal] = useState(false)
   const [videos, setLoad] = useState(null),
     VideoScreen = (data) => {
       navigation.navigate("PlayVideo", { data });
@@ -44,21 +44,24 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
     },
     VideoNotifier = () =>{
       let today = new Date()
-      firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
-        .then(query=>{
-          var data = []
-          query.forEach(doc=>{
-            data = [...data, doc.data().added.toDate() ]
-            return data
-          })
-          return data
-        })
-        .then(dateList=>{
-          console.log(dateList)
-          dateList = dateList.sort((a,b)=>b-a)
-          console.log(dateList)
+      if(today === auth.currentUser.metadata.creationTime){
+        setDisplayModal(true)
+      }
+      // firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
+      //   .then(query=>{
+      //     var data = []
+      //     query.forEach(doc=>{
+      //       data = [...data, doc.data().added.toDate() ]
+      //       return data
+      //     })
+      //     return data
+      //   })
+        // .then(dateList=>{
+        //   console.log(dateList)
+        //   dateList = dateList.sort((a,b)=>b-a)
+        //   console.log(dateList)
           // if(dateList.g)
-        })
+        // })
         // .then(dateList=>{
         //   console.log(dateList)
         //   dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
@@ -73,7 +76,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
   const [initial, setInitial] = useState()
   const getProfile = async () => {
     let name
-    // setImage(auth.currentUser.photoURL)
+    setImage(auth.currentUser.photoURL)
     name = auth.currentUser.displayName
     setInitial(name.substring(0, 1))
   }
@@ -162,7 +165,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
             )}
 
           </TouchableOpacity>
-          <Pressable onPress={() => navigation.navigate("update")} >
+          <Pressable onPress={() => navigation.navigate("Update")} >
             <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
           </Pressable>
         </View>
