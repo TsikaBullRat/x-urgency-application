@@ -53,8 +53,8 @@ export default function Home({ navigation, Exit }) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
-    height: 815,
     backgroundColor: '#fff',
   },
 
@@ -69,24 +69,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#F96056",
     paddingTop: 20,
-    borderBottomWidth: 3,
-    borderColor: "turquoise",
-    shadowColor: "grey",
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-    elevation: 1,
   },
 
   avatar: {
     width: 70,
     height: 70,
-    borderRadius: 50,
-    borderBottomWidth: 3,
-    borderColor: "turquoise",
-    shadowColor: "grey",
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-    elevation: 1,
+    borderRadius: 50,  
   },
 
   menu2: {

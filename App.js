@@ -7,17 +7,6 @@ import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile } from "./src/Screens";
 
-import SignIn from './src/Screens/AuthScreens/SignIn'
-import SignUp from './src/Screens/AuthScreens/SignUp'
-import ForgotPassword from './src/Screens/AuthScreens/ForgotPassword'
-
-import Doctor from './src/Screens/DoctorsScreens/Upload'
-import UploadVideo from './src/Screens/DoctorsScreens/UploadVideo'
-import Home from './src/Screens/UserScreens/Home'
-import PlayVideo from './src/Screens/UserScreens/PlayVideo'
-import EmergencyContacts from './src/Components/EmergencyContacts'
-
-
 const Stack = createNativeStackNavigator()
 
 export default function App() {

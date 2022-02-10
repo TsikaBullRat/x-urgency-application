@@ -49,6 +49,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt6(null)
       setPrompt7(null)
       setPrompt8(null)
+      setVisibleStatusBar(!visibleStatusBar)
     } else if (surname === "") {
       setPrompt1(null)
       setPrompt2("Please enter surname")
@@ -58,6 +59,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt6(null)
       setPrompt7(null)
       setPrompt8(null)
+      setVisibleStatusBar(!visibleStatusBar)
     } else if (contactdetails === "") {
       setPrompt1(null)
       setPrompt2(null)
@@ -67,6 +69,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt6(null)
       setPrompt7(null)
       setPrompt8(null)
+      setVisibleStatusBar(!visibleStatusBar)
     } else if (email === "") {
       setPrompt1(null)
       setPrompt2(null)
@@ -116,13 +119,14 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={90} color="#fff" />
+          <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
         <Text style={{ color: "#fff", fontSize: 28, marginLeft: 8 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: "bold", fontSize: 18, paddingLeft: 5 }}>  {`Doctor SignUp`} </Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
+        color: '#F47066' }}>{`Doctor SignUp`}</Text>
       </View>
 
       {visibleStatusBar ? (
@@ -191,7 +195,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
           </Card>
 
           <View style={{ alignItems: "center" }}>
-            <TouchableOpacity style={styles.signIn} onPress={() => { changeVisibilityStatusBar() }}>
+            <TouchableOpacity style={styles.signIn} onPress={() => setVisibleStatusBar(!visibleStatusBar)}>
               <Text style={{ color: "#fff" }}>{`NEXT`} </Text>
             </TouchableOpacity>
           </View>
@@ -256,14 +260,14 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
+     flex: 1,
+    alignItems: 'center',
     backgroundColor: '#fff',
-    height: 850
   },
 
   card: {
     backgroundColor: "#F47066",
-    width: 325,
+    width: 335,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -298,7 +302,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 285,
+    width: 315,
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -307,14 +311,25 @@ const styles = StyleSheet.create({
     borderColor: '#F47066',
   },
 
+  picker: {
+    width: 315,
+    height: 50,
+    borderRadius: 10,
+    marginLeft: 2,
+    marginTop: 35,
+    borderWidth: 1,
+    borderColor: '#F47066',
+    opacity:0.8
+  },
+
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 280,
+    margin: 40,
     borderRadius: 10,
-    backgroundColor: "#F47066",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#F47066',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
 });

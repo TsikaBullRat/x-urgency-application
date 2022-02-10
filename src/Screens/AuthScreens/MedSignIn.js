@@ -37,26 +37,26 @@ export default function SignIn({ navigation, setDone }) {
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={90} color="#fff" />
+          <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{`Medical LogIn`}</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 36 }}>{`Medical SignIn`}</Text>
       </View>
-
+ 
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={22} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
             <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 4 }} />
             <TextInput style={styles.txtField}
               name='password' placeholder='Password'
               secureTextEntry={true}
@@ -88,12 +88,14 @@ export default function SignIn({ navigation, setDone }) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center'
+     flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#fff',
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: 325,
+    width: 335,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 285,
+    width: 315,
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 20,
+    marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',

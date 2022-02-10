@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Image, Pressable, Touch } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
@@ -45,7 +45,7 @@ export default function Header({ Exit, navigation }) {
         alignItems: 'center',
         justifyContent: 'space-between'}}>
 
-        <Pressable onPress={() => { navigation.navigate('EmergencyContacts') }}>
+        <Pressable onPress={() => navigation.navigate('EmergencyContacts')}>
 
           <View style={{ flexDirection: 'row' }}>
             <Image source={require('../../img/siren.jpg')}
@@ -68,8 +68,7 @@ export default function Header({ Exit, navigation }) {
 
       <View style={{
         flexDirection: 'row',
-        width: 335,
-        marginTop:45,
+        width: 340,
         alignItems: 'center',
         justifyContent: 'space-between'}}>
 
@@ -114,7 +113,8 @@ const styles = StyleSheet.create({
   },
 
   avatar: {
-    marginTop: -80,
+    top: -60,
+    left: -3
   },
 
   temp: {

@@ -107,18 +107,17 @@ export default function VideoScreen({ navigation, route }) {
   return (
 
     <View style={styles.contain}>
-      <View style={{ width: 315, marginLeft: 10, marginTop: 50 }}>
-        <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="contain" isLooping
-          style={{ borderRadius: 25, width: 315, height: 180, }} />
+      <View style={{ width: 335, marginTop: 50 }}>
+        <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping
+          style={{width: 335, height: 180, }} />
       </View>
 
-      <View style={styles.descriptionContainer}>
         {!visibleStatusBar ? (
-          <View style={{ marginTop: 15, alignItems: 'center', }}>
-            <View style={{ flexDirection: 'row', width: 315, alignItems: 'center', justifyContent: 'space-between', }}>
-
+          <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent:'space-between'}}>
+            
+            <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between', }}>
               <View>
-                <Text style={{ fontWeight: 'bold' }}>{data.title}</Text>
+                <Text style={{ fontWeight: 'bold', color:'#F47066', }}>{data.title}</Text>
                 <Text style={{ fontSize: 10 }}> {views} views - {data.stamp} </Text>
               </View>
 
@@ -134,7 +133,7 @@ export default function VideoScreen({ navigation, route }) {
             </View>
 
             <View
-              style={{ width: 345, flexDirection: 'row', marginTop: 25, alignItems: 'center', justifyContent: 'space-around' }}>
+              style={{ width: 335, flexDirection: 'row', marginTop: 25, alignItems: 'center', justifyContent: 'space-around' }}>
               <View>
                 <Likes data={data.firestore} />
               </View>
@@ -149,7 +148,7 @@ export default function VideoScreen({ navigation, route }) {
                   size={20}
                   color="black"
                   onPress={() => ShareItem(data.url)}
-                  style={{ marginLeft: 15 }} />
+                   />
                 <Text style={{ paddingTop: 5 }}> Share </Text>
               </TouchableOpacity>
 
@@ -160,16 +159,17 @@ export default function VideoScreen({ navigation, route }) {
             </View>
 
             <View
-              style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
-              <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg', }} size="medium" onPress={Navigate} />
-              <Text style={{ paddingTop: 15, paddingLeft: 15 }} > {data.owner}</Text>
+              style={{ width: 335, marginTop: 50, flexDirection: 'row', justifyContent:'flex' }}>
+              <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} size="medium" onPress={Navigate} />
+              <Text style={{ paddingTop: 15 }} > {data.owner}</Text>
             </View>
 
-            <Card style={[styles.txtCards, styles.shadowProp]}>
+            <Card style={styles.txtCards}>
               <View style={{ flexDirection: 'row' }}>
                 <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
-                <View style={{ width: 90, height: 70, borderRadius: 30, marginTop: 1, marginRight: 3, }}>
-                  <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title='Comment' />
+                <View style={{ width: 90, height: 40, borderRadius: 30}}>
+                  <Button color= "#F47066"
+                   onPress={() => Post(comment, data.firestore)} title='Comment' />
                 </View>
               </View>
             </Card>
@@ -182,38 +182,40 @@ export default function VideoScreen({ navigation, route }) {
           <View>
             <Card
               style={{
-                width: 315,
+                width: 335,
                 height: 300,
-                marginLeft: 10,
                 borderRadius: 20,
                 backgroundColor: '#fff',
                 marginTop: 15,
               }}>
 
-              <View style={{ flexDirection: 'row' }}>
-                <Text
+              <View style={{ width: 335, flexDirection: 'row', justifyContent:'space-between'}}>
+
+                <View>
+                  <Text
                   style={{
-                    paddingLeft: 10,
                     fontWeight: 'bold',
+                    color:'#F47066',
                     fontSize: 16,
                   }}>
+                  Description: 
+                  </Text>
 
-                  Description:
-                  <Text>
+                  <Text style={{maxWidth: 315, paddinLeft: 20}}>
                     {data.description}
                   </Text>
-                </Text>
+                </View>
+                
 
                 <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
                   <AntDesign
                     name="closecircle"
                     size={18}
-                    color="black"
-                    style={{ marginLeft: 182 }} />
+                    color="black" />
                 </TouchableOpacity>
               </View>
 
-              <View style={{ marginTop: 50, marginLeft: 30, flexDirection: 'row' }}>
+              <View style={{ marginTop: 50, flexDirection: 'row' }}>
                 <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg', }} size="medium" />
                 <Text>{userName}</Text>
               </View>
@@ -222,12 +224,11 @@ export default function VideoScreen({ navigation, route }) {
 
         )}
 
-      </View>
-
       {/* <Comments video={data.firestore} /> */}
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Card style={{ height: 335, width: 315, marginTop: 5, marginLeft: 15 }}>
+        <Card style={{ height: 335, width: 315, marginTop: 5 
+        }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
           {comments.map((item, index) =>
             <Card style={{ backgroundColor: '#e8d7cc', height: 100, marginTop: 10 }} key={index}>
@@ -246,34 +247,39 @@ export default function VideoScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   contain: {
+     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#fff',
   },
 
-  dropDown: {
-    //marginTop: 10,
+  descriptionContainer: {
+    width: 335
   },
 
   txtCards: {
-    backgroundColor: '#f5f4f2',
-    width: 295,
+    width: 335,
     height: 40,
     borderRadius: 10,
+    backgroundColor:'#fff',
     marginTop: 5,
     borderWidth: 1,
     borderColor: '#F47066',
+  },
+  dropDown: {
+    marginTop: -15
   },
 
   comment: {
     width: 295,
     height: 38,
     borderRadius: 10,
-    borderColor: '#F47066',
-    //outlineColor: '#F47066',
-    backgroundColor: '#f5f4f2',
+    backgroundColor:'#fff',
     paddingLeft: 10,
   },
+
+  btnComment : {
+    backgroundColor: "#F47066"
+  }
 
 });
 
