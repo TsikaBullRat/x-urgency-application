@@ -73,13 +73,14 @@ export default function SignUp({ navigation }) {
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={90} color="#fff" />
+          <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> {`X-urgency`} </Text>
+        <Text style={{ color: '#fff', fontSize: 28}}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5 }}>{`SignUp`}</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
+        color: '#51535D' }}>{`SignUp`}</Text>
       </View>
 
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
@@ -95,7 +96,7 @@ export default function SignUp({ navigation }) {
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 12, marginLeft: 8 }} />
             <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
@@ -103,7 +104,7 @@ export default function SignUp({ navigation }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 4 }} />
             <TextInput style={styles.txtField}
               name='password' placeholder='Password'
               secureTextEntry={true}
@@ -114,7 +115,7 @@ export default function SignUp({ navigation }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 9, marginLeft: 4 }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 4 }} />
             <TextInput style={styles.txtField}
               name='password' placeholder='Re-enter Password'
               secureTextEntry={true}
@@ -123,9 +124,9 @@ export default function SignUp({ navigation }) {
         </Card>
         {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
 
-        <View style={{ alignItems: 'center' }}>
+        <View style={{ alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Register}>
-            <Text style={{ color: '#fff' }} >{`SIGN_UP`} </Text>
+            <Text style={{ fontSize: 18, color: '#fff' }}>{`SIGN_UP`} </Text>
           </TouchableOpacity>
         </View>
 
@@ -142,9 +143,8 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    position: 'absolute',
     backgroundColor: '#F47066',
-    width: 325,
+    width: 335,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -159,13 +159,14 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    paddingTop: 205,
+    paddingTop: 25,
     textAlign: 'center',
   },
   prompt: {
     color: '#F47066',
     textAlign: "center"
   },
+  
   txtField: {
     width: 245,
     height: 30,
@@ -182,7 +183,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 285,
+    width: 315,
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -192,9 +193,9 @@ const styles = StyleSheet.create({
   },
 
   signIn: {
-    height: 40,
-    width: 150,
-    marginTop: 45,
+    height: 50,
+    width: 200,
+    marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
