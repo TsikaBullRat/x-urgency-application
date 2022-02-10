@@ -64,13 +64,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-         <Stack.Navigator>
-
-          <Stack.Screen name= 'home' component={Home} />
-
-          <Stack.Screen name= 'PlayVideo' component={PlayVideo} /> 
-
-          <Stack.Screen name='uploadVideo' component={UploadVideo} />
+        <Stack.Navigator>
 
           {check1 ? (
             id ? (
