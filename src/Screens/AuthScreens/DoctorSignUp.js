@@ -49,6 +49,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt6(null)
       setPrompt7(null)
       setPrompt8(null)
+      setVisibleStatusBar(!visibleStatusBar)
     } else if (surname === "") {
       setPrompt1(null)
       setPrompt2("Please enter surname")
@@ -58,6 +59,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt6(null)
       setPrompt7(null)
       setPrompt8(null)
+      setVisibleStatusBar(!visibleStatusBar)
     } else if (contactdetails === "") {
       setPrompt1(null)
       setPrompt2(null)
@@ -67,6 +69,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt6(null)
       setPrompt7(null)
       setPrompt8(null)
+      setVisibleStatusBar(!visibleStatusBar)
     } else if (email === "") {
       setPrompt1(null)
       setPrompt2(null)
@@ -122,7 +125,8 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: "bold", fontSize: 18, paddingLeft: 5 }}>  {`Doctor SignUp`} </Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
+        color: '#51535D' }}>{`Doctor SignUp`}</Text>
       </View>
 
       {visibleStatusBar ? (
@@ -191,7 +195,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
           </Card>
 
           <View style={{ alignItems: "center" }}>
-            <TouchableOpacity style={styles.signIn} onPress={() => { changeVisibilityStatusBar() }}>
+            <TouchableOpacity style={styles.signIn} onPress={() => setVisibleStatusBar(!visibleStatusBar)}>
               <Text style={{ color: "#fff" }}>{`NEXT`} </Text>
             </TouchableOpacity>
           </View>
@@ -298,7 +302,17 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 285,
+    width: 315,
+    height: 50,
+    borderRadius: 10,
+    marginLeft: 2,
+    marginTop: 35,
+    borderWidth: 1,
+    borderColor: '#F47066',
+  },
+
+  picker: {
+    width: 315,
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -310,11 +324,11 @@ const styles = StyleSheet.create({
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 280,
+    margin: 40,
     borderRadius: 10,
-    backgroundColor: "#F47066",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#F47066',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
 });

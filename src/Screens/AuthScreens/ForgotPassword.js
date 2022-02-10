@@ -75,7 +75,7 @@ export default function ForgotPassword({ navigation }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 9, marginLeft: 8 }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 8 }} />
             <TextInput style={styles.txtField} name='password' placeholder='New Password' onChangeText={text => setPassword(text)} />
           </View>
         </Card>
@@ -83,7 +83,7 @@ export default function ForgotPassword({ navigation }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 9, marginLeft: 8 }} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 8 }} />
             <TextInput style={styles.txtField} name='password' placeholder='Confirm Password' onChangeText={text => setConfirmPassword(text)} />
           </View>
         </Card>
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   txtField: {
     width: 245,
     height: 30,
-    marginTop: 3,
+    marginTop: 2,
     marginLeft: 2,
     paddingLeft: 10,
     paddingTop: 15,
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 285,
+    width: 315,
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 30,
+    marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
