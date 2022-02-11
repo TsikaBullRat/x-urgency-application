@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Entypo } from 'react-native-vector-icons'
-import { firestore, auth } from '..';
+import { firestore, auth } from '../config';
 
 function Counter({ video }) {
 

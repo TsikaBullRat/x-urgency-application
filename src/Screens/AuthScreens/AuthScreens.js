@@ -1,19 +1,10 @@
-/**
- * @description      :
- * @author           : TLeeuw
- * @group            :
- * @created          : 09/11/2021 - 14:34:47
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 09/11/2021
- * - Author          : TLeeuw
- * - Modification    :
- **/
-
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { SignIn, SignUp, DoctorSignUp, DocSignUp, MedSignIn, ForgotPassword } from '../'
+// import { SignIn, SignUp, DoctorSignUp, DocSignUp, MedSignIn, ForgotPassword } from './'
+import SignIn from "./SignIn";
+import SignUp from "./SignUp"
+import ForgotPassword from "./ForgotPassword"
+import DoctorSignUp from "./DoctorSignUp"
 
 const Stack = createNativeStackNavigator()
 

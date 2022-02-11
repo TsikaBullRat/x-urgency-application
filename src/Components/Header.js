@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image, Pressable, Touch } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Pressable } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
@@ -45,7 +45,7 @@ export default function Header({ Exit, navigation }) {
         alignItems: 'center',
         justifyContent: 'space-between'}}>
 
-        <Pressable onPress={() => navigation.navigate('EmergencyContacts')}>
+        <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')}>
 
           <View style={{ flexDirection: 'row' }}>
             <Image source={require('../../img/siren.jpg')}
@@ -57,12 +57,16 @@ export default function Header({ Exit, navigation }) {
             </View>
 
           </View>
-        </Pressable>
+        </TouchableOpacity>
 
-        <Pressable onPress={Exit} >
+        
+        {/* <Pressable onPress={()=>console.log("Hey I'm working")} >
           <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-        </Pressable>
+        </Pressable> */}
       </View>
+      <TouchableOpacity onPress={Exit} >
+          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+        </TouchableOpacity>
 
       {/*---------------------------Header--------------------------*/}
 
@@ -105,6 +109,8 @@ const styles = StyleSheet.create({
   logoutIMG: {
     width: 20,
     height: 20,
+    top: -30,
+    left: 170
   },
 
   header: {

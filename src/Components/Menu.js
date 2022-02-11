@@ -1,24 +1,13 @@
-/**
-    * @description      : 
-    * @author           : TLeeuw
-    * @group            : 
-    * @created          : 03/11/2021 - 12:24:16
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 03/11/2021
-    * - Author          : TLeeuw
-    * - Modification    : 
-**/
-
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView, Image, Pressable } from 'react-native';
 import { Card } from 'react-native-paper';
+import { auth, LoadSet, firestore } from "../firebase";
 
-export default function Header({ list, setVids, navigation }) {
+export default function Menu({ list, setVids }) {
 
-  const Sort = (match) => { setVids(list.filter(item => item.tag === match)) 
-  navigation.navigate('PlayVideo')}
+  const Sort = (match) => { 
+    LoadSet(setVids, match)
+  }
 
   return (
 
@@ -54,7 +43,7 @@ export default function Header({ list, setVids, navigation }) {
 
           <Pressable onPress={() => Sort("cpr")}>
               <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/CPRIcon.png')} />
+                <Image style={styles.menuIcons} source={require('../images/cprIcon.png')} />
                 <Text style={{ fontSize: 12, paddingTop:8 }}> {`CPR`} </Text>
                 </Card>
           </Pressable>

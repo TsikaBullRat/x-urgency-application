@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { Card } from "react-native-paper";
 import { auth, LoadSet, firestore } from "../../firebase";
 import Header from "../../Components/Header";
@@ -19,9 +19,9 @@ export default function Home({ navigation, Exit }) {
     LoadSet(setLoad);
   }, []);
 
-  useEffect(() => {
-    console.log(auth.currentUser)
-  }, [])
+  // useEffect(() => {
+  //   Exit()
+  // }, [])
 
   
 
@@ -40,13 +40,13 @@ export default function Home({ navigation, Exit }) {
 
       {/*---------------------- Video Scroll View--------------------*/}
 
-      <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
+      {/* <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}> */}
         <Card style={styles.menu2}>
           <View>
             <VideoList videos={videos} VideoScreen={VideoScreen} />
           </View>
         </Card>
-      </ScrollView>
+      {/* </ScrollView> */}
     </View>
   );
 }
