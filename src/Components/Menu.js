@@ -82,7 +82,7 @@ export default function Header({ list, setVids, navigation }) {
 
           <Pressable onPress={() => Sort("burn")}>
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/BurnsIcon.png')} />
+              <Image style={styles.menuIcons} source={require('../images/BurnIcon.png')} />
               <Text style={{ fontSize: 12, paddingTop:8, }}> {`Burns`} </Text>
             </Card>
           </Pressable>
