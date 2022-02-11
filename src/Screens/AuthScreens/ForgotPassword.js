@@ -52,13 +52,14 @@ export default function ForgotPassword({ navigation }) {
 
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={90} color="#fff" />
+          <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
         <Text style={{ color: '#fff', fontSize: 28 }}> {`X-urgency`} </Text>
       </Card>
 
-      <View style={styles.header} >
-        <Text style={{ fontWeight: 'bold', fontSize: 36, color: '#51535D' }}>{`Reset Password`}</Text>
+      <View style={styles.header}>
+        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
+        color: '#51535D' }}>{`Reset Password`}</Text>
       </View>
 
       <View style={{ alignItems: 'center' }}>
@@ -106,14 +107,14 @@ export default function ForgotPassword({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+     flex: 1,
     alignItems: 'center',
-    height: 979,
     backgroundColor: '#fff',
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: 380,
+    width: 335,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,

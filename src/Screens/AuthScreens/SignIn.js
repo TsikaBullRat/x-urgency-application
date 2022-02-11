@@ -51,21 +51,22 @@ export default function SignIn({ navigation, setDone }) {
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={90} color="#fff" />
+          <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> {`X-urgency`} </Text>
+        <Text style={{ textAlign:'center', color: '#fff', fontSize: 28}}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 36, color: '#51535D' }}>{`LogIn`}</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
+        color: '#51535D' }}>{`SignIn`}</Text>
       </View>
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={22} color="black" style={{ marginTop: 13, marginLeft: 8 }} />
-            <TextInput style={styles.txtUser} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
@@ -113,14 +114,14 @@ export default function SignIn({ navigation, setDone }) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
-    height: 800,
     backgroundColor: '#fff',
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: 300,
+    width: 335,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -159,15 +160,14 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
 
-  txtPass: {
+  txtField: {
     width: 245,
     height: 30,
-    marginTop: 7,
+    marginTop: 2,
     marginLeft: 2,
-    paddingLeft: 8,
+    paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
-    //backgroundColor: '#fff',
     ...Platform.select({
       web: {
         outlineColor: 'transparent'
@@ -176,12 +176,11 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 300,
+    width: 315,
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 35,
-    paddingTop: 5,
     borderWidth: 1,
     borderColor: '#F47066',
   },

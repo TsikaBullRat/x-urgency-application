@@ -7,16 +7,6 @@ import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile, EmergencyContacts } from "./src/Screens";
 
-import SignIn from './src/Screens/AuthScreens/SignIn'
-import SignUp from './src/Screens/AuthScreens/SignUp'
-import ForgotPassword from './src/Screens/AuthScreens/ForgotPassword'
-
-import Doctor from './src/Screens/DoctorsScreens/Upload'
-import UploadVideo from './src/Screens/DoctorsScreens/UploadVideo'
-import Home from './src/Screens/UserScreens/Home'
-import PlayVideo from './src/Screens/UserScreens/PlayVideo'
-
-
 const Stack = createNativeStackNavigator()
 
 export default function App() {
@@ -25,9 +15,8 @@ export default function App() {
 
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
-  const [done, setDone ] = useState(true)
-  const [check1, setCheck1] = useState(true)
-  const [check2, setCheck2] = useState(true)
+  const [check1, setCheck1] = useState(false)
+  const [check2, setCheck2] = useState(false)
 
   useEffect(() => {
     auth.onAuthStateChanged(user => user ? setID(user.uid) : setID(false))
@@ -41,7 +30,6 @@ export default function App() {
     try {
       firestore.collection("Users").doc(id).get().then(doc => setDoctor(doc.data().doctor))
     }
-
     catch (err) {
       console.log(err)
     }
@@ -65,9 +53,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-         <Stack.Navigator> 
+         <Stack.Navigator>
 
-         
+           {/*<Stack.Screen name= 'UpdateProfile' component={UpdateProfile} />
+
+          <Stack.Screen name= 'home' component={Home} /> 
+
+          <Stack.Screen name= 'uploadVideo' component={UploadVideo} /> */}
+           
           {check1 ? (
             id ? (
               check2 ? (
@@ -88,6 +81,7 @@ export default function App() {
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
+    // <UpdateProfile/>
   );
 }
 

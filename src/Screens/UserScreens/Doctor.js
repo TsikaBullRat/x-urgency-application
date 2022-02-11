@@ -228,12 +228,8 @@ const DoctorProfile = ({ route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 10,
-        marginBottom: 15,
-        backgroundColor: '#fff',
-        height: 850,
+    alignItems: 'center',
+    backgroundColor: '#fff',
     },
 
     textTitle: {

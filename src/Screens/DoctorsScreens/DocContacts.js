@@ -144,8 +144,9 @@ export default function MedicalHome({ navigation }) {
 
 const styles = StyleSheet.create({
   contain: {
+     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: '#fff',
   },
 
   header: {

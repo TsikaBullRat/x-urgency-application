@@ -37,7 +37,7 @@ export default function SignIn({ navigation, setDone }) {
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={90} color="#fff" />
+          <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
         <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> {`X-urgency`} </Text>
       </Card>
@@ -88,12 +88,14 @@ export default function SignIn({ navigation, setDone }) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center'
+     flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#fff',
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: 325,
+    width: 335,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,

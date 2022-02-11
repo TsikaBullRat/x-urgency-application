@@ -10,7 +10,7 @@ export const DisplayPicture = () => {
 
     const getProfile = async () => {
         let name
-        setImage(auth.currentUser.photoURL)
+        setImage(await auth.currentUser.photoURL)
         name = auth.currentUser.displayName
         setInitial(name.substring(0, 1))
     }
@@ -18,6 +18,7 @@ export const DisplayPicture = () => {
     useEffect(() => {
         getProfile()
     }, [])
+    
     return (
         <>
             <View>
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
         marginTop: 80,
         backgroundColor: 'turquoise',
         textAlign: 'center',
+        alignItems: "center",
         justifyContent: 'center'
     },
     temp_text: {

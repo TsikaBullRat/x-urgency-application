@@ -150,9 +150,9 @@ export default function Upload({ navigation, Log }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
-    alignItems: "center",
-    height: 800
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#fff',
   },
 
   header: {
