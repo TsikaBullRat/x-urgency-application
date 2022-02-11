@@ -23,8 +23,6 @@ export default function Home({ navigation, Exit }) {
     console.log(auth.currentUser)
   }, [])
 
-  
-
   return (
 
     <View style={styles.container}>
@@ -34,7 +32,7 @@ export default function Home({ navigation, Exit }) {
         <Header Exit={Exit} />
       </View>
 
-      <View style={{ width: 335, alignItems:'center' }}>
+      <View style={{ width: 335, alignItems: 'center' }}>
         <Menu list={videos} setVids={setLoad} />
       </View>
 
@@ -74,7 +72,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 70,
     height: 70,
-    borderRadius: 50,  
+    borderRadius: 50,
   },
 
   menu2: {

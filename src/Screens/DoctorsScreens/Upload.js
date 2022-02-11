@@ -46,18 +46,17 @@ export default function Upload({ navigation, Log }) {
 
     Run = () => {
       selectedImage ? (UploadVideo(
-            selectedImage.localUri,
-            title,
-            description,
-            selectedValue,
-            Log
-          ),
-          
-          navigation.goBack(),      
-          alert('Uploaded Video')
-      ) : (null)    
+        selectedImage.localUri,
+        title,
+        description,
+        selectedValue,
+        Log
+      ),
 
-            
+        navigation.goBack(),
+        alert('Uploaded Video')
+      ) : (null)
+
     },
 
     openCamera = async () => {
@@ -84,20 +83,20 @@ export default function Upload({ navigation, Log }) {
           onChangeText={text => setTitle(text)} />
       </View>
 
-    <View>
-      <Picker
-        selectedValue={selectedValue}
-        style={styles.picker}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
-        <Picker.Item label="Stroke" value="Stroke" />
-        <Picker.Item label="Heart-Attack" value="Heart-Attack" />
-        <Picker.Item label="Epilepsy" value="Epilepsy" />
-        <Picker.Item label="CPR" value="CPR" />
-        <Picker.Item label="Drowning" value="Drowning" />
-        <Picker.Item label="Choking" value="Choking" />
-        <Picker.Item label="Java" value="Java" />
-        <Picker.Item label="Burns" value="Burns" />
-      </Picker>
+      <View>
+        <Picker
+          selectedValue={selectedValue}
+          style={styles.picker}
+          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
+          <Picker.Item label="Stroke" value="Stroke" />
+          <Picker.Item label="Heart-Attack" value="Heart-Attack" />
+          <Picker.Item label="Epilepsy" value="Epilepsy" />
+          <Picker.Item label="CPR" value="CPR" />
+          <Picker.Item label="Drowning" value="Drowning" />
+          <Picker.Item label="Choking" value="Choking" />
+          <Picker.Item label="Java" value="Java" />
+          <Picker.Item label="Burns" value="Burns" />
+        </Picker>
       </View>
 
       <View style={{ flexDirection: "row" }}>
@@ -129,7 +128,7 @@ export default function Upload({ navigation, Log }) {
         </Pressable>
       )}
 
-      <TouchableOpacity onPress={() => {navigation.navigate('uploadVideo')}}>
+      <TouchableOpacity onPress={() => { navigation.navigate('uploadVideo') }}>
         <View style={styles.iconContainer}>
           <Icon name="camera" color='white' size={30} />
         </View>
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
   txtField: {
     width: 330,
     height: 60,
-    marginTop: 20, 
+    marginTop: 20,
     borderRadius: 10,
     backgroundColor: 'white',
     paddingLeft: 20,
@@ -240,7 +239,7 @@ const styles = StyleSheet.create({
     marginLeft: -8,
   },
 
-  picker: { 
+  picker: {
     width: 330,
     height: 60,
     margin: 10,

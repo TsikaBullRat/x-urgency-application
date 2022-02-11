@@ -18,7 +18,7 @@ export const DisplayPicture = () => {
     useEffect(() => {
         getProfile()
     }, [])
-    
+
     return (
         <>
             <View>
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.4,
         elevation: 1,
     },
+
     temp: {
         width: 150,
         height: 150,
@@ -55,8 +56,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: 'center'
     },
+
     temp_text: {
         fontSize: 40,
         color: '#fff',
     }
+
 })

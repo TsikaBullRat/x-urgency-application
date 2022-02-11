@@ -126,8 +126,10 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
-        color: '#F47066' }}>{`Doctor SignUp`}</Text>
+        <Text style={{
+          fontWeight: 'bold', fontSize: 36, fontFamily: 'Arial',
+          color: '#F47066'
+        }}>{`Doctor SignUp`}</Text>
       </View>
 
       {visibleStatusBar ? (
@@ -261,7 +263,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
 const styles = StyleSheet.create({
   container: {
-     flex: 1,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
   },
@@ -320,7 +322,7 @@ const styles = StyleSheet.create({
     marginTop: 35,
     borderWidth: 1,
     borderColor: '#F47066',
-    opacity:0.8
+    opacity: 0.8
   },
 
   signIn: {

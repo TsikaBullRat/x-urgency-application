@@ -42,9 +42,9 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
       LogOut()
       Exit()
     },
-    VideoNotifier = () =>{
+    VideoNotifier = () => {
       let today = new Date()
-      if(today === auth.currentUser.metadata.creationTime){
+      if (today === auth.currentUser.metadata.creationTime) {
         setDisplayModal(true)
       }
       // firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
@@ -56,20 +56,20 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
       //     })
       //     return data
       //   })
-        // .then(dateList=>{
-        //   console.log(dateList)
-        //   dateList = dateList.sort((a,b)=>b-a)
-        //   console.log(dateList)
-          // if(dateList.g)
-        // })
-        // .then(dateList=>{
-        //   console.log(dateList)
-        //   dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
-        //   return dateList
-        // })
-        // .then(dateList=>{
-        //   console.log(dateList)
-        // })
+      // .then(dateList=>{
+      //   console.log(dateList)
+      //   dateList = dateList.sort((a,b)=>b-a)
+      //   console.log(dateList)
+      // if(dateList.g)
+      // })
+      // .then(dateList=>{
+      //   console.log(dateList)
+      //   dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
+      //   return dateList
+      // })
+      // .then(dateList=>{
+      //   console.log(dateList)
+      // })
     };
 
   const [image, setImage] = useState()
@@ -109,7 +109,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
     LoadSet(setLoad);
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     VideoNotifier()
   }, [])
 
@@ -197,7 +197,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
 
 const styles = StyleSheet.create({
   contain: {
-     flex: 1,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
   },

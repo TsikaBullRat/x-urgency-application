@@ -21,12 +21,12 @@ export default function Header({ Exit, navigation }) {
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')
 
-  useEffect(() => { 
-    auth.currentUser?(
+  useEffect(() => {
+    auth.currentUser ? (
       setImage(auth.currentUser.photoURL),
       setInitial(auth.currentUser.displayName.substring(0, 1))
-    ):(
-      auth.onAuthStateChanged(doc=>{
+    ) : (
+      auth.onAuthStateChanged(doc => {
         // setImage(doc.photoURL)
         // console.log(doc.displayName)
         // setInitial(doc.displayName.substring(0, 1))
@@ -43,20 +43,20 @@ export default function Header({ Exit, navigation }) {
         marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'}}>
+        justifyContent: 'space-between'
+      }}>
 
         <Pressable onPress={() => navigation.navigate('EmergencyContacts')}>
 
           <View style={{ flexDirection: 'row' }}>
             <Image source={require('../../img/siren.jpg')}
               style={{ width: 30, height: 30 }} />
-
             <View style={{ paddingHorizontal: 10 }}>
               <Text>Call</Text>
               <Text>Now</Text>
             </View>
-
           </View>
+
         </Pressable>
 
         <Pressable onPress={Exit} >
@@ -70,23 +70,24 @@ export default function Header({ Exit, navigation }) {
         flexDirection: 'row',
         width: 340,
         alignItems: 'center',
-        justifyContent: 'space-between'}}>
+        justifyContent: 'space-between'
+      }}>
 
-        <View style={{top:-20}}>
+        <View style={{ top: -20 }}>
           <Text style={styles.header}> WHAT'S YOUR</Text>
           <Text style={styles.header}> EMERGENCY ?</Text>
         </View>
 
-        <View style={styles.avatar}> 
-        {image ? (
-          <View>
-          <Avatar rounded source={{ uri: image, }} size="medium" />
-          </View>
+        <View style={styles.avatar}>
+          {image ? (
+            <View>
+              <Avatar rounded source={{ uri: image, }} size="medium" />
+            </View>
           ) : (
-          <View style={styles.temp}>
-            <Text style={styles.temp_text}> {initial} </Text>
-          </View>
-        )}
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
         </View>
 
       </View>

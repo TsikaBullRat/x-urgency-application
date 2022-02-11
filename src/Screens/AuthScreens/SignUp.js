@@ -75,12 +75,14 @@ export default function SignUp({ navigation }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28}}> {`X-urgency`} </Text>
+        <Text style={{ color: '#fff', fontSize: 28 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
-        color: '#F47066' }}>{`SignUp`}</Text>
+        <Text style={{
+          fontWeight: 'bold', fontSize: 36, fontFamily: 'Arial',
+          color: '#F47066'
+        }}>{`SignUp`}</Text>
       </View>
 
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
@@ -166,7 +168,7 @@ const styles = StyleSheet.create({
     color: '#F47066',
     textAlign: "center"
   },
-  
+
   txtField: {
     width: 245,
     height: 30,
