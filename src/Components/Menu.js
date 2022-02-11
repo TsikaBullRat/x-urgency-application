@@ -61,22 +61,22 @@ export default function Header({ list, setVids, navigation }) {
 
           <Pressable onPress={() => Sort("bleeding")}>
               <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+                <Image style={styles.menuIcons} source={require('../images/chokeIcon.png')} />
               <Text style={{fontSize: 12, paddingTop:8}}>{`Choking`} </Text>
                 </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("choking")}>
               <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
-                <Text style={{ fontSize: 12, paddingTop:8, }}> {`Choking`} </Text>
+                <Image style={styles.menuIcons} source={require('../images/BurnIcon.png')} />
+                <Text style={{ fontSize: 12, paddingTop:8, }}> {`Burns`} </Text>
               </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("drowning")}>
               <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
-                <Text style={{ fontSize: 12, paddingTop:8 }}> {`Drowning`} </Text>
+                <Image style={styles.menuIcons} source={require('../images/bleedIcon.png')} />
+                <Text style={{ fontSize: 12, paddingTop:8 }}> {`Bleeding`} </Text>
               </Card>
           </Pressable>
 

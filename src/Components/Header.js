@@ -16,18 +16,24 @@ import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
 
-export default function Header({ done, navigation }) {
+export default function Header({ Exit, navigation }) {
 
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')
-  const getProfile = async () => {
-    let name
-    setImage(auth.currentUser.photoURL)
-    name = auth.currentUser.displayName
-    setInitial(name.substring(0, 1))
-  }
 
-  useEffect(() => { getProfile() }, [])
+  useEffect(() => { 
+    auth.currentUser?(
+      setImage(auth.currentUser.photoURL),
+      setInitial(auth.currentUser.displayName.substring(0, 1))
+    ):(
+      auth.onAuthStateChanged(doc=>{
+        // setImage(doc.photoURL)
+        // console.log(doc.displayName)
+        // setInitial(doc.displayName.substring(0, 1))
+        console.log(auth.currentUser)
+      })
+    )
+  }, [])
 
   return (
 
@@ -53,7 +59,7 @@ export default function Header({ done, navigation }) {
           </View>
         </Pressable>
 
-        <Pressable onPress={LogOut} >
+        <Pressable onPress={Exit} >
           <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
         </Pressable>
       </View>

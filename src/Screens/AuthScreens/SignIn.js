@@ -58,7 +58,7 @@ export default function SignIn({ navigation, setDone }) {
 
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
-        color: '#51535D' }}>{`SignIn`}</Text>
+        color: '#F47066' }}>{`SignIn`}</Text>
       </View>
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 
@@ -93,13 +93,13 @@ export default function SignIn({ navigation, setDone }) {
         </View>
 
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <Text style={{ paddingTop: 5, fontSize: 18, }}>  {`New User?`} </Text>
+          <Text style={{ paddingTop: 9, fontSize: 14, }}>  {`New User?`} </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
             <Text style={{ paddingTop: 5, fontSize: 18, color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>
 
-        <Text style={{ paddingTop: 10, fontSize: 18, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
+        <Text style={{ paddingTop: 10, fontSize: 14, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
 
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>

@@ -80,7 +80,7 @@ export default function SignUp({ navigation }) {
 
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
-        color: '#51535D' }}>{`SignUp`}</Text>
+        color: '#F47066' }}>{`SignUp`}</Text>
       </View>
 
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
