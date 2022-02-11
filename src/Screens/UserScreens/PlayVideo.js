@@ -109,125 +109,125 @@ export default function VideoScreen({ navigation, route }) {
     <View style={styles.contain}>
       <View style={{ width: 335, marginTop: 50 }}>
         <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping
-          style={{width: 335, height: 180, }} />
+          style={{ width: 335, height: 180, }} />
       </View>
 
-        {!visibleStatusBar ? (
-          <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent:'space-between'}}>
-            
-            <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between', }}>
-              <View>
-                <Text style={{ fontWeight: 'bold', color:'#F47066', }}>{data.title}</Text>
-                <Text style={{ fontSize: 10 }}> {views} views - {data.stamp} </Text>
-              </View>
+      {!visibleStatusBar ? (
+        <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent: 'space-between' }}>
 
-              <View>
-                <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()}>
-                  <AntDesign
-                    name="downcircle"
-                    size={18}
-                    color="black"
-                    style={styles.dropDown} />
-                </TouchableOpacity>
-              </View>
+          <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between', }}>
+            <View>
+              <Text style={{ fontWeight: 'bold', color: '#F47066', }}>{data.title}</Text>
+              <Text style={{ fontSize: 10 }}> {views} views - {data.stamp} </Text>
             </View>
 
-            <View
-              style={{ width: 335, flexDirection: 'row', marginTop: 25, alignItems: 'center', justifyContent: 'space-around' }}>
-              <View>
-                <Likes data={data.firestore} />
-              </View>
-
-              <View style={{ marginTop: 3 }}>
-                <Dislikes data={data.firestore} />
-              </View>
-
-              <TouchableOpacity onPress={() => ShareItem(data.url)}>
-                <FontAwesome5
-                  name="share"
-                  size={20}
+            <View>
+              <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()}>
+                <AntDesign
+                  name="downcircle"
+                  size={18}
                   color="black"
-                  onPress={() => ShareItem(data.url)}
-                   />
-                <Text style={{ paddingTop: 5 }}> Share </Text>
+                  style={styles.dropDown} />
               </TouchableOpacity>
-
-              <View>
-                <Entypo name="save" size={20} color="black" />
-                <Text style={{ paddingTop: 5 }}> Save </Text>
-              </View>
             </View>
-
-            <View
-              style={{ width: 335, marginTop: 50, flexDirection: 'row', justifyContent:'flex' }}>
-              <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} size="medium" onPress={Navigate} />
-              <Text style={{ paddingTop: 15 }} > {data.owner}</Text>
-            </View>
-
-            <Card style={styles.txtCards}>
-              <View style={{ flexDirection: 'row' }}>
-                <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
-                <View style={{ width: 90, height: 40, borderRadius: 30}}>
-                  <Button color= "#F47066"
-                   onPress={() => Post(comment, data.firestore)} title='Comment' />
-                </View>
-              </View>
-            </Card>
-
           </View>
 
-        ) : (
-          //Hidden Description  
+          <View
+            style={{ width: 335, flexDirection: 'row', marginTop: 25, alignItems: 'center', justifyContent: 'space-around' }}>
+            <View>
+              <Likes data={data.firestore} />
+            </View>
 
-          <View>
-            <Card
-              style={{
-                width: 335,
-                height: 300,
-                borderRadius: 20,
-                backgroundColor: '#fff',
-                marginTop: 15,
-              }}>
+            <View style={{ marginTop: 3 }}>
+              <Dislikes data={data.firestore} />
+            </View>
 
-              <View style={{ width: 335, flexDirection: 'row', justifyContent:'space-between'}}>
+            <TouchableOpacity onPress={() => ShareItem(data.url)}>
+              <FontAwesome5
+                name="share"
+                size={20}
+                color="black"
+                onPress={() => ShareItem(data.url)}
+              />
+              <Text style={{ paddingTop: 5 }}> Share </Text>
+            </TouchableOpacity>
 
-                <View>
-                  <Text
+            <View>
+              <Entypo name="save" size={20} color="black" />
+              <Text style={{ paddingTop: 5 }}> Save </Text>
+            </View>
+          </View>
+
+          <View
+            style={{ width: 335, marginTop: 50, flexDirection: 'row', justifyContent: 'flex' }}>
+            <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} size="medium" onPress={Navigate} />
+            <Text style={{ paddingTop: 15 }} > {data.owner}</Text>
+          </View>
+
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: 'row' }}>
+              <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
+              <View style={{ width: 90, height: 40, borderRadius: 30 }}>
+                <Button color="#F47066"
+                  onPress={() => Post(comment, data.firestore)} title='Comment' />
+              </View>
+            </View>
+          </Card>
+
+        </View>
+
+      ) : (
+        //Hidden Description  
+
+        <View>
+          <Card
+            style={{
+              width: 335,
+              height: 300,
+              borderRadius: 20,
+              backgroundColor: '#fff',
+              marginTop: 15,
+            }}>
+
+            <View style={{ width: 335, flexDirection: 'row', justifyContent: 'space-between' }}>
+
+              <View>
+                <Text
                   style={{
                     fontWeight: 'bold',
-                    color:'#F47066',
+                    color: '#F47066',
                     fontSize: 16,
                   }}>
-                  Description: 
-                  </Text>
+                  Description:
+                </Text>
 
-                  <Text style={{maxWidth: 315, paddinLeft: 20}}>
-                    {data.description}
-                  </Text>
-                </View>
-                
-
-                <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                  <AntDesign
-                    name="closecircle"
-                    size={18}
-                    color="black" />
-                </TouchableOpacity>
+                <Text style={{ maxWidth: 315, paddinLeft: 20 }}>
+                  {data.description}
+                </Text>
               </View>
 
-              <View style={{ marginTop: 50, flexDirection: 'row' }}>
-                <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg', }} size="medium" />
-                <Text>{userName}</Text>
-              </View>
-            </Card>
-          </View>
+              <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
+                <AntDesign
+                  name="closecircle"
+                  size={18}
+                  color="black" />
+              </TouchableOpacity>
+            </View>
 
-        )}
+            <View style={{ marginTop: 50, flexDirection: 'row' }}>
+              <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg', }} size="medium" />
+              <Text>{userName}</Text>
+            </View>
+          </Card>
+        </View>
+
+      )}
 
       {/* <Comments video={data.firestore} /> */}
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Card style={{ height: 335, width: 315, marginTop: 5 
+        <Card style={{
+          height: 335, width: 315, marginTop: 5
         }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
           {comments.map((item, index) =>
@@ -247,7 +247,7 @@ export default function VideoScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   contain: {
-     flex: 1,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
   },
@@ -260,11 +260,12 @@ const styles = StyleSheet.create({
     width: 335,
     height: 40,
     borderRadius: 10,
-    backgroundColor:'#fff',
+    backgroundColor: '#fff',
     marginTop: 5,
     borderWidth: 1,
     borderColor: '#F47066',
   },
+
   dropDown: {
     marginTop: -15
   },
@@ -273,11 +274,11 @@ const styles = StyleSheet.create({
     width: 295,
     height: 38,
     borderRadius: 10,
-    backgroundColor:'#fff',
+    backgroundColor: '#fff',
     paddingLeft: 10,
   },
 
-  btnComment : {
+  btnComment: {
     backgroundColor: "#F47066"
   }
 

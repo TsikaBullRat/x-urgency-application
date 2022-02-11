@@ -14,29 +14,29 @@ var atob = require('atob')
 export const UpdateProfile = () => {
 
     //Copies for testing
-    const [ uid, setID ] = useState(null)
+    const [uid, setID] = useState(null)
 
     //Main Running
-    const [about, setAbout ] = useState("")
-    const [ qualification, setQualification ] = useState("")
-    const [ specialization, setSpecialization ] = useState("")
-    const [ branch, setBranch ] = useState("")
-    const [ contact, setContact ] = useState("")
-    const [ email, setEmail ] = useState("")
+    const [about, setAbout] = useState("")
+    const [qualification, setQualification] = useState("")
+    const [specialization, setSpecialization] = useState("")
+    const [branch, setBranch] = useState("")
+    const [contact, setContact] = useState("")
+    const [email, setEmail] = useState("")
     const [image, setImage] = useState(null)
     const [initial, setInitial] = useState('')
 
     const getProfile = async () => {
         let name
-        auth.currentUser.photoURL? setImage(await auth.currentUser.photoURL):console.log(auth.currentUser.photoURL)
+        auth.currentUser.photoURL ? setImage(await auth.currentUser.photoURL) : console.log(auth.currentUser.photoURL)
         name = auth.currentUser.displayName
         setInitial(name.substring(0, 1))
     }
 
-    const getCred = () =>{
+    const getCred = () => {
         firestore.collection("Users").doc(uid).collection("cred").doc(uid).get()
-        // firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get()
-            .then(doc=>{
+            // firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get()
+            .then(doc => {
                 setAbout(doc.data().about)
                 setBranch(doc.data().branch)
                 setContact(doc.data().contact)
@@ -46,29 +46,29 @@ export const UpdateProfile = () => {
             })
     }
 
-    const resetCred = async() =>{
-        let document = firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get().then(doc=>doc.data())
+    const resetCred = async () => {
+        let document = firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get().then(doc => doc.data())
 
-        if(image){
+        if (image) {
 
-            if(auth.currentUser.photoURL){
+            if (auth.currentUser.photoURL) {
                 null
-            }else{
-                try{
+            } else {
+                try {
                     storage.ref().child(`/Display Pictures/${auth.currentUser.uid}.jpeg`).delete()
-                }catch(err){
-                    try{
+                } catch (err) {
+                    try {
                         storage.ref().child(`/Display Pictures/${auth.currentUser.uid}.jpg`).delete()
-                    }catch(err){
-                        try{
+                    } catch (err) {
+                        try {
                             storage.ref().child(`/Display Pictures/${auth.currentUser.uid}.png`).delete()
-                        }catch(err){
+                        } catch (err) {
                             null
                         }
                     }
                 }
             }
-            
+
             var byteString = atob(image.split(',')[1])
             var MIMEstring = image.split(',')[0].split(':')[1].split(';')[0]
 
@@ -93,61 +93,61 @@ export const UpdateProfile = () => {
                             break
                     }
                 },
-            err => {
-                console.log(err)
-            })
+                err => {
+                    console.log(err)
+                })
 
             let ref = await storage.ref()
             let photoURL
-                try{
-                    photoURL = await ref.child(`Display Pictures/${auth.currentUser.uid}.${bb.type.split('/')[1]}`).getDownloadURL()
-                        .then(url=>url)
-                        }catch(err){
-                            console.log(err)
-                        }
-                    console.log(photoURL)
-                    auth.currentUser.updateProfile({
-                        photoURL: photoURL
-                    })
+            try {
+                photoURL = await ref.child(`Display Pictures/${auth.currentUser.uid}.${bb.type.split('/')[1]}`).getDownloadURL()
+                    .then(url => url)
+            } catch (err) {
+                console.log(err)
+            }
+            console.log(photoURL)
+            auth.currentUser.updateProfile({
+                photoURL: photoURL
+            })
 
             console.log(auth.currentUser.photoURL)
 
         }
-        if(document.about !== about)firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({about: about})
-        if(document.qualification !== qualification)firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({qualification: qualification})
-        if(document.specialization !== specialization)firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({specialization: specialization})
-        if(document.branch !== branch)firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({branch: branch})
-        if(document.contact !== contact)firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({contact: contact})
-        if(document.email !== email)auth.currentUser.updateEmail(email)
+        if (document.about !== about) firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({ about: about })
+        if (document.qualification !== qualification) firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({ qualification: qualification })
+        if (document.specialization !== specialization) firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({ specialization: specialization })
+        if (document.branch !== branch) firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({ branch: branch })
+        if (document.contact !== contact) firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({ contact: contact })
+        if (document.email !== email) auth.currentUser.updateEmail(email)
     }
 
     const openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (permissionResult.granted === false) {
-          alert('Permission to access camera roll is required!');
-          return;
+            alert('Permission to access camera roll is required!');
+            return;
         }
         let pickerResult = await ImagePicker.launchImageLibraryAsync({ mediaTypes: 'Images' });
         if (pickerResult.cancelled === true) {
-          return;
+            return;
         }
-        setImage( pickerResult.uri );
+        setImage(pickerResult.uri);
     }
 
-    useEffect(()=>{
-        uid?getCred():null
+    useEffect(() => {
+        uid ? getCred() : null
     }, [uid])
 
     useEffect(() => {
-        uid?getProfile():null
+        uid ? getProfile() : null
     }, [])
 
     // useEffect(()=>{
     //     auth.signInWithEmailAndPassword("yomzi123@gmail.com", "Asstastic")
     // }, [])
 
-    useEffect(()=>{
-        auth.onAuthStateChanged(doc=>{
+    useEffect(() => {
+        auth.onAuthStateChanged(doc => {
             setID(doc.uid)
             setImage(doc.photoURL)
         })
@@ -155,23 +155,23 @@ export const UpdateProfile = () => {
     return (
         <ScrollView contentContainerStyle={styles.body}>
             <Pressable onPress={openImagePickerAsync}>
-                    {image? (
-                        /*<Avatar style={styles.avatar} rounded source={{ uri: image }} size="large" />*/
-                        <Image style={styles.image} source={{uri: image}}/>
-                    ) : (
-                        <View style={styles.temp}>
-                            <Text style={styles.temp_text}> {initial} </Text>
-                        </View>
-                    )}
-                    <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
+                {image ? (
+                    /*<Avatar style={styles.avatar} rounded source={{ uri: image }} size="large" />*/
+                    <Image style={styles.image} source={{ uri: image }} />
+                ) : (
+                    <View style={styles.temp}>
+                        <Text style={styles.temp_text}> {initial} </Text>
+                    </View>
+                )}
+                <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
             </Pressable>
 
-            <TextInput style={styles.inputLarge} placeholder="Tell us about yourself" multiline maxLength={480} editable defaultValue={about} onChangeText={text=>setAbout(text)} />
-            <TextInput placeholder="Qualification" style={styles.input} editable defaultValue={qualification} onChangeText={text=>setQualification(text)} />
-            <TextInput placeholder="Specialization" style={styles.input} editable defaultValue={specialization} onChangeText={text=>setSpecialization(text)} />
-            <TextInput placeholder="Branch" style={styles.input} editable defaultValue={branch} onChangeText={text=>setBranch(text)} />
-            <TextInput placeholder="Contact number" style={styles.input} editable defaultValue={contact} onChangeText={text=>setContact(text)} />
-            <TextInput placeholder="Email" style={styles.input} editable defaultValue={email} onChangeText={text=>setEmail(text)} />
+            <TextInput style={styles.inputLarge} placeholder="Tell us about yourself" multiline maxLength={480} editable defaultValue={about} onChangeText={text => setAbout(text)} />
+            <TextInput placeholder="Qualification" style={styles.input} editable defaultValue={qualification} onChangeText={text => setQualification(text)} />
+            <TextInput placeholder="Specialization" style={styles.input} editable defaultValue={specialization} onChangeText={text => setSpecialization(text)} />
+            <TextInput placeholder="Branch" style={styles.input} editable defaultValue={branch} onChangeText={text => setBranch(text)} />
+            <TextInput placeholder="Contact number" style={styles.input} editable defaultValue={contact} onChangeText={text => setContact(text)} />
+            <TextInput placeholder="Email" style={styles.input} editable defaultValue={email} onChangeText={text => setEmail(text)} />
 
             <Pressable style={styles.button} onPress={resetCred}>
                 <Text style={{ fontSize: 18, color: '#fff' }}>Save</Text>
@@ -183,9 +183,10 @@ export const UpdateProfile = () => {
 const styles = StyleSheet.create({
     body: {
         flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#fff',
+        alignItems: 'center',
+        backgroundColor: '#fff',
     },
+
     button: {
         height: 50,
         width: 200,
@@ -196,6 +197,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginBottom: 50
     },
+
     input: {
         width: 300,
         height: 50,
@@ -207,6 +209,7 @@ const styles = StyleSheet.create({
         borderColor: '#F47066',
         paddingLeft: 25
     },
+
     inputLarge: {
         width: 300,
         height: 250,
@@ -220,6 +223,7 @@ const styles = StyleSheet.create({
         paddingTop: 25,
         textAlignVertical: 'top'
     },
+
     avatar: {
         borderRadius: 50,
         marginTop: 80,
@@ -230,12 +234,14 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.4,
         elevation: 1,
     },
-    image:{
+
+    image: {
         // width: 40,
         // height: 40,
         borderRadius: 80,
         marginTop: 80,
     },
+
     temp: {
         width: 150,
         height: 150,
@@ -246,6 +252,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: 'center'
     },
+
     temp_text: {
         fontSize: 40,
         color: '#fff',

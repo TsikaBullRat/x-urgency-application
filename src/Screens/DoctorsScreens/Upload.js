@@ -57,7 +57,6 @@ export default function Upload({ navigation, Log }) {
         alert('Uploaded Video')
       ) : (null)
 
-
     },
 
     openCamera = async () => {

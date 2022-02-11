@@ -51,13 +51,12 @@ export default function Header({ Exit, navigation }) {
           <View style={{ flexDirection: 'row' }}>
             <Image source={require('../../img/siren.jpg')}
               style={{ width: 30, height: 30 }} />
-
             <View style={{ paddingHorizontal: 10 }}>
               <Text>Call</Text>
               <Text>Now</Text>
             </View>
-
           </View>
+
         </Pressable>
 
         <Pressable onPress={Exit} >

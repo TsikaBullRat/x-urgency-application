@@ -22,7 +22,7 @@ export const DoctorsScreens = ({ navigation, route }) => {
             <Stack.Screen name="Upload" options={{ headerShown: false }} >
                 {props => <Upload {...props} Log={setPerc} />}
             </Stack.Screen>
-            <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false, headerBackVisible: false  }} />
+            <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false, headerBackVisible: false }} />
             <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
             <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
