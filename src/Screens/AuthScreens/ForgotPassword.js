@@ -60,8 +60,10 @@ export default function ForgotPassword({ navigation }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
-        color: '#F47066' }}>{`Reset Password`}</Text>
+        <Text style={{
+          fontWeight: 'bold', fontSize: 36, fontFamily: 'Arial',
+          color: '#F47066'
+        }}>{`Reset Password`}</Text>
       </View>
 
       <View style={{ alignItems: 'center' }}>
@@ -109,7 +111,7 @@ export default function ForgotPassword({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-     flex: 1,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
   },
@@ -180,6 +182,5 @@ const styles = StyleSheet.create({
 
 
 
-  
 
-  
+

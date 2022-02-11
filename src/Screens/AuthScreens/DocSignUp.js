@@ -28,7 +28,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
   return (
 
     <View style={styles.container}>
-      <AlertNote 
+      <AlertNote
         modalVisible={displayModal}
         setModalVisible={setDisplayModal}
         msg={message} />
@@ -37,7 +37,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ textAlign:'center' ,color: "#fff", fontSize: 28 }}> {`X-urgency`} </Text>
+        <Text style={{ textAlign: 'center', color: "#fff", fontSize: 28 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
@@ -116,7 +116,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
 const styles = StyleSheet.create({
   container: {
-     flex: 1,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
   },

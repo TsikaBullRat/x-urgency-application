@@ -18,7 +18,7 @@ const WINDOW_HEIGHT = Dimensions.get('window').height
 const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032)
 const captureSize = Math.floor(WINDOW_HEIGHT * 0.09)
 
-export default function UploadVideo ({ navigation }) {
+export default function UploadVideo({ navigation }) {
   const [visible, setVisible] = useState(false)
   const [hasPermission, setHasPermission] = useState(null)
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back)
@@ -58,16 +58,16 @@ export default function UploadVideo ({ navigation }) {
       openImagePickerAsync();
       selectedImage
         ? (UploadVideo(
-            selectedImage.localUri,
-            title,
-            description,
-            selectedValue,
-            Log
-          ),
+          selectedImage.localUri,
+          title,
+          description,
+          selectedValue,
+          Log
+        ),
           navigation.goBack())
         : null
     },
-    
+
     //-------Opening Camera---------Opening Camera---------
     openCamera = async () => {
       let result = await ImagePicker.launchCameraAsync({
@@ -81,7 +81,7 @@ export default function UploadVideo ({ navigation }) {
 
   //-------Granting to Open Camera on first run----------
   useEffect(() => {
-    ;(async () => {
+    ; (async () => {
       const { status } = await Camera.requestPermissionsAsync()
       setHasPermission(status === 'granted')
     })()
@@ -324,7 +324,7 @@ export default function UploadVideo ({ navigation }) {
                     <Text>{Record}</Text>
                   </TouchableOpacity>
                 </View>
-                
+
               </SafeAreaView>
             </View>
           )}
