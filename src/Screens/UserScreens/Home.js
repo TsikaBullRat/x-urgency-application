@@ -7,6 +7,8 @@ import Menu from "../../Components/Menu";
 import { VideoList } from "../../Components/VideoList";
 
 export default function Home({ navigation, Exit }) {
+
+  const [status, setStatus] = useState({});
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
@@ -21,7 +23,7 @@ export default function Home({ navigation, Exit }) {
     console.log(auth.currentUser)
   }, [])
 
-  const [status, setStatus] = React.useState({});
+  
 
   return (
 

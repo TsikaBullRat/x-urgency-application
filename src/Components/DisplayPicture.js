@@ -18,7 +18,7 @@ export const DisplayPicture = () => {
     useEffect(() => {
         getProfile()
     }, [])
-    
+
     return (
         <>
             <View>

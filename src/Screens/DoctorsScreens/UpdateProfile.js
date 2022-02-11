@@ -154,7 +154,6 @@ export const UpdateProfile = () => {
     }, [])
     return (
         <ScrollView contentContainerStyle={styles.body}>
-            <View>
             <Pressable onPress={openImagePickerAsync}>
                     {image? (
                         /*<Avatar style={styles.avatar} rounded source={{ uri: image }} size="large" />*/
@@ -164,9 +163,8 @@ export const UpdateProfile = () => {
                             <Text style={styles.temp_text}> {initial} </Text>
                         </View>
                     )}
-                    <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20, height: 100, width: 100 }} />
-                </Pressable>
-            </View>
+                    <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
+            </Pressable>
 
             <TextInput style={styles.inputLarge} placeholder="Tell us about yourself" multiline maxLength={480} editable defaultValue={about} onChangeText={text=>setAbout(text)} />
             <TextInput placeholder="Qualification" style={styles.input} editable defaultValue={qualification} onChangeText={text=>setQualification(text)} />
@@ -233,12 +231,10 @@ const styles = StyleSheet.create({
         elevation: 1,
     },
     image:{
-        width: 150,
-        height: 150,
+        // width: 40,
+        // height: 40,
         borderRadius: 80,
         marginTop: 80,
-        alignItems: "center",
-        justifyContent: 'center'
     },
     temp: {
         width: 150,

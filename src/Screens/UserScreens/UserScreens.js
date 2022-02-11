@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home, VideoScreen, Clone, DoctorProfile } from '..';
+import { LogOut } from '../../firebase';
 
 const Stack = createNativeStackNavigator()
 
 export const UserScreens = ({ navigation }) => {
 
     const Exit = () => {
+        LogOut()
         navigation.navigate("auth")
     }
 
