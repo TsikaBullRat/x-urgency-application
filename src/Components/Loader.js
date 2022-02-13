@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
-export const ProgressBar = ({ status }) => {
+const ProgressBar = ({ status }) => {
 
     const [inner, setInner] = useState({
         width: `${status}%`,
@@ -10,24 +10,42 @@ export const ProgressBar = ({ status }) => {
     })
 
     useEffect(() => {
-        console.log(status)
         setInner({
             width: `${status}%`,
             height: 15,
             backgroundColor: '#F47066'
         })
-    }, [status])
-    return (
-        <View style={styles.outer}>
-            <View style={inner}>
 
-            </View>
+    }, [status])
+
+    return (
+
+        <View style={styles.outer}>
+            <View style={inner}> </View>
+        </View>
+    )
+}
+
+const Loading = () => {
+    return (
+        <View style={styles.loading}>
+            <ActivityIndicator size={60} />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    width: '100%',
-    height: 15,
-    backgroundColor: 'transparent'
+    bar: {
+        width: '100%',
+        height: 15,
+        backgroundColor: 'transparent'
+    },
+
+    loading: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        top: 450
+    }
 })
+
+export { ProgressBar, Loading }

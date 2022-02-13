@@ -12,13 +12,18 @@
 **/
 import React from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
-export default function Button({ name }) {
+
+export default function Button({ name, Run }) {
+
   return (
-    <TouchableOpacity style={styles.signIn}>
+
+    <TouchableOpacity onPress={Run} style={styles.signIn}>
       <Text style={{ color: '#fff' }}>{name}</Text>
     </TouchableOpacity>
+
   )
 }
+
 const styles = StyleSheet.create({
   signIn: {
     height: 50,
@@ -30,4 +35,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
+
 });
+

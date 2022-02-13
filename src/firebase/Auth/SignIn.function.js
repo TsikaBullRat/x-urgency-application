@@ -1,10 +1,13 @@
 import { auth } from "../config"
+
 // import { alertNote } from "../../Components"
+
 const handleSignIn = (email, password, setMessage) => {
     auth.signInWithEmailAndPassword(email, password)
         .then(() => {
             setMessage("Welcome back")
         })
+
         .catch(err => {
             switch (err.code) {
                 case "auth/wrong-password":
@@ -19,4 +22,5 @@ const handleSignIn = (email, password, setMessage) => {
             }
         })
 }
+
 export { handleSignIn }

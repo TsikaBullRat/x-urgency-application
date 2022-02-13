@@ -9,7 +9,8 @@ const Collect = async (doc, SetCollection, Count) => {
     var set = []
     await firestore.collection('Videos').doc(doc).collection('Acts')
         .onSnapshot(query => {
-            query.forEach(doc => {
+            query.forEach(async doc => {
+                let locator
                 let user
                 let comment
                 let time
@@ -23,7 +24,8 @@ const Collect = async (doc, SetCollection, Count) => {
                 if (doc.data().comments !== undefined) {
                     if (doc.data().comments[0] !== null) {
                         for (var i = 0; i < doc.data().comments.length; i++) {
-                            user = doc.data().user
+                            locator = doc.data().ref
+                            user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username ? doc.data().username : null)
                             comment = doc.data().comments[i].comment
                             time = doc.data().comments[i].time.toDate()
                             load = [...load, { user, comment, time }]
@@ -31,9 +33,8 @@ const Collect = async (doc, SetCollection, Count) => {
                     }
                 }
                 set = [...set, ...load]
-                return { set, count }
+                SetCollection(set)
             })
-            SetCollection(set)
             Count(count)
         })
 }
@@ -54,12 +55,13 @@ const Post = (comment, video) => {
             }
         })
 }
-const LoadSet = (Load, query) => {
 
+const LoadSet = (Load, query) => {
     var content = []
     var i = 0
     var getLink
-    var data = firestore.collection('Videos')
+    var metadata = firestore.collection('Videos')
+    var info = firestore.collection("Users")
     const getTimeFrame = (date) => {
         let today = new Date()
         let frame
@@ -67,7 +69,9 @@ const LoadSet = (Load, query) => {
         if (today.getFullYear() === date.getFullYear()) {
             if (today.getMonth() === date.getMonth()) {
                 if (date.getDay() !== today.getDay()) {
-                    if (today.getDate() === date.getDate()) {
+                    if (today.getDate() - date.getDate() >= 7) {
+                        frame = ((today.getDate() - date.getDate()) / 7) !== 1 ? ((today.getDate() - date.getDate()) / 7) + " weeks ago." : ((today.getDate() - date.getDate()) / 7) + " weeks ago."
+                    } else if (today.getDate() === date.getDate()) {
                         if (today.getHours() === date.getHours()) {
                             if (today.getMinutes() === date.getMinutes()) {
                                 if (today.getSeconds() === date.getSeconds()) {
@@ -82,7 +86,7 @@ const LoadSet = (Load, query) => {
                             frame = (today.getHours() - date.getHours()) !== 1 ? (today.getHours() - date.getHours()) + " hours ago." : (today.getHours() - date.getHours()) + " hour ago."
                         }
                     } else {
-                        frame = (today.getDate() - date.getDate()) !== 1 ? (today.getDate() - date.getDate()) + " days ago." : (today.getDate() - date.getDate()) + " day ago."
+                        frame = (today.getDate() - date.getDate()) >= 7 ? Math.round(((today.getDate() - date.getDate()) / 7)) + " weeks ago." : (today.getDate() - date.getDate()) !== 1 ? (today.getDate() - date.getDate()) + " days ago." : (today.getDate() - date.getDate()) + " day ago."
                     }
                 } else {
                     frame = ((today.getDate() - date.getDate()) / 7) !== 1 ? ((today.getDate() - date.getDate()) / 7) + " weeks ago." : ((today.getDate() - date.getDate()) / 7) + " weeks ago."
@@ -94,7 +98,7 @@ const LoadSet = (Load, query) => {
             if (((date.getMonth() + 1) - (today.getMonth() + 1) >= 1)) {
                 frag = ((date.getMonth() + 1) - (today.getMonth() + 1))
                 frag = 12 - frag
-                frame = frag !== 1 ? frag + " months ago." : frag + " months ago."
+                frame = frag !== 1 ? frag + " months ago." : frag + " month ago."
             } else {
                 frame = (today.getFullYear() - date.getFullYear()) + " years ago"
             }
@@ -102,26 +106,26 @@ const LoadSet = (Load, query) => {
         return frame
     }
 
+
     query ? (
-        storage.ref().child('').listAll()
+        storage.ref().child('/Videos').listAll()
             .then(res => {
                 res.items.forEach(async itemRef => {
-
                     var views = 0
-                    views = await data.doc(itemRef.name.split('.')[0]).collection('Acts').where("viewed", "==", true).get()
-                        .then(doc => {
-                            doc.forEach(item => {
-                                item ? views += 1 : null
-                                return views
+                    console.log(metadata)
+                    views = await metadata.doc(itemRef.name.split('.')[0]).collection("Acts").get()
+                        .then(query => {
+                            query.forEach(doc => {
+                                views = doc.exists ? views + 1 : null
                             })
                             return views
                         })
                     getLink = itemRef.getDownloadURL().then(url => url)
                     let link = await getLink
-                    let find = await data.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
+                    let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title
-                    let match = find.match
-                    let owner = find.owner
+                    let match = find.ref
+                    let owner = await info.doc(match).get().then(doc => doc.data().username)
                     let firestore = itemRef.name.split('.')[0]
                     let description = find.description
                     let tag = find.tag
@@ -135,35 +139,32 @@ const LoadSet = (Load, query) => {
             .catch(err => {
                 return null
             })
-
     ) : (
-        storage.ref().child('').listAll()
+        storage.ref().child('/Videos').listAll()
             .then(res => {
                 res.items.forEach(async itemRef => {
                     var views = 0
-                    views = await data.doc(itemRef.name.split('.')[0]).collection('Acts').where("viewed", "==", true).get()
-                        .then(doc => {
-                            doc.forEach(item => {
-                                item ? views += 1 : null
-                                return views
+                    views = await metadata.doc(itemRef.name.split('.')[0]).collection("Acts").get()
+                        .then(query => {
+                            query.forEach(doc => {
+                                views = doc.exists ? views + 1 : null
                             })
                             return views
                         })
                     getLink = itemRef.getDownloadURL().then(url => url)
                     let link = await getLink
-                    let find = await data.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
+                    let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title
-                    let owner = find.owner
+                    let match = find.ref
+                    let owner = await info.doc(match).get().then(doc => doc.data().username)
                     let firestore = itemRef.name.split('.')[0]
                     let description = find.description
-                    let match = find.match
                     let tag = find.tag
                     let dateAdded = find.added.toDate()
                     let stamp = getTimeFrame(dateAdded)
                     content = [...content, { id: i++, url: link, title: name, description, stamp, owner, firestore, tag, match, views }]
                     Load(content)
                 })
-
             })
             .catch(err => {
                 return null
@@ -184,18 +185,15 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
     }
 
     var bb = new Blob([ab], { type: MIMEstring })
-    var upload = storage.ref().child(`${id}.mp4`).put(bb)
+    var upload = storage.ref().child(`/Videos/${id}.mp4`).put(bb)
 
     firestore.collection('Videos').doc(id).set({
         title: title,
         tag: cat,
-        owner: await auth.currentUser.displayName,
+        ref: await auth.currentUser.uid,
         description: description,
         added: new Date()
     })
-        .then(() => {
-            firestore.collection('Videos').doc(id).collection('Acts').doc('init').set({ start: null })
-        })
 
     upload.on('state_changed',
         snapshot => {

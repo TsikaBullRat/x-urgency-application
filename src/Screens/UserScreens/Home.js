@@ -1,121 +1,50 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-import { Video } from "expo-av";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { Card } from "react-native-paper";
-import { auth, LoadSet } from "../../firebase";
+import { auth, LoadSet, firestore } from "../../firebase";
 import Header from "../../Components/Header";
 import Menu from "../../Components/Menu";
+import { VideoList } from "../../Components/VideoList";
 
-const VideoList = ({ videos, VideoScreen }) => {
+export default function Home({ navigation, Exit }) {
+
   const [status, setStatus] = useState({});
-  const ref = useRef(null);
-
-  return videos
-    ? videos.map((vid) => (
-      <View style={{ width: 295, alignItems: "center" }} key={vid.id}>
-        <Card
-          style={{
-            marginTop: 15,
-            width: 335,
-            height: 245,
-            alignItems: "center",
-            backgroundColor: "#FAFAFA",
-          }}
-        >
-          <TouchableOpacity style={{ width: 335 }} onPress={() => VideoScreen(vid)}>
-            <Video
-              ref={ref}
-              source={{ uri: vid.url }}
-              resizeMode="stretch"
-              isLooping
-              onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-              style={{
-                width: "100%",
-                height: 165,
-                marginTop: 5,
-                alignSelf: "center",
-              }}
-            />
-          </TouchableOpacity>
-
-          <View style={{ justifyContent: 'space-evenly' }}>
-            <Text style={styles.vidTitle}>{vid.title}</Text>
-            <Text style={styles.tag}>{vid.owner}</Text>
-
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Text style={styles.tag}>{vid.views}Views</Text>
-              <Text style={styles.tag}>{vid.stamp}</Text>
-            </View>
-          </View>
-        </Card>
-
-        <ItemSeperatorView />
-      </View>
-    ))
-    : null;
-};
-
-const ItemSeperatorView = () => {
-  return (
-    <View style={{ height: 0.5, width: "100%", backgroundColor: "#c8c8c8" }} />
-  );
-};
-
-export default function Home({ navigation, setMatch }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
-      let match = data.match
-       let owner = data.owner
-       setMatch({match, owner})
-       navigation.navigate("PlayVideo", {data});
-    },
-    Logout = () => {
-      auth.signOut();
+      navigation.navigate("PlayVideo", { data });
     };
 
   useEffect(() => {
     LoadSet(setLoad);
   }, []);
 
-  //const [status, setStatus] = React.useState({});
-  return (
-    <View style={styles.container}>
-      <View style={{ width: 295 }}>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "flex-end",
-            justifyContent: "space-between",
-          }}
-        >
-          <Header />
-          <TouchableOpacity
-            onPress={Logout}>
-            <Image
-              source={require("../../images/logOut.png")}
-              style={styles.logoutIMG}
-            />
-          </TouchableOpacity>
-        </View>
+  // useEffect(() => {
+  //   Exit()
+  // }, [])
 
+  return (
+
+    <View style={styles.container}>
+
+      <View
+        style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
+        <Header Exit={Exit} />
+      </View>
+
+      <View style={{ width: 335, alignItems: 'center' }}>
         <Menu list={videos} setVids={setLoad} />
-        {/*---------------------- Video Scroll View--------------------*/}
-        {/* <ScrollView style={{height:555}} 
-      vertical={true} showsVerticalScrollIndicator={false}> */}
+      </View>
+
+      {/*---------------------- Video Scroll View--------------------*/}
+
+      {/* <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}> */}
         <Card style={styles.menu2}>
           <View>
             <VideoList videos={videos} VideoScreen={VideoScreen} />
           </View>
         </Card>
-        {/* </ScrollView> */}
-      </View>
+      {/* </ScrollView> */}
     </View>
   );
 }
@@ -123,65 +52,29 @@ export default function Home({ navigation, setMatch }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    backgroundColor: '#fff',
   },
 
   logoutIMG: {
     width: 15,
     height: 15,
-    marginTop: -80,
-    marginLeft: -20,
+    marginTop: 25
   },
 
   header: {
-    fontWeight: "medium",
+    fontWeight: "200",
     fontSize: 18,
     color: "#F96056",
     paddingTop: 20,
-    borderBottomWidth: 3,
-    borderColor: "turquoise",
-    shadowColor: "grey",
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-    elevation: 1,
   },
 
   avatar: {
     width: 70,
     height: 70,
     borderRadius: 50,
-    borderBottomWidth: 3,
-    borderColor: "turquoise",
-    shadowColor: "grey",
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-    elevation: 1,
-  },
-  txtCards: {
-    backgroundColor: 'lightgrey',
-    opacity: 0.8,
-    width: 320,
-    height: 50,
-    borderRadius: 10,
-    marginLeft: 28,
-    marginTop: 25,
-    borderBottomWidth: 2,
-    borderRightWidth: 2,
-    borderColor: 'turquoise',
-    shadowColor: 'blue',
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    elevation: 1,
   },
 
-  menu: {
-    flexDirection: "row",
-    width: 320,
-    marginTop: 20,
-    borderRadius: 15,
-  },
   menu2: {
     width: 320,
     height: 520,
@@ -191,6 +84,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+
   categoryListText: {
     paddingLeft: 15,
     fontSize: 17,
@@ -206,4 +100,5 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     fontSize: 12,
   },
-})
+
+});

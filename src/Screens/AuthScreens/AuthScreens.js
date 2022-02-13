@@ -1,29 +1,22 @@
-/**
- * @description      :
- * @author           : TLeeuw
- * @group            :
- * @created          : 09/11/2021 - 14:34:47
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 09/11/2021
- * - Author          : TLeeuw
- * - Modification    :
- **/
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { SignIn, SignUp, DoctorSignUp, ForgotPassword } from '../'
+// import { SignIn, SignUp, DoctorSignUp, DocSignUp, MedSignIn, ForgotPassword } from './'
+import SignIn from "./SignIn";
+import SignUp from "./SignUp"
+import ForgotPassword from "./ForgotPassword"
+import DoctorSignUp from "./DoctorSignUp"
 
 const Stack = createNativeStackNavigator()
 
-export const AuthScreens = () => {
+export const AuthScreens = ({ navigation }) => {
   return (
     <Stack.Navigator initialRouteName='Sign In'>
+
       <Stack.Screen
-        name='Doctor SignIn'
-        component={DoctorSignUp}
-        options={{ headerShown: false }}
-      />
+        name='Doctor SignUp'
+        options={{ headerShown: false }} >
+        {props => <DoctorSignUp {...props} authNavigation={navigation} />}
+      </Stack.Screen>
 
       <Stack.Screen name='Sign In' options={{ headerShown: false }}>
         {(props) => <SignIn {...props} />}
@@ -36,14 +29,8 @@ export const AuthScreens = () => {
       <Stack.Screen
         name='Reset Password'
         component={ForgotPassword}
-        options={{ headerShown: false }}
-      />
+        options={{ headerShown: false }} />
 
-      <Stack.Screen
-        name='Doctor SignUp'
-        component={DoctorSignUp}
-        options={{ headerShown: false }}
-      />
     </Stack.Navigator>
   )
 }

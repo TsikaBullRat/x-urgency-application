@@ -1,13 +1,28 @@
-import { auth } from '../config'
-const handleSignUp = (email, password, Confirmpassword, setMessage) => {
+import { auth, firestore } from '../config'
+
+const handleSignUp = (username, email, password, Confirmpassword, setMessage) => {
     if (password !== Confirmpassword) {
         setMessage("Password Doesn't Match")
     }
+
     else {
         auth.createUserWithEmailAndPassword(email, password)
-            .then(
+            .then(user => {
+                user.user.updateProfile({
+                    displayName: username
+                })
                 setMessage("Welcome")
-            )
+            })
+
+            .then(() => {
+                firestore.collection("Users").doc(auth.currentUser.uid).set({
+                    username: auth.currentUser.displayName,
+                    doctor: false,
+                    email: auth.currentUser.email,
+                    cred: null
+                })
+            })
+
             .catch((error) => {
                 console.log(error);
                 switch (error.code) {
@@ -18,23 +33,44 @@ const handleSignUp = (email, password, Confirmpassword, setMessage) => {
                         setMessage("Password too weak")
                         break
                 }
+
             });
     }
-    // setEmail("")
-    // setPassword("")
-    // setConfirmPassword("")
 }
 
-const handleDoctorSignUp = (email, password, name, setMessage) => {
+const handleDoctorSignUp = (email, password, name, qualification, specialization, branch, contactdetails, description) => {
 
     auth.createUserWithEmailAndPassword(email, password)
         .then(user => {
             user.user.updateProfile({
                 displayName: name
             })
-                .then(console.log('I done'))
+
+                .then(() => {
+                    firestore.collection("Users").doc(auth.currentUser.uid).set({
+                        username: auth.currentUser.displayName,
+                        email: auth.currentUser.email,
+                        doctor: true
+                    })
+
+                        .then(() => {
+                            firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).set({
+                                qualification,
+                                specialization,
+                                branch,
+                                contact: contactdetails,
+                                subcribers: [],
+                                about: description
+                            })
+                        })
+                })
+
                 .catch(err => console.log(err))
         })
+        .then(() => {
+
+        })
+
         .catch((error) => {
             switch (error.code) {
                 case 'auth/invalid-email':
@@ -46,4 +82,5 @@ const handleDoctorSignUp = (email, password, name, setMessage) => {
             }
         });
 }
+
 export { handleSignUp, handleDoctorSignUp }

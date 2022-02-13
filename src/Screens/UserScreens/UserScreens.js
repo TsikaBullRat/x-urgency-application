@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home, PlayVideo, Clone, DoctorProfile } from '..';
+import { Home, VideoScreen, DoctorProfile } from '.';
+import { LogOut } from '../../firebase';
 
 const Stack = createNativeStackNavigator()
 
-export const UserScreens = () => {
+export const UserScreens = ({ navigation }) => {
 
-    const [match, setMatch] = useState(null)
+    const Exit = () => {
+        LogOut()
+        navigation.navigate("auth")
+    }
 
-    useEffect(() => {
-        console.log(match)
-    }, [match])
     return (
         <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+            <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Home" options={{ headerShown: false }} >
-                {props => <Home {...props} setMatch={setMatch} />}
+                {props => <Home {...props} Exit={Exit} />}
             </Stack.Screen>
             <Stack.Screen name="Doctor" options={{ headerShown: false }} >
-                {props => <DoctorProfile {...props} match={match} />}
+                {props => <DoctorProfile {...props} />}
             </Stack.Screen>
         </Stack.Navigator>
     )

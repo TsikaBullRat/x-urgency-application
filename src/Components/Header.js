@@ -1,85 +1,141 @@
 /**
- * @description      :
- * @author           : TLeeuw
- * @group            :
- * @created          : 03/11/2021 - 12:02:33
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 03/11/2021
- * - Author          : TLeeuw
- * - Modification    :
- **/
-import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { Avatar } from "react-native-elements";
+    * @description      : 
+    * @author           : TLeeuw
+    * @group            : 
+    * @created          : 03/11/2021 - 12:02:33
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 03/11/2021
+    * - Author          : TLeeuw
+    * - Modification    : 
+**/
+import React, { useEffect, useState } from 'react';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Pressable } from 'react-native';
+import { Avatar, Badge } from 'react-native-elements';
+import { color } from 'react-native-elements/dist/helpers';
+import { auth, firestore, LogOut } from '../firebase'
 
-export default function Header() {
+export default function Header({ Exit, navigation }) {
+
+  const [image, setImage] = useState(null)
+  const [initial, setInitial] = useState('')
+
+  useEffect(() => {
+    auth.currentUser ? (
+      setImage(auth.currentUser.photoURL),
+      setInitial(auth.currentUser.displayName.substring(0, 1))
+    ) : (
+      auth.onAuthStateChanged(doc => {
+        // setImage(doc.photoURL)
+        // console.log(doc.displayName)
+        // setInitial(doc.displayName.substring(0, 1))
+        console.log(auth.currentUser)
+      })
+    )
+  }, [])
+
   return (
+
     <View style={styles.contain}>
+      <View style={{
+        width: 335,
+        marginTop: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
+
+        <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')}>
+
+          <View style={{ flexDirection: 'row' }}>
+            <Image source={require('../../img/siren.jpg')}
+              style={{ width: 30, height: 30 }} />
+            <View style={{ paddingHorizontal: 10 }}>
+              <Text>Call</Text>
+              <Text>Now</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+
+        
+        {/* <Pressable onPress={()=>console.log("Hey I'm working")} >
+          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+        </Pressable> */}
+      </View>
+      <TouchableOpacity onPress={Exit} >
+          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+        </TouchableOpacity>
+
       {/*---------------------------Header--------------------------*/}
-      <View
-        style={{
-          width: 335,
-          flexDirection: "row",
-          alignItems: 'center',
-          justifyContent: "space-even",
-        }}
-      >
-        <View>
-          <Text style={styles.header}>What's Your</Text>
-          <Text style={styles.header}>EMERGENCY</Text>
+
+      <View style={{
+        flexDirection: 'row',
+        width: 340,
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}>
+
+        <View style={{ top: -20 }}>
+          <Text style={styles.header}> WHAT'S YOUR</Text>
+          <Text style={styles.header}> EMERGENCY ?</Text>
         </View>
 
-        <View>
-          <Avatar
-            style={styles.avatar}
-            rounded
-            source={{
-              uri: "https://randomuser.me/api/portraits/men/41.jpg",
-            }}
-            size="large"
-          />
+        <View style={styles.avatar}>
+          {image ? (
+            <View>
+              <Avatar rounded source={{ uri: image, }} size="medium" />
+            </View>
+          ) : (
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
         </View>
+
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
+
   contain: {
-    width: 295,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff'
+  },
+
+  logoutIMG: {
+    width: 20,
+    height: 20,
+    top: -30,
+    left: 170
   },
 
   header: {
-    width: 240,
-    justifyContent: "flex-start",
-    flexDirection: "column",
-    color: "#F96056",
-    fontSize: 32,
-    //fontFamily: 'poor story'
+    color: '#F96056',
+    fontSize: 30,
   },
 
   avatar: {
+    top: -60,
+    left: -3
+  },
+
+  temp: {
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 20,
-    borderBottomWidth: 3,
-    borderColor: "turquoise",
-    shadowColor: "grey",
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-    elevation: 1,
+    marginTop: 80,
+    backgroundColor: 'turquoise',
+    textAlign: 'center',
+    justifyContent: 'center'
   },
 
-  shadowProp: {
-    shadowColor: "#171717",
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
-  },
-});
+  temp_text: {
+    fontSize: 40,
+    color: '#fff',
+  }
+
+})

@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, } from 'react-native';
+import { Text, View, StyleSheet, Pressable } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
-import { Socials } from '../../Components';
-import { firestore } from '../../firebase';
+import { Socials, } from '../../Components';
+import { auth, firestore } from '../../firebase';
+import Button from '../../Components/button';
 
-const DoctorProfile = ({ match, route }) => {
+const DoctorProfile = ({ route }) => {
 
-    const info = route.params
+    const info = route.params.match
     const options = [
         { label: "About ", value: "About" },
         { label: "Qualification", value: "Qualification" },
         { label: "Specialization", value: "Specialization" },
-        { label: "Contact", value: "Contact" }
-    ];
+        { label: "Contact", value: "Contact" }];
+
     const [About, setAbout] = useState(true);
     const [Qalification, setQualification] = useState(false);
     const [Specialization, setSpecialization] = useState(false);
     const [Contact, setContact] = useState(false);
+    const [doctor, setDoctor] = useState("")
+    const [email, setEmail] = useState("")
     const [data, setData] = useState(null);
+    const [subscription, setSubscription] = useState({ text: "", Func: () => null })
 
     const check = (value) => {
 
@@ -52,42 +56,121 @@ const DoctorProfile = ({ match, route }) => {
         }
 
     }
-    const getDoctorInfo = () =>{
-        firestore.collection("Doctors").doc(match.match).get()
-            .then(doc=>{
+
+    const getDoctorInfo = () => {
+        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+            .then(doc => {
                 setData(doc.data())
             })
+
+        firestore.collection("Users").doc(info).get()
+            .then(doc => {
+                setDoctor(doc.data().username)
+                setEmail(doc.data().email)
+            })
+    }
+
+    const Subscribe = async () => {
+        let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+            .then(doc => {
+                return doc.data().subscribers
+            })
+
+        firestore.collection("Users").doc(info).collection("cred").doc(info).update({
+            subscribers: [...change, auth.currentUser.uid]
+        })
+
+        setSubscription({
+            Func: unSubscribe,
+            text: "unfollow"
+        })
+    }
+
+    const unSubscribe = async () => {
+        let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+            .then(doc => {
+                return doc.data().subscribers
+            })
+
+        change = change.filter(item => item !== auth.currentUser.uid)
+        firestore.collection("Users").doc(info).collection("cred").doc(info).update({
+            subscribers: change
+        })
+
+        setSubscription({
+            Func: Subscribe,
+            text: "follow"
+        })
     }
 
     useEffect(() => {
         getDoctorInfo()
-        console.log(match)
+    }, [])
+
+    const [image, setImage] = useState(null)
+    const [initial, setInitial] = useState("N")
+    const getProfile = async () => {
+        let name
+        setImage(false)
+        name = await firestore.collection("Users").doc(info).get().then(doc => doc.data().username)
+        setInitial(name.substring(0, 1))
+    }
+
+    useEffect(() => {
+        getProfile()
+    }, [])
+
+    useEffect(() => {
+        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+            .then(doc => {
+                let array = []
+                array = [...array, doc.data().subscribers]
+                let index = array.indexOf(auth.currentUser.uid)
+                if (index === -1) {
+                    setSubscription({
+                        Func: unSubscribe,
+                        text: "unfollow"
+                    })
+
+                } else {
+                    setSubscription({
+                        Func: Subscribe,
+                        text: "follow"
+                    })
+                }
+            })
     }, [])
 
     return (
-        <>
+
+        /*data ? (*/<>
+
             <View>
                 <View style={styles.container}>
                     <View style={{ marginTop: 50, marginLeft: 10 }}>
-                        <Avatar style={styles.avatar}
-                            rounded
-                            source={{
-                                uri: 'https://randomuser.me/api/portraits/men/44.jpg',
-                            }}
-                            size="large"
-                        />
-                        <Badge
-                            status="success"
-                            containerStyle={{ position: 'absolute', top: -4, right: -4 }}
-                        />
+                        {
+                            image ? (
+                                <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+                            ) : (
+                                <View style={styles.temp}>
+                                    <Text style={styles.temp_text}> {initial} </Text>
+                                </View>
+                            )}
                     </View>
-                    <Text style={styles.textTitle}>Dr. {match.owner}</Text>
+
+                    <Text style={styles.textTitle}>Dr. {doctor}</Text>
+
                 </View>
 
                 <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
                     <Socials text="Following" number="15" />
-                    <Socials text="Followers" number="3000K" />
+                    <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
                     <Socials text="Likes" number="3.1M" />
+                    <Pressable style={styles.follow} onPress={subscription.Func}>
+                        <Text>{subscription.text}</Text>
+                    </Pressable>
+                </View>
+                <View style={{ marginTop: 20 }}>
                 </View>
 
                 <View>
@@ -98,82 +181,122 @@ const DoctorProfile = ({ match, route }) => {
                         onPress={value => check(value)}
                         testID="gender-switch-selector"
                         accessibilityLabel="gender-switch-selector"
-                        hasPadding
-                    />
+                        hasPadding />
                 </View>
             </View>
+
             {About ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     {data ? data.about : null}
                 </Text>
-            </View> : <View></View>}
+            </View>
+
+                : <View></View>}
+
             {Qalification ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    {data.Qualification}
+                    {data.qualification}
                 </Text>
-            </View> : <View></View>}
+            </View>
+
+                : <View></View>}
+
             {Specialization ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    {data.Specilization}
+                    {data.specilization}
                 </Text>
-            </View> : <View></View>}
+            </View>
+
+                : <View></View>}
+
             {Contact ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    Mr Sighn@gmail.com
+                    {email}
                     {"\n"}
-                    {data.Contact}
+                    {data.contact}
                     {"\n"}
-                    {data.Branch}
+                    {data.branch}
                 </Text>
-            </View> : <View></View>}
+            </View>
 
-        </>
+                : <View></View>} </>
+
+        // ) : null
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: 10,
-      marginBottom: 15,
-      backgroundColor: '#fff',
-      height: 850,
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: '#fff',
     },
+
     textTitle: {
-      color: 'red',
-      fontSize: 25,
-      marginTop: 5,
+        color: 'red',
+        fontSize: 25,
+        marginTop: 5,
     },
+
     textTitle2: {
-      fontSize: 15,
-      marginTop: 20,
-      marginLeft: 5,
+        fontSize: 15,
+        marginTop: 20,
+        marginLeft: 5,
     },
+
     box: {
-      flexDirection: 'row',
+        flexDirection: 'row',
     },
+
     tab: {
-      paddingLeft: 5,
-      width: 380,
+        paddingLeft: 5,
+        width: 380,
     },
+
     avatar: {
-      width: 70,
-      height: 70,
-      borderRadius: 50,
-      margingTop: 80,
-      borderBottomWidth: 3,
-      borderColor: 'turquoise',
-      shadowColor: 'grey',
-      shadowOffset: { width: 1, height: 1 },
-      shadowOpacity: 0.4,
-      elevation: 1,
+        width: 70,
+        height: 70,
+        borderRadius: 50,
+        marginTop: 80,
+        borderBottomWidth: 3,
+        borderColor: 'turquoise',
+        shadowColor: 'grey',
+        shadowOffset: { width: 1, height: 1 },
+        shadowOpacity: 0.4,
+        elevation: 1,
     },
+
     words: {
-      width: 250,
-      textAlign: 'center',
-      alignSelf: 'center'
+        width: 250,
+        textAlign: 'center',
+        alignSelf: 'center'
     },
-  });
+
+    follow: {
+        top: 10,
+        left: 5,
+        backgroundColor: "#f47066",
+        width: 70,
+        height: 40,
+        borderRadius: 15,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+
+    temp: {
+        width: 70,
+        height: 70,
+        borderRadius: 50,
+        marginTop: 80,
+        backgroundColor: 'turquoise',
+        textAlign: 'center',
+        justifyContent: 'center'
+    },
+
+    temp_text: {
+        fontSize: 40,
+        color: '#fff',
+    }
+});
+
 export default DoctorProfile;

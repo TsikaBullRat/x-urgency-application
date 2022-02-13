@@ -10,8 +10,9 @@
     * - Author          : MLab
     * - Modification    : 
 **/
-import React from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, } from 'react-native';
+
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
@@ -19,75 +20,116 @@ import { EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
 export default function ForgotPassword({ navigation }) {
+
+  const [email, setEmail] = useState(""),
+    [password, setPassword] = useState(""),
+    [ConfirmPassword, setConfirmPassword] = useState(""),
+    [prompt1, setPrompt1] = useState(null),
+    [prompt2, setPrompt2] = useState(null),
+    [prompt3, setPrompt3] = useState(null);
+
   const forgotPassword = () => {
-    handleResetPassword("lindiwe.mpondo@gmail.com")
+    if (email === "") {
+      setPrompt1("Please enter email address")
+      setPrompt2(null)
+      setPrompt3(null)
+    } else if (password === "") {
+      setPrompt1(null)
+      setPrompt2("Please enter password")
+      setPrompt3(null)
+    } else if (ConfirmPassword === "") {
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3("Please re-enter password")
+    } else {
+      handleResetPassword("lindiwe.mpondo@gmail.com")
+    }
   }
   const Exit = () => {
     alert("Successfully logged out")
   }
+
   return (
-    <View >
+    <View style={styles.container}>
+
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={76} color="#fff" />
+          <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 20 }}> X-urgency </Text>
+        <Text style={{ color: '#fff', fontSize: 28 }}> {`X-urgency`} </Text>
       </Card>
-      <View style={styles.header} >
-        <Text style={{ fontWeight: 'bold', fontSize: 18, paddingLeft: 5, marginLeft: 110 }}>Reset Password</Text>
+
+      <View style={styles.header}>
+        <Text style={{
+          fontWeight: 'bold', fontSize: 36, fontFamily: 'Arial',
+          color: '#F47066'
+        }}>{`Reset Password`}</Text>
       </View>
-      <View>
+
+      <View style={{ alignItems: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 4, marginLeft: 5 }} />
-            <TextInput style={styles.txtUser}
-              name='username' placeholder='Username'
-            />
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
+        {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
+
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 2, }} />
-            <TextInput style={styles.txtPass}
-              name='password' placeholder='New Password'
-            />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='password' placeholder='New Password' onChangeText={text => setPassword(text)} />
           </View>
         </Card>
+        {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
+
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 2, }} />
-            <TextInput style={styles.txtRePass}
-              name='password' placeholder='Confirm Password'
-            />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='password' placeholder='Confirm Password' onChangeText={text => setConfirmPassword(text)} />
           </View>
         </Card>
+        {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
+
+      </View>
+
+      <View style={{ alignItems: 'center' }}>
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
-          <Text style={{ color: '#fff' }}>RESET PASSWORD </Text>
+          <Text style={{ color: '#fff' }}>{`RESET PASSWORD`} </Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.signIn} onPress={Exit}>
-          <Text style={{ color: '#fff' }}>EXIT</Text>
+          <Text style={{ color: '#fff' }}>{`EXIT`}</Text>
         </TouchableOpacity>
+
       </View>
+
     </View>
+
   )
 }
+
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
-    textAlign: 'center',
-    height: 950,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
+
   card: {
     backgroundColor: '#F47066',
-    width: 325,
+    width: 335,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    marginLeft: 30,
+  },
+
+  prompt: {
+    color: '#F47066',
+    textAlign: "center"
   },
 
   heartIcon: {
@@ -97,58 +139,48 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    paddingTop: 5
+    paddingTop: 25,
+    textAlign: 'center'
   },
 
-  txtUser: {
-    width: 260,
-    height: 35,
+  txtField: {
+    width: 245,
+    height: 30,
+    marginTop: 2,
+    marginLeft: 2,
+    paddingLeft: 10,
+    paddingTop: 15,
     borderRadius: 10,
-    outlineColor: 'transparent',
-    backgroundColor: '#ffffff',
-    padding: 8,
-    paddingTop: 5
-  },
-
-  txtPass: {
-    width: 260,
-    height: 50,
-    borderRadius: 10,
-    backgroundColor: '#fff',
-    padding: 5,
-    paddingTop: 5
-  },
-
-  txtRePass: {
-    width: 260,
-    height: 50,
-    borderRadius: 10,
-    border: 0,
-    backgroundColor: '#fff',
-    padding: 5,
-    paddingTop: 5
+    ...Platform.select({
+      web: {
+        outlineColor: 'transparent'
+      }
+    })
   },
 
   txtCards: {
-    backgroundColor: '#fff',
-    width: 280,
+    width: 315,
     height: 50,
     borderRadius: 10,
-    marginTop: 25,
-    borderWidth: 2,
+    marginLeft: 2,
+    marginTop: 35,
+    borderWidth: 1,
     borderColor: '#F47066',
-    marginLeft: 50,
   },
 
   signIn: {
     height: 50,
     width: 200,
-    marginTop: 50,
+    marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 80,
   },
 
 });
+
+
+
+
+
