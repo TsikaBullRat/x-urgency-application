@@ -81,7 +81,7 @@ export default function SignUp({ navigation }) {
       <View style={styles.header}>
         <Text style={{
           fontWeight: 'bold', fontSize: 36, ...Platform.select({
-            web:{
+            web: {
               fontFamily: 'Arial'
             }
           }),
@@ -168,6 +168,7 @@ const styles = StyleSheet.create({
     paddingTop: 25,
     textAlign: 'center',
   },
+
   prompt: {
     color: '#F47066',
     textAlign: "center"

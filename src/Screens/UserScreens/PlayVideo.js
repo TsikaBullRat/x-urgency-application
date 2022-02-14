@@ -141,7 +141,7 @@ export default function VideoScreen({ navigation, route }) {
               {/* <Dislikes data={data.firestore} /> */}
             </View>
 
-            <TouchableOpacity onPress={ null/*() => ShareItem(data.url)*/}>
+            <TouchableOpacity onPress={null/*() => ShareItem(data.url)*/}>
               <FontAwesome5
                 name="share"
                 size={20}

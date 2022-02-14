@@ -22,6 +22,6 @@ export const UserScreens = ({ navigation }) => {
         //         {props => <DoctorProfile {...props} />}
         //     </Stack.Screen>
         // </Stack.Navigator>
-        <VideoScreen/>
+        <VideoScreen />
     )
 }

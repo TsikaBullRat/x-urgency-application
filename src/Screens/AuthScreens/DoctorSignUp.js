@@ -69,7 +69,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt3(null)
       setPrompt4("Please enter email address")
       setPrompt5(null)
-    } else if(qualification === "") {
+    } else if (qualification === "") {
       setPrompt1(null)
       setPrompt2(null)
       setPrompt3(null)
@@ -83,7 +83,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
   const Register = () => {
     if (qualification === "" && branch === "" && password === "" && confirmpassword === "") {
       setPrompt("Please enter thr requested information")
-    }  else if (description === "") {
+    } else if (description === "") {
       setPrompt6("Please tell us about you")
       setPrompt7(null)
       setPrompt8(null)
@@ -103,7 +103,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt7(null)
       setPrompt8(null)
       setPrompt9("Please re-enter password")
-    }else {
+    } else {
       handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, contactdetails, description)
     }
   }
@@ -123,7 +123,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       <View style={styles.header}>
         <Text style={{
           fontWeight: 'bold', fontSize: 36, ...Platform.select({
-            web:{
+            web: {
               fontFamily: 'Arial'
             }
           }),
@@ -143,7 +143,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setName(text)} />
             </View>
           </Card>
-          {prompt1?<Text style={styles.prompt}>{prompt1}</Text>:null}
+          {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -154,7 +154,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setSurname(text)} />
             </View>
           </Card>
-          {prompt2?<Text style={styles.prompt}>{prompt2}</Text>:null}
+          {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -165,7 +165,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setContactDetails(text)} />
             </View>
           </Card>
-          {prompt3?<Text style={styles.prompt}>{prompt3}</Text>:null}
+          {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -176,7 +176,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setEmail(text)} />
             </View>
           </Card>
-          {prompt4?<Text style={styles.prompt}>{prompt4}</Text>:null}
+          {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
 
           <View style={{ flexDirection: "row" }}>
             <Picker
@@ -199,7 +199,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setQualification(text)} />
             </View>
           </Card>
-          {prompt5?<Text style={styles.prompt}>{prompt5}</Text>:null}
+          {prompt5 ? <Text style={styles.prompt}>{prompt5}</Text> : null}
 
           <View style={{ alignItems: "center" }}>
             <TouchableOpacity style={styles.signIn} onPress={changeVisibilityStatusBar}>
@@ -332,6 +332,7 @@ const styles = StyleSheet.create({
     color: '#F47066',
     textAlign: "center"
   },
+
   signIn: {
     height: 50,
     width: 200,
