@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { Card } from "react-native-paper";
 import { auth, LoadSet, firestore } from "../../firebase";
 import Header from "../../Components/Header";
@@ -36,8 +36,8 @@ export default function Home({ navigation, Exit }) {
               style={{ width: 30, height: 35 }} />
 
             <View style={{  paddingHorizontal: 10 }}>
-              <Text style={{fontSize:12, fontFamily:'Roboto'}}>Call</Text>
-              <Text style={{fontSize:12, fontFamily:'Roboto'}}>Now</Text>
+              <Text style={{fontSize:12, fontFamily:'Arial'}}>Call</Text>
+              <Text style={{fontSize:12, fontFamily:'Arial'}}>Now</Text>
             </View>
 
           </View>
