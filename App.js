@@ -5,11 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-<<<<<<< HEAD
-import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile, EmergencyContacts } from "./src/Screens";
-=======
 import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
->>>>>>> cc05f61b3102b50db4e327e96aa62d61eaffcb15
 
 const Stack = createNativeStackNavigator()
 
