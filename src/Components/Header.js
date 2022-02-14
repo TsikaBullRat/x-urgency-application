@@ -30,7 +30,7 @@ export default function Header({ Exit, navigation }) {
         // setImage(doc.photoURL)
         // console.log(doc.displayName)
         // setInitial(doc.displayName.substring(0, 1))
-        console.log(auth.currentUser)
+        // console.log(auth.currentUser)
       })
     )
   }, [])

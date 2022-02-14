@@ -58,7 +58,11 @@ export default function SignIn({ navigation, setDone }) {
 
       <View style={styles.header}>
         <Text style={{
-          fontWeight: 'bold', fontSize: 36, fontFamily: 'Arial',
+          fontWeight: 'bold', fontSize: 36, ...Platform.select({
+            web:{
+              fontFamily: 'Arial'
+            }
+          }),
           color: '#F47066'
         }}>{`SignIn`}</Text>
       </View>

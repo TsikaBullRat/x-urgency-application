@@ -8,6 +8,10 @@ import { VideoList } from "../../Components/VideoList";
 
 export default function Home({ navigation, Exit }) {
 
+  useEffect(()=>{
+    auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
+  }, [])
+
   const [status, setStatus] = useState({});
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
@@ -18,10 +22,6 @@ export default function Home({ navigation, Exit }) {
   useEffect(() => {
     LoadSet(setLoad);
   }, []);
-
-  // useEffect(() => {
-  //   Exit()
-  // }, [])
 
   return (
 

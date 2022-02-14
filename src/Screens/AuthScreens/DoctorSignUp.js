@@ -121,7 +121,11 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
       <View style={styles.header}>
         <Text style={{
-          fontWeight: 'bold', fontSize: 36, fontFamily: 'Arial',
+          fontWeight: 'bold', fontSize: 36, ...Platform.select({
+            web:{
+              fontFamily: 'Arial'
+            }
+          }),
           color: '#F47066'
         }}>{`Doctor SignUp`}</Text>
       </View>
