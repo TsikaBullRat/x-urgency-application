@@ -13,5 +13,6 @@
 import Home from "./Home"
 import VideoScreen from "./PlayVideo"
 import DoctorProfile from "./Doctor"
+import { Emergency} from "./EmergencyContacts"
 
-export { Home, VideoScreen, DoctorProfile }
+export { Home, VideoScreen, DoctorProfile, Emergency }

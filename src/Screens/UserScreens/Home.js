@@ -13,6 +13,9 @@ export default function Home({ navigation, Exit }) {
     ref = useRef(null),
     VideoScreen = (data) => {
       navigation.navigate("PlayVideo", { data });
+    },
+    Emergency = () =>{
+      navigation.navigate("EmergencyContacts")
     };
 
   useEffect(() => {
@@ -29,7 +32,7 @@ export default function Home({ navigation, Exit }) {
 
       <View
         style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
-        <Header Exit={Exit} />
+        <Header Exit={Exit} Emergency={Emergency} />
       </View>
 
       <View style={{ width: 335, alignItems: 'center' }}>

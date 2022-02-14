@@ -16,7 +16,7 @@ import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
 
-export default function Header({ Exit, navigation }) {
+export default function Header({ Exit, Emergency }) {
 
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')
@@ -46,7 +46,7 @@ export default function Header({ Exit, navigation }) {
         justifyContent: 'space-between'
       }}>
 
-        <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')}>
+        <TouchableOpacity onPress={Emergency}>
 
           <View style={{ flexDirection: 'row' }}>
             <Image source={require('../../img/siren.jpg')}
