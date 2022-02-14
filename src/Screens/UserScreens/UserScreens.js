@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home, VideoScreen, Clone, DoctorProfile } from '..';
+import { Home, VideoScreen, ViewMap, Clone, DoctorProfile, EmergencyContacts } from '..';
 import { LogOut } from '../../firebase';
 
 const Stack = createNativeStackNavigator()
@@ -20,7 +20,9 @@ export const UserScreens = ({ navigation }) => {
             </Stack.Screen>
             <Stack.Screen name="Doctor" options={{ headerShown: false }} >
                 {props => <DoctorProfile {...props} />}
-            </Stack.Screen>
+                </Stack.Screen>
+                <Stack.Screen name="ViewMap" component={ViewMap} options={{ headerShown: false }} />
+                <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

@@ -13,7 +13,7 @@
 
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { SignIn, SignUp, DoctorSignUp, DocSignUp, MedSignIn, ForgotPassword } from '../'
+import { SignIn, SignUp, DoctorSignUp, MedSignIn, ForgotPassword } from '../'
 
 const Stack = createNativeStackNavigator()
 

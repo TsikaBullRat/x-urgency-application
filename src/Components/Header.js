@@ -11,10 +11,11 @@
     * - Modification    : 
 **/
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image, Pressable, Touch } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
+import EmergencyContacts from './EmergencyContacts'
 
 export default function Header({ Exit, navigation }) {
 
@@ -43,25 +44,9 @@ export default function Header({ Exit, navigation }) {
         marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'}}>
+        justifyContent: 'flex-end'}}>  
 
-        <Pressable onPress={() => navigation.navigate('EmergencyContacts')}>
-
-          <View style={{ flexDirection: 'row' }}>
-            <Image source={require('../../img/siren.jpg')}
-              style={{ width: 30, height: 30 }} />
-
-            <View style={{ paddingHorizontal: 10 }}>
-              <Text>Call</Text>
-              <Text>Now</Text>
-            </View>
-
-          </View>
-        </Pressable>
-
-        <Pressable onPress={Exit} >
-          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-        </Pressable>
+        
       </View>
 
       {/*---------------------------Header--------------------------*/}
@@ -72,7 +57,8 @@ export default function Header({ Exit, navigation }) {
         alignItems: 'center',
         justifyContent: 'space-between'}}>
 
-        <View style={{top:-20}}>
+        <View style={{top:-20}}
+        >
           <Text style={styles.header}> WHAT'S YOUR</Text>
           <Text style={styles.header}> EMERGENCY ?</Text>
         </View>
@@ -87,6 +73,12 @@ export default function Header({ Exit, navigation }) {
             <Text style={styles.temp_text}> {initial} </Text>
           </View>
         )}
+        </View>
+
+        <View style={{top:-40}}>
+        <TouchableOpacity onPress={Exit} >
+          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+        </TouchableOpacity>
         </View>
 
       </View>
@@ -110,6 +102,7 @@ const styles = StyleSheet.create({
   header: {
     color: '#F96056',
     fontSize: 30,
+    fontFamily:'Roboto'
   },
 
   avatar: {
@@ -130,6 +123,7 @@ const styles = StyleSheet.create({
   temp_text: {
     fontSize: 40,
     color: '#fff',
+    fontFamily: 'Roboto'
   }
 
 })

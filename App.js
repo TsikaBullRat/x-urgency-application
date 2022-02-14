@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile } from "./src/Screens";
+import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile, EmergencyContacts } from "./src/Screens";
 
 const Stack = createNativeStackNavigator()
 
@@ -51,6 +51,7 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
          <Stack.Navigator>
+
           {check1 ? (
             id ? (
               check2 ? (
@@ -58,6 +59,7 @@ export default function App() {
                   <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }} />
                 ) : (
                   <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
+                  
                 )
               ) : (
                 <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
