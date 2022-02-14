@@ -45,6 +45,7 @@ export default function ForgotPassword({ navigation }) {
   }
   const Exit = () => {
     alert("Successfully logged out")
+    navigation.navigate('SignIn')
   }
 
   return (

@@ -61,6 +61,7 @@ export default function App() {
                   <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }} />
                 ) : (
                   <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
+                  
                 )
               ) : (
                 <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
