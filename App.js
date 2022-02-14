@@ -52,8 +52,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-        <UserScreens/>
-        {/* <Stack.Navigator>
+      
+       <Stack.Navigator>
           {check1 ? (
             id ? (
               check2 ? (
@@ -72,7 +72,7 @@ export default function App() {
           ) : (
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
           )}
-        </Stack.Navigator> */}
+        </Stack.Navigator> 
       </KeyboardAwareScrollView>
     </NavigationContainer>
   );
