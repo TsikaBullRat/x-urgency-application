@@ -1,24 +1,13 @@
-/**
-    * @description      : 
-    * @author           : TLeeuw
-    * @group            : 
-    * @created          : 03/11/2021 - 12:24:16
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 03/11/2021
-    * - Author          : TLeeuw
-    * - Modification    : 
-**/
-
 import React from 'react';
 import { Text, View, StyleSheet, ScrollView, Image, Pressable } from 'react-native';
 import { Card } from 'react-native-paper';
+import { auth, LoadSet, firestore } from "../firebase";
 
-export default function Header({ list, setVids, navigation }) {
+export default function Menu({ list, setVids }) {
 
-  const Sort = (match) => { setVids(list.filter(item => item.tag === match)) 
-  navigation.navigate('PlayVideo')}
+  const Sort = (match) => {
+    LoadSet(setVids, match)
+  }
 
   return (
 
@@ -30,7 +19,7 @@ export default function Header({ list, setVids, navigation }) {
 
         style={{ width: 350 }} horizontal={true} showsHorizontalScrollIndicator={false}>
 
-        <View style={{ width: 705, flexDirection: 'row', alignItems:'center', justifyContent: 'space-around' }}>
+        <View style={{ width: 705, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
               <Card style={styles.menuCard}>
                 <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
@@ -86,7 +75,7 @@ export default function Header({ list, setVids, navigation }) {
               <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8, }}> {`Burns`} </Text>
             </Card>
           </Pressable>
-          
+
         </View>
 
       </ScrollView>
@@ -113,19 +102,19 @@ const styles = StyleSheet.create({
   menuIcons: {
     height: 30,
     width: 30,
-    alignSelf:'center',
+    alignSelf: 'center',
     borderRadius: 15,
     marginTop: 2,
     color: '#fff',
   },
 
-menuCard: { 
-  width: 65, 
-  height: 65, 
-  borderRadius: 5, 
-  alignItems: 'center', 
-  textAlign: 'center', 
-  backgroundColor: '#f96056' 
+  menuCard: {
+    width: 65,
+    height: 65,
+    borderRadius: 5,
+    alignItems: 'center',
+    textAlign: 'center',
+    backgroundColor: '#f96056'
   },
 
 })

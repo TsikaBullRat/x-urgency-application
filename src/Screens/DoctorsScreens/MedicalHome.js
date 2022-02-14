@@ -1,28 +1,3 @@
-/**
- * @description      :
- * @author           : MLab
- * @group            :
- * @created          : 07/10/2021 - 10:05:53
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 07/10/2021
- * - Author          : MLab
- * - Modification    :
- **/
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 05/10/2021 - 14:22:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 05/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
-
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Pressable } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
@@ -42,9 +17,9 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
       LogOut()
       Exit()
     },
-    VideoNotifier = () =>{
+    VideoNotifier = () => {
       let today = new Date()
-      if(today === auth.currentUser.metadata.creationTime){
+      if (today === auth.currentUser.metadata.creationTime) {
         setDisplayModal(true)
       }
       // firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
@@ -56,20 +31,20 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
       //     })
       //     return data
       //   })
-        // .then(dateList=>{
-        //   console.log(dateList)
-        //   dateList = dateList.sort((a,b)=>b-a)
-        //   console.log(dateList)
-          // if(dateList.g)
-        // })
-        // .then(dateList=>{
-        //   console.log(dateList)
-        //   dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
-        //   return dateList
-        // })
-        // .then(dateList=>{
-        //   console.log(dateList)
-        // })
+      // .then(dateList=>{
+      //   console.log(dateList)
+      //   dateList = dateList.sort((a,b)=>b-a)
+      //   console.log(dateList)
+      // if(dateList.g)
+      // })
+      // .then(dateList=>{
+      //   console.log(dateList)
+      //   dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
+      //   return dateList
+      // })
+      // .then(dateList=>{
+      //   console.log(dateList)
+      // })
     };
 
   const [image, setImage] = useState()
@@ -109,7 +84,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
     LoadSet(setLoad);
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     VideoNotifier()
   }, [])
 
@@ -165,7 +140,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
             )}
 
           </TouchableOpacity>
-          <Pressable onPress={() => navigation.navigate("Update")} >
+          <Pressable onPress={() => { navigation.navigate("Update") }} >
             <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
           </Pressable>
         </View>
@@ -175,19 +150,19 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
 
       {loading ? <ProgressBar status={loading} /> : null}
 
-      <ScrollView style={{ height: 580, width: 335, }}
+      {/* <ScrollView style={{ height: 580, width: 335, }} */}
 
-        vertical={true} showsVerticalScrollIndicator={false}>
+      {/* vertical={true} showsVerticalScrollIndicator={false}> */}
 
-        <Card style={styles.menu2}>
-          <View>
-            <VideoList videos={videos} VideoScreen={VideoScreen} />
-          </View>
-        </Card>
+      <Card style={styles.menu2}>
+        <View>
+          <VideoList videos={videos} VideoScreen={VideoScreen} />
+        </View>
+      </Card>
 
-      </ScrollView>
+      {/* </ScrollView> */}
       <TouchableOpacity
-        style={styles.btnUpload} onPress={() => { navigation.navigate("Upload"); }} >
+        style={styles.btnUpload} onPress={() => { navigation.navigate("Upload") }} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>
       </TouchableOpacity>
     </View>
@@ -197,7 +172,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
 
 const styles = StyleSheet.create({
   contain: {
-     flex: 1,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
   },

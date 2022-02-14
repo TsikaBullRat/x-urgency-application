@@ -22,16 +22,16 @@ export default function Header({ Exit, navigation }) {
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')
 
-  useEffect(() => { 
-    auth.currentUser?(
+  useEffect(() => {
+    auth.currentUser ? (
       setImage(auth.currentUser.photoURL),
       setInitial(auth.currentUser.displayName.substring(0, 1))
-    ):(
-      auth.onAuthStateChanged(doc=>{
+    ) : (
+      auth.onAuthStateChanged(doc => {
         // setImage(doc.photoURL)
         // console.log(doc.displayName)
         // setInitial(doc.displayName.substring(0, 1))
-        console.log(auth.currentUser)
+        // console.log(auth.currentUser)
       })
     )
   }, [])
@@ -48,6 +48,9 @@ export default function Header({ Exit, navigation }) {
 
         
       </View>
+      <TouchableOpacity onPress={Exit} >
+        <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+      </TouchableOpacity>
 
       {/*---------------------------Header--------------------------*/}
 
@@ -55,24 +58,24 @@ export default function Header({ Exit, navigation }) {
         flexDirection: 'row',
         width: 340,
         alignItems: 'center',
-        justifyContent: 'space-between'}}>
+        justifyContent: 'space-between'
+      }}>
 
-        <View style={{top:-20}}
-        >
+        <View style={{ top: -20 }}>
           <Text style={styles.header}> WHAT'S YOUR</Text>
           <Text style={styles.header}> EMERGENCY ?</Text>
         </View>
 
-        <View style={styles.avatar}> 
-        {image ? (
-          <View>
-          <Avatar rounded source={{ uri: image, }} size="medium" />
-          </View>
+        <View style={styles.avatar}>
+          {image ? (
+            <View>
+              <Avatar rounded source={{ uri: image, }} size="medium" />
+            </View>
           ) : (
-          <View style={styles.temp}>
-            <Text style={styles.temp_text}> {initial} </Text>
-          </View>
-        )}
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
         </View>
 
         <View style={{top:-40}}>
@@ -97,6 +100,8 @@ const styles = StyleSheet.create({
   logoutIMG: {
     width: 20,
     height: 20,
+    top: -30,
+    left: 170
   },
 
   header: {

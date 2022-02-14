@@ -45,7 +45,7 @@ export default function SignIn({ navigation, setDone }) {
       <View style={styles.header}>
         <Text style={{ fontWeight: 'bold', fontSize: 36 }}>{`Medical SignIn`}</Text>
       </View>
- 
+
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
@@ -88,7 +88,7 @@ export default function SignIn({ navigation, setDone }) {
 
 const styles = StyleSheet.create({
   container: {
-     flex: 1,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
   },

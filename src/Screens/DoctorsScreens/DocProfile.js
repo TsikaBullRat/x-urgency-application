@@ -105,7 +105,7 @@ export default function MedicalHome({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-     flex: 1,    alignItems: 'center',
+    flex: 1, alignItems: 'center',
     backgroundColor: '#fff',
   },
 

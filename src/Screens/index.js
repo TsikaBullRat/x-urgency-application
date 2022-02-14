@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
     * @description      : 
     * @author           : MLab
@@ -28,6 +29,8 @@ import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
 
 export { SignIn, SignUp, ForgotPassword, Home, VideoScreen, UploadVideo, DoctorProfile, DoctorSignUp, MedicalHome, Upload, Clone, EmergencyContacts, UpdateProfile, ViewMap }
 
+=======
+>>>>>>> cc05f61b3102b50db4e327e96aa62d61eaffcb15
 export { UserScreens } from './UserScreens/UserScreens'
 export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'
 export { AuthScreens } from './AuthScreens/AuthScreens'

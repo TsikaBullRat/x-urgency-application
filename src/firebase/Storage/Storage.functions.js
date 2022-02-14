@@ -106,7 +106,6 @@ const LoadSet = (Load, query) => {
         return frame
     }
 
-
     query ? (
         storage.ref().child('/Videos').listAll()
             .then(res => {

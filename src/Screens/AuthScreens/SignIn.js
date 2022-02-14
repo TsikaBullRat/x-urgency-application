@@ -53,12 +53,18 @@ export default function SignIn({ navigation, setDone }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ textAlign:'center', color: '#fff', fontSize: 28}}> {`X-urgency`} </Text>
+        <Text style={{ textAlign: 'center', color: '#fff', fontSize: 28 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily:'Arial', 
-        color: '#F47066' }}>{`SignIn`}</Text>
+        <Text style={{
+          fontWeight: 'bold', fontSize: 36, ...Platform.select({
+            web: {
+              fontFamily: 'Arial'
+            }
+          }),
+          color: '#F47066'
+        }}>{`SignIn`}</Text>
       </View>
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 
