@@ -58,14 +58,13 @@ export default function Header({ Exit, navigation }) {
           </View>
         </TouchableOpacity>
 
-        
         {/* <Pressable onPress={()=>console.log("Hey I'm working")} >
           <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
         </Pressable> */}
       </View>
       <TouchableOpacity onPress={Exit} >
-          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-        </TouchableOpacity>
+        <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+      </TouchableOpacity>
 
       {/*---------------------------Header--------------------------*/}
 

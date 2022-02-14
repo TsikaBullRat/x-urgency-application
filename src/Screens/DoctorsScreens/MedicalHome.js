@@ -140,7 +140,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
             )}
 
           </TouchableOpacity>
-          <Pressable onPress={() => { navigation.navigate("Update")}} >
+          <Pressable onPress={() => { navigation.navigate("Update") }} >
             <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
           </Pressable>
         </View>
@@ -152,17 +152,17 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
 
       {/* <ScrollView style={{ height: 580, width: 335, }} */}
 
-        {/* vertical={true} showsVerticalScrollIndicator={false}> */}
+      {/* vertical={true} showsVerticalScrollIndicator={false}> */}
 
-        <Card style={styles.menu2}>
-          <View>
-            <VideoList videos={videos} VideoScreen={VideoScreen} />
-          </View>
-        </Card>
+      <Card style={styles.menu2}>
+        <View>
+          <VideoList videos={videos} VideoScreen={VideoScreen} />
+        </View>
+      </Card>
 
       {/* </ScrollView> */}
       <TouchableOpacity
-        style={styles.btnUpload} onPress={() => { navigation.navigate("Upload")}} >
+        style={styles.btnUpload} onPress={() => { navigation.navigate("Upload") }} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>
       </TouchableOpacity>
     </View>

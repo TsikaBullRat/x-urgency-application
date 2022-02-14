@@ -5,7 +5,7 @@ import { auth, LoadSet, firestore } from "../firebase";
 
 export default function Menu({ list, setVids }) {
 
-  const Sort = (match) => { 
+  const Sort = (match) => {
     LoadSet(setVids, match)
   }
 
@@ -42,10 +42,10 @@ export default function Menu({ list, setVids }) {
           </Pressable>
 
           <Pressable onPress={() => Sort("cpr")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/cprIcon.png')} />
-                <Text style={{ fontSize: 12, paddingTop:8 }}> {`CPR`} </Text>
-                </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/cprIcon.png')} />
+              <Text style={{ fontSize: 12, paddingTop: 8 }}> {`CPR`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("bleeding")}>

@@ -59,7 +59,7 @@ export default function SignIn({ navigation, setDone }) {
       <View style={styles.header}>
         <Text style={{
           fontWeight: 'bold', fontSize: 36, ...Platform.select({
-            web:{
+            web: {
               fontFamily: 'Arial'
             }
           }),

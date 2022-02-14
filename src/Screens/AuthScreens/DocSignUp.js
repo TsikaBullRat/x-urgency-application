@@ -47,19 +47,19 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: "row" }}>
-            {/* {<Picker
-                specialization={specialization}
-                style={styles.picker}
-                onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
-                <Picker.Item label="Neuro-Surgent" value="stroke" />
-                <Picker.Item label="General Practitioner" value="heart-attack" />
-                <Picker.Item label="Epilepsy" value="epilepsy" />
-                <Picker.Item label="CPR" value="cpr" />
-                <Picker.Item label="Drowning" value="drowning" />
-                <Picker.Item label="Choking" value="choking" />
-                <Picker.Item label="Java" value="java" />
-                <Picker.Item label="Burns" value="burns" />
-            </Picker>} */}
+            {<Picker
+              specialization={specialization}
+              style={styles.picker}
+              onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
+              <Picker.Item label="Neuro-Surgent" value="stroke" />
+              <Picker.Item label="General Practitioner" value="heart-attack" />
+              <Picker.Item label="Epilepsy" value="epilepsy" />
+              <Picker.Item label="CPR" value="cpr" />
+              <Picker.Item label="Drowning" value="drowning" />
+              <Picker.Item label="Choking" value="choking" />
+              <Picker.Item label="Java" value="java" />
+              <Picker.Item label="Burns" value="burns" />
+            </Picker>}
           </View>
         </Card>
 
