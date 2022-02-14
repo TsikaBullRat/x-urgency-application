@@ -35,7 +35,7 @@ export default function App() {
 
   useEffect(() => {
     id !== null ? (
-      setCheck1(true)
+      setCheck1(true)   
     ) : null
   }, [id])
 
