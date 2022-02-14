@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { Card } from "react-native-paper";
 import { auth, LoadSet, firestore } from "../../firebase";
 import Header from "../../Components/Header";
@@ -7,6 +7,10 @@ import Menu from "../../Components/Menu";
 import { VideoList } from "../../Components/VideoList";
 
 export default function Home({ navigation, Exit }) {
+
+  useEffect(()=>{
+    auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
+  }, [])
 
   const [status, setStatus] = useState({});
   const [videos, setLoad] = useState(null),
@@ -18,10 +22,6 @@ export default function Home({ navigation, Exit }) {
   useEffect(() => {
     LoadSet(setLoad);
   }, []);
-
-  useEffect(() => {
-    console.log(auth.currentUser)
-  }, [])
 
   return (
 
@@ -38,13 +38,13 @@ export default function Home({ navigation, Exit }) {
 
       {/*---------------------- Video Scroll View--------------------*/}
 
-      <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
+      {/* <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}> */}
         <Card style={styles.menu2}>
           <View>
             <VideoList videos={videos} VideoScreen={VideoScreen} />
           </View>
         </Card>
-      </ScrollView>
+      {/* </ScrollView> */}
     </View>
   );
 }

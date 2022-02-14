@@ -28,6 +28,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     [specialization, setSpecialization] = useState(""),
     [branch, setBranch] = useState(""),
     [password, setPassword] = useState(""),
+    [description, setDescription] = useState(""),
     [confirmpassword, setConfirmPassword] = useState(""),
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null),
@@ -37,6 +38,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     [prompt6, setPrompt6] = useState(null),
     [prompt7, setPrompt7] = useState(null),
     [prompt8, setPrompt8] = useState(null),
+    [prompt9, setPrompt9] = useState(null),
     [visibleStatusBar, setVisibleStatusBar] = useState(true);
 
   const changeVisibilityStatusBar = () => {
@@ -46,9 +48,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt3(null)
       setPrompt4(null)
       setPrompt5(null)
-      setPrompt6(null)
-      setPrompt7(null)
-      setPrompt8(null)
       setVisibleStatusBar(!visibleStatusBar)
     } else if (surname === "") {
       setPrompt1(null)
@@ -56,9 +55,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt3(null)
       setPrompt4(null)
       setPrompt5(null)
-      setPrompt6(null)
-      setPrompt7(null)
-      setPrompt8(null)
       setVisibleStatusBar(!visibleStatusBar)
     } else if (contactdetails === "") {
       setPrompt1(null)
@@ -66,9 +62,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt3("Please enter contact details")
       setPrompt4(null)
       setPrompt5(null)
-      setPrompt6(null)
-      setPrompt7(null)
-      setPrompt8(null)
       setVisibleStatusBar(!visibleStatusBar)
     } else if (email === "") {
       setPrompt1(null)
@@ -76,9 +69,12 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt3(null)
       setPrompt4("Please enter email address")
       setPrompt5(null)
-      setPrompt6(null)
-      setPrompt7(null)
-      setPrompt8(null)
+    } else if(qualification === "") {
+      setPrompt1(null)
+      setPrompt2(null)
+      setPrompt3(null)
+      setPrompt4(null)
+      setPrompt5("Please enter qualification")
     } else {
       setVisibleStatusBar(!visibleStatusBar)
     }
@@ -87,29 +83,28 @@ export default function DoctorSignUp({ navigation, setDetails }) {
   const Register = () => {
     if (qualification === "" && branch === "" && password === "" && confirmpassword === "") {
       setPrompt("Please enter thr requested information")
-    } else if (qualification === "") {
-      setPrompt5("Please enter qualification")
-      setPrompt6(null)
+    }  else if (description === "") {
+      setPrompt6("Please tell us about you")
       setPrompt7(null)
       setPrompt8(null)
+      setPrompt9(null)
     } else if (branch === "") {
-      setPrompt5(null)
-      setPrompt6("Please enter branch name")
-      setPrompt7(null)
+      setPrompt6(null)
+      setPrompt7("Please enter branch name")
       setPrompt8(null)
+      setPrompt9(null)
     } else if (password === "") {
-      setPrompt5(null)
-      setPrompt6(null)
-      setPrompt7("Please enter password")
-      setPrompt8(null)
-    } else if (confirmpassword === "") {
-      setPrompt5(null)
       setPrompt6(null)
       setPrompt7(null)
-      setPrompt8("Please re-enter password")
-    } else {
-      handleDoctorSignUp(email, password, name + " " + surname, setMessage, qualification, specialization, branch, contactdetails)
-      setDisplayModal(true)
+      setPrompt8("Please enter password")
+      setPrompt9(null)
+    } else if (confirmpassword === "") {
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8(null)
+      setPrompt9("Please re-enter password")
+    }else {
+      handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, contactdetails, description)
     }
   }
 
@@ -127,7 +122,11 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
       <View style={styles.header}>
         <Text style={{
-          fontWeight: 'bold', fontSize: 36, fontFamily: 'Arial',
+          fontWeight: 'bold', fontSize: 36, ...Platform.select({
+            web:{
+              fontFamily: 'Arial'
+            }
+          }),
           color: '#F47066'
         }}>{`Doctor SignUp`}</Text>
       </View>
@@ -144,6 +143,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setName(text)} />
             </View>
           </Card>
+          {prompt1?<Text style={styles.prompt}>{prompt1}</Text>:null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -154,6 +154,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setSurname(text)} />
             </View>
           </Card>
+          {prompt2?<Text style={styles.prompt}>{prompt2}</Text>:null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -164,6 +165,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setContactDetails(text)} />
             </View>
           </Card>
+          {prompt3?<Text style={styles.prompt}>{prompt3}</Text>:null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -174,6 +176,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setEmail(text)} />
             </View>
           </Card>
+          {prompt4?<Text style={styles.prompt}>{prompt4}</Text>:null}
 
           <View style={{ flexDirection: "row" }}>
             <Picker
@@ -196,9 +199,10 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 onChangeText={(text) => setQualification(text)} />
             </View>
           </Card>
+          {prompt5?<Text style={styles.prompt}>{prompt5}</Text>:null}
 
           <View style={{ alignItems: "center" }}>
-            <TouchableOpacity style={styles.signIn} onPress={() => setVisibleStatusBar(!visibleStatusBar)}>
+            <TouchableOpacity style={styles.signIn} onPress={changeVisibilityStatusBar}>
               <Text style={{ color: "#fff" }}>{`NEXT`} </Text>
             </TouchableOpacity>
           </View>
@@ -249,7 +253,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
           </Card>
 
           <View style={{ alignItems: "center" }}>
-            <TouchableOpacity style={styles.signIn} onPress={null}>
+            <TouchableOpacity style={styles.signIn} onPress={Register}>
               <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
             </TouchableOpacity>
           </View>
@@ -324,7 +328,10 @@ const styles = StyleSheet.create({
     borderColor: '#F47066',
     opacity: 0.8
   },
-
+  prompt: {
+    color: '#F47066',
+    textAlign: "center"
+  },
   signIn: {
     height: 50,
     width: 200,
@@ -333,6 +340,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F47066',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 
-});
+})

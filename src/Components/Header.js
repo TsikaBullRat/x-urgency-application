@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image, Pressable, Touch } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, Pressable } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
@@ -30,7 +30,7 @@ export default function Header({ Exit, navigation }) {
         // setImage(doc.photoURL)
         // console.log(doc.displayName)
         // setInitial(doc.displayName.substring(0, 1))
-        console.log(auth.currentUser)
+        // console.log(auth.currentUser)
       })
     )
   }, [])
@@ -46,7 +46,7 @@ export default function Header({ Exit, navigation }) {
         justifyContent: 'space-between'
       }}>
 
-        <Pressable onPress={() => navigation.navigate('EmergencyContacts')}>
+        <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')}>
 
           <View style={{ flexDirection: 'row' }}>
             <Image source={require('../../img/siren.jpg')}
@@ -56,13 +56,16 @@ export default function Header({ Exit, navigation }) {
               <Text>Now</Text>
             </View>
           </View>
+        </TouchableOpacity>
 
-        </Pressable>
-
-        <Pressable onPress={Exit} >
+        
+        {/* <Pressable onPress={()=>console.log("Hey I'm working")} >
           <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-        </Pressable>
+        </Pressable> */}
       </View>
+      <TouchableOpacity onPress={Exit} >
+          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+        </TouchableOpacity>
 
       {/*---------------------------Header--------------------------*/}
 
@@ -106,6 +109,8 @@ const styles = StyleSheet.create({
   logoutIMG: {
     width: 20,
     height: 20,
+    top: -30,
+    left: 170
   },
 
   header: {
