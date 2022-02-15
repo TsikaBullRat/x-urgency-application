@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home, VideoScreen, Clone, DoctorProfile, EmergencyContacts } from '..';
+import { Home, VideoScreen, DoctorProfile, EmergencyContacts } from '..';
 import { LogOut } from '../../firebase';
 
 const Stack = createNativeStackNavigator()
