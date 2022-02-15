@@ -80,9 +80,9 @@ export default function SignUp({ navigation }) {
 
       <View style={styles.header}>
         <Text style={{
-          fontWeight: 'bold', fontSize: 36, ...Platform.select({
+          fontSize: 40, ...Platform.select({
             web: {
-              fontFamily: 'Arial'
+              fontFamily: 'Cooper'
             }
           }),
           color: '#F47066'

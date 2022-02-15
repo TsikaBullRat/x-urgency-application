@@ -58,9 +58,9 @@ export default function SignIn({ navigation, setDone }) {
 
       <View style={styles.header}>
         <Text style={{
-          fontWeight: 'bold', fontSize: 36, ...Platform.select({
+           fontSize: 40, ...Platform.select({
             web: {
-              fontFamily: 'Arial'
+              fontFamily: 'Cooper'
             }
           }),
           color: '#F47066'
@@ -108,7 +108,7 @@ export default function SignIn({ navigation, setDone }) {
         <Text style={{ paddingTop: 10, fontSize: 14, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
 
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('MedSignIn') }}>
             <Text style={{ fontSize: 18, color: '#F47066' }}> {`SignUp`} </Text>
           </TouchableOpacity>
         </View>
@@ -144,6 +144,9 @@ const styles = StyleSheet.create({
 
   header: {
     paddingTop: 25,
+    fontSize: 36,
+    fontFamily: 'Cooper',
+    color: '#F47066'
   },
 
   txtUser: {
