@@ -43,7 +43,17 @@ export default function SignIn({ navigation, setDone }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 36 }}>{`Medical SignIn`}</Text>
+        <Text style={{
+           fontSize: 40, ...Platform.select({
+            web: {
+              //fontFamily: 'Cooper',
+              fontWeight:'bold',
+              
+              paddingTop: 25
+            }
+          }),
+          color: '#F47066'
+        }}>{`Medical SignIn`}</Text>
       </View>
 
       <View>
@@ -75,9 +85,9 @@ export default function SignIn({ navigation, setDone }) {
         </View>
 
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <Text style={{ paddingTop: 5 }}> {`New?`} </Text>
+          <Text style={{ paddingTop: 9, fontSize: 14, }}>  {`New User?`} </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
-            <Text style={{ paddingTop: 5, color: '#F47066' }}> {`SignUp`}</Text>
+            <Text style={{ paddingTop: 5, fontSize: 18, color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>
 
