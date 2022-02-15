@@ -6,7 +6,11 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-import { Home, VideoScreen, DoctorProfile, EmergencyContacts, ViewMap, UploadVideo, MedicalHome, Upload, UpdateProfile, SignIn, SignUp, ForgotPassword, DoctorSignUp } from "./src/Screens";
+// import { Home, VideoScreen, DoctorProfile, EmergencyContacts, ViewMap, UploadVideo, MedicalHome, Upload, UpdateProfile, SignIn, SignUp, ForgotPassword, DoctorSignUp } from "./src/Screens";
+import { AuthScreens, UserScreens, DoctorsScreens, 
+MedicalHome, Upload, PlayVideo, SignIn, SignUp, Doctor, UpdateProfile, EmergencyContacts,  } from "./src/Screens";
+
+import Home from './src/Screens/UserScreens/Home'
 
 // const Stack = createNativeStackNavigator()
 const Stack = createStackNavigator()
@@ -114,10 +118,12 @@ export default function App() {
             )
           ) : (
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )}
+          )} 
+
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
+
   );
 }
 
@@ -126,5 +132,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   }
+
 });
 

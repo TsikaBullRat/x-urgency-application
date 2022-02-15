@@ -16,15 +16,15 @@ export const UserScreens = ({ navigation }) => {
 
     return (
         <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
             <Stack.Screen name="Home" options={{ headerShown: false }} >
                 {props => <Home {...props} Exit={Exit} />}
             </Stack.Screen>
             <Stack.Screen name="Doctor" options={{ headerShown: false }} >
-                {props => <DoctorProfile {...props} />}
+                {props => <Doctor {...props} />}
                 </Stack.Screen>
-                <Stack.Screen name="ViewMap" component={ViewMap} options={{ headerShown: false }} />
                 <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
+            <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

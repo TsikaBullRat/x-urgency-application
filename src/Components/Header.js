@@ -43,9 +43,9 @@ export default function Header({ Exit, Emergency }) {
         marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-end'}}>  
+        justifyContent: 'flex-end'
+      }}>
 
-        
       </View>
       <TouchableOpacity onPress={Exit} >
         <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
@@ -77,10 +77,10 @@ export default function Header({ Exit, Emergency }) {
           )}
         </View>
 
-        <View style={{top:-40}}>
-        <TouchableOpacity onPress={Exit} >
-          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-        </TouchableOpacity>
+        <View style={{ top: -40 }}>
+          <TouchableOpacity onPress={Exit} >
+            <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+          </TouchableOpacity>
         </View>
 
       </View>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   header: {
     color: '#F96056',
     fontSize: 30,
-    fontFamily:'Roboto'
+    fontFamily:'Felix Titling'
   },
 
   avatar: {

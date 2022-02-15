@@ -6,7 +6,7 @@ import { Socials, } from '../../Components';
 import { auth, firestore } from '../../firebase';
 import Button from '../../Components/button';
 
-const DoctorProfile = ({ route }) => {
+const Doctor = ({ route }) => {
 
     // const info = route.params.match
     const options = [
@@ -299,4 +299,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default DoctorProfile;
+export default Doctor;

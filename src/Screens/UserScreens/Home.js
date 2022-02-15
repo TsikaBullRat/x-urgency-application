@@ -26,21 +26,21 @@ export default function Home({ navigation, Exit }) {
 
     <View style={styles.container}>
 
-    <View style={{top: 5}}>
-      <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts') }>
+      <View style={{ top: 5 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')}>
 
           <View style={{ flexDirection: 'row' }}>
             <Image source={require('../../../img/siren.jpg')}
               style={{ width: 30, height: 35 }} />
 
-            <View style={{  paddingHorizontal: 10 }}>
-              <Text style={{fontSize:12, fontFamily:'Roboto'}}>Call</Text>
-              <Text style={{fontSize:12, fontFamily:'Roboto'}}>Now</Text>
+            <View style={{ paddingHorizontal: 10 }}>
+              <Text style={{ fontSize: 12, fontFamily: 'Arial' }}>Call</Text>
+              <Text style={{ fontSize: 12, fontFamily: 'Arial' }}>Now</Text>
             </View>
 
           </View>
         </TouchableOpacity>
-    </View>
+      </View>
 
       <View
         style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
@@ -51,11 +51,11 @@ export default function Home({ navigation, Exit }) {
         <Menu list={videos} setVids={setLoad} />
       </View>
 
-      <View style={{ width:335,  alignItems: "center", marginTop:20, flexDirection:'row', justifyContent: "space-between", }}>
-        <Text style={{fontFamily:'Roboto'}}> {`Most Viewed`} </Text>
-        
-        <TouchableOpacity onPress={() => navigation.navigate('ViewMap')}> 
-          <Text style={{fontFamily:'Roboto', color:'#F96056'}}>{`Medical Facilities`} </Text>
+      <View style={{ width: 335, alignItems: "center", marginTop: 20, flexDirection: 'row', justifyContent: "space-between", }}>
+        <Text style={{ fontFamily: 'Roboto' }}> {`Most Viewed`} </Text>
+
+        <TouchableOpacity onPress={() => navigation.navigate('ViewMap')}>
+          <Text style={{ fontFamily: 'Roboto', color: '#F96056' }}>{`Medical Facilities`} </Text>
         </TouchableOpacity>
       </View>
 

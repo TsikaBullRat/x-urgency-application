@@ -123,7 +123,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         <Text style={{
           fontWeight: 'bold', fontSize: 36, ...Platform.select({
             web: {
-              fontFamily: 'Arial'
+              fontFamily: 'Felix Titling'
             }
           }),
           color: '#F47066'
@@ -182,10 +182,13 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               specialization={specialization}
               style={styles.picker}
               onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
-              <Picker.Item label="Neuro-Surgent" value="Stroke" />
-              <Picker.Item label="General Practitioner" value="Heart-Attack" />
-              <Picker.Item label="Dentist" value="Dentist" />
-              <Picker.Item label="Pediatrician" value="Pediatrician" />
+              <Picker.Item label="Doctor" value="Doctor" />
+              <Picker.Item label="Nurse" value="Nurse" />
+              <Picker.Item label="Basic Abulance Assistance" value="BEA" />
+              <Picker.Item label="Ambulance Emergency Assistance" value="AEA" />
+              <Picker.Item label="Critical Care Assist" value="CCA" />
+              <Picker.Item label="Emergency Care Practitioner" value="ECP" />
+
             </Picker>
           </View>
 
