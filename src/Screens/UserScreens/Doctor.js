@@ -16,7 +16,7 @@ const DoctorProfile = ({ route }) => {
         { label: "Contact", value: "Contact" }];
 
     const [About, setAbout] = useState(true);
-    const [Qalification, setQualification] = useState(false);
+    const [Qualification, setQualification] = useState(false);
     const [Specialization, setSpecialization] = useState(false);
     const [Contact, setContact] = useState(false);
     const [doctor, setDoctor] = useState("")
@@ -193,7 +193,7 @@ const DoctorProfile = ({ route }) => {
 
                 : <View></View>}
 
-            {Qalification ? <View style={styles.words}>
+            {Qualification ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
                     {data.qualification}
                 </Text>
@@ -203,7 +203,7 @@ const DoctorProfile = ({ route }) => {
 
             {Specialization ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    {data.specilization}
+                    {data.specialization}
                 </Text>
             </View>
 
@@ -230,18 +230,21 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#fff',
+        
     },
 
     textTitle: {
         color: 'red',
         fontSize: 25,
         marginTop: 5,
+        
     },
 
     textTitle2: {
         fontSize: 15,
         marginTop: 20,
         marginLeft: 5,
+        
     },
 
     box: {
@@ -269,7 +272,8 @@ const styles = StyleSheet.create({
     words: {
         width: 250,
         textAlign: 'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        
     },
 
     follow: {
@@ -280,7 +284,8 @@ const styles = StyleSheet.create({
         height: 40,
         borderRadius: 15,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        
     },
 
     temp: {
@@ -296,6 +301,7 @@ const styles = StyleSheet.create({
     temp_text: {
         fontSize: 40,
         color: '#fff',
+        
     }
 });
 

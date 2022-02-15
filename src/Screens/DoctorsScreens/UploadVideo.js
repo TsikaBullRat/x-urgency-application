@@ -350,7 +350,8 @@ const styles = StyleSheet.create({
     color: '#888',
     fontSize: 18,
     marginHorizontal: 15,
-    paddingTop: 35
+    paddingTop: 35,
+    fontFamily:'Roboto'
   },
 
   thumbnail: {
@@ -358,6 +359,7 @@ const styles = StyleSheet.create({
     height: 300,
     marginTop: 100,
     resizeMode: 'contain',
+    
   },
 
   logo: {
@@ -375,7 +377,8 @@ const styles = StyleSheet.create({
 
   buttonText: {
     fontSize: 20,
-    color: '#fff'
+    color: '#fff',
+    fontFamily:'Roboto'
   },
 
   contain: {
@@ -452,6 +455,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 24,
-    color: 'red'
+    color: 'red',
+    fontFamily:'Roboto'
   }
 })

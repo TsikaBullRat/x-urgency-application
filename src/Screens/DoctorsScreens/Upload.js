@@ -25,7 +25,7 @@ export default function Upload({ navigation, Log }) {
   const [status, setStatus] = useState({});
   const [selectedValue, setSelectedValue] = useState("stroke"),
     [title, setTitle] = useState(),
-    [description, setDescpription] = useState(),
+    [description, setDescription] = useState(),
     [selectedImage, setSelectedImage] = useState(null),
 
     openImagePickerAsync = async () => {
@@ -104,7 +104,7 @@ export default function Upload({ navigation, Log }) {
           style={styles.txtField}
           name="password"
           placeholder="Description"
-          onChangeText={text => setDescpription(text)} />
+          onChangeText={text => setDescription(text)} />
       </View>
 
       {selectedImage ? (
@@ -161,6 +161,7 @@ const styles = StyleSheet.create({
     color: "#F47066",
     fontWeight: "bold",
     marginBottom: 30,
+    fontFamily:'Roboto'
   },
 
   txtField: {
@@ -174,6 +175,7 @@ const styles = StyleSheet.create({
     borderColor: "#F47066",
     marginBottom: 20,
     fontSize: 16,
+    fontFamily:'Roboto'
   },
 
   txtUser: {
@@ -184,7 +186,8 @@ const styles = StyleSheet.create({
     paddingLeft: 100,
     marginTop: 10,
     borderWidth: 1,
-    borderColor: "#F47066"
+    borderColor: "#F47066",
+    fontFamily:'Roboto'
   },
 
   icon: {
@@ -197,7 +200,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#F96056'
+    color: '#F96056',
+    fontFamily:'Roboto'
   },
 
   input1: {
@@ -263,6 +267,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     marginTop: -5,
+    fontFamily:'Roboto'
   },
 
 });
