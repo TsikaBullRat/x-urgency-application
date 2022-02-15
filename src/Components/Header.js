@@ -11,7 +11,7 @@
     * - Modification    : 
 **/
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
@@ -43,25 +43,13 @@ export default function Header({ Exit, Emergency }) {
         marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
+        justifyContent: 'flex-end'}}>  
 
-        <TouchableOpacity onPress={Emergency}>
-
-          <View style={{ flexDirection: 'row' }}>
-            <Image source={require('../../img/siren.jpg')}
-              style={{ width: 30, height: 30 }} />
-            <View style={{ paddingHorizontal: 10 }}>
-              <Text>Call</Text>
-              <Text>Now</Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-
+        
       </View>
       <TouchableOpacity onPress={Exit} >
-          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-        </TouchableOpacity>
+        <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+      </TouchableOpacity>
 
       {/*---------------------------Header--------------------------*/}
 
@@ -89,6 +77,12 @@ export default function Header({ Exit, Emergency }) {
           )}
         </View>
 
+        <View style={{top:-40}}>
+        <TouchableOpacity onPress={Exit} >
+          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+        </TouchableOpacity>
+        </View>
+
       </View>
     </View>
   )
@@ -112,6 +106,7 @@ const styles = StyleSheet.create({
   header: {
     color: '#F96056',
     fontSize: 30,
+    fontFamily:'Roboto'
   },
 
   avatar: {
@@ -132,6 +127,7 @@ const styles = StyleSheet.create({
   temp_text: {
     fontSize: 40,
     color: '#fff',
+    fontFamily: 'Roboto'
   }
 
 })

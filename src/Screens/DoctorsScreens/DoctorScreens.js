@@ -16,16 +16,16 @@ export const DoctorsScreens = ({ navigation, route }) => {
 
     return (
         <Stack.Navigator initialRouteName='DocHome'>
-            <Stack.Screen name="DocHome" /*options={{ headerShown: false }}*/ >
+            <Stack.Screen name="DocHome" options={{ headerShown: false }} >
                 {props => <MedicalHome {...props} Log={setPerc} progress={percentage} setMatch={setMatch} Exit={Exit} />}
             </Stack.Screen>
-            <Stack.Screen name="Upload" /*options={{ headerShown: false }}*/ >
+            <Stack.Screen name="Upload" options={{ headerShown: false }} >
                 {props => <Upload {...props} Log={setPerc} />}
             </Stack.Screen>
-            <Stack.Screen name="Update" component={UpdateProfile} /*options={{ headerShown: false }}*/ />
-            <Stack.Screen name="UploadVideo" component={UploadVideo} /*options={{ headerShown: false }}*/ />
-            <Stack.Screen name="PlayVideo" component={VideoScreen} /*options={{ headerShown: false }}*/ />
-            <Stack.Screen name="Doctor" component={DoctorProfile} /*options={{ headerShown: false }}*/ />
+            <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
+            <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
+            <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

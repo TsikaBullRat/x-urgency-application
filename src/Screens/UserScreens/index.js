@@ -13,6 +13,7 @@
 import Home from "./Home"
 import VideoScreen from "./PlayVideo"
 import DoctorProfile from "../DoctorsScreens/Doctor"
-import { Emergency} from "./EmergencyContacts"
+import EmergencyContacts from "./EmergencyContacts"
+import ViewMap from "./ViewMap"
 
-export { Home, VideoScreen, DoctorProfile, Emergency }
+export { Home, VideoScreen, DoctorProfile, EmergencyContacts, ViewMap }

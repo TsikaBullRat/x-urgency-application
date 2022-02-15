@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
 import { Card } from "react-native-paper";
 
-export const Emergency = ({ navigation }) => {
+const EmergencyContacts = ({ navigation }) => {
 
     const Call = (number) => {
         Linking.openURL(`tel:${number}`)
@@ -15,6 +15,7 @@ export const Emergency = ({ navigation }) => {
 
             <View>
                 <Text style={styles.head}> {"EMERGENCY? \n CALL NOW!"}</Text>
+                
             </View>
 
             <View>
@@ -209,4 +210,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default Emergency
+export default EmergencyContacts

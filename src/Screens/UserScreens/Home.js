@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity, Image, Text } from "react-native";
 import { Card } from "react-native-paper";
 import { auth, LoadSet, firestore } from "../../firebase";
 import Header from "../../Components/Header";
@@ -26,6 +26,22 @@ export default function Home({ navigation, Exit }) {
 
     <View style={styles.container}>
 
+    <View style={{top: 5}}>
+      <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts') }>
+
+          <View style={{ flexDirection: 'row' }}>
+            <Image source={require('../../../img/siren.jpg')}
+              style={{ width: 30, height: 35 }} />
+
+            <View style={{  paddingHorizontal: 10 }}>
+              <Text style={{fontSize:12, fontFamily:'Roboto'}}>Call</Text>
+              <Text style={{fontSize:12, fontFamily:'Roboto'}}>Now</Text>
+            </View>
+
+          </View>
+        </TouchableOpacity>
+    </View>
+
       <View
         style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
         <Header Exit={Exit} Emergency={Emergency} />
@@ -35,14 +51,22 @@ export default function Home({ navigation, Exit }) {
         <Menu list={videos} setVids={setLoad} />
       </View>
 
+      <View style={{ width:335,  alignItems: "center", marginTop:20, flexDirection:'row', justifyContent: "space-between", }}>
+        <Text style={{fontFamily:'Roboto'}}> {`Most Viewed`} </Text>
+        
+        <TouchableOpacity onPress={() => navigation.navigate('ViewMap')}> 
+          <Text style={{fontFamily:'Roboto', color:'#F96056'}}>{`Medical Facilities`} </Text>
+        </TouchableOpacity>
+      </View>
+
       {/*---------------------- Video Scroll View--------------------*/}
 
       {/* <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}> */}
-        <Card style={styles.menu2}>
-          <View>
-            <VideoList videos={videos} VideoScreen={VideoScreen} />
-          </View>
-        </Card>
+      <Card style={styles.menu2}>
+        <View>
+          <VideoList videos={videos} VideoScreen={VideoScreen} />
+        </View>
+      </Card>
       {/* </ScrollView> */}
     </View>
   );

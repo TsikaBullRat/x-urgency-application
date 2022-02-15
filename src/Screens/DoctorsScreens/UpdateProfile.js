@@ -154,7 +154,7 @@ export const UpdateProfile = () => {
     }, [])
     return (
         <View style={styles.body}>
-        {/* <ScrollView contentContainerStyle={styles.body}> */}
+            {/* <ScrollView contentContainerStyle={styles.body}> */}
             <Pressable onPress={openImagePickerAsync}>
                 {image ? (
                     /*<Avatar style={styles.avatar} rounded source={{ uri: image }} size="large" />*/
@@ -177,7 +177,7 @@ export const UpdateProfile = () => {
             <Pressable style={styles.button} onPress={resetCred}>
                 <Text style={{ fontSize: 18, color: '#fff' }}>Save</Text>
             </Pressable>
-        {/* </ScrollView> */}
+            {/* </ScrollView> */}
         </View>
     )
 }
@@ -236,7 +236,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.4,
         elevation: 1,
     },
-    image:{
+
+    image: {
         width: 150,
         height: 150,
         borderRadius: 80,

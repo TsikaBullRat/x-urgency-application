@@ -182,16 +182,14 @@ export default function UploadVideo({ navigation }) {
     </View>
   )
 
+
   const [selectedImage, setSelectedImage] = useState(null)
 
   //------Camera Permission (NULL)-----Permission(NULL)-----------
-  if (hasPermission === null) {
-    return <View />
-  }
-
-  //------Camera Permission (FALSE)-----Permission(FALSE)-----------
-  if (hasPermission === false) {
-    return (
+  return(
+  hasPermission === null?(
+    <View />
+  ): (hasPermission === false?(
       <View>
         <Text style={styles.text}>No access to camera!</Text>
 
@@ -218,11 +216,7 @@ export default function UploadVideo({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-    )
-  }
-
-  if (selectedImage !== null) {
-    return (
+  ):(selectedImage !== null? (
       <View style={styles.container}>
         <Image
           source={{ uri: selectedImage.localUri }}
@@ -237,10 +231,7 @@ export default function UploadVideo({ navigation }) {
           <Text style={styles.buttonText}>Share This Photo</Text>
         </TouchableOpacity>
       </View>
-    )
-  }
-
-  return (
+  ):(
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         <SafeAreaView>
@@ -331,7 +322,9 @@ export default function UploadVideo({ navigation }) {
         </SafeAreaView>
       </View>
     </ScrollView>
-  )
+
+    
+  ))))
 }
 
 const styles = StyleSheet.create({

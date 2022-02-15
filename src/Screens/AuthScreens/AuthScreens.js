@@ -19,18 +19,18 @@ export const AuthScreens = ({ navigation }) => {
         {props => <DoctorSignUp {...props} authNavigation={navigation} />}
       </Stack.Screen>
 
-      <Stack.Screen name='Sign In' /*options={{ headerShown: false }}*/>
+      <Stack.Screen name='Sign In' options={{ headerShown: false }}>
         {(props) => <SignIn {...props} />}
       </Stack.Screen>
 
-      <Stack.Screen name='Sign Up' /*options={{ headerShown: false }}*/>
+      <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
         {(props) => <SignUp {...props} />}
       </Stack.Screen>
 
       <Stack.Screen
         name='Reset Password'
         component={ForgotPassword}
-        /*options={{ headerShown: false }}*/ />
+        options={{ headerShown: false }} />
 
     </Stack.Navigator>
   )
