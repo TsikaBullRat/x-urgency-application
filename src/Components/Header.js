@@ -15,9 +15,8 @@ import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
-import EmergencyContacts from './EmergencyContacts'
 
-export default function Header({ Exit, navigation }) {
+export default function Header({ Exit, Emergency }) {
 
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')

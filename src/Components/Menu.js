@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, ScrollView, Image, Pressable } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, Image, Pressable, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
 import { auth, LoadSet, firestore } from "../firebase";
 
@@ -42,10 +42,17 @@ export default function Menu({ list, setVids }) {
           </Pressable>
 
           <Pressable onPress={() => Sort("cpr")}>
+<<<<<<< HEAD
+              <Card style={styles.menuCard}>
+                <Image style={styles.menuIcons} source={require('../images/cprIcon.png')} />
+                <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8 }}> {`CPR`} </Text>
+                </Card>
+=======
             <Card style={styles.menuCard}>
               <Image style={styles.menuIcons} source={require('../images/CPRIcon.png')} />
               <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`CPR`} </Text>
             </Card>
+>>>>>>> d05bfbc58eb1ce98b28d447ac42d381f6c5239ba
           </Pressable>
 
           <Pressable onPress={() => Sort("bleeding")}>
@@ -105,7 +112,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 15,
     marginTop: 2,
-    color: '#fff',
+    ...Platform.select({
+      web:{
+        color: '#fff',
+      }
+    })
   },
 
   menuCard: {

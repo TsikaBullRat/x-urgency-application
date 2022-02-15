@@ -1,27 +1,14 @@
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 06/10/2021 - 11:46:44
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 06/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
-import SignIn from "./AuthScreens/SignIn";
-import SignUp from "./AuthScreens/SignUp"
-import ForgotPassword from "./AuthScreens/ForgotPassword"
 import Home from "./UserScreens/Home"
-import PlayVideo from "./UserScreens/PlayVideo"
+import VideoScreen from "./UserScreens/PlayVideo"
+import DoctorProfile from "./DoctorsScreens/Doctor"
+import EmergencyContacts from "./UserScreens/EmergencyContacts"
+import ViewMap from "./UserScreens/ViewMap"
+
+export { Home, VideoScreen, DoctorProfile, EmergencyContacts, ViewMap }
+
 import UploadVideo from "./DoctorsScreens/UploadVideo"
-import DoctorSignUp from "./AuthScreens/DoctorSignUp"
-import MedSignIn from "./AuthScreens/MedSignIn"
 import MedicalHome from "./DoctorsScreens/MedicalHome"
-import Doctor from "./UserScreens/Doctor"
 import Upload from "./DoctorsScreens/Upload"
-import EmergencyContacts from "./UserScreens/EmergencyContacts";
 import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
 
 export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, Doctor, DoctorSignUp, MedicalHome, MedSignIn, Upload, EmergencyContacts, UpdateProfile }

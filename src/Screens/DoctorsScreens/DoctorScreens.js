@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {createStackNavigator } from "@react-navigation/stack"
 import { MedicalHome, Upload, UploadVideo, VideoScreen, DoctorProfile, UpdateProfile } from '.';
 
-const Stack = createNativeStackNavigator()
+// const Stack = createNativeStackNavigator()
+const Stack = createStackNavigator()
 
 export const DoctorsScreens = ({ navigation, route }) => {
 
-    const credentials = route.params
     const Exit = () => {
         navigation.navigate("auth")
     }
@@ -16,7 +17,7 @@ export const DoctorsScreens = ({ navigation, route }) => {
     return (
         <Stack.Navigator initialRouteName='DocHome'>
             <Stack.Screen name="DocHome" options={{ headerShown: false }} >
-                {props => <MedicalHome {...props} Log={setPerc} progress={percentage} setMatch={setMatch} Exit={Exit} credentials={credentials} />}
+                {props => <MedicalHome {...props} Log={setPerc} progress={percentage} setMatch={setMatch} Exit={Exit} />}
             </Stack.Screen>
             <Stack.Screen name="Upload" options={{ headerShown: false }} >
                 {props => <Upload {...props} Log={setPerc} />}
