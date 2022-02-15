@@ -37,7 +37,7 @@ export default function App() {
 
   useEffect(() => {
     id !== null ? (
-      setCheck1(true)   
+      setCheck1(true)
     ) : null
   }, [id])
 
@@ -52,9 +52,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-         <Stack.Navigator>
-         
-           <Stack.Screen name='MedSignIn' component={MedSignIn} />
+        <Stack.Navigator>
+
+          <Stack.Screen name='MedSignIn' component={MedSignIn} />
 
           {/* {check1 ? (
             id ? (
@@ -74,6 +74,7 @@ export default function App() {
           ) : (
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
           )} */}
+
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
@@ -86,5 +87,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   }
+
 });
 

@@ -20,8 +20,8 @@ export const UserScreens = ({ navigation }) => {
             </Stack.Screen>
             <Stack.Screen name="Doctor" options={{ headerShown: false }} >
                 {props => <DoctorProfile {...props} />}
-                </Stack.Screen>
-                <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
+            </Stack.Screen>
+            <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

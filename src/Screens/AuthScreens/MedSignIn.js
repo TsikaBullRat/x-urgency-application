@@ -44,11 +44,11 @@ export default function SignIn({ navigation, setDone }) {
 
       <View style={styles.header}>
         <Text style={{
-           fontSize: 40, ...Platform.select({
+          fontSize: 40, ...Platform.select({
             web: {
               //fontFamily: 'Cooper',
-              fontWeight:'bold',
-              
+              fontWeight: 'bold',
+
               paddingTop: 25
             }
           }),

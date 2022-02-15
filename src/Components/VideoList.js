@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   tag: {
     paddingLeft: 5,
     fontSize: 12,
-    fontFamily:'Roboto'
+    fontFamily: 'Roboto'
   },
 
 });

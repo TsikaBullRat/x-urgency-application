@@ -188,7 +188,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               <Picker.Item label="Ambulance Emergency Assistance" value="AEA" />
               <Picker.Item label="Critical Care Assist" value="CCA" />
               <Picker.Item label="Emergency Care Practitioner" value="ECP" />
-              
+
             </Picker>
           </View>
 
