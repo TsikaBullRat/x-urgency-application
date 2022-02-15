@@ -82,7 +82,7 @@ export default function SignUp({ navigation }) {
         <Text style={{
           fontSize: 40, ...Platform.select({
             web: {
-              fontFamily: 'Cooper'
+              fontFamily: 'Felix Titling'
             }
           }),
           color: '#F47066'
@@ -132,7 +132,7 @@ export default function SignUp({ navigation }) {
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Register}>
-            <Text style={{ fontSize: 18, color: '#fff' }}>{`SIGN_UP`} </Text>
+            <Text style={{ fontSize: 18, fontFamily: 'Felix Titling', color: '#fff' }}>{`SIGN_UP`} </Text>
           </TouchableOpacity>
         </View>
 

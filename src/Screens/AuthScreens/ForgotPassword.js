@@ -60,7 +60,7 @@ export default function ForgotPassword({ navigation }) {
 
       <View style={styles.header}>
         <Text style={{
-          fontWeight: 'bold', fontSize: 36, fontFamily: 'Arial',
+          fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling',
           color: '#F47066'
         }}>{`Reset Password`}</Text>
       </View>

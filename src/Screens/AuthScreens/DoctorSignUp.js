@@ -124,7 +124,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         <Text style={{
           fontWeight: 'bold', fontSize: 36, ...Platform.select({
             web: {
-              fontFamily: 'Arial'
+              fontFamily: 'Felix Titling'
             }
           }),
           color: '#F47066'
@@ -189,7 +189,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               <Picker.Item label="Ambulance Emergency Assistance" value="AEA" />
               <Picker.Item label="Critical Care Assist" value="CCA" />
               <Picker.Item label="Emergency Care Practitioner" value="ECP" />
-              
+
             </Picker>
           </View>
 

@@ -15,7 +15,7 @@ const EmergencyContacts = ({ navigation }) => {
 
             <View>
                 <Text style={styles.head}> {"EMERGENCY? \n CALL NOW!"}</Text>
-                
+
             </View>
 
             <View>
