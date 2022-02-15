@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {createStackNavigator } from "@react-navigation/stack"
 import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
 
-const Stack = createNativeStackNavigator()
+// const Stack = createNativeStackNavigator()
+const Stack = createStackNavigator()
 
 export default function App() {
 
@@ -50,6 +52,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
+        {/* <UserScreens/> */}
         <Stack.Navigator>
           {check1 ? (
             id ? (
@@ -69,6 +72,7 @@ export default function App() {
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
           )}
         </Stack.Navigator>
+        {/* <DoctorsScreens/> */}
       </KeyboardAwareScrollView>
     </NavigationContainer>
   );

@@ -38,7 +38,7 @@ const handleSignUp = (username, email, password, Confirmpassword, setMessage) =>
     }
 }
 
-const handleDoctorSignUp = (email, password, name, setMessage, qualification, specialization, branch, contactdetails) => {
+const handleDoctorSignUp = (email, password, name, qualification, specialization, branch, contactdetails, description) => {
 
     auth.createUserWithEmailAndPassword(email, password)
         .then(user => {
@@ -58,9 +58,9 @@ const handleDoctorSignUp = (email, password, name, setMessage, qualification, sp
                                 qualification,
                                 specialization,
                                 branch,
-                                contact,
+                                contact: contactdetails,
                                 subcribers: [],
-                                about: ""
+                                about: description
                             })
                         })
                 })

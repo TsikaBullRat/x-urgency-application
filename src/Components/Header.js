@@ -30,7 +30,7 @@ export default function Header({ Exit, Emergency }) {
         // setImage(doc.photoURL)
         // console.log(doc.displayName)
         // setInitial(doc.displayName.substring(0, 1))
-        console.log(auth.currentUser)
+        // console.log(auth.currentUser)
       })
     )
   }, [])
@@ -58,10 +58,6 @@ export default function Header({ Exit, Emergency }) {
           </View>
         </TouchableOpacity>
 
-        
-        {/* <Pressable onPress={()=>console.log("Hey I'm working")} >
-          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-        </Pressable> */}
       </View>
       <TouchableOpacity onPress={Exit} >
           <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />

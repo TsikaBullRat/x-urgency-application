@@ -22,10 +22,6 @@ export default function Home({ navigation, Exit }) {
     LoadSet(setLoad);
   }, []);
 
-  // useEffect(() => {
-  //   Exit()
-  // }, [])
-
   return (
 
     <View style={styles.container}>

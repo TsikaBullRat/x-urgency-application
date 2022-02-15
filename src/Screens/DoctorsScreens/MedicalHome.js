@@ -6,7 +6,13 @@ import { auth, LoadSet, LogOut, firestore } from '../../firebase';
 import { ProgressBar, VideoList, AlertNote } from '../../Components'
 import { Feather } from '@expo/vector-icons';
 
-export default function MedicalHome({ navigation, progress, Log, Exit, credentials }) {
+export default function MedicalHome({ navigation, progress, Log, Exit }) {
+
+  // useEffect(()=>{
+  //   auth.signInWithEmailAndPassword("yomzi123@gmail.com", "Asstastic")
+  //   auth.onAuthStateChanged(doc=>{console.log("Logged in")})
+  // }, [])
+  
   const [done, setDone] = useState(true);
   const [display, setDisplayModal] = useState(false)
   const [videos, setLoad] = useState(null),
@@ -68,14 +74,6 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
     [loading, setLoading] = useState(null);
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
 
-  const setDoctor = () => {
-    firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
-      null
-    ) : (
-      firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).set(credentials)
-    )
-  }
-
   useEffect(() => {
     if (progress === 100) Log(null)
   }, [progress])
@@ -85,7 +83,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
   }, []);
 
   useEffect(() => {
-    VideoNotifier()
+    // VideoNotifier()
   }, [])
 
   return (
@@ -108,7 +106,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
               textShadowRadius: 1,
             }}
             onPress={Logout}>
-            Dr. {auth.currentUser.displayName.split(" ")[1]}
+            Dr. {auth.currentUser.displayName.split(" ")[1]/*"Ntsikayomzi"*/}
           </Text>
 
           <Text

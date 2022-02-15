@@ -13,7 +13,7 @@
 import VideoScreen from "../UserScreens/PlayVideo"
 import UploadVideo from "./UploadVideo"
 import MedicalHome from "./MedicalHome"
-import DoctorProfile from "../UserScreens/Doctor"
+import DoctorProfile from "./Doctor"
 import Upload from "./Upload"
 import { UpdateProfile } from "./UpdateProfile"
 

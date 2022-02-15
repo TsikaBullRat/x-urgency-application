@@ -8,7 +8,7 @@ import Button from '../../Components/button';
 
 const DoctorProfile = ({ route }) => {
 
-    const info = route.params.match
+    // const info = route.params.match
     const options = [
         { label: "About ", value: "About" },
         { label: "Qualification", value: "Qualification" },
@@ -58,12 +58,12 @@ const DoctorProfile = ({ route }) => {
     }
 
     const getDoctorInfo = () => {
-        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+        firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
             .then(doc => {
                 setData(doc.data())
             })
 
-        firestore.collection("Users").doc(info).get()
+        firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
             .then(doc => {
                 setDoctor(doc.data().username)
                 setEmail(doc.data().email)
@@ -71,12 +71,12 @@ const DoctorProfile = ({ route }) => {
     }
 
     const Subscribe = async () => {
-        let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+        let change = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
             .then(doc => {
                 return doc.data().subscribers
             })
 
-        firestore.collection("Users").doc(info).collection("cred").doc(info).update({
+        firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").update({
             subscribers: [...change, auth.currentUser.uid]
         })
 
@@ -87,13 +87,13 @@ const DoctorProfile = ({ route }) => {
     }
 
     const unSubscribe = async () => {
-        let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+        let change = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
             .then(doc => {
                 return doc.data().subscribers
             })
 
         change = change.filter(item => item !== auth.currentUser.uid)
-        firestore.collection("Users").doc(info).collection("cred").doc(info).update({
+        firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").update({
             subscribers: change
         })
 
@@ -112,7 +112,7 @@ const DoctorProfile = ({ route }) => {
     const getProfile = async () => {
         let name
         setImage(false)
-        name = await firestore.collection("Users").doc(info).get().then(doc => doc.data().username)
+        name = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get().then(doc => doc.data().username)
         setInitial(name.substring(0, 1))
     }
 
@@ -121,7 +121,7 @@ const DoctorProfile = ({ route }) => {
     }, [])
 
     useEffect(() => {
-        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
+        firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
             .then(doc => {
                 let array = []
                 array = [...array, doc.data().subscribers]
@@ -158,7 +158,7 @@ const DoctorProfile = ({ route }) => {
                             )}
                     </View>
 
-                    <Text style={styles.textTitle}>Dr. {doctor}</Text>
+                    <Text style={styles.textTitle}>Dr. <Text>{doctor}</Text></Text>
 
                 </View>
 
@@ -187,7 +187,7 @@ const DoctorProfile = ({ route }) => {
 
             {About ? <View style={styles.words}>
                 <Text style={styles.textTitle2}>
-                    {data ? data.about : null}
+                    {/*data.about*/}
                 </Text>
             </View>
 
