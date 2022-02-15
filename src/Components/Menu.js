@@ -21,58 +21,58 @@ export default function Menu({ list, setVids }) {
 
         <View style={{ width: 705, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
-                <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8 }}> {`Stroke`} </Text>
-              </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+              <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`Stroke`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("heartattack")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/Heart-AttackIcon.png')} />
-                <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8}}> {`Heart Attack`} </Text>
-                </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/Heart-AttackIcon.png')} />
+              <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`Heart Attack`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("epilepsy")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/EpilepsyIcon.png')} />
-                <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8 }}> {`Epilepsy`} </Text>
-                </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/EpilepsyIcon.png')} />
+              <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`Epilepsy`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("cpr")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/CPRIcon.png')} />
-                <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8 }}> {`CPR`} </Text>
-                </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/CPRIcon.png')} />
+              <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`CPR`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("bleeding")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/chokeIcon.png')} />
-              <Text style={{fontFamily:'Roboto',fontSize: 12, paddingTop:8}}>{`Choking`} </Text>
-                </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/chokeIcon.png')} />
+              <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}>{`Choking`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("choking")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/BurnIcon.png')} />
-                <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8, }}> {`Burns`} </Text>
-              </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/BurnIcon.png')} />
+              <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8, }}> {`Burns`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("drowning")}>
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/bleedIcon.png')} />
-                <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8 }}> {`Bleeding`} </Text>
-              </Card>
+            <Card style={styles.menuCard}>
+              <Image style={styles.menuIcons} source={require('../images/bleedIcon.png')} />
+              <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`Bleeding`} </Text>
+            </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("burn")}>
             <Card style={styles.menuCard}>
               <Image style={styles.menuIcons} source={require('../images/BurnIcon.png')} />
-              <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8, }}> {`Burns`} </Text>
+              <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8, }}> {`Burns`} </Text>
             </Card>
           </Pressable>
 

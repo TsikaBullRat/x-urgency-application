@@ -44,9 +44,9 @@ export default function Header({ Exit, navigation }) {
         marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'flex-end'}}>  
+        justifyContent: 'flex-end'
+      }}>
 
-        
       </View>
       <TouchableOpacity onPress={Exit} >
         <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
@@ -78,10 +78,10 @@ export default function Header({ Exit, navigation }) {
           )}
         </View>
 
-        <View style={{top:-40}}>
-        <TouchableOpacity onPress={Exit} >
-          <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-        </TouchableOpacity>
+        <View style={{ top: -40 }}>
+          <TouchableOpacity onPress={Exit} >
+            <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+          </TouchableOpacity>
         </View>
 
       </View>

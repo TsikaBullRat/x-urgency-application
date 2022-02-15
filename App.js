@@ -77,6 +77,7 @@ export default function App() {
           ) : (
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
           )} */}
+
         </Stack.Navigator>
       </KeyboardAwareScrollView>
     </NavigationContainer>
@@ -89,5 +90,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   }
+
 });
 

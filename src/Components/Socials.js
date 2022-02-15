@@ -5,8 +5,8 @@ const Socials = ({ text, number }) => {
     return (
 
         <View style={styles.socials}>
-            <Text style={{ fontFamily:'Roboto', textAlign: 'center' }}>{number}</Text>
-            <Text style={{ fontFamily:'Roboto', textAlign: 'center' }}>{text}</Text>
+            <Text style={{ fontFamily: 'Roboto', textAlign: 'center' }}>{number}</Text>
+            <Text style={{ fontFamily: 'Roboto', textAlign: 'center' }}>{text}</Text>
         </View>
 
     )
