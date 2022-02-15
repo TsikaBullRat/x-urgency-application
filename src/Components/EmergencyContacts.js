@@ -79,7 +79,7 @@ const Emergency = ({ navigation }) => {
                     <Card style={[styles.card5, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>Suicide Crisis Line</Text>
                         <FontAwesome name="anchor" size={25} color="#ffffff" style={{ marginTop: 1, marginLeft: 75 }} />
-                        <Text style={{ marginLeft: 40, fontWeight: "bold", fontSize: 16, marginTop: -1, color: "white" }}>0800 567 567</Text>
+                        <Text style={{marginLeft: 40, fontWeight: "bold", fontSize: 16, marginTop: -1, color: "white" }}>0800 567 567</Text>
                     </Card>
                 </TouchableOpacity>
 

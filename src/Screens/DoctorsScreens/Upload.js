@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     color: "#F47066",
     fontWeight: "bold",
     marginBottom: 30,
-    fontFamily:'Roboto'
+   
   },
 
   txtField: {
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     borderColor: "#F47066",
     marginBottom: 20,
     fontSize: 16,
-    fontFamily:'Roboto'
+ 
   },
 
   txtUser: {
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderWidth: 1,
     borderColor: "#F47066",
-    fontFamily:'Roboto'
+    
   },
 
   icon: {
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#F96056',
-    fontFamily:'Roboto'
+  
   },
 
   input1: {
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     marginTop: -5,
-    fontFamily:'Roboto'
+  
   },
 
 });
