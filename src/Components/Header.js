@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   header: {
     color: '#F96056',
     fontSize: 30,
-    fontFamily:'Roboto'
+    fontFamily:'Felix Titling'
   },
 
   avatar: {

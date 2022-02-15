@@ -14,17 +14,17 @@ import SignIn from "./AuthScreens/SignIn";
 import SignUp from "./AuthScreens/SignUp"
 import ForgotPassword from "./AuthScreens/ForgotPassword"
 import Home from "./UserScreens/Home"
-import VideoScreen from "./UserScreens/PlayVideo"
+import PlayVideo from "./UserScreens/PlayVideo"
 import UploadVideo from "./DoctorsScreens/UploadVideo"
 import DoctorSignUp from "./AuthScreens/DoctorSignUp"
 import MedSignIn from "./AuthScreens/MedSignIn"
 import MedicalHome from "./DoctorsScreens/MedicalHome"
-import DoctorProfile from "./UserScreens/Doctor"
+import Doctor from "./UserScreens/Doctor"
 import Upload from "./DoctorsScreens/Upload"
 import EmergencyContacts from "./UserScreens/EmergencyContacts";
 import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
 
-export { SignIn, SignUp, ForgotPassword, Home, VideoScreen, UploadVideo, DoctorProfile, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile }
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, Doctor, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile }
 
 export { UserScreens } from './UserScreens/UserScreens'
 export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'

@@ -46,9 +46,8 @@ export default function SignIn({ navigation, setDone }) {
         <Text style={{
            fontSize: 40, ...Platform.select({
             web: {
-              //fontFamily: 'Cooper',
+              fontFamily: 'Felix Titling',
               fontWeight:'bold',
-              
               paddingTop: 25
             }
           }),

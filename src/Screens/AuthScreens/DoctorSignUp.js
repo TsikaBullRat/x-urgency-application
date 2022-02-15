@@ -123,7 +123,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         <Text style={{
           fontWeight: 'bold', fontSize: 36, ...Platform.select({
             web: {
-              fontFamily: 'Arial'
+              fontFamily: 'Felix Titling'
             }
           }),
           color: '#F47066'

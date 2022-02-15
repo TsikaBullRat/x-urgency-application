@@ -16,7 +16,7 @@ export const UpdateProfile = () => {
     //Copies for testing
     const [uid, setID] = useState(null)
 
-    //Main Running
+//Main Running
     const [about, setAbout] = useState("")
     const [qualification, setQualification] = useState("")
     const [specialization, setSpecialization] = useState("")
@@ -26,6 +26,7 @@ export const UpdateProfile = () => {
     const [image, setImage] = useState(null)
     const [initial, setInitial] = useState('')
 
+//----------Get Profile----------Get Profile----------Get Profile----------Get Profile----------
     const getProfile = async () => {
         let name
         auth.currentUser.photoURL ? setImage(await auth.currentUser.photoURL) : console.log(auth.currentUser.photoURL)
@@ -33,6 +34,8 @@ export const UpdateProfile = () => {
         setInitial(name.substring(0, 1))
     }
 
+
+//----------Get Credentials----------Get Credentials----------Get Credentials----------Get Credentials
     const getCred = () => {
         firestore.collection("Users").doc(uid).collection("cred").doc(uid).get()
             // firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get()
@@ -46,6 +49,7 @@ export const UpdateProfile = () => {
             })
     }
 
+//---------------Updating Crendtials-------------Updating Crendtials-----------
     const resetCred = async () => {
         let document = firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get().then(doc => doc.data())
 
@@ -55,12 +59,15 @@ export const UpdateProfile = () => {
                 null
             } else {
                 try {
+//------------Delete IMG.jpeg------------Delete IMG.jpeg------------Delete IMG.jpeg------------
                     storage.ref().child(`/Display Pictures/${auth.currentUser.uid}.jpeg`).delete()
                 } catch (err) {
                     try {
+//------------Delete IMG.jpg------------Delete IMG.jpg------------Delete IMG.jpg------------
                         storage.ref().child(`/Display Pictures/${auth.currentUser.uid}.jpg`).delete()
                     } catch (err) {
                         try {
+//------------Delete IMG.png------------Delete IMG.png------------Delete IMG.png------------
                             storage.ref().child(`/Display Pictures/${auth.currentUser.uid}.png`).delete()
                         } catch (err) {
                             null
@@ -121,6 +128,7 @@ export const UpdateProfile = () => {
         if (document.email !== email) auth.currentUser.updateEmail(email)
     }
 
+//------------------Opening Image Picker------------------Opening Image Picker
     const openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (permissionResult.granted === false) {

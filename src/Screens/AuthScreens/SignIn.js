@@ -43,6 +43,9 @@ export default function SignIn({ navigation, setDone }) {
       handleSignIn(email, password, setMessage, setDone)
       setDisplaModal(true)
     }
+
+    navigation.navigate('Home'//, {setDone}
+    )
   }
 
   return (
@@ -60,7 +63,7 @@ export default function SignIn({ navigation, setDone }) {
         <Text style={{
            fontSize: 40, ...Platform.select({
             web: {
-              fontFamily: 'Cooper'
+              fontFamily: 'Felix Titling'
             }
           }),
           color: '#F47066'
@@ -89,28 +92,30 @@ export default function SignIn({ navigation, setDone }) {
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
         <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
-          <Text style={{ paddingLeft: 170, paddingTop: 20, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
+          <Text style={{ paddingLeft: 170, paddingTop: 20, fontSize: 13, fontFamily: 'Felix Titling', color: '#F47066' }}>{`Forgot Password?`} </Text>
         </TouchableOpacity>
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ fontSize: 18, color: '#fff' }}>{`LOGIN`} </Text>
+            <Text style={{ fontSize: 18, color: '#fff', fontFamily: 'felix titling' }}>{`LOGIN`} </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <Text style={{ paddingTop: 9, fontSize: 14, }}>  {`New User?`} </Text>
+        <View style={{marginTop:10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
+          <Text style={{ paddingTop: 9, fontSize: 14, fontFamily: 'Felix Titling' }}>  {`New User?`} </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-            <Text style={{ paddingTop: 5, fontSize: 18, color: '#F47066' }}> {`SignUp`}</Text>
+            <Text style={{ paddingTop: 5, fontSize: 18, fontFamily: 'Felix Titling', color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>
 
-        <Text style={{ paddingTop: 10, fontSize: 14, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
+        <View style={{marginTop:10,}} >
+        <Text style={{ paddingTop: 10, fontFamily: 'Felix Titling', fontSize: 14, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
 
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <TouchableOpacity onPress={() => { navigation.navigate('MedSignIn') }}>
-            <Text style={{ fontSize: 18, color: '#F47066' }}> {`SignUp`} </Text>
+            <Text style={{ fontFamily: 'Felix Titling', fontSize: 18, paddingTop:5, color: '#F47066' }}> {`SignUp`} </Text>
           </TouchableOpacity>
+        </View>
         </View>
 
       </View>
