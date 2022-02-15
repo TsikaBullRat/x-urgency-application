@@ -14,7 +14,7 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, Picker } from 'react-native';
 import { Card } from 'react-native-paper';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
 import { AlertNote } from '../../Components/Alert';
 
@@ -116,32 +116,28 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: "#fff", fontSize: 28, marginLeft: 8 }}> {`X-urgency`} </Text>
+        <Text style={{ color: "#fff", fontSize: 30, marginLeft: 8, fontFamily: 'Felix Titling' }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
         <Text style={{
-          fontWeight: 'bold', fontSize: 36, ...Platform.select({
+          fontSize: 30, ...Platform.select({
             web: {
               fontFamily: 'Felix Titling'
             }
           }),
           color: '#F47066'
-        }}>{`Doctor SignUp`}</Text>
+        }}>{`Medical Sign_Up`}</Text>
       </View>
 
       {visibleStatusBar ? (
         <View>
 
           <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Name"
-                placeholder="Name"
-                onChangeText={(text) => setName(text)} />
-            </View>
-          </Card>
+          <View style={{ flexDirection: 'row' }}>
+            <TextInput style={styles.txtField} name='name' placeholder='Name' onChangeText={text => setEmail(text)} />
+          </View>
+        </Card>
           {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
           <Card style={styles.txtCards}>
@@ -166,15 +162,11 @@ export default function DoctorSignUp({ navigation, setDetails }) {
           </Card>
           {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Email"
-                placeholder="Email"
-                onChangeText={(text) => setEmail(text)} />
-            </View>
-          </Card>
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
+          </View>
+        </Card>
           {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
 
           <View style={{ flexDirection: "row" }}>
@@ -205,7 +197,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
           <View style={{ alignItems: "center" }}>
             <TouchableOpacity style={styles.signIn} onPress={changeVisibilityStatusBar}>
-              <Text style={{ color: "#fff" }}>{`NEXT`} </Text>
+              <Text style={{ fontSize: 20, fontFamily:'flexi titling', color: '#fff', }}>{`NEXT`} </Text>
             </TouchableOpacity>
           </View>
 
@@ -235,28 +227,28 @@ export default function DoctorSignUp({ navigation, setDetails }) {
           </Card>
 
           <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="Password"
-                placeholder="Password"
-                onChangeText={(text) => setPassword(text)} />
-            </View>
-          </Card>
+          <View style={{ flexDirection: 'row' }}>
+            <TextInput style={styles.txtField}
+              name='password' placeholder='Password'
+              secureTextEntry={true}
+              onChangeText={text => setPassword(text)} />
+          </View>
+        </Card>
+        {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={styles.txtField}
-                name="ConfirmPassword"
-                placeholder="Confirm Password"
-                onChangeText={(text) => setConfirmPassword(text)} />
-            </View>
-          </Card>
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <TextInput style={styles.txtField}
+              name='confirmPassword' placeholder='Confirm Password'
+              secureTextEntry={true}
+              onChangeText={text => setPassword(text)} />
+          </View>
+        </Card>
+        {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
 
           <View style={{ alignItems: "center" }}>
             <TouchableOpacity style={styles.signIn} onPress={Register}>
-              <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
+              <Text style={{ fontSize: 20, fontFamily:'flexi titling', color: '#fff', }}>{`SIGNIN`} </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -292,20 +284,25 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    paddingTop: 10,
+    paddingTop: 25,
+    fontSize: 36,
+    fontFamily: 'Cooper',
+    color: '#F47066'
   },
 
   txtField: {
-    width: 245,
-    height: 30,
-    marginTop: 2,
-    marginLeft: 2,
-    paddingLeft: 10,
+    width: 300,
+    marginTop: 7,
+    marginLeft: 38,
+    paddingLeft: 2,
     paddingTop: 15,
+    fontSize: 18,
+    fontFamily: 'flexi titling',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: 'transparent'
+        outlineColor: '#fff',
+        width: 220
       }
     })
   },
@@ -323,13 +320,17 @@ const styles = StyleSheet.create({
   picker: {
     width: 315,
     height: 50,
+    paddingLeft: 38,
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 35,
+    fontFamily:'flexi titling',
+    fontSize: 18,
     borderWidth: 1,
     borderColor: '#F47066',
     opacity: 0.8
   },
+
   prompt: {
     color: '#F47066',
     textAlign: "center"

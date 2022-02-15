@@ -7,7 +7,7 @@ import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { AuthScreens, UserScreens, DoctorsScreens, 
 
-MedicalHome, Upload, PlayVideo, SignIn, SignUp, Doctor, UpdateProfile, EmergencyContacts,  } from "./src/Screens";
+MedicalHome, Upload, PlayVideo, SignIn, SignUp, DoctorSignUp, ForgotPassword,  MedSignIn, Doctor, UpdateProfile, EmergencyContacts,  } from "./src/Screens";
 
 import Home from './src/Screens/UserScreens/Home'
 
@@ -56,7 +56,7 @@ export default function App() {
       <KeyboardAwareScrollView>
          <Stack.Navigator>
          
-           <Stack.Screen name='SignIn' component={SignIn} />
+           <Stack.Screen name='SignIn' component={ForgotPassword} />
            <Stack.Screen name='Home' component={Home} />
 
           {/* {check1 ? (

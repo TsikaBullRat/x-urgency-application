@@ -18,7 +18,7 @@ import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignIn } from '../../firebase'
 import { AlertNote } from '../../Components';
 
-export default function SignIn({ navigation, setDone }) {
+export default function MedSignIn({ navigation, setDone }) {
 
   const
     [email, setEmail] = useState(""),
@@ -39,60 +39,55 @@ export default function SignIn({ navigation, setDone }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28, marginLeft: 15 }}> {`X-urgency`} </Text>
+        <Text style={{ color: '#fff', fontSize: 30, marginLeft: 15, fontFamily: 'Felix Titling' }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
         <Text style={{
-          fontSize: 40, ...Platform.select({
+          fontSize: 30, ...Platform.select({
             web: {
-<<<<<<< HEAD
-              fontFamily: 'Felix Titling',
-              fontWeight:'bold',
-=======
-              //fontFamily: 'Cooper',
-              fontWeight: 'bold',
-
->>>>>>> c0a1a31f009fbaa9c017263838606c7829cb91cb
-              paddingTop: 25
+              fontFamily: 'Felix Titling'
             }
           }),
           color: '#F47066'
-        }}>{`Medical SignIn`}</Text>
+        }}>{`Medical Sign_In`}</Text>
       </View>
 
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
+            <AntDesign name="user" size={20} color="black" style={{ marginTop: 14, marginLeft: 18 }} />
+            <TextInput style={styles.txtUser} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 4 }} />
-            <TextInput style={styles.txtField}
+            <EvilIcons name="lock" size={30} color="black" style={{ marginTop: 12, marginLeft: 12 }} />
+            <TextInput style={styles.txtPassword}
               name='password' placeholder='Password'
               secureTextEntry={true}
               onChangeText={text => setPassword(text)} />
           </View>
         </Card>
 
-        <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
-          <Text style={{ paddingLeft: 180, paddingTop: 10, color: '#F47066' }}>{`Forgot Password?`} </Text>
+        <View style={{width:320, alignItems:'flex-end'}}>
+        <TouchableOpacity 
+        onPress={() => { navigation.navigate('Reset Password') }}>
+          <Text style={{ paddingTop: 20, fontSize: 18, fontFamily:'Arial', color: '#F47066' }}>{`Forgot Password?`} </Text>
         </TouchableOpacity>
+        </View>
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ color: '#fff' }}>{`LOGIN`} </Text>
+            <Text style={{ fontSize: 20, fontFamily:'flexi titling', color: '#fff', }}>{`LOGIN`} </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <Text style={{ paddingTop: 9, fontSize: 14, }}>  {`New User?`} </Text>
-          <TouchableOpacity onPress={() => { navigation.navigate('Doctor SignUp') }}>
-            <Text style={{ paddingTop: 5, fontSize: 18, color: '#F47066' }}> {`SignUp`}</Text>
+        <View style={{marginTop:10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
+          <Text style={{ paddingTop: 10, fontSize: 17, }}>  {`New User?`} </Text>
+          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
+            <Text style={{ paddingTop: 10, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>
 
@@ -126,14 +121,30 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    paddingTop: 5
+    paddingTop: 25,
+    fontSize: 36,
+    fontFamily: 'Cooper',
+    color: '#F47066'
   },
 
-  txtField: {
-    width: 245,
+  txtUser: {
+    width: 300,
     height: 30,
-    marginTop: 2,
-    marginLeft: 2,
+    marginTop: 7,
+    paddingLeft: 10,
+    paddingTop: 15,
+    borderRadius: 10,
+    ...Platform.select({
+      web: {
+        outlineColor: 'transparent'
+      }
+    })
+  },
+
+  txtPassword: {
+     width: 300,
+    height: 30,
+    marginTop: 7,
     paddingLeft: 10,
     paddingTop: 15,
     borderRadius: 10,
