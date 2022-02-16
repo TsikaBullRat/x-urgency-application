@@ -11,11 +11,11 @@
     * - Modification    : 
 **/
 
-import VideoScreen from "../UserScreens/PlayVideo"
+import PlayVideo from "../UserScreens/PlayVideo"
 import UploadVideo from "./UploadVideo"
 import MedicalHome from "./MedicalHome"
-import DoctorProfile from "./Doctor"
+import Doctor from "./Doctor"
 import Upload from "./Upload"
 import { UpdateProfile } from "./UpdateProfile"
 
-export { VideoScreen, UploadVideo, DoctorProfile, MedicalHome, Upload, UpdateProfile }
+export { PlayVideo, UploadVideo, Doctor, MedicalHome, Upload, UpdateProfile }

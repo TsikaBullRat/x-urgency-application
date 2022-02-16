@@ -86,7 +86,7 @@ export default function SignUp({ navigation }) {
             }
           }),
           color: '#F47066'
-        }}>{`Sign_Up`}</Text>
+        }}>{`SignUp`}</Text>
       </View>
 
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
@@ -132,7 +132,7 @@ export default function SignUp({ navigation }) {
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Register}>
-            <Text style={{ fontSize: 20, fontFamily: 'Felix Titling', color: '#fff' }}>{`SIGN_UP`} </Text>
+            <Text style={{ fontSize: 20, fontFamily: 'Felix Titling', color: '#fff' }}>{`SIGNUP`} </Text>
           </TouchableOpacity>
         </View>
 

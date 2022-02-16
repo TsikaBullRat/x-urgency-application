@@ -67,7 +67,7 @@ export default function SignIn({ navigation, setDone }) {
             }
           }),
           color: '#F47066'
-        }}>{`Sign_In`}</Text>
+        }}>{`SignIn`}</Text>
       </View>
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 
@@ -105,7 +105,7 @@ export default function SignIn({ navigation, setDone }) {
         </View>
 
         <View style={{marginTop:10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <Text style={{ paddingTop: 10, fontSize: 17, }}>  {`New User?`} </Text>
+          <Text style={{ paddingTop: 10, fontSize: 15, }}>  {`New User?`} </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
             <Text style={{ paddingTop: 10, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>

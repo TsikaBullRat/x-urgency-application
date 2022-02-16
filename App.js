@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React//, { useState, useEffect } 
+from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -6,110 +7,115 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-// import { Home, VideoScreen, DoctorProfile, EmergencyContacts, ViewMap, UploadVideo, MedicalHome, Upload, UpdateProfile, SignIn, SignUp, ForgotPassword, DoctorSignUp } from "./src/Screens";
-import { AuthScreens, UserScreens, DoctorsScreens, 
-<<<<<<< HEAD
+import { SignIn, SignUp, MedSignIn, DoctorSignUp, ForgotPassword, 
+Home, PlayVideo, Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile,   } from "./src/Screens";
+// import { AuthScreens, UserScreens, DoctorsScreens} from "./src/Screens";
 
-MedicalHome, Upload, PlayVideo, SignIn, SignUp, DoctorSignUp, ForgotPassword,  MedSignIn, Doctor, UpdateProfile, EmergencyContacts,  } from "./src/Screens";
-=======
-MedicalHome, Upload, PlayVideo, SignIn, SignUp, Doctor, UpdateProfile, EmergencyContacts,  } from "./src/Screens";
->>>>>>> 1e4006c05d02d404ef81400a606573ae52e35a35
-
-import Home from './src/Screens/UserScreens/Home'
 
 // const Stack = createNativeStackNavigator()
 const Stack = createStackNavigator()
 
 export default function App() {
 
-  const [id, setID] = useState(null)
-  const [doctor, setDoctor] = useState(null)
-  const [check1, setCheck1] = useState(false)
-  const [check2, setCheck2] = useState(false)
-  const Exit = () => {
-    navigation.navigate("auth")
-  }
-  const [percentage, setPerc] = useState(null)
-  const [match, setMatch] = useState(null)
+  // const [id, setID] = useState('')
+  // const [doctor, setDoctor] = useState('')
+  // const [check1, setCheck1] = useState(false)
+  // const [check2, setCheck2] = useState(false)
+  // const Exit = () => {
+  //   navigation.navigate("auth")
+  // }
+  // const [percentage, setPerc] = useState(null)
+  // const [match, setMatch] = useState(null)
 
-  useEffect(() => {
-    auth.onAuthStateChanged(user => user ? setID(user.uid) : setID(false))
-  })
+  // useEffect(() => {
+  //   auth.onAuthStateChanged(user => user ? 
+  //   setID(user.uid) 
+  //   : 
+  //   setID(false)
+  //   )
+  // })
 
-  useEffect(() => {
-    id ? null : setCheck2(false), setDoctor(null)
-  }, [id])
+  // useEffect(() => {
+  //   id ? '' : 
+  //   setCheck2(false), setDoctor('')
+  // }, [id])
 
-  useEffect(() => {
-    try {
-      firestore.collection("Users").doc(id).get().then(doc => setDoctor(doc.data().doctor))
-    }
-    catch (err) {
-      console.log(err)
-    }
-  }, [id])
+  // useEffect(() => {
+  //   try {
+  //     firestore.collection("Users").doc(id).get().then(doc => setDoctor(doc.data().doctor))
+  //   }
+  //   catch (err) {
+  //     console.log(err)
+  //   }
+  // }, [id])
 
-  useEffect(() => {
-    id !== null ? (
-      setCheck1(true)
-    ) : null
-  }, [id])
+  // useEffect(() => {
+  //   id !== null ? (
+  //     setCheck1(true)
+  //   ) : null
+  // }, [id])
 
-  useEffect(() => {
-    doctor !== null ? (
-      setCheck2(true)
-    ) : (
-      null
-    )
-  }, [doctor])
+  // useEffect(() => {
+  //   doctor !== null ? (
+  //     setCheck2(true)
+  //   ) : (
+  //     null
+  //   )
+  // }, [doctor])
 
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-         <Stack.Navigator>
-         
-           <Stack.Screen name='SignIn' component={ForgotPassword} />
-           <Stack.Screen name='Home' component={Home} />
+
+  
+
+           <DoctorSignUp />
+
+
 
           {/* {check1 ? (
             id ? (
               check2 ? (
                 doctor ? (
+
                   <Stack.Group>
-                    <Stack.Screen name="DocHome" options={{ headerShown: false }} >
+                    <Stack.Screen name="MedicalHome" options={{ headerShown: false }} >
                       {props => <MedicalHome {...props} Log={setPerc} progress={percentage} setMatch={setMatch} Exit={Exit} />}
                     </Stack.Screen>
                     <Stack.Screen name="Upload" options={{ headerShown: false }} >
                       {props => <Upload {...props} Log={setPerc} />}
                     </Stack.Screen>
-                    <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
+                    <Stack.Screen name="UpdateProfile" component={UpdateProfile} options={{ headerShown: false }} />
                     <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
-                    <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
-                    <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
-                  </Stack.Group>
+                    <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+                    <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+                  </Stack.Group>                  
+
                 ) : (
+
                   <Stack.Group>
-                    <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
                     <Stack.Screen name="Home" options={{ headerShown: false }} >
                       {props => <Home {...props} Exit={Exit} />}
                     </Stack.Screen>
+
+                    <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+
                     <Stack.Screen name="Doctor" options={{ headerShown: false }} >
-                      {props => <DoctorProfile {...props} />}
+                      {props => <Doctor {...props} />}
                     </Stack.Screen>
-                    <Stack.Screen name="ViewMap" component={ViewMap} options={{ headerShown: false }} />
+
                     <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
                   </Stack.Group>
                 )
+
               ) : (
-                <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
+
+                <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />             
               )
             ) : (
+
               <Stack.Group>
-                <Stack.Screen
-                  name='Doctor SignUp'
-                  options={{ headerShown: false }} >
-                  {props => <DoctorSignUp {...props} authNavigation={navigation} />}
-                </Stack.Screen>
+                
 
                 <Stack.Screen name='Sign In' options={{ headerShown: false }}>
                   {(props) => <SignIn {...props} />}
@@ -120,16 +126,37 @@ export default function App() {
                 </Stack.Screen>
 
                 <Stack.Screen
+                  name='MedSignIn'
+                  options={{ headerShown: false }} >
+                  {props => <MedSignIn {...props} authNavigation={navigation} />}
+                </Stack.Screen>
+
+                <Stack.Screen
+                  name='DoctorSignUp'
+                  options={{ headerShown: false }} >
+                  {props => <DoctorSignUp {...props} authNavigation={navigation} />}
+                </Stack.Screen>
+
+                <Stack.Screen
                   name='Reset Password'
                   component={ForgotPassword}
                   options={{ headerShown: false }} />
-              </Stack.Group>
+              </Stack.Group>             
             )
+
           ) : (
             <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )} 
 
-        </Stack.Navigator>
+            <Stack.Navigator>
+              <Stack.Screens name='SignIn component={SignIn} />
+              <Stack.Screens name='SignUp component={SignUp} />
+              <Stack.Screens name='ForgotPassword' component={ForgotPassword} />
+              <Stack.Screens name='MedSignIn' component={MedSignIn} />
+              <Stack.Screens name='DoctorSignUp' component={DoctorSignUp} />
+            </Stack.Navigator>
+
+          )}  */}
+ 
       </KeyboardAwareScrollView>
     </NavigationContainer>
 

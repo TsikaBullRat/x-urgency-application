@@ -12,7 +12,7 @@
 **/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, Picker } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, Picker, ScrollView } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
@@ -127,9 +127,11 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             }
           }),
           color: '#F47066'
-        }}>{`Medical Sign_Up`}</Text>
+        }}>{`Medical SignUp`}</Text>
       </View>
 
+      <ScrollView style={{height: 550}}
+      showsVerticalScrollIndicator={false}>
       {visibleStatusBar ? (
         <View>
 
@@ -253,6 +255,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
           </View>
         </View>
       )}
+      </ScrollView>
 
     </View>
 
