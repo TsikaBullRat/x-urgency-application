@@ -18,7 +18,7 @@ import { UploadVideo } from "../../firebase";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
 import { Video } from "expo-av";
-import {AlertNote} from '../../Components'
+import { AlertNote } from '../../Components'
 
 // const btoa = require("btoa")
 // const atob = require("atob")
@@ -41,13 +41,13 @@ export default function Upload({ navigation, Log }) {
         return;
       }
 
-      let pickerResult = await ImagePicker.launchImageLibraryAsync({ 
+      let pickerResult = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: 'Videos',
         videoMaxDuration: 7,
-         allowsEditing: true
+        allowsEditing: true
       });
 
-      if(pickerResult.duration > 30000){
+      if (pickerResult.duration > 30000) {
         setAlert(true)
         return
       }
@@ -93,7 +93,7 @@ export default function Upload({ navigation, Log }) {
 
     <View style={styles.container}>
 
-      <AlertNote modalVisible={alert} setModalVisible={setAlert} msg="This video is too long"/>
+      <AlertNote modalVisible={alert} setModalVisible={setAlert} msg="This video is too long" />
 
       <Text style={styles.header}>Upload Or Create Your First Aid Video Here</Text>
 

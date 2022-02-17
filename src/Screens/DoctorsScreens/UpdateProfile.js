@@ -16,7 +16,7 @@ export const UpdateProfile = () => {
     //Copies for testing
     const [uid, setID] = useState(null)
 
-//Main Running
+    //Main Running
     const [about, setAbout] = useState("")
     const [qualification, setQualification] = useState("")
     const [specialization, setSpecialization] = useState("")
@@ -26,7 +26,8 @@ export const UpdateProfile = () => {
     const [image, setImage] = useState(null)
     const [initial, setInitial] = useState('')
 
-//----------Get Profile----------Get Profile----------Get Profile----------Get Profile----------
+    //----------Get Profile----------Get Profile----------Get Profile----------Get Profile----------
+
     const getProfile = async () => {
         let name
         auth.currentUser.photoURL ? setImage(await auth.currentUser.photoURL) : console.log(auth.currentUser.photoURL)
@@ -34,11 +35,11 @@ export const UpdateProfile = () => {
         setInitial(name.substring(0, 1))
     }
 
+    //----------Get Credentials----------Get Credentials----------Get Credentials----------Get Credentials
 
-//----------Get Credentials----------Get Credentials----------Get Credentials----------Get Credentials
     const getCred = () => {
         firestore.collection("Users").doc(uid).collection("cred").doc(uid).get()
-            // firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get()
+        firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get()
             .then(doc => {
                 setAbout(doc.data().about)
                 setBranch(doc.data().branch)
@@ -49,7 +50,8 @@ export const UpdateProfile = () => {
             })
     }
 
-//---------------Updating Crendtials-------------Updating Crendtials-----------
+    //---------------Updating Crendtials-------------Updating Crendtials-----------
+
     const resetCred = async () => {
         let document = firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get().then(doc => doc.data())
 
@@ -59,15 +61,21 @@ export const UpdateProfile = () => {
                 null
             } else {
                 try {
-//------------Delete IMG.jpeg------------Delete IMG.jpeg------------Delete IMG.jpeg------------
+
+                    //------------Delete IMG.jpeg------------Delete IMG.jpeg------------Delete IMG.jpeg------------
+
                     storage.ref().child(`/Display Pictures/${auth.currentUser.uid}.jpeg`).delete()
                 } catch (err) {
                     try {
-//------------Delete IMG.jpg------------Delete IMG.jpg------------Delete IMG.jpg------------
+
+                        //------------Delete IMG.jpg------------Delete IMG.jpg------------Delete IMG.jpg------------
+
                         storage.ref().child(`/Display Pictures/${auth.currentUser.uid}.jpg`).delete()
                     } catch (err) {
                         try {
-//------------Delete IMG.png------------Delete IMG.png------------Delete IMG.png------------
+
+                            //------------Delete IMG.png------------Delete IMG.png------------Delete IMG.png------------
+
                             storage.ref().child(`/Display Pictures/${auth.currentUser.uid}.png`).delete()
                         } catch (err) {
                             null
@@ -128,7 +136,8 @@ export const UpdateProfile = () => {
         if (document.email !== email) auth.currentUser.updateEmail(email)
     }
 
-//------------------Opening Image Picker------------------Opening Image Picker
+    //------------------Opening Image Picker------------------Opening Image Picker
+
     const openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
         if (permissionResult.granted === false) {
@@ -150,9 +159,9 @@ export const UpdateProfile = () => {
         uid ? getProfile() : null
     }, [])
 
-    // useEffect(()=>{
-    //     auth.signInWithEmailAndPassword("yomzi123@gmail.com", "Asstastic")
-    // }, [])
+    useEffect(() => {
+        auth.signInWithEmailAndPassword("yomzi123@gmail.com", "Asstastic")
+    }, [])
 
     useEffect(() => {
         auth.onAuthStateChanged(doc => {
@@ -162,30 +171,30 @@ export const UpdateProfile = () => {
     }, [])
     return (
         <View style={styles.body}>
-            {/* <ScrollView contentContainerStyle={styles.body}> */}
-            <Pressable onPress={openImagePickerAsync}>
-                {image ? (
-                    /*<Avatar style={styles.avatar} rounded source={{ uri: image }} size="large" />*/
-                    <Image style={styles.image} source={{ uri: image }} />
-                ) : (
-                    <View style={styles.temp}>
-                        <Text style={styles.temp_text}> {initial} </Text>
-                    </View>
-                )}
-                <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
-            </Pressable>
+            <ScrollView contentContainerStyle={styles.body}>
+                <Pressable onPress={openImagePickerAsync}>
+                    {image ? (
+                        /*<Avatar style={styles.avatar} rounded source={{ uri: image }} size="large" />*/
+                        <Image style={styles.image} source={{ uri: image }} />
+                    ) : (
+                        <View style={styles.temp}>
+                            <Text style={styles.temp_text}> {initial} </Text>
+                        </View>
+                    )}
+                    <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
+                </Pressable>
 
-            <TextInput style={styles.inputLarge} placeholder="Tell us about yourself" multiline maxLength={480} editable defaultValue={about} onChangeText={text => setAbout(text)} />
-            <TextInput placeholder="Qualification" style={styles.input} editable defaultValue={qualification} onChangeText={text => setQualification(text)} />
-            <TextInput placeholder="Specialization" style={styles.input} editable defaultValue={specialization} onChangeText={text => setSpecialization(text)} />
-            <TextInput placeholder="Branch" style={styles.input} editable defaultValue={branch} onChangeText={text => setBranch(text)} />
-            <TextInput placeholder="Contact number" style={styles.input} editable defaultValue={contact} onChangeText={text => setContact(text)} />
-            <TextInput placeholder="Email" style={styles.input} editable defaultValue={email} onChangeText={text => setEmail(text)} />
+                <TextInput style={styles.inputLarge} placeholder="Tell us about yourself" multiline maxLength={480} editable defaultValue={about} onChangeText={text => setAbout(text)} />
+                <TextInput placeholder="Qualification" style={styles.input} editable defaultValue={qualification} onChangeText={text => setQualification(text)} />
+                <TextInput placeholder="Specialization" style={styles.input} editable defaultValue={specialization} onChangeText={text => setSpecialization(text)} />
+                <TextInput placeholder="Branch" style={styles.input} editable defaultValue={branch} onChangeText={text => setBranch(text)} />
+                <TextInput placeholder="Contact number" style={styles.input} editable defaultValue={contact} onChangeText={text => setContact(text)} />
+                <TextInput placeholder="Email" style={styles.input} editable defaultValue={email} onChangeText={text => setEmail(text)} />
 
-            <Pressable style={styles.button} onPress={resetCred}>
-                <Text style={{ fontSize: 18, color: '#fff' }}>Save</Text>
-            </Pressable>
-            {/* </ScrollView> */}
+                <Pressable style={styles.button} onPress={resetCred}>
+                    <Text style={{ fontSize: 18, color: '#fff' }}>Save</Text>
+                </Pressable>
+            </ScrollView>
         </View>
     )
 }

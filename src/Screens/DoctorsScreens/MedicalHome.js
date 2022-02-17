@@ -8,11 +8,11 @@ import { Feather } from '@expo/vector-icons';
 
 export default function MedicalHome({ navigation, progress, Log, Exit }) {
 
-  // useEffect(()=>{
-  //   auth.signInWithEmailAndPassword("yomzi123@gmail.com", "Asstastic")
-  //   auth.onAuthStateChanged(doc=>{console.log("Logged in")})
-  // }, [])
-  
+  useEffect(() => {
+    auth.signInWithEmailAndPassword("yomzi123@gmail.com", "Asstastic")
+    auth.onAuthStateChanged(doc => { console.log("Logged in") })
+  }, [])
+
   const [done, setDone] = useState(true);
   const [display, setDisplayModal] = useState(false)
   const [videos, setLoad] = useState(null),
@@ -28,29 +28,15 @@ export default function MedicalHome({ navigation, progress, Log, Exit }) {
       if (today === auth.currentUser.metadata.creationTime) {
         setDisplayModal(true)
       }
-      // firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
-      //   .then(query=>{
-      //     var data = []
-      //     query.forEach(doc=>{
-      //       data = [...data, doc.data().added.toDate() ]
-      //       return data
-      //     })
-      //     return data
-      //   })
-      // .then(dateList=>{
-      //   console.log(dateList)
-      //   dateList = dateList.sort((a,b)=>b-a)
-      //   console.log(dateList)
-      // if(dateList.g)
-      // })
-      // .then(dateList=>{
-      //   console.log(dateList)
-      //   dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
-      //   return dateList
-      // })
-      // .then(dateList=>{
-      //   console.log(dateList)
-      // })
+      firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
+        .then(query => {
+          var data = []
+          query.forEach(doc => {
+            data = [...data, doc.data().added.toDate()]
+            return data
+          })
+          return data
+        })
     };
 
   const [image, setImage] = useState()
@@ -83,7 +69,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit }) {
   }, []);
 
   useEffect(() => {
-    // VideoNotifier()
+    VideoNotifier()
   }, [])
 
   return (
@@ -106,7 +92,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit }) {
               textShadowRadius: 1,
             }}
             onPress={Logout}>
-            Dr. {auth.currentUser.displayName.split(" ")[1]/*"Ntsikayomzi"*/}
+            Dr. {auth.currentUser.displayName.split(" ")[1]}
           </Text>
 
           <Text
@@ -148,17 +134,17 @@ export default function MedicalHome({ navigation, progress, Log, Exit }) {
 
       {loading ? <ProgressBar status={loading} /> : null}
 
-      {/* <ScrollView style={{ height: 580, width: 335, }} 
+      <ScrollView style={{ height: 580, width: 335, }}
 
-      vertical={true} showsVerticalScrollIndicator={false}> */}
+        vertical={true} showsVerticalScrollIndicator={false}>
 
-      <Card style={styles.menu2}>
-        <View>
-          <VideoList videos={videos} VideoScreen={VideoScreen} />
-        </View>
-      </Card>
+        <Card style={styles.menu2}>
+          <View>
+            <VideoList videos={videos} VideoScreen={VideoScreen} />
+          </View>
+        </Card>
 
-      {/* </ScrollView> */}
+      </ScrollView>
       <TouchableOpacity
         style={styles.btnUpload} onPress={() => { navigation.navigate("Upload") }} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>
@@ -219,7 +205,6 @@ const styles = StyleSheet.create({
   },
 
   temp: {
-    // flex: 1,
     width: 70,
     height: 70,
     borderRadius: 50,

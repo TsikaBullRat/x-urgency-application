@@ -27,10 +27,10 @@ export default function Header({ Exit, Emergency }) {
       setInitial(auth.currentUser.displayName.substring(0, 1))
     ) : (
       auth.onAuthStateChanged(doc => {
-        // setImage(doc.photoURL)
-        // console.log(doc.displayName)
-        // setInitial(doc.displayName.substring(0, 1))
-        // console.log(auth.currentUser)
+        setImage(doc.photoURL)
+        console.log(doc.displayName)
+        setInitial(doc.displayName.substring(0, 1))
+        console.log(auth.currentUser)
       })
     )
   }, [])
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   header: {
     color: '#F96056',
     fontSize: 30,
-    fontFamily:'Felix Titling'
+    fontFamily: 'Felix Titling'
   },
 
   avatar: {

@@ -92,11 +92,11 @@ export default function SignUp({ navigation }) {
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 
       <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={22} color="black" style={{ marginTop: 17, marginLeft: 16 }} />
-            <TextInput style={styles.txtUser} name='userName' placeholder='Username' onChangeText={text => setEmail(text)} />
-          </View>
-        </Card>
+        <View style={{ flexDirection: 'row' }}>
+          <AntDesign name="user" size={22} color="black" style={{ marginTop: 17, marginLeft: 16 }} />
+          <TextInput style={styles.txtUser} name='userName' placeholder='Username' onChangeText={text => setEmail(text)} />
+        </View>
+      </Card>
       {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
       <View>
