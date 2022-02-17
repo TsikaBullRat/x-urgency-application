@@ -17,8 +17,9 @@ import MedicalHome from "./MedicalHome"
 import Doctor from "./Doctor"
 import Upload from "./Upload"
 import { UpdateProfile } from "./UpdateProfile"
+import VideoScreen from "../UserScreens/PlayVideo"
 import ResetPassword from "../AuthScreens/ResetPassword"
 
 
 
-export { VideoScreen, UploadVideo, DoctorProfile, MedicalHome, Upload, UpdateProfile, ResetPassword}
+export {VideoScreen, UploadVideo, DoctorProfile, MedicalHome, Upload, UpdateProfile, ResetPassword}
