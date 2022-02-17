@@ -110,6 +110,8 @@ export default function App() {
                 {(props) => <SignUp {...props} />}
               </Stack.Screen>
 
+              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+
                     <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
                   </Stack.Navigator>
                 )

@@ -11,9 +11,9 @@
     * - Modification    : 
 **/
 import Home from "./Home"
-import VideoScreen from "./PlayVideo"
-import DoctorProfile from "./Doctor"
+import PlayVideo from "./PlayVideo"
+import Doctor from "./Doctor"
 import ResetPassword  from "../AuthScreens/ResetPassword"
 
 
-export { Home, VideoScreen, DoctorProfile, ResetPassword }
+export { Home, PlayVideo, Doctor, ResetPassword }
