@@ -186,10 +186,27 @@ const Doctor = ({ route }) => {
           </Card>
         </View>
 
+<<<<<<< HEAD
         <View style={{ marginTop: 35, width: 335 }}>
           <Text style={styles.txtHead}>{`About`}</Text>
           <Text style={styles.txtAbout}>
             {`Neurologists These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.`}
+=======
+      <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
+        <View style={{ flexDirection: 'row' }}>
+          <Feather name="phone" size={20} color="black" />
+          <Text
+            style={{
+              paddingLeft: 10,
+              paddingTop: 2,
+              fontSize: 16,
+              color: '#F47066',
+            }}>
+            {`Call Now `}
+          </Text>
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+            {`(053) 871 2956`}
+>>>>>>> 54df9d904324a559cafd5eccab2d542f0a9e09a8
           </Text>
         </View>
 
