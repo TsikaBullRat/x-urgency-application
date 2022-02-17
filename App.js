@@ -8,7 +8,7 @@ import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { SignIn, SignUp, MedSignIn, DoctorSignUp, ForgotPassword, 
-Home, PlayVideo, Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile,    } from "./src/Screens";
+Home, PlayVideo, Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile, ResetPassword  } from "./src/Screens";
 // import { AuthScreens, UserScreens, DoctorsScreens} from "./src/Screens";
 
 
