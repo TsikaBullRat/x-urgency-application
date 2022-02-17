@@ -22,7 +22,7 @@ import {Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfi
  const Stack = createNativeStackNavigator()
 //const Stack = createStackNavigator()
 
-export default function App() {
+export default function App({navigation}) {
 
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
@@ -96,21 +96,36 @@ export default function App() {
                 
                 ) : (
 
+                  //<SignIn />
                   <Stack.Navigator>
-                  
-                    <Stack.Screen name="Home" options={{ headerShown: false }} >
+                  <Stack.Screen name="Home" options={{ headerShown: false }} >
                       {props => <Home {...props} Exit={Exit} />}
                     </Stack.Screen>
 
-              <Stack.Screen name='Sign In' options={{ headerShown: false }}>
+                    
+                  <Stack.Screen name='Sign In' options={{ headerShown: false }}>
                 {(props) => <SignIn {...props} />}
               </Stack.Screen>
+
+                    
+
+              
 
               <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
                 {(props) => <SignUp {...props} />}
               </Stack.Screen>
 
+              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+
               <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+
+              <Stack.Screen
+                  name='MedSignIn'
+                  options={{ headerShown: false }} >
+                  {props => <MedSignIn {...props} authNavigation={navigation} />}
+                </Stack.Screen>
+
+              <Stack.Screen name="DoctorSignUp" component={Doctor} options={{ headerShown: false }} />
 
                     <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
                   </Stack.Navigator>

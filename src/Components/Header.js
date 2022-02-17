@@ -16,7 +16,7 @@ import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
 
-export default function Header({ Exit, Emergency }) {
+export default function Header({ Exit, Emergency, navigation }) {
 
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')

@@ -172,7 +172,6 @@ const LoadSet = (Load, query) => {
 }
 
 const UploadVideo = async (uri, title, description, cat, Log) => {
-
     var id = uuidv4()
     var byteString = atob(uri.split(',')[1])
     var MIMEstring = uri.split(',')[0].split(':')[1].split(';')[0]

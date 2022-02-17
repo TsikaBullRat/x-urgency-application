@@ -194,7 +194,7 @@ const Doctor = ({ route }) => {
         </Text>
       </View>
 
-      <View style={{ width: 355, marginTop: 35, justifyContent: 'flex-start' }}>
+      <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
         <View style={{ flexDirection: 'row' }}>
           <Feather name="phone" size={20} color="black" />
           <Text
