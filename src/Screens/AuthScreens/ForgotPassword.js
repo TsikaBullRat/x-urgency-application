@@ -55,7 +55,7 @@ export default function ForgotPassword({ navigation }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28 }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
@@ -81,7 +81,7 @@ export default function ForgotPassword({ navigation }) {
 
       </View>
 
-      <View style={{ alignItems: 'center' }}>
+      <View style={{ alignItems: 'center', justifyContent:'center' }}>
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
           <Text style={{ color: '#fff' }}>{`SEND`} </Text>
         </TouchableOpacity>
@@ -129,17 +129,33 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 
-  txtField: {
-    width: 245,
-    height: 30,
-    marginTop: 2,
-    marginLeft: 2,
+  txtEmail: {
+    width: 300,
+    marginTop: 7,
     paddingLeft: 10,
     paddingTop: 15,
+    fontSize: 18,
+    fontFamily: 'flexi titling',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: 'transparent'
+        outlineColor: '#fff',
+        width: 220
+      }
+    })
+  },
+
+  txtPassword: {
+    width: 300,
+    paddingLeft: 6,
+    paddingTop: 15,
+    fontSize: 18,
+    fontFamily: 'flexi titling',
+    borderRadius: 10,
+    ...Platform.select({
+      web: {
+        outlineColor: '#fff',
+        width: 220
       }
     })
   },

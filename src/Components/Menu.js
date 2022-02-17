@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, ScrollView, Image, Pressable } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, Image, Pressable, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
 import { auth, LoadSet, firestore } from "../firebase";
 
@@ -105,7 +105,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 15,
     marginTop: 2,
-    color: '#fff',
+    ...Platform.select({
+      web:{
+        color: '#fff',
+      }
+    })
   },
 
   menuCard: {

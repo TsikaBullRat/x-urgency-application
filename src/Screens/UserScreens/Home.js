@@ -1,23 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity, Image, Text } from "react-native";
 import { Card } from "react-native-paper";
 import { auth, LoadSet, firestore } from "../../firebase";
 import Header from "../../Components/Header";
 import Menu from "../../Components/Menu";
 import { VideoList } from "../../Components/VideoList";
-import EmergencyContacts from '../../Components/EmergencyContacts'
 
 export default function Home({ navigation, Exit }) {
-
-  useEffect(() => {
-    auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
-  }, [])
 
   const [status, setStatus] = useState({});
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = (data) => {
       navigation.navigate("PlayVideo", { data });
+    },
+    Emergency = () =>{
+      navigation.navigate("EmergencyContacts")
     };
 
   useEffect(() => {
@@ -45,10 +43,8 @@ export default function Home({ navigation, Exit }) {
       </View>
 
       <View
-        style={{ alignItems: "center", justifyContent: "space-between", }} >
-
-
-        <Header Exit={Exit} />
+        style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
+        <Header Exit={Exit} Emergency={Emergency} />
       </View>
 
       <View style={{ width: 335, alignItems: 'center' }}>

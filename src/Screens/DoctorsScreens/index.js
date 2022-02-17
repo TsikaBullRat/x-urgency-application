@@ -11,10 +11,10 @@
     * - Modification    : 
 **/
 
-import VideoScreen from "../UserScreens/PlayVideo"
+import PlayVideo from "../UserScreens/PlayVideo"
 import UploadVideo from "./UploadVideo"
 import MedicalHome from "./MedicalHome"
-import DoctorProfile from "../UserScreens/Doctor"
+import Doctor from "./Doctor"
 import Upload from "./Upload"
 import { UpdateProfile } from "./UpdateProfile"
 import ResetPassword from "../AuthScreens/ResetPassword"

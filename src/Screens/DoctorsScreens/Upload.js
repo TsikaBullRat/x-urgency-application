@@ -18,29 +18,44 @@ import { UploadVideo } from "../../firebase";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
 import { Video } from "expo-av";
+import {AlertNote} from '../../Components'
+
+// const btoa = require("btoa")
+// const atob = require("atob")
 
 export default function Upload({ navigation, Log }) {
 
   const ref = useRef(null);
   const [status, setStatus] = useState({});
+  const [alert, setAlert] = useState(false)
   const [selectedValue, setSelectedValue] = useState("stroke"),
     [title, setTitle] = useState(),
     [description, setDescription] = useState(),
     [selectedImage, setSelectedImage] = useState(null),
 
     openImagePickerAsync = async () => {
-      let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+      let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
       if (permissionResult.granted === false) {
         alert('Permission to access camera roll is required!');
         return;
       }
 
-      let pickerResult = await ImagePicker.launchImageLibraryAsync({ mediaTypes: 'Videos' });
+      let pickerResult = await ImagePicker.launchImageLibraryAsync({ 
+        mediaTypes: 'Videos',
+        videoMaxDuration: 7,
+         allowsEditing: true
+      });
+
+      if(pickerResult.duration > 30000){
+        setAlert(true)
+        return
+      }
       if (pickerResult.cancelled === true) {
         return;
       }
 
+      // console.log(atob(pickerResult.duration))
       setSelectedImage({ localUri: pickerResult.uri });
     },
 
@@ -60,7 +75,12 @@ export default function Upload({ navigation, Log }) {
     },
 
     openCamera = async () => {
-     let result = await ImagePicker.launchCameraAsync({
+      let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+      if (permissionResult.granted === false) {
+        alert('Permission to access camera roll is required!');
+        return;
+      }
+      let result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Videos,
         allowsEditing: true
       });
@@ -72,6 +92,8 @@ export default function Upload({ navigation, Log }) {
   return (
 
     <View style={styles.container}>
+
+      <AlertNote modalVisible={alert} setModalVisible={setAlert} msg="This video is too long"/>
 
       <Text style={styles.header}>Upload Or Create Your First Aid Video Here</Text>
 

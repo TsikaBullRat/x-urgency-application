@@ -3,6 +3,8 @@ import { Text, View, StyleSheet, } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Avatar, Badge } from 'react-native-elements';
 import { Socials } from '../../Components';
+import { Card } from "react-native-paper";
+import { MaterialCommunityIcons, FontAwesome5, Feather, AntDesign } from '@expo/vector-icons'
 
 const DoctorProfile = () => {
 
