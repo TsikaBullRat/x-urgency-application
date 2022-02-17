@@ -61,7 +61,7 @@ export default function Home({ navigation, Exit }) {
 
       {/*---------------------- Video Scroll View--------------------*/}
 
-      {/* <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}> */}
+      {/* <ScrollView style={{ height: 150, width: 335, }} showsVerticalScrollIndicator={false}> */}
       <Card style={styles.menu2}>
         <View>
           <VideoList videos={videos} VideoScreen={VideoScreen} />
