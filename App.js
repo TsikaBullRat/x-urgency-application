@@ -102,17 +102,23 @@ export default function App() {
                       {props => <Home {...props} Exit={Exit} />}
                     </Stack.Screen>
 
-                    <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+              <Stack.Screen name='Sign In' options={{ headerShown: false }}>
+                {(props) => <SignIn {...props} />}
+              </Stack.Screen>
 
-                    <Stack.Screen name="Doctor" options={{ headerShown: false }} >
-                      {props => <Doctor {...props} />}
-                    </Stack.Screen>
+              <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
+                {(props) => <SignUp {...props} />}
+              </Stack.Screen>
 
                     <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
                   </Stack.Navigator>
                 )
 
-              ) : (
+              <Stack.Screen
+                name='Doctor SignUp'
+                options={{ headerShown: false }} >
+                {props => <DoctorSignUp {...props} authNavigation={navigation} />}
+              </Stack.Screen>
 
                 <SignUp />             
               )
@@ -169,7 +175,6 @@ export default function App() {
 
   );
 }
-
 const styles = StyleSheet.create({
   loader: {
     alignItems: "center",

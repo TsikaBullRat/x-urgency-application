@@ -55,7 +55,7 @@ export default function SignIn({ navigation }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ textAlign: 'center', color: '#fff', fontSize: 30, fontFamily:'flexi titling' }}> {`X-Urgency`} </Text>
+        <Text style={{ textAlign: 'center', color: '#fff', fontSize: 30, fontFamily: 'flexi titling' }}> {`X-Urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
@@ -90,20 +90,20 @@ export default function SignIn({ navigation }) {
         </Card>
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
-        <View style={{width:320, alignItems:'flex-end'}}>
-        <TouchableOpacity 
-        onPress={() => { navigation.navigate('Reset Password') }}>
-          <Text style={{ paddingTop: 20, fontSize: 18, fontFamily:'Arial', color: '#F47066' }}>{`Forgot Password?`} </Text>
-        </TouchableOpacity>
+        <View style={{ width: 320, alignItems: 'flex-end' }}>
+          <TouchableOpacity
+            onPress={() => { navigation.navigate('Reset Password') }}>
+            <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }}>{`Forgot Password?`} </Text>
+          </TouchableOpacity>
         </View>
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ fontSize: 20, fontFamily:'flexi titling', color: '#fff', }}>{`LOGIN`} </Text>
+            <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`LOGIN`} </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{marginTop:10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
+        <View style={{ marginTop: 10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <Text style={{ paddingTop: 10, fontSize: 15, }}>  {`New User?`} </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
             <Text style={{ paddingTop: 9, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
@@ -113,11 +113,11 @@ export default function SignIn({ navigation }) {
         <View style={{marginTop:10,}} >
         <Text style={{ paddingTop: 10, fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
 
-        <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <TouchableOpacity onPress={() => { navigation.navigate('MedSignIn') }}>
-            <Text style={{ fontFamily: 'Arial', fontSize: 20, paddingTop:5, color: '#F47066' }}> {`SignIn`} </Text>
-          </TouchableOpacity>
-        </View>
+          <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
+            <TouchableOpacity onPress={() => { navigation.navigate('MedSignIn') }}>
+              <Text style={{ fontFamily: 'Arial', fontSize: 20, paddingTop: 5, color: '#F47066' }}> {`SignIn`} </Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
       </View>

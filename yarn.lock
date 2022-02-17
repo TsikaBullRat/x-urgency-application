@@ -1052,7 +1052,11 @@
   "version" "7.16.8"
   dependencies:
     "@babel/helper-validator-identifier" "^7.16.7"
+<<<<<<< HEAD
+    to-fast-properties "^2.0.0"
+=======
     "to-fast-properties" "^2.0.0"
+>>>>>>> b9024c5ae5f2e6dc9808e807892ee7d0689c07d4
 
 "@callstack/react-theme-provider@^3.0.5":
   "integrity" "sha512-Ab6rbD2w4u9W3yf7LQQ8evx9m8fZNsoWxt+MFm3AyZnyKQNCJf4K7ip9tHHZgSs+HTdoj38lEqPehvFOVQKvAg=="

@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginTop: 2,
     ...Platform.select({
-      web:{
+      web: {
         color: '#fff',
       }
     })
@@ -122,3 +122,4 @@ const styles = StyleSheet.create({
   },
 
 })
+ 
