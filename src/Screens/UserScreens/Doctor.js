@@ -162,7 +162,7 @@ const Doctor = ({ route }) => {
 
                 </View>
 
-                <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
+                <View style={{ width: 355, flexDirection: 'row',  marginBottom: 20 }}>
                     <Socials text="Following" number="15" />
                     <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
                     <Socials text="Likes" number="3.1M" />
@@ -173,55 +173,12 @@ const Doctor = ({ route }) => {
                 <View style={{ marginTop: 20 }}>
                 </View>
 
-                <View>
-                    <SwitchSelector
-                        options={options}
-                        initial={0}
-                        style={styles.tab}
-                        onPress={value => check(value)}
-                        testID="gender-switch-selector"
-                        accessibilityLabel="gender-switch-selector"
-                        hasPadding />
-                </View>
+               
             </View>
 
-            {About ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {/*data.about*/}
-                </Text>
-            </View>
+       
+    </>
 
-                : <View></View>}
-
-            {Qalification ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {data.qualification}
-                </Text>
-            </View>
-
-                : <View></View>}
-
-            {Specialization ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {data.specilization}
-                </Text>
-            </View>
-
-                : <View></View>}
-
-            {Contact ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {email}
-                    {"\n"}
-                    {data.contact}
-                    {"\n"}
-                    {data.branch}
-                </Text>
-            </View>
-
-                : <View></View>} </>
-
-        // ) : null
     )
 }
 
@@ -233,7 +190,8 @@ const styles = StyleSheet.create({
     },
 
     textTitle: {
-        color: 'red',
+        fontFamily: 'Roboto',
+        color: '#F47066',
         fontSize: 25,
         marginTop: 5,
     },
