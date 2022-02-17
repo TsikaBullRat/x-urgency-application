@@ -1,5 +1,5 @@
 import React//, { useState, useEffect } 
-from "react";
+  from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -7,10 +7,11 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-import { SignIn, SignUp, MedSignIn, DoctorSignUp, ForgotPassword, 
-Home, PlayVideo, Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile,   } from "./src/Screens";
+import {
+  SignIn, SignUp, MedSignIn, DoctorSignUp, ForgotPassword,
+  Home, PlayVideo, Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile,
+} from "./src/Screens";
 // import { AuthScreens, UserScreens, DoctorsScreens} from "./src/Screens";
-
 
 // const Stack = createNativeStackNavigator()
 const Stack = createStackNavigator()
@@ -67,13 +68,9 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
 
-  
+        <DoctorSignUp />
 
-           <DoctorSignUp />
-
-
-
-          {/* {check1 ? (
+        {/* {check1 ? (
             id ? (
               check2 ? (
                 doctor ? (
@@ -116,7 +113,6 @@ export default function App() {
 
               <Stack.Group>
                 
-
                 <Stack.Screen name='Sign In' options={{ headerShown: false }}>
                   {(props) => <SignIn {...props} />}
                 </Stack.Screen>
@@ -156,7 +152,7 @@ export default function App() {
             </Stack.Navigator>
 
           )}  */}
- 
+
       </KeyboardAwareScrollView>
     </NavigationContainer>
 
