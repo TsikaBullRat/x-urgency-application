@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity} from "react-native";
 import { Card } from "react-native-paper";
 import { Video } from "expo-av";
+import { ScrollView } from "react-native-gesture-handler";
 
 const ItemSeperatorView = () => {
   return (
@@ -16,6 +17,8 @@ export const VideoList = ({ videos, VideoScreen }) => {
   return (
     videos ? (videos.map(vid => (
       <View style={{ width: 335, left: -5, alignItems: "center", justifyContent:'center' }} key={vid.id}>
+       <ScrollView style={{height: 200}} 
+       showsVerticalScrollIndicator={false}>
         <Card
           style={{
             marginTop: 15,
@@ -51,6 +54,7 @@ export const VideoList = ({ videos, VideoScreen }) => {
         </Card>
 
         <ItemSeperatorView />
+        </ScrollView>
 
       </View>))
     ) : null

@@ -22,7 +22,7 @@ import {Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfi
  const Stack = createNativeStackNavigator()
 //const Stack = createStackNavigator()
 
-export default function App() {
+export default function App({navigation}) {
 
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)

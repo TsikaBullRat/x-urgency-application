@@ -122,19 +122,19 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
       <View style={styles.header}>
         <Text style={{
-          fontSize: 30, ...Platform.select({
+          fontSize: 30,color: '#F47066', ...Platform.select({
             web: {
               fontFamily: 'Felix Titling'
             }
           }),
-          color: '#F47066'
+          
         }}>{`Medical SignUp`}</Text>
       </View>
 
-      <ScrollView style={{ height: 550 }}
-        showsVerticalScrollIndicator={false}>
+      
         {visibleStatusBar ? (
-          <View>
+          <ScrollView style={{ height: 550 }}
+        showsVerticalScrollIndicator={false}>
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: 'row' }}>
@@ -204,10 +204,11 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               </TouchableOpacity>
             </View>
 
-          </View>
+          </ScrollView>
 
         ) : (
-          <View>
+          <ScrollView style={{ height: 550 }}
+        showsVerticalScrollIndicator={false}>
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
@@ -254,9 +255,9 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`SIGNIN`} </Text>
               </TouchableOpacity>
             </View>
-          </View>
+          </ScrollView>
         )}
-      </ScrollView>
+      
 
     </View>
 
