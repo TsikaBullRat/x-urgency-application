@@ -8,7 +8,7 @@ import { auth, firestore } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { SignIn, SignUp, MedSignIn, DoctorSignUp, ForgotPassword, 
-Home, PlayVideo, Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile,   } from "./src/Screens";
+Home, PlayVideo, Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile,    } from "./src/Screens";
 // import { AuthScreens, UserScreens, DoctorsScreens} from "./src/Screens";
 
 
@@ -92,20 +92,7 @@ export default function App() {
                   </Stack.Group>                  
 
                 ) : (
-
-                  <Stack.Group>
-                    <Stack.Screen name="Home" options={{ headerShown: false }} >
-                      {props => <Home {...props} Exit={Exit} />}
-                    </Stack.Screen>
-
-                    <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
-
-                    <Stack.Screen name="Doctor" options={{ headerShown: false }} >
-                      {props => <Doctor {...props} />}
-                    </Stack.Screen>
-
-                    <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
-                  </Stack.Group>
+                  <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
                 )
 
               ) : (
@@ -156,7 +143,7 @@ export default function App() {
               <Stack.Screens name='DoctorSignUp' component={DoctorSignUp} />
             </Stack.Navigator>
 
-          )}  
+          )
  
       </KeyboardAwareScrollView>
     </NavigationContainer>
