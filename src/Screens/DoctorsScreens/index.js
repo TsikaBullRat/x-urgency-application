@@ -14,11 +14,11 @@
 import PlayVideo from "../UserScreens/PlayVideo"
 import UploadVideo from "./UploadVideo"
 import MedicalHome from "./MedicalHome"
-import Doctor from "./Doctor"
+import DoctorProfile from "./Doctor"
 import Upload from "./Upload"
 import { UpdateProfile } from "./UpdateProfile"
 import ResetPassword from "../AuthScreens/ResetPassword"
 
 
 
-export { VideoScreen, UploadVideo, DoctorProfile, MedicalHome, Upload, UpdateProfile, ResetPassword}
+export { PlayVideo, UploadVideo, DoctorProfile, MedicalHome, Upload, UpdateProfile, ResetPassword}

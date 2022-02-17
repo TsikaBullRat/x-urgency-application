@@ -81,7 +81,7 @@ export default function App() {
               check2 ? (
                 doctor ? (
                   //<DoctorSignUp />
-                  <Stack.Group>
+                  <Stack.Navigator>
                     <Stack.Screen name="MedicalHome" options={{ headerShown: false }} >
                       {props => <MedicalHome {...props} Log={setPerc} progress={percentage} setMatch={setMatch} Exit={Exit} />}
                     </Stack.Screen>
@@ -92,7 +92,7 @@ export default function App() {
                     <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
                     <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
                     <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
-                  </Stack.Group>                  
+                  </Stack.Navigator>                  
                 
                 ) : (
 
@@ -113,12 +113,12 @@ export default function App() {
                     <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
                   </Stack.Navigator>
                 )
-
-              <Stack.Screen
-                name='Doctor SignUp'
-                options={{ headerShown: false }} >
-                {props => <DoctorSignUp {...props} authNavigation={navigation} />}
-              </Stack.Screen>
+              ):(
+              // <Stack.Screen
+              //   name='DoctorSignUp'
+              //   options={{ headerShown: false }} >
+              //   {props => <DoctorSignUp {...props} authNavigation={navigation} />}
+              // </Stack.Screen>
 
                 <SignUp />             
               )
