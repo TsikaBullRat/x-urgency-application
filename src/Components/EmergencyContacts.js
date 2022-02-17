@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
 import { Card } from "react-native-paper";
 
-const EmergencyContacts = ({ navigation }) => {
+const Emergency = ({ navigation }) => {
 
     const Call = (number) => {
         Linking.openURL(`tel:${number}`)
@@ -15,7 +15,6 @@ const EmergencyContacts = ({ navigation }) => {
 
             <View>
                 <Text style={styles.head}> {"EMERGENCY? \n CALL NOW!"}</Text>
-
             </View>
 
             <View>
@@ -71,7 +70,7 @@ const EmergencyContacts = ({ navigation }) => {
                 <TouchableOpacity onPress={() => Call("0800 055 555")}>
                     <Card style={[styles.card4, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 55, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>Childline</Text>
-                        <FontAwesome name="child" size={30} color="#fff" style={{ marginTop: 1, marginLeft: 70 }} />
+                        <FontAwesome name="child" size={30} color="#ffffff" style={{ marginTop: 1, marginLeft: 70 }} />
                         <Text style={{ marginLeft: 40, fontWeight: "bold", fontSize: 16, marginTop: -1, color: "white" }}>0800 055 555</Text>
                     </Card>
                 </TouchableOpacity>
@@ -79,8 +78,8 @@ const EmergencyContacts = ({ navigation }) => {
                 <TouchableOpacity onPress={() => Call("0800 567 567")}>
                     <Card style={[styles.card5, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>Suicide Crisis Line</Text>
-                        <FontAwesome name="anchor" size={25} color="#fff" style={{ marginTop: 1, marginLeft: 75 }} />
-                        <Text style={{ marginLeft: 40, fontWeight: "bold", fontSize: 16, marginTop: -1, color: "white" }}>0800 567 567</Text>
+                        <FontAwesome name="anchor" size={25} color="#ffffff" style={{ marginTop: 1, marginLeft: 75 }} />
+                        <Text style={{marginLeft: 40, fontWeight: "bold", fontSize: 16, marginTop: -1, color: "white" }}>0800 567 567</Text>
                     </Card>
                 </TouchableOpacity>
 
@@ -91,7 +90,7 @@ const EmergencyContacts = ({ navigation }) => {
                 <TouchableOpacity onPress={() => Call("0800 428 428")} >
                     <Card style={[styles.card6, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>Gender Based Violence Command Center</Text>
-                        <FontAwesome name="transgender" size={30} color="#fff" style={{ marginTop: 1, marginLeft: 160 }} />
+                        <FontAwesome name="venus-mars" size={30} color="#ffffff" style={{ marginTop: 1, marginLeft: 160 }} />
                         <Text style={{ marginLeft: 120, fontWeight: "bold", fontSize: 16, marginTop: -1, color: "white" }}>0800 428 428</Text>
                     </Card>
                 </TouchableOpacity>
@@ -103,7 +102,7 @@ const EmergencyContacts = ({ navigation }) => {
                 <TouchableOpacity onPress={() => Call("0800 029 999")} >
                     <Card style={[styles.card7, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 30, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>National Institute For Communicable Diseases</Text>
-                        <FontAwesome name="plus-square" size={30} color="#fff" style={{ marginTop: 1, marginLeft: 160 }} />
+                        <FontAwesome name="snowflake-o" size={30} color="#ffffff" style={{ marginTop: 1, marginLeft: 160 }} />
                         <Text style={{ marginLeft: 120, fontWeight: "bold", fontSize: 16, marginTop: -1, color: "white" }}>0800 029 999</Text>
                     </Card>
                 </TouchableOpacity>
@@ -210,4 +209,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default EmergencyContacts
+export default Emergency

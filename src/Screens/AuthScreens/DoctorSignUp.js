@@ -78,7 +78,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     } else {
       setVisibleStatusBar(!visibleStatusBar)
     }
-  }
+
 
   const Register = () => {
     if (qualification === "" && branch === "" && password === "" && confirmpassword === "") {
@@ -109,6 +109,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
   }
 
   return (
+    
 
     <View style={styles.container}>
 
@@ -260,7 +261,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     </View>
 
   );
-}
+}}
 
 const styles = StyleSheet.create({
   container: {

@@ -16,7 +16,7 @@ const DoctorProfile = () => {
   ];
 
   const [About, setAbout] = React.useState(true);
-  const [Qalification, setQualification] = React.useState(false);
+  const [Qualification, setQualification] = React.useState(false);
   const [Specialization, setSpecialization] = React.useState(false);
   const [Contact, setContact] = React.useState(false);
 
