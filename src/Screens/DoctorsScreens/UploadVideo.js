@@ -27,7 +27,6 @@ export default function UploadVideo({ navigation }) {
   const [isVideoRecording, setIsVideoRecording] = useState(false)
   const [videoSource, setVideoSource] = useState(null)
   const cameraRef = useRef()
-
   const ref = useRef(null)
   const [status, setStatus] = useState({})
   const [selectedValue, setSelectedValue] = useState('stroke'),
@@ -191,7 +190,6 @@ export default function UploadVideo({ navigation }) {
     </View>
   )
 
-
   const [selectedImage, setSelectedImage] = useState(null)
 
   //------Camera Permission (NULL)-----Permission(NULL)-----------
@@ -353,7 +351,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginHorizontal: 15,
     paddingTop: 35,
-    fontFamily:'Roboto'
+    fontFamily: 'Roboto'
   },
 
   thumbnail: {
@@ -361,7 +359,6 @@ const styles = StyleSheet.create({
     height: 300,
     marginTop: 100,
     resizeMode: 'contain',
-    
   },
 
   logo: {
@@ -380,7 +377,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     color: '#fff',
-    fontFamily:'Roboto'
+    fontFamily: 'Roboto'
   },
 
   contain: {
@@ -458,6 +455,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 24,
     color: 'red',
-    fontFamily:'Roboto'
+    fontFamily: 'Roboto'
   }
 })

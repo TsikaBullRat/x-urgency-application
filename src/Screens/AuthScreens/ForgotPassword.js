@@ -59,15 +59,17 @@ export default function ForgotPassword({ navigation }) {
       </Card>
 
       <View style={styles.header}>
-  
+
         <Text style={{
           fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling',
           color: '#F47066', justifyContent: "left"
         }}>{`Forgot your password?`}</Text>
       </View>
-      <br/>
-       <Text style={{fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
-          color: '#000000'}}>We will email you a link<br/> to reset your password</Text>
+      <br />
+      <Text style={{
+        fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
+        color: '#000000'
+      }}>We will email you a link<br /> to reset your password</Text>
 
       <View style={{ alignItems: 'center' }}>
         <Card style={styles.txtCards}>
@@ -78,15 +80,12 @@ export default function ForgotPassword({ navigation }) {
         </Card>
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
-
       </View>
 
       <View style={{ alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
           <Text style={{ color: '#fff' }}>{`SEND`} </Text>
         </TouchableOpacity>
-
-       
 
       </View>
 

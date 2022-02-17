@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { createStackNavigator } from "@react-navigation/stack"
 import { MedicalHome, Upload, UploadVideo, DoctorProfile, UpdateProfile } from '.';
 
 const Stack = createNativeStackNavigator()
-// const Stack = createStackNavigator()
 
 export const DoctorsScreens = ({ navigation, route }) => {
 

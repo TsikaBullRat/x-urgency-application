@@ -14,8 +14,7 @@ import Doctor from "./UserScreens/Doctor"
 import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
 import ResetPassword from "./AuthScreens/ResetPassword";
 
-
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, Doctor, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, ResetPassword, MedSignIn}
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, Doctor, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, ResetPassword, MedSignIn }
 
 export { UserScreens } from './UserScreens/UserScreens'
 export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'

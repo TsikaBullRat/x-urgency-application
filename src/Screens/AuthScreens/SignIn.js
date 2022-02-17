@@ -110,8 +110,8 @@ export default function SignIn({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        <View style={{marginTop:10,}} >
-        <Text style={{ paddingTop: 10, fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
+        <View style={{ marginTop: 10, }} >
+          <Text style={{ paddingTop: 10, fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
 
           <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
             <TouchableOpacity onPress={() => { navigation.navigate('MedSignIn') }}>
