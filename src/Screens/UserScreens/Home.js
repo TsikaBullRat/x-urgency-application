@@ -14,7 +14,7 @@ export default function Home({ navigation, Exit }) {
     VideoScreen = (data) => {
       navigation.navigate("PlayVideo", { data });
     },
-    Emergency = () =>{
+    Emergency = () => {
       navigation.navigate("EmergencyContacts")
     };
 

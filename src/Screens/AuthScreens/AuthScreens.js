@@ -1,14 +1,14 @@
 import React from 'react'
-// import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import {createStackNavigator } from "@react-navigation/stack"
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+// import { createStackNavigator } from "@react-navigation/stack"
 import SignIn from "./SignIn";
 import SignUp from "./SignUp"
 import ForgotPassword from "./ForgotPassword"
 import DoctorSignUp from "./DoctorSignUp"
 import MedSignIn from "./MedSignIn"
 
-// const Stack = createNativeStackNavigator()
-const Stack = createStackNavigator()
+const Stack = createNativeStackNavigator()
+// const Stack = createStackNavigator()
 
 export const AuthScreens = ({ navigation }) => {
   return (
@@ -16,7 +16,7 @@ export const AuthScreens = ({ navigation }) => {
 
       <Stack.Screen
         name='Doctor SignUp'
-        /*options={{ headerShown: false }}*/ >
+        options={{ headerShown: false }} >
         {props => <DoctorSignUp {...props} authNavigation={navigation} />}
       </Stack.Screen>
 

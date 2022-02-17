@@ -25,7 +25,7 @@ import { auth, firestore } from '../../firebase'
 import { Collect, Post, } from '../../firebase';
 
 export default function VideoScreen({ navigation, route }) {
-  
+
   // useEffect(()=>{
   //   auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
   //     .catch(err=>{
@@ -141,14 +141,14 @@ export default function VideoScreen({ navigation, route }) {
           <View
             style={{ width: 335, flexDirection: 'row', marginTop: 25, alignItems: 'center', justifyContent: 'space-around' }}>
             <View>
-              { <Likes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} /> }
+              {<Likes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} />}
             </View>
 
             <View style={{ marginTop: 3 }}>
-              { <Dislikes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} /> }
+              {<Dislikes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} />}
             </View>
 
-            <TouchableOpacity onPress={ () => ShareItem(data.url/*videoPlay*/)}>
+            <TouchableOpacity onPress={() => ShareItem(data.url/*videoPlay*/)}>
               <FontAwesome5
                 name="share"
                 size={20}

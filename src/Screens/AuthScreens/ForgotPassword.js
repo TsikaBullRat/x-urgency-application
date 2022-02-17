@@ -62,7 +62,7 @@ export default function ForgotPassword({ navigation }) {
 
       <View style={styles.header}>
         <Text style={{
-           fontSize: 30, fontFamily: 'Felix Titling',
+          fontSize: 30, fontFamily: 'Felix Titling',
           color: '#F47066'
         }}>{`Reset Password`}</Text>
       </View>
@@ -100,13 +100,13 @@ export default function ForgotPassword({ navigation }) {
 
       </View>
 
-      <View style={{ alignItems: 'center', justifyContent:'center' }}>
+      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
-          <Text style={{ fontSize: 20, paddingLeft: 5, fontFamily:'flexi titling', color: '#fff', }}>{`RESET PASSWORD`} </Text>
+          <Text style={{ fontSize: 20, paddingLeft: 5, fontFamily: 'flexi titling', color: '#fff', }}>{`RESET PASSWORD`} </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.signIn} onPress={Exit}>
-          <Text style={{ fontSize: 20, fontFamily:'flexi titling', color: '#fff', }}>{`EXIT`}</Text>
+          <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`EXIT`}</Text>
         </TouchableOpacity>
       </View>
 
