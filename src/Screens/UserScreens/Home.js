@@ -33,9 +33,9 @@ export default function Home({ navigation, Exit }) {
             <Image source={require('../../../img/siren.jpg')}
               style={{ width: 30, height: 35 }} />
 
-            <View style={{ paddingHorizontal: 10 }}>
-              <Text style={{ fontSize: 12, fontFamily: 'Arial' }}>Call</Text>
-              <Text style={{ fontSize: 12, fontFamily: 'Arial' }}>Now</Text>
+            <View style={{paddingVertical:10}}>
+              <Text style={{ fontSize: 12, fontWeight:'bold', fontFamily: 'Arial', color:'#F47066' }}>Call</Text>
+              <Text style={{ fontSize: 12, fontWeight:'bold', fontFamily: 'Arial', color:'#F47066' }}>Now</Text>
             </View>
 
           </View>
@@ -54,8 +54,8 @@ export default function Home({ navigation, Exit }) {
       <View style={{ width: 335, alignItems: "center", marginTop: 20, flexDirection: 'row', justifyContent: "space-between", }}>
         <Text style={{ fontFamily: 'Roboto' }}> {`Most Viewed`} </Text>
 
-        <TouchableOpacity onPress={() => navigation.navigate('ViewMap')}>
-          <Text style={{ fontFamily: 'Roboto', color: '#F96056' }}>{`Medical Facilities`} </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
+          <Text style={{ fontFamily: 'Roboto', color: '#F96056' }}>{`Medical Personel`} </Text>
         </TouchableOpacity>
       </View>
 

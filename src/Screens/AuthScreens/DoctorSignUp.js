@@ -325,6 +325,7 @@ const styles = StyleSheet.create({
     width: 315,
     height: 50,
     paddingLeft: 38,
+    paddingTop: 13,
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 35,

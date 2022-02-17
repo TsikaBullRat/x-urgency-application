@@ -41,7 +41,7 @@ export default function VideoScreen({ navigation, route }) {
   const [count, setCount] = useState(0)
   const refrence = useRef(data.url/*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/)
   const [info, setInfo] = useState()
-  const [comments, setComments] = useState([]),
+  const [Comments, setComments] = useState([]),
 
     [comment, setComment] = useState(""),
     [visibleStatusBar, setVisibleStatusBar] = useState(false),
@@ -69,7 +69,7 @@ export default function VideoScreen({ navigation, route }) {
         metadata.doc(auth.currentUser.uid).set({
           liked: false,
           disliked: false,
-          comments: [null],
+          Comments: [null],
           ref: auth.currentUser.uid
         }),
 
@@ -85,7 +85,7 @@ export default function VideoScreen({ navigation, route }) {
     Delete = remove => {
       firestore.collection("Videos").doc(data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/).collection("Acts").doc(auth.currentUser.uid).get()
         .then(doc => {
-          return doc.data().comments
+          return doc.data().Comments
         })
 
         .then(item => {
@@ -95,11 +95,11 @@ export default function VideoScreen({ navigation, route }) {
 
         .then(update => {
           firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).update({
-            comments: update
+            Comments: update
           })
         })
 
-      setComments(comments.filter(item => item.comment !== remove))
+      setComments(Comments.filter(item => item.comment !== remove))
     };
 
   useEffect(() => {
@@ -235,7 +235,7 @@ export default function VideoScreen({ navigation, route }) {
           height: 335, width: 315, marginTop: 5
         }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
-          {comments.map((item, index) =>
+          {Comments.map((item, index) =>
             <Card style={{ backgroundColor: '#e8d7cc', height: 100, marginTop: 10 }} key={index}>
               <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
                 <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>

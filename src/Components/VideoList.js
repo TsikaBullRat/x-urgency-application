@@ -15,7 +15,7 @@ export const VideoList = ({ videos, VideoScreen }) => {
 
   return (
     videos ? (videos.map(vid => (
-      <View style={{ width: 335, alignItems: "center" }} key={vid.id}>
+      <View style={{ width: 335, left: -5, alignItems: "center", justifyContent:'center' }} key={vid.id}>
         <Card
           style={{
             marginTop: 15,
@@ -61,7 +61,9 @@ const styles = StyleSheet.create({
   vidTitle: {
     paddingLeft: 5,
     fontSize: 16,
+    fontFamily: 'Roboto',
     fontWeight: "bold",
+    color:'#F47066'
   },
 
   tag: {

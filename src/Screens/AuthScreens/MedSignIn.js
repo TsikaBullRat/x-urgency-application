@@ -50,20 +50,20 @@ export default function MedSignIn({ navigation, setDone }) {
             }
           }),
           color: '#F47066'
-        }}>{`Medical Sign_In`}</Text>
+        }}>{`Medical SignIn`}</Text>
       </View>
 
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 14, marginLeft: 18 }} />
+            <AntDesign name="user" size={22} color="black" style={{ marginTop: 16, marginLeft: 18 }} />
             <TextInput style={styles.txtUser} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={30} color="black" style={{ marginTop: 12, marginLeft: 12 }} />
+            <EvilIcons name="lock" size={32} color="black" style={{ marginTop: 12, marginLeft: 12 }} />
             <TextInput style={styles.txtPassword}
               name='password' placeholder='Password'
               secureTextEntry={true}
@@ -129,28 +129,33 @@ const styles = StyleSheet.create({
 
   txtUser: {
     width: 300,
-    height: 30,
     marginTop: 7,
     paddingLeft: 10,
     paddingTop: 15,
+    fontSize: 18,
+    fontFamily: 'flexi titling',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: 'transparent'
+        outlineColor: '#fff',
+        width: 220
       }
     })
   },
 
   txtPassword: {
     width: 300,
-    height: 30,
-    marginTop: 7,
-    paddingLeft: 10,
-    paddingTop: 15,
+    height: 35,
+    marginTop: 5,
+    paddingLeft: 6,
+    paddingTop: 20,
+    fontSize: 18,
+    fontFamily: 'flexi titling',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: 'transparent'
+        outlineColor: '#fff',
+        width: 220
       }
     })
   },

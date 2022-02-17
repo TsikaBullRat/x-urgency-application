@@ -18,7 +18,7 @@ import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignIn } from '../../firebase'
 import { AlertNote } from '../../Components';
 
-export default function SignIn({ navigation, setDone }) {
+export default function SignIn({ navigation }) {
 
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
@@ -40,12 +40,11 @@ export default function SignIn({ navigation, setDone }) {
       setPrompt1(null)
       setPrompt2("Please enter password")
     } else {
-      handleSignIn(email, password, setMessage, setDone)
+      handleSignIn(email, password, setMessage)
       setDisplaModal(true)
+      //navigation.navigate('Home', {setDone})
     }
 
-    navigation.navigate('Home'//, {setDone}
-    )
   }
 
   return (
@@ -107,12 +106,12 @@ export default function SignIn({ navigation, setDone }) {
         <View style={{ marginTop: 10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <Text style={{ paddingTop: 10, fontSize: 15, }}>  {`New User?`} </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-            <Text style={{ paddingTop: 10, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
+            <Text style={{ paddingTop: 9, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{ marginTop: 10, }} >
-          <Text style={{ paddingTop: 10, fontSize: 17, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
+        <View style={{marginTop:10,}} >
+        <Text style={{ paddingTop: 10, fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
 
           <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
             <TouchableOpacity onPress={() => { navigation.navigate('MedSignIn') }}>
