@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { auth, firestore } from './src/firebase'
+import { auth, firestore, UploadVideo } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-import { AuthScreens, UserScreens, DoctorsScreens, 
+import { AuthScreens, UserScreens, DoctorsScreens,  
 
-MedicalHome, Upload, PlayVideo, SignIn, SignUp, Doctor, UpdateProfile, EmergencyContacts,  } from "./src/Screens";
+MedicalHome, Upload, PlayVideo, SignIn, SignUp, Doctor, UpdateProfile, EmergencyContacts, ForgotPassword, ResetPassword} from "./src/Screens";
 
 import Home from './src/Screens/UserScreens/Home'
 
@@ -47,8 +47,7 @@ export default function App() {
     <NavigationContainer>
       <KeyboardAwareScrollView>
          <Stack.Navigator>
-         
-           <Stack.Screen name='SignIn' component={SignIn} />
+           <Stack.Screen name='ResetPassword' component={ResetPassword} />
            <Stack.Screen name='Home' component={Home} />
 
            {check1 ? (

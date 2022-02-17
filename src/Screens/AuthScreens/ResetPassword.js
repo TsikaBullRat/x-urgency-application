@@ -1,23 +1,11 @@
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 07/10/2021 - 10:18:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 07/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
-
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
+import { ForgotPassword } from '..';
 
-export default function ForgotPassword({ navigation }) {
+export default function ResetPassword({ navigation }) {
 
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
@@ -59,34 +47,41 @@ export default function ForgotPassword({ navigation }) {
       </Card>
 
       <View style={styles.header}>
-  
+     
         <Text style={{
           fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling',
           color: '#F47066', justifyContent: "left"
-        }}>{`Forgot your password?`}</Text>
+        }}>{`Reset Your Password?`}</Text>
       </View>
       <br/>
        <Text style={{fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
-          color: '#000000'}}>We will email you a link<br/> to reset your password</Text>
+          color: '#000000'}}>Create your new<br/>     password</Text>
 
       <View style={{ alignItems: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 12, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='email' placeholder='Enter Your Email' onChangeText={text => setEmail(text)} />
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='password' placeholder='New Password' onChangeText={text => setPassword(text)} />
           </View>
         </Card>
-        {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
+        {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='password' placeholder='Confirm Password' onChangeText={text => setConfirmPassword(text)} />
+          </View>
+        </Card>
+        {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
       </View>
 
       <View style={{ alignItems: 'center' }}>
-        <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
-          <Text style={{ color: '#fff' }}>{`SEND`} </Text>
+        <TouchableOpacity style={styles.signIn} onPress={ForgotPassword}>
+          <Text style={{ color: '#fff' }}>{`DONE`} </Text>
         </TouchableOpacity>
 
-       
+      
 
       </View>
 
