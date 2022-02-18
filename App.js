@@ -15,7 +15,7 @@ import DoctorSignUp from './src/Screens/AuthScreens/DoctorSignUp'
 import ForgotPassword from './src/Screens/AuthScreens/ForgotPassword'
 import Home from './src/Screens/UserScreens/Home'
 import PlayVideo from './src/Screens/UserScreens/PlayVideo'
-import {Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile, ResetPassword } from "./src/Screens";
+import {Doctor, EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile } from "./src/Screens";
  import { AuthScreens, UserScreens, DoctorsScreens} from "./src/Screens";
 
 
@@ -172,7 +172,6 @@ export default function App({navigation}) {
 
     </KeyboardAwareScrollView>
   </NavigationContainer>
-
   );
 }
 const styles = StyleSheet.create({

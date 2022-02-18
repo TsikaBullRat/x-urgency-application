@@ -18,8 +18,8 @@ import Doctor from "./Doctor"
 import Upload from "./Upload"
 import { UpdateProfile } from "./UpdateProfile"
 import VideoScreen from "../UserScreens/PlayVideo"
-import ResetPassword from "../AuthScreens/ResetPassword"
 
 
 
-export { PlayVideo, UploadVideo, Doctor, MedicalHome, Upload, UpdateProfile, ResetPassword}
+
+export { PlayVideo, UploadVideo, Doctor, MedicalHome, Upload, UpdateProfile}

@@ -17,8 +17,7 @@ export const VideoList = ({ videos, VideoScreen }) => {
   return (
     videos ? (videos.map(vid => (
       <View style={{ width: 335, left: -5, alignItems: "center", justifyContent:'center' }} key={vid.id}>
-       <ScrollView style={{height: 200}} 
-       showsVerticalScrollIndicator={false}>
+   
         <Card
           style={{
             marginTop: 15,
@@ -54,7 +53,7 @@ export const VideoList = ({ videos, VideoScreen }) => {
         </Card>
 
         <ItemSeperatorView />
-        </ScrollView>
+      
 
       </View>))
     ) : null
