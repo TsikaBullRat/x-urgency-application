@@ -6,7 +6,7 @@ import { Avatar, Badge } from 'react-native-elements';
 import { Socials, } from '../../Components';
 import { auth, firestore } from '../../firebase';
 import Button from '../../Components/button';
-import { AntDesign, Feather } from '@expo/vector-icons';
+import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Doctor = ({ route }) => {
 
@@ -138,7 +138,6 @@ const Doctor = ({ route }) => {
             </View>
 
                 {/*Doctor-Cards---------------Doctor-Cards---------Doctor-Cards */}
-
       <View
         style={{
           width: 355,
@@ -149,10 +148,7 @@ const Doctor = ({ route }) => {
         }}>
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
-            <Image
-              source={require('../../images/certificate.png')}
-              style={{ width: 35, height: 35, color: '#fff' }}
-            />
+             <MaterialCommunityIcons name="certificate-outline" size={34} color="#fff" />
 
             <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
               {`Qualifiation`}
@@ -161,11 +157,8 @@ const Doctor = ({ route }) => {
         </Card>
 
         <Card style={styles.docCards}>
-          <View style={{ alignItems: 'center' }}>
-            <Image
-              source={require('../../images/briefcase.png')}
-              style={{ width: 45, height: 45, color: '#fff' }}
-            />
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+            <MaterialCommunityIcons name="briefcase-clock-outline" size={34} color="#fff" />
 
             <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
               {`Experience`}
@@ -175,10 +168,8 @@ const Doctor = ({ route }) => {
 
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
-            <Image
-              source={require('../../images/success.png')}
-              style={{ width: 35, height: 35, color: '#fff' }}
-            />
+            <Feather name="award" size={32} color="#fff" />
+
 
             <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
               {`Awards`}
@@ -187,6 +178,7 @@ const Doctor = ({ route }) => {
         </Card>
       </View>
 
+      {/**------------------About--------------About-------------About----------- */}
       <View style={{ marginTop: 35, width: 335 }}>
         <Text style={styles.txtHead}>{`About`}</Text>
         <Text style={styles.txtAbout}>
@@ -194,6 +186,7 @@ const Doctor = ({ route }) => {
         </Text>
       </View>
 
+      {/**----------------Contacts---------Contacts------------Contacts----------- */}
       <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
         <View style={{ flexDirection: 'row' }}>
           <Feather name="phone" size={20} color="black" />
@@ -299,6 +292,12 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         alignItems: "center",
         justifyContent: "center",       
+    },
+
+    txtHead: {
+      fontSize: 22,
+      fontFamily: 'flexi-titling',
+      color: '#F47066'
     },
 
     temp: {

@@ -26,6 +26,7 @@ export default function Home({ navigation, Exit }) {
 
     <View style={styles.container}>
 
+{/**---------Call Siren------------Call Siren---------Call Siren-------------------- */}
       <View style={{ top: 5 }}>
         <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')}>
 
@@ -42,11 +43,14 @@ export default function Home({ navigation, Exit }) {
         </TouchableOpacity>
       </View>
 
+{/**------------------Header-----------------------Header----------------- */}
       <View
         style={{ alignItems: "flex-end", justifyContent: "space-between", }} >
         <Header Exit={Exit} Emergency={Emergency} />
       </View>
 
+
+{/**-----------Menu Category--------------Menu Category--------------------- */}
       <View style={{ width: 335, alignItems: 'center' }}>
         <Menu list={videos} setVids={setLoad} />
       </View>
@@ -55,19 +59,19 @@ export default function Home({ navigation, Exit }) {
         <Text style={{ fontFamily: 'Roboto' }}> {`Most Viewed`} </Text>
 
         <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-          <Text style={{ fontFamily: 'Roboto', color: '#F96056' }}>{`Medical Personel`} </Text>
+          <Text style={{ fontSize:18, fontFamily: 'Roboto', color: '#F96056' }}>{`Medical Personel`} </Text>
         </TouchableOpacity>
       </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
 
-      <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
+      {/* <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}> */}
       <Card style={styles.menu2}>
         <View>
           <VideoList videos={videos} VideoScreen={VideoScreen} />
         </View>
       </Card>
-      </ScrollView>
+      {/* </ScrollView> */}
     </View>
   );
 }
@@ -82,7 +86,6 @@ const styles = StyleSheet.create({
   logoutIMG: {
     width: 15,
     height: 15,
-    marginTop: 25
   },
 
   header: {

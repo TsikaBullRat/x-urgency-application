@@ -47,9 +47,6 @@ export default function Header({ Exit, Emergency, navigation }) {
       }}>
 
       </View>
-      <TouchableOpacity onPress={Exit} >
-        <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-      </TouchableOpacity>
 
       {/*---------------------------Header--------------------------*/}
 
@@ -100,7 +97,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     top: -30,
-    left: 170
+    alignSelf:'flex-end'
   },
 
   header: {
