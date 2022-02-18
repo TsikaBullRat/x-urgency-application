@@ -13,7 +13,7 @@
 import Home from "./Home"
 import PlayVideo from "./PlayVideo"
 import Doctor from "./Doctor"
-import ResetPassword  from "../AuthScreens/ResetPassword"
 
 
-export { Home, PlayVideo, Doctor, ResetPassword }
+
+export { Home, PlayVideo, Doctor }

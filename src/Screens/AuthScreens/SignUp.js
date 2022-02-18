@@ -121,7 +121,7 @@ export default function SignUp({ navigation }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={32} color="black" style={{ marginTop: 11, marginLeft: 10 }} />
+            <EvilIcons name="unlock" size={32} color="black" style={{ marginTop: 11, marginLeft: 10 }} />
             <TextInput style={styles.txtPassword}
               name='confirmPassword' placeholder='Confirm Password'
               secureTextEntry={true}

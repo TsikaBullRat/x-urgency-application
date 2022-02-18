@@ -67,13 +67,13 @@ export default function ForgotPassword({ navigation }) {
       </View>
       <br/>
        <Text style={{fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
-          color: '#000000'}}>We will email you a link<br/> to reset your password</Text>
+          color: '#000000'}}>Enter your Email and we will send<br/> you a link to reset your password</Text>
 
       <View style={{ alignItems: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 12, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='email' placeholder='Enter Your Email' onChangeText={text => setEmail(text)} />
+            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='email' placeholder='example@gmail.com' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
@@ -129,11 +129,16 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 
+  txtField: {
+    marginLeft: 10,
+    marginTop: 10,
+  },
+
   txtEmail: {
     width: 300,
     marginTop: 7,
     paddingLeft: 10,
-    paddingTop: 15,
+    paddingTop: 20,
     fontSize: 18,
     fontFamily: 'flexi titling',
     borderRadius: 10,
