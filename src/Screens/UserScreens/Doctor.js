@@ -105,7 +105,6 @@ const Doctor = ({ route }) => {
 
   return (
 
-      
       <View style={styles.container}>
         <View>
           {
@@ -151,7 +150,6 @@ const Doctor = ({ route }) => {
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
             <Feather name="award" size={32} color="#fff" />
-
 
             <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
               {`Awards`}
