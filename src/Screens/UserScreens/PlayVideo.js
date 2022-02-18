@@ -24,7 +24,7 @@ import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore } from '../../firebase'
 import { Collect, Post, } from '../../firebase';
 
-export default function VideoScreen({ navigation, route }) {
+export default function PlayVideo({ navigation, route }) {
 
   // useEffect(()=>{
   //   auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
@@ -113,11 +113,14 @@ export default function VideoScreen({ navigation, route }) {
   return (
 
     <View style={styles.contain}>
+
+{/**-------------Video----------------Video-----------------Video---------------- */}
       <View style={{ width: 335, marginTop: 50 }}>
         <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping
           style={{ width: 335, height: 180, }} />
       </View>
 
+{/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
       {!visibleStatusBar ? (
         <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent: 'space-between' }}>
 
@@ -182,8 +185,8 @@ export default function VideoScreen({ navigation, route }) {
         </View>
 
       ) : (
-        //Hidden Description  
-
+         
+/**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
         <View>
           <Card
             style={{
@@ -228,7 +231,7 @@ export default function VideoScreen({ navigation, route }) {
 
       )}
 
-      {<Comments video={data.firestore} />}
+      <Comments video={data.firestore} />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card style={{

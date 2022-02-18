@@ -1,5 +1,4 @@
 import Home from "./UserScreens/Home"
-import DoctorProfile from "./DoctorsScreens/Doctor"
 import EmergencyContacts from "./UserScreens/EmergencyContacts"
 import SignIn from './AuthScreens/SignIn'
 import SignUp from './AuthScreens/SignUp'
@@ -13,7 +12,9 @@ import PlayVideo from "./UserScreens/PlayVideo"
 import Doctor from "./UserScreens/Doctor"
 import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
 
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, Doctor, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile,MedSignIn}
+
+
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn}
 
 export { UserScreens } from './UserScreens/UserScreens'
 export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'
