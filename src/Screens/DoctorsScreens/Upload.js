@@ -178,7 +178,6 @@ const styles = StyleSheet.create({
     color: "#F47066",
     fontWeight: "bold",
     marginBottom: 30,
-
   },
 
   txtField: {
@@ -192,7 +191,6 @@ const styles = StyleSheet.create({
     borderColor: "#F47066",
     marginBottom: 20,
     fontSize: 16,
-
   },
 
   txtUser: {
@@ -204,7 +202,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderWidth: 1,
     borderColor: "#F47066",
-
   },
 
   icon: {
@@ -218,7 +215,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#F96056',
-
   },
 
   input1: {
@@ -284,7 +280,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     marginTop: -5,
-
   },
 
 });

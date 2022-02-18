@@ -97,14 +97,9 @@ export default function App({navigation}) {
                       {props => <Home {...props} Exit={Exit} />}
                     </Stack.Screen>
 
-                    
                   <Stack.Screen name='Sign In' options={{ headerShown: false }}>
                 {(props) => <SignIn {...props} />}
               </Stack.Screen>
-
-                    
-
-              
 
               <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
                 {(props) => <SignUp {...props} />}
