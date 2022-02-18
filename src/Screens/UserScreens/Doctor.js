@@ -8,7 +8,7 @@ import { auth, firestore } from '../../firebase';
 import Button from '../../Components/button';
 import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
-const Doctor = ({ route }) => {
+const Doctor = ({ navigation }) => {
 
     const [About, setAbout] = useState(true);
     const [Qualification, setQualification] = useState(false);

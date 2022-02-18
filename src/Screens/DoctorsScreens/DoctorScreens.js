@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import { createStackNavigator } from "@react-navigation/stack"
-import { MedicalHome, Upload, UploadVideo, DoctorProfile, UpdateProfile } from '.';
+import { MedicalHome, Upload, UploadVideo, UpdateProfile } from '.';
 
 const Stack = createNativeStackNavigator()
 // const Stack = createStackNavigator()
@@ -28,7 +28,6 @@ export const DoctorsScreens = ({ navigation, route }) => {
 
             <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
 
-            <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

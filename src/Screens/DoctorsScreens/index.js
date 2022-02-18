@@ -14,7 +14,7 @@
 import PlayVideo from "../UserScreens/PlayVideo"
 import UploadVideo from "./UploadVideo"
 import MedicalHome from "./MedicalHome"
-import Doctor from "./Doctor"
+import Doctor from "../UserScreens/Doctor"
 import Upload from "./Upload"
 import { UpdateProfile } from "./UpdateProfile"
 import VideoScreen from "../UserScreens/PlayVideo"
@@ -22,4 +22,4 @@ import VideoScreen from "../UserScreens/PlayVideo"
 
 
 
-export { PlayVideo, UploadVideo, Doctor, MedicalHome, Upload, UpdateProfile}
+export { PlayVideo, UploadVideo, MedicalHome, Upload, UpdateProfile}

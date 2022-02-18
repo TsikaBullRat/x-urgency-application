@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView} from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity} from "react-native";
 import { Card } from "react-native-paper";
 import { Video } from "expo-av";
 import { ScrollView } from "react-native-gesture-handler";
