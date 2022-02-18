@@ -34,12 +34,6 @@ export const AuthScreens = ({ navigation }) => {
         options={{ headerShown: false }} />
 
       <Stack.Screen
-        name='Doctor SignUp'
-        options={{ headerShown: false }} >
-        {props => <DoctorSignUp {...props} authNavigation={navigation} />}
-      </Stack.Screen>
-
-      <Stack.Screen
         name='Reset Password'
         component={ForgotPassword}
         options={{ headerShown: false }} />

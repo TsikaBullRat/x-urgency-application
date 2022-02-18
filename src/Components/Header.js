@@ -11,46 +11,36 @@
     * - Modification    : 
 **/
 import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
-import { auth, firestore, LogOut } from '../firebase'
+import { auth, firestore } from '../firebase'
 
 export default function Header({ Exit, Emergency }) {
 
-  const [image, setImage] = useState(null)
-  const [initial, setInitial] = useState('')
-
-  useEffect(() => {
-    auth.currentUser ? (
-      setImage(auth.currentUser.photoURL),
-      setInitial(auth.currentUser.displayName.substring(0, 1))
-    ) : (
-      auth.onAuthStateChanged(doc => {
-        // setImage(doc.photoURL)
-        // console.log(doc.displayName)
-        // setInitial(doc.displayName.substring(0, 1))
-        // console.log(auth.currentUser)
-      })
-    )
+  const [image, setImage] = useState()
+  const [initial, setInitial] = useState()
+  const getProfile = async () =>{
+    let name
+    setImage(auth.currentUser.photoURL)
+    // name = await firestore.collection("Users").doc(auth.currentUser.uid).get().then(()=>doc.data().username)
+    name = auth.currentUser.displayName
+    setInitial(name.substring(0,1))
+  }
+  
+  useEffect(()=>{
+    getProfile()
   }, [])
 
   return (
 
     <View style={styles.contain}>
-      <View style={{
-        width: 335,
-        marginTop: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-end'
-      }}>
-
+      <View> 
+             <Image
+               source={require("../images/logOut.png")}
+               style={styles.logoutIMG}
+             />
       </View>
-      <TouchableOpacity onPress={Exit} >
-        <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
-      </TouchableOpacity>
-
       {/*---------------------------Header--------------------------*/}
 
       <View style={{

@@ -14,8 +14,20 @@ export default function Home({ navigation, Exit }) {
     VideoScreen = (data) => {
       navigation.navigate("PlayVideo", { data });
     },
-    Emergency = () =>{
-      navigation.navigate("EmergencyContacts")
+    FirstTimeUser = async () =>{
+      await firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.exists)?(
+        null
+      ):(
+     firestore.collection("Users").doc(auth.currentUser.uid).set({
+       username: auth.currentUser.displayName,
+       doctor: false,
+       email: auth.currentUser.email,
+       cred: null
+     })
+     )
+    },
+    Logout = () => {
+      auth.signOut();
     };
 
   useEffect(() => {
@@ -23,9 +35,22 @@ export default function Home({ navigation, Exit }) {
   }, []);
 
   return (
-
-    <View style={styles.container}>
-
+      <View style={{ width: 335 }}>
+        <View
+          style={{
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+          }}
+        >
+          <TouchableOpacity
+            onPress={Logout}>
+            <Image
+              source={require("../../images/logOut.png")}
+              style={styles.logoutIMG}
+            />
+          </TouchableOpacity>
+          <Header />
+        </View>
       <View style={{ top: 5 }}>
         <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')}>
 
@@ -61,15 +86,15 @@ export default function Home({ navigation, Exit }) {
 
       {/*---------------------- Video Scroll View--------------------*/}
 
-      {/* <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}> */}
+      <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
       <Card style={styles.menu2}>
         <View>
           <VideoList videos={videos} VideoScreen={VideoScreen} />
         </View>
       </Card>
-      {/* </ScrollView> */}
+      </ScrollView>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -102,7 +127,6 @@ const styles = StyleSheet.create({
     width: 320,
     height: 520,
     borderRadius: 15,
-    shadowOffset: {},
     shadowOpacity: 0.8,
     shadowRadius: 3.84,
     elevation: 5,

@@ -2,9 +2,8 @@ import Home from "./UserScreens/Home"
 import VideoScreen from "./UserScreens/PlayVideo"
 import DoctorProfile from "./DoctorsScreens/Doctor"
 import EmergencyContacts from "./UserScreens/EmergencyContacts"
-import ViewMap from "./UserScreens/ViewMap"
 
-export { Home, VideoScreen, DoctorProfile, EmergencyContacts, ViewMap }
+export { Home, VideoScreen, DoctorProfile, EmergencyContacts }
 
 import UploadVideo from "./DoctorsScreens/UploadVideo"
 import MedicalHome from "./DoctorsScreens/MedicalHome"
