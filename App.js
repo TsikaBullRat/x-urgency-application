@@ -31,11 +31,15 @@ export default function App ({ navigation }) {
   const [doctor, setDoctor] = useState(null)
   const [check1, setCheck1] = useState(false)
   const [check2, setCheck2] = useState(false)
+
+  const [percentage, setPerc] = useState(null)
+  const [match, setMatch] = useState(null)
+
   const Exit = () => {
     navigation.navigate('auth')
   }
-  const [percentage, setPerc] = useState(null)
-  const [match, setMatch] = useState(null)
+
+ 
 
   useEffect(() => {
     auth.onAuthStateChanged(user => (user ? setID(user.uid) : setID(false)))
@@ -68,7 +72,6 @@ export default function App ({ navigation }) {
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-        {/*<Stack.Navigator>*/}
 
         {check1 ? (
           id ? (

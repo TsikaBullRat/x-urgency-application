@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, Text, TouchableOpacity} from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity,      } from "react-native";
 import { Card } from "react-native-paper";
 import { Video } from "expo-av";
 import { ScrollView } from "react-native-gesture-handler";
@@ -15,10 +15,15 @@ export const VideoList = ({ videos, VideoScreen }) => {
   const ref = useRef(null);
 
   return (
-    videos ? (videos.map(vid => (
-      <View style={{ width: 335, left: -5, alignItems: "center", justifyContent:'center' }} key={vid.id}>
 
-      {/* <ScrollView style={{height: 350}}> */}
+    <ScrollView
+        style={{ height: 420, width: 335 }}
+        vertical={true}
+        showsVerticalScrollIndicator={false}
+      >
+     {videos ? (
+       videos.map(vid => (
+      <View style={{ width: 335, left: -5, alignItems: "center", justifyContent:'center' }} key={vid.id}>
         <Card
           style={{
             marginTop: 15,
@@ -54,12 +59,10 @@ export const VideoList = ({ videos, VideoScreen }) => {
         </Card>
 
         <ItemSeperatorView />
-      
-
-        {/* </ScrollView> */}
 
       </View>))
-    ) : null
+      ) : (null)}
+      </ScrollView>
   )
 }
 
