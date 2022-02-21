@@ -16,20 +16,23 @@ import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore } from '../firebase'
 
-export default function Header({ Exit, Emergency }) {
+export default function Header({ Exit, Emergency, navigation }) {
 
-  const [image, setImage] = useState()
-  const [initial, setInitial] = useState()
-  const getProfile = async () =>{
-    let name
-    setImage(auth.currentUser.photoURL)
-    // name = await firestore.collection("Users").doc(auth.currentUser.uid).get().then(()=>doc.data().username)
-    name = auth.currentUser.displayName
-    setInitial(name.substring(0,1))
-  }
-  
-  useEffect(()=>{
-    getProfile()
+  const [image, setImage] = useState(null)
+  const [initial, setInitial] = useState('')
+
+  useEffect(() => {
+    auth.currentUser ? (
+      setImage(auth.currentUser.photoURL),
+      setInitial(auth.currentUser.displayName.substring(0, 1))
+    ) : (
+      auth.onAuthStateChanged(doc => {
+        setImage(doc.photoURL)
+        console.log(doc.displayName)
+        setInitial(doc.displayName.substring(0, 1))
+        console.log(auth.currentUser)
+      })
+    )
   }, [])
 
   return (
@@ -90,13 +93,13 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     top: -30,
-    left: 170
+    alignSelf:'flex-end'
   },
 
   header: {
     color: '#F96056',
     fontSize: 30,
-    fontFamily:'Felix Titling'
+    fontFamily: 'Felix Titling'
   },
 
   avatar: {

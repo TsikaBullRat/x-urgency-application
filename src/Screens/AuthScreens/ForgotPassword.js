@@ -14,9 +14,7 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
-import { FontAwesome } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { EvilIcons } from '@expo/vector-icons';
+import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
 export default function ForgotPassword({ navigation }) {
@@ -57,51 +55,38 @@ export default function ForgotPassword({ navigation }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 28 }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
+  
         <Text style={{
           fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling',
-          color: '#F47066'
-        }}>{`Reset Password`}</Text>
+          color: '#F47066', justifyContent: "left"
+        }}>{`Forgot your password?`}</Text>
       </View>
+      <br/>
+       <Text style={{fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
+          color: '#000000'}}>Enter your Email and we will send<br/> you a link to reset your password</Text>
 
       <View style={{ alignItems: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
+            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <TextInput style={styles.txtField} name='email' placeholder='example@gmail.com' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
-        <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='password' placeholder='New Password' onChangeText={text => setPassword(text)} />
-          </View>
-        </Card>
-        {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
-
-        <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='password' placeholder='Confirm Password' onChangeText={text => setConfirmPassword(text)} />
-          </View>
-        </Card>
-        {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
       </View>
 
-      <View style={{ alignItems: 'center' }}>
+      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
-          <Text style={{ color: '#fff' }}>{`RESET PASSWORD`} </Text>
+          <Text style={{ color: '#fff' }}>{`SEND`} </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.signIn} onPress={Exit}>
-          <Text style={{ color: '#fff' }}>{`EXIT`}</Text>
-        </TouchableOpacity>
+       
 
       </View>
 
@@ -145,16 +130,37 @@ const styles = StyleSheet.create({
   },
 
   txtField: {
-    width: 245,
-    height: 30,
-    marginTop: 2,
-    marginLeft: 2,
+    marginLeft: 10,
+    marginTop: 10,
+  },
+
+  txtEmail: {
+    width: 300,
+    marginTop: 7,
     paddingLeft: 10,
-    paddingTop: 15,
+    paddingTop: 20,
+    fontSize: 18,
+    fontFamily: 'flexi titling',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: 'transparent'
+        outlineColor: '#fff',
+        width: 220
+      }
+    })
+  },
+
+  txtPassword: {
+    width: 300,
+    paddingLeft: 6,
+    paddingTop: 15,
+    fontSize: 18,
+    fontFamily: 'flexi titling',
+    borderRadius: 10,
+    ...Platform.select({
+      web: {
+        outlineColor: '#fff',
+        width: 220
       }
     })
   },

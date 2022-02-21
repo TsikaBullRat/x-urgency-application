@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View, StyleSheet, ScrollView, Image, Pressable, Platform } from 'react-native';
+import { Text, View, StyleSheet, Image, Pressable, Platform } from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper';
 import { auth, LoadSet, firestore } from "../firebase";
 
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginTop: 2,
     ...Platform.select({
-      web:{
+      web: {
         color: '#fff',
       }
     })
@@ -122,3 +123,4 @@ const styles = StyleSheet.create({
   },
 
 })
+ 

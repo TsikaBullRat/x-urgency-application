@@ -11,8 +11,9 @@
     * - Modification    : 
 **/
 import Home from "./Home"
-import VideoScreen from "./PlayVideo"
-import DoctorProfile from "../DoctorsScreens/Doctor"
-import EmergencyContacts from "./EmergencyContacts"
+import PlayVideo from "./PlayVideo"
+import Doctor from "./Doctor"
 
-export { Home, VideoScreen, DoctorProfile, EmergencyContacts }
+
+
+export { Home, PlayVideo, Doctor }

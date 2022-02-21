@@ -18,7 +18,7 @@ import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignIn } from '../../firebase'
 import { AlertNote } from '../../Components';
 
-export default function SignIn({ navigation, setDone }) {
+export default function SignIn({ navigation }) {
 
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
@@ -40,12 +40,11 @@ export default function SignIn({ navigation, setDone }) {
       setPrompt1(null)
       setPrompt2("Please enter password")
     } else {
-      handleSignIn(email, password, setMessage, setDone)
+      handleSignIn(email, password, setMessage)
       setDisplaModal(true)
+      //navigation.navigate('Home', {setDone})
     }
 
-    navigation.navigate('Home'//, {setDone}
-    )
   }
 
   return (
@@ -56,12 +55,12 @@ export default function SignIn({ navigation, setDone }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ textAlign: 'center', color: '#fff', fontSize: 28 }}> {`X-urgency`} </Text>
+        <Text style={{ textAlign: 'center', color: '#fff', fontSize: 30, fontFamily: 'flexi titling' }}> {`X-Urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
         <Text style={{
-          fontSize: 40, ...Platform.select({
+          fontSize: 30, ...Platform.select({
             web: {
               fontFamily: 'Felix Titling'
             }
@@ -74,16 +73,16 @@ export default function SignIn({ navigation, setDone }) {
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
+            <AntDesign name="user" size={22} color="black" style={{ marginTop: 16, marginLeft: 18 }} />
+            <TextInput style={styles.txtUser} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={30} color="black" style={{ marginTop: 8, marginLeft: 4 }} />
-            <TextInput style={styles.txtField}
+            <EvilIcons name="lock" size={32} color="black" style={{ marginTop: 12, marginLeft: 12 }} />
+            <TextInput style={styles.txtPassword}
               name='password' placeholder='Password'
               secureTextEntry={true}
               onChangeText={text => setPassword(text)} />
@@ -91,31 +90,34 @@ export default function SignIn({ navigation, setDone }) {
         </Card>
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
-        <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
-          <Text style={{ paddingLeft: 170, paddingTop: 20, fontSize: 13, fontFamily: 'Felix Titling', color: '#F47066' }}>{`Forgot Password?`} </Text>
-        </TouchableOpacity>
-
-        <View style={{ alignItems: 'center', alignContent: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ fontSize: 18, color: '#fff', fontFamily: 'felix titling' }}>{`LOGIN`} </Text>
+        <View style={{ width: 320, alignItems: 'flex-end' }}>
+          <TouchableOpacity
+            onPress={() => { navigation.navigate('Reset Password') }}>
+            <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }}>{`Forgot Password?`} </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{marginTop:10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <Text style={{ paddingTop: 9, fontSize: 14, fontFamily: 'Felix Titling' }}>  {`New User?`} </Text>
+        <View style={{ alignItems: 'center', alignContent: 'center' }}>
+          <TouchableOpacity style={styles.signIn} onPress={Login}>
+            <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`LOGIN`} </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={{ marginTop: 10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
+          <Text style={{ paddingTop: 10, fontSize: 15, }}>  {`New User?`} </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-            <Text style={{ paddingTop: 5, fontSize: 18, fontFamily: 'Felix Titling', color: '#F47066' }}> {`SignUp`}</Text>
+            <Text style={{ paddingTop: 9, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>
 
         <View style={{marginTop:10,}} >
-        <Text style={{ paddingTop: 10, fontFamily: 'Felix Titling', fontSize: 14, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
+        <Text style={{ paddingTop: 10, fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
 
-        <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <TouchableOpacity onPress={() => { navigation.navigate('MedSignIn') }}>
-            <Text style={{ fontFamily: 'Felix Titling', fontSize: 18, paddingTop:5, color: '#F47066' }}> {`SignUp`} </Text>
-          </TouchableOpacity>
-        </View>
+          <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
+            <TouchableOpacity onPress={() => { navigation.navigate('MedSignIn') }}>
+              <Text style={{ fontFamily: 'Arial', fontSize: 20, paddingTop: 5, color: '#F47066' }}> {`SignIn`} </Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
       </View>
@@ -155,16 +157,17 @@ const styles = StyleSheet.create({
   },
 
   txtUser: {
-    width: 245,
-    height: 30,
+    width: 300,
     marginTop: 7,
-    marginLeft: 2,
-    paddingLeft: 8,
+    paddingLeft: 10,
     paddingTop: 15,
+    fontSize: 18,
+    fontFamily: 'flexi titling',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: 'transparent'
+        outlineColor: '#fff',
+        width: 220
       }
     })
   },
@@ -174,17 +177,19 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
 
-  txtField: {
-    width: 245,
-    height: 30,
-    marginTop: 2,
-    marginLeft: 2,
-    paddingLeft: 10,
-    paddingTop: 15,
+  txtPassword: {
+    width: 300,
+    height: 35,
+    marginTop: 5,
+    paddingLeft: 6,
+    paddingTop: 20,
+    fontSize: 18,
+    fontFamily: 'flexi titling',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: 'transparent'
+        outlineColor: '#fff',
+        width: 220
       }
     })
   },

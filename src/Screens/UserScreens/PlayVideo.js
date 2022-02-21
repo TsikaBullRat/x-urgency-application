@@ -24,8 +24,8 @@ import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore } from '../../firebase'
 import { Collect, Post, } from '../../firebase';
 
-export default function VideoScreen({ navigation, route }) {
-  
+export default function PlayVideo({ navigation, route }) {
+
   // useEffect(()=>{
   //   auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
   //     .catch(err=>{
@@ -41,7 +41,7 @@ export default function VideoScreen({ navigation, route }) {
   const [count, setCount] = useState(0)
   const refrence = useRef(data.url/*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/)
   const [info, setInfo] = useState()
-  const [comments, setComments] = useState([]),
+  const [Comments, setComments] = useState([]),
 
     [comment, setComment] = useState(""),
     [visibleStatusBar, setVisibleStatusBar] = useState(false),
@@ -69,7 +69,7 @@ export default function VideoScreen({ navigation, route }) {
         metadata.doc(auth.currentUser.uid).set({
           liked: false,
           disliked: false,
-          comments: [null],
+          Comments: [null],
           ref: auth.currentUser.uid
         }),
 
@@ -85,7 +85,7 @@ export default function VideoScreen({ navigation, route }) {
     Delete = remove => {
       firestore.collection("Videos").doc(data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/).collection("Acts").doc(auth.currentUser.uid).get()
         .then(doc => {
-          return doc.data().comments
+          return doc.data().Comments
         })
 
         .then(item => {
@@ -95,11 +95,11 @@ export default function VideoScreen({ navigation, route }) {
 
         .then(update => {
           firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).update({
-            comments: update
+            Comments: update
           })
         })
 
-      setComments(comments.filter(item => item.comment !== remove))
+      setComments(Comments.filter(item => item.comment !== remove))
     };
 
   useEffect(() => {
@@ -113,11 +113,14 @@ export default function VideoScreen({ navigation, route }) {
   return (
 
     <View style={styles.contain}>
+
+{/**-------------Video----------------Video-----------------Video---------------- */}
       <View style={{ width: 335, marginTop: 50 }}>
         <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping
           style={{ width: 335, height: 180, }} />
       </View>
 
+{/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
       {!visibleStatusBar ? (
         <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent: 'space-between' }}>
 
@@ -141,14 +144,14 @@ export default function VideoScreen({ navigation, route }) {
           <View
             style={{ width: 335, flexDirection: 'row', marginTop: 25, alignItems: 'center', justifyContent: 'space-around' }}>
             <View>
-              { <Likes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} /> }
+              {<Likes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} />}
             </View>
 
             <View style={{ marginTop: 3 }}>
-              { <Dislikes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} /> }
+              {<Dislikes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} />}
             </View>
 
-            <TouchableOpacity onPress={ () => ShareItem(data.url/*videoPlay*/)}>
+            <TouchableOpacity onPress={() => ShareItem(data.url/*videoPlay*/)}>
               <FontAwesome5
                 name="share"
                 size={20}
@@ -182,8 +185,8 @@ export default function VideoScreen({ navigation, route }) {
         </View>
 
       ) : (
-        //Hidden Description  
-
+         
+/**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
         <View>
           <Card
             style={{
@@ -228,14 +231,14 @@ export default function VideoScreen({ navigation, route }) {
 
       )}
 
-      {<Comments video={data.firestore} />}
+      <Comments video={data.firestore} />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card style={{
           height: 335, width: 315, marginTop: 5
         }}>
           <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
-          {comments.map((item, index) =>
+          {Comments.map((item, index) =>
             <Card style={{ backgroundColor: '#e8d7cc', height: 100, marginTop: 10 }} key={index}>
               <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
                 <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>

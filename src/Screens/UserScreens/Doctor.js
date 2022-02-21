@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Pressable, Image } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
+import {Card} from 'react-native-paper'
 import { Avatar, Badge } from 'react-native-elements';
 import { Socials, } from '../../Components';
 import { auth, firestore } from '../../firebase';
 import Button from '../../Components/button';
+import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
-const Doctor = ({ route }) => {
-
-    // const info = route.params.match
-    const options = [
-        { label: "About ", value: "About" },
-        { label: "Qualification", value: "Qualification" },
-        { label: "Specialization", value: "Specialization" },
-        { label: "Contact", value: "Contact" }];
+const Doctor = ({ navigation }) => {
 
     const [About, setAbout] = useState(true);
-    const [Qalification, setQualification] = useState(false);
+    const [Qualification, setQualification] = useState(false);
     const [Specialization, setSpecialization] = useState(false);
     const [Contact, setContact] = useState(false);
     const [doctor, setDoctor] = useState("")
@@ -24,38 +19,6 @@ const Doctor = ({ route }) => {
     const [data, setData] = useState(null);
     const [subscription, setSubscription] = useState({ text: "", Func: () => null })
 
-    const check = (value) => {
-
-        if (value == 'About') {
-            setAbout(true)
-            setQualification(false)
-            setSpecialization(false)
-            setContact(false)
-        }
-
-        if (value == 'Qualification') {
-            setQualification(true)
-            setAbout(false)
-            setSpecialization(false)
-            setContact(false)
-        }
-
-        if (value == 'Specialization') {
-            setSpecialization(true)
-            setAbout(false)
-            setQualification(false)
-            setContact(false)
-        }
-
-        if (value == 'Contact') {
-            setContact(true)
-            setAbout(false)
-            setQualification(false)
-            setSpecialization(false)
-
-        }
-
-    }
 
     const getDoctorInfo = () => {
         firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
@@ -144,10 +107,8 @@ const Doctor = ({ route }) => {
     return (
 
         /*data ? (*/<>
-
-            <View>
                 <View style={styles.container}>
-                    <View style={{ marginTop: 50, marginLeft: 10 }}>
+                    <View>
                         {
                             image ? (
                                 <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
@@ -160,68 +121,114 @@ const Doctor = ({ route }) => {
 
                     <Text style={styles.textTitle}>Dr. <Text>{doctor}</Text></Text>
 
-                </View>
+                
+{/**--------Socials Follow--------Socials Follow--------Socials Follow------- */}
+            <View style={{ width: 425, marginTop:5, alignItems:'center', justifyContent:'space-around', flexDirection: 'row',  marginBottom: 20 }}>
 
-                <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
+                <View style={{paddingTop: 20, flexDirection: 'row'}}>
                     <Socials text="Following" number="15" />
                     <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
                     <Socials text="Likes" number="3.1M" />
+                </View>
+                <View style={{left:-15}}>
                     <Pressable style={styles.follow} onPress={subscription.Func}>
-                        <Text>{subscription.text}</Text>
+                        <Text style={{color:'#fff'}}>{subscription.text}</Text>
                     </Pressable>
                 </View>
-                <View style={{ marginTop: 20 }}>
-                </View>
-
-                <View>
-                    <SwitchSelector
-                        options={options}
-                        initial={0}
-                        style={styles.tab}
-                        onPress={value => check(value)}
-                        testID="gender-switch-selector"
-                        accessibilityLabel="gender-switch-selector"
-                        hasPadding />
-                </View>
             </View>
 
-            {About ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {/*data.about*/}
-                </Text>
-            </View>
+                {/*Doctor-Cards---------------Doctor-Cards---------Doctor-Cards */}
+      <View
+        style={{
+          width: 355,
+          marginTop: 10,
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          flexDirection: 'row',
+        }}>
+        <Card style={styles.docCards}>
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+             <MaterialCommunityIcons name="certificate-outline" size={34} color="#fff" />
 
-                : <View></View>}
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
+              {`Qualifiation`}
+            </Text>
+          </View>
+        </Card>
 
-            {Qalification ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {data.qualification}
-                </Text>
-            </View>
+        <Card style={styles.docCards}>
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+            <MaterialCommunityIcons name="briefcase-clock-outline" size={34} color="#fff" />
 
-                : <View></View>}
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
+              {`Experience`}
+            </Text>
+          </View>
+        </Card>
 
-            {Specialization ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {data.specilization}
-                </Text>
-            </View>
+        <Card style={styles.docCards}>
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+            <Feather name="award" size={32} color="#fff" />
 
-                : <View></View>}
 
-            {Contact ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {email}
-                    {"\n"}
-                    {data.contact}
-                    {"\n"}
-                    {data.branch}
-                </Text>
-            </View>
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
+              {`Awards`}
+            </Text>
+          </View>
+        </Card>
+      </View>
 
-                : <View></View>} </>
+      {/**------------------About--------------About-------------About----------- */}
+      <View style={{ marginTop: 35, width: 335 }}>
+        <Text style={styles.txtHead}>{`About`}</Text>
+        <Text style={styles.txtAbout}>
+          {`Neurologists These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.`}
+        </Text>
+      </View>
 
-        // ) : null
+      {/**----------------Contacts---------Contacts------------Contacts----------- */}
+      <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
+        <View style={{ flexDirection: 'row' }}>
+          <Feather name="phone" size={20} color="black" />
+          <Text
+            style={{
+              paddingLeft: 10,
+              paddingTop: 2,
+              fontSize: 16,
+              color: '#F47066',
+            }}>
+            {`Call Now `}
+          </Text>
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+            {`(053) 871 2956`}
+          </Text>
+        </View>
+
+        <View>
+          <Text style={{ paddingLeft: 35, paddingTop: 5 }}>{`OR`}</Text>
+        </View>
+
+        <View style={{ flexDirection: 'row' }}>         
+          <AntDesign name="mail" size={20} color="black" />
+          <Text
+            style={{
+              paddingLeft: 10,
+              paddingTop: 2,
+              fontSize: 16,
+              color: '#F47066',
+            }}>
+            {`SMS`}
+          </Text>
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+            {`078 454 2123`}
+          </Text>
+          </View>
+        </View>              
+                
+             
+        </View>
+    </>
+
     )
 }
 
@@ -230,18 +237,22 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#fff',
+        
     },
 
     textTitle: {
-        color: 'red',
+        fontFamily: 'Roboto',
+        color: '#F47066',
         fontSize: 25,
         marginTop: 5,
+        
     },
 
     textTitle2: {
         fontSize: 15,
         marginTop: 20,
         marginLeft: 5,
+        
     },
 
     box: {
@@ -269,18 +280,24 @@ const styles = StyleSheet.create({
     words: {
         width: 250,
         textAlign: 'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        
     },
 
     follow: {
         top: 10,
-        left: 5,
         backgroundColor: "#f47066",
         width: 70,
         height: 40,
         borderRadius: 15,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",       
+    },
+
+    txtHead: {
+      fontSize: 22,
+      fontFamily: 'flexi-titling',
+      color: '#F47066'
     },
 
     temp: {
@@ -296,7 +313,21 @@ const styles = StyleSheet.create({
     temp_text: {
         fontSize: 40,
         color: '#fff',
-    }
+    },
+
+    textTitle: {
+    color: 'red',
+    fontSize: 25,
+    marginTop: 5,
+  },
+
+    docCards: {
+    width: 100,
+    height: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F47066',
+  },
 });
 
 export default Doctor;
