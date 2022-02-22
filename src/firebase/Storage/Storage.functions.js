@@ -14,7 +14,6 @@ const Collect = async (doc, SetCollection, Count) => {
                 let user
                 let comment
                 let time
-                let title
                 let load = []
 
                 if (doc.data().comments !== undefined) {
