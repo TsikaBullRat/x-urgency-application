@@ -26,12 +26,12 @@ import { Collect, Post, } from '../../firebase';
 
 export default function PlayVideo({ navigation, route }) {
 
-  // useEffect(()=>{
-  //   auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
-  //     .catch(err=>{
-  //       console.log(err)
-  //     })
-  // }, [])
+  useEffect(()=>{
+    auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
+       .catch(err=>{
+         console.log(err)
+      })
+   }, [])
 
   const data = route.params.data
   const [userName, setUserName] = useState(data.owner/*"Ntsika"*/)

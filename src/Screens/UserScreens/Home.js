@@ -92,7 +92,7 @@ export default function Home ({ navigation, Exit }) {
           <Text
             style={{ fontSize: 18, fontFamily: 'Roboto', color: '#F96056' }}
           >
-            {`Medical Personel`}{' '}
+            {`Medical Personnel`}{' '}
           </Text>
         </TouchableOpacity>
       </View>
