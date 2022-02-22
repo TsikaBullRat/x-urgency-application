@@ -10,6 +10,7 @@ import SignIn from './src/Screens/AuthScreens/SignIn'
 import SignUp from './src/Screens/AuthScreens/SignUp'
 import MedSignIn from './src/Screens/AuthScreens/MedSignIn'
 import DoctorSignUp from './src/Screens/AuthScreens/DoctorSignUp'
+import ResetPassword from './src/Screens/AuthScreens/ResetPassword'
 import ForgotPassword from './src/Screens/AuthScreens/ForgotPassword'
 import Home from './src/Screens/UserScreens/Home'
 import PlayVideo from './src/Screens/UserScreens/PlayVideo'
@@ -144,15 +145,15 @@ export default function App ({ navigation }) {
               // </Stack.Screen>
 
               <Stack.Navigator>
+                <Stack.Screen name='Home' options={{ headerShown: false }}>
+                  {props => <Home {...props} Exit={Exit} />}
+                </Stack.Screen>
+
                 <Stack.Screen
                   name='SignIn'
                   component={SignIn}
                   options={{ headerShown: false }}
                 />
-
-                <Stack.Screen name='Home' options={{ headerShown: false }}>
-                  {props => <Home {...props} Exit={Exit} />}
-                </Stack.Screen>
 
                 <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
                   {props => <SignUp {...props} />}
@@ -186,6 +187,18 @@ export default function App ({ navigation }) {
                     <DoctorSignUp {...props} authNavigation={navigation} />
                   )}
                 </Stack.Screen>
+
+                <Stack.Screen
+                  name='ForgotPassword'
+                  component={ForgotPassword}
+                  options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                  name='ResetPassword'
+                  component={ResetPassword}
+                  options={{ headerShown: false }}
+                />
 
                 <Stack.Screen
                   name='PlayVideo'

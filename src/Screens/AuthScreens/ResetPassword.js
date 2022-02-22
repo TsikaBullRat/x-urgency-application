@@ -25,7 +25,7 @@ import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleSignUp } from '../../firebase'
 import { AlertNote } from '../../Components/Alert'
 
-export default function SignUp ({ navigation }) {
+export default function ResetPassword ({ navigation }) {
   const [username, setUserName] = useState(''),
     [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
@@ -103,11 +103,12 @@ export default function SignUp ({ navigation }) {
             }),
             color: '#F47066'
           }}
-        >{`SignUp`}</Text>
+        >{`Reset Password`}</Text>
       </View>
 
       {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
 
+      <View style={{width:'100%', alignItems:'center'}}>
       <Card style={styles.txtCards}>
         <View style={{ flexDirection: 'row' }}>
           <AntDesign
@@ -182,7 +183,9 @@ export default function SignUp ({ navigation }) {
         </Card>
         {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
 
-        <View style={{ width:'100%', alignItems: 'center', justifyContent: 'center' }}>
+        </View>
+
+        <View style={{ width:'100%', alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Register}>
             <Text
               style={{
@@ -191,7 +194,7 @@ export default function SignUp ({ navigation }) {
                 color: '#fff'
               }}
             >
-              {`SIGNUP`}
+              {`Reset`}
             </Text>
           </TouchableOpacity>
         </View>
@@ -254,6 +257,22 @@ const styles = StyleSheet.create({
     width: 300,
     marginTop: 7,
     paddingLeft: 6,
+    paddingTop: 15,
+    fontSize: 18,
+    fontFamily: 'flexi titling',
+    borderRadius: 10,
+    ...Platform.select({
+      web: {
+        outlineColor: '#fff',
+        width: 220
+      }
+    })
+  },
+
+  txtEmail: {
+    width: 300,
+    marginTop: 7,
+    paddingLeft: 10,
     paddingTop: 15,
     fontSize: 18,
     fontFamily: 'flexi titling',

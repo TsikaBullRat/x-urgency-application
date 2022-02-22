@@ -28,7 +28,7 @@ export default function SignIn({ navigation }) {
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null);
 
-  const Login = () => {
+  const Login = (setDone) => {
     if (email === "" && password === "") {
       setPrompt("Please enter thr requested information")
     } else if (email === "") {
@@ -42,7 +42,7 @@ export default function SignIn({ navigation }) {
     } else {
       handleSignIn(email, password, setMessage)
       setDisplaModal(true)
-      //navigation.navigate('Home', {setDone})
+      navigation.navigate('Home', {setDone})
     }
 
   }
@@ -51,16 +51,18 @@ export default function SignIn({ navigation }) {
 
     <View style={styles.container}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ textAlign: 'center', color: '#fff', fontSize: 30, fontFamily: 'flexi titling' }}> {`X-Urgency`} </Text>
+        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
         <Text style={{
-          fontSize: 30, ...Platform.select({
+          fontSize: 30,
+          fontWeight:'bold', ...Platform.select({
             web: {
               fontFamily: 'Felix Titling'
             }
@@ -92,22 +94,25 @@ export default function SignIn({ navigation }) {
 
         <View style={{ width: '80%', alignItems: 'flex-end' }}>
           <TouchableOpacity
-            onPress={() => { navigation.navigate('Reset Password') }}>
+            onPress={() => { navigation.navigate('ForgotPassword') }}>
             <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }}>{`Forgot Password?`} </Text>
           </TouchableOpacity>
         </View>
 
         <View style={{ width:'100%', alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`LOGIN`} </Text>
+            <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff' }}>{`LOGIN`} </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{ marginTop: 10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
+        <View style={{width:335, marginRight:10, marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ paddingTop: 10, fontWeight:'bold', color:'grey', fontSize: 15, }}>  {`New User?`} </Text>
-          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-            <Text style={{ paddingTop: 9, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
-          </TouchableOpacity>
+          
+          <View style={{ marginTop: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+            <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
+              <Text style={{ paddingTop: 9, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         <View style={{marginTop:10,}} >
@@ -135,6 +140,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#F47066',
     width: '100%',
+    height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',

@@ -118,7 +118,7 @@ export default function DoctorSignUp({ navigation, setDetails }
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: "#fff", fontSize: 30, marginLeft: 8, fontFamily: 'Felix Titling' }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
@@ -134,7 +134,7 @@ export default function DoctorSignUp({ navigation, setDetails }
 
       
         {visibleStatusBar ? (
-          <ScrollView style={{ height: 550 }}
+          <ScrollView style={{ height: 550, width:'100%' }}
         showsVerticalScrollIndicator={false}>
 
             <Card style={styles.txtCards}>
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: "#F47066",
-    width: 335,
+    width: '100%',
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 315,
+    width: '80%',
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -345,7 +345,7 @@ const styles = StyleSheet.create({
 
   signIn: {
     height: 50,
-    width: 200,
+    width: '60%',
     margin: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',
