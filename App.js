@@ -11,6 +11,7 @@ import SignUp from './src/Screens/AuthScreens/SignUp'
 import MedSignIn from './src/Screens/AuthScreens/MedSignIn'
 import DoctorSignUp from './src/Screens/AuthScreens/DoctorSignUp'
 import ForgotPassword from './src/Screens/AuthScreens/ForgotPassword'
+
 import Home from './src/Screens/UserScreens/Home'
 import PlayVideo from './src/Screens/UserScreens/PlayVideo'
 import Doctor from './src/Screens/UserScreens/Doctor'

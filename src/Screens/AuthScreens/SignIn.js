@@ -30,7 +30,7 @@ export default function SignIn({ navigation }) {
 
   const Login = () => {
     if (email === "" && password === "") {
-      setPrompt("Please enter thr requested information")
+      setPrompt("Please enter the requested information")
     } else if (email === "") {
       setPrompt(null)
       setPrompt1("Please enter email address")
