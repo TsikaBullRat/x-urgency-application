@@ -24,6 +24,7 @@ const Collect = async (doc) => {
             let filter = doc.data()
             return filter.comments
         })
+
         return throwback
     })
 

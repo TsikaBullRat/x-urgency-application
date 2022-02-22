@@ -43,14 +43,7 @@ export default function MedSignIn({ navigation, setDone }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{
-          fontSize: 30, ...Platform.select({
-            web: {
-              fontFamily: 'Felix Titling'
-            }
-          }),
-          color: '#F47066'
-        }}>{`Medical SignIn`}</Text>
+        <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }}>{`Medical SignIn`}</Text>
       </View>
 
       <View>

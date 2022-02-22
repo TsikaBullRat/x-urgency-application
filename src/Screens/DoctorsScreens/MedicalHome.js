@@ -90,9 +90,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit }) {
               textShadowColor: "grey",
               textShadowOffset: { width: 2, height: 2 },
               textShadowRadius: 1,
-            }}
-            onPress={Logout}>
-            Dr. {auth.currentUser.displayName.split(" ")[1]}
+            }} onPress={Logout}>  Dr. {auth.currentUser.displayName.split(" ")[1]}
           </Text>
 
           <Text

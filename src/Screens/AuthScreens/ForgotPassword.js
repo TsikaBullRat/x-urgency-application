@@ -65,9 +65,11 @@ export default function ForgotPassword({ navigation }) {
           color: '#F47066', justifyContent: "left"
         }}>{`Forgot your password?`}</Text>
       </View>
-      <br/>
-       <Text style={{fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
-          color: '#000000'}}>Enter your Email and we will send<br/> you a link to reset your password</Text>
+      <br />
+      <Text style={{
+        fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
+        color: '#000000'
+      }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
 
       <View style={{ alignItems: 'center' }}>
         <Card style={styles.txtCards}>

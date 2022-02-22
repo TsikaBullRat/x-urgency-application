@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     top: -30,
-    alignSelf:'flex-end'
+    alignSelf: 'flex-end'
   },
 
   header: {

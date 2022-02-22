@@ -38,7 +38,6 @@ export default function ResetPassword({ navigation }) {
 
   return (
     <View style={styles.container}>
-
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
@@ -49,15 +48,11 @@ export default function ResetPassword({ navigation }) {
       <View style={styles.header}>
 
         <Text style={{
-          fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling',
-          color: '#F47066', justifyContent: "left"
+          fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling', color: '#F47066', justifyContent: "left"
         }}>{`Reset Your Password?`}</Text>
       </View>
       <br />
-      <Text style={{
-        fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
-        color: '#000000'
-      }}>Create your new<br />     password</Text>
+      <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling', color: '#000000' }}>Create your new<br /> password</Text>
 
       <View style={{ alignItems: 'center' }}>
         <Card style={styles.txtCards}>

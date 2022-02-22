@@ -69,7 +69,6 @@ export default function SignUp({ navigation }) {
   return (
 
     <View style={styles.container}>
-
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
@@ -79,14 +78,7 @@ export default function SignUp({ navigation }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{
-          fontSize: 30, ...Platform.select({
-            web: {
-              fontFamily: 'Felix Titling'
-            }
-          }),
-          color: '#F47066'
-        }}>{`SignUp`}</Text>
+        <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }}>{`SignUp`}</Text>
       </View>
 
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}

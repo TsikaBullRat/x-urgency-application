@@ -30,6 +30,7 @@ function Counter({ video }) {
         }),
 
         setPressed(!pressed)
+
       ) : (
 
         thisDislike ? (
@@ -39,6 +40,7 @@ function Counter({ video }) {
           }),
 
           setPressed(!pressed)
+
         ) : (
 
           firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({

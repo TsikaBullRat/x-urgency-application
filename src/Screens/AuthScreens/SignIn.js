@@ -59,14 +59,7 @@ export default function SignIn({ navigation }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{
-          fontSize: 30, ...Platform.select({
-            web: {
-              fontFamily: 'Felix Titling'
-            }
-          }),
-          color: '#F47066'
-        }}>{`SignIn`}</Text>
+        <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }}>{`SignIn`}</Text>
       </View>
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 

@@ -105,19 +105,20 @@ const Doctor = ({ navigation }) => {
 
   return (
 
-      <View style={styles.container}>
-        <View>
-          {
-            image ? (
-              <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
-            ) : (
-              <View style={styles.temp}>
-                <Text style={styles.temp_text}> {initial} </Text>
-              </View>
-            )}
-        </View>
+    <View style={styles.container}>
+      <View>
+        {
+          image ? (
+            <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+          ) : (
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
+      </View>
 
-                {/*Doctor-Cards---------------Doctor-Cards---------Doctor-Cards */}
+      {/*Doctor-Cards---------------Doctor-Cards---------Doctor-Cards */}
+
       <View
         style={{
           width: 355,
@@ -126,9 +127,10 @@ const Doctor = ({ navigation }) => {
           justifyContent: 'space-around',
           flexDirection: 'row',
         }}>
+
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
-             <MaterialCommunityIcons name="certificate-outline" size={34} color="#fff" />
+            <MaterialCommunityIcons name="certificate-outline" size={34} color="#fff" />
 
             <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
               {`Qualifiation`}
@@ -140,11 +142,11 @@ const Doctor = ({ navigation }) => {
           <View style={{ marginTop: 10, alignItems: 'center' }}>
             <MaterialCommunityIcons name="briefcase-clock-outline" size={34} color="#fff" />
 
-          <View style={{ paddingTop: 20, flexDirection: 'row' }}>
-            <Socials text="Following" number="15" />
-            <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
-            <Socials text="Likes" number="3.1M" />
-          </View>
+            <View style={{ paddingTop: 20, flexDirection: 'row' }}>
+              <Socials text="Following" number="15" />
+              <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
+              <Socials text="Likes" number="3.1M" />
+            </View>
         </Card>
 
         <Card style={styles.docCards}>
@@ -155,7 +157,7 @@ const Doctor = ({ navigation }) => {
               {`Awards`}
             </Text>
           </View>
-        </View>
+      </View>
 
       {/**------------------About--------------About-------------About----------- */}
       <View style={{ marginTop: 35, width: 335 }}>
@@ -169,15 +171,7 @@ const Doctor = ({ navigation }) => {
       <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
         <View style={{ flexDirection: 'row' }}>
           <Feather name="phone" size={20} color="black" />
-          <Text
-            style={{
-              paddingLeft: 10,
-              paddingTop: 2,
-              fontSize: 16,
-              color: '#F47066',
-            }}>
-            {`Call Now `}
-          </Text>
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
           <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
             {`(053) 871 2956`}
           </Text>
@@ -187,14 +181,7 @@ const Doctor = ({ navigation }) => {
           <View style={{ flexDirection: 'row' }}>
             <Feather name="phone" size={20} color="black" />
             <Text
-              style={{
-                paddingLeft: 10,
-                paddingTop: 2,
-                fontSize: 16,
-                color: '#F47066',
-              }}>
-              {`Call Now `}
-            </Text>
+              style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
             <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
               {`(053) 871 2956`}
             </Text>
@@ -206,15 +193,7 @@ const Doctor = ({ navigation }) => {
 
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="mail" size={20} color="black" />
-            <Text
-              style={{
-                paddingLeft: 10,
-                paddingTop: 2,
-                fontSize: 16,
-                color: '#F47066',
-              }}>
-              {`SMS`}
-            </Text>
+            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}>  {`SMS`}</Text>
             <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
               {`078 454 2123`}
             </Text>
@@ -228,89 +207,85 @@ const Doctor = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        
-    },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
 
-    textTitle: {
-        fontFamily: 'Roboto',
-        color: '#F47066',
-        fontSize: 25,
-        marginTop: 5,
-        
-    },
+  textTitle: {
+    fontFamily: 'Roboto',
+    color: '#F47066',
+    fontSize: 25,
+    marginTop: 5,
+  },
 
-    textTitle2: {
-        fontSize: 15,
-        marginTop: 20,
-        marginLeft: 5,
-        
-    },
+  textTitle2: {
+    fontSize: 15,
+    marginTop: 20,
+    marginLeft: 5,
+  },
 
-    box: {
-        flexDirection: 'row',
-    },
+  box: {
+    flexDirection: 'row',
+  },
 
-    tab: {
-        paddingLeft: 5,
-        width: 380,
-    },
+  tab: {
+    paddingLeft: 5,
+    width: 380,
+  },
 
-    avatar: {
-        width: 70,
-        height: 70,
-        borderRadius: 50,
-        marginTop: 80,
-        borderBottomWidth: 3,
-        borderColor: 'turquoise',
-        shadowColor: 'grey',
-        shadowOffset: { width: 1, height: 1 },
-        shadowOpacity: 0.4,
-        elevation: 1,
-    },
+  avatar: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    marginTop: 80,
+    borderBottomWidth: 3,
+    borderColor: 'turquoise',
+    shadowColor: 'grey',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.4,
+    elevation: 1,
+  },
 
-    words: {
-        width: 250,
-        textAlign: 'center',
-        alignSelf: 'center',
-        
-    },
+  words: {
+    width: 250,
+    textAlign: 'center',
+    alignSelf: 'center',
+  },
 
-    follow: {
-        top: 10,
-        backgroundColor: "#f47066",
-        width: 70,
-        height: 40,
-        borderRadius: 15,
-        alignItems: "center",
-        justifyContent: "center",       
-    },
+  follow: {
+    top: 10,
+    backgroundColor: "#f47066",
+    width: 70,
+    height: 40,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
-    txtHead: {
-      fontSize: 22,
-      fontFamily: 'flexi-titling',
-      color: '#F47066'
-    },
+  txtHead: {
+    fontSize: 22,
+    fontFamily: 'flexi-titling',
+    color: '#F47066'
+  },
 
-    temp: {
-        width: 70,
-        height: 70,
-        borderRadius: 50,
-        marginTop: 80,
-        backgroundColor: 'turquoise',
-        textAlign: 'center',
-        justifyContent: 'center'
-    },
+  temp: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    marginTop: 80,
+    backgroundColor: 'turquoise',
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
 
-    temp_text: {
-        fontSize: 40,
-        color: '#fff',
-    },
+  temp_text: {
+    fontSize: 40,
+    color: '#fff',
+  },
 
-    textTitle: {
+  textTitle: {
     color: 'red',
     fontSize: 25,
     marginTop: 5,

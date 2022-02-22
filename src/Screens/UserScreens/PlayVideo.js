@@ -114,13 +114,13 @@ export default function PlayVideo({ navigation, route }) {
 
     <View style={styles.contain}>
 
-{/**-------------Video----------------Video-----------------Video---------------- */}
+      {/**-------------Video----------------Video-----------------Video---------------- */}
       <View style={{ width: 335, marginTop: 50 }}>
         <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping
           style={{ width: 335, height: 180, }} />
       </View>
 
-{/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
+      {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
       {!visibleStatusBar ? (
         <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent: 'space-between' }}>
 
@@ -152,11 +152,7 @@ export default function PlayVideo({ navigation, route }) {
             </View>
 
             <TouchableOpacity onPress={() => ShareItem(data.url/*videoPlay*/)}>
-              <FontAwesome5
-                name="share"
-                size={20}
-                color="black"
-              />
+              <FontAwesome5 name="share" size={20} color="black" />
               <Text style={{ paddingTop: 5 }}> Share </Text>
             </TouchableOpacity>
 
@@ -185,8 +181,8 @@ export default function PlayVideo({ navigation, route }) {
         </View>
 
       ) : (
-         
-/**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
+
+        /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
         <View>
           <Card
             style={{
@@ -200,26 +196,12 @@ export default function PlayVideo({ navigation, route }) {
             <View style={{ width: 335, flexDirection: 'row', justifyContent: 'space-between' }}>
 
               <View>
-                <Text
-                  style={{
-                    fontWeight: 'bold',
-                    color: '#F47066',
-                    fontSize: 16,
-                  }}>
-                  Description:
-                </Text>
-
-                <Text style={{ maxWidth: 315, paddinLeft: 20 }}>
-                  {data.description}
-                </Text>
+                <Text style={{ fontWeight: 'bold', color: '#F47066', fontSize: 16, }}>  Description: </Text>
+                <Text style={{ maxWidth: 315, paddinLeft: 20 }}>  {data.description} </Text>
               </View>
 
               <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                <AntDesign
-                  name="closecircle"
-                  size={18}
-                  color="black" />
-              </TouchableOpacity>
+                <AntDesign name="closecircle" size={18} color="black" />  </TouchableOpacity>
             </View>
 
             <View style={{ marginTop: 50, flexDirection: 'row' }}>
@@ -233,20 +215,16 @@ export default function PlayVideo({ navigation, route }) {
 
       <Comments video={data.firestore} />
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Card style={{
-          height: 335, width: 315, marginTop: 5
-        }}>
-          <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
-          {Comments.map((item, index) =>
-            <Card style={{ backgroundColor: '#e8d7cc', height: 100, marginTop: 10 }} key={index}>
-              <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
-                <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>
-                {item.user === auth.currentUser.displayName ? <Pressable onPress={() => Delete(item.comment)}><Text>remove</Text></Pressable> : null}
-              </SafeAreaView>
-            </Card>
-          )}
-        </Card>
+      <ScrollView showsVerticalScrollIndicator={false}>  <Card style={{ height: 335, width: 315, marginTop: 5 }}>
+        <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
+        {Comments.map((item, index) =>
+          <Card style={{ backgroundColor: '#e8d7cc', height: 100, marginTop: 10 }} key={index}>
+            <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
+              <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>
+              {item.user === auth.currentUser.displayName ? <Pressable onPress={() => Delete(item.comment)}><Text>remove</Text></Pressable> : null} </SafeAreaView>
+          </Card>
+        )}
+      </Card>
       </ScrollView>
     </View>
 

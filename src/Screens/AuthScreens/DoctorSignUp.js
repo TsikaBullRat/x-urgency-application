@@ -119,21 +119,13 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         </Card>
 
         <View style={styles.header}>
-          <Text style={{
-            fontSize: 30, ...Platform.select({
-              web: {
-                fontFamily: 'Felix Titling'
-              }
-            }),
-            color: '#F47066'
-          }}>{`Medical SignUp`}</Text>
+          <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }}>{`Medical SignUp`}</Text>
         </View>
 
         <ScrollView style={{ height: 550 }}
           showsVerticalScrollIndicator={false}>
           {visibleStatusBar ? (
             <View>
-
               <Card style={styles.txtCards}>
                 <View style={{ flexDirection: 'row' }}>
                   <TextInput style={styles.txtField} name='name' placeholder='Name' onChangeText={text => setEmail(text)} />
@@ -181,7 +173,6 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                   <Picker.Item label="Ambulance Emergency Assistance" value="AEA" />
                   <Picker.Item label="Critical Care Assist" value="CCA" />
                   <Picker.Item label="Emergency Care Practitioner" value="ECP" />
-
                 </Picker>
               </View>
 
@@ -205,8 +196,8 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             </View>
 
           ) : (
-            <View>
 
+            <View>
               <Card style={styles.txtCards}>
                 <View style={{ flexDirection: "row" }}>
                   <TextInput

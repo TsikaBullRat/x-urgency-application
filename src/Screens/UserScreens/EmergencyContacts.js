@@ -26,7 +26,7 @@ const EmergencyContacts = ({ navigation }) => {
                         <Text style={{ marginLeft: 180, fontWeight: "bold", fontSize: 16, marginTop: -1, color: "white" }}>112</Text>
                     </Card>
                 </TouchableOpacity>
- 
+
                 <TouchableOpacity onPress={() => Call("10111")}>
                     <Card style={[styles.card, styles.ShadowProp]}>
                         <Text style={{ marginLeft: 65, fontWeight: "bold", fontSize: 15, marginTop: 5, color: "white" }}>Police</Text>

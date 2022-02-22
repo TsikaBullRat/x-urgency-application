@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, Text, TouchableOpacity,      } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, } from "react-native";
 import { Card } from "react-native-paper";
 import { Video } from "expo-av";
 import { ScrollView } from "react-native-gesture-handler";
@@ -17,52 +17,51 @@ export const VideoList = ({ videos, VideoScreen }) => {
   return (
 
     <ScrollView
-        style={{ height: 420, width: 335 }}
-        vertical={true}
-        showsVerticalScrollIndicator={false}
-      >
-     {videos ? (
-       videos.map(vid => (
-      <View style={{ width: 335, left: -5, alignItems: "center", justifyContent:'center' }} key={vid.id}>
-        <Card
-          style={{
-            marginTop: 15,
-            width: 335,
-            height: 245,
-            alignItems: "center",
-            backgroundColor: "#FAFAFA",
-          }}>
-
-          <TouchableOpacity style={{ width: 335 }} onPress={() => VideoScreen(vid)}>
-            <Video
-              ref={ref}
-              source={{ uri: vid.url }}
-              resizeMode="stretch"
-              isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+      style={{ height: 420, width: 335 }}
+      vertical={true}
+      showsVerticalScrollIndicator={false} >
+      {videos ? (
+        videos.map(vid => (
+          <View style={{ width: 335, left: -5, alignItems: "center", justifyContent: 'center' }} key={vid.id}>
+            <Card
               style={{
-                width: "100%",
-                height: 165,
-                marginTop: 5,
-                alignSelf: "center",
-              }} />
-          </TouchableOpacity>
+                marginTop: 15,
+                width: 335,
+                height: 245,
+                alignItems: "center",
+                backgroundColor: "#FAFAFA",
+              }}>
 
-          <View style={{ justifyContent: 'space-between' }}>
-            <Text style={styles.vidTitle}>{vid.title}</Text>
-            <Text style={styles.tag}>{vid.owner}</Text>
+              <TouchableOpacity style={{ width: 335 }} onPress={() => VideoScreen(vid)}>
+                <Video
+                  ref={ref}
+                  source={{ uri: vid.url }}
+                  resizeMode="stretch"
+                  isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+                  style={{
+                    width: "100%",
+                    height: 165,
+                    marginTop: 5,
+                    alignSelf: "center",
+                  }} />
+              </TouchableOpacity>
 
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Text style={styles.tag}>{vid.views} Views</Text>
-              <Text style={styles.tag}>{vid.stamp}</Text>
-            </View>
-          </View>
-        </Card>
+              <View style={{ justifyContent: 'space-between' }}>
+                <Text style={styles.vidTitle}>{vid.title}</Text>
+                <Text style={styles.tag}>{vid.owner}</Text>
 
-        <ItemSeperatorView />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                  <Text style={styles.tag}>{vid.views} Views</Text>
+                  <Text style={styles.tag}>{vid.stamp}</Text>
+                </View>
+              </View>
+            </Card>
 
-      </View>))
+            <ItemSeperatorView />
+
+          </View>))
       ) : (null)}
-      </ScrollView>
+    </ScrollView>
   )
 }
 

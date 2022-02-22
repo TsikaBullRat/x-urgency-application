@@ -1,19 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Text
-} from 'react-native'
-import {ScrollView} from 'react-native-gesture-handler'
+import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
 import { auth, LoadSet, firestore } from '../../firebase'
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import { VideoList } from '../../Components/VideoList'
 
-export default function Home ({ navigation, Exit }) {
+export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
@@ -33,35 +27,15 @@ export default function Home ({ navigation, Exit }) {
       {/**---------Call Siren------------Call Siren---------Call Siren-------------------- */}
       <View style={{ top: 5 }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('EmergencyContacts')}
-        >
+          onPress={() => navigation.navigate('EmergencyContacts')} >
           <View style={{ flexDirection: 'row' }}>
             <Image
               source={require('../../../img/siren.jpg')}
-              style={{ width: 30, height: 35 }}
-            />
+              style={{ width: 30, height: 35 }} />
 
             <View style={{ paddingVertical: 10 }}>
-              <Text
-                style={{
-                  fontSize: 12,
-                  fontWeight: 'bold',
-                  fontFamily: 'Arial',
-                  color: '#F47066'
-                }}
-              >
-                Call
-              </Text>
-              <Text
-                style={{
-                  fontSize: 12,
-                  fontWeight: 'bold',
-                  fontFamily: 'Arial',
-                  color: '#F47066'
-                }}
-              >
-                Now
-              </Text>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', fontFamily: 'Arial', color: '#F47066' }}  >  Call</Text>
+              <Text style={{ fontSize: 12, fontWeight: 'bold', fontFamily: 'Arial', color: '#F47066' }}  > Now </Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -84,16 +58,11 @@ export default function Home ({ navigation, Exit }) {
           marginTop: 20,
           flexDirection: 'row',
           justifyContent: 'space-between'
-        }}
-      >
+        }} >
         <Text style={{ fontFamily: 'Roboto' }}> {`Most Viewed`} </Text>
 
         <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-          <Text
-            style={{ fontSize: 18, fontFamily: 'Roboto', color: '#F96056' }}
-          >
-            {`Medical Personel`}{' '}
-          </Text>
+          <Text style={{ fontSize: 18, fontFamily: 'Roboto', color: '#F96056' }} >  {`Medical Personel`}{' '} </Text>
         </TouchableOpacity>
       </View>
 
@@ -104,11 +73,11 @@ export default function Home ({ navigation, Exit }) {
         vertical={true}
         showsVerticalScrollIndicator={false}
       > */}
-        <Card style={styles.menu2}>
-          <View>
-            <VideoList videos={videos} VideoScreen={VideoScreen} />
-          </View>
-        </Card>
+      <Card style={styles.menu2}>
+        <View>
+          <VideoList videos={videos} VideoScreen={VideoScreen} />
+        </View>
+      </Card>
       {/* </ScrollView> */}
     </View>
   )
