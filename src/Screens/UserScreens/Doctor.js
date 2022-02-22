@@ -147,6 +147,7 @@ const Doctor = ({ navigation }) => {
               <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
               <Socials text="Likes" number="3.1M" />
             </View>
+          </View>
         </Card>
 
         <Card style={styles.docCards}>
@@ -157,51 +158,53 @@ const Doctor = ({ navigation }) => {
               {`Awards`}
             </Text>
           </View>
-      </View>
+        </Card>
 
-      {/**------------------About--------------About-------------About----------- */}
-      <View style={{ marginTop: 35, width: 335 }}>
-        <Text style={styles.txtHead}>{`About`}</Text>
-        <Text style={styles.txtAbout}>
-          {`Neurologists These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.`}
-        </Text>
-      </View>
-
-      {/**----------------Contacts---------Contacts------------Contacts----------- */}
-      <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
-        <View style={{ flexDirection: 'row' }}>
-          <Feather name="phone" size={20} color="black" />
-          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
-          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
-            {`(053) 871 2956`}
+        {/**------------------About--------------About-------------About----------- */}
+        <View style={{ marginTop: 35, width: 335 }}>
+          <Text style={styles.txtHead}>{`About`}</Text>
+          <Text style={styles.txtAbout}>
+            {`Neurologists These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.`}
           </Text>
         </View>
 
-        <View style={{ width: 355, marginTop: 35, justifyContent: 'flex-start' }}>
+        {/**----------------Contacts---------Contacts------------Contacts----------- */}
+        <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
           <View style={{ flexDirection: 'row' }}>
             <Feather name="phone" size={20} color="black" />
-            <Text
-              style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
+            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
             <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
               {`(053) 871 2956`}
             </Text>
           </View>
 
-          <View>
-            <Text style={{ paddingLeft: 35, paddingTop: 5 }}>{`OR`}</Text>
+          <View style={{ width: 355, marginTop: 35, justifyContent: 'flex-start' }}>
+            <View style={{ flexDirection: 'row' }}>
+              <Feather name="phone" size={20} color="black" />
+              <Text
+                style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
+              <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+                {`(053) 871 2956`}
+              </Text>
+            </View>
+
+            <View>
+              <Text style={{ paddingLeft: 35, paddingTop: 5 }}>{`OR`}</Text>
+            </View>
+
+            <View style={{ flexDirection: 'row' }}>
+              <AntDesign name="mail" size={20} color="black" />
+              <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}>  {`SMS`}</Text>
+              <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+                {`078 454 2123`}
+              </Text>
+            </View>
           </View>
 
-          <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="mail" size={20} color="black" />
-            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}>  {`SMS`}</Text>
-            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
-              {`078 454 2123`}
-            </Text>
-          </View>
         </View>
-
       </View>
-    </>
+    </View>
+
 
   )
 }
