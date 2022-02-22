@@ -63,7 +63,7 @@ export default function SignIn({ navigation }) {
       </View>
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 
-      <View style={{width:'100%', alignItems:'center', justifyContent:'center'}}>
+      <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={22} color="black" style={{ marginTop: 16, marginLeft: 18 }} />
@@ -90,26 +90,21 @@ export default function SignIn({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        <View style={{ width:'100%', alignItems: 'center', alignContent: 'center' }}>
+        <View style={{ width: '100%', alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
             <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`LOGIN`} </Text>
           </TouchableOpacity>
         </View>
 
         <View style={{ marginTop: 10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <Text style={{ paddingTop: 10, fontWeight:'bold', color:'grey', fontSize: 15, }}>  {`New User?`} </Text>
+          <Text style={{ paddingTop: 10, fontWeight: 'bold', color: 'grey', fontSize: 15, }}>  {`New User?`} </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
             <Text style={{ paddingTop: 9, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>
 
-<<<<<<< HEAD
         <View style={{ marginTop: 10, }} >
-          <Text style={{ paddingTop: 10, fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
-=======
-        <View style={{marginTop:10,}} >
-        <Text style={{ paddingTop: 10, fontWeight:'bold', color:'grey', fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
->>>>>>> 64480d7e62927bbea861b66a8c87abc4ee7d4e35
+          <Text style={{ paddingTop: 10, fontWeight: 'bold', color: 'grey', fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
 
           <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
             <TouchableOpacity onPress={() => navigation.navigate('MedSignIn')}>

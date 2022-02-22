@@ -42,21 +42,17 @@ export default function MedSignIn({ navigation, setDone }) {
       </Card>
 
       <View style={styles.header}>
-<<<<<<< HEAD
-        <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }}>{`Medical SignIn`}</Text>
-=======
         <Text style={{
           fontSize: 30, color: '#F47066', ...Platform.select({
             web: {
-              fontFamily: 'Felix Titling'             
+              fontFamily: 'Felix Titling'
             }
           })
-       }}>{`Medical SignIn`}</Text>
+        }}>{`Medical SignIn`}</Text>
 
->>>>>>> 64480d7e62927bbea861b66a8c87abc4ee7d4e35
       </View>
 
-      <View style={{width:'100%', alignItems:'center', justifyContent:'center'}}>
+      <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={22} color="black" style={{ marginTop: 16, marginLeft: 18 }} />
@@ -81,7 +77,7 @@ export default function MedSignIn({ navigation, setDone }) {
           </TouchableOpacity>
         </View>
 
-        <View style={{ width:'100%', alignItems: 'center', alignContent: 'center' }}>
+        <View style={{ width: '100%', alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
             <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`LOGIN`} </Text>
           </TouchableOpacity>
@@ -89,13 +85,13 @@ export default function MedSignIn({ navigation, setDone }) {
 
         <View style={{ marginTop: 10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <Text style={{ paddingTop: 10, fontSize: 15, }}>  {`New User?`} </Text>
-          <TouchableOpacity onPress={() =>  navigation.navigate('DoctorSignUp') }>
+          <TouchableOpacity onPress={() => navigation.navigate('DoctorSignUp')}>
             <Text style={{ paddingTop: 10, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={{marginVertical: 20}}
-        onPress={() => navigation.navigate('SignIn')}>
+        <TouchableOpacity style={{ marginVertical: 20 }}
+          onPress={() => navigation.navigate('SignIn')}>
           BACK
         </TouchableOpacity>
 

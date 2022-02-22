@@ -25,7 +25,7 @@ import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleSignUp } from '../../firebase'
 import { AlertNote } from '../../Components/Alert'
 
-export default function SignUp ({ navigation }) {
+export default function SignUp({ navigation }) {
   const [username, setUserName] = useState(''),
     [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
@@ -78,15 +78,11 @@ export default function SignUp ({ navigation }) {
 
   return (
     <View style={styles.container}>
-<<<<<<< HEAD
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
-=======
       <AlertNote
         modalVisible={displayModal}
         setModalVisible={setDisplayModal}
         msg={message}
       />
->>>>>>> 64480d7e62927bbea861b66a8c87abc4ee7d4e35
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name='heartbeat' size={110} color='#fff' />
@@ -100,9 +96,6 @@ export default function SignUp ({ navigation }) {
       </Card>
 
       <View style={styles.header}>
-<<<<<<< HEAD
-        <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }}>{`SignUp`}</Text>
-=======
         <Text
           style={{
             fontSize: 30,
@@ -114,7 +107,6 @@ export default function SignUp ({ navigation }) {
             color: '#F47066'
           }}
         >{`SignUp`}</Text>
->>>>>>> 64480d7e62927bbea861b66a8c87abc4ee7d4e35
       </View>
 
       {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
@@ -208,8 +200,10 @@ export default function SignUp ({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        <View style={{alignItems:'center', justifyContent:'center', 
-                      marginVertical: 20}}>
+        <View style={{
+          alignItems: 'center', justifyContent: 'center',
+          marginVertical: 20
+        }}>
           <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
             BACK
           </TouchableOpacity>
