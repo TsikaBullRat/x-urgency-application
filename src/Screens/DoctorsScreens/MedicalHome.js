@@ -83,30 +83,9 @@ export default function MedicalHome({ navigation, progress, Log, Exit }
 
       <View style={{ flexDirection: "row" }}>
         <View style={styles.header}>
-          <Text
-            style={{
-              fontSize: 36,
-              paddingLeft: 30,
-              color: "turquoise",
-              textShadowColor: "grey",
-              textShadowOffset: { width: 2, height: 2 },
-              textShadowRadius: 1,
-            }}
-            onPress={Logout}>
-            Dr. {auth.currentUser.displayName.split(" ")[1]}
-          </Text>
+          <Text style={{ fontSize: 36, paddingLeft: 30, color: "turquoise", textShadowColor: "grey", textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1, }} onPress={Logout}>  Dr. {auth.currentUser.displayName.split(" ")[1]} </Text>
 
-          <Text
-            style={{
-              fontSize: 36,
-              paddingLeft: 30,
-              color: "red",
-              textShadowColor: "grey",
-              textShadowOffset: { width: 2, height: 2 },
-              textShadowRadius: 1,
-            }}
-          > In Da House
-          </Text>
+          <Text style={{ fontSize: 36, paddingLeft: 30, color: "red", textShadowColor: "grey", textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1, }} > In Da House </Text>
 
         </View>
         <>
@@ -114,15 +93,14 @@ export default function MedicalHome({ navigation, progress, Log, Exit }
         </>
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <TouchableOpacity onPress={Logout}>
-            {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+          <TouchableOpacity onPress={Logout}> {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
 
-            ) : (
+          ) : (
 
-              <View style={styles.temp}>
-                <Text style={styles.temp_text}> {initial} </Text>
-              </View>
-            )}
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
 
           </TouchableOpacity>
           <Pressable onPress={() => { navigation.navigate("Update") }} >
@@ -135,11 +113,11 @@ export default function MedicalHome({ navigation, progress, Log, Exit }
 
       {loading ? <ProgressBar status={loading} /> : null}
 
-        <Card style={styles.menu2}>
-          <View>
-            <VideoList videos={videos} VideoScreen={VideoScreen} />
-          </View>
-        </Card>
+      <Card style={styles.menu2}>
+        <View>
+          <VideoList videos={videos} VideoScreen={VideoScreen} />
+        </View>
+      </Card>
 
       <TouchableOpacity
         style={styles.btnUpload} onPress={() => { navigation.navigate("Upload") }} >
@@ -171,9 +149,9 @@ const styles = StyleSheet.create({
   },
 
   vidTitle: {
-    fontSize:18, 
-    fontFamily:'flexi titling',  
-    color:'#F47066'
+    fontSize: 18,
+    fontFamily: 'flexi titling',
+    color: '#F47066'
   },
 
   btnUpload: {

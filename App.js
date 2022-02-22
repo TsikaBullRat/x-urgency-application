@@ -15,19 +15,13 @@ import ForgotPassword from './src/Screens/AuthScreens/ForgotPassword'
 import Home from './src/Screens/UserScreens/Home'
 import PlayVideo from './src/Screens/UserScreens/PlayVideo'
 import Doctor from './src/Screens/UserScreens/Doctor'
-import {
-  EmergencyContacts,
-  UploadVideo,
-  MedicalHome,
-  Upload,
-  UpdateProfile
-} from './src/Screens'
+import { EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile } from './src/Screens'
 import { AuthScreens, UserScreens, DoctorsScreens } from './src/Screens'
 
 const Stack = createNativeStackNavigator()
 //const Stack = createStackNavigator()
 
-export default function App ({ navigation }) {
+export default function App({ navigation }) {
   const [id, setID] = useState(null)
   const [doctor, setDoctor] = useState(null)
   const [check1, setCheck1] = useState(false)
@@ -36,37 +30,17 @@ export default function App ({ navigation }) {
   const [percentage, setPerc] = useState(null)
   const [match, setMatch] = useState(null)
 
-  const Exit = () => {
-    navigation.navigate('auth')
-  }
+  const Exit = () => { navigation.navigate('auth') }
 
-  useEffect(() => {
-    auth.onAuthStateChanged(user => (user ? setID(user.uid) : setID(null)))
-  })
+  useEffect(() => { auth.onAuthStateChanged(user => (user ? setID(user.uid) : setID(false))) })
 
-  useEffect(() => {
-    id ? null : setCheck2(false), setDoctor(null)
-  }, [id])
+  useEffect(() => { id ? '' : setCheck2(false), setDoctor('') }, [id])
 
-  useEffect(() => {
-    try {
-      firestore
-        .collection('Users')
-        .doc(id)
-        .get()
-        .then(doc => setDoctor(doc.data().doctor))
-    } catch (err) {
-      console.log(err)
-    }
-  }, [id])
+  useEffect(() => { try { firestore.collection('Users').doc(id).get().then(doc => setDoctor(doc.data().doctor)) } catch (err) { console.log(err) } }, [id])
 
-  useEffect(() => {
-    id !== null ? setCheck1(true) : null
-  }, [id])
+  useEffect(() => { id !== null ? setCheck1(true) : null }, [id])
 
-  useEffect(() => {
-    doctor !== null ? setCheck2(true) : null
-  }, [null])
+  useEffect(() => { doctor !== null ? setCheck2(true) : null }, [doctor])
 
   return (
     <NavigationContainer>
@@ -253,14 +227,76 @@ export default function App ({ navigation }) {
           </Stack.Navigator>
         )}
 
+          <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
+
+        </Stack.Navigator>
+
+      )
+      ) : (
+
+        // <Stack.Screen
+        //   name='DoctorSignUp'
+        //   options={{ headerShown: false }} >
+        //   {props => <DoctorSignUp {...props} authNavigation={navigation} />}
+        // </Stack.Screen>
+
+        <SignUp />
+
+      )
+      ) : (
+
+        <MedSignIn />
+        // <Stack.Group>
+
+        //   <Stack.Screen name='Sign In' options={{ headerShown: false }}>
+        //     {(props) => <SignIn {...props} />}
+        //   </Stack.Screen>
+
+        //   <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
+        //     {(props) => <SignUp {...props} />}
+        //   </Stack.Screen>
+
+        //   <Stack.Screen
+        //     name='MedSignIn'
+        //     options={{ headerShown: false }} >
+        //     {props => <MedSignIn {...props} authNavigation={navigation} />}
+        //   </Stack.Screen>
+
+        //   <Stack.Screen
+        //     name='DoctorSignUp'
+        //     options={{ headerShown: false }} >
+        //     {props => <DoctorSignUp {...props} authNavigation={navigation} />}
+        //   </Stack.Screen>
+
+        //   <Stack.Screen
+        //     name='Reset Password'
+        //     component={ForgotPassword}
+        //     options={{ headerShown: false }} />
+        // </Stack.Group>
+      )
+      ) : (
+
+        <SignIn />
+
+        // <Stack.Navigator>
+        //   <Stack.Screen name='SignIn' component={SignIn} options={{ headerShown: false}} />
+        //   <Stack.Screen name='SignUp' component={SignUp} />
+        //   <Stack.Screen name='ForgotPassword' component={ForgotPassword} />
+        //   <Stack.Screen name='MedSignIn' component={MedSignIn} />
+        //   <Stack.Screen name='DoctorSignUp' component={DoctorSignUp} />
+        // </Stack.Navigator>
+      )}
         {/*</Stack.Navigator>*/}
+
       </KeyboardAwareScrollView>
     </NavigationContainer>
   )
 }
+
 const styles = StyleSheet.create({
   loader: {
     alignItems: 'center',
     justifyContent: 'center'
   }
+
 })

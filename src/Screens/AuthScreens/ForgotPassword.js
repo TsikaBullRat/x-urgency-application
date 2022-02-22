@@ -43,6 +43,7 @@ export default function ForgotPassword({ navigation }) {
       handleResetPassword("lindiwe.mpondo@gmail.com")
     }
   }
+
   const Exit = () => {
     alert("Successfully logged out")
     navigation.navigate('SignIn')
@@ -50,11 +51,8 @@ export default function ForgotPassword({ navigation }) {
 
   return (
     <View style={styles.container}>
-
       <Card style={styles.card}>
-        <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={110} color="#fff" />
-        </View>
+        <View style={styles.heartIcon}><FontAwesome name="heartbeat" size={110} color="#fff" /></View>
         <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
@@ -64,9 +62,8 @@ export default function ForgotPassword({ navigation }) {
           color: '#F47066', justifyContent: "left"
         }}>{`Forgot your password?`}</Text>
       </View>
-      <br/>
-       <Text style={{fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
-          color: '#000000'}}>Enter your Email and we will send<br/> you a link to reset your password</Text>
+      <br />
+      <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling', color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
 
       <View style={{ width:'100%', alignItems: 'center' }}>
         <Card style={styles.txtCards}>

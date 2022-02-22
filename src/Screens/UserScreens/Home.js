@@ -11,7 +11,7 @@ import { VideoList } from '../../Components/VideoList'
 import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
 
-export default function Home ({ navigation, Exit }) {
+export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
@@ -75,6 +75,7 @@ export default function Home ({ navigation, Exit }) {
       </View>
 
       {/**------------------Header-----------------------Header----------------- */}
+
       <View style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>
         <Header Exit={Exit} />
 
@@ -110,6 +111,7 @@ export default function Home ({ navigation, Exit }) {
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
+
       <View style={{ width: 335, alignItems: 'center' }}>
         <Menu list={videos} setVids={setLoad} />
       </View>
@@ -125,7 +127,6 @@ export default function Home ({ navigation, Exit }) {
         }}
       >
         <Text style={{ fontFamily: 'Roboto' }}> {`Most Viewed`} </Text>
-
         <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
           <Text
             style={{ fontSize: 18, fontFamily: 'Roboto', color: '#F96056' }}
@@ -148,6 +149,7 @@ export default function Home ({ navigation, Exit }) {
         </View>
       </Card>
       {/* </ScrollView> */}
+
     </View>
   )
 }

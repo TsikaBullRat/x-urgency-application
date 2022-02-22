@@ -14,6 +14,4 @@ import Home from "./Home"
 import PlayVideo from "./PlayVideo"
 import Doctor from "./Doctor"
 
-
-
 export { Home, PlayVideo, Doctor }

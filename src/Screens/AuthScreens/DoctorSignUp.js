@@ -80,39 +80,37 @@ export default function DoctorSignUp({ navigation, setDetails }
       setVisibleStatusBar(!visibleStatusBar)
     }
 
-
-  const Register = () => {
-    if (qualification === "" && branch === "" && password === "" && confirmpassword === "") {
-      setPrompt("Please enter thr requested information")
-    } else if (description === "") {
-      setPrompt6("Please tell us about you")
-      setPrompt7(null)
-      setPrompt8(null)
-      setPrompt9(null)
-    } else if (branch === "") {
-      setPrompt6(null)
-      setPrompt7("Please enter branch name")
-      setPrompt8(null)
-      setPrompt9(null)
-    } else if (password === "") {
-      setPrompt6(null)
-      setPrompt7(null)
-      setPrompt8("Please enter password")
-      setPrompt9(null)
-    } else if (confirmpassword === "") {
-      setPrompt6(null)
-      setPrompt7(null)
-      setPrompt8(null)
-      setPrompt9("Please re-enter password")
-    } else {
-      handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, contactdetails, description)
+    const Register = () => {
+      if (qualification === "" && branch === "" && password === "" && confirmpassword === "") {
+        setPrompt("Please enter thr requested information")
+      } else if (description === "") {
+        setPrompt6("Please tell us about you")
+        setPrompt7(null)
+        setPrompt8(null)
+        setPrompt9(null)
+      } else if (branch === "") {
+        setPrompt6(null)
+        setPrompt7("Please enter branch name")
+        setPrompt8(null)
+        setPrompt9(null)
+      } else if (password === "") {
+        setPrompt6(null)
+        setPrompt7(null)
+        setPrompt8("Please enter password")
+        setPrompt9(null)
+      } else if (confirmpassword === "") {
+        setPrompt6(null)
+        setPrompt7(null)
+        setPrompt8(null)
+        setPrompt9("Please re-enter password")
+      } else {
+        handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, contactdetails, description)
+      }
     }
-  }
 
-  return (
-    
+    return (
 
-    <View style={styles.container}>
+      <View style={styles.container}>
 
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
@@ -137,6 +135,8 @@ export default function DoctorSignUp({ navigation, setDetails }
           <ScrollView style={{ height: 550, width:'100%' }}
         showsVerticalScrollIndicator={false}>
 
+        <ScrollView style={{ height: 550 }} showsVerticalScrollIndicator={false}> {visibleStatusBar ? (
+          <View>
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: 'row' }}>
                 <TextInput style={styles.txtField} name='name' placeholder='Name' onChangeText={text => setEmail(text)} />
@@ -146,22 +146,14 @@ export default function DoctorSignUp({ navigation, setDetails }
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <TextInput
-                  style={styles.txtField}
-                  name="Surname"
-                  placeholder="Surname"
-                  onChangeText={(text) => setSurname(text)} />
+                <TextInput style={styles.txtField} name="Surname" placeholder="Surname" onChangeText={(text) => setSurname(text)} />
               </View>
             </Card>
             {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <TextInput
-                  style={styles.txtField}
-                  name="ContactDetails"
-                  placeholder="Contact Details"
-                  onChangeText={(text) => setContactDetails(text)} />
+                <TextInput style={styles.txtField} name="ContactDetails" placeholder="Contact Details" onChangeText={(text) => setContactDetails(text)} />
               </View>
             </Card>
             {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
@@ -184,17 +176,12 @@ export default function DoctorSignUp({ navigation, setDetails }
                 <Picker.Item label="Ambulance Emergency Assistance" value="AEA" />
                 <Picker.Item label="Critical Care Assist" value="CCA" />
                 <Picker.Item label="Emergency Care Practitioner" value="ECP" />
-
               </Picker>
             </View>
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <TextInput
-                  style={styles.txtField}
-                  name="Qualification"
-                  placeholder="Qualification"
-                  onChangeText={(text) => setQualification(text)} />
+                <TextInput style={styles.txtField} name="Qualification" placeholder="Qualification" onChangeText={(text) => setQualification(text)} />
               </View>
             </Card>
             {prompt5 ? <Text style={styles.prompt}>{prompt5}</Text> : null}
@@ -205,48 +192,33 @@ export default function DoctorSignUp({ navigation, setDetails }
               </TouchableOpacity>
             </View>
 
-          </ScrollView>
+          </View>
 
         ) : (
-          <ScrollView style={{ height: 550 }}
-        showsVerticalScrollIndicator={false}>
 
+          <View>
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <TextInput
-                  style={styles.txtField}
-                  name="Description"
-                  placeholder="Description"
-                  onChangeText={(text) => setDescription(text)} />
+                <TextInput style={styles.txtField} name="Description" placeholder="Description" onChangeText={(text) => setDescription(text)} />
               </View>
             </Card>
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <TextInput
-                  style={styles.txtField}
-                  name="Branch"
-                  placeholder="Branch"
-                  onChangeText={(text) => setBranch(text)} />
+                <TextInput style={styles.txtField} name="Branch" placeholder="Branch" onChangeText={(text) => setBranch(text)} />
               </View>
             </Card>
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: 'row' }}>
-                <TextInput style={styles.txtField}
-                  name='password' placeholder='Password'
-                  secureTextEntry={true}
-                  onChangeText={text => setPassword(text)} />
+                <TextInput style={styles.txtField} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
               </View>
             </Card>
             {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: 'row' }}>
-                <TextInput style={styles.txtField}
-                  name='confirmPassword' placeholder='Confirm Password'
-                  secureTextEntry={true}
-                  onChangeText={text => setPassword(text)} />
+                <TextInput style={styles.txtField} name='confirmPassword' placeholder='Confirm Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
               </View>
             </Card>
             {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
@@ -256,14 +228,15 @@ export default function DoctorSignUp({ navigation, setDetails }
                 <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`SIGNIN`} </Text>
               </TouchableOpacity>
             </View>
-          </ScrollView>
+          </View>
         )}
-      
+        </ScrollView>
 
-    </View>
+      </View>
 
-  );
-}}
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
