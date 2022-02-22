@@ -74,7 +74,7 @@ export default function SignIn({ Navigate }) {
       </View>
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 
-      <View>
+      <View style={{width:'100%', alignItems:'center', justifyContent:'center'}}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={22} color="black" style={{ marginTop: 16, marginLeft: 18 }} />
@@ -94,14 +94,14 @@ export default function SignIn({ Navigate }) {
         </Card>
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
-        <View style={{ width: 320, alignItems: 'flex-end' }}>
+        <View style={{ width: '80%', alignItems: 'flex-end' }}>
           <TouchableOpacity
             onPress={() => { navigation.navigate('Reset Password') }}>
             <Text style={{ paddingTop: 20, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{ alignItems: 'center', alignContent: 'center' }}>
+        <View style={{ width:'100%', alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
             <Text style={{ fontSize: 20, color: '#fff', }}>{`LOGIN`} </Text>
           </TouchableOpacity>
@@ -115,7 +115,7 @@ export default function SignIn({ Navigate }) {
         </View>
 
         <View style={{marginTop:10,}} >
-        <Text style={{ paddingTop: 10, fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
+        <Text style={{ paddingTop: 10, fontWeight:'bold', color:'grey', fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
 
           <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
             <TouchableOpacity onPress={() => Navigate(2)}>
@@ -138,8 +138,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: '#F47066',
-    width: 335,
-    height: 200,
+    width: '100%',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
@@ -199,7 +198,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 315,
+    width: '80%',
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -210,7 +209,7 @@ const styles = StyleSheet.create({
 
   signIn: {
     height: 50,
-    width: 200,
+    width: '60%',
     marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',

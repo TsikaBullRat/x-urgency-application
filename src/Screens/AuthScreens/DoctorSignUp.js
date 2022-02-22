@@ -18,7 +18,8 @@ import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
 import { AlertNote } from '../../Components/Alert';
 
-export default function DoctorSignUp({ navigation, setDetails }) {
+export default function DoctorSignUp({ navigation, setDetails }
+) {
 
   const [email, setEmail] = useState(""),
     [name, setName] = useState(""),

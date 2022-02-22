@@ -27,7 +27,7 @@ export default function App() {
     ):(
       null
     )
-  }, [])
+  }, [id])
 
   const [param, setParam] = useState()
   const [percentage, setPerc] = useState(null)
@@ -38,13 +38,27 @@ export default function App() {
     setParam(data)
   }
 
+  const Exit = () =>{
+    auth.signOut()
+  }
+
   return (
     id?(
-          <Navigator selected={selected}>
-            <Home Navigate={Navigate}/>
+          doctor?(
+            <Navigator selected={selected}>
+            <MedicalHome Navigate={Navigate}/>
+            <PlayVideo param={param} Navigate={Navigate}/>
+            <Upload Navigate={Navigate}/>
+            <UploadVideo Navigate={Navigate}/>
+            <UpdateProfile Navigate={Navigate}/>
+          </Navigator>
+          ):(
+            <Navigator selected={selected}>
+            <Home Navigate={Navigate} Exit={Exit}/>
             <PlayVideo param={param} Navigate={Navigate}/>
             <EmergencyContacts Navigate={Navigate}/>
           </Navigator>
+          )
         ):(
           <Navigator selected={selected}>
             <SignIn Navigate={Navigate}/>
