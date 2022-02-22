@@ -71,7 +71,7 @@ export default function App({ navigation }) {
           <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }} />
 
           {/* {props => <Doctor {...props} />} 
-                  </Stack.Screen> */}
+                  </Stack.Screen> */} 
 
           <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
 
