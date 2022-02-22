@@ -47,58 +47,33 @@ export default function App({ navigation }) {
         //<DoctorSignUp />
         <Stack.Navigator>
 
-          <Stack.Screen name='MedicalHome' options={{ headerShown: false }} >
-            {props => (<MedicalHome {...props} Log={setPerc} progress={percentage} setMatch={setMatch} Exit={Exit} />)}
-          </Stack.Screen>
+          <Stack.Screen name='MedicalHome' options={{ headerShown: false }} >{props => (<MedicalHome {...props} Log={setPerc} progress={percentage} setMatch={setMatch} Exit={Exit} />)} </Stack.Screen>
 
-          <Stack.Screen name='Upload' options={{ headerShown: false }}>
-            {props => <Upload {...props} Log={setPerc} />}
-          </Stack.Screen>
+          <Stack.Screen name='Upload' options={{ headerShown: false }}> {props => <Upload {...props} Log={setPerc} />} </Stack.Screen>
 
-          <Stack.Screen
-            name='UpdateProfile'
-            component={UpdateProfile}
-            options={{ headerShown: false }} />
+          <Stack.Screen name='UpdateProfile' component={UpdateProfile} options={{ headerShown: false }} />
 
-          <Stack.Screen
-            name='UploadVideo'
-            component={UploadVideo}
-            options={{ headerShown: false }} />
+          <Stack.Screen name='UploadVideo' component={UploadVideo} options={{ headerShown: false }} />
 
         </Stack.Navigator>
 
       ) : (
 
         <Stack.Navigator>
-          <Stack.Screen name='Home' options={{ headerShown: false }}>
-            {props => <Home {...props} Exit={Exit} />}
-          </Stack.Screen>
+          <Stack.Screen name='Home' options={{ headerShown: false }}> {props => <Home {...props} Exit={Exit} />} </Stack.Screen>
 
-          <Stack.Screen name='Sign In' options={{ headerShown: false }}>
-            {props => <SignIn {...props} />}
-          </Stack.Screen>
+          <Stack.Screen name='Sign In' options={{ headerShown: false }}>   {props => <SignIn {...props} />}  </Stack.Screen>
 
-          <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
-            {props => <SignUp {...props} />}
-          </Stack.Screen>
+          <Stack.Screen name='Sign Up' options={{ headerShown: false }}> {props => <SignUp {...props} />} </Stack.Screen>
 
-          <Stack.Screen
-            name='EmergencyContacts'
-            component={EmergencyContacts}
-            options={{ headerShown: false }} />
+          <Stack.Screen name='EmergencyContacts' component={EmergencyContacts} options={{ headerShown: false }} />
 
-          <Stack.Screen
-            name='Doctor'
-            component={Doctor}
-            options={{ headerShown: false }} />
+          <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }} />
 
           {/* {props => <Doctor {...props} />} 
                   </Stack.Screen> */}
 
-          <Stack.Screen
-            name='PlayVideo'
-            component={PlayVideo}
-            options={{ headerShown: false }} />
+          <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
 
         </Stack.Navigator>
 

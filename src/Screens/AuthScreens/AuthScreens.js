@@ -31,7 +31,6 @@ export const AuthScreens = ({ navigation }) => {
         component={MedSignIn}
         options={{ headerShown: false }} />
 
-
       <Stack.Screen
         name='ResetPassword'
         component={ForgotPassword}

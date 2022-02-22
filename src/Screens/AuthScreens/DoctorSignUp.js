@@ -123,129 +123,101 @@ export default function DoctorSignUp({ navigation, setDetails }
           <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }}>{`Medical SignUp`}</Text>
         </View>
 
-        <ScrollView style={{ height: 550 }}
-          showsVerticalScrollIndicator={false}>
-          {visibleStatusBar ? (
-            <View>
-              <Card style={styles.txtCards}>
-                <View style={{ flexDirection: 'row' }}>
-                  <TextInput style={styles.txtField} name='name' placeholder='Name' onChangeText={text => setEmail(text)} />
-                </View>
-              </Card>
-              {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
+        <ScrollView style={{ height: 550 }} showsVerticalScrollIndicator={false}> {visibleStatusBar ? (
+          <View>
+            <Card style={styles.txtCards}>
+              <View style={{ flexDirection: 'row' }}>
+                <TextInput style={styles.txtField} name='name' placeholder='Name' onChangeText={text => setEmail(text)} />
+              </View>
+            </Card>
+            {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
-              <Card style={styles.txtCards}>
-                <View style={{ flexDirection: "row" }}>
-                  <TextInput
-                    style={styles.txtField}
-                    name="Surname"
-                    placeholder="Surname"
-                    onChangeText={(text) => setSurname(text)} />
-                </View>
-              </Card>
-              {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
-
-              <Card style={styles.txtCards}>
-                <View style={{ flexDirection: "row" }}>
-                  <TextInput
-                    style={styles.txtField}
-                    name="ContactDetails"
-                    placeholder="Contact Details"
-                    onChangeText={(text) => setContactDetails(text)} />
-                </View>
-              </Card>
-              {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
-
-              <Card style={styles.txtCards}>
-                <View style={{ flexDirection: 'row' }}>
-                  <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
-                </View>
-              </Card>
-              {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
-
+            <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <Picker
-                  specialization={specialization}
-                  style={styles.picker}
-                  onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
-                  <Picker.Item label="Doctor" value="Doctor" />
-                  <Picker.Item label="Nurse" value="Nurse" />
-                  <Picker.Item label="Basic Abulance Assistance" value="BEA" />
-                  <Picker.Item label="Ambulance Emergency Assistance" value="AEA" />
-                  <Picker.Item label="Critical Care Assist" value="CCA" />
-                  <Picker.Item label="Emergency Care Practitioner" value="ECP" />
-                </Picker>
+                <TextInput style={styles.txtField} name="Surname" placeholder="Surname" onChangeText={(text) => setSurname(text)} />
               </View>
+            </Card>
+            {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
-              <Card style={styles.txtCards}>
-                <View style={{ flexDirection: "row" }}>
-                  <TextInput
-                    style={styles.txtField}
-                    name="Qualification"
-                    placeholder="Qualification"
-                    onChangeText={(text) => setQualification(text)} />
-                </View>
-              </Card>
-              {prompt5 ? <Text style={styles.prompt}>{prompt5}</Text> : null}
-
-              <View style={{ alignItems: "center" }}>
-                <TouchableOpacity style={styles.signIn} onPress={changeVisibilityStatusBar}>
-                  <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`NEXT`} </Text>
-                </TouchableOpacity>
+            <Card style={styles.txtCards}>
+              <View style={{ flexDirection: "row" }}>
+                <TextInput style={styles.txtField} name="ContactDetails" placeholder="Contact Details" onChangeText={(text) => setContactDetails(text)} />
               </View>
+            </Card>
+            {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
+            <Card style={styles.txtCards}>
+              <View style={{ flexDirection: 'row' }}>
+                <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
+              </View>
+            </Card>
+            {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
+
+            <View style={{ flexDirection: "row" }}>
+              <Picker
+                specialization={specialization}
+                style={styles.picker}
+                onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
+                <Picker.Item label="Doctor" value="Doctor" />
+                <Picker.Item label="Nurse" value="Nurse" />
+                <Picker.Item label="Basic Abulance Assistance" value="BEA" />
+                <Picker.Item label="Ambulance Emergency Assistance" value="AEA" />
+                <Picker.Item label="Critical Care Assist" value="CCA" />
+                <Picker.Item label="Emergency Care Practitioner" value="ECP" />
+              </Picker>
             </View>
 
-          ) : (
-
-            <View>
-              <Card style={styles.txtCards}>
-                <View style={{ flexDirection: "row" }}>
-                  <TextInput
-                    style={styles.txtField}
-                    name="Description"
-                    placeholder="Description"
-                    onChangeText={(text) => setDescription(text)} />
-                </View>
-              </Card>
-
-              <Card style={styles.txtCards}>
-                <View style={{ flexDirection: "row" }}>
-                  <TextInput
-                    style={styles.txtField}
-                    name="Branch"
-                    placeholder="Branch"
-                    onChangeText={(text) => setBranch(text)} />
-                </View>
-              </Card>
-
-              <Card style={styles.txtCards}>
-                <View style={{ flexDirection: 'row' }}>
-                  <TextInput style={styles.txtField}
-                    name='password' placeholder='Password'
-                    secureTextEntry={true}
-                    onChangeText={text => setPassword(text)} />
-                </View>
-              </Card>
-              {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
-
-              <Card style={styles.txtCards}>
-                <View style={{ flexDirection: 'row' }}>
-                  <TextInput style={styles.txtField}
-                    name='confirmPassword' placeholder='Confirm Password'
-                    secureTextEntry={true}
-                    onChangeText={text => setPassword(text)} />
-                </View>
-              </Card>
-              {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
-
-              <View style={{ alignItems: "center" }}>
-                <TouchableOpacity style={styles.signIn} onPress={Register}>
-                  <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`SIGNIN`} </Text>
-                </TouchableOpacity>
+            <Card style={styles.txtCards}>
+              <View style={{ flexDirection: "row" }}>
+                <TextInput style={styles.txtField} name="Qualification" placeholder="Qualification" onChangeText={(text) => setQualification(text)} />
               </View>
+            </Card>
+            {prompt5 ? <Text style={styles.prompt}>{prompt5}</Text> : null}
+
+            <View style={{ alignItems: "center" }}>
+              <TouchableOpacity style={styles.signIn} onPress={changeVisibilityStatusBar}>
+                <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`NEXT`} </Text>
+              </TouchableOpacity>
             </View>
-          )}
+
+          </View>
+
+        ) : (
+
+          <View>
+            <Card style={styles.txtCards}>
+              <View style={{ flexDirection: "row" }}>
+                <TextInput style={styles.txtField} name="Description" placeholder="Description" onChangeText={(text) => setDescription(text)} />
+              </View>
+            </Card>
+
+            <Card style={styles.txtCards}>
+              <View style={{ flexDirection: "row" }}>
+                <TextInput style={styles.txtField} name="Branch" placeholder="Branch" onChangeText={(text) => setBranch(text)} />
+              </View>
+            </Card>
+
+            <Card style={styles.txtCards}>
+              <View style={{ flexDirection: 'row' }}>
+                <TextInput style={styles.txtField} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
+              </View>
+            </Card>
+            {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
+
+            <Card style={styles.txtCards}>
+              <View style={{ flexDirection: 'row' }}>
+                <TextInput style={styles.txtField} name='confirmPassword' placeholder='Confirm Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
+              </View>
+            </Card>
+            {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
+
+            <View style={{ alignItems: "center" }}>
+              <TouchableOpacity style={styles.signIn} onPress={Register}>
+                <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`SIGNIN`} </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
         </ScrollView>
 
       </View>

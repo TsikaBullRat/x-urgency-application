@@ -46,10 +46,7 @@ export default function ResetPassword({ navigation }) {
       </Card>
 
       <View style={styles.header}>
-
-        <Text style={{
-          fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling', color: '#F47066', justifyContent: "left"
-        }}>{`Reset Your Password?`}</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling', color: '#F47066', justifyContent: "left" }}>{`Reset Your Password?`}</Text>
       </View>
       <br />
       <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling', color: '#000000' }}>Create your new<br /> password</Text>

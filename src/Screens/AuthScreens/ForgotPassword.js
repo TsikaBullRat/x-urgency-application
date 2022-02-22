@@ -43,6 +43,7 @@ export default function ForgotPassword({ navigation }) {
       handleResetPassword("lindiwe.mpondo@gmail.com")
     }
   }
+
   const Exit = () => {
     alert("Successfully logged out")
     navigation.navigate('SignIn')
@@ -50,26 +51,16 @@ export default function ForgotPassword({ navigation }) {
 
   return (
     <View style={styles.container}>
-
       <Card style={styles.card}>
-        <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={110} color="#fff" />
-        </View>
+        <View style={styles.heartIcon}><FontAwesome name="heartbeat" size={110} color="#fff" /></View>
         <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-
-        <Text style={{
-          fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling',
-          color: '#F47066', justifyContent: "left"
-        }}>{`Forgot your password?`}</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling', color: '#F47066', justifyContent: "left" }}>{`Forgot your password?`}</Text>
       </View>
       <br />
-      <Text style={{
-        fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
-        color: '#000000'
-      }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
+      <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling', color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
 
       <View style={{ alignItems: 'center' }}>
         <Card style={styles.txtCards}>
@@ -79,14 +70,12 @@ export default function ForgotPassword({ navigation }) {
           </View>
         </Card>
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
-
       </View>
 
       <View style={{ alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
           <Text style={{ color: '#fff' }}>{`SEND`} </Text>
         </TouchableOpacity>
-
       </View>
 
     </View>

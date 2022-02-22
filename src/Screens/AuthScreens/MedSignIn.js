@@ -42,14 +42,7 @@ export default function MedSignIn({ navigation, setDone }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{
-          fontSize: 30, color: '#F47066', ...Platform.select({
-            web: {
-              fontFamily: 'Felix Titling'
-            }
-          })
-        }}>{`Medical SignIn`}</Text>
-
+        <Text style={{ fontSize: 30, color: '#F47066', ...Platform.select({ web: { fontFamily: 'Felix Titling' } }) }}>{`Medical SignIn`}</Text>
       </View>
 
       <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
@@ -63,16 +56,12 @@ export default function MedSignIn({ navigation, setDone }) {
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={32} color="black" style={{ marginTop: 12, marginLeft: 12 }} />
-            <TextInput style={styles.txtPassword}
-              name='password' placeholder='Password'
-              secureTextEntry={true}
-              onChangeText={text => setPassword(text)} />
+            <TextInput style={styles.txtPassword} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
           </View>
         </Card>
 
         <View style={{ width: '80%', alignItems: 'flex-end' }}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Reset Password')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Reset Password')}>
             <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }}>{`Forgot Password?`} </Text>
           </TouchableOpacity>
         </View>
@@ -90,10 +79,7 @@ export default function MedSignIn({ navigation, setDone }) {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={{ marginVertical: 20 }}
-          onPress={() => navigation.navigate('SignIn')}>
-          BACK
-        </TouchableOpacity>
+        <TouchableOpacity style={{ marginVertical: 20 }} onPress={() => navigation.navigate('SignIn')}> BACK</TouchableOpacity>
 
       </View>
     </View>

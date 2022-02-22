@@ -75,17 +75,13 @@ export default function SignIn({ navigation }) {
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={32} color="black" style={{ marginTop: 12, marginLeft: 12 }} />
-            <TextInput style={styles.txtPassword}
-              name='password' placeholder='Password'
-              secureTextEntry={true}
-              onChangeText={text => setPassword(text)} />
+            <TextInput style={styles.txtPassword} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
           </View>
         </Card>
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
         <View style={{ width: '80%', alignItems: 'flex-end' }}>
-          <TouchableOpacity
-            onPress={() => { navigation.navigate('Reset Password') }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('Reset Password') }}>
             <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }}>{`Forgot Password?`} </Text>
           </TouchableOpacity>
         </View>
@@ -105,7 +101,6 @@ export default function SignIn({ navigation }) {
 
         <View style={{ marginTop: 10, }} >
           <Text style={{ paddingTop: 10, fontWeight: 'bold', color: 'grey', fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
-
           <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
             <TouchableOpacity onPress={() => navigation.navigate('MedSignIn')}>
               <Text style={{ fontFamily: 'Arial', fontSize: 20, paddingTop: 5, color: '#F47066' }}> {`SignIn`} </Text>

@@ -116,8 +116,7 @@ export default function PlayVideo({ navigation, route }) {
 
       {/**-------------Video----------------Video-----------------Video---------------- */}
       <View style={{ width: 335, marginTop: 50 }}>
-        <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping
-          style={{ width: 335, height: 180, }} />
+        <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping style={{ width: 335, height: 180, }} />
       </View>
 
       {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
@@ -131,13 +130,7 @@ export default function PlayVideo({ navigation, route }) {
             </View>
 
             <View>
-              <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()}>
-                <AntDesign
-                  name="downcircle"
-                  size={18}
-                  color="black"
-                  style={styles.dropDown} />
-              </TouchableOpacity>
+              <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()}><AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} /> </TouchableOpacity>
             </View>
           </View>
 
@@ -172,8 +165,7 @@ export default function PlayVideo({ navigation, route }) {
             <View style={{ flexDirection: 'row' }}>
               <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
               <View style={{ width: 90, height: 40, borderRadius: 30 }}>
-                <Button color="#F47066"
-                  onPress={() => Post(comment, data.firestore)} title='Comment' />
+                <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title='Comment' />
               </View>
             </View>
           </Card>
@@ -184,14 +176,7 @@ export default function PlayVideo({ navigation, route }) {
 
         /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
         <View>
-          <Card
-            style={{
-              width: 335,
-              height: 300,
-              borderRadius: 20,
-              backgroundColor: '#fff',
-              marginTop: 15,
-            }}>
+          <Card style={{ width: 335, height: 300, borderRadius: 20, backgroundColor: '#fff', marginTop: 15, }}>
 
             <View style={{ width: 335, flexDirection: 'row', justifyContent: 'space-between' }}>
 

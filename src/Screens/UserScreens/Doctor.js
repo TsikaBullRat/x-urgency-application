@@ -119,29 +119,18 @@ const Doctor = ({ navigation }) => {
 
       {/*Doctor-Cards---------------Doctor-Cards---------Doctor-Cards */}
 
-      <View
-        style={{
-          width: 355,
-          marginTop: 10,
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          flexDirection: 'row',
-        }}>
+      <View style={{ width: 355, marginTop: 10, alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row', }}>
 
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
             <MaterialCommunityIcons name="certificate-outline" size={34} color="#fff" />
-
-            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
-              {`Qualifiation`}
-            </Text>
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}> {`Qualifiation`}</Text>
           </View>
         </Card>
 
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
             <MaterialCommunityIcons name="briefcase-clock-outline" size={34} color="#fff" />
-
             <View style={{ paddingTop: 20, flexDirection: 'row' }}>
               <Socials text="Following" number="15" />
               <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
@@ -153,10 +142,7 @@ const Doctor = ({ navigation }) => {
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
             <Feather name="award" size={32} color="#fff" />
-
-            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
-              {`Awards`}
-            </Text>
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>  {`Awards`} </Text>
           </View>
         </Card>
 
@@ -173,9 +159,7 @@ const Doctor = ({ navigation }) => {
           <View style={{ flexDirection: 'row' }}>
             <Feather name="phone" size={20} color="black" />
             <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
-            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
-              {`(053) 871 2956`}
-            </Text>
+            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>  {`(053) 871 2956`}</Text>
           </View>
 
           <View style={{ width: 355, marginTop: 35, justifyContent: 'flex-start' }}>
@@ -204,7 +188,6 @@ const Doctor = ({ navigation }) => {
         </View>
       </View>
     </View>
-
 
   )
 }

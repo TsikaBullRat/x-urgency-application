@@ -12,14 +12,7 @@
  **/
 
 import React, { useState } from 'react'
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Platform
-} from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleSignUp } from '../../firebase'
@@ -78,53 +71,24 @@ export default function SignUp({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <AlertNote
-        modalVisible={displayModal}
-        setModalVisible={setDisplayModal}
-        msg={message}
-      />
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name='heartbeat' size={110} color='#fff' />
         </View>
-        <Text
-          style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}
-        >
-          {' '}
-          {`X-urgency`}{' '}
-        </Text>
+        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}>  {' '} {`X-urgency`}{' '}  </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text
-          style={{
-            fontSize: 30,
-            ...Platform.select({
-              web: {
-                fontFamily: 'Felix Titling'
-              }
-            }),
-            color: '#F47066'
-          }}
-        >{`SignUp`}</Text>
+        <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }} >{`SignUp`}</Text>
       </View>
 
       {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
 
       <Card style={styles.txtCards}>
         <View style={{ flexDirection: 'row' }}>
-          <AntDesign
-            name='user'
-            size={22}
-            color='black'
-            style={{ marginTop: 17, marginLeft: 16 }}
-          />
-          <TextInput
-            style={styles.txtUser}
-            name='userName'
-            placeholder='Username'
-            onChangeText={text => setEmail(text)}
-          />
+          <AntDesign name='user' size={22} color='black' style={{ marginTop: 17, marginLeft: 16 }} />
+          <TextInput style={styles.txtUser} name='userName' placeholder='Username' onChangeText={text => setEmail(text)} />
         </View>
       </Card>
       {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
@@ -132,81 +96,37 @@ export default function SignUp({ navigation }) {
       <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign
-              name='mail'
-              size={20}
-              color='black'
-              style={{ marginTop: 20, marginLeft: 15 }}
-            />
-            <TextInput
-              style={styles.txtEmail}
-              name='email'
-              placeholder='Email'
-              onChangeText={text => setEmail(text)}
-            />
+            <AntDesign name='mail' size={20} color='black' style={{ marginTop: 20, marginLeft: 15 }} />
+            <TextInput style={styles.txtEmail} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons
-              name='lock'
-              size={32}
-              color='black'
-              style={{ marginTop: 11, marginLeft: 10 }}
-            />
+            <EvilIcons name='lock' size={32} color='black' style={{ marginTop: 11, marginLeft: 10 }} />
             <TextInput
-              style={styles.txtPassword}
-              name='password'
-              placeholder='Password'
-              secureTextEntry={true}
-              onChangeText={text => setPassword(text)}
-            />
+              style={styles.txtPassword} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
           </View>
         </Card>
         {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons
-              name='unlock'
-              size={32}
-              color='black'
-              style={{ marginTop: 11, marginLeft: 10 }}
-            />
-            <TextInput
-              style={styles.txtPassword}
-              name='confirmPassword'
-              placeholder='Confirm Password'
-              secureTextEntry={true}
-              onChangeText={text => setPassword(text)}
-            />
+            <EvilIcons name='unlock' size={32} color='black' style={{ marginTop: 11, marginLeft: 10 }} />
+            <TextInput style={styles.txtPassword} name='confirmPassword' placeholder='Confirm Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
           </View>
         </Card>
         {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Register}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontFamily: 'Felix Titling',
-                color: '#fff'
-              }}
-            >
-              {`SIGNUP`}{' '}
-            </Text>
+            <Text style={{ fontSize: 20, fontFamily: 'Felix Titling', color: '#fff' }} >  {`SIGNUP`}{' '} </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{
-          alignItems: 'center', justifyContent: 'center',
-          marginVertical: 20
-        }}>
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-            BACK
-          </TouchableOpacity>
+        <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}> BACK  </TouchableOpacity>
         </View>
       </View>
     </View>

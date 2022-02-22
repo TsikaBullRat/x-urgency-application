@@ -137,10 +137,7 @@ export default function UploadVideo({ navigation }) {
   )
 
   const renderVideoPlayer = () => (
-    <Video
-      source={{ uri: videoSource }}
-      shouldPlay={true}
-      style={styles.media} />
+    <Video source={{ uri: videoSource }} shouldPlay={true} style={styles.media} />
   )
 
   const renderVideoRecordIndicator = () => (
@@ -209,6 +206,7 @@ export default function UploadVideo({ navigation }) {
                 <View style={{ alignItems: 'center' }}>
                   <Image source={{ uri: 'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7' }} style={styles.logo} />
                 </View>
+
                 <TouchableOpacity style={styles.button1} onPress={() => { setVisible(!visible) }} >
                   <Text>{`Open Camera`}</Text>
                 </TouchableOpacity>
@@ -219,15 +217,7 @@ export default function UploadVideo({ navigation }) {
               <View>
                 <SafeAreaView //style={styles.container}
                 >
-                  <Camera
-                    ref={cameraRef}
-                    style={styles.contain}
-                    type={cameraType}
-                    flashMode={Camera.Constants.FlashMode.on}
-                    onCameraReady={onCameraReady}
-                    onMountError={error => {
-                      console.log('cammera error', error)
-                    }} />
+                  <Camera ref={cameraRef} style={styles.contain} type={cameraType} flashMode={Camera.Constants.FlashMode.on} onCameraReady={onCameraReady} onMountError={error => { console.log('cammera error', error) }} />
 
                   <View style={styles.contain}>
                     {isVideoRecording && renderVideoRecordIndicator()}
@@ -236,14 +226,8 @@ export default function UploadVideo({ navigation }) {
                     {!videoSource && !isPreview && renderCaptureControl()}
                   </View>
 
-                  <View
-                    style={{
-                      width: 380,
-                      marginTop: 400,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexDirection: 'row'
-                    }} >
+                  <View style={{ width: 380, marginTop: 400, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }} >
+
                     <TouchableOpacity onPress={() => { setVisible(!visible) }} >
                       <Text>{`Close`}</Text>
                     </TouchableOpacity>

@@ -98,11 +98,7 @@ export default function Upload({ navigation, Log }) {
       <Text style={styles.header}>Upload Or Create Your First Aid Video Here</Text>
 
       <View style={{ flexDirection: "row" }}>
-        <TextInput
-          style={styles.txtField}
-          name="username"
-          placeholder="Title"
-          onChangeText={text => setTitle(text)} />
+        <TextInput style={styles.txtField} name="username" placeholder="Title" onChangeText={text => setTitle(text)} />
       </View>
 
       <View>
@@ -122,21 +118,12 @@ export default function Upload({ navigation, Log }) {
       </View>
 
       <View style={{ flexDirection: "row" }}>
-        <TextInput
-          style={styles.txtField}
-          name="password"
-          placeholder="Description"
-          onChangeText={text => setDescription(text)} />
+        <TextInput style={styles.txtField} name="password" placeholder="Description" onChangeText={text => setDescription(text)} />
       </View>
 
       {selectedImage ? (
         <Video ref={ref} source={{ uri: selectedImage.localUri }} resizeMode="stretch" isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-          style={{
-            width: 380,
-            height: 220,
-            marginTop: 5,
-            alignSelf: "center",
-          }} />
+          style={{ width: 380, height: 220, marginTop: 5, alignSelf: "center", }} />
 
       ) : (
 
