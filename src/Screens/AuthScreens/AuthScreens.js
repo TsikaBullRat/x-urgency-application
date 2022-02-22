@@ -10,19 +10,19 @@ const Stack = createNativeStackNavigator()
 
 export const AuthScreens = ({ navigation }) => {
   return (
-    <Stack.Navigator initialRouteName='Sign In'>
+    <Stack.Navigator initialRouteName='SignIn'>
 
       <Stack.Screen
-        name='Doctor SignUp'
+        name='DoctorSignUp'
         options={{ headerShown: false }} >
         {props => <DoctorSignUp {...props} authNavigation={navigation} />}
       </Stack.Screen>
 
-      <Stack.Screen name='Sign In' options={{ headerShown: false }}>
+      <Stack.Screen name='SignIn' options={{ headerShown: false }}>
         {(props) => <SignIn {...props} />}
       </Stack.Screen>
 
-      <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
+      <Stack.Screen name='SignUp' options={{ headerShown: false }}>
         {(props) => <SignUp {...props} />}
       </Stack.Screen>
 
@@ -31,14 +31,9 @@ export const AuthScreens = ({ navigation }) => {
         component={MedSignIn}
         options={{ headerShown: false }} />
 
-      <Stack.Screen
-        name='Doctor SignUp'
-        options={{ headerShown: false }} >
-        {props => <DoctorSignUp {...props} authNavigation={navigation} />}
-      </Stack.Screen>
 
       <Stack.Screen
-        name='Reset Password'
+        name='ResetPassword'
         component={ForgotPassword}
         options={{ headerShown: false }} />
 

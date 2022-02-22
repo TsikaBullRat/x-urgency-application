@@ -6,7 +6,8 @@ import { auth, LoadSet, LogOut, firestore } from '../../firebase';
 import { ProgressBar, VideoList, AlertNote } from '../../Components'
 import { Feather } from '@expo/vector-icons';
 
-export default function MedicalHome({ navigation, progress, Log, Exit }) {
+export default function MedicalHome({ navigation, progress, Log, Exit }
+) {
 
   useEffect(() => {
     auth.signInWithEmailAndPassword("yomzi123@gmail.com", "Asstastic")
@@ -132,17 +133,12 @@ export default function MedicalHome({ navigation, progress, Log, Exit }) {
 
       {loading ? <ProgressBar status={loading} /> : null}
 
-      <ScrollView style={{ height: 580, width: 335, }}
-
-        vertical={true} showsVerticalScrollIndicator={false}>
-
         <Card style={styles.menu2}>
           <View>
             <VideoList videos={videos} VideoScreen={VideoScreen} />
           </View>
         </Card>
 
-      </ScrollView>
       <TouchableOpacity
         style={styles.btnUpload} onPress={() => { navigation.navigate("Upload") }} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>
@@ -168,28 +164,14 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 55,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
-    shadowColor: 'grey',
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-    elevation: 1,
   },
 
-  menu2: {
-    width: 355,
-    height: 550,
-    marginLeft: 10,
-    marginTop: 50,
-    borderRadius: 15,
-  },
-
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
+  vidTitle: {
+    fontSize:18, 
+    fontFamily:'flexi titling',  
+    color:'#F47066'
   },
 
   btnUpload: {

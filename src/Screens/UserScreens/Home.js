@@ -6,14 +6,34 @@ import { auth, LoadSet, firestore } from '../../firebase'
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import { VideoList } from '../../Components/VideoList'
+import { Feather } from '@expo/vector-icons';
+import { Avatar, Badge } from 'react-native-elements';
 
 export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
-    VideoScreen = data => {
+  [image, setImage] = useState(null),
+  [initial, setInitial] = useState('')
+
+  useEffect(() => {
+    auth.currentUser ? (
+      setImage(auth.currentUser.photoURL),
+      setInitial(auth.currentUser.displayName.substring(0, 1))
+    ) : (
+      auth.onAuthStateChanged(doc => {
+        setImage(doc.photoURL)
+        console.log(doc.displayName)
+        setInitial(doc.displayName.substring(0, 1))
+        console.log(auth.currentUser)
+      })
+    )
+  }, [])
+
+   const VideoScreen = data => {
       navigation.navigate('PlayVideo', { data })
     },
+    
     Emergency = () => {
       navigation.navigate('EmergencyContacts')
     }
@@ -24,26 +44,29 @@ export default function Home({ navigation, Exit }) {
 
   return (
     <View style={styles.container}>
-      {/**---------Call Siren------------Call Siren---------Call Siren-------------------- */}
-      <View style={{ top: 5 }}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('EmergencyContacts')} >
-          <View style={{ flexDirection: 'row' }}>
-            <Image
-              source={require('../../../img/siren.jpg')}
-              style={{ width: 30, height: 35 }} />
-
-            <View style={{ paddingVertical: 10 }}>
-              <Text style={{ fontSize: 12, fontWeight: 'bold', fontFamily: 'Arial', color: '#F47066' }}  >  Call</Text>
-              <Text style={{ fontSize: 12, fontWeight: 'bold', fontFamily: 'Arial', color: '#F47066' }}  > Now </Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-      </View>
+      
 
       {/**------------------Header-----------------------Header----------------- */}
       <View style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>
         <Header Exit={Exit} Emergency={Emergency} />
+
+        <View style={{ marginTop: 50, marginLeft: 10 }}>
+          <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
+            {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+
+            ) : (
+
+              <View style={styles.temp}>
+                <Text style={styles.temp_text}> {initial} </Text>
+              </View>
+            )}
+
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => { navigation.navigate("Update") }} >
+            <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
@@ -132,5 +155,26 @@ const styles = StyleSheet.create({
   tag: {
     paddingVertical: 2,
     fontSize: 12
+  },
+
+  avatar: {
+    //top: -60,
+    left: -3
+  },
+
+  temp: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    marginTop: 80,
+    backgroundColor: 'turquoise',
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
+
+  temp_text: {
+    fontSize: 40,
+    color: '#fff',
+    fontFamily: 'Roboto'
   }
 })
