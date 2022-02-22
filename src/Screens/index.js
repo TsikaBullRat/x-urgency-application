@@ -11,12 +11,6 @@ import Upload from "./DoctorsScreens/Upload"
 import PlayVideo from "./UserScreens/PlayVideo"
 import Doctor from "./UserScreens/Doctor"
 import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
+import { Navigator } from "./Navigation/Navigator"
 
-
-
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn}
-
-export { UserScreens } from './UserScreens/UserScreens'
-export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'
-export { AuthScreens } from './AuthScreens/AuthScreens'
-
+export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn, Doctor, Navigator}

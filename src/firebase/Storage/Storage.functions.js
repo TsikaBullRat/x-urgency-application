@@ -200,10 +200,8 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
             Log(progress)
             switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED:
-                    // console.log("Task paused")
                     break
                 case firebase.storage.TaskState.RUNNING:
-                    // console.log("Task running")
                     break
             }
 

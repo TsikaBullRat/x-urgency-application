@@ -1,5 +1,4 @@
 import { auth } from "../config"
-
 import { alertNote } from "../../Components"
 
 const handleSignIn = (email, password, setMessage) => {

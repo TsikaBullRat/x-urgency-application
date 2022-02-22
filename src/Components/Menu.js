@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, Image, Pressable, Platform } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper';
-import { auth, LoadSet, firestore } from "../firebase";
+import { LoadSet } from "../firebase";
 
 export default function Menu({ list, setVids }) {
 
@@ -44,7 +44,7 @@ export default function Menu({ list, setVids }) {
 
           <Pressable onPress={() => Sort("cpr")}>
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/CPRIcon.png')} />
+              <Image style={styles.menuIcons} source={require('../images/cprIcon.png')} />
               <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`CPR`} </Text>
             </Card>
           </Pressable>

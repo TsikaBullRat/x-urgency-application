@@ -78,6 +78,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     } else {
       setVisibleStatusBar(!visibleStatusBar)
     }
+  }
 
 
   const Register = () => {
@@ -200,7 +201,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
             <View style={{ alignItems: "center" }}>
               <TouchableOpacity style={styles.signIn} onPress={changeVisibilityStatusBar}>
-                <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`NEXT`} </Text>
+                <Text style={{ fontSize: 20, color: '#fff', }}>{`NEXT`} </Text>
               </TouchableOpacity>
             </View>
 
@@ -252,7 +253,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
             <View style={{ alignItems: "center" }}>
               <TouchableOpacity style={styles.signIn} onPress={Register}>
-                <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`SIGNIN`} </Text>
+                <Text style={{ fontSize: 20, color: '#fff', }}>{`SIGNIN`} </Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
@@ -262,7 +263,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
     </View>
 
   );
-}}
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -302,10 +303,10 @@ const styles = StyleSheet.create({
     paddingLeft: 2,
     paddingTop: 15,
     fontSize: 18,
-    fontFamily: 'flexi titling',
     borderRadius: 10,
     ...Platform.select({
       web: {
+        fontFamily: 'flexi titling',
         outlineColor: '#fff',
         width: 220
       }

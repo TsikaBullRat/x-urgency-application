@@ -24,7 +24,7 @@ import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore } from '../../firebase'
 import { Collect, Post, } from '../../firebase';
 
-export default function PlayVideo({ navigation, route }) {
+export default function PlayVideo({ navigation, route, param }) {
 
   // useEffect(()=>{
   //   auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
@@ -33,7 +33,7 @@ export default function PlayVideo({ navigation, route }) {
   //     })
   // }, [])
 
-  const data = route.params.data
+  const data = param
   const [userName, setUserName] = useState(data.owner/*"Ntsika"*/)
   const [videoPlay, setVideoPlay] = useState(data.url/*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/)
   const [views, setViews] = useState(data.views/*42*/)
@@ -230,8 +230,6 @@ export default function PlayVideo({ navigation, route }) {
         </View>
 
       )}
-
-      <Comments video={data.firestore} />
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card style={{

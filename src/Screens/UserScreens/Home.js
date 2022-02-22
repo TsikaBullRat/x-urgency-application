@@ -13,15 +13,15 @@ import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import { VideoList } from '../../Components/VideoList'
 
-export default function Home ({ navigation, Exit }) {
+export default function Home ({ Navigate, Exit }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = data => {
-      navigation.navigate('PlayVideo', { data })
+      Navigate(1, data)
     },
     Emergency = () => {
-      navigation.navigate('EmergencyContacts')
+      Navigate(2)
     }
 
   useEffect(() => {

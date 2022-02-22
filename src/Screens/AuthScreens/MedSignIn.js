@@ -74,20 +74,20 @@ export default function MedSignIn({ navigation, setDone }) {
         <View style={{ width: 320, alignItems: 'flex-end' }}>
           <TouchableOpacity
             onPress={() => { navigation.navigate('Reset Password') }}>
-            <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }}>{`Forgot Password?`} </Text>
+            <Text style={{ paddingTop: 20, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
           </TouchableOpacity>
         </View>
 
         <View style={{ alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`LOGIN`} </Text>
+            <Text style={{ fontSize: 20,  color: '#fff', }}>{`LOGIN`} </Text>
           </TouchableOpacity>
         </View>
 
         <View style={{ marginTop: 10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <Text style={{ paddingTop: 10, fontSize: 17, }}>  {`New User?`} </Text>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }}>
-            <Text style={{ paddingTop: 10, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
+            <Text style={{ paddingTop: 10, fontSize: 20,  color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>
 

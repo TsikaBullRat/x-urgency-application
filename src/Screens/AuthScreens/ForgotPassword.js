@@ -140,10 +140,10 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 20,
     fontSize: 18,
-    fontFamily: 'flexi titling',
     borderRadius: 10,
     ...Platform.select({
       web: {
+        fontFamily: 'flexi titling',
         outlineColor: '#fff',
         width: 220
       }
@@ -155,10 +155,10 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
     paddingTop: 15,
     fontSize: 18,
-    fontFamily: 'flexi titling',
     borderRadius: 10,
     ...Platform.select({
       web: {
+        fontFamily: 'flexi titling',
         outlineColor: '#fff',
         width: 220
       }
