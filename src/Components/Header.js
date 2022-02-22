@@ -12,43 +12,58 @@
 **/
 import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { Avatar, Badge } from 'react-native-elements';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
+import {Feather} from '@expo/vector-icons';
 
 export default function Header({ Exit, Emergency, navigation }) {
 
-  const [image, setImage] = useState(null)
-  const [initial, setInitial] = useState('')
-
-  useEffect(() => {
-    auth.currentUser ? (
-      setImage(auth.currentUser.photoURL),
-      setInitial(auth.currentUser.displayName.substring(0, 1))
-    ) : (
-      auth.onAuthStateChanged(doc => {
-        setImage(doc.photoURL)
-        console.log(doc.displayName)
-        setInitial(doc.displayName.substring(0, 1))
-        console.log(auth.currentUser)
-      })
-    )
-  }, [])
+  
 
   return (
 
     <View style={styles.contain}>
-      <View style={{
-        width: 335,
-        marginTop: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-end'
-      }}>
-
-      </View>
 
       {/*---------------------------Header--------------------------*/}
+{/**---------Call Siren------------Call Siren---------Call Siren-------------------- */}
+      <View style={{ marginVertical: 15 }}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('EmergencyContacts')}
+        >
+          <View style={{ flexDirection: 'row' }}>
+            <Image
+              source={require('../../img/siren.jpg')}
+              style={{ width: 30, height: 35 }}
+            />
+
+            <View style={{ paddingVertical: 10 }}>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontWeight: 'bold',
+                  fontFamily: 'Arial',
+                  color: '#F47066'
+                }}
+              >
+                Call
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontWeight: 'bold',
+                  fontFamily: 'Arial',
+                  color: '#F47066'
+                }}
+              >
+                Now
+              </Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        
+      </View>
+
+      
 
       <View style={{
         flexDirection: 'row',
@@ -62,21 +77,9 @@ export default function Header({ Exit, Emergency, navigation }) {
           <Text style={styles.header}> EMERGENCY ?</Text>
         </View>
 
-        <View style={styles.avatar}>
-          {image ? (
-            <View>
-              <Avatar rounded source={{ uri: image, }} size="medium" />
-            </View>
-          ) : (
-            <View style={styles.temp}>
-              <Text style={styles.temp_text}> {initial} </Text>
-            </View>
-          )}
-        </View>
-
-        <View style={{ top: -40 }}>
+        <View style={{ top: -20 }}>
           <TouchableOpacity onPress={Exit} >
-            <Image source={require("../images/logOut.png")} style={styles.logoutIMG} />
+            <Image source={require("../images/logOut.png")} style={styles.logoutIMG} /> 
           </TouchableOpacity>
         </View>
 
@@ -106,25 +109,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Felix Titling'
   },
 
-  avatar: {
-    top: -60,
-    left: -3
-  },
-
-  temp: {
-    width: 70,
-    height: 70,
-    borderRadius: 50,
-    marginTop: 80,
-    backgroundColor: 'turquoise',
-    textAlign: 'center',
-    justifyContent: 'center'
-  },
-
-  temp_text: {
-    fontSize: 40,
-    color: '#fff',
-    fontFamily: 'Roboto'
-  }
+  
 
 })

@@ -39,14 +39,12 @@ export default function App ({ navigation }) {
     navigation.navigate('auth')
   }
 
- 
-
   useEffect(() => {
-    auth.onAuthStateChanged(user => (user ? setID(user.uid) : setID(false)))
+    auth.onAuthStateChanged(user => (user ? setID(user.uid) : setID(null)))
   })
 
   useEffect(() => {
-    id ? '' : setCheck2(false), setDoctor('')
+    id ? null : setCheck2(false), setDoctor(null)
   }, [id])
 
   useEffect(() => {
@@ -67,12 +65,11 @@ export default function App ({ navigation }) {
 
   useEffect(() => {
     doctor !== null ? setCheck2(true) : null
-  }, [doctor])
+  }, [null])
 
   return (
     <NavigationContainer>
       <KeyboardAwareScrollView>
-
         {check1 ? (
           id ? (
             check2 ? (
@@ -107,17 +104,12 @@ export default function App ({ navigation }) {
                     name='UploadVideo'
                     component={UploadVideo}
                     options={{ headerShown: false }}
-                  />                 
-                  
+                  />
                 </Stack.Navigator>
               ) : (
                 <Stack.Navigator>
                   <Stack.Screen name='Home' options={{ headerShown: false }}>
                     {props => <Home {...props} Exit={Exit} />}
-                  </Stack.Screen>
-
-                  <Stack.Screen name='Sign In' options={{ headerShown: false }}>
-                    {props => <SignIn {...props} />}
                   </Stack.Screen>
 
                   <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
@@ -130,12 +122,12 @@ export default function App ({ navigation }) {
                     options={{ headerShown: false }}
                   />
 
-                  <Stack.Screen
+                  {/* <Stack.Screen
                     name='Doctor'
                     component={Doctor}
-                    options={{ headerShown: false }}/>
-                    {/* {props => <Doctor {...props} />} 
-                  </Stack.Screen> */}
+                    options={{ headerShown: false }}>
+                    {props => <Doctor {...props} />} 
+                  </Stack.Screen>  */}
 
                   <Stack.Screen
                     name='PlayVideo'
@@ -151,7 +143,56 @@ export default function App ({ navigation }) {
               //   {props => <DoctorSignUp {...props} authNavigation={navigation} />}
               // </Stack.Screen>
 
-              <SignUp />
+              <Stack.Navigator>
+                <Stack.Screen
+                  name='SignIn'
+                  component={SignIn}
+                  options={{ headerShown: false }}
+                />
+
+                <Stack.Screen name='Home' options={{ headerShown: false }}>
+                  {props => <Home {...props} Exit={Exit} />}
+                </Stack.Screen>
+
+                <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
+                  {props => <SignUp {...props} />}
+                </Stack.Screen>
+
+                <Stack.Screen
+                  name='EmergencyContacts'
+                  component={EmergencyContacts}
+                  options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                  name='Doctor'
+                  component={Doctor}
+                  options={{ headerShown: false }}
+                />
+                {/* {props => <Doctor {...props} />}  */}
+                {/* </Stack.Screen>  */}
+
+                <Stack.Screen
+                  name='MedSignIn'
+                  component={MedSignIn}
+                  options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                  name='DoctorSignUp'
+                  options={{ headerShown: false }}
+                >
+                  {props => (
+                    <DoctorSignUp {...props} authNavigation={navigation} />
+                  )}
+                </Stack.Screen>
+
+                <Stack.Screen
+                  name='PlayVideo'
+                  component={PlayVideo}
+                  options={{ headerShown: false }}
+                />
+              </Stack.Navigator>
             )
           ) : (
             <MedSignIn />
@@ -184,15 +225,19 @@ export default function App ({ navigation }) {
             // </Stack.Group>
           )
         ) : (
-          <SignIn />
+          //<SignIn />
 
-          // <Stack.Navigator>
-          //   <Stack.Screen name='SignIn' component={SignIn} options={{ headerShown: false}} />
-          //   <Stack.Screen name='SignUp' component={SignUp} />
-          //   <Stack.Screen name='ForgotPassword' component={ForgotPassword} />
-          //   <Stack.Screen name='MedSignIn' component={MedSignIn} />
-          //   <Stack.Screen name='DoctorSignUp' component={DoctorSignUp} />
-          // </Stack.Navigator>
+          <Stack.Navigator>
+            <Stack.Screen
+              name='SignIn'
+              component={SignIn}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name='Sign Up' component={SignUp} />
+            <Stack.Screen name='Reset Password' component={ForgotPassword} />
+            <Stack.Screen name='MedSignIn' component={MedSignIn} />
+            <Stack.Screen name='Doctor SignUp' component={DoctorSignUp} />
+          </Stack.Navigator>
         )}
 
         {/*</Stack.Navigator>*/}
