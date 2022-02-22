@@ -4,7 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MedicalHome, Upload, UploadVideo, UpdateProfile } from '.';
 
 const Stack = createNativeStackNavigator()
-// const Stack = createStackNavigator()
 
 export const DoctorsScreens = ({ navigation, route }) => {
 

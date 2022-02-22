@@ -19,7 +19,4 @@ import Upload from "./Upload"
 import { UpdateProfile } from "./UpdateProfile"
 import VideoScreen from "../UserScreens/PlayVideo"
 
-
-
-
-export { PlayVideo, UploadVideo, MedicalHome, Upload, UpdateProfile}
+export { PlayVideo, UploadVideo, MedicalHome, Upload, UpdateProfile }

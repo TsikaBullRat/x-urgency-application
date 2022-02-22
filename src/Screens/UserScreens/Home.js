@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Text
-} from 'react-native'
-import {ScrollView} from 'react-native-gesture-handler'
+import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
 import { auth, LoadSet, firestore } from '../../firebase'
 import Header from '../../Components/Header'
@@ -15,12 +9,12 @@ import { VideoList } from '../../Components/VideoList'
 import { Feather } from '@expo/vector-icons';
 import { Avatar, Badge } from 'react-native-elements';
 
-export default function Home ({ navigation, Exit }) {
+export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
-  [image, setImage] = useState(null),
-  [initial, setInitial] = useState('')
+    [image, setImage] = useState(null),
+    [initial, setInitial] = useState('')
 
   useEffect(() => {
     auth.currentUser ? (
@@ -36,10 +30,10 @@ export default function Home ({ navigation, Exit }) {
     )
   }, [])
 
-   const VideoScreen = data => {
-      navigation.navigate('PlayVideo', { data })
-    },
-    
+  const VideoScreen = data => {
+    navigation.navigate('PlayVideo', { data })
+  },
+
     Emergency = () => {
       navigation.navigate('EmergencyContacts')
     }
@@ -50,22 +44,22 @@ export default function Home ({ navigation, Exit }) {
 
   return (
     <View style={styles.container}>
-      
+
 
       {/**------------------Header-----------------------Header----------------- */}
+
       <View style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>
         <Header Exit={Exit} Emergency={Emergency} />
 
         <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-            {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+          <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>{image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
 
-            ) : (
+          ) : (
 
-              <View style={styles.temp}>
-                <Text style={styles.temp_text}> {initial} </Text>
-              </View>
-            )}
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
 
           </TouchableOpacity>
 
@@ -76,27 +70,15 @@ export default function Home ({ navigation, Exit }) {
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
+
       <View style={{ width: 335, alignItems: 'center' }}>
         <Menu list={videos} setVids={setLoad} />
       </View>
 
-      <View
-        style={{
-          width: 335,
-          alignItems: 'center',
-          marginTop: 20,
-          flexDirection: 'row',
-          justifyContent: 'space-between'
-        }}
-      >
+      <View style={{ width: 335, alignItems: 'center', marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }} >
         <Text style={{ fontFamily: 'Roboto' }}> {`Most Viewed`} </Text>
-
         <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-          <Text
-            style={{ fontSize: 18, fontFamily: 'Roboto', color: '#F96056' }}
-          >
-            {`Medical Personnel`}{' '}
-          </Text>
+          <Text style={{ fontSize: 18, fontFamily: 'Roboto', color: '#F96056' }} >  {`Medical Personel`}{' '} </Text>
         </TouchableOpacity>
       </View>
 
@@ -107,12 +89,15 @@ export default function Home ({ navigation, Exit }) {
         vertical={true}
         showsVerticalScrollIndicator={false}
       > */}
-        <Card style={styles.menu2}>
-          <View>
-            <VideoList videos={videos} VideoScreen={VideoScreen} />
-          </View>
-        </Card>
+
+      <Card style={styles.menu2}>
+        <View>
+          <VideoList videos={videos} VideoScreen={VideoScreen} />
+        </View>
+      </Card>
+
       {/* </ScrollView> */}
+
     </View>
   )
 }
