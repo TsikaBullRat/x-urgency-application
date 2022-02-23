@@ -51,8 +51,7 @@ export default function Home({ navigation, Exit }) {
           marginVertical: 15,
           alignItems: 'center',
           justifyContent: 'space-between'
-        }}
-      >
+        }}>
 
         <View>
           <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')}>
