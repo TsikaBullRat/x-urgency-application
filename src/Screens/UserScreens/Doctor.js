@@ -131,11 +131,7 @@ const Doctor = ({ navigation }) => {
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
             <MaterialCommunityIcons name="briefcase-clock-outline" size={34} color="#fff" />
-            <View style={{ paddingTop: 20, flexDirection: 'row' }}>
-              <Socials text="Following" number="15" />
-              <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
-              <Socials text="Likes" number="3.1M" />
-            </View>
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>  {`Experience`} </Text>
           </View>
         </Card>
 
@@ -145,6 +141,14 @@ const Doctor = ({ navigation }) => {
             <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>  {`Awards`} </Text>
           </View>
         </Card>
+
+        </View>
+
+        <View style={{ paddingTop: 20, flexDirection: 'row' }}>
+              <Socials text="Following" number="15" />
+              <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
+              <Socials text="Likes" number="3.1M" />
+            </View>
 
         {/**------------------About--------------About-------------About----------- */}
         <View style={{ marginTop: 35, width: 335 }}>
@@ -185,7 +189,6 @@ const Doctor = ({ navigation }) => {
             </View>
           </View>
 
-        </View>
       </View>
     </View>
 
