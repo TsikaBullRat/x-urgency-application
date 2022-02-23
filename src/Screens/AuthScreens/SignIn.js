@@ -40,7 +40,8 @@ export default function SignIn({ navigation }) {
       setPrompt1(null)
       setPrompt2("Please enter password")
     } else {
-      handleSignIn(email, password, setMessage)
+      handleSignIn(email, password, setMessage
+      )
       setDisplaModal(true)
       navigation.navigate('Home', {setDone})
     }

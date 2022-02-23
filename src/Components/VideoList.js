@@ -34,7 +34,6 @@ export const VideoList = ({ videos, VideoScreen }) => {
                 key={vid.id}>
                 <Card
                   style={{
-                    marginTop: 15,
                     width: 335,
                     height: 245,
                     alignItems: 'center',
