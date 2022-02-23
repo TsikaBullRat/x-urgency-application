@@ -17,6 +17,7 @@ import LogOutComp from '../../Components/LogOutComp'
 import { VideoList } from '../../Components/VideoList'
 import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
+import  {AlertNote}  from "../../Components/Alert"
 
 export default function Home ({ navigation, Exit }) {
   const [status, setStatus] = useState({})
@@ -48,8 +49,19 @@ export default function Home ({ navigation, Exit }) {
     LoadSet(setLoad)
   }, [])
 
+  const [displayModal, setDisplaModal] = useState(false),
+  [message, setMessage] = useState("")
+  const signOut = () => {
+    setMessage('Signed out successfully')
+    setDisplaModal(true)
+    navigation.navigate('SignIn')
+  }
+
   return (
     <View style={styles.container}>
+
+      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+
       {/**------------------CallSiren--------------------CallSiren----------------- */}
       <View
         style={{
@@ -68,7 +80,7 @@ export default function Home ({ navigation, Exit }) {
         </View>
 
         <View>
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+          <TouchableOpacity onPress={signOut}>
             <LogOutComp />
           </TouchableOpacity>
         </View>
@@ -77,7 +89,7 @@ export default function Home ({ navigation, Exit }) {
       {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
       <View
         style={{
-          width: '90%',
+          width: '95%',
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between'
@@ -86,7 +98,7 @@ export default function Home ({ navigation, Exit }) {
           <Header />
         </View>
 
-        <View style={{ flexDirection: 'row', top: -25 }}>
+        <View style={{ top: -25, left: -10 }}>
           <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
             {image ? (
               <Avatar rounded source={{ uri: image }} size='large' />
@@ -95,18 +107,6 @@ export default function Home ({ navigation, Exit }) {
                 <Text style={styles.temp_text}> {initial} </Text>
               </View>
             )}
-          </TouchableOpacity>
-
-          <TouchableOpacity style={{top:45}}
-            onPress={() => {
-              navigation.navigate('Update')
-            }}
-          >
-            <Feather
-              name='edit'
-              size={24}
-              color='#F47066'
-            />
           </TouchableOpacity>
         </View>
       </View>

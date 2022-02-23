@@ -18,11 +18,7 @@ import { Feather } from '@expo/vector-icons'
 
 export default function Header () {
   return (
-    <View
-      style={{
-        alignItems: 'center'
-      }}
-    >
+    <View>
       {/*---------------------------Header--------------------------*/}
 
       <View style={{ top: -20 }}>
