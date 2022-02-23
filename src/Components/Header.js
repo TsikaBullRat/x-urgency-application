@@ -18,7 +18,9 @@ import {Feather} from '@expo/vector-icons';
 
 export default function Header({ Exit, Emergency, navigation }) {
 
-  
+  useEffect(()=>{
+    console.log(Exit)
+  }, [])
 
   return (
 
@@ -78,7 +80,7 @@ export default function Header({ Exit, Emergency, navigation }) {
         </View>
 
         <View style={{ top: -20 }}>
-          <TouchableOpacity onPress={Exit} >
+          <TouchableOpacity onPress={Exit} style={{width: 40, height: 40, justifyContent: "center", alignItems: "center", backgroundColor: "#000" }}>
             <Image source={require("../images/logOut.png")} style={styles.logoutIMG} /> 
           </TouchableOpacity>
         </View>
@@ -99,7 +101,6 @@ const styles = StyleSheet.create({
   logoutIMG: {
     width: 20,
     height: 20,
-    top: -30,
     alignSelf:'flex-end'
   },
 

@@ -3,21 +3,30 @@ import { NavigationContainer } from '@react-navigation/native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createStackNavigator } from "@react-navigation/stack"
-import { auth, firestore } from './src/firebase'
+import { auth, firestore, Exit } from './src/firebase'
 import { Loading } from './src/Components'
 import { StyleSheet, NativeModules, View } from 'react-native'
-import { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn, Navigator} from './src/Screens'
+import { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile,
+   Navigator} from './src/Screens'
 
 // const Stack = createNativeStackNavigator()
 const Stack = createStackNavigator()
 
 export default function App() {
+
+  const [selected, setSelected] = useState(0)
   const [id, setID] = useState(null)
   
   useEffect(()=>{
-    auth.onAuthStateChanged(doc=>setID(doc.uid))
-    setSelected(0)
-  }, [])
+    auth.onAuthStateChanged(doc=>{
+      doc.uid?(
+        setID(doc.uid)
+      ):(
+        setID(null),
+        setSelected(0)
+      )
+    })
+  }, [selected])
 
   const [doctor, setDoctor] = useState(null)
   useEffect(()=>{
@@ -32,38 +41,39 @@ export default function App() {
   const [param, setParam] = useState()
   const [percentage, setPerc] = useState(null)
   const [match, setMatch] = useState(null)
-  const [selected, setSelected] = useState(0)
   const Navigate = (num, data )=>{
     setSelected(num)
     setParam(data)
   }
 
-  const Exit = () =>{
-    auth.signOut()
+  const LogOut = () =>{
+    Exit()
+    setSelected(0)
   }
 
   return (
     id?(
           doctor?(
             <Navigator selected={selected}>
-            <MedicalHome Navigate={Navigate}/>
-            <PlayVideo param={param} Navigate={Navigate}/>
-            <Upload Navigate={Navigate}/>
-            <UploadVideo Navigate={Navigate}/>
-            <UpdateProfile Navigate={Navigate}/>
-          </Navigator>
+              <MedicalHome Navigate={Navigate} Exit={LogOut}/>
+              <PlayVideo param={param} Navigate={Navigate}/>
+              <Upload Navigate={Navigate}/>
+              <UploadVideo Navigate={Navigate}/>
+              <UpdateProfile Navigate={Navigate}/>
+            </Navigator>
           ):(
             <Navigator selected={selected}>
-            <Home Navigate={Navigate} Exit={Exit}/>
-            <PlayVideo param={param} Navigate={Navigate}/>
-            <EmergencyContacts Navigate={Navigate}/>
-          </Navigator>
+              <Home Navigate={Navigate} Exit={LogOut}/>
+              <PlayVideo param={param} Navigate={Navigate}/>
+              <EmergencyContacts Navigate={Navigate}/>
+            </Navigator>
           )
         ):(
           <Navigator selected={selected}>
             <SignIn Navigate={Navigate}/>
             <SignUp Navigate={Navigate}/>
             <DoctorSignUp Navigate={Navigate}/>
+            <ForgotPassword Navigate={Navigate}/>
           </Navigator>
       )
   )

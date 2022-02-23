@@ -6,7 +6,7 @@ import { auth, LoadSet, LogOut, firestore } from '../../firebase';
 import { ProgressBar, VideoList, AlertNote } from '../../Components'
 import { Feather } from '@expo/vector-icons';
 
-export default function MedicalHome({ progress, Log, Exit }
+export default function MedicalHome({ progress, Log, Exit, Navigate }
 ) {
 
   useEffect(() => {
@@ -18,10 +18,9 @@ export default function MedicalHome({ progress, Log, Exit }
   const [display, setDisplayModal] = useState(false)
   const [videos, setLoad] = useState(null),
     VideoScreen = (data) => {
-      navigation.navigate("PlayVideo", { data });
+      Navigate(1, data)
     },
     Logout = () => {
-      LogOut()
       Exit()
     },
     VideoNotifier = () => {

@@ -33,13 +33,15 @@ export default function PlayVideo({ navigation, route, param }) {
   //     })
   // }, [])
 
-  const data = param
-  const [userName, setUserName] = useState(data.owner/*"Ntsika"*/)
-  const [videoPlay, setVideoPlay] = useState(data.url/*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/)
-  const [views, setViews] = useState(data.views/*42*/)
+  const [data, setData ] = useState(
+
+  )
+  const [userName, setUserName] = useState(data.owner)
+  const [videoPlay, setVideoPlay] = useState(data.url)
+  const [views, setViews] = useState(data.views)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
-  const refrence = useRef(data.url/*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/)
+  const refrence = useRef(data.ur)
   const [info, setInfo] = useState()
   const [Comments, setComments] = useState([]),
 
@@ -59,7 +61,7 @@ export default function PlayVideo({ navigation, route, param }) {
     },
 
     addAct = async () => {
-      let metadata = firestore.collection('Videos').doc(data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/).collection('Acts')
+      let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts')
       let found = (await metadata.doc(auth.currentUser.uid).get()).exists
       found ? (
         null
@@ -83,7 +85,7 @@ export default function PlayVideo({ navigation, route, param }) {
     },
 
     Delete = remove => {
-      firestore.collection("Videos").doc(data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/).collection("Acts").doc(auth.currentUser.uid).get()
+      firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).get()
         .then(doc => {
           return doc.data().Comments
         })
@@ -103,7 +105,7 @@ export default function PlayVideo({ navigation, route, param }) {
     };
 
   useEffect(() => {
-    Collect(data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/, setComments, setCount)
+    Collect(data.firestore, setComments, setCount)
   }, [])
 
   useEffect(() => {
@@ -126,8 +128,8 @@ export default function PlayVideo({ navigation, route, param }) {
 
           <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between', }}>
             <View>
-              <Text style={{ fontWeight: 'bold', color: '#F47066', }}>{data.title/*"My video"*/}</Text>
-              <Text style={{ fontSize: 10 }}> {views} views - {data.stamp/*"3 weeks ago"*/} </Text>
+              <Text style={{ fontWeight: 'bold', color: '#F47066', }}>{data.title}</Text>
+              <Text style={{ fontSize: 10 }}> {views} views - {data.stamp} </Text>
             </View>
 
             <View>
@@ -144,14 +146,14 @@ export default function PlayVideo({ navigation, route, param }) {
           <View
             style={{ width: 335, flexDirection: 'row', marginTop: 25, alignItems: 'center', justifyContent: 'space-around' }}>
             <View>
-              {<Likes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} />}
+              {<Likes data={data.firestore} />}
             </View>
 
             <View style={{ marginTop: 3 }}>
-              {<Dislikes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} />}
+              {<Dislikes data={data.firestore} />}
             </View>
 
-            <TouchableOpacity onPress={() => ShareItem(data.url/*videoPlay*/)}>
+            <TouchableOpacity onPress={() => ShareItem(data.url)}>
               <FontAwesome5
                 name="share"
                 size={20}

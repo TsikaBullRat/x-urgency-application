@@ -96,7 +96,7 @@ export default function SignIn({ Navigate }) {
 
         <View style={{ width: '80%', alignItems: 'flex-end' }}>
           <TouchableOpacity
-            onPress={() => { navigation.navigate('Reset Password') }}>
+            onPress={() =>() => Navigate(3)}>
             <Text style={{ paddingTop: 20, fontSize: 18, color: '#F47066' }}>{`Forgot Password?`} </Text>
           </TouchableOpacity>
         </View>
@@ -109,7 +109,8 @@ export default function SignIn({ Navigate }) {
 
         <View style={{ marginTop: 10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <Text style={{ paddingTop: 10, fontSize: 15, }}>  {`New User?`} </Text>
-          <TouchableOpacity onPress={() => Navigate(1)}>
+          <TouchableOpacity onPress={() => Navigate(1)
+          }>
             <Text style={{ paddingTop: 9, fontSize: 20, color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>

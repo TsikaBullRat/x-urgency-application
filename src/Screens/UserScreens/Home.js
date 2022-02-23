@@ -33,6 +33,10 @@ export default function Home ({ Navigate, Exit }) {
     LoadSet(setLoad)
   }, [])
 
+  useEffect(()=>{
+    console.log(Exit)
+  }, [])
+
   return (
     <View style={styles.container}>
       
@@ -87,17 +91,17 @@ export default function Home ({ Navigate, Exit }) {
 
       {/*---------------------- Video Scroll View--------------------*/}
 
-      {/* <ScrollView
+      <ScrollView
         style={{ height: 220, width: 335 }}
         vertical={true}
         showsVerticalScrollIndicator={false}
-      > */}
+      >
         <Card style={styles.menu2}>
           <View>
             <VideoList videos={videos} VideoScreen={VideoScreen} />
           </View>
         </Card>
-      {/* </ScrollView> */}
+      </ScrollView>
     </View>
   )
 }
