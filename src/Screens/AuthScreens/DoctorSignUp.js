@@ -138,7 +138,7 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
             </View>
             <Text
               style={{
-                fontFamily: 'Felix Titling',
+                fontFamily: 'Arial',
                 color: '#fff',
                 fontSize: 30
               }}
@@ -156,7 +156,7 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
               color: '#F47066',
               ...Platform.select({
                 web: {
-                  fontFamily: 'Felix Titling'
+                  fontFamily: 'Arial'
                 }
               })
             }}
@@ -264,7 +264,7 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
                     <Text
                       style={{
                         fontSize: 20,
-                        fontFamily: 'flexi titling',
+                        fontFamily: 'Arial',
                         color: '#fff'
                       }}
                     >
@@ -334,7 +334,7 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
                   <Text
                     style={{
                       fontSize: 20,
-                      fontFamily: 'flexi titling',
+                      fontFamily: 'Arial',
                       color: '#fff'
                     }}
                   >
@@ -388,7 +388,7 @@ const styles = StyleSheet.create({
     paddingLeft: 2,
     paddingTop: 15,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
@@ -416,7 +416,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 35,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     fontSize: 18,
     borderWidth: 1,
     borderColor: '#F47066',

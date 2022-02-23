@@ -39,7 +39,7 @@ export default function MedSignIn({ navigation, setDone }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
@@ -47,7 +47,7 @@ export default function MedSignIn({ navigation, setDone }) {
           fontSize: 30, color: '#F47066',
           fontWeight:'bold', ...Platform.select({
             web: {
-              fontFamily: 'Felix Titling'             
+              fontFamily: 'Arial'             
             }
           })
        }}>{`Medical SignIn`}</Text>
@@ -78,7 +78,7 @@ export default function MedSignIn({ navigation, setDone }) {
 
         <View style={{ width: '100%', alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`LOGIN`} </Text>
+            <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff', }}>{`LOGIN`} </Text>
           </TouchableOpacity>
         </View>
 
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 15,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
     paddingTop: 20,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {

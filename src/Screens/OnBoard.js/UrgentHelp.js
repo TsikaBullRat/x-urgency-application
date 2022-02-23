@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 
-function FollowMore () {
+function UrgentHelp () {
   return (
     <View>
       <Image
@@ -9,9 +9,9 @@ function FollowMore () {
         source={require('../../images/FollowLOGO.png')}
       />
 
-      <Text>Follow More</Text>
+      <Text>Need Urgent Help?</Text>
     </View>
   )
 }
 
-export default FollowMore
+export default UrgentHelp

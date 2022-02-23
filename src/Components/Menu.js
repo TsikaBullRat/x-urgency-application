@@ -12,13 +12,11 @@ export default function Menu({ list, setVids }) {
 
   return (
 
-    <View style={styles.contain}>
+    <View style={{alignItems:'center'}}>
 
       {/*----------------------Horizontal Menu----------------------*/}
-
-      <ScrollView
-
-        style={{ width: 350 }} horizontal={true} showsHorizontalScrollIndicator={false}>
+      <ScrollView 
+      style={{ width: 355 }} horizontal={true} showsHorizontalScrollIndicator={false}>
 
         <View style={{ width: 705, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
@@ -86,19 +84,6 @@ export default function Menu({ list, setVids }) {
 }
 
 const styles = StyleSheet.create({
-  contain: {
-    width: 375,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff'
-  },
-
-  menu: {
-    width: 300,
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    borderRadius: 15,
-  },
 
   menuIcons: {
     height: 30,

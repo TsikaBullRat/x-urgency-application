@@ -88,7 +88,7 @@ export default function ResetPassword ({ navigation }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
@@ -98,7 +98,7 @@ export default function ResetPassword ({ navigation }) {
             fontWeight:'bold',
             ...Platform.select({
               web: {
-                fontFamily: 'Felix Titling'
+                fontFamily: 'Arial'
               }
             }),
             color: '#F47066'
@@ -190,7 +190,7 @@ export default function ResetPassword ({ navigation }) {
             <Text
               style={{
                 fontSize: 20,
-                fontFamily: 'Felix Titling',
+                fontFamily: 'Arial',
                 color: '#fff'
               }}
             >
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
     paddingTop: 15,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 15,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {

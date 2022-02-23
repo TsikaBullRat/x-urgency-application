@@ -122,6 +122,48 @@ export default function App({ navigation }) {
                   options={{ headerShown: false }}
                 />
 
+                 <Stack.Screen
+                  name='MedSignIn'
+                  component={MedSignIn}
+                  options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                    name='MedicalHome'
+                    options={{ headerShown: false }}
+                  >
+                    {props => (
+                      <MedicalHome
+                        {...props}
+                        Log={setPerc}
+                        progress={percentage}
+                        setMatch={setMatch}
+                        Exit={Exit}
+                      />
+                    )}
+                  </Stack.Screen>
+
+                  <Stack.Screen
+                  name='DoctorSignUp'
+                  options={{ headerShown: false }}
+                >
+                  {props => (
+                    <DoctorSignUp {...props} authNavigation={navigation} />
+                  )}
+                </Stack.Screen>
+
+                <Stack.Screen
+                  name='ForgotPassword'
+                  component={ForgotPassword}
+                  options={{ headerShown: false }}
+                />
+
+                <Stack.Screen
+                  name='ResetPassword'
+                  component={ResetPassword}
+                  options={{ headerShown: false }}
+                />
+
                 </Stack.Navigator>
               )
             ) : (

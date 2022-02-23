@@ -190,6 +190,10 @@ const Doctor = ({ navigation }) => {
           </View>
 
       </View>
+
+      <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}> BACK  </TouchableOpacity>
+        </View>
     </View>
 
   )

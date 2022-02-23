@@ -53,17 +53,17 @@ export default function ForgotPassword({ navigation }) {
     <View style={styles.container}>
       <Card style={styles.card}>
         <View style={styles.heartIcon}><FontAwesome name="heartbeat" size={110} color="#fff" /></View>
-        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}> 
         <Text style={{
-          fontWeight: 'bold', fontSize: 30, fontFamily: 'Felix Titling',
+          fontWeight: 'bold', fontSize: 30, fontFamily: 'Arial',
           color: '#F47066', justifyContent: "left"
         }}>{`Forgot your password?`}</Text>
       </View>
       <br />
-      <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling', color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
+      <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Arial', color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
 
       <View style={{ width:'100%', alignItems: 'center' }}>
         <Card style={styles.txtCards}>
@@ -77,7 +77,7 @@ export default function ForgotPassword({ navigation }) {
 
       <View style={{ width:'100%', alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('ResetPassword')}  >
-          <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff' }}>{`SEND`} </Text>
+          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>{`SEND`} </Text>
         </TouchableOpacity>
       </View>
 
@@ -128,12 +128,11 @@ const styles = StyleSheet.create({
   },
 
   txtField: {
-    width: 300,
     marginTop: 7,
     paddingLeft: 10,
     paddingTop: 9,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
