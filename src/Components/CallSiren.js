@@ -23,7 +23,7 @@ export default function CallSiren() {
   return (
     <View>
 {/**---------Call Siren------------Call Siren---------Call Siren-------------------- */}
-          <View style={{ width: 335, flexDirection: 'row', justifyContent:'space-between' }}>
+          <View style={{flexDirection: 'row'}}>
 
             <Image
               source={require('../../img/siren.jpg')}
@@ -51,11 +51,6 @@ export default function CallSiren() {
               >
                 Now
               </Text>
-            </View>
-
-            <View style={{ paddingTop: 100 }}
-            >
-            <Image source={require("../images/logOut.png")} style={styles.logoutIMG} /> 
             </View>
 
           </View>

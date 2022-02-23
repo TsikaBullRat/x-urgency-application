@@ -115,7 +115,13 @@ export default function App({ navigation }) {
                   component={Doctor}
                   options={{ headerShown: false }}
                 />
-                
+
+                <Stack.Screen
+                  name='SignIn'
+                  component={SignIn}
+                  options={{ headerShown: false }}
+                />
+
                 </Stack.Navigator>
               )
             ) : (
