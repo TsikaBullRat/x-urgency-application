@@ -56,7 +56,7 @@ export default function SignIn({ navigation }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
@@ -64,7 +64,7 @@ export default function SignIn({ navigation }) {
           fontSize: 30,
           fontWeight:'bold', ...Platform.select({
             web: {
-              fontFamily: 'Felix Titling'
+              fontFamily: 'Arial'
             }
           }),
           color: '#F47066'
@@ -98,7 +98,7 @@ export default function SignIn({ navigation }) {
 
         <View style={{ width: '100%', alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff' }}>{`LOGIN`} </Text>
+            <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>{`LOGIN`} </Text>
           </TouchableOpacity>
         </View>
 
@@ -158,12 +158,11 @@ const styles = StyleSheet.create({
   },
 
   txtUser: {
-    width: 300,
     marginTop: 7,
     paddingLeft: 10,
     paddingTop: 15,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
@@ -179,18 +178,16 @@ const styles = StyleSheet.create({
   },
 
   txtPassword: {
-    width: 300,
     height: 35,
     marginTop: 5,
     paddingLeft: 6,
     paddingTop: 20,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
         outlineColor: '#fff',
-        width: 220
       }
     })
   },
@@ -202,6 +199,7 @@ const styles = StyleSheet.create({
     marginLeft: 2,
     marginTop: 35,
     borderWidth: 1,
+    backgroundColor:'#fff',
     borderColor: '#F47066',
   },
 

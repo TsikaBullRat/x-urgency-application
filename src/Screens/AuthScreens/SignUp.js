@@ -81,7 +81,7 @@ export default function SignUp({ navigation }) {
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
@@ -91,7 +91,7 @@ export default function SignUp({ navigation }) {
             fontWeight:'bold',
             ...Platform.select({
               web: {
-                fontFamily: 'Felix Titling'
+                fontFamily: 'Arial'
               }
             }),
             color: '#F47066'
@@ -175,7 +175,7 @@ export default function SignUp({ navigation }) {
             <Text
               style={{
                 fontSize: 20,
-                fontFamily: 'Felix Titling',
+                fontFamily: 'Arial',
                 color: '#fff'
               }}
             >

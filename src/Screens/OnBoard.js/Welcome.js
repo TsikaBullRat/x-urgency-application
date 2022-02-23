@@ -1,9 +1,16 @@
 import React from 'react'
+;<Text>Welcome</Text>
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 
-function Welcome() {
+function Welcome () {
   return (
     <View>
-      <Text>Welcome</Text>
+      <Image
+        style={{ height: 50, width: 50 }}
+        source={require('../../images/WelcomeLOGO.png')}
+      />
+
+      <Text>Watch and Learn</Text>
     </View>
   )
 }

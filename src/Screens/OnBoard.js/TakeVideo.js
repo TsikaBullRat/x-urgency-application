@@ -1,17 +1,18 @@
 import React from 'react'
+;<Text>Welcome</Text>
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 
-function FollowMore () {
+function TakeVideo () {
   return (
     <View>
       <Image
         style={{ height: 50, width: 50 }}
-        source={require('../../images/FollowLOGO.png')}
+        source={require('../../images/TakeVideoLOGO.png')}
       />
 
-      <Text>Follow More</Text>
+      <Text>Take a video</Text>
     </View>
   )
 }
 
-export default FollowMore
+export default Welcome
