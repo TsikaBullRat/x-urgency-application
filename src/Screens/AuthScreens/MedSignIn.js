@@ -34,15 +34,24 @@ export default function MedSignIn({ navigation, setDone }) {
 
     <View style={styles.container}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 30, marginLeft: 15, fontFamily: 'Felix Titling' }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 30, color: '#F47066', ...Platform.select({ web: { fontFamily: 'Felix Titling' } }) }}>{`Medical SignIn`}</Text>
+        <Text style={{
+          fontSize: 30, color: '#F47066',
+          fontWeight:'bold', ...Platform.select({
+            web: {
+              fontFamily: 'Felix Titling'             
+            }
+          })
+       }}>{`Medical SignIn`}</Text>
+
       </View>
 
       <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
@@ -61,7 +70,8 @@ export default function MedSignIn({ navigation, setDone }) {
         </Card>
 
         <View style={{ width: '80%', alignItems: 'flex-end' }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Reset Password')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ForgotPassword')}>
             <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }}>{`Forgot Password?`} </Text>
           </TouchableOpacity>
         </View>

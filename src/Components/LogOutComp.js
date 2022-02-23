@@ -14,9 +14,11 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { color } from 'react-native-elements/dist/helpers';
 import { auth, firestore, LogOut } from '../firebase'
-import { Feather } from '@expo/vector-icons';
+import {Feather} from '@expo/vector-icons';
 
-export default function Header() {
+export default function LogOutComp({ navigation }) {
+
+  
 
   return (
 
@@ -24,29 +26,13 @@ export default function Header() {
 
       {/*---------------------------Header--------------------------*/}
 
-      <View style={{
-        flexDirection: 'row',
-        width: 340,
-        alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
-
-        <View style={{ top: -20 }}>
-          <Text style={styles.header}> WHAT'S YOUR</Text>
-          <Text style={styles.header}> EMERGENCY ?</Text>
-        </View>
-
-      </View>
+        
     </View>
   )
 }
 
 const styles = StyleSheet.create({
 
-  header: {
-    color: '#F96056',
-    fontSize: 30,
-    fontFamily: 'Felix Titling'
-  },
+  
 
 })

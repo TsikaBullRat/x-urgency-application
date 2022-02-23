@@ -71,33 +71,68 @@ export default function SignUp({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
+      <AlertNote
+        modalVisible={displayModal}
+        setModalVisible={setDisplayModal}
+        msg={message}
+      />
+      
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
-          <FontAwesome name='heartbeat' size={110} color='#fff' />
+          <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}>  {' '} {`X-urgency`}{' '}  </Text>
+        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }} >{`SignUp`}</Text>
+        <Text
+          style={{
+            fontSize: 30,
+            fontWeight:'bold',
+            ...Platform.select({
+              web: {
+                fontFamily: 'Felix Titling'
+              }
+            }),
+            color: '#F47066'
+          }}
+        >{`SignUp`}</Text>
       </View>
 
       {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
 
       <Card style={styles.txtCards}>
         <View style={{ flexDirection: 'row' }}>
-          <AntDesign name='user' size={22} color='black' style={{ marginTop: 17, marginLeft: 16 }} />
-          <TextInput style={styles.txtUser} name='userName' placeholder='Username' onChangeText={text => setEmail(text)} />
+          <AntDesign
+            name='user'
+            size={22}
+            color='black'
+            style={{ marginTop: 17, marginLeft: 16 }}
+          />
+          <TextInput
+            style={styles.txtField}
+            name='userName'
+            placeholder='Username'
+            onChangeText={text => setEmail(text)}
+          />
         </View>
       </Card>
       {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
-      <View>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name='mail' size={20} color='black' style={{ marginTop: 20, marginLeft: 15 }} />
-            <TextInput style={styles.txtEmail} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
+            <AntDesign
+              name='mail'
+              size={20}
+              color='black'
+              style={{ marginTop: 20, marginLeft: 15 }}
+            />
+            <TextInput
+              style={styles.txtField}
+              name='email'
+              placeholder='Email'
+              onChangeText={text => setEmail(text)}
+            />
           </View>
         </Card>
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
@@ -106,29 +141,53 @@ export default function SignUp({ navigation }) {
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name='lock' size={32} color='black' style={{ marginTop: 11, marginLeft: 10 }} />
             <TextInput
-              style={styles.txtPassword} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
+              style={styles.txtField}
+              name='password'
+              placeholder='Password'
+              secureTextEntry={true}
+              onChangeText={text => setPassword(text)}
+            />
           </View>
         </Card>
         {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name='unlock' size={32} color='black' style={{ marginTop: 11, marginLeft: 10 }} />
-            <TextInput style={styles.txtPassword} name='confirmPassword' placeholder='Confirm Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
+            <EvilIcons
+              name='unlock'
+              size={32}
+              color='black'
+              style={{ marginTop: 11, marginLeft: 10 }}
+            />
+            <TextInput
+              style={styles.txtField}
+              name='confirmPassword'
+              placeholder='Confirm Password'
+              secureTextEntry={true}
+              onChangeText={text => setPassword(text)}
+            />
           </View>
         </Card>
         {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
 
-        <View style={{ alignItems: 'center', alignContent: 'center' }}>
+        <View style={{ width:'100%', alignItems: 'center', justifyContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Register}>
-            <Text style={{ fontSize: 20, fontFamily: 'Felix Titling', color: '#fff' }} >  {`SIGNUP`}{' '} </Text>
+            <Text
+              style={{
+                fontSize: 20,
+                fontFamily: 'Felix Titling',
+                color: '#fff'
+              }}
+            >
+              {`SIGNUP`}
+            </Text>
           </TouchableOpacity>
         </View>
 
         <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
           <TouchableOpacity onPress={() => navigation.navigate('SignIn')}> BACK  </TouchableOpacity>
         </View>
-      </View>
+
     </View>
   )
 }
@@ -142,7 +201,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: '#F47066',
-    width: 335,
+    width: '100%',
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -166,23 +225,8 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 
-  txtPassword: {
-    width: 300,
-    paddingLeft: 6,
-    paddingTop: 15,
-    fontSize: 18,
-    fontFamily: 'flexi titling',
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff',
-        width: 220
-      }
-    })
-  },
-
   txtCards: {
-    width: 315,
+    width: '80%',
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -191,26 +235,10 @@ const styles = StyleSheet.create({
     borderColor: '#F47066'
   },
 
-  txtUser: {
+  txtField: {
     width: 300,
     marginTop: 7,
     paddingLeft: 6,
-    paddingTop: 15,
-    fontSize: 18,
-    fontFamily: 'flexi titling',
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff',
-        width: 220
-      }
-    })
-  },
-
-  txtEmail: {
-    width: 300,
-    marginTop: 7,
-    paddingLeft: 10,
     paddingTop: 15,
     fontSize: 18,
     fontFamily: 'flexi titling',
@@ -225,7 +253,7 @@ const styles = StyleSheet.create({
 
   signIn: {
     height: 50,
-    width: 200,
+    width: '60%',
     marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',

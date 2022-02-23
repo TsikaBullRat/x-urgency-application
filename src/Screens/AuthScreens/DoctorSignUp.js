@@ -112,16 +112,28 @@ export default function DoctorSignUp({ navigation, setDetails }
 
       <View style={styles.container}>
 
-        <Card style={styles.card}>
-          <View style={styles.heartIcon}>
-            <FontAwesome name="heartbeat" size={110} color="#fff" />
-          </View>
-          <Text style={{ color: "#fff", fontSize: 30, marginLeft: 8, fontFamily: 'Felix Titling' }}> {`X-urgency`} </Text>
-        </Card>
-
-        <View style={styles.header}>
-          <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }}>{`Medical SignUp`}</Text>
+      <Card style={styles.card}>
+        <View style={styles.heartIcon}>
+          <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
+        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+      </Card>
+
+      <View style={styles.header}>
+        <Text style={{
+          fontSize: 30,color: '#F47066', ...Platform.select({
+            web: {
+              fontFamily: 'Felix Titling'
+            }
+          }),
+          
+        }}>{`Medical SignUp`}</Text>
+      </View>
+
+      
+        {visibleStatusBar ? (
+          <ScrollView style={{ height: 550, width:'100%' }}
+        showsVerticalScrollIndicator={false}>
 
         <ScrollView style={{ height: 550 }} showsVerticalScrollIndicator={false}> {visibleStatusBar ? (
           <View>
@@ -235,7 +247,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: "#F47066",
-    width: 335,
+    width: '100%',
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -275,7 +287,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 315,
+    width: '80%',
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -306,7 +318,7 @@ const styles = StyleSheet.create({
 
   signIn: {
     height: 50,
-    width: 200,
+    width: '60%',
     margin: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',

@@ -5,6 +5,7 @@ import SignUp from './AuthScreens/SignUp'
 import MedSignIn from './AuthScreens/MedSignIn'
 import DoctorSignUp from './AuthScreens/DoctorSignUp'
 import ForgotPassword from './AuthScreens/ForgotPassword'
+import ResetPassword from './AuthScreens/ResetPassword'
 import UploadVideo from "./DoctorsScreens/UploadVideo"
 import MedicalHome from "./DoctorsScreens/MedicalHome"
 import Upload from "./DoctorsScreens/Upload"
@@ -12,7 +13,7 @@ import PlayVideo from "./UserScreens/PlayVideo"
 import Doctor from "./UserScreens/Doctor"
 import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
 
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn }
+export { SignIn, SignUp, ForgotPassword, ResetPassword ,Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn}
 
 export { UserScreens } from './UserScreens/UserScreens'
 export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'
