@@ -6,7 +6,7 @@ import { auth, LoadSet, LogOut, firestore } from '../../firebase';
 import { ProgressBar, VideoList, AlertNote } from '../../Components'
 import { Feather } from '@expo/vector-icons';
 
-export default function MedicalHome({ navigation, progress, Log, Exit, credentials }) {
+export default function MedicalHome({ navigation, Exit, credentials }) {
   const [done, setDone] = useState(true);
   const [display, setDisplayModal] = useState(false)
   const [videos, setLoad] = useState(null),
@@ -22,29 +22,6 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
       if (today === auth.currentUser.metadata.creationTime) {
         setDisplayModal(true)
       }
-      // firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
-      //   .then(query=>{
-      //     var data = []
-      //     query.forEach(doc=>{
-      //       data = [...data, doc.data().added.toDate() ]
-      //       return data
-      //     })
-      //     return data
-      //   })
-      // .then(dateList=>{
-      //   console.log(dateList)
-      //   dateList = dateList.sort((a,b)=>b-a)
-      //   console.log(dateList)
-      // if(dateList.g)
-      // })
-      // .then(dateList=>{
-      //   console.log(dateList)
-      //   dateList = dateList.filter(item=>item.getMonth() === today.getMonth())
-      //   return dateList
-      // })
-      // .then(dateList=>{
-      //   console.log(dateList)
-      // })
     };
 
   const [image, setImage] = useState()
@@ -75,10 +52,6 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
       firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).set(credentials)
     )
   }
-
-  useEffect(() => {
-    if (progress === 100) Log(null)
-  }, [progress])
 
   useEffect(() => {
     LoadSet(setLoad);
@@ -124,10 +97,6 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
           </Text>
 
         </View>
-        <>
-          {progress ? <ProgressBar status={progress} /> : null}
-        </>
-
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <TouchableOpacity onPress={Logout}>
             {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
@@ -150,9 +119,9 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
 
       {loading ? <ProgressBar status={loading} /> : null}
 
-      {/* <ScrollView style={{ height: 580, width: 335, }} */}
+      <ScrollView style={{ height: 580, width: 335, }}
 
-      {/* vertical={true} showsVerticalScrollIndicator={false}> */}
+      vertical={true} showsVerticalScrollIndicator={false}>
 
       <Card style={styles.menu2}>
         <View>
@@ -160,7 +129,7 @@ export default function MedicalHome({ navigation, progress, Log, Exit, credentia
         </View>
       </Card>
 
-      {/* </ScrollView> */}
+      </ScrollView>
       <TouchableOpacity
         style={styles.btnUpload} onPress={() => { navigation.navigate("Upload") }} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>

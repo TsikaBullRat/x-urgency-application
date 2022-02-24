@@ -15,7 +15,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
-import { handleSignIn } from '../../firebase'
+import { handleSignIn, firestore, auth } from '../../firebase'
 import { AlertNote } from '../../Components';
 
 export default function SignIn({ navigation, setDone }) {
@@ -41,6 +41,13 @@ export default function SignIn({ navigation, setDone }) {
       setPrompt2("Please enter password")
     } else {
       handleSignIn(email, password, setMessage, setDone)
+      if(auth.currentUser){
+        if(firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.data().doctor) === true){
+          navigation.navigate("DocHome")
+        }else{
+          navigation.navigate("Home")
+        }
+      }
       setDisplaModal(true)
     }
   }

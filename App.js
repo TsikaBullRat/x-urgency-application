@@ -2,80 +2,69 @@ import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { auth, firestore } from './src/firebase'
+import { auth, firestore, LogOut } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-<<<<<<< HEAD
-import { AuthScreens, UserScreens, DoctorsScreens, MedicalHome, Upload, VideoScreen, DoctorProfile, UpdateProfile, EmergencyContacts } from "./src/Screens";
-=======
-import { AuthScreens, UserScreens, DoctorsScreens } from "./src/Screens";
->>>>>>> cc05f61b3102b50db4e327e96aa62d61eaffcb15
+import { UploadVideo, MedicalHome, Upload, UpdateProfile, Home, VideoScreen, DoctorProfile, SignIn, SignUp, ForgotPassword, DoctorSignUp } from "./src/Screens";
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
 
-  const [id, setID] = useState(null)
-  const [doctor, setDoctor] = useState(null)
-  const [check1, setCheck1] = useState(false)
-  const [check2, setCheck2] = useState(false)
+  const [ initialRoute, setIntialRoute ] = useState("Sign In")
 
-  useEffect(() => {
-    auth.onAuthStateChanged(user => user ? setID(user.uid) : setID(false))
-  })
+  const Exit = () =>{
+    LogOut()
+  }
 
-  useEffect(() => {
-    id ? null : setCheck2(false), setDoctor(null)
-  }, [id])
+  useEffect(()=>{
+    auth.onAuthStateChanged(doc=>{
+      if(doc){
+        if(firestore.collection("Users").doc(doc.uid).get().then(doc=>doc.data().doctor)){
+          setIntialRoute("DocHome")
+        }else{
+          setIntialRoute("Home")
+        }
+      }
+    })
+  }, [auth.currentUser])
 
-  useEffect(() => {
-    try {
-      firestore.collection("Users").doc(id).get().then(doc => setDoctor(doc.data().doctor))
-    }
-    catch (err) {
-      console.log(err)
-    }
-  }, [id])
-
-  useEffect(() => {
-    id !== null ? (
-      setCheck1(true)
-    ) : null
-  }, [id])
-
-  useEffect(() => {
-    doctor !== null ? (
-      setCheck2(true)
-    ) : (
-      null
-    )
-  }, [doctor])
+  useEffect(()=>{
+    console.log(auth.currentUser)
+  }, [auth.currentUser])
 
   return (
     <NavigationContainer>
-      <KeyboardAwareScrollView>
-        <UserScreens />
-        <Stack.Navigator>
-          {check1 ? (
-            id ? (
-              check2 ? (
-                doctor ? (
-                  <Stack.Screen name="doctor" component={DoctorsScreens} options={{ headerShown: false }} />
-                ) : (
-                  <Stack.Screen name="user" component={UserScreens} options={{ headerShown: false }} />
-                  
-                )
-              ) : (
-                <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-              )
-            ) : (
-              <Stack.Screen name="auth" component={AuthScreens} options={{ headerShown: false }} />
-            )
-          ) : (
-            <Stack.Screen name="loading" component={Loading} options={{ headerShown: false }} />
-          )}
-        </Stack.Navigator>
-      </KeyboardAwareScrollView>
+      <Stack.Navigator initialRouteName={initialRoute}>
+        <Stack.Screen
+          name='Doctor SignUp'
+          options={{ headerShown: false }} >
+          {props => <DoctorSignUp {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name='Sign In' options={{ headerShown: false }}>
+          {(props) => <SignIn {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
+          {(props) => <SignUp {...props} />}
+        </Stack.Screen>
+        <Stack.Screen
+          name='Reset Password'
+          component={ForgotPassword}
+          options={{ headerShown: false }} />
+        <Stack.Screen name="DocHome" options={{ headerShown: false }} >
+          {props => <MedicalHome {...props} Exit={Exit} />}
+        </Stack.Screen>
+        <Stack.Screen name="Upload" options={{ headerShown: false }} >
+          {props => <Upload {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
+        <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
+        <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
+        <Stack.Screen name="Home" options={{ headerShown: false }} >
+          {props => <Home {...props} Exit={Exit} />}
+        </Stack.Screen>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

@@ -12,7 +12,7 @@
 **/
 
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, Picker } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, TextInput, TouchableOpacity, Platform, Picker } from 'react-native';
 import { Card } from 'react-native-paper';
 import { FontAwesome } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
@@ -105,6 +105,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       setPrompt9("Please re-enter password")
     } else {
       handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, contactdetails, description)
+      navigation.navigate("DocHome")
     }
   }
 
@@ -131,7 +132,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
       </View>
 
       {visibleStatusBar ? (
-        <View>
+        <ScrollView>
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -206,10 +207,10 @@ export default function DoctorSignUp({ navigation, setDetails }) {
             </TouchableOpacity>
           </View>
 
-        </View>
+        </ScrollView>
 
       ) : (
-        <View>
+        <ScrollView>
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: "row" }}>
@@ -256,7 +257,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
               <Text style={{ color: "#fff" }}>{`SIGNIN`} </Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
       )}
 
     </View>

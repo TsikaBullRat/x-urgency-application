@@ -43,7 +43,7 @@ export default function Menu({ list, setVids }) {
 
           <Pressable onPress={() => Sort("cpr")}>
               <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/CPRIcon.png')} />
+                <Image style={styles.menuIcons} source={require('../images/cprIcon.png')} />
                 <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8 }}> {`CPR`} </Text>
                 </Card>
           </Pressable>

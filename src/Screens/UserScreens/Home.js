@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity, Image, Text } from "react-native";
 import { Card } from "react-native-paper";
 import { auth, LoadSet, firestore } from "../../firebase";
 import Header from "../../Components/Header";
@@ -18,6 +18,10 @@ export default function Home({ navigation, Exit }) {
     ref = useRef(null),
     VideoScreen = (data) => {
       navigation.navigate("PlayVideo", { data });
+    },
+    LogOut = () =>{
+      Exit()
+      navigation.navigate("Sign In")
     };
 
   useEffect(() => {
@@ -48,7 +52,7 @@ export default function Home({ navigation, Exit }) {
         style={{ alignItems: "center", justifyContent: "space-between", }} >
         
 
-        <Header Exit={Exit} />
+        <Header Exit={LogOut} />
       </View>
 
       <View style={{ width: 335, alignItems: 'center' }}>
@@ -65,13 +69,13 @@ export default function Home({ navigation, Exit }) {
 
       {/*---------------------- Video Scroll View--------------------*/}
 
-      {/* <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}> */}
+      <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
       <Card style={styles.menu2}>
         <View>
           <VideoList videos={videos} VideoScreen={VideoScreen} />
         </View>
       </Card>
-      {/* </ScrollView> */}
+      </ScrollView>
     </View>
   );
 }

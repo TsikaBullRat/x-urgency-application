@@ -26,16 +26,15 @@ import { Collect, Post, } from '../../firebase';
 
 export default function VideoScreen({ navigation, route }) {
 
-  // const data = route.params.data
-  const [userName, setUserName] = useState(/*data.owner*/)
-  const [videoPlay, setVideoPlay] = useState(/*data.url*/)
-  const [views, setViews] = useState(/*data.views*/)
+  const data = route.params.data
+  const [userName, setUserName] = useState(data.owner)
+  const [videoPlay, setVideoPlay] = useState(data.url)
+  const [views, setViews] = useState(data.views)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
-  const refrence = useRef(/*data.url*/)
+  const refrence = useRef(data.url)
   const [info, setInfo] = useState()
   const [comments, setComments] = useState([]),
-
     [comment, setComment] = useState(""),
     [visibleStatusBar, setVisibleStatusBar] = useState(false),
     changeVisibilityStatusBar = () => {
@@ -96,11 +95,11 @@ export default function VideoScreen({ navigation, route }) {
     };
 
   useEffect(() => {
-    // Collect(data.firestore, setComments, setCount)
+    Collect(data.firestore, setComments, setCount)
   }, [])
 
   useEffect(() => {
-    // addAct()
+    addAct()
   }, [])
 
   return (
@@ -114,10 +113,10 @@ export default function VideoScreen({ navigation, route }) {
       {!visibleStatusBar ? (
         <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent: 'space-between' }}>
 
-          <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between', }}>
+          <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between' }}>
             <View>
-              <Text style={{ fontWeight: 'bold', color: '#F47066', }}>{/*data.title*/}</Text>
-              <Text style={{ fontSize: 10 }}> {views} views - {/*data.stamp*/} </Text>
+              <Text style={{ fontWeight: 'bold', color: '#F47066', }}>{data.title}</Text>
+              <Text style={{ fontSize: 10 }}> {views} views - {data.stamp} </Text>
             </View>
 
             <View>
@@ -141,7 +140,7 @@ export default function VideoScreen({ navigation, route }) {
               {/* <Dislikes data={data.firestore} /> */}
             </View>
 
-            <TouchableOpacity onPress={null/*() => ShareItem(data.url)*/}>
+            <TouchableOpacity onPress={() => ShareItem(data.url)}>
               <FontAwesome5
                 name="share"
                 size={20}
@@ -159,7 +158,7 @@ export default function VideoScreen({ navigation, route }) {
           <View
             style={{ width: 335, marginTop: 50, flexDirection: 'row', justifyContent: 'flex' }}>
             <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} size="medium" onPress={Navigate} />
-            <Text style={{ paddingTop: 15 }} > {/*data.owner*/}</Text>
+            <Text style={{ paddingTop: 15 }} > {data.owner}</Text>
           </View>
 
           <Card style={styles.txtCards}>
@@ -167,7 +166,7 @@ export default function VideoScreen({ navigation, route }) {
               <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
               <View style={{ width: 90, height: 40, borderRadius: 30 }}>
                 <Button color="#F47066"
-                  onPress={null/*() => Post(comment, data.firestore)*/} title='Comment' />
+                  onPress={() => Post(comment, data.firestore)} title='Comment' />
               </View>
             </View>
           </Card>
@@ -200,7 +199,7 @@ export default function VideoScreen({ navigation, route }) {
                 </Text>
 
                 <Text style={{ maxWidth: 315, paddinLeft: 20 }}>
-                  {/*data.description*/}
+                  {data.description}
                 </Text>
               </View>
 
@@ -220,8 +219,6 @@ export default function VideoScreen({ navigation, route }) {
         </View>
 
       )}
-
-      {/* <Comments video={data.firestore} /> */}
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card style={{

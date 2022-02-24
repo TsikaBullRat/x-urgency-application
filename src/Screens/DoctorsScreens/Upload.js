@@ -12,7 +12,7 @@
  **/
 
 import React, { useState, useRef } from "react";
-import { StyleSheet, Picker, Text, TouchableOpacity, View, TextInput, Pressable, } from "react-native";
+import { StyleSheet, Picker, Text, TouchableOpacity, View, TextInput, Pressable, ScrollView } from "react-native";
 import { Card } from "react-native-paper";
 import { UploadVideo } from "../../firebase";
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -74,6 +74,8 @@ export default function Upload({ navigation, Log }) {
     <View style={styles.container}>
 
       <Text style={styles.header}>Upload Or Create Your First Aid Video Here</Text>
+
+      <ScrollView>
 
       <View style={{ flexDirection: "row" }}>
         <TextInput
@@ -137,7 +139,7 @@ export default function Upload({ navigation, Log }) {
       <TouchableOpacity onPress={Run} style={styles.button}>
         <Text style={styles.buttonText}>Upload Video</Text>
       </TouchableOpacity>
-
+      </ScrollView>
     </View>
   );
 }
