@@ -17,7 +17,7 @@ import LogOutComp from '../../Components/LogOutComp'
 import { VideoList } from '../../Components/VideoList'
 import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
-import  {AlertNote}  from "../../Components/Alert"
+import { AlertNote } from '../../Components/Alert'
 
 export default function Home ({ navigation, Exit }) {
   const [status, setStatus] = useState({})
@@ -50,7 +50,7 @@ export default function Home ({ navigation, Exit }) {
   }, [])
 
   const [displayModal, setDisplaModal] = useState(false),
-  [message, setMessage] = useState("")
+    [message, setMessage] = useState('')
   const signOut = () => {
     setMessage('Signed out successfully')
     setDisplaModal(true)
@@ -59,8 +59,11 @@ export default function Home ({ navigation, Exit }) {
 
   return (
     <View style={styles.container}>
-
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      <AlertNote
+        modalVisible={displayModal}
+        setModalVisible={setDisplaModal}
+        msg={message}
+      />
 
       {/**------------------CallSiren--------------------CallSiren----------------- */}
       <View
@@ -70,7 +73,8 @@ export default function Home ({ navigation, Exit }) {
           marginVertical: 35,
           alignItems: 'center',
           justifyContent: 'space-between'
-        }}>
+        }}
+      >
         <View>
           <TouchableOpacity
             onPress={() => navigation.navigate('EmergencyContacts')}
@@ -92,8 +96,7 @@ export default function Home ({ navigation, Exit }) {
           width: '95%',
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'space-between'
-        }}>
+          justifyContent: 'space-between'}}>
         <View>
           <Header />
         </View>
@@ -123,11 +126,11 @@ export default function Home ({ navigation, Exit }) {
           vertical={true}
           showsVerticalScrollIndicator={false}
         >
-          <Card style={styles.menu2}>
-            <View>
-              <VideoList videos={videos} VideoScreen={VideoScreen} />
-            </View>
-          </Card>
+            <Card style={styles.menu2}>
+              <View>
+                <VideoList videos={videos} VideoScreen={VideoScreen} />
+              </View>
+            </Card>
         </ScrollView>
       </View>
     </View>

@@ -10,7 +10,15 @@ function TakeVideo () {
         source={require('../../images/TakeVideoLOGO.png')}
       />
 
-      <Text>Take a video</Text>
+      <View>
+        <Text>{`Take a video?`}</Text>
+      </View>
+
+      <View style={styles.content}>
+        <Text>{`Learn basic first-aid skills`}</Text>
+        <Text>{`by watching short`}</Text>
+        <Text>{`videos of everyday first-aid scenarios`}</Text>
+      </View>
     </View>
   )
 }

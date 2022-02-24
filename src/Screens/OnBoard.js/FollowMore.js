@@ -9,7 +9,16 @@ function FollowMore () {
         source={require('../../images/FollowLOGO.png')}
       />
 
-      <Text>Follow More</Text>
+      <View style={styles.header}>
+        <Text>{`Follow More`}</Text>
+      </View>
+      <Text></Text>
+
+      <View style={styles.content}>
+      <Text>{`Learn basic first-aid skills`}</Text>
+      <Text>{`by watching short`}</Text>
+      <Text>{`videos of everyday first-aid scenarios`}</Text>
+      </View>
     </View>
   )
 }
