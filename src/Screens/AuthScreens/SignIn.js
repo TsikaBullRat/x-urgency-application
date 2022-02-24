@@ -46,7 +46,14 @@ export default function SignIn ({ navigation }) {
       setPrompt1(null)
       setPrompt2('Please enter password')
     } else {
-      handleSignIn(email, password, setMessage)
+      handleSignIn(email, password, setMessage, setDone)
+      if(auth.currentUser){
+        if(firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.data().doctor) === true){
+          navigation.navigate("DocHome")
+        }else{
+          navigation.navigate("Home")
+        }
+      }
       setDisplaModal(true)
       navigation.navigate('Home', { setDone })
     }
@@ -59,7 +66,7 @@ export default function SignIn ({ navigation }) {
         setModalVisible={setDisplaModal}
         msg={message}
       />
-
+      {/**----------Logo------------Logo------------- */}
       <View>
         <Card style={styles.card}>
           <View style={styles.heartIcon}>
@@ -71,7 +78,7 @@ export default function SignIn ({ navigation }) {
           </Text>
         </Card>
       </View>
-
+      {/**----------Header------------Header------------- */}
       <View style={styles.header}>
         <Text
           style={{
@@ -87,14 +94,10 @@ export default function SignIn ({ navigation }) {
           }}
         >{`SignIn`}</Text>
       </View>
-      {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
 
-      <View
-        style={{
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
+      {/**----------txtFields------------txtFields------------- */}
+      <View style={styles.textfieldCards}>
+        {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign
@@ -104,7 +107,7 @@ export default function SignIn ({ navigation }) {
               style={{ marginTop: 16, marginLeft: 18 }}
             />
             <TextInput
-              style={styles.txtUser}
+              style={styles.txtField}
               name='username'
               placeholder='Username'
               onChangeText={text => setEmail(text)}
@@ -122,7 +125,7 @@ export default function SignIn ({ navigation }) {
               style={{ marginTop: 12, marginLeft: 12 }}
             />
             <TextInput
-              style={styles.txtPassword}
+              style={styles.txtField}
               name='password'
               placeholder='Password'
               secureTextEntry={true}
@@ -131,123 +134,113 @@ export default function SignIn ({ navigation }) {
           </View>
         </Card>
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
-        </View>
+      </View>
+      {/**----------ResetPassword------------ResetPassword------------- */}
+      <View style={styles.reset}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('ForgotPassword')
+          }}
+        >
+          <Text
+            style={{
+              paddingTop: 20,
+              fontSize: 18,
+              fontFamily: 'Arial',
+              color: '#F47066'
+            }}
+          >
+            {`Forgot Password?`}{' '}
+          </Text>
+        </TouchableOpacity>
+      </View>
 
-        <View style={{ width: '97%', alignItems: 'flex-end' }}>
+      {/**----------btnLogIn------------btnLogIn------------- */}
+      <View style={styles.loginView}>
+        <TouchableOpacity style={styles.signIn} onPress={Login}>
+          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>
+            {`LOGIN`}{' '}
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/*----------------------New User--------------New User------ */}
+      <View style={styles.newUser}>
+        <Text
+          style={{
+            paddingTop: 10,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            color: 'grey',
+            fontSize: 15
+          }}
+        >
+          {`New User?`}
+        </Text>
+
+        <View
+          style={{
+            marginTop: 2,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('ForgotPassword')
+              navigation.navigate('Sign Up')
             }}
           >
             <Text
               style={{
-                paddingTop: 20,
-                fontSize: 18,
+                paddingTop: 9,
+                fontSize: 20,
                 fontFamily: 'Arial',
                 color: '#F47066'
               }}
             >
-              {`Forgot Password?`}{' '}
+              {`SignUp`}
             </Text>
           </TouchableOpacity>
         </View>
+      </View>
 
-        <View
-          style={styles.loginView}>
-          <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>
-              {`LOGIN`}{' '}
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-{/*-----------btnLogIn-----------btnLogIn-------------- */}
+      <View style={{ marginTop: 10, width: 360 }}>
+        <Text
+          style={{
+            paddingTop: 10,
+            fontWeight: 'bold',
+            color: 'grey',
+            fontSize: 15,
+            textAlign: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          {' '}
+          {`Medical Personel?`}{' '}
+        </Text>
         <View
           style={{
-            width: 335,
-            marginRight: 10,
-            marginTop: 10,
             flexDirection: 'row',
-            alignItems: 'center',
+            textAlign: 'center',
             justifyContent: 'center'
-          }}>
-          <Text
-            style={{
-              paddingTop: 10,
-              fontWeight: 'bold',
-              color: 'grey',
-              fontSize: 15
-            }}
-          >
-            {' '}
-            {`New User?`}{' '}
-          </Text>
-
-          <View
-            style={{
-              marginTop: 2,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Sign Up')
+          }}
+        >
+          <TouchableOpacity onPress={() => navigation.navigate('MedSignIn')}>
+            <Text
+              style={{
+                fontFamily: 'Arial',
+                fontSize: 20,
+                paddingTop: 5,
+                color: '#F47066'
               }}
             >
-              <Text
-                style={{
-                  paddingTop: 9,
-                  fontSize: 20,
-                  fontFamily: 'Arial',
-                  color: '#F47066'
-                }}
-              >
-                {' '}
-                {`SignUp`}
-              </Text>
-            </TouchableOpacity>
-          </View>
+              {' '}
+              {`SignIn`}{' '}
+            </Text>
+          </TouchableOpacity>
         </View>
-
-        <View style={{ marginTop: 10, width: 360 }}>
-          <Text
-            style={{
-              paddingTop: 10,
-              fontWeight: 'bold',
-              color: 'grey',
-              fontSize: 15,
-              textAlign: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            {' '}
-            {`Medical Personel?`}{' '}
-          </Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              textAlign: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            <TouchableOpacity onPress={() => navigation.navigate('MedSignIn')}>
-              <Text
-                style={{
-                  fontFamily: 'Arial',
-                  fontSize: 20,
-                  paddingTop: 5,
-                  color: '#F47066'
-                }}
-              >
-                {' '}
-                {`SignIn`}{' '}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      
+      </View>
     </View>
   )
 }
@@ -277,7 +270,13 @@ const styles = StyleSheet.create({
     width: 360
   },
 
-  txtUser: {
+  textfieldCards: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  txtField: {
     marginTop: 7,
     paddingLeft: 10,
     paddingTop: 15,
@@ -297,21 +296,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 
-  txtPassword: {
-    height: 35,
-    marginTop: 5,
-    paddingLeft: 6,
-    paddingTop: 20,
-    fontSize: 18,
-    fontFamily: 'Arial',
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff'
-      }
-    })
-  },
-
   txtCards: {
     width: '95%',
     height: 50,
@@ -322,9 +306,23 @@ const styles = StyleSheet.create({
     borderColor: '#F47066'
   },
 
+  reset: {
+    width: '97%',
+    alignItems: 'flex-end'
+  },
+
   loginView: {
     width: 360,
-    alignItems:'center',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  newUser: {
+    width: 360,
+    marginRight: 10,
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'center'
   },
 

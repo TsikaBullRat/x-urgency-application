@@ -99,36 +99,35 @@ export default function MedSignIn({ navigation, setDone }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: '100%',
+    width: 360,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
     textAlign: 'center'
   },
 
   heartIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
     marginTop: 30,
+    width: 360
   },
 
   header: {
-    paddingTop: 25,
-    fontSize: 36,
-    fontFamily: 'Cooper',
-    color: '#F47066'
+    marginTop: 20,
+    width: 360
+  },
+
+  textfieldCards: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   txtUser: {
-    width: 300,
     marginTop: 7,
     paddingLeft: 10,
     paddingTop: 15,
@@ -143,8 +142,12 @@ const styles = StyleSheet.create({
     })
   },
 
+  prompt: {
+    color: '#F47066',
+    textAlign: 'center'
+  },
+
   txtPassword: {
-    width: 300,
     height: 35,
     marginTop: 5,
     paddingLeft: 6,
@@ -154,20 +157,39 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: '#fff',
-        width: 220
+        outlineColor: '#fff'
       }
     })
   },
 
   txtCards: {
-    width: '80%',
+    width: '95%',
     height: 50,
     borderRadius: 10,
-    marginLeft: 2,
     marginTop: 35,
     borderWidth: 1,
-    borderColor: '#F47066',
+    backgroundColor: '#fff',
+    borderColor: '#F47066'
+  },
+
+  reset: {
+    width: '97%',
+    alignItems: 'flex-end'
+  },
+
+  loginView: {
+    width: 360,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  newUser: {
+    width: 335,
+    marginRight: 10,
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   signIn: {
@@ -177,7 +199,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 
 });

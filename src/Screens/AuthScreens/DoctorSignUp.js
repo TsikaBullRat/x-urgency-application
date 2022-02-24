@@ -87,46 +87,32 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
       setVisibleStatusBar(!visibleStatusBar)
     }
 
-    const Register = () => {
-      if (
-        qualification === '' &&
-        branch === '' &&
-        password === '' &&
-        confirmpassword === ''
-      ) {
-        setPrompt('Please enter thr requested information')
-      } else if (description === '') {
-        setPrompt6('Please tell us about you')
-        setPrompt7(null)
-        setPrompt8(null)
-        setPrompt9(null)
-      } else if (branch === '') {
-        setPrompt6(null)
-        setPrompt7('Please enter branch name')
-        setPrompt8(null)
-        setPrompt9(null)
-      } else if (password === '') {
-        setPrompt6(null)
-        setPrompt7(null)
-        setPrompt8('Please enter password')
-        setPrompt9(null)
-      } else if (confirmpassword === '') {
-        setPrompt6(null)
-        setPrompt7(null)
-        setPrompt8(null)
-        setPrompt9('Please re-enter password')
-      } else {
-        handleDoctorSignUp(
-          email,
-          password,
-          name + ' ' + surname,
-          qualification,
-          specialization,
-          branch,
-          contactdetails,
-          description
-        )
-      }
+  const Register = () => {
+    if (qualification === "" && branch === "" && password === "" && confirmpassword === "") {
+      setPrompt("Please enter thr requested information")
+    } else if (description === "") {
+      setPrompt6("Please tell us about you")
+      setPrompt7(null)
+      setPrompt8(null)
+      setPrompt9(null)
+    } else if (branch === "") {
+      setPrompt6(null)
+      setPrompt7("Please enter branch name")
+      setPrompt8(null)
+      setPrompt9(null)
+    } else if (password === "") {
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8("Please enter password")
+      setPrompt9(null)
+    } else if (confirmpassword === "") {
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8(null)
+      setPrompt9("Please re-enter password")
+    } else {
+      handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, contactdetails, description)
+      navigation.navigate("DocHome")
     }
 
     return (

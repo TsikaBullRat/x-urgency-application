@@ -38,12 +38,16 @@ export default function Home ({ navigation, Exit }) {
         })
   }, [])
 
-  const VideoScreen = data => {
-      navigation.navigate('PlayVideo', { data })
+  const [status, setStatus] = useState({});
+  const [videos, setLoad] = useState(null),
+    ref = useRef(null),
+    VideoScreen = (data) => {
+      navigation.navigate("PlayVideo", { data });
     },
-    Emergency = () => {
-      navigation.navigate('EmergencyContacts')
-    }
+    LogOut = () =>{
+      Exit()
+      navigation.navigate("Sign In")
+    };
 
   useEffect(() => {
     LoadSet(setLoad)
