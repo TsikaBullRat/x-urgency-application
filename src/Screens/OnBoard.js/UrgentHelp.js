@@ -9,7 +9,15 @@ function UrgentHelp () {
         source={require('../../images/FollowLOGO.png')}
       />
 
-      <Text>Need Urgent Help?</Text>
+      <View>
+        <Text>{`Need Urgent Help?`}</Text>
+      </View>
+
+      <View style={styles.content}>
+        <Text>{`Learn basic first-aid skills`}</Text>
+        <Text>{`by watching short`}</Text>
+        <Text>{`videos of everyday first-aid scenarios`}</Text>
+      </View>
     </View>
   )
 }

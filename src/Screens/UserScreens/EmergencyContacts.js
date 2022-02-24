@@ -13,28 +13,35 @@ const EmergencyContacts = ({ navigation }) => {
       <View>
         <View
           style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginVertical: 20
+            alignItems: 'flex-start'
           }}
         >
           <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-            {' BACK'}
+            {'<='}
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.head}> {'EMERGENCY? \n CALL NOW!'}</Text>
+        <View
+          style={{
+            width: '100%',
+            marginTop: 20,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <Text style={styles.head}> {'EMERGENCY?'} </Text>
+          <Text style={styles.head}> {'CALL NOW!'}</Text>
+        </View>
       </View>
 
-      <View>
+      <View style={{width:360, alignItems:'center', justifyContent:'center'}}>
         <TouchableOpacity onPress={() => Call('112')}>
-          <Card style={[styles.card7, styles.ShadowProp]}>
+          <Card style={styles.card7}>
             <Text
               style={{
-                marginLeft: 150,
                 fontWeight: 'bold',
                 fontSize: 15,
-                marginTop: 5,
+                paddingTop:10,
                 color: 'white'
               }}
             >
@@ -44,11 +51,11 @@ const EmergencyContacts = ({ navigation }) => {
               name='arrows'
               size={30}
               color='#ffffff'
-              style={{ marginTop: 1, marginLeft: 180 }}
+              style={{ marginTop: 1, alignSelf:'center' }}
             />
             <Text
               style={{
-                marginLeft: 180,
+                textAlign:'center',
                 fontWeight: 'bold',
                 fontSize: 16,
                 marginTop: -1,
@@ -59,9 +66,11 @@ const EmergencyContacts = ({ navigation }) => {
             </Text>
           </Card>
         </TouchableOpacity>
+      </View>
 
+      <View>
         <TouchableOpacity onPress={() => Call('10111')}>
-          <Card style={[styles.card, styles.ShadowProp]}>
+          <Card style={styles.card}>
             <Text
               style={{
                 marginLeft: 65,
@@ -94,7 +103,7 @@ const EmergencyContacts = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => Call('10177')}>
-          <Card style={[styles.card1, styles.ShadowProp]}>
+          <Card style={styles.card1}>
             <Text
               style={{
                 marginLeft: 40,
@@ -129,7 +138,7 @@ const EmergencyContacts = ({ navigation }) => {
 
       <View>
         <TouchableOpacity onPress={() => Call('999')}>
-          <Card style={[styles.card2, styles.ShadowProp]}>
+          <Card style={styles.card2}>
             <Text
               style={{
                 marginLeft: 64,
@@ -162,7 +171,7 @@ const EmergencyContacts = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => Call('083 1999')}>
-          <Card style={[styles.card3, styles.ShadowProp]}>
+          <Card style={styles.card3}>
             <Text
               style={{
                 marginLeft: 50,
@@ -197,7 +206,7 @@ const EmergencyContacts = ({ navigation }) => {
 
       <View>
         <TouchableOpacity onPress={() => Call('0800 055 555')}>
-          <Card style={[styles.card4, styles.ShadowProp]}>
+          <Card style={styles.card4}>
             <Text
               style={{
                 marginLeft: 55,
@@ -230,7 +239,7 @@ const EmergencyContacts = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => Call('0800 567 567')}>
-          <Card style={[styles.card5, styles.ShadowProp]}>
+          <Card style={styles.card5}>
             <Text
               style={{
                 marginLeft: 30,
@@ -265,7 +274,7 @@ const EmergencyContacts = ({ navigation }) => {
 
       <View>
         <TouchableOpacity onPress={() => Call('0800 428 428')}>
-          <Card style={[styles.card6, styles.ShadowProp]}>
+          <Card style={styles.card6}>
             <Text
               style={{
                 marginLeft: 30,
@@ -300,7 +309,7 @@ const EmergencyContacts = ({ navigation }) => {
 
       <View>
         <TouchableOpacity onPress={() => Call('0800 029 999')}>
-          <Card style={[styles.card7, styles.ShadowProp]}>
+          <Card style={styles.card7}>
             <Text
               style={{
                 marginLeft: 30,
@@ -343,6 +352,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
 
+  head: {
+    color: '#F47066',
+    fontSize: 35,
+    textAlign: 'center',
+    fontFamily: 'arial'
+  },
+
   card: {
     width: 170,
     height: 90,
@@ -357,13 +373,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F47066',
     marginRight: 200,
     marginTop: 100
-  },
-
-  ShadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 10
   },
 
   card1: {
@@ -407,7 +416,7 @@ const styles = StyleSheet.create({
   },
 
   card6: {
-    width: 371,
+    width: 360,
     height: 90,
     backgroundColor: '#F47066',
     marginLeft: 1,
@@ -417,15 +426,10 @@ const styles = StyleSheet.create({
   card7: {
     width: 371,
     height: 90,
+    textAlign:'center',
     backgroundColor: '#F47066',
     marginLeft: 1,
     marginTop: 10
-  },
-
-  head: {
-    width: 220,
-    color: '#F47066',
-    fontSize: 35
   }
 })
 
