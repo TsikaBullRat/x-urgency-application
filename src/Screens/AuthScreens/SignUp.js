@@ -12,13 +12,20 @@
  **/
 
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Platform
+} from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleSignUp } from '../../firebase'
 import { AlertNote } from '../../Components/Alert'
 
-export default function SignUp({ navigation }) {
+export default function SignUp ({ navigation }) {
   const [username, setUserName] = useState(''),
     [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
@@ -76,19 +83,25 @@ export default function SignUp({ navigation }) {
         setModalVisible={setDisplayModal}
         msg={message}
       />
-      
-      <Card style={styles.card}>
-        <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={110} color="#fff" />
-        </View>
-        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
-      </Card>
+      {/**----------Logo------------Logo------------- */}
+      <View>
+        <Card style={styles.card}>
+          <View style={styles.heartIcon}>
+            <FontAwesome name='heartbeat' size={110} color='#fff' />
+          </View>
+          <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}>
+            {' '}
+            {`X-urgency`}{' '}
+          </Text>
+        </Card>
+      </View>
 
       <View style={styles.header}>
         <Text
           style={{
             fontSize: 30,
-            fontWeight:'bold',
+            fontWeight: 'bold',
+            textAlign: 'center',
             ...Platform.select({
               web: {
                 fontFamily: 'Arial'
@@ -98,27 +111,27 @@ export default function SignUp({ navigation }) {
           }}
         >{`SignUp`}</Text>
       </View>
+      {/**----------txtFields------------txtFields------------- */}
+      <View style={styles.textfieldCards}>
+        {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <AntDesign
+              name='user'
+              size={22}
+              color='black'
+              style={{ marginTop: 16, marginLeft: 18 }}
+            />
+            <TextInput
+              style={styles.txtField}
+              name='userName'
+              placeholder='Username'
+              onChangeText={text => setEmail(text)}
+            />
+          </View>
+        </Card>
 
-      {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
-
-      <Card style={styles.txtCards}>
-        <View style={{ flexDirection: 'row' }}>
-          <AntDesign
-            name='user'
-            size={22}
-            color='black'
-            style={{ marginTop: 17, marginLeft: 16 }}
-          />
-          <TextInput
-            style={styles.txtField}
-            name='userName'
-            placeholder='Username'
-            onChangeText={text => setEmail(text)}
-          />
-        </View>
-      </Card>
-      {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
-
+        {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign
@@ -139,7 +152,12 @@ export default function SignUp({ navigation }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name='lock' size={32} color='black' style={{ marginTop: 11, marginLeft: 10 }} />
+           <EvilIcons
+              name='lock'
+              size={32}
+              color='black'
+              style={{ marginTop: 12, marginLeft: 12 }}
+            />
             <TextInput
               style={styles.txtField}
               name='password'
@@ -154,10 +172,10 @@ export default function SignUp({ navigation }) {
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons
-              name='unlock'
+              name='lock'
               size={32}
               color='black'
-              style={{ marginTop: 11, marginLeft: 10 }}
+              style={{ marginTop: 12, marginLeft: 12 }}
             />
             <TextInput
               style={styles.txtField}
@@ -169,25 +187,32 @@ export default function SignUp({ navigation }) {
           </View>
         </Card>
         {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
+      </View>
 
-        <View style={{ width:'100%', alignItems: 'center', justifyContent: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={Register}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontFamily: 'Arial',
-                color: '#fff'
-              }}
-            >
-              {`SIGNUP`}
-            </Text>
-          </TouchableOpacity>
-        </View>
+{/**----------btnSignUp------------btnSignUp------------- */}
+      <View style={styles.signupView}>
+        <TouchableOpacity style={styles.signUp} onPress={Register}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: 'Arial',
+              color: '#fff'
+            }}
+          >
+            {`SIGNUP`}
+          </Text>
+        </TouchableOpacity>
+      
 
-        <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}> BACK  </TouchableOpacity>
-        </View>
-
+{/**-------BACK------BACK-------BACK */}
+      <View style={{marginTop: 10}}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+          {' '}
+          BACK{' '}
+        </TouchableOpacity>
+      </View>
+      </View>
+      
     </View>
   )
 }
@@ -195,53 +220,40 @@ export default function SignUp({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: '#fff'
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: '100%',
+    width: 360,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
+    textAlign: 'center'
+  },
+
+  heartIcon: {
+    marginTop: 30,
+    width: 360
+  },
+
+  header: {
+    marginTop: 20,
+    width: 360
+  },
+
+  textfieldCards: {
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center'
   },
 
-  heartIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30
-  },
-
-  header: {
-    paddingTop: 25,
-    textAlign: 'center'
-  },
-
-  prompt: {
-    color: '#F47066',
-    textAlign: 'center'
-  },
-
-  txtCards: {
-    width: '80%',
-    height: 50,
-    borderRadius: 10,
-    marginLeft: 2,
-    marginTop: 35,
-    borderWidth: 1,
-    borderColor: '#F47066'
-  },
-
-  txtField: {
-    width: 300,
+  txtUser: {
     marginTop: 7,
-    paddingLeft: 6,
+    paddingLeft: 10,
     paddingTop: 15,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
@@ -251,7 +263,48 @@ const styles = StyleSheet.create({
     })
   },
 
-  signIn: {
+  prompt: {
+    color: '#F47066',
+    textAlign: 'center'
+  },
+
+  txtPassword: {
+    height: 35,
+    marginTop: 5,
+    paddingLeft: 6,
+    paddingTop: 20,
+    fontSize: 18,
+    fontFamily: 'Arial',
+    borderRadius: 10,
+    ...Platform.select({
+      web: {
+        outlineColor: '#fff'
+      }
+    })
+  },
+
+  txtCards: {
+    width: '95%',
+    height: 50,
+    borderRadius: 10,
+    marginTop: 35,
+    borderWidth: 1,
+    backgroundColor: '#fff',
+    borderColor: '#F47066'
+  },
+
+  reset: {
+    width: '97%',
+    alignItems: 'flex-end'
+  },
+
+  signupView: {
+    width: 360,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  signUp: {
     height: 50,
     width: '60%',
     marginTop: 40,

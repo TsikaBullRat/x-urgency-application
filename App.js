@@ -17,6 +17,10 @@ import PlayVideo from './src/Screens/UserScreens/PlayVideo'
 import Doctor from './src/Screens/UserScreens/Doctor'
 import { EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile } from './src/Screens'
 import { AuthScreens, UserScreens, DoctorsScreens } from './src/Screens'
+import Welcome from './src/Screens/OnBoardScreens/Welcome'
+import FollowMore from './src/Screens/OnBoardScreens/FollowMore' 
+import TakeVideo from './src/Screens/OnBoardScreens/TakeVideo'
+import UrgentHelp from './src/Screens/OnBoardScreens/UrgentHelp'
 
 const Stack = createNativeStackNavigator()
 //const Stack = createStackNavigator()
@@ -83,6 +87,30 @@ export default function App({ navigation }) {
                 </Stack.Navigator>
               ) : (
                 <Stack.Navigator>
+
+                  <Stack.Screen
+                    name='Welcome'
+                    component={Welcome}
+                    options={{ headerShown: false }}
+                  />
+
+                  <Stack.Screen
+                    name='FollowMore'
+                    component={FollowMore}
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name='TakeVideo'
+                    component={TakeVideo}
+                    options={{ headerShown: false }}
+                  />
+
+                  <Stack.Screen
+                    name='UrgentHelp'
+                    component={UrgentHelp}
+                    options={{ headerShown: false }}
+                  />
+
                   <Stack.Screen name='Home' options={{ headerShown: false }}>
                     {props => <Home {...props} Exit={Exit} />}
                   </Stack.Screen>
