@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, Image, Pressable, Platform } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper';
+import { FontAwesome } from '@expo/vector-icons';
 import { auth, LoadSet, firestore } from "../firebase";
 
 export default function Menu({ list, setVids }) {
@@ -21,7 +22,7 @@ export default function Menu({ list, setVids }) {
         <View style={{ width: 705, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/human-brain.png')} />
+            <FontAwesome name="ils" size={30} color="#ffffff" style={{ marginTop: 1, marginLeft: 180 }} />
               <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`Stroke`} </Text>
             </Card>
           </Pressable>
