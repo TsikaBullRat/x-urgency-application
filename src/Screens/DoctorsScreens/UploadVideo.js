@@ -1,14 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  SafeAreaView,
-  Dimensions,
-  ScrollView
-} from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View, SafeAreaView, Dimensions, ScrollView } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 import { Camera } from 'expo-camera'
 import { Video } from 'expo-av'
@@ -27,7 +18,6 @@ export default function UploadVideo({ navigation }) {
   const [isVideoRecording, setIsVideoRecording] = useState(false)
   const [videoSource, setVideoSource] = useState(null)
   const cameraRef = useRef()
-
   const ref = useRef(null)
   const [status, setStatus] = useState({})
   const [selectedValue, setSelectedValue] = useState('stroke'),
@@ -35,6 +25,7 @@ export default function UploadVideo({ navigation }) {
     [description, setDescpription] = useState(),
 
     //--------Open Image-Picker-------Open Image-Picker---------
+
     openImagePickerAsync = async () => {
       let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync()
 
@@ -54,21 +45,11 @@ export default function UploadVideo({ navigation }) {
     },
 
     //-----???????----------???????----------
-    Run = () => {
-      openImagePickerAsync();
-      selectedImage
-        ? (UploadVideo(
-          selectedImage.localUri,
-          title,
-          description,
-          selectedValue,
-          Log
-        ),
-          navigation.goBack())
-        : null
-    },
+
+    Run = () => { openImagePickerAsync(); selectedImage ? (UploadVideo(selectedImage.localUri, title, description, selectedValue, Log), navigation.goBack()) : null },
 
     //-------Opening Camera---------Opening Camera---------
+
     openCamera = async () => {
       let result = await ImagePicker.launchCameraAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Videos,
@@ -80,6 +61,7 @@ export default function UploadVideo({ navigation }) {
     }
 
   //-------Granting to Open Camera on first run----------
+
   useEffect(() => {
     ; (async () => {
       const { status } = await Camera.requestPermissionsAsync()
@@ -88,11 +70,13 @@ export default function UploadVideo({ navigation }) {
   }, [])
 
   //--------Setting Camera to open---------
+
   const onCameraReady = () => {
     setIsCameraReady(true)
   }
 
   //--------Recording Video-------Recording Video----------
+
   const recordVideo = async () => {
     if (cameraRef.current) {
       try {
@@ -115,6 +99,7 @@ export default function UploadVideo({ navigation }) {
   }
 
   //-------Stoping Video-Record-------Stoping Video-Record------
+
   const stopVideoRecording = () => {
     if (cameraRef.current) {
       setIsPreview(false)
@@ -124,6 +109,7 @@ export default function UploadVideo({ navigation }) {
   }
 
   //------Switching Camera from Back-to-Front/Front-to-Back-----
+
   const switchCamera = () => {
     if (isPreview) {
       return
@@ -136,6 +122,7 @@ export default function UploadVideo({ navigation }) {
   }
 
   //--------Canceling Preview--------Canceling Preview------
+
   const cancelPreview = async () => {
     await cameraRef.current.resumePreview()
     setIsPreview(false)
@@ -145,18 +132,12 @@ export default function UploadVideo({ navigation }) {
   const renderCancelPreviewButton = () => (
     <TouchableOpacity onPress={cancelPreview} style={styles.closeButton}>
       <View style={[styles.closeCross, { transform: [{ rotate: '45deg' }] }]} />
-      <View
-        style={[styles.closeCross, { transform: [{ rotate: '-45deg' }] }]}
-      />
+      <View style={[styles.closeCross, { transform: [{ rotate: '-45deg' }] }]} />
     </TouchableOpacity>
   )
 
   const renderVideoPlayer = () => (
-    <Video
-      source={{ uri: videoSource }}
-      shouldPlay={true}
-      style={styles.media}
-    />
+    <Video source={{ uri: videoSource }} shouldPlay={true} style={styles.media} />
   )
 
   const renderVideoRecordIndicator = () => (
@@ -171,27 +152,18 @@ export default function UploadVideo({ navigation }) {
       <TouchableOpacity disabled={!isCameraReady} onPress={switchCamera}>
         <Text style={styles.text}>{'Flip'}</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        disabled={!isCameraReady}
-        onLongPress={recordVideo}
-        onPressOut={stopVideoRecording}
-        onPress={takePicture}
-        style={styles.capture}
-      />
+      <TouchableOpacity activeOpacity={0.7} disabled={!isCameraReady} onLongPress={recordVideo} onPressOut={stopVideoRecording} onPress={takePicture} style={styles.capture} />
     </View>
   )
 
   const [selectedImage, setSelectedImage] = useState(null)
 
   //------Camera Permission (NULL)-----Permission(NULL)-----------
-  if (hasPermission === null) {
-    return <View />
-  }
 
-  //------Camera Permission (FALSE)-----Permission(FALSE)-----------
-  if (hasPermission === false) {
-    return (
+  return (
+    hasPermission === null ? (
+      <View />
+    ) : (hasPermission === false ? (
       <View>
         <Text style={styles.text}>No access to camera!</Text>
 
@@ -200,138 +172,83 @@ export default function UploadVideo({ navigation }) {
         </Text>
 
         <View style={{ alignItems: 'center' }}>
-          <Image
-            source={{
-              uri:
-                'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7'
-            }}
-            style={styles.logo}
-          />
+          <Image source={{ uri: 'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7' }} style={styles.logo} />
         </View>
 
         <View style={{ alignItems: 'center', marginBottom: 30 }}>
-          <TouchableOpacity
-            onPress={Run}
-            style={styles.button1}
-          >
+          <TouchableOpacity onPress={Run} style={styles.button1} >
             <Text style={styles.buttonText}>Pick a video</Text>
           </TouchableOpacity>
         </View>
-      </View>
-    )
-  }
 
-  if (selectedImage !== null) {
-    return (
+      </View>
+    ) : (selectedImage !== null ? (
       <View style={styles.container}>
-        <Image
-          source={{ uri: selectedImage.localUri }}
-          style={styles.thumbnail}
-        />
-        <TouchableOpacity
-          onPress={() => {
-            Upload(selectedImage.localUri)
-          }}
-          style={styles.button}
-        >
+        <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
+        <TouchableOpacity onPress={() => { Upload(selectedImage.localUri) }}
+          style={styles.button} >
           <Text style={styles.buttonText}>Share This Photo</Text>
         </TouchableOpacity>
       </View>
-    )
-  }
 
-  return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <SafeAreaView>
-          {!visible ? (
-            <SafeAreaView //style={styles.container}
-            >
-              <Text style={styles.instructions}>
-                {`To upload a Video from your phone, open camera.`}
-              </Text>
+    ) : (
 
-              <View style={{ alignItems: 'center' }}>
-                <Image
-                  source={{
-                    uri:
-                      'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7'
-                  }}
-                  style={styles.logo}
-                />
-              </View>
-              <TouchableOpacity
-                style={styles.button1}
-                onPress={() => {
-                  setVisible(!visible)
-                }}
-              >
-                <Text>{`Open Camera`}</Text>
-              </TouchableOpacity>
-            </SafeAreaView>
-          ) : (
-            <View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container}>
+          <SafeAreaView>
+            {!visible ? (
               <SafeAreaView //style={styles.container}
               >
-                <Camera
-                  ref={cameraRef}
-                  style={styles.contain}
-                  type={cameraType}
-                  flashMode={Camera.Constants.FlashMode.on}
-                  onCameraReady={onCameraReady}
-                  onMountError={error => {
-                    console.log('cammera error', error)
-                  }}
-                />
+                <Text style={styles.instructions}>
+                  {`To upload a Video from your phone, open camera.`}
+                </Text>
 
-                <View style={styles.contain}>
-                  {isVideoRecording && renderVideoRecordIndicator()}
-                  {videoSource && renderVideoPlayer()}
-                  {isPreview && renderCancelPreviewButton()}
-                  {!videoSource && !isPreview && renderCaptureControl()}
+                <View style={{ alignItems: 'center' }}>
+                  <Image source={{ uri: 'https://th.bing.com/th/id/OIP.cEbsQkks2CN7pkPbOsForAHaHa?w=205&h=205&c=7&r=0&o=5&pid=1.7' }} style={styles.logo} />
                 </View>
 
-                <View
-                  style={{
-                    width: 380,
-                    marginTop: 400,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexDirection: 'row'
-                  }}
-                >
-                  <TouchableOpacity
-                    onPress={() => {
-                      setVisible(!visible)
-                    }}
-                  >
-                    <Text>{`Close`}</Text>
-                  </TouchableOpacity>
-
-                  <TouchableOpacity
-                    onPress={() => {
-                      setVisible(!visible)
-                    }}
-                  >
-                    <Text>{Record}</Text>
-                  </TouchableOpacity>
-
-                  <TouchableOpacity
-                    onPress={() => {
-                      setVisible(!visible)
-                    }}
-                  >
-                    <Text>{Record}</Text>
-                  </TouchableOpacity>
-                </View>
-
+                <TouchableOpacity style={styles.button1} onPress={() => { setVisible(!visible) }} >
+                  <Text>{`Open Camera`}</Text>
+                </TouchableOpacity>
               </SafeAreaView>
-            </View>
-          )}
-        </SafeAreaView>
-      </View>
-    </ScrollView>
-  )
+
+            ) : (
+
+              <View>
+                <SafeAreaView //style={styles.container}
+                >
+                  <Camera ref={cameraRef} style={styles.contain} type={cameraType} flashMode={Camera.Constants.FlashMode.on} onCameraReady={onCameraReady} onMountError={error => { console.log('cammera error', error) }} />
+
+                  <View style={styles.contain}>
+                    {isVideoRecording && renderVideoRecordIndicator()}
+                    {videoSource && renderVideoPlayer()}
+                    {isPreview && renderCancelPreviewButton()}
+                    {!videoSource && !isPreview && renderCaptureControl()}
+                  </View>
+
+                  <View style={{ width: 380, marginTop: 400, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }} >
+
+                    <TouchableOpacity onPress={() => { setVisible(!visible) }} >
+                      <Text>{`Close`}</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => { setVisible(!visible) }} >
+                      <Text>{Record}</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => { setVisible(!visible) }}  >
+                      <Text>{Record}</Text>
+                    </TouchableOpacity>
+                  </View>
+
+                </SafeAreaView>
+              </View>
+            )}
+          </SafeAreaView>
+        </View>
+      </ScrollView>
+
+    ))))
 }
 
 const styles = StyleSheet.create({
@@ -350,7 +267,8 @@ const styles = StyleSheet.create({
     color: '#888',
     fontSize: 18,
     marginHorizontal: 15,
-    paddingTop: 35
+    paddingTop: 35,
+    fontFamily: 'Roboto'
   },
 
   thumbnail: {
@@ -375,7 +293,8 @@ const styles = StyleSheet.create({
 
   buttonText: {
     fontSize: 20,
-    color: '#fff'
+    color: '#fff',
+    fontFamily: 'Roboto'
   },
 
   contain: {
@@ -452,6 +371,8 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 24,
-    color: 'red'
+    color: 'red',
+    fontFamily: 'Roboto'
   }
+
 })

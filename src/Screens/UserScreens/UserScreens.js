@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home, VideoScreen, DoctorProfile } from '.';
+import Home from './Home';
+import PlayVideo from './PlayVideo';
+import EmergencyContacts from './EmergencyContacts';
+import Doctor from './Doctor';
 import { LogOut } from '../../firebase';
 
 const Stack = createNativeStackNavigator()
@@ -14,13 +17,17 @@ export const UserScreens = ({ navigation }) => {
 
     return (
         <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
             <Stack.Screen name="Home" options={{ headerShown: false }} >
                 {props => <Home {...props} Exit={Exit} />}
             </Stack.Screen>
+
+            <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+
             <Stack.Screen name="Doctor" options={{ headerShown: false }} >
-                {props => <DoctorProfile {...props} />}
+                {props => <Doctor {...props} />}
             </Stack.Screen>
+
+            <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
         </Stack.Navigator>
     )
 }

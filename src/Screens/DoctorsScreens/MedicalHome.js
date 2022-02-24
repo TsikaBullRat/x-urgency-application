@@ -22,6 +22,15 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
       if (today === auth.currentUser.metadata.creationTime) {
         setDisplayModal(true)
       }
+      firestore.collection("Videos").where("ref", "==", auth.currentUser.uid).get()
+        .then(query => {
+          var data = []
+          query.forEach(doc => {
+            data = [...data, doc.data().added.toDate()]
+            return data
+          })
+          return data
+        })
     };
 
   const [image, setImage] = useState()
@@ -45,14 +54,6 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
     [loading, setLoading] = useState(null);
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
 
-  const setDoctor = () => {
-    firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).get().then(doc => doc.exists) ? (
-      null
-    ) : (
-      firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).set(credentials)
-    )
-  }
-
   useEffect(() => {
     LoadSet(setLoad);
   }, []);
@@ -71,42 +72,20 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
 
       <View style={{ flexDirection: "row" }}>
         <View style={styles.header}>
-          <Text
-            style={{
-              fontSize: 36,
-              paddingLeft: 30,
-              color: "turquoise",
-              textShadowColor: "grey",
-              textShadowOffset: { width: 2, height: 2 },
-              textShadowRadius: 1,
-            }}
-            onPress={Logout}>
-            Dr. {auth.currentUser.displayName.split(" ")[1]}
-          </Text>
+          <Text style={{ fontSize: 36, paddingLeft: 30, color: "turquoise", textShadowColor: "grey", textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1, }} onPress={Logout}>  Dr. {auth.currentUser.displayName.split(" ")[1]} </Text>
 
-          <Text
-            style={{
-              fontSize: 36,
-              paddingLeft: 30,
-              color: "red",
-              textShadowColor: "grey",
-              textShadowOffset: { width: 2, height: 2 },
-              textShadowRadius: 1,
-            }}
-          > In Da House
-          </Text>
+          <Text style={{ fontSize: 36, paddingLeft: 30, color: "red", textShadowColor: "grey", textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1, }} > In Da House </Text>
 
         </View>
         <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <TouchableOpacity onPress={Logout}>
-            {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+          <TouchableOpacity onPress={Logout}> {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
 
-            ) : (
+          ) : (
 
-              <View style={styles.temp}>
-                <Text style={styles.temp_text}> {initial} </Text>
-              </View>
-            )}
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
 
           </TouchableOpacity>
           <Pressable onPress={() => { navigation.navigate("Update") }} >
@@ -155,28 +134,14 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 55,
     borderBottomWidth: 3,
     borderColor: 'turquoise',
-    shadowColor: 'grey',
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.4,
-    elevation: 1,
   },
 
-  menu2: {
-    width: 355,
-    height: 550,
-    marginLeft: 10,
-    marginTop: 50,
-    borderRadius: 15,
-  },
-
-  shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 10,
+  vidTitle: {
+    fontSize: 18,
+    fontFamily: 'flexi titling',
+    color: '#F47066'
   },
 
   btnUpload: {
@@ -190,7 +155,6 @@ const styles = StyleSheet.create({
   },
 
   temp: {
-    // flex: 1,
     width: 70,
     height: 70,
     borderRadius: 50,

@@ -1,16 +1,41 @@
-import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, ScrollView, TouchableOpacity, Image, Text } from "react-native";
-import { Card } from "react-native-paper";
-import { auth, LoadSet, firestore } from "../../firebase";
-import Header from "../../Components/Header";
-import Menu from "../../Components/Menu";
-import { VideoList } from "../../Components/VideoList";
-import EmergencyContacts from '../../Components/EmergencyContacts'
+import React, { useState, useEffect, useRef } from 'react'
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Text,
+  ScrollView
+} from 'react-native'
+// import { ScrollView } from 'react-native-gesture-handler'
+import { Card } from 'react-native-paper'
+import { auth, LoadSet, firestore } from '../../firebase'
+import Header from '../../Components/Header'
+import Menu from '../../Components/Menu'
+import CallSiren from '../../Components/CallSiren'
+import LogOutComp from '../../Components/LogOutComp'
+import { VideoList } from '../../Components/VideoList'
+import { Feather } from '@expo/vector-icons'
+import { Avatar, Badge } from 'react-native-elements'
+import { AlertNote } from '../../Components/Alert'
 
-export default function Home({ navigation, Exit }) {
+export default function Home ({ navigation, Exit }) {
+  const [status, setStatus] = useState({})
+  const [videos, setLoad] = useState(null),
+    ref = useRef(null),
+    [image, setImage] = useState(null),
+    [initial, setInitial] = useState('')
 
   useEffect(() => {
-    auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
+    auth.currentUser
+      ? (setImage(auth.currentUser.photoURL),
+        setInitial(auth.currentUser.displayName.substring(0, 1)))
+      : auth.onAuthStateChanged(doc => {
+          setImage(doc.photoURL)
+          console.log(doc.displayName)
+          setInitial(doc.displayName.substring(0, 1))
+          console.log(auth.currentUser)
+        })
   }, [])
 
   const [status, setStatus] = useState({});
@@ -25,85 +50,108 @@ export default function Home({ navigation, Exit }) {
     };
 
   useEffect(() => {
-    LoadSet(setLoad);
-  }, []);
+    LoadSet(setLoad)
+  }, [])
+
+  const [displayModal, setDisplaModal] = useState(false),
+    [message, setMessage] = useState('')
+  const signOut = () => {
+    setMessage('Signed out successfully')
+    setDisplaModal(true)
+    navigation.navigate('SignIn')
+  }
 
   return (
-
     <View style={styles.container}>
+      <AlertNote
+        modalVisible={displayModal}
+        setModalVisible={setDisplaModal}
+        msg={message}
+      />
 
-    <View style={{top: 5}}>
-      <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts') }>
-
-          <View style={{ flexDirection: 'row' }}>
-            <Image source={require('../../../img/siren.jpg')}
-              style={{ width: 30, height: 35 }} />
-
-            <View style={{  paddingHorizontal: 10 }}>
-              <Text style={{fontSize:12, fontFamily:'Roboto'}}>Call</Text>
-              <Text style={{fontSize:12, fontFamily:'Roboto'}}>Now</Text>
-            </View>
-
-          </View>
-        </TouchableOpacity>
-    </View>
-
+      {/**------------------CallSiren--------------------CallSiren----------------- */}
       <View
-        style={{ alignItems: "center", justifyContent: "space-between", }} >
-        
+        style={{
+          width: '90%',
+          flexDirection: 'row',
+          marginVertical: 35,
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}
+      >
+        <View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('EmergencyContacts')}
+          >
+            <CallSiren />
+          </TouchableOpacity>
+        </View>
 
-        <Header Exit={LogOut} />
+        <View>
+          <TouchableOpacity onPress={signOut}>
+            <LogOutComp />
+          </TouchableOpacity>
+        </View>
       </View>
 
-      <View style={{ width: 335, alignItems: 'center' }}>
+      {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
+      <View
+        style={{
+          width: '95%',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between'}}>
+        <View>
+          <Header />
+        </View>
+
+        <View style={{ top: -25, left: -10 }}>
+          <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
+            {image ? (
+              <Avatar rounded source={{ uri: image }} size='large' />
+            ) : (
+              <View style={styles.temp}>
+                <Text style={styles.temp_text}> {initial} </Text>
+              </View>
+            )}
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/**-----------Menu Category--------------Menu Category--------------------- */}
+      <View style={{ width: '90%', alignItems: 'center' }}>
         <Menu list={videos} setVids={setLoad} />
       </View>
 
-      <View style={{ width:335,  alignItems: "center", marginTop:20, flexDirection:'row', justifyContent: "space-between", }}>
-        <Text style={{fontFamily:'Roboto'}}> {`Most Viewed`} </Text>
-        
-        <TouchableOpacity onPress={() => navigation.navigate('ViewMap')}> 
-          <Text style={{fontFamily:'Roboto', color:'#F96056'}}>{`Medical Facilities`} </Text>
-        </TouchableOpacity>
-      </View>
-
       {/*---------------------- Video Scroll View--------------------*/}
-
-      <ScrollView style={{ height: 580, width: 335, }} vertical={true} showsVerticalScrollIndicator={false}>
-      <Card style={styles.menu2}>
-        <View>
-          <VideoList videos={videos} VideoScreen={VideoScreen} />
-        </View>
-      </Card>
-      </ScrollView>
+      <View style={{ marginVertical: 20 }}>
+        <ScrollView
+          style={{ height: 435, width: 335 }}
+          vertical={true}
+          showsVerticalScrollIndicator={false}
+        >
+            <Card style={styles.menu2}>
+              <View>
+                <VideoList videos={videos} VideoScreen={VideoScreen} />
+              </View>
+            </Card>
+        </ScrollView>
+      </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
 
   logoutIMG: {
     width: 15,
-    height: 15,
-    marginTop: 25
-  },
-
-  header: {
-    fontWeight: "200",
-    fontSize: 18,
-    color: "#F96056",
-    paddingTop: 20,
-  },
-
-  avatar: {
-    width: 70,
-    height: 70,
-    borderRadius: 50,
+    height: 15
   },
 
   menu2: {
@@ -113,23 +161,37 @@ const styles = StyleSheet.create({
     shadowOffset: {},
     shadowOpacity: 0.8,
     shadowRadius: 3.84,
-    elevation: 5,
+    elevation: 5
   },
 
   categoryListText: {
     paddingLeft: 15,
     fontSize: 17,
-    fontWeight: "bold",
+    fontWeight: 'bold'
   },
 
   vidTitle: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold'
   },
 
   tag: {
     paddingVertical: 2,
-    fontSize: 12,
+    fontSize: 12
   },
 
-});
+  temp: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    backgroundColor: 'turquoise',
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
+
+  temp_text: {
+    fontSize: 40,
+    color: '#fff',
+    fontFamily: 'Roboto'
+  }
+})

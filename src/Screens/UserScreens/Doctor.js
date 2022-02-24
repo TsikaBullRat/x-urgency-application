@@ -1,302 +1,297 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Pressable, Image } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
+import { Card } from 'react-native-paper'
 import { Avatar, Badge } from 'react-native-elements';
 import { Socials, } from '../../Components';
 import { auth, firestore } from '../../firebase';
 import Button from '../../Components/button';
+import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
-const DoctorProfile = ({ route }) => {
+const Doctor = ({ navigation }) => {
 
-    const info = route.params.match
-    const options = [
-        { label: "About ", value: "About" },
-        { label: "Qualification", value: "Qualification" },
-        { label: "Specialization", value: "Specialization" },
-        { label: "Contact", value: "Contact" }];
+  const [About, setAbout] = useState(true);
+  const [Qualification, setQualification] = useState(false);
+  const [Specialization, setSpecialization] = useState(false);
+  const [Contact, setContact] = useState(false);
+  const [doctor, setDoctor] = useState("")
+  const [email, setEmail] = useState("")
+  const [data, setData] = useState(null);
+  const [subscription, setSubscription] = useState({ text: "", Func: () => null })
 
-    const [About, setAbout] = useState(true);
-    const [Qalification, setQualification] = useState(false);
-    const [Specialization, setSpecialization] = useState(false);
-    const [Contact, setContact] = useState(false);
-    const [doctor, setDoctor] = useState("")
-    const [email, setEmail] = useState("")
-    const [data, setData] = useState(null);
-    const [subscription, setSubscription] = useState({ text: "", Func: () => null })
+  const getDoctorInfo = () => {
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+      .then(doc => {
+        setData(doc.data())
+      })
 
-    const check = (value) => {
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+      .then(doc => {
+        setDoctor(doc.data().username)
+        setEmail(doc.data().email)
+      })
+  }
 
-        if (value == 'About') {
-            setAbout(true)
-            setQualification(false)
-            setSpecialization(false)
-            setContact(false)
-        }
+  const Subscribe = async () => {
+    let change = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+      .then(doc => {
+        return doc.data().subscribers
+      })
 
-        if (value == 'Qualification') {
-            setQualification(true)
-            setAbout(false)
-            setSpecialization(false)
-            setContact(false)
-        }
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").update({
+      subscribers: [...change, auth.currentUser.uid]
+    })
 
-        if (value == 'Specialization') {
-            setSpecialization(true)
-            setAbout(false)
-            setQualification(false)
-            setContact(false)
-        }
+    setSubscription({
+      Func: unSubscribe,
+      text: "unfollow"
+    })
+  }
 
-        if (value == 'Contact') {
-            setContact(true)
-            setAbout(false)
-            setQualification(false)
-            setSpecialization(false)
+  const unSubscribe = async () => {
+    let change = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+      .then(doc => {
+        return doc.data().subscribers
+      })
 
-        }
+    change = change.filter(item => item !== auth.currentUser.uid)
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").update({
+      subscribers: change
+    })
 
-    }
+    setSubscription({
+      Func: Subscribe,
+      text: "follow"
+    })
+  }
 
-    const getDoctorInfo = () => {
-        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
-            .then(doc => {
-                setData(doc.data())
-            })
+  useEffect(() => {
+    getDoctorInfo()
+  }, [])
 
-        firestore.collection("Users").doc(info).get()
-            .then(doc => {
-                setDoctor(doc.data().username)
-                setEmail(doc.data().email)
-            })
-    }
+  const [image, setImage] = useState(null)
+  const [initial, setInitial] = useState("N")
+  const getProfile = async () => {
+    let name
+    setImage(false)
+    name = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get().then(doc => doc.data().username)
+    setInitial(name.substring(0, 1))
+  }
 
-    const Subscribe = async () => {
-        let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
-            .then(doc => {
-                return doc.data().subscribers
-            })
+  useEffect(() => {
+    getProfile()
+  }, [])
 
-        firestore.collection("Users").doc(info).collection("cred").doc(info).update({
-            subscribers: [...change, auth.currentUser.uid]
-        })
-
-        setSubscription({
+  useEffect(() => {
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+      .then(doc => {
+        let array = []
+        array = [...array, doc.data().subscribers]
+        let index = array.indexOf(auth.currentUser.uid)
+        if (index === -1) {
+          setSubscription({
             Func: unSubscribe,
             text: "unfollow"
-        })
-    }
+          })
 
-    const unSubscribe = async () => {
-        let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
-            .then(doc => {
-                return doc.data().subscribers
-            })
-
-        change = change.filter(item => item !== auth.currentUser.uid)
-        firestore.collection("Users").doc(info).collection("cred").doc(info).update({
-            subscribers: change
-        })
-
-        setSubscription({
+        } else {
+          setSubscription({
             Func: Subscribe,
             text: "follow"
-        })
-    }
+          })
+        }
+      })
+  }, [])
 
-    useEffect(() => {
-        getDoctorInfo()
-    }, [])
+  return (
 
-    const [image, setImage] = useState(null)
-    const [initial, setInitial] = useState("N")
-    const getProfile = async () => {
-        let name
-        setImage(false)
-        name = await firestore.collection("Users").doc(info).get().then(doc => doc.data().username)
-        setInitial(name.substring(0, 1))
-    }
+    <View style={styles.container}>
+      <View>
+        {
+          image ? (
+            <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+          ) : (
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
+      </View>
 
-    useEffect(() => {
-        getProfile()
-    }, [])
+      {/*Doctor-Cards---------------Doctor-Cards---------Doctor-Cards */}
 
-    useEffect(() => {
-        firestore.collection("Users").doc(info).collection("cred").doc(info).get()
-            .then(doc => {
-                let array = []
-                array = [...array, doc.data().subscribers]
-                let index = array.indexOf(auth.currentUser.uid)
-                if (index === -1) {
-                    setSubscription({
-                        Func: unSubscribe,
-                        text: "unfollow"
-                    })
+      <View style={{ width: 355, marginTop: 10, alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row', }}>
 
-                } else {
-                    setSubscription({
-                        Func: Subscribe,
-                        text: "follow"
-                    })
-                }
-            })
-    }, [])
+        <Card style={styles.docCards}>
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+            <MaterialCommunityIcons name="certificate-outline" size={34} color="#fff" />
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}> {`Qualifiation`}</Text>
+          </View>
+        </Card>
 
-    return (
+        <Card style={styles.docCards}>
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+            <MaterialCommunityIcons name="briefcase-clock-outline" size={34} color="#fff" />
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>  {`Experience`} </Text>
+          </View>
+        </Card>
 
-        /*data ? (*/<>
+        <Card style={styles.docCards}>
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+            <Feather name="award" size={32} color="#fff" />
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>  {`Awards`} </Text>
+          </View>
+        </Card>
+
+        </View>
+
+        <View style={{ paddingTop: 20, flexDirection: 'row' }}>
+              <Socials text="Following" number="15" />
+              <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
+              <Socials text="Likes" number="3.1M" />
+            </View>
+
+        {/**------------------About--------------About-------------About----------- */}
+        <View style={{ marginTop: 35, width: 335 }}>
+          <Text style={styles.txtHead}>{`About`}</Text>
+          <Text style={styles.txtAbout}>
+            {`Neurologists These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.`}
+          </Text>
+        </View>
+
+        {/**----------------Contacts---------Contacts------------Contacts----------- */}
+        <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
+          <View style={{ flexDirection: 'row' }}>
+            <Feather name="phone" size={20} color="black" />
+            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
+            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>  {`(053) 871 2956`}</Text>
+          </View>
+
+          <View style={{ width: 355, marginTop: 35, justifyContent: 'flex-start' }}>
+            <View style={{ flexDirection: 'row' }}>
+              <Feather name="phone" size={20} color="black" />
+              <Text
+                style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
+              <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+                {`(053) 871 2956`}
+              </Text>
+            </View>
 
             <View>
-                <View style={styles.container}>
-                    <View style={{ marginTop: 50, marginLeft: 10 }}>
-                        {
-                            image ? (
-                                <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
-                            ) : (
-                                <View style={styles.temp}>
-                                    <Text style={styles.temp_text}> {initial} </Text>
-                                </View>
-                            )}
-                    </View>
-
-                    <Text style={styles.textTitle}>Dr. {doctor}</Text>
-
-                </View>
-
-                <View style={{ flexDirection: 'row', marginLeft: 60, marginBottom: 20 }}>
-                    <Socials text="Following" number="15" />
-                    <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
-                    <Socials text="Likes" number="3.1M" />
-                    <Pressable style={styles.follow} onPress={subscription.Func}>
-                        <Text>{subscription.text}</Text>
-                    </Pressable>
-                </View>
-                <View style={{ marginTop: 20 }}>
-                </View>
-
-                <View>
-                    <SwitchSelector
-                        options={options}
-                        initial={0}
-                        style={styles.tab}
-                        onPress={value => check(value)}
-                        testID="gender-switch-selector"
-                        accessibilityLabel="gender-switch-selector"
-                        hasPadding />
-                </View>
+              <Text style={{ paddingLeft: 35, paddingTop: 5 }}>{`OR`}</Text>
             </View>
 
-            {About ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {data ? data.about : null}
-                </Text>
+            <View style={{ flexDirection: 'row' }}>
+              <AntDesign name="mail" size={20} color="black" />
+              <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}>  {`SMS`}</Text>
+              <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+                {`078 454 2123`}
+              </Text>
             </View>
+          </View>
 
-                : <View></View>}
+      </View>
 
-            {Qalification ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {data.qualification}
-                </Text>
-            </View>
+      <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}> BACK  </TouchableOpacity>
+        </View>
+    </View>
 
-                : <View></View>}
-
-            {Specialization ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {data.specilization}
-                </Text>
-            </View>
-
-                : <View></View>}
-
-            {Contact ? <View style={styles.words}>
-                <Text style={styles.textTitle2}>
-                    {email}
-                    {"\n"}
-                    {data.contact}
-                    {"\n"}
-                    {data.branch}
-                </Text>
-            </View>
-
-                : <View></View>} </>
-
-        // ) : null
-    )
+  )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: '#fff',
-    },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
 
-    textTitle: {
-        color: 'red',
-        fontSize: 25,
-        marginTop: 5,
-    },
+  textTitle: {
+    fontFamily: 'Roboto',
+    color: '#F47066',
+    fontSize: 25,
+    marginTop: 5,
+  },
 
-    textTitle2: {
-        fontSize: 15,
-        marginTop: 20,
-        marginLeft: 5,
-    },
+  textTitle2: {
+    fontSize: 15,
+    marginTop: 20,
+    marginLeft: 5,
+  },
 
-    box: {
-        flexDirection: 'row',
-    },
+  box: {
+    flexDirection: 'row',
+  },
 
-    tab: {
-        paddingLeft: 5,
-        width: 380,
-    },
+  tab: {
+    paddingLeft: 5,
+    width: 380,
+  },
 
-    avatar: {
-        width: 70,
-        height: 70,
-        borderRadius: 50,
-        marginTop: 80,
-        borderBottomWidth: 3,
-        borderColor: 'turquoise',
-        shadowColor: 'grey',
-        shadowOffset: { width: 1, height: 1 },
-        shadowOpacity: 0.4,
-        elevation: 1,
-    },
+  avatar: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    marginTop: 80,
+    borderBottomWidth: 3,
+    borderColor: 'turquoise',
+    shadowColor: 'grey',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.4,
+    elevation: 1,
+  },
 
-    words: {
-        width: 250,
-        textAlign: 'center',
-        alignSelf: 'center'
-    },
+  words: {
+    width: 250,
+    textAlign: 'center',
+    alignSelf: 'center',
+  },
 
-    follow: {
-        top: 10,
-        left: 5,
-        backgroundColor: "#f47066",
-        width: 70,
-        height: 40,
-        borderRadius: 15,
-        alignItems: "center",
-        justifyContent: "center"
-    },
+  follow: {
+    top: 10,
+    backgroundColor: "#f47066",
+    width: 70,
+    height: 40,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
-    temp: {
-        width: 70,
-        height: 70,
-        borderRadius: 50,
-        marginTop: 80,
-        backgroundColor: 'turquoise',
-        textAlign: 'center',
-        justifyContent: 'center'
-    },
+  txtHead: {
+    fontSize: 22,
+    fontFamily: 'flexi-titling',
+    color: '#F47066'
+  },
 
-    temp_text: {
-        fontSize: 40,
-        color: '#fff',
-    }
+  temp: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    marginTop: 80,
+    backgroundColor: 'turquoise',
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
+
+  temp_text: {
+    fontSize: 40,
+    color: '#fff',
+  },
+
+  textTitle: {
+    color: 'red',
+    fontSize: 25,
+    marginTop: 5,
+  },
+
+  docCards: {
+    width: 100,
+    height: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F47066',
+  },
+
 });
 
-export default DoctorProfile;
+export default Doctor;

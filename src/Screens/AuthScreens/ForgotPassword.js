@@ -14,9 +14,7 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { Card } from 'react-native-paper';
-import { FontAwesome } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { EvilIcons } from '@expo/vector-icons';
+import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
 export default function ForgotPassword({ navigation }) {
@@ -45,6 +43,7 @@ export default function ForgotPassword({ navigation }) {
       handleResetPassword("lindiwe.mpondo@gmail.com")
     }
   }
+
   const Exit = () => {
     alert("Successfully logged out")
     navigation.navigate('SignIn')
@@ -52,58 +51,42 @@ export default function ForgotPassword({ navigation }) {
 
   return (
     <View style={styles.container}>
-
       <Card style={styles.card}>
-        <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={110} color="#fff" />
-        </View>
-        <Text style={{ color: '#fff', fontSize: 28 }}> {`X-urgency`} </Text>
+        <View style={styles.heartIcon}><FontAwesome name="heartbeat" size={110} color="#fff" /></View>
+        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
-      <View style={styles.header}>
+      <View style={styles.header}> 
         <Text style={{
-          fontWeight: 'bold', fontSize: 36, fontFamily: 'Arial',
-          color: '#F47066'
-        }}>{`Reset Password`}</Text>
+          fontWeight: 'bold', fontSize: 30, fontFamily: 'Arial',
+          color: '#F47066', justifyContent: "left"
+        }}>{`Forgot your password?`}</Text>
       </View>
+      <br />
+      <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Arial', color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
 
-      <View style={{ alignItems: 'center' }}>
+      <View style={{ width:'100%', alignItems: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="user" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
+            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 16, marginLeft: 18 }} />
+            <TextInput style={styles.txtField} name='email' placeholder='example@gmail.com' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
-
-        <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='password' placeholder='New Password' onChangeText={text => setPassword(text)} />
-          </View>
-        </Card>
-        {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
-
-        <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name="lock" size={28} color="black" style={{ marginTop: 7, marginLeft: 8 }} />
-            <TextInput style={styles.txtField} name='password' placeholder='Confirm Password' onChangeText={text => setConfirmPassword(text)} />
-          </View>
-        </Card>
-        {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
-
       </View>
 
-      <View style={{ alignItems: 'center' }}>
-        <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
-          <Text style={{ color: '#fff' }}>{`RESET PASSWORD`} </Text>
+      <View style={{ width:'100%', alignItems: 'center', justifyContent: 'center' }}>
+        <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('ResetPassword')}  >
+          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>{`SEND`} </Text>
         </TouchableOpacity>
-
-        <TouchableOpacity style={styles.signIn} onPress={Exit}>
-          <Text style={{ color: '#fff' }}>{`EXIT`}</Text>
-        </TouchableOpacity>
-
       </View>
+
+        <View style={{alignItems:'center', justifyContent:'center', 
+                      marginVertical: 20}}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+            BACK
+          </TouchableOpacity>
+        </View>
 
     </View>
 
@@ -119,7 +102,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: '#F47066',
-    width: 335,
+    width: '100%',
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -145,22 +128,22 @@ const styles = StyleSheet.create({
   },
 
   txtField: {
-    width: 245,
-    height: 30,
-    marginTop: 2,
-    marginLeft: 2,
+    marginTop: 7,
     paddingLeft: 10,
-    paddingTop: 15,
+    paddingTop: 9,
+    fontSize: 18,
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: 'transparent'
+        outlineColor: '#fff',
+        width: 220
       }
     })
   },
 
   txtCards: {
-    width: 315,
+    width: '80%',
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -171,7 +154,7 @@ const styles = StyleSheet.create({
 
   signIn: {
     height: 50,
-    width: 200,
+    width: '60%',
     marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',

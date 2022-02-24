@@ -9,7 +9,7 @@ function Counter({ video }) {
     [pressed, setPressed] = useState(false),
     Check = async () => {
       let myLike = await firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).get()
-        .then(doc => (doc.data().likes))
+        .then(doc => (doc.data().liked))
       firestore.collection('Videos').doc(video).collection('Acts').where("liked", "==", true)
         .onSnapshot(query => {
           setCount(0)
@@ -30,6 +30,7 @@ function Counter({ video }) {
         }),
 
         setPressed(!pressed)
+
       ) : (
 
         thisDislike ? (
@@ -39,6 +40,7 @@ function Counter({ video }) {
           }),
 
           setPressed(!pressed)
+
         ) : (
 
           firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({

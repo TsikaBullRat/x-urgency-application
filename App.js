@@ -8,6 +8,7 @@ import { StyleSheet, NativeModules, View } from 'react-native';
 import { UploadVideo, MedicalHome, Upload, UpdateProfile, Home, VideoScreen, DoctorProfile, SignIn, SignUp, ForgotPassword, DoctorSignUp } from "./src/Screens";
 
 const Stack = createNativeStackNavigator()
+//const Stack = createStackNavigator()
 
 export default function App() {
 
@@ -66,13 +67,13 @@ export default function App() {
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   loader: {
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   }
-});
 
+})

@@ -98,17 +98,9 @@ export default function MedicalProfile({ navigation, setDone }) {
 
       <View style={{ flexDirection: 'row' }}>
         <View style={styles.header}>
-          <Text style={{
-            fontSize: 36,
-            paddingLeft: 30,
-            color: 'turquoise',
-            textShadowColor: 'grey',
-            textShadowOffset: { width: 2, height: 2 },
-            textShadowRadius: 1
-          }}
-          >  Dr. DoLittle </Text>
-
+          <Text style={{ fontSize: 36, paddingLeft: 30, color: 'turquoise', textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1 }} > Dr. DoLittle </Text>
         </View>
+
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/40.jpg', }} size="large" />
           <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />

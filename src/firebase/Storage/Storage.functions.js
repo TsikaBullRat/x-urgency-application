@@ -62,13 +62,14 @@ const LoadSet = (Load, query) => {
     var getLink
     var metadata = firestore.collection('Videos')
     var info = firestore.collection("Users")
+    
     const getTimeFrame = (date) => {
         let today = new Date()
         let frame
         let frag
         if (today.getFullYear() === date.getFullYear()) {
             if (today.getMonth() === date.getMonth()) {
-                if (date.getDay() !== today.getDay()) {
+                if (date.getDay() !== today.getDay() || date.getDate() === date.getDate()) {
                     if (today.getDate() - date.getDate() >= 7) {
                         frame = ((today.getDate() - date.getDate()) / 7) !== 1 ? ((today.getDate() - date.getDate()) / 7) + " weeks ago." : ((today.getDate() - date.getDate()) / 7) + " weeks ago."
                     } else if (today.getDate() === date.getDate()) {
@@ -172,10 +173,10 @@ const LoadSet = (Load, query) => {
 }
 
 const UploadVideo = async (uri, title, description, cat, Log) => {
-
     var id = uuidv4()
     var byteString = atob(uri.split(',')[1])
     var MIMEstring = uri.split(',')[0].split(':')[1].split(';')[0]
+    console.log(byteString)
 
     var ab = new ArrayBuffer(byteString.length)
     var ia = new Uint8Array(ab)
