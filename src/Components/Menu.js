@@ -21,35 +21,35 @@ export default function Menu({ list, setVids }) {
         <View style={{ width: 705, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+              <Image style={styles.menuIcons} source={require('../images/human-brain.png')} />
               <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`Stroke`} </Text>
             </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("heartattack")}>
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/Heart-AttackIcon.png')} />
+              <Image style={styles.menuIcons} source={require('../images/heart-attack.png')} />
               <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`Heart Attack`} </Text>
             </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("epilepsy")}>
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/EpilepsyIcon.png')} />
+              <Image style={styles.menuIcons} source={require('../images/fainting.png')} />
               <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`Epilepsy`} </Text>
             </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("cpr")}>
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/cprIcon.png')} />
+              <Image style={styles.menuIcons} source={require('../images/cpr (1).png')} />
               <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`CPR`} </Text>
             </Card>
           </Pressable>
 
           <Pressable onPress={() => Sort("bleeding")}>
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/chokeIcon.png')} />
+              <Image style={styles.menuIcons} source={require('../images/abdominal-thrusts.png')} />
               <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}>{`Choking`} </Text>
             </Card>
           </Pressable>
