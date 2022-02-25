@@ -28,7 +28,8 @@ export default function Home ({ navigation, Exit }) {
 
   useEffect(() => {
     auth.currentUser
-      ? (setImage(auth.currentUser.photoURL),
+      ? (
+        setImage(auth.currentUser.photoURL),
         setInitial(auth.currentUser.displayName.substring(0, 1)))
       : auth.onAuthStateChanged(doc => {
           setImage(doc.photoURL)
