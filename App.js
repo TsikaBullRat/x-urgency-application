@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth, firestore, LogOut } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-import { UploadVideo, MedicalHome, Upload, UpdateProfile, Home, VideoScreen, DoctorProfile, SignIn, SignUp, ForgotPassword, DoctorSignUp } from "./src/Screens";
+import { UploadVideo, MedicalHome, Upload, UpdateProfile, Home, VideoScreen, DoctorProfile, SignIn, SignUp, ForgotPassword, DoctorSignUp, Doctor, PlayVideo, EmergencyContacts } from "./src/Screens";
 
 const Stack = createNativeStackNavigator()
 //const Stack = createStackNavigator()
@@ -58,10 +58,11 @@ export default function App() {
         <Stack.Screen name="Upload" options={{ headerShown: false }} >
           {props => <Upload {...props} />}
         </Stack.Screen>
+        <Stack.Screen name="EmergencyContacts" component={EmergencyContacts} options={{ headerShown: false }} />
         <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
         <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
-        <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
+        <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+        <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
         <Stack.Screen name="Home" options={{ headerShown: false }} >
           {props => <Home {...props} Exit={Exit} />}
         </Stack.Screen>

@@ -38,10 +38,7 @@ export default function Home ({ navigation, Exit }) {
         })
   }, [])
 
-  const [status, setStatus] = useState({});
-  const [videos, setLoad] = useState(null),
-    ref = useRef(null),
-    VideoScreen = (data) => {
+  const VideoScreen = (data) => {
       navigation.navigate("PlayVideo", { data });
     },
     LogOut = () =>{
