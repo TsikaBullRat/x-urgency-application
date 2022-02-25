@@ -116,7 +116,7 @@ export default function Home ({ navigation, Exit }) {
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
       <View style={{ width: '90%', alignItems: 'center' }}>
-        <Menu list={videos} setVids={setLoad} />
+        <Menu />
       </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
