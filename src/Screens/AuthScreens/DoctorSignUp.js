@@ -1,16 +1,3 @@
-/**
- * @description      :
- * @author           : TLeeuw
- * @group            :
- * @created          : 26/10/2021 - 11:55:25
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 26/10/2021
- * - Author          : TLeeuw
- * - Modification    :
- **/
-
 import React, { useState } from 'react'
 import {
   Text,
@@ -112,8 +99,8 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
       setPrompt9("Please re-enter password")
     } else {
       handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, contactdetails, description)
-      navigation.navigate("DocHome")
     }
+  }
 
     return (
       <View style={styles.container}>

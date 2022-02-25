@@ -47,15 +47,7 @@ export default function SignIn ({ navigation }) {
       setPrompt2('Please enter password')
     } else {
       handleSignIn(email, password, setMessage, setDone)
-      if(auth.currentUser){
-        if(firestore.collection("Users").doc(auth.currentUser.uid).get().then(doc=>doc.data().doctor) === true){
-          navigation.navigate("DocHome")
-        }else{
-          navigation.navigate("Home")
-        }
-      }
       setDisplaModal(true)
-      navigation.navigate('Home', { setDone })
     }
   }
 

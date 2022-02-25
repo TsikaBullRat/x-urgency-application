@@ -17,13 +17,13 @@ export default function Menu({ list, setVids }) {
 
       {/*----------------------Horizontal Menu----------------------*/}
       <ScrollView 
-      style={{ width: 355 }} horizontal={true} showsHorizontalScrollIndicator={false}>
+      style={{ width: 355 }} horizontal showsHorizontalScrollIndicator={false}>
 
         <View style={{ width: 705, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
             <Card style={styles.menuCard}>
-            <FontAwesome name="ils" size={30} color="#ffffff" style={{ marginTop: 1, marginLeft: 180 }} />
-              <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`Stroke`} </Text>
+              <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+              <Text style={{ fontSize: 12, paddingTop: 8 }}> {`Stroke`} </Text>
             </Card>
           </Pressable>
 
@@ -43,7 +43,7 @@ export default function Menu({ list, setVids }) {
 
           <Pressable onPress={() => Sort("cpr")}>
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/cpr (1).png')} />
+              <Image style={styles.menuIcons} source={require('../images/cprIcon.png')} />
               <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`CPR`} </Text>
             </Card>
           </Pressable>

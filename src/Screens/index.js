@@ -18,11 +18,8 @@ import FollowMore from './OnBoardScreens/FollowMore'
 import TakeVideo from './OnBoardScreens/TakeVideo'
 import UrgentHelp from './OnBoardScreens/UrgentHelp'
 
-export { Welcome, FollowMore, TakeVideo, Doctor, UrgentHelp, SignIn, SignUp, ForgotPassword, ResetPassword ,Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn}
+export { Welcome, FollowMore, TakeVideo, UrgentHelp, Doctor, SignIn, SignUp, ForgotPassword, ResetPassword ,Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn}
 
-export { UserScreens } from './UserScreens/UserScreens'
-export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'
-export { AuthScreens } from './AuthScreens/AuthScreens'
 export { OnBoardScreens } from './OnBoardScreens/OnBoardScreens'
 
 

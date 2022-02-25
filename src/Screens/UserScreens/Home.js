@@ -36,22 +36,17 @@ export default function Home ({ navigation, Exit }) {
           setInitial(doc.displayName.substring(0, 1))
           console.log(auth.currentUser)
         })
-  }, [])
-
-  const VideoScreen = (data) => {
-      navigation.navigate("PlayVideo", { data });
-    },
-    LogOut = () =>{
-      Exit()
-      navigation.navigate("Sign In")
-    };
+  }, []) 
 
   useEffect(() => {
     LoadSet(setLoad)
   }, [])
 
   const [displayModal, setDisplaModal] = useState(false),
-    [message, setMessage] = useState('')
+    [message, setMessage] = useState(''),
+    VideoScreen = (data) => {
+      navigation.navigate("PlayVideo", { data });
+    };
   const signOut = () => {
     setMessage('Signed out successfully')
     setDisplaModal(true)
@@ -116,7 +111,7 @@ export default function Home ({ navigation, Exit }) {
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={{ width: '90%', alignItems: 'center' }}>
+      <View style={{ width: '90%' }}>
         <Menu list={videos} setVids={setLoad} />
       </View>
 
