@@ -89,7 +89,9 @@ export default function MedSignIn({ navigation, setDone }) {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={{ marginVertical: 20 }} onPress={() => navigation.navigate('SignIn')}> BACK</TouchableOpacity>
+        <TouchableOpacity style={{ marginVertical: 20 }} onPress={() => navigation.navigate('SignIn')}> 
+          <Text>BACK</Text>
+        </TouchableOpacity>
 
       </View>
     </View>

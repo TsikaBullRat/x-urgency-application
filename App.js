@@ -6,7 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack"
 import { auth, firestore, LogOut } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-import { Welcome, TakeVideo, UrgentHelp, FollowMore, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, SignIn, SignUp, ForgotPassword, DoctorSignUp, PlayVideo, Doctor } from "./src/Screens";
+import { Welcome, TakeVideo, UrgentHelp, FollowMore, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, EmergencyContacts, SignIn, SignUp, ForgotPassword, DoctorSignUp, PlayVideo, Doctor } from "./src/Screens";
 
 // const Stack = createNativeStackNavigator()
 const Stack = createStackNavigator()
@@ -68,24 +68,24 @@ export default function App() {
 
               <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
 
-              <Stack.Screen name="Upload" options={{ headerShown: false }} >
-                {props => <Upload {...props} />}
-              </Stack.Screen>
             </>
           ):(
             <>
 
-              {/* <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
+              <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
 
             <Stack.Screen name='FollowMore' component={FollowMore} options={{ headerShown: false }} />
 
-            <Stack.Screen name='UrgentHelp' component={UrgentHelp} options={{ headerShown: false }} /> */}
+            <Stack.Screen name='UrgentHelp' component={UrgentHelp} options={{ headerShown: false }} />
 
               <Stack.Screen name="Home" options={{ headerShown: false }} >
                 {props => <Home {...props} Exit={Exit} />}
               </Stack.Screen>    
               <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
               <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+
+              {/* <Stack.Screen name="EmergencyContacts" components={EmergencyContacts} 
+              options={{headerShown: false}} /> */}
               
             
             </>

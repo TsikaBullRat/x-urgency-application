@@ -209,6 +209,13 @@ export default function PlayVideo({ navigation, route }) {
         )}
       </Card>
       </ScrollView>
+
+      {/**-------BACK------BACK-------BACK */}
+      <View style={{marginTop: 10}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text>BACK</Text>
+        </TouchableOpacity>
+      </View>
     </View>
 
   )
