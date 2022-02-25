@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth, firestore, LogOut } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-import { UploadVideo, MedicalHome, Upload, UpdateProfile, Home, SignIn, SignUp, ForgotPassword, DoctorSignUp, PlayVideo, Doctor } from "./src/Screens";
+import { Welcome, TakeVideo, UrgentHelp, FollowMore, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, SignIn, SignUp, ForgotPassword, DoctorSignUp, PlayVideo, Doctor } from "./src/Screens";
 
 const Stack = createNativeStackNavigator()
 //const Stack = createStackNavigator()
@@ -48,27 +48,44 @@ export default function App() {
         {id?(
           doctor?(
             <>
+
+              <Stack.Screen name='TakeVideo' component={ForgotPassword} options={{ headerShown: false }} />
+
               <Stack.Screen name="DocHome" options={{ headerShown: false }} >
                 {props => <MedicalHome {...props} Exit={Exit} />}
               </Stack.Screen>
+
               <Stack.Screen name="Upload" options={{ headerShown: false }} >
                 {props => <Upload {...props} />}
               </Stack.Screen>
+
               <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
+
               <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
+
               <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+
               <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+
               <Stack.Screen name="Upload" options={{ headerShown: false }} >
                 {props => <Upload {...props} />}
               </Stack.Screen>
             </>
           ):(
             <>
+
+              <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
+
+            <Stack.Screen name='FollowMore' component={FollowMore} options={{ headerShown: false }} />
+
+            <Stack.Screen name='UrgentHelp' component={UrgentHelp} options={{ headerShown: false }} />
+
               <Stack.Screen name="Home" options={{ headerShown: false }} >
                 {props => <Home {...props} Exit={Exit} />}
               </Stack.Screen>    
               <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
               <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+            
             </>
           )
         ):(

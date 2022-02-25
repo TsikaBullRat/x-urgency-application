@@ -40,7 +40,7 @@ export default function Menu ({ list, setVids }) {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-around',
-            left: 5
+            left: 3
           }}
         >
           {categories.map((emergency, index) => (
