@@ -22,7 +22,7 @@ export default function Menu({ list, setVids }) {
         <View style={{ width: 705, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
+
               <Text style={{ fontSize: 12, paddingTop: 8 }}> {`Stroke`} </Text>
             </Card>
           </Pressable>
