@@ -5,66 +5,80 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth, firestore, LogOut } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
-import { UploadVideo, MedicalHome, Upload, UpdateProfile, Home, VideoScreen, DoctorProfile, SignIn, SignUp, ForgotPassword, DoctorSignUp } from "./src/Screens";
+import { UploadVideo, MedicalHome, Upload, UpdateProfile, Home, SignIn, SignUp, ForgotPassword, DoctorSignUp, PlayVideo, Doctor } from "./src/Screens";
 
 const Stack = createNativeStackNavigator()
 //const Stack = createStackNavigator()
 
 export default function App() {
-
-  const [ initialRoute, setIntialRoute ] = useState("Sign In")
+  
+  const [ run, setRun ] = useState(0)
+  const [ id, setID] = useState(null)
+  const [ doctor, setDoctor ] = useState()
 
   const Exit = () =>{
     LogOut()
   }
 
   useEffect(()=>{
-    auth.onAuthStateChanged(doc=>{
-      if(doc){
-        if(firestore.collection("Users").doc(doc.uid).get().then(doc=>doc.data().doctor)){
-          setIntialRoute("DocHome")
-        }else{
-          setIntialRoute("Home")
-        }
+    if(auth.currentUser){
+      run === 0?(
+        setRun(1)
+      ):(
+        setRun(0)
+      )
+    }else{
+      try{
+        auth.onAuthStateChanged(doc=>doc?setID(doc.uid):setID(null))
+      }catch(err){
+        null
       }
-    })
-  }, [auth.currentUser])
+    }
+  }, [run])
 
   useEffect(()=>{
-    console.log(auth.currentUser)
-  }, [auth.currentUser])
+    if(id){
+      firestore.collection("Users").doc(id).get().then(doc=>setDoctor(doc.data().doctor))
+    }
+  }, [])
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={initialRoute}>
-        <Stack.Screen
-          name='Doctor SignUp'
-          options={{ headerShown: false }} >
-          {props => <DoctorSignUp {...props} />}
-        </Stack.Screen>
-        <Stack.Screen name='Sign In' options={{ headerShown: false }}>
-          {(props) => <SignIn {...props} />}
-        </Stack.Screen>
-        <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
-          {(props) => <SignUp {...props} />}
-        </Stack.Screen>
-        <Stack.Screen
-          name='Reset Password'
-          component={ForgotPassword}
-          options={{ headerShown: false }} />
-        <Stack.Screen name="DocHome" options={{ headerShown: false }} >
-          {props => <MedicalHome {...props} Exit={Exit} />}
-        </Stack.Screen>
-        <Stack.Screen name="Upload" options={{ headerShown: false }} >
-          {props => <Upload {...props} />}
-        </Stack.Screen>
-        <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
-        <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
-        <Stack.Screen name="PlayVideo" component={VideoScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Doctor" component={DoctorProfile} options={{ headerShown: false }} />
-        <Stack.Screen name="Home" options={{ headerShown: false }} >
-          {props => <Home {...props} Exit={Exit} />}
-        </Stack.Screen>
+      <Stack.Navigator >
+        {id?(
+          doctor?(
+            <>
+              <Stack.Screen name="DocHome" options={{ headerShown: false }} >
+                {props => <MedicalHome {...props} Exit={Exit} />}
+              </Stack.Screen>
+              <Stack.Screen name="Upload" options={{ headerShown: false }} >
+                {props => <Upload {...props} />}
+              </Stack.Screen>
+              <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
+              <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
+              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+              <Stack.Screen name="Upload" options={{ headerShown: false }} >
+                {props => <Upload {...props} />}
+              </Stack.Screen>
+            </>
+          ):(
+            <>
+              <Stack.Screen name="Home" options={{ headerShown: false }} >
+                {props => <Home {...props} Exit={Exit} />}
+              </Stack.Screen>    
+              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+            </>
+          )
+        ):(
+          <>
+            <Stack.Screen name='Sign In' options={{ headerShown: false }} component={SignIn} />
+            <Stack.Screen name='Doctor SignUp' options={{ headerShown: false }} component={DoctorSignUp} />
+            <Stack.Screen name='Sign Up' options={{ headerShown: false }} component={SignUp}/>
+            <Stack.Screen name='Reset Password' component={ForgotPassword} options={{ headerShown: false }} />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   )

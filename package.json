@@ -35,7 +35,7 @@
     "react-is": "^16.8.0",
     "react-native": "0.64.2",
     "react-native-elements": "^3.4.2",
-    "react-native-gesture-handler": "~2.1.0",
+    "react-native-gesture-handler": "~1.10.2",
     "react-native-icons": "^0.7.1",
     "react-native-image-picker": "^4.2.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.4",

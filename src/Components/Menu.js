@@ -16,13 +16,13 @@ export default function Menu({ list, setVids }) {
 
       {/*----------------------Horizontal Menu----------------------*/}
       <ScrollView 
-      style={{ width: 355 }} horizontal={true} showsHorizontalScrollIndicator={false}>
+      style={{ width: 355 }} horizontal showsHorizontalScrollIndicator={false}>
 
         <View style={{ width: 705, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
           <Pressable onPress={() => Sort("stroke")}>
             <Card style={styles.menuCard}>
               <Image style={styles.menuIcons} source={require('../images/StrokeIcon.png')} />
-              <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`Stroke`} </Text>
+              <Text style={{ fontSize: 12, paddingTop: 8 }}> {`Stroke`} </Text>
             </Card>
           </Pressable>
 
@@ -41,17 +41,10 @@ export default function Menu({ list, setVids }) {
           </Pressable>
 
           <Pressable onPress={() => Sort("cpr")}>
-<<<<<<< HEAD
-              <Card style={styles.menuCard}>
-                <Image style={styles.menuIcons} source={require('../images/cprIcon.png')} />
-                <Text style={{fontFamily:'Roboto', fontSize: 12, paddingTop:8 }}> {`CPR`} </Text>
-                </Card>
-=======
             <Card style={styles.menuCard}>
-              <Image style={styles.menuIcons} source={require('../images/CPRIcon.png')} />
+              <Image style={styles.menuIcons} source={require('../images/cprIcon.png')} />
               <Text style={{ fontFamily: 'Roboto', fontSize: 12, paddingTop: 8 }}> {`CPR`} </Text>
             </Card>
->>>>>>> 7912a6e3f3c61dbc94fc734bcefabe7fa828d0d7
           </Pressable>
 
           <Pressable onPress={() => Sort("bleeding")}>
