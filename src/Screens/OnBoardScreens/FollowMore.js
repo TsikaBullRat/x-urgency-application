@@ -34,7 +34,7 @@ export default function FollowMore ({ navigation }) {
         style={{
           width: 360,
           alignItems: 'center',
-          marginTop: 100
+          marginTop: 102
         }}
       >
         <View
@@ -76,9 +76,9 @@ export default function FollowMore ({ navigation }) {
       </View>
 
       {/**-------BACK------BACK-------BACK */}
-      <View style={{ marginTop: 10 }}>
+      <View style={{ marginVertical: 15, alignItems:'center' }}>
         <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
-          {'BACK'}
+         <Text>BACK</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -93,14 +93,14 @@ const styles = StyleSheet.create({
 
   logo: {
     width: 360,
-    top: -75,
+    top: -85,
     left: 10,
     right: 10
   },
 
   header: {
     width: 360,
-    top: -40
+    top: -50
   },
 
   content: {

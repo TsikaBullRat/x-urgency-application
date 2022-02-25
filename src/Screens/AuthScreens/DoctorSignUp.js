@@ -311,7 +311,7 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
                       color: '#fff'
                     }}
                   >
-                    {`SIGNIN`}{' '}
+                    {`SIGNIN`}
                   </Text>
                 </TouchableOpacity>
               </View>
