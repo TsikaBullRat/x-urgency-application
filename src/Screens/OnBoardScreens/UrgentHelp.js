@@ -1,24 +1,98 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
+;('react-native')
+import { AntDesign } from '@expo/vector-icons'
 
-export default function UrgentHelp () {
+export default function UrgentHelp ({ navigation }) {
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.logo}>
         <Image
-          style={{ height: 310, width: 250 }}
-          source={require('../../images/FollowLOGO.png')}
+          style={{ height: 350, width: '95%' }}
+          source={require('../../images/UrgentHelpLOGO.png')}
         />
       </View>
 
-      <View>
-        <Text>{`Need Urgent Help?`}</Text>
+      <View style={styles.header}>
+        <Text
+          style={{
+            fontSize: 34,
+            fontWeight: 'bold',
+            fontFamily: 'arial',
+            textAlign: 'center',
+            color: '#F47066'
+          }}
+        >{`Need Urgent Help?`}</Text>
       </View>
 
       <View style={styles.content}>
-        <Text>{`Learn basic first-aid skills`}</Text>
-        <Text>{`by watching short`}</Text>
-        <Text>{`videos of everyday first-aid scenarios`}</Text>
+        <Text style={styles.txtContent}>{`Learn basic first-aid skills`}</Text>
+        <Text style={styles.txtContent}>{`by watching short`}</Text>
+        <Text
+          style={styles.txtContent}
+        >{`videos of everyday first-aid scenarios`}</Text>
+      </View>
+
+      {/**------Screen Indicators-----------Screen Indicators----------- */}
+      <View
+        style={{
+          width: 360,
+          alignItems: 'center',
+          marginTop: 80
+        }}
+      >
+        <View
+          style={{
+            width: 280,
+            flexDirection: 'row',
+            justifyContent: 'space-evenly'
+          }}
+        >
+          <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
+          <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
+          <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
+        </View>
+      </View>
+
+      {/**------btnNext-----------btnNext--------- */}
+      <View style={{ width: 360, alignItems: 'center' }}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Sign In')}
+          style={styles.buttons}
+        >
+          <Text
+            style={{
+              fontWeight: 'bold',
+              color: '#fff',
+              paddingLeft: 25
+            }}
+          >
+            {`SignIn`}
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Sign Up')}
+          style={styles.buttons}
+        >
+          <Text
+            style={{
+              fontWeight: 'bold',
+              color: '#fff',
+              paddingLeft: 25
+            }}
+          >
+            {`Create Account`}
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/**-------BACK------BACK-------BACK */}
+      <View style={{ marginTop: 10 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+          {' '}
+          BACK{' '}
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -30,7 +104,37 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
 
-  header: {},
+  logo: {
+    width: 360,
+    top: -55,
+    left: 10,
+    right: 10
+  },
 
-  content: {}
+  header: {
+    width: 360,
+    top:-40
+  },
+
+  content: {
+    width: 360,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  txtContent: {
+    fontSize: 19,
+    fontFamily: 'arial'
+  },
+
+  buttons: {
+    height: 50,
+    width: '60%',
+    borderRadius: 10,
+    marginVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f47066'
+  }
 })

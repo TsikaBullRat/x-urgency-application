@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
-import { auth, LoadSet, firestore } from '../../firebase'
+import { auth, LoadSet, firestore, LogOut } from '../../firebase'
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import CallSiren from '../../Components/CallSiren'
@@ -49,10 +49,14 @@ export default function Home ({ navigation, Exit }) {
       navigation.navigate("PlayVideo", { data });
     };
   const signOut = () => {
+    LogOut()
     setMessage('Signed out successfully')
     setDisplaModal(true)
-    navigation.navigate('SignIn')
   }
+
+  // useEffect(()=>{
+  //   console.log(auth.currentUser)
+  // }, [auth.currentUser])
 
   return (
     <View style={styles.container}>
@@ -69,10 +73,10 @@ export default function Home ({ navigation, Exit }) {
           flexDirection: 'row',
           marginVertical: 35,
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'flex-end'
         }}
       >
-        <View>
+        <View style={{left:-15}}>
           <TouchableOpacity
             onPress={() => navigation.navigate('EmergencyContacts')}
           >
@@ -90,16 +94,15 @@ export default function Home ({ navigation, Exit }) {
       {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
       <View
         style={{
+          flexDirection:'row',
           width: '95%',
-          flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'space-between'}}>
-        <View>
+          justifyContent: 'space-between'
+      }}>
           <Header />
-        </View>
 
-        <View style={{ top: -25, left: -10 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
+          <TouchableOpacity style={{top:-24}}
+          onPress={() => navigation.navigate('Doctor')}>
             {image ? (
               <Avatar rounded source={{ uri: image }} size='large' />
             ) : (
@@ -108,12 +111,11 @@ export default function Home ({ navigation, Exit }) {
               </View>
             )}
           </TouchableOpacity>
-        </View>
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={{ width: '90%' }}>
-        <Menu list={videos} setVids={setLoad} />
+      <View style={{ width: 335, alignItems: 'center' }}>
+        <Menu />
       </View>
 
       {/*---------------------- Video Scroll View--------------------*/}

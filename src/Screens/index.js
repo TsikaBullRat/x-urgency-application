@@ -6,7 +6,6 @@ import MedSignIn from './AuthScreens/MedSignIn'
 import DoctorSignUp from './AuthScreens/DoctorSignUp'
 import ForgotPassword from './AuthScreens/ForgotPassword'
 import ResetPassword from './AuthScreens/ResetPassword'
-
 import UploadVideo from "./DoctorsScreens/UploadVideo"
 import MedicalHome from "./DoctorsScreens/MedicalHome"
 import Upload from "./DoctorsScreens/Upload"
