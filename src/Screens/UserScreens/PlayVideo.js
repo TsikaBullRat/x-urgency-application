@@ -124,10 +124,10 @@ export default function PlayVideo({ navigation, route }) {
         <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent: 'space-between' }}>
 
           <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between' }}>
-            <View>
+            <Text>
               <Text style={{ fontWeight: 'bold', color: '#F47066', }}>{data.title/*"My video"*/}</Text>
               <Text style={{ fontSize: 10 }}> {views} views - {data.stamp/*"3 weeks ago"*/} </Text>
-            </View>
+            </Text>
 
             <View>
               <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()}><AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} /> </TouchableOpacity>
@@ -144,15 +144,15 @@ export default function PlayVideo({ navigation, route }) {
               {<Dislikes data={data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/} />}
             </View>
 
-            <TouchableOpacity onPress={() => ShareItem(data.url/*videoPlay*/)}>
+            <Text onPress={() => ShareItem(data.url/*videoPlay*/)}>
               <FontAwesome5 name="share" size={20} color="black" />
               <Text style={{ paddingTop: 5 }}> Share </Text>
-            </TouchableOpacity>
+            </Text>
 
-            <View>
+            <Text>
               <Entypo name="save" size={20} color="black" />
               <Text style={{ paddingTop: 5 }}> Save </Text>
-            </View>
+            </Text>
           </View>
 
           <View
@@ -162,12 +162,12 @@ export default function PlayVideo({ navigation, route }) {
           </View>
 
           <Card style={styles.txtCards}>
-            <View style={{ flexDirection: 'row' }}>
+            <Text style={{ flexDirection: 'row' }}>
               <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
               <View style={{ width: 90, height: 40, borderRadius: 30 }}>
                 <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title='Comment' />
               </View>
-            </View>
+            </Text>
           </Card>
 
         </View>

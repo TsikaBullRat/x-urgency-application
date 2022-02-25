@@ -114,7 +114,7 @@ export default function Home ({ navigation, Exit }) {
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={{ width: 335, alignItems: 'center' }}>
+      <View style={{ width: 335 }}>
         <Menu />
       </View>
 
