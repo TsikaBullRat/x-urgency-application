@@ -88,6 +88,10 @@ export default function App({ navigation }) {
               ) : (
                 <Stack.Navigator>
 
+                <Stack.Screen name='Home' options={{ headerShown: false }}>
+                    {props => <Home {...props} Exit={Exit} />}
+                  </Stack.Screen>
+                  
                   <Stack.Screen
                     name='Welcome'
                     component={Welcome}
@@ -111,9 +115,7 @@ export default function App({ navigation }) {
                     options={{ headerShown: false }}
                   />
 
-                  <Stack.Screen name='Home' options={{ headerShown: false }}>
-                    {props => <Home {...props} Exit={Exit} />}
-                  </Stack.Screen>
+                  
 
                   <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
                     {props => <SignUp {...props} />}

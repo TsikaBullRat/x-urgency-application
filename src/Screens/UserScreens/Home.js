@@ -83,6 +83,18 @@ export default function Home ({ navigation, Exit }) {
           </TouchableOpacity>
         </View>
 
+        <View style={{alignItems:'center', justifyContent:'center'}}>
+          <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
+            {image ? (
+              <Avatar rounded source={{ uri: image }} size='large' />
+            ) : (
+              <View style={styles.temp}>
+                <Text style={styles.temp_text}> {initial} </Text>
+              </View>
+            )}
+          </TouchableOpacity>
+        </View>
+
         <View>
           <TouchableOpacity onPress={signOut}>
             <LogOutComp />
@@ -94,24 +106,10 @@ export default function Home ({ navigation, Exit }) {
       <View
         style={{
           width: '95%',
-          flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'space-between'}}>
-        <View>
+          justifyContent: 'space-between'
+      }}>
           <Header />
-        </View>
-
-        <View style={{ top: -25, left: -10 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-            {image ? (
-              <Avatar rounded source={{ uri: image }} size='large' />
-            ) : (
-              <View style={styles.temp}>
-                <Text style={styles.temp_text}> {initial} </Text>
-              </View>
-            )}
-          </TouchableOpacity>
-        </View>
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}

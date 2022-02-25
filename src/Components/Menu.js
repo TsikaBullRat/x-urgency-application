@@ -4,7 +4,7 @@ import {
   View,
   StyleSheet,
   Image,
-  Pressable,
+  TouchableOpacity,
   Platform
 } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
