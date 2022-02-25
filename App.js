@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack"
 import { auth, firestore, LogOut } from './src/firebase'
 import { Loading } from "./src/Components";
 import { StyleSheet, NativeModules, View } from 'react-native';
 import { Welcome, TakeVideo, UrgentHelp, FollowMore, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, EmergencyContacts, SignIn, SignUp, ForgotPassword, DoctorSignUp, PlayVideo, Doctor } from "./src/Screens";
 
-const Stack = createNativeStackNavigator()
-//const Stack = createStackNavigator()
+// const Stack = createNativeStackNavigator()
+const Stack = createStackNavigator()
 
 export default function App() {
   
