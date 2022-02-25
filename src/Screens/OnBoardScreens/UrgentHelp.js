@@ -55,7 +55,7 @@ export default function UrgentHelp ({ navigation }) {
       </View>
 
       {/**------btnNext-----------btnNext--------- */}
-      <View style={{ width: 360, alignItems: 'center' }}>
+      <View style={{ width: 360, marginTop:15,alignItems: 'center' }}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Sign In')}
           style={styles.buttons}
@@ -64,9 +64,7 @@ export default function UrgentHelp ({ navigation }) {
             style={{
               fontWeight: 'bold',
               color: '#fff',
-              paddingLeft: 25
-            }}
-          >
+            }}>
             {`SignIn`}
           </Text>
         </TouchableOpacity>
@@ -79,21 +77,12 @@ export default function UrgentHelp ({ navigation }) {
             style={{
               fontWeight: 'bold',
               color: '#fff',
-              paddingLeft: 25
-            }}
-          >
+            }}>
             {`Create Account`}
           </Text>
         </TouchableOpacity>
       </View>
 
-      {/**-------BACK------BACK-------BACK */}
-      <View style={{ marginTop: 10 }}>
-        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
-          {' '}
-          BACK{' '}
-        </TouchableOpacity>
-      </View>
     </View>
   )
 }

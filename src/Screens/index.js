@@ -20,6 +20,5 @@ import UrgentHelp from './OnBoardScreens/UrgentHelp'
 
 export { Welcome, FollowMore, TakeVideo, UrgentHelp, Doctor, SignIn, SignUp, ForgotPassword, ResetPassword ,Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn}
 
-export { OnBoardScreens } from './OnBoardScreens/OnBoardScreens'
 
 

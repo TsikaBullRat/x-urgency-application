@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import { Card } from 'react-native-paper'
 
-const EmergencyContacts = ({ navigation }) => {
-  const Call = number => {
+export default function EmergencyContacts ({ navigation }) {
+  const Call = (number) => {
     Linking.openURL(`tel:${number}`)
   }
 
@@ -433,4 +433,3 @@ const styles = StyleSheet.create({
   }
 })
 
-export default EmergencyContacts

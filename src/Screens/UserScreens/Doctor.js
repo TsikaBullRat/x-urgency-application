@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Pressable, Image } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Card } from 'react-native-paper'
 import { Avatar, Badge } from 'react-native-elements';
@@ -142,9 +142,9 @@ const Doctor = ({ navigation }) => {
           </View>
         </Card>
 
-        </View>
+      </View>
 
-        <View style={{ paddingTop: 20, flexDirection: 'row' }}>
+        <View style={{ paddingTop: 20, width:300, flexDirection: 'row', alignItems:'center', justifyContent:'space-around' }}>
               <Socials text="Following" number="15" />
               <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
               <Socials text="Likes" number="3.1M" />
@@ -192,7 +192,7 @@ const Doctor = ({ navigation }) => {
       </View>
 
       <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}> BACK  </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}> <Text>{`BACK`} </Text> </TouchableOpacity>
         </View>
     </View>
 
