@@ -1,321 +1,85 @@
-import React, { useState, useEffect } from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-//import { createStackNavigator } from "@react-navigation/stack"
-import { auth, firestore } from './src/firebase'
-import { Loading } from './src/Components'
-import { StyleSheet, NativeModules, View } from 'react-native'
-import {SignIn, ForgotPassword} from './src/Screens/AuthScreens'
-import SignUp from './src/Screens/AuthScreens/SignUp'
-import MedSignIn from './src/Screens/AuthScreens/MedSignIn'
-import DoctorSignUp from './src/Screens/AuthScreens/DoctorSignUp'
-import ResetPassword from './src/Screens/AuthScreens/ResetPassword'
-//import ForgotPassword from './src/Screens/AuthScreens/ForgotPassword'
-import Home from './src/Screens/UserScreens/Home'
-import PlayVideo from './src/Screens/UserScreens/PlayVideo'
-import Doctor from './src/Screens/UserScreens/Doctor'
-import { EmergencyContacts, UploadVideo, MedicalHome, Upload, UpdateProfile } from './src/Screens'
-import { AuthScreens, UserScreens, DoctorsScreens } from './src/Screens'
-import Welcome from './src/Screens/OnBoardScreens/Welcome'
-import FollowMore from './src/Screens/OnBoardScreens/FollowMore' 
-import TakeVideo from './src/Screens/OnBoardScreens/TakeVideo'
-import UrgentHelp from './src/Screens/OnBoardScreens/UrgentHelp'
+import React, { useState, useEffect } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { auth, firestore, LogOut } from './src/firebase'
+import { Loading } from "./src/Components";
+import { StyleSheet, NativeModules, View } from 'react-native';
+import { UploadVideo, MedicalHome, Upload, UpdateProfile, Home, SignIn, SignUp, ForgotPassword, DoctorSignUp, PlayVideo, Doctor } from "./src/Screens";
 
 const Stack = createNativeStackNavigator()
 //const Stack = createStackNavigator()
 
-export default function App({ navigation }) {
-  const [id, setID] = useState(null)
-  const [doctor, setDoctor] = useState(null)
-  const [check1, setCheck1] = useState(false)
-  const [check2, setCheck2] = useState(false)
+export default function App() {
+  
+  const [ run, setRun ] = useState(0)
+  const [ id, setID] = useState(null)
+  const [ doctor, setDoctor ] = useState()
 
-  const [percentage, setPerc] = useState(null)
-  const [match, setMatch] = useState(null)
+  const Exit = () =>{
+    LogOut()
+  }
 
-  const Exit = () => { navigation.navigate('auth') }
+  useEffect(()=>{
+    if(auth.currentUser){
+      run === 0?(
+        setRun(1)
+      ):(
+        setRun(0)
+      )
+    }else{
+      try{
+        auth.onAuthStateChanged(doc=>doc?setID(doc.uid):setID(null))
+      }catch(err){
+        null
+      }
+    }
+  }, [run])
 
-  useEffect(() => { auth.onAuthStateChanged(user => (user ? setID(user.uid) : setID(false))) })
-
-  useEffect(() => { id ? '' : setCheck2(false), setDoctor('') }, [id])
-
-  useEffect(() => { try { firestore.collection('Users').doc(id).get().then(doc => setDoctor(doc.data().doctor)) } catch (err) { console.log(err) } }, [id])
-
-  useEffect(() => { id !== null ? setCheck1(true) : null }, [id])
-
-  useEffect(() => { doctor !== null ? setCheck2(true) : null }, [doctor])
+  useEffect(()=>{
+    if(id){
+      firestore.collection("Users").doc(id).get().then(doc=>setDoctor(doc.data().doctor))
+    }
+  }, [])
 
   return (
     <NavigationContainer>
-      <KeyboardAwareScrollView>
-        {check1 ? (
-          id ? (
-            check2 ? (
-              doctor ? (
-                //<DoctorSignUp />
-                <Stack.Navigator>
-                  <Stack.Screen
-                    name='MedicalHome'
-                    options={{ headerShown: false }}
-                  >
-                    {props => (
-                      <MedicalHome
-                        {...props}
-                        Log={setPerc}
-                        progress={percentage}
-                        setMatch={setMatch}
-                        Exit={Exit}
-                      />
-                    )}
-                  </Stack.Screen>
-                  <Stack.Screen name='Upload' options={{ headerShown: false }}>
-                    {props => <Upload {...props} Log={setPerc} />}
-                  </Stack.Screen>
-
-                  <Stack.Screen
-                    name='UpdateProfile'
-                    component={UpdateProfile}
-                    options={{ headerShown: false }}
-                  />
-
-                  <Stack.Screen
-                    name='UploadVideo'
-                    component={UploadVideo}
-                    options={{ headerShown: false }}
-                  />
-                </Stack.Navigator>
-              ) : (
-                <Stack.Navigator>
-
-                <Stack.Screen name='Home' options={{ headerShown: false }}>
-                    {props => <Home {...props} Exit={Exit} />}
-                  </Stack.Screen>
-                  
-                  <Stack.Screen
-                    name='Welcome'
-                    component={Welcome}
-                    options={{ headerShown: false }}
-                  />
-
-                  <Stack.Screen
-                    name='FollowMore'
-                    component={FollowMore}
-                    options={{ headerShown: false }}
-                  />
-                  <Stack.Screen
-                    name='TakeVideo'
-                    component={TakeVideo}
-                    options={{ headerShown: false }}
-                  />
-
-                  <Stack.Screen
-                    name='UrgentHelp'
-                    component={UrgentHelp}
-                    options={{ headerShown: false }}
-                  />
-
-                  
-
-                  <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
-                    {props => <SignUp {...props} />}
-                  </Stack.Screen>
-
-                  <Stack.Screen
-                    name='EmergencyContacts'
-                    component={EmergencyContacts}
-                    options={{ headerShown: false }}
-                  />
-
-                  {/* <Stack.Screen
-                    name='Doctor'
-                    component={Doctor}
-                    options={{ headerShown: false }}>
-                    {props => <Doctor {...props} />} 
-                  </Stack.Screen>  */}
-
-                  <Stack.Screen
-                    name='PlayVideo'
-                    component={PlayVideo}
-                    options={{ headerShown: false }}
-                  />
-
-                  <Stack.Screen
-                  name='Doctor'
-                  component={Doctor}
-                  options={{ headerShown: false }}
-                />
-
-                <Stack.Screen
-                  name='SignIn'
-                  component={SignIn}
-                  options={{ headerShown: false }}
-                />
-
-                 <Stack.Screen
-                  name='MedSignIn'
-                  component={MedSignIn}
-                  options={{ headerShown: false }}
-                />
-
-                <Stack.Screen
-                    name='MedicalHome'
-                    options={{ headerShown: false }}
-                  >
-                    {props => (
-                      <MedicalHome
-                        {...props}
-                        Log={setPerc}
-                        progress={percentage}
-                        setMatch={setMatch}
-                        Exit={Exit}
-                      />
-                    )}
-                  </Stack.Screen>
-
-                  <Stack.Screen
-                  name='DoctorSignUp'
-                  options={{ headerShown: false }}
-                >
-                  {props => (
-                    <DoctorSignUp {...props} authNavigation={navigation} />
-                  )}
-                </Stack.Screen>
-
-                <Stack.Screen
-                  name='ForgotPassword'
-                  component={ForgotPassword}
-                  options={{ headerShown: false }}
-                />
-
-                <Stack.Screen
-                  name='ResetPassword'
-                  component={ResetPassword}
-                  options={{ headerShown: false }}
-                />
-
-                </Stack.Navigator>
-              )
-            ) : (
-              // <Stack.Screen
-              //   name='DoctorSignUp'
-              //   options={{ headerShown: false }} >
-              //   {props => <DoctorSignUp {...props} authNavigation={navigation} />}
-              // </Stack.Screen>
-
-              <Stack.Navigator>
-                <Stack.Screen name='Home' options={{ headerShown: false }}>
-                  {props => <Home {...props} Exit={Exit} />}
-                </Stack.Screen>
-
-                <Stack.Screen
-                  name='SignIn'
-                  component={SignIn}
-                  options={{ headerShown: false }}
-                />
-
-                <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
-                  {props => <SignUp {...props} />}
-                </Stack.Screen>
-
-                <Stack.Screen
-                  name='EmergencyContacts'
-                  component={EmergencyContacts}
-                  options={{ headerShown: false }}
-                />
-
-                <Stack.Screen
-                  name='Doctor'
-                  component={Doctor}
-                  options={{ headerShown: false }}
-                />
-                {/* {props => <Doctor {...props} />}  */}
-                {/* </Stack.Screen>  */}
-
-                <Stack.Screen
-                  name='MedSignIn'
-                  component={MedSignIn}
-                  options={{ headerShown: false }}
-                />
-
-                <Stack.Screen
-                  name='DoctorSignUp'
-                  options={{ headerShown: false }}
-                >
-                  {props => (
-                    <DoctorSignUp {...props} authNavigation={navigation} />
-                  )}
-                </Stack.Screen>
-
-                <Stack.Screen
-                  name='ForgotPassword'
-                  component={ForgotPassword}
-                  options={{ headerShown: false }}
-                />
-
-                <Stack.Screen
-                  name='ResetPassword'
-                  component={ResetPassword}
-                  options={{ headerShown: false }}
-                />
-
-                <Stack.Screen
-                  name='PlayVideo'
-                  component={PlayVideo}
-                  options={{ headerShown: false }}
-                />
-              </Stack.Navigator>
-            )
-          ) : (
-            <MedSignIn />
-            // <Stack.Group>
-
-            //   <Stack.Screen name='Sign In' options={{ headerShown: false }}>
-            //     {(props) => <SignIn {...props} />}
-            //   </Stack.Screen>
-
-            //   <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
-            //     {(props) => <SignUp {...props} />}
-            //   </Stack.Screen>
-
-            //   <Stack.Screen
-            //     name='MedSignIn'
-            //     options={{ headerShown: false }} >
-            //     {props => <MedSignIn {...props} authNavigation={navigation} />}
-            //   </Stack.Screen>
-
-            //   <Stack.Screen
-            //     name='DoctorSignUp'
-            //     options={{ headerShown: false }} >
-            //     {props => <DoctorSignUp {...props} authNavigation={navigation} />}
-            //   </Stack.Screen>
-
-            //   <Stack.Screen
-            //     name='Reset Password'
-            //     component={ForgotPassword}
-            //     options={{ headerShown: false }} />
-            // </Stack.Group>
+      <Stack.Navigator >
+        {id?(
+          doctor?(
+            <>
+              <Stack.Screen name="DocHome" options={{ headerShown: false }} >
+                {props => <MedicalHome {...props} Exit={Exit} />}
+              </Stack.Screen>
+              <Stack.Screen name="Upload" options={{ headerShown: false }} >
+                {props => <Upload {...props} />}
+              </Stack.Screen>
+              <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
+              <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
+              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+              <Stack.Screen name="Upload" options={{ headerShown: false }} >
+                {props => <Upload {...props} />}
+              </Stack.Screen>
+            </>
+          ):(
+            <>
+              <Stack.Screen name="Home" options={{ headerShown: false }} >
+                {props => <Home {...props} Exit={Exit} />}
+              </Stack.Screen>    
+              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+            </>
           )
-        ) : (
-          <SignIn />
-
-          // <Stack.Navigator>
-          //   <Stack.Screen
-          //     name='SignIn'
-          //     component={SignIn}
-          //     options={{ headerShown: false }}
-          //   />
-          //   <Stack.Screen name='Sign Up' component={SignUp} />
-          //   <Stack.Screen name='Reset Password' component={ForgotPassword} />
-          //   <Stack.Screen name='MedSignIn' component={MedSignIn} />
-          //   <Stack.Screen name='Doctor SignUp' component={DoctorSignUp} />
-          // </Stack.Navigator>
-
-        
-      
-      )}
-
-      </KeyboardAwareScrollView>
+        ):(
+          <>
+            <Stack.Screen name='Sign In' options={{ headerShown: false }} component={SignIn} />
+            <Stack.Screen name='Doctor SignUp' options={{ headerShown: false }} component={DoctorSignUp} />
+            <Stack.Screen name='Sign Up' options={{ headerShown: false }} component={SignUp}/>
+            <Stack.Screen name='Reset Password' component={ForgotPassword} options={{ headerShown: false }} />
+          </>
+        )}
+      </Stack.Navigator>
     </NavigationContainer>
   )
 }

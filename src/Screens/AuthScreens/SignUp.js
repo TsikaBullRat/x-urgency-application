@@ -71,7 +71,8 @@ export default function SignUp ({ navigation }) {
       setPrompt3(null)
       setPrompt4('Please re-enter password')
     } else {
-      handleSignUp(username, email, password, ConfirmPassword, setMessage)
+      handleSignUp(username, email, password, ConfirmPassword, setMessage,)
+      navigation.navigate("Home")
       setDisplayModal(true)
     }
   }

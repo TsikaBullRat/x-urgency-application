@@ -1,16 +1,3 @@
-/**
-    * @description      : 
-    * @author           : TLeeuw
-    * @group            : 
-    * @created          : 13/10/2021 - 10:58:21
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 13/10/2021
-    * - Author          : TLeeuw
-    * - Modification    : 
-**/
-
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';

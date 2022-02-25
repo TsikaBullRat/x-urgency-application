@@ -1,16 +1,3 @@
-/**
- * @description      :
- * @author           : TLeeuw
- * @group            :
- * @created          : 26/10/2021 - 11:55:25
- *
- * MODIFICATION LOG
- * - Version         : 1.0.0
- * - Date            : 26/10/2021
- * - Author          : TLeeuw
- * - Modification    :
- **/
-
 import React, { useState } from 'react'
 import {
   Text,
@@ -87,47 +74,33 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
       setVisibleStatusBar(!visibleStatusBar)
     }
 
-    const Register = () => {
-      if (
-        qualification === '' &&
-        branch === '' &&
-        password === '' &&
-        confirmpassword === ''
-      ) {
-        setPrompt('Please enter thr requested information')
-      } else if (description === '') {
-        setPrompt6('Please tell us about you')
-        setPrompt7(null)
-        setPrompt8(null)
-        setPrompt9(null)
-      } else if (branch === '') {
-        setPrompt6(null)
-        setPrompt7('Please enter branch name')
-        setPrompt8(null)
-        setPrompt9(null)
-      } else if (password === '') {
-        setPrompt6(null)
-        setPrompt7(null)
-        setPrompt8('Please enter password')
-        setPrompt9(null)
-      } else if (confirmpassword === '') {
-        setPrompt6(null)
-        setPrompt7(null)
-        setPrompt8(null)
-        setPrompt9('Please re-enter password')
-      } else {
-        handleDoctorSignUp(
-          email,
-          password,
-          name + ' ' + surname,
-          qualification,
-          specialization,
-          branch,
-          contactdetails,
-          description
-        )
-      }
+  const Register = () => {
+    if (qualification === "" && branch === "" && password === "" && confirmpassword === "") {
+      setPrompt("Please enter thr requested information")
+    } else if (description === "") {
+      setPrompt6("Please tell us about you")
+      setPrompt7(null)
+      setPrompt8(null)
+      setPrompt9(null)
+    } else if (branch === "") {
+      setPrompt6(null)
+      setPrompt7("Please enter branch name")
+      setPrompt8(null)
+      setPrompt9(null)
+    } else if (password === "") {
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8("Please enter password")
+      setPrompt9(null)
+    } else if (confirmpassword === "") {
+      setPrompt6(null)
+      setPrompt7(null)
+      setPrompt8(null)
+      setPrompt9("Please re-enter password")
+    } else {
+      handleDoctorSignUp(email, password, name + " " + surname, qualification, specialization, branch, contactdetails, description)
     }
+  }
 
     return (
       <View style={styles.container}>

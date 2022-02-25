@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   Text,
   View,
@@ -14,7 +14,7 @@ import { auth, LoadSet, firestore } from '../firebase'
 export default function Menu ({ list, setVids }) {
   const categories = [
     'Stroke',
-    'Heart-Attack',
+    'Cardiac',
     'Epilepsy',
     'CPR',
     'Choking',
@@ -22,33 +22,37 @@ export default function Menu ({ list, setVids }) {
     'Bleeding',
     'Burns'
   ]
-  const { selectedCategory, setSelectedCategory } = React.useState(0)
+  const { selectedCategory, setSelectedCategory } = useState(0)
 
   return (
     <View>
       {/*----------------------Horizontal Menu----------------------*/}
       <ScrollView
         style={{
-          width: 355
+          width: 350
         }}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       >
         <View
           style={{
-            width: 676,
+            width: 695,
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'space-evenly',
-            left: 2
+            justifyContent: 'space-around',
+            left: 5
           }}
         >
           {categories.map((emergency, index) => (
-            <TouchableOpacity key={index} activeOpacity={0.8}
-                              onPress={() => setSelectedCategory(index)}>
+            <TouchableOpacity style={{height:30, width:75, borderRadius:20, backgroundColor:'#f47066', alignItems:'center', justifyContent:'center'}}
+                              key={index} activeOpacity={0.8}
+                               //onPress={() => {setSelectedCategory(index)}}
+                               >
               <View>
-                <Text style={{fontSize:20, 
-                              color: selectedCategory == index ? 'f47066' : 'black' }}>
+                <Text style={{fontSize:16, 
+                               color: '#fff'
+                               //color: selectedCategory == index ? 'f47066' : '#' 
+                              }}>
                   {emergency}
                 </Text>
 

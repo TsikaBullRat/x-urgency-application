@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
-import { auth, LoadSet, firestore } from '../../firebase'
+import { auth, LoadSet, firestore, LogOut } from '../../firebase'
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import CallSiren from '../../Components/CallSiren'
@@ -36,26 +36,26 @@ export default function Home ({ navigation, Exit }) {
           setInitial(doc.displayName.substring(0, 1))
           console.log(auth.currentUser)
         })
-  }, [])
-
-  const VideoScreen = data => {
-      navigation.navigate('PlayVideo', { data })
-    },
-    Emergency = () => {
-      navigation.navigate('EmergencyContacts')
-    }
+  }, []) 
 
   useEffect(() => {
     LoadSet(setLoad)
   }, [])
 
   const [displayModal, setDisplaModal] = useState(false),
-    [message, setMessage] = useState('')
+    [message, setMessage] = useState(''),
+    VideoScreen = (data) => {
+      navigation.navigate("PlayVideo", { data });
+    };
   const signOut = () => {
+    LogOut()
     setMessage('Signed out successfully')
     setDisplaModal(true)
-    navigation.navigate('SignIn')
   }
+
+  // useEffect(()=>{
+  //   console.log(auth.currentUser)
+  // }, [auth.currentUser])
 
   return (
     <View style={styles.container}>
@@ -113,7 +113,7 @@ export default function Home ({ navigation, Exit }) {
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={{ width: '90%', alignItems: 'center' }}>
+      <View style={{ width: 335, alignItems: 'center' }}>
         <Menu />
       </View>
 

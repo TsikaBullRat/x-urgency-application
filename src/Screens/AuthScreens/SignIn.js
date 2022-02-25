@@ -22,7 +22,7 @@ import {
 } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import { handleSignIn } from '../../firebase'
+import { handleSignIn, auth, firestore } from '../../firebase'
 import { AlertNote } from '../../Components'
 
 export default function SignIn ({ navigation }) {
@@ -46,9 +46,8 @@ export default function SignIn ({ navigation }) {
       setPrompt1(null)
       setPrompt2('Please enter password')
     } else {
-      handleSignIn(email, password, setMessage)
+      handleSignIn(email, password, setMessage, setDone)
       setDisplaModal(true)
-      navigation.navigate('Home', { setDone })
     }
   }
 
