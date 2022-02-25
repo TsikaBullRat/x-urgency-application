@@ -72,26 +72,14 @@ export default function Home ({ navigation, Exit }) {
           flexDirection: 'row',
           marginVertical: 35,
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'flex-end'
         }}
       >
-        <View>
+        <View style={{left:-15}}>
           <TouchableOpacity
             onPress={() => navigation.navigate('EmergencyContacts')}
           >
             <CallSiren />
-          </TouchableOpacity>
-        </View>
-
-        <View style={{alignItems:'center', justifyContent:'center'}}>
-          <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-            {image ? (
-              <Avatar rounded source={{ uri: image }} size='large' />
-            ) : (
-              <View style={styles.temp}>
-                <Text style={styles.temp_text}> {initial} </Text>
-              </View>
-            )}
           </TouchableOpacity>
         </View>
 
@@ -105,11 +93,23 @@ export default function Home ({ navigation, Exit }) {
       {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
       <View
         style={{
+          flexDirection:'row',
           width: '95%',
           alignItems: 'center',
           justifyContent: 'space-between'
       }}>
           <Header />
+
+          <TouchableOpacity style={{top:-24}}
+          onPress={() => navigation.navigate('Doctor')}>
+            {image ? (
+              <Avatar rounded source={{ uri: image }} size='large' />
+            ) : (
+              <View style={styles.temp}>
+                <Text style={styles.temp_text}> {initial} </Text>
+              </View>
+            )}
+          </TouchableOpacity>
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}

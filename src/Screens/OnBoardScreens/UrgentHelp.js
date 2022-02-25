@@ -57,7 +57,7 @@ export default function UrgentHelp ({ navigation }) {
       {/**------btnNext-----------btnNext--------- */}
       <View style={{ width: 360, alignItems: 'center' }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('SignIn')}
+          onPress={() => navigation.navigate('Sign In')}
           style={styles.buttons}
         >
           <Text
