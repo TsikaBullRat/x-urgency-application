@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
-;('react-native')
+  ; ('react-native')
 import { AntDesign } from '@expo/vector-icons'
 
-export default function UrgentHelp ({ navigation }) {
+export default function UrgentHelp({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
@@ -55,7 +55,7 @@ export default function UrgentHelp ({ navigation }) {
       </View>
 
       {/**------btnNext-----------btnNext--------- */}
-      <View style={{ width: 360, marginTop:15,alignItems: 'center' }}>
+      <View style={{ width: 360, marginTop: 15, alignItems: 'center' }}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Sign In')}
           style={styles.buttons}
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
 
   header: {
     width: 360,
-    top:-40
+    top: -40
   },
 
   content: {

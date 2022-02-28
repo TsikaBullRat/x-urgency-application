@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native'
 
-export default function TakeVideo ({navigation}) {
+export default function TakeVideo({ navigation }) {
   return (
     <View>
-      
+
       <View style={styles.logo}>
         <Image
           style={{ height: 310, width: 250 }}

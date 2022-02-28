@@ -3,9 +3,9 @@ import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { color } from 'react-native-elements/dist/helpers'
 import { Feather } from '@expo/vector-icons'
 
-export default function CallSiren () {
+export default function CallSiren() {
   return (
-    <View style={{flexDirection:'row'}}>
+    <View style={{ flexDirection: 'row' }}>
       {/**---------Call Siren------------Call Siren---------Call Siren-------------------- */}
       <Image
         source={require('../../img/siren.jpg')}

@@ -56,16 +56,13 @@ export default function ForgotPassword({ navigation }) {
         <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
-      <View style={styles.header}> 
-        <Text style={{
-          fontWeight: 'bold', fontSize: 30, fontFamily: 'Arial',
-          color: '#F47066', justifyContent: "left"
-        }}>{`Forgot your password?`}</Text>
+      <View style={styles.header}>
+        <Text style={{ fontWeight: 'bold', fontSize: 30, fontFamily: 'Arial', color: '#F47066', justifyContent: "left" }}>{`Forgot your password?`}</Text>
       </View>
       <br />
       <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Arial', color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
 
-      <View style={{ width:'100%', alignItems: 'center' }}>
+      <View style={{ width: '100%', alignItems: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="mail" size={20} color="black" style={{ marginTop: 16, marginLeft: 18 }} />
@@ -75,18 +72,20 @@ export default function ForgotPassword({ navigation }) {
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
       </View>
 
-      <View style={{ width:'100%', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('ResetPassword')}  >
           <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>{`SEND`} </Text>
         </TouchableOpacity>
       </View>
 
-        <View style={{alignItems:'center', justifyContent:'center', 
-                      marginVertical: 20}}>
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-            <Text>BACK</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={{
+        alignItems: 'center', justifyContent: 'center',
+        marginVertical: 20
+      }}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+          <Text>BACK</Text>
+        </TouchableOpacity>
+      </View>
 
     </View>
 

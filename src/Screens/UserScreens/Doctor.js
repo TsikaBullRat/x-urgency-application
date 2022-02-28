@@ -144,56 +144,56 @@ const Doctor = ({ navigation }) => {
 
       </View>
 
-        <View style={{ paddingTop: 20, width:300, flexDirection: 'row', alignItems:'center', justifyContent:'space-around' }}>
-              <Socials text="Following" number="15" />
-              <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
-              <Socials text="Likes" number="3.1M" />
-            </View>
+      <View style={{ paddingTop: 20, width: 300, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+        <Socials text="Following" number="15" />
+        <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
+        <Socials text="Likes" number="3.1M" />
+      </View>
 
-        {/**------------------About--------------About-------------About----------- */}
-        <View style={{ marginTop: 35, width: 335 }}>
-          <Text style={styles.txtHead}>{`About`}</Text>
-          <Text style={styles.txtAbout}>
-            {`Neurologists These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.`}
-          </Text>
+      {/**------------------About--------------About-------------About----------- */}
+      <View style={{ marginTop: 35, width: 335 }}>
+        <Text style={styles.txtHead}>{`About`}</Text>
+        <Text style={styles.txtAbout}>
+          {`Neurologists These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.`}
+        </Text>
+      </View>
+
+      {/**----------------Contacts---------Contacts------------Contacts----------- */}
+      <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
+        <View style={{ flexDirection: 'row' }}>
+          <Feather name="phone" size={20} color="black" />
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>  {`(053) 871 2956`}</Text>
         </View>
 
-        {/**----------------Contacts---------Contacts------------Contacts----------- */}
-        <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
+        <View style={{ width: 355, marginTop: 35, justifyContent: 'flex-start' }}>
           <View style={{ flexDirection: 'row' }}>
             <Feather name="phone" size={20} color="black" />
-            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
-            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>  {`(053) 871 2956`}</Text>
+            <Text
+              style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
+            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+              {`(053) 871 2956`}
+            </Text>
           </View>
 
-          <View style={{ width: 355, marginTop: 35, justifyContent: 'flex-start' }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Feather name="phone" size={20} color="black" />
-              <Text
-                style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}> {`Call Now `}</Text>
-              <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
-                {`(053) 871 2956`}
-              </Text>
-            </View>
-
-            <View>
-              <Text style={{ paddingLeft: 35, paddingTop: 5 }}>{`OR`}</Text>
-            </View>
-
-            <View style={{ flexDirection: 'row' }}>
-              <AntDesign name="mail" size={20} color="black" />
-              <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}>  {`SMS`}</Text>
-              <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
-                {`078 454 2123`}
-              </Text>
-            </View>
+          <View>
+            <Text style={{ paddingLeft: 35, paddingTop: 5 }}>{`OR`}</Text>
           </View>
+
+          <View style={{ flexDirection: 'row' }}>
+            <AntDesign name="mail" size={20} color="black" />
+            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066', }}>  {`SMS`}</Text>
+            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+              {`078 454 2123`}
+            </Text>
+          </View>
+        </View>
 
       </View>
 
       <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}> <Text>{`BACK`} </Text> </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}> <Text>{`BACK`} </Text> </TouchableOpacity>
+      </View>
     </View>
 
   )

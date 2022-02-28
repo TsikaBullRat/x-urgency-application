@@ -12,20 +12,13 @@
  **/
 
 import React, { useState } from 'react'
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Platform
-} from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleSignUp } from '../../firebase'
 import { AlertNote } from '../../Components/Alert'
 
-export default function ResetPassword ({ navigation }) {
+export default function ResetPassword({ navigation }) {
   const [username, setUserName] = useState(''),
     [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
@@ -83,7 +76,7 @@ export default function ResetPassword ({ navigation }) {
         setModalVisible={setDisplayModal}
         msg={message}
       />
-      
+
       {/**----------Logo------------Logo------------- */}
       <View>
         <Card style={styles.card}>
@@ -97,12 +90,12 @@ export default function ResetPassword ({ navigation }) {
         </Card>
       </View>
 
-{/**----------Header------------Header------------- */}
+      {/**----------Header------------Header------------- */}
       <View style={styles.header}>
         <Text
           style={{
             fontSize: 30,
-            fontWeight:'bold',
+            fontWeight: 'bold',
             ...Platform.select({
               web: {
                 fontFamily: 'Arial'
@@ -191,7 +184,7 @@ export default function ResetPassword ({ navigation }) {
         {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
       </View>
 
-{/**----------btnReset------------btnReset------------- */}
+      {/**----------btnReset------------btnReset------------- */}
       <View style={styles.signupView}>
         <TouchableOpacity style={styles.signUp} onPress={Register}>
           <Text
@@ -206,7 +199,7 @@ export default function ResetPassword ({ navigation }) {
         </TouchableOpacity>
       </View>
 
-{/**-------BACK------BACK-------BACK */}
+      {/**-------BACK------BACK-------BACK */}
       <View
         style={{
           alignItems: 'center',

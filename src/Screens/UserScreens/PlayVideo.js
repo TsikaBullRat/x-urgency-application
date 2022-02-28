@@ -26,12 +26,12 @@ import { Collect, Post, } from '../../firebase';
 
 export default function PlayVideo({ navigation, route }) {
 
-  useEffect(()=>{
+  useEffect(() => {
     auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
-       .catch(err=>{
-         console.log(err)
+      .catch(err => {
+        console.log(err)
       })
-   }, [])
+  }, [])
 
   const data = route.params.data
   const [userName, setUserName] = useState(data.owner/*"Ntsika"*/)
@@ -211,7 +211,7 @@ export default function PlayVideo({ navigation, route }) {
       </ScrollView>
 
       {/**-------BACK------BACK-------BACK */}
-      <View style={{marginTop: 10}}>
+      <View style={{ marginTop: 10 }}>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Text>BACK</Text>
         </TouchableOpacity>

@@ -12,20 +12,13 @@
  **/
 
 import React, { useState } from 'react'
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Platform
-} from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleSignIn, auth, firestore } from '../../firebase'
 import { AlertNote } from '../../Components'
 
-export default function SignIn ({ navigation }) {
+export default function SignIn({ navigation }) {
   const [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
     [displayModal, setDisplaModal] = useState(false),

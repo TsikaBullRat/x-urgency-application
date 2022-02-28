@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 
-export default function FollowMore ({ navigation }) {
+export default function FollowMore({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
@@ -76,9 +76,9 @@ export default function FollowMore ({ navigation }) {
       </View>
 
       {/**-------BACK------BACK-------BACK */}
-      <View style={{ marginVertical: 15, alignItems:'center' }}>
+      <View style={{ marginVertical: 15, alignItems: 'center' }}>
         <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
-         <Text>BACK</Text>
+          <Text>BACK</Text>
         </TouchableOpacity>
       </View>
     </View>

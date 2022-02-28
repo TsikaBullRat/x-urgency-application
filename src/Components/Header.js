@@ -4,7 +4,7 @@ import { color } from 'react-native-elements/dist/helpers'
 import { auth, firestore, LogOut } from '../firebase'
 import { Feather } from '@expo/vector-icons'
 
-export default function Header () {
+export default function Header() {
   return (
     <View>
       {/*---------------------------Header--------------------------*/}

@@ -19,7 +19,7 @@ import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
 
-export default function Home ({ navigation, Exit }) {
+export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
@@ -32,12 +32,12 @@ export default function Home ({ navigation, Exit }) {
         setImage(auth.currentUser.photoURL),
         setInitial(auth.currentUser.displayName.substring(0, 1)))
       : auth.onAuthStateChanged(doc => {
-          setImage(doc.photoURL)
-          console.log(doc.displayName)
-          setInitial(doc.displayName.substring(0, 1))
-          console.log(auth.currentUser)
-        })
-  }, []) 
+        setImage(doc.photoURL)
+        console.log(doc.displayName)
+        setInitial(doc.displayName.substring(0, 1))
+        console.log(auth.currentUser)
+      })
+  }, [])
 
   useEffect(() => {
     LoadSet(setLoad)
@@ -76,7 +76,7 @@ export default function Home ({ navigation, Exit }) {
           justifyContent: 'flex-end'
         }}
       >
-        <View style={{left:-15}}>
+        <View style={{ left: -15 }}>
           <TouchableOpacity
             onPress={() => navigation.navigate('EmergencyContacts')}
           >
@@ -94,23 +94,23 @@ export default function Home ({ navigation, Exit }) {
       {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
       <View
         style={{
-          flexDirection:'row',
+          flexDirection: 'row',
           width: '95%',
           alignItems: 'center',
           justifyContent: 'space-between'
-      }}>
-          <Header />
+        }}>
+        <Header />
 
-          <TouchableOpacity style={{top:-24}}
+        <TouchableOpacity style={{ top: -24 }}
           onPress={() => navigation.navigate('Doctor')}>
-            {image ? (
-              <Avatar rounded source={{ uri: image }} size='large' />
-            ) : (
-              <View style={styles.temp}>
-                <Text style={styles.temp_text}> {initial} </Text>
-              </View>
-            )}
-          </TouchableOpacity>
+          {image ? (
+            <Avatar rounded source={{ uri: image }} size='large' />
+          ) : (
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
+        </TouchableOpacity>
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
@@ -125,11 +125,11 @@ export default function Home ({ navigation, Exit }) {
           vertical={true}
           showsVerticalScrollIndicator={false}
         >
-            <Card style={styles.menu2}>
-              <View>
-                <VideoList videos={videos} VideoScreen={VideoScreen} />
-              </View>
-            </Card>
+          <Card style={styles.menu2}>
+            <View>
+              <VideoList videos={videos} VideoScreen={VideoScreen} />
+            </View>
+          </Card>
         </ScrollView>
       </View>
     </View>

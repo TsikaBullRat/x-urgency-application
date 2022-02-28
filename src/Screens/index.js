@@ -12,13 +12,12 @@ import Upload from "./DoctorsScreens/Upload"
 import PlayVideo from "./UserScreens/PlayVideo"
 import Doctor from "./UserScreens/Doctor"
 import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
-
 import Welcome from './OnBoardScreens/Welcome'
-import FollowMore from './OnBoardScreens/FollowMore' 
+import FollowMore from './OnBoardScreens/FollowMore'
 import TakeVideo from './OnBoardScreens/TakeVideo'
 import UrgentHelp from './OnBoardScreens/UrgentHelp'
 
-export { Welcome, FollowMore, TakeVideo, UrgentHelp, Doctor, SignIn, SignUp, ForgotPassword, ResetPassword ,Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn}
+export { Welcome, FollowMore, TakeVideo, UrgentHelp, Doctor, SignIn, SignUp, ForgotPassword, ResetPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn }
 
 
 

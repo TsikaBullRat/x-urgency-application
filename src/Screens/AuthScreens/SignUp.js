@@ -12,20 +12,13 @@
  **/
 
 import React, { useState } from 'react'
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Platform
-} from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleSignUp } from '../../firebase'
 import { AlertNote } from '../../Components/Alert'
 
-export default function SignUp ({ navigation }) {
+export default function SignUp({ navigation }) {
   const [username, setUserName] = useState(''),
     [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
@@ -153,7 +146,7 @@ export default function SignUp ({ navigation }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-           <EvilIcons
+            <EvilIcons
               name='lock'
               size={32}
               color='black'
@@ -190,7 +183,7 @@ export default function SignUp ({ navigation }) {
         {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
       </View>
 
-{/**----------btnSignUp------------btnSignUp------------- */}
+      {/**----------btnSignUp------------btnSignUp------------- */}
       <View style={styles.signupView}>
         <TouchableOpacity style={styles.signUp} onPress={Register}>
           <Text
@@ -203,18 +196,18 @@ export default function SignUp ({ navigation }) {
             {`SIGNUP`}
           </Text>
         </TouchableOpacity>
-      
 
-{/**-------BACK------BACK-------BACK */}
-      <View style={{marginTop: 10}}>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-          <Text>
-            BACK
-          </Text>
-        </TouchableOpacity>
+
+        {/**-------BACK------BACK-------BACK */}
+        <View style={{ marginTop: 10 }}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+            <Text>
+              BACK
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      </View>
-      
+
     </View>
   )
 }

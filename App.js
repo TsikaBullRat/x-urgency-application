@@ -12,42 +12,42 @@ import { Welcome, TakeVideo, UrgentHelp, FollowMore, UploadVideo, MedicalHome, U
 const Stack = createStackNavigator()
 
 export default function App() {
-  
-  const [ run, setRun ] = useState(0)
-  const [ id, setID] = useState(null)
-  const [ doctor, setDoctor ] = useState()
 
-  const Exit = () =>{
+  const [run, setRun] = useState(0)
+  const [id, setID] = useState(null)
+  const [doctor, setDoctor] = useState()
+
+  const Exit = () => {
     LogOut()
   }
 
-  useEffect(()=>{
-    if(auth.currentUser){
-      run === 0?(
+  useEffect(() => {
+    if (auth.currentUser) {
+      run === 0 ? (
         setRun(1)
-      ):(
+      ) : (
         setRun(0)
       )
-    }else{
-      try{
-        auth.onAuthStateChanged(doc=>doc?setID(doc.uid):setID(null))
-      }catch(err){
+    } else {
+      try {
+        auth.onAuthStateChanged(doc => doc ? setID(doc.uid) : setID(null))
+      } catch (err) {
         null
       }
     }
   }, [run])
 
-  useEffect(()=>{
-    if(id){
-      firestore.collection("Users").doc(id).get().then(doc=>setDoctor(doc.data().doctor))
+  useEffect(() => {
+    if (id) {
+      firestore.collection("Users").doc(id).get().then(doc => setDoctor(doc.data().doctor))
     }
   }, [])
 
   return (
     <NavigationContainer>
       <Stack.Navigator >
-        {id?(
-          doctor?(
+        {id ? (
+          doctor ? (
             <>
 
               <Stack.Screen name='TakeVideo' component={ForgotPassword} options={{ headerShown: false }} />
@@ -69,34 +69,34 @@ export default function App() {
               <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
 
             </>
-          ):(
+          ) : (
             <>
 
               <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
 
-            <Stack.Screen name='FollowMore' component={FollowMore} options={{ headerShown: false }} />
+              <Stack.Screen name='FollowMore' component={FollowMore} options={{ headerShown: false }} />
 
-            <Stack.Screen name='UrgentHelp' component={UrgentHelp} options={{ headerShown: false }} />
+              <Stack.Screen name='UrgentHelp' component={UrgentHelp} options={{ headerShown: false }} />
 
               <Stack.Screen name="Home" options={{ headerShown: false }} >
                 {props => <Home {...props} Exit={Exit} />}
-              </Stack.Screen>    
+              </Stack.Screen>
               <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
               <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
 
               {/* <Stack.Screen name="EmergencyContacts" components={EmergencyContacts} 
               options={{headerShown: false}} /> */}
-              
-            
+
+
             </>
           )
-        ):(
+        ) : (
           <>
             <Stack.Screen name='Sign In' options={{ headerShown: false }} component={SignIn} />
             <Stack.Screen name='Doctor SignUp' options={{ headerShown: false }} component={DoctorSignUp} />
-            <Stack.Screen name='Sign Up' options={{ headerShown: false }} component={SignUp}/>
+            <Stack.Screen name='Sign Up' options={{ headerShown: false }} component={SignUp} />
             <Stack.Screen name='Reset Password' component={ForgotPassword} options={{ headerShown: false }} />
-           
+
           </>
         )}
       </Stack.Navigator>
