@@ -1,15 +1,15 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
-  ; ('react-native')
+;('react-native')
 import { AntDesign } from '@expo/vector-icons'
 
-export default function UrgentHelp({ navigation }) {
+export default function LikeConn ({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
         <Image
           style={{ height: 350, width: '95%' }}
-          source={require('../../images/UrgentHelpLOGO.png')}
+          source={require('../../images/Like&ConnLOGO.png')}
         />
       </View>
 
@@ -22,7 +22,7 @@ export default function UrgentHelp({ navigation }) {
             textAlign: 'center',
             color: '#F47066'
           }}
-        >{`Need Urgent Help?`}</Text>
+        >{`Like and Connections?`}</Text>
       </View>
 
       <View style={styles.content}>
@@ -43,7 +43,7 @@ export default function UrgentHelp({ navigation }) {
       >
         <View
           style={{
-            width: 280,
+            width: 130,
             flexDirection: 'row',
             justifyContent: 'space-evenly'
           }}
@@ -55,7 +55,7 @@ export default function UrgentHelp({ navigation }) {
       </View>
 
       {/**------btnNext-----------btnNext--------- */}
-      <View style={{ width: 360, marginTop: 15, alignItems: 'center' }}>
+      <View style={{ width: 360, marginTop:15,alignItems: 'center' }}>
         <TouchableOpacity
           onPress={() => navigation.navigate('Sign In')}
           style={styles.buttons}
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
 
   header: {
     width: 360,
-    top: -40
+    top:-40
   },
 
   content: {

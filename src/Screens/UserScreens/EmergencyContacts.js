@@ -3,30 +3,58 @@ import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import { Card } from 'react-native-paper'
 
-export default function EmergencyContacts({ navigation }) {
-  const Call = (number) => {
+const EmergencyContacts = ({ navigation }) => {
+  const Call = number => {
     Linking.openURL(`tel:${number}`)
   }
 
   return (
     <View style={styles.container}>
-      <View>
-        <View style={{ alignItems: 'flex-start' }} >
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}> {'<='} </TouchableOpacity>
-        </View>
 
-        <View style={{ width: '100%', marginTop: 20, alignItems: 'center', justifyContent: 'center' }} >
-          <Text style={styles.head}> {'EMERGENCY?'} </Text>
+        <View
+          style={{
+            marginTop: 20,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+          <Text style={{ paddingLeft:25, color: '#F47066', fontSize: 30, fontFamily: 'arial' }}>
+
+            {'EMERGENCY?'}
+          </Text>
           <Text style={styles.head}> {'CALL NOW!'}</Text>
         </View>
-      </View>
 
-      <View style={{ width: 360, alignItems: 'center', justifyContent: 'center' }}>
+      <View
+        style={{ width: 360, alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity onPress={() => Call('112')}>
           <Card style={styles.card7}>
-            <Text style={{ fontWeight: 'bold', fontSize: 15, paddingTop: 10, color: 'white' }} >   Nationwide</Text>
-            <FontAwesome name='arrows' size={30} color='#ffffff' style={{ marginTop: 1, alignSelf: 'center' }} />
-            <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 16, marginTop: -1, color: 'white' }}  > 112 </Text>
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 15,
+                paddingTop: 10,
+                color: 'white'
+              }}
+            >
+              Nationwide
+            </Text>
+            <FontAwesome
+              name='arrows'
+              size={30}
+              color='#ffffff'
+              style={{ marginTop: 1, alignSelf: 'center' }}
+            />
+            <Text
+              style={{
+                textAlign: 'center',
+                fontWeight: 'bold',
+                fontSize: 16,
+                marginTop: -1,
+                color: 'white'
+              }}
+            >
+              112
+            </Text>
           </Card>
         </TouchableOpacity>
       </View>
@@ -104,6 +132,13 @@ export default function EmergencyContacts({ navigation }) {
           </Card>
         </TouchableOpacity>
       </View>
+
+      {/**-------BACK------BACK-------BACK */}
+      <View style={{ marginVertical: 15, alignItems:'center' }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+         <Text>{`BACK`}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -117,8 +152,7 @@ const styles = StyleSheet.create({
 
   head: {
     color: '#F47066',
-    fontSize: 35,
-    textAlign: 'center',
+    fontSize: 30,
     fontFamily: 'arial'
   },
 
@@ -196,3 +230,4 @@ const styles = StyleSheet.create({
   }
 })
 
+export default EmergencyContacts

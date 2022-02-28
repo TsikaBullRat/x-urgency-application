@@ -46,8 +46,9 @@ export default function Home({ navigation, Exit }) {
   const [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState(''),
     VideoScreen = (data) => {
-      navigation.navigate("PlayVideo", { data });
+      navigation.navigate("PlayVideo", {data});
     };
+
   const signOut = () => {
     LogOut()
     setMessage('Signed out successfully')
@@ -125,11 +126,14 @@ export default function Home({ navigation, Exit }) {
           vertical={true}
           showsVerticalScrollIndicator={false}
         >
-          <Card style={styles.menu2}>
-            <View>
-              <VideoList videos={videos} VideoScreen={VideoScreen} />
-            </View>
-          </Card>
+            <Card style={styles.menu2}>
+              <TouchableOpacity
+                    style={{ alignItems: 'center', justifyContent: 'center' }}
+                    onPress={VideoScreen}
+                  >
+                <VideoList videos={videos} />
+              </TouchableOpacity>
+            </Card>
         </ScrollView>
       </View>
     </View>

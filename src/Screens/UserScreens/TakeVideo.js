@@ -1,14 +1,15 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
+;('react-native')
 import { AntDesign } from '@expo/vector-icons'
 
-export default function FollowMore({ navigation }) {
+export default function TakeVideo ({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
         <Image
           style={{ height: 350, width: '95%' }}
-          source={require('../../images/FollowLOGO.png')}
+          source={require('../../images/TakeVideoLOGO.png')}
         />
       </View>
 
@@ -21,12 +22,12 @@ export default function FollowMore({ navigation }) {
             textAlign: 'center',
             color: '#F47066'
           }}
-        >{`Follow for More`}</Text>
+        >{`Take a Video?`}</Text>
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.txtContent}>{`Follow your favourite`}</Text>
-        <Text style={styles.txtContent}>{`Medical health professional`}</Text>
+        <Text style={styles.txtContent}>{`Taking live saving videos`}</Text>
+        <Text style={styles.txtContent}>{`and live saving tips`}</Text>
       </View>
 
       {/**------Screen Indicators-----------Screen Indicators----------- */}
@@ -34,12 +35,12 @@ export default function FollowMore({ navigation }) {
         style={{
           width: 360,
           alignItems: 'center',
-          marginTop: 102
+          marginTop: 80
         }}
       >
         <View
           style={{
-            width: 280,
+            width: 130,
             flexDirection: 'row',
             justifyContent: 'space-evenly'
           }}
@@ -53,8 +54,8 @@ export default function FollowMore({ navigation }) {
       {/**------btnNext-----------btnNext--------- */}
       <View style={{ width: 360, marginVertical: 25, alignItems: 'center' }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('UrgentHelp')}
-          style={styles.btnNext}
+          onPress={() => navigation.navigate('ShareContent')}
+          style={styles.buttons}
         >
           <Text
             style={{
@@ -69,18 +70,13 @@ export default function FollowMore({ navigation }) {
           <View
             style={{
               left: 40
-            }}>
+            }}
+          >
             <AntDesign name='arrowright' size={25} color='#fff' />
           </View>
         </TouchableOpacity>
       </View>
 
-      {/**-------BACK------BACK-------BACK */}
-      <View style={{ marginVertical: 15, alignItems: 'center' }}>
-        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
-          <Text>BACK</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   )
 }
@@ -93,18 +89,19 @@ const styles = StyleSheet.create({
 
   logo: {
     width: 360,
-    top: -85,
+    top: -15,
     left: 10,
     right: 10
   },
 
   header: {
     width: 360,
-    top: -50
+    top: -60
   },
 
   content: {
     width: 360,
+    top: -20,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -114,9 +111,10 @@ const styles = StyleSheet.create({
     fontFamily: 'arial'
   },
 
-  btnNext: {
+  buttons: {
     height: 50,
     width: '60%',
+    top: -20,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
