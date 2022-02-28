@@ -34,15 +34,24 @@ export default function MedSignIn({ navigation, setDone }) {
 
     <View style={styles.container}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: '#fff', fontSize: 30, marginLeft: 15, fontFamily: 'Felix Titling' }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 30, color: '#F47066', ...Platform.select({ web: { fontFamily: 'Felix Titling' } }) }}>{`Medical SignIn`}</Text>
+        <Text style={{
+          fontSize: 30, color: '#F47066',
+          fontWeight:'bold', ...Platform.select({
+            web: {
+              fontFamily: 'Arial'             
+            }
+          })
+       }}>{`Medical SignIn`}</Text>
+
       </View>
 
       <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
@@ -61,14 +70,15 @@ export default function MedSignIn({ navigation, setDone }) {
         </Card>
 
         <View style={{ width: '80%', alignItems: 'flex-end' }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Reset Password')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ForgotPassword')}>
             <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }}>{`Forgot Password?`} </Text>
           </TouchableOpacity>
         </View>
 
         <View style={{ width: '100%', alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ fontSize: 20, fontFamily: 'flexi titling', color: '#fff', }}>{`LOGIN`} </Text>
+            <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff', }}>{`LOGIN`} </Text>
           </TouchableOpacity>
         </View>
 
@@ -79,7 +89,9 @@ export default function MedSignIn({ navigation, setDone }) {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={{ marginVertical: 20 }} onPress={() => navigation.navigate('SignIn')}> BACK</TouchableOpacity>
+        <TouchableOpacity style={{ marginVertical: 20 }} onPress={() => navigation.navigate('SignIn')}> 
+          <Text>BACK</Text>
+        </TouchableOpacity>
 
       </View>
     </View>
@@ -89,41 +101,40 @@ export default function MedSignIn({ navigation, setDone }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: '100%',
+    width: 360,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
     textAlign: 'center'
   },
 
   heartIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
     marginTop: 30,
+    width: 360
   },
 
   header: {
-    paddingTop: 25,
-    fontSize: 36,
-    fontFamily: 'Cooper',
-    color: '#F47066'
+    marginTop: 20,
+    width: 360
+  },
+
+  textfieldCards: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   txtUser: {
-    width: 300,
     marginTop: 7,
     paddingLeft: 10,
     paddingTop: 15,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
@@ -133,31 +144,54 @@ const styles = StyleSheet.create({
     })
   },
 
+  prompt: {
+    color: '#F47066',
+    textAlign: 'center'
+  },
+
   txtPassword: {
-    width: 300,
     height: 35,
     marginTop: 5,
     paddingLeft: 6,
     paddingTop: 20,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: '#fff',
-        width: 220
+        outlineColor: '#fff'
       }
     })
   },
 
   txtCards: {
-    width: '80%',
+    width: '95%',
     height: 50,
     borderRadius: 10,
-    marginLeft: 2,
     marginTop: 35,
     borderWidth: 1,
-    borderColor: '#F47066',
+    backgroundColor: '#fff',
+    borderColor: '#F47066'
+  },
+
+  reset: {
+    width: '97%',
+    alignItems: 'flex-end'
+  },
+
+  loginView: {
+    width: 360,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  newUser: {
+    width: 335,
+    marginRight: 10,
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   signIn: {
@@ -167,7 +201,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    justifyContent: 'center'
+  }
 
 });

@@ -26,12 +26,12 @@ import { Collect, Post, } from '../../firebase';
 
 export default function PlayVideo({ navigation, route }) {
 
-  // useEffect(()=>{
-  //   auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
-  //     .catch(err=>{
-  //       console.log(err)
-  //     })
-  // }, [])
+  useEffect(()=>{
+    auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
+       .catch(err=>{
+         console.log(err)
+      })
+   }, [])
 
   const data = route.params.data
   const [userName, setUserName] = useState(data.owner/*"Ntsika"*/)
@@ -103,7 +103,7 @@ export default function PlayVideo({ navigation, route }) {
     };
 
   useEffect(() => {
-    Collect(data.firestore/*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/, setComments, setCount)
+    Collect(data.firestore, setComments, setCount)
   }, [])
 
   useEffect(() => {
@@ -123,7 +123,7 @@ export default function PlayVideo({ navigation, route }) {
       {!visibleStatusBar ? (
         <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent: 'space-between' }}>
 
-          <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between', }}>
+          <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between' }}>
             <View>
               <Text style={{ fontWeight: 'bold', color: '#F47066', }}>{data.title/*"My video"*/}</Text>
               <Text style={{ fontSize: 10 }}> {views} views - {data.stamp/*"3 weeks ago"*/} </Text>
@@ -198,8 +198,6 @@ export default function PlayVideo({ navigation, route }) {
 
       )}
 
-      <Comments video={data.firestore} />
-
       <ScrollView showsVerticalScrollIndicator={false}>  <Card style={{ height: 335, width: 315, marginTop: 5 }}>
         <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
         {Comments.map((item, index) =>
@@ -211,6 +209,13 @@ export default function PlayVideo({ navigation, route }) {
         )}
       </Card>
       </ScrollView>
+
+      {/**-------BACK------BACK-------BACK */}
+      <View style={{marginTop: 10}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text>BACK</Text>
+        </TouchableOpacity>
+      </View>
     </View>
 
   )

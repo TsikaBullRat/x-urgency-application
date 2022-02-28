@@ -53,30 +53,40 @@ export default function ForgotPassword({ navigation }) {
     <View style={styles.container}>
       <Card style={styles.card}>
         <View style={styles.heartIcon}><FontAwesome name="heartbeat" size={110} color="#fff" /></View>
-        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
-      <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling', color: '#F47066', justifyContent: "left" }}>{`Forgot your password?`}</Text>
+      <View style={styles.header}> 
+        <Text style={{
+          fontWeight: 'bold', fontSize: 30, fontFamily: 'Arial',
+          color: '#F47066', justifyContent: "left"
+        }}>{`Forgot your password?`}</Text>
       </View>
       <br />
-      <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling', color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
+      <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Arial', color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
 
-      <View style={{ alignItems: 'center' }}>
+      <View style={{ width:'100%', alignItems: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 16, marginLeft: 18 }} />
             <TextInput style={styles.txtField} name='email' placeholder='example@gmail.com' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
       </View>
 
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
-          <Text style={{ color: '#fff' }}>{`SEND`} </Text>
+      <View style={{ width:'100%', alignItems: 'center', justifyContent: 'center' }}>
+        <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('ResetPassword')}  >
+          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>{`SEND`} </Text>
         </TouchableOpacity>
       </View>
+
+        <View style={{alignItems:'center', justifyContent:'center', 
+                      marginVertical: 20}}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+            <Text>BACK</Text>
+          </TouchableOpacity>
+        </View>
 
     </View>
 
@@ -92,7 +102,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: '#F47066',
-    width: 335,
+    width: '100%',
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -118,32 +128,11 @@ const styles = StyleSheet.create({
   },
 
   txtField: {
-    marginLeft: 10,
-    marginTop: 10,
-  },
-
-  txtEmail: {
-    width: 300,
     marginTop: 7,
     paddingLeft: 10,
-    paddingTop: 20,
+    paddingTop: 9,
     fontSize: 18,
-    fontFamily: 'flexi titling',
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff',
-        width: 220
-      }
-    })
-  },
-
-  txtPassword: {
-    width: 300,
-    paddingLeft: 6,
-    paddingTop: 15,
-    fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
@@ -154,7 +143,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 315,
+    width: '80%',
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -165,7 +154,7 @@ const styles = StyleSheet.create({
 
   signIn: {
     height: 50,
-    width: 200,
+    width: '60%',
     marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',

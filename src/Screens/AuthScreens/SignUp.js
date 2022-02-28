@@ -12,13 +12,20 @@
  **/
 
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Platform
+} from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleSignUp } from '../../firebase'
 import { AlertNote } from '../../Components/Alert'
 
-export default function SignUp({ navigation }) {
+export default function SignUp ({ navigation }) {
   const [username, setUserName] = useState(''),
     [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
@@ -64,71 +71,150 @@ export default function SignUp({ navigation }) {
       setPrompt3(null)
       setPrompt4('Please re-enter password')
     } else {
-      handleSignUp(username, email, password, ConfirmPassword, setMessage)
+      handleSignUp(username, email, password, ConfirmPassword, setMessage,)
+      navigation.navigate("Home")
       setDisplayModal(true)
     }
   }
 
   return (
     <View style={styles.container}>
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
-      <Card style={styles.card}>
-        <View style={styles.heartIcon}>
-          <FontAwesome name='heartbeat' size={110} color='#fff' />
-        </View>
-        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}>  {' '} {`X-urgency`}{' '}  </Text>
-      </Card>
-
-      <View style={styles.header}>
-        <Text style={{ fontSize: 30, ...Platform.select({ web: { fontFamily: 'Felix Titling' } }), color: '#F47066' }} >{`SignUp`}</Text>
+      <AlertNote
+        modalVisible={displayModal}
+        setModalVisible={setDisplayModal}
+        msg={message}
+      />
+      {/**----------Logo------------Logo------------- */}
+      <View>
+        <Card style={styles.card}>
+          <View style={styles.heartIcon}>
+            <FontAwesome name='heartbeat' size={110} color='#fff' />
+          </View>
+          <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}>
+            {' '}
+            {`X-urgency`}{' '}
+          </Text>
+        </Card>
       </View>
 
-      {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
-
-      <Card style={styles.txtCards}>
-        <View style={{ flexDirection: 'row' }}>
-          <AntDesign name='user' size={22} color='black' style={{ marginTop: 17, marginLeft: 16 }} />
-          <TextInput style={styles.txtUser} name='userName' placeholder='Username' onChangeText={text => setEmail(text)} />
-        </View>
-      </Card>
-      {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
-
-      <View>
+      <View style={styles.header}>
+        <Text
+          style={{
+            fontSize: 30,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            ...Platform.select({
+              web: {
+                fontFamily: 'Arial'
+              }
+            }),
+            color: '#F47066'
+          }}
+        >{`SignUp`}</Text>
+      </View>
+      {/**----------txtFields------------txtFields------------- */}
+      <View style={styles.textfieldCards}>
+        {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name='mail' size={20} color='black' style={{ marginTop: 20, marginLeft: 15 }} />
-            <TextInput style={styles.txtEmail} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
+            <AntDesign
+              name='user'
+              size={22}
+              color='black'
+              style={{ marginTop: 16, marginLeft: 18 }}
+            />
+            <TextInput
+              style={styles.txtField}
+              name='userName'
+              placeholder='Username'
+              onChangeText={text => setEmail(text)}
+            />
+          </View>
+        </Card>
+
+        {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <AntDesign
+              name='mail'
+              size={20}
+              color='black'
+              style={{ marginTop: 20, marginLeft: 15 }}
+            />
+            <TextInput
+              style={styles.txtField}
+              name='email'
+              placeholder='Email'
+              onChangeText={text => setEmail(text)}
+            />
           </View>
         </Card>
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name='lock' size={32} color='black' style={{ marginTop: 11, marginLeft: 10 }} />
+           <EvilIcons
+              name='lock'
+              size={32}
+              color='black'
+              style={{ marginTop: 12, marginLeft: 12 }}
+            />
             <TextInput
-              style={styles.txtPassword} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
+              style={styles.txtField}
+              name='password'
+              placeholder='Password'
+              secureTextEntry={true}
+              onChangeText={text => setPassword(text)}
+            />
           </View>
         </Card>
         {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name='unlock' size={32} color='black' style={{ marginTop: 11, marginLeft: 10 }} />
-            <TextInput style={styles.txtPassword} name='confirmPassword' placeholder='Confirm Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
+            <EvilIcons
+              name='lock'
+              size={32}
+              color='black'
+              style={{ marginTop: 12, marginLeft: 12 }}
+            />
+            <TextInput
+              style={styles.txtField}
+              name='confirmPassword'
+              placeholder='Confirm Password'
+              secureTextEntry={true}
+              onChangeText={text => setPassword(text)}
+            />
           </View>
         </Card>
         {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
-
-        <View style={{ alignItems: 'center', alignContent: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={Register}>
-            <Text style={{ fontSize: 20, fontFamily: 'Felix Titling', color: '#fff' }} >  {`SIGNUP`}{' '} </Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}> BACK  </TouchableOpacity>
-        </View>
       </View>
+
+{/**----------btnSignUp------------btnSignUp------------- */}
+      <View style={styles.signupView}>
+        <TouchableOpacity style={styles.signUp} onPress={Register}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: 'Arial',
+              color: '#fff'
+            }}
+          >
+            {`SIGNUP`}
+          </Text>
+        </TouchableOpacity>
+      
+
+{/**-------BACK------BACK-------BACK */}
+      <View style={{marginTop: 10}}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+          <Text>
+            BACK
+          </Text>
+        </TouchableOpacity>
+      </View>
+      </View>
+      
     </View>
   )
 }
@@ -136,29 +222,47 @@ export default function SignUp({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: '#fff'
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: 335,
+    width: 360,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
+    textAlign: 'center'
+  },
+
+  heartIcon: {
+    marginTop: 30,
+    width: 360
+  },
+
+  header: {
+    marginTop: 20,
+    width: 360
+  },
+
+  textfieldCards: {
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center'
   },
 
-  heartIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30
-  },
-
-  header: {
-    paddingTop: 25,
-    textAlign: 'center'
+  txtUser: {
+    marginTop: 7,
+    paddingLeft: 10,
+    paddingTop: 15,
+    fontSize: 18,
+    fontFamily: 'Arial',
+    borderRadius: 10,
+    ...Platform.select({
+      web: {
+        outlineColor: '#fff',
+        width: 220
+      }
+    })
   },
 
   prompt: {
@@ -167,65 +271,44 @@ const styles = StyleSheet.create({
   },
 
   txtPassword: {
-    width: 300,
+    height: 35,
+    marginTop: 5,
     paddingLeft: 6,
-    paddingTop: 15,
+    paddingTop: 20,
     fontSize: 18,
-    fontFamily: 'flexi titling',
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        outlineColor: '#fff',
-        width: 220
+        outlineColor: '#fff'
       }
     })
   },
 
   txtCards: {
-    width: 315,
+    width: '95%',
     height: 50,
     borderRadius: 10,
-    marginLeft: 2,
     marginTop: 35,
     borderWidth: 1,
+    backgroundColor: '#fff',
     borderColor: '#F47066'
   },
 
-  txtUser: {
-    width: 300,
-    marginTop: 7,
-    paddingLeft: 6,
-    paddingTop: 15,
-    fontSize: 18,
-    fontFamily: 'flexi titling',
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff',
-        width: 220
-      }
-    })
+  reset: {
+    width: '97%',
+    alignItems: 'flex-end'
   },
 
-  txtEmail: {
-    width: 300,
-    marginTop: 7,
-    paddingLeft: 10,
-    paddingTop: 15,
-    fontSize: 18,
-    fontFamily: 'flexi titling',
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff',
-        width: 220
-      }
-    })
+  signupView: {
+    width: 360,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
-  signIn: {
+  signUp: {
     height: 50,
-    width: 200,
+    width: '60%',
     marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',
