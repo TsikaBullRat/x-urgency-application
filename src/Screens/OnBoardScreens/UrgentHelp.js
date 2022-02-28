@@ -26,11 +26,11 @@ export default function UrgentHelp ({ navigation }) {
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.txtContent}>{`Learn basic first-aid skills`}</Text>
-        <Text style={styles.txtContent}>{`by watching short`}</Text>
+        <Text style={styles.txtContent}>{`Call for help from`}</Text>
+        <Text style={styles.txtContent}>{`the app immediately`}</Text>
         <Text
           style={styles.txtContent}
-        >{`videos of everyday first-aid scenarios`}</Text>
+        >{`after loging in`}</Text>
       </View>
 
       {/**------Screen Indicators-----------Screen Indicators----------- */}
@@ -57,7 +57,7 @@ export default function UrgentHelp ({ navigation }) {
       {/**------btnNext-----------btnNext--------- */}
       <View style={{ width: 360, marginTop:15,alignItems: 'center' }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Sign In')}
+          onPress={() => navigation.navigate('SignIn')}
           style={styles.buttons}
         >
           <Text
@@ -70,7 +70,7 @@ export default function UrgentHelp ({ navigation }) {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate('Sign Up')}
+          onPress={() => navigation.navigate('SignUp')}
           style={styles.buttons}
         >
           <Text
