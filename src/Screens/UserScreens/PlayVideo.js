@@ -213,7 +213,7 @@ export default function PlayVideo({ navigation, route }) {
       {/**-------BACK------BACK-------BACK */}
       <View style={{marginTop: 10}}>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <Text>BACK</Text>
+          <Text>{`BACK`}</Text>
         </TouchableOpacity>
       </View>
     </View>

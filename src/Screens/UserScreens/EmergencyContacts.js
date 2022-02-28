@@ -3,45 +3,36 @@ import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import { Card } from 'react-native-paper'
 
-export default function EmergencyContacts ({ navigation }) {
-  const Call = (number) => {
+const EmergencyContacts = ({ navigation }) => {
+  const Call = number => {
     Linking.openURL(`tel:${number}`)
   }
 
   return (
     <View style={styles.container}>
-      <View>
-        <View
-          style={{
-            alignItems: 'flex-start'
-          }}
-        >
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-            {'<='}
-          </TouchableOpacity>
-        </View>
 
         <View
           style={{
-            width: '100%',
             marginTop: 20,
             alignItems: 'center',
             justifyContent: 'center'
-          }}
-        >
-          <Text style={styles.head}> {'EMERGENCY?'} </Text>
+          }}>
+          <Text style={{ paddingLeft:25, color: '#F47066', fontSize: 30, fontFamily: 'arial' }}>
+
+            {'EMERGENCY?'}
+          </Text>
           <Text style={styles.head}> {'CALL NOW!'}</Text>
         </View>
-      </View>
 
-      <View style={{width:360, alignItems:'center', justifyContent:'center'}}>
+      <View
+        style={{ width: 360, alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity onPress={() => Call('112')}>
           <Card style={styles.card7}>
             <Text
               style={{
                 fontWeight: 'bold',
                 fontSize: 15,
-                paddingTop:10,
+                paddingTop: 10,
                 color: 'white'
               }}
             >
@@ -51,11 +42,11 @@ export default function EmergencyContacts ({ navigation }) {
               name='arrows'
               size={30}
               color='#ffffff'
-              style={{ marginTop: 1, alignSelf:'center' }}
+              style={{ marginTop: 1, alignSelf: 'center' }}
             />
             <Text
               style={{
-                textAlign:'center',
+                textAlign: 'center',
                 fontWeight: 'bold',
                 fontSize: 16,
                 marginTop: -1,
@@ -341,6 +332,13 @@ export default function EmergencyContacts ({ navigation }) {
           </Card>
         </TouchableOpacity>
       </View>
+
+      {/**-------BACK------BACK-------BACK */}
+      <View style={{ marginVertical: 15, alignItems:'center' }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+         <Text>{`BACK`}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -354,8 +352,7 @@ const styles = StyleSheet.create({
 
   head: {
     color: '#F47066',
-    fontSize: 35,
-    textAlign: 'center',
+    fontSize: 30,
     fontFamily: 'arial'
   },
 
@@ -426,10 +423,11 @@ const styles = StyleSheet.create({
   card7: {
     width: 371,
     height: 90,
-    textAlign:'center',
+    textAlign: 'center',
     backgroundColor: '#F47066',
     marginLeft: 1,
     marginTop: 10
   }
 })
 
+export default EmergencyContacts
