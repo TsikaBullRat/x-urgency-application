@@ -236,52 +236,32 @@ const Doctor = ({ navigation }) => {
       </View>
 
       {/**----------------Contacts---------Contacts------------Contacts----------- */}
-      <View style={{ width: 335, marginTop: 35, justifyContent: 'flex-start' }}>
-        <View style={{ flexDirection: 'row' }}>
-          <Feather name='phone' size={20} color='black' />
-          <Text
-            style={{
-              paddingLeft: 10,
-              paddingTop: 2,
-              fontSize: 16,
-              color: '#F47066'
-            }}
-          >
-            {' '}
-            {`Call Now `}
-          </Text>
-          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
-            {' '}
-            {`(053) 871 2956`}
-          </Text>
-        </View>
+      <View style={{ width: 335, marginTop: 35, alignItems:'center' }}>
 
-        <View
-          style={{ width: 355, marginTop: 35, justifyContent: 'flex-start' }}
-        >
-          <View style={{ flexDirection: 'row' }}>
+      {/*-------------CALL------------CALL---------CALL--------- */}
+          <View style={{ width:220, flexDirection: 'row', justifyContent:'space-evenly'}}>
             <Feather name='phone' size={20} color='black' />
             <Text
               style={{
-                paddingLeft: 10,
+                textAlign:'center',
                 paddingTop: 2,
                 fontSize: 16,
                 color: '#F47066'
               }}
             >
-              {' '}
-              {`Call Now `}
+              {`Call Now`}
             </Text>
-            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+            <Text style={{ paddingTop: 2, fontSize: 16 }}>
               {`(053) 871 2956`}
             </Text>
           </View>
 
-          <View>
-            <Text style={{ paddingLeft: 35, paddingTop: 5 }}>{`OR`}</Text>
+          <View style={{marginTop:10}}>
+            <Text style={{paddingTop: 5, textAlign:'center' }}>{`OR`}</Text>
           </View>
 
-          <View style={{ flexDirection: 'row' }}>
+{/*---------------SMS---------------SMS----------------SMS----- */}
+          <View style={{ marginTop:10, width:175, flexDirection: 'row', justifyContent:'space-evenly' }}>
             <AntDesign name='mail' size={20} color='black' />
             <Text
               style={{
@@ -298,16 +278,15 @@ const Doctor = ({ navigation }) => {
               {`078 454 2123`}
             </Text>
           </View>
-        </View>
       </View>
 
+
+{/*--------------BACK------------BACK------------BACK */}
       <View
         style={{
           alignItems: 'center',
           justifyContent: 'center',
-          marginVertical: 20
-        }}
-      >
+          marginTop: 50}}>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Text>{`BACK`} </Text>
         </TouchableOpacity>

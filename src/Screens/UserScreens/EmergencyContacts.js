@@ -24,6 +24,7 @@ const EmergencyContacts = ({ navigation }) => {
           <Text style={styles.head}> {'CALL NOW!'}</Text>
         </View>
 
+{/*-----------NationWide-----------NationWide-------------------- */}
       <View
         style={{ width: 360, alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity onPress={() => Call('112')}>
@@ -36,7 +37,7 @@ const EmergencyContacts = ({ navigation }) => {
                 color: 'white'
               }}
             >
-              Nationwide
+              {`Nationwide`}
             </Text>
             <FontAwesome
               name='arrows'
@@ -59,6 +60,7 @@ const EmergencyContacts = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
+{/*--------------------Police---------------Police-------------------- */}
       <View>
         <TouchableOpacity onPress={() => Call('10111')}>
           <Card style={styles.card}>
@@ -71,7 +73,7 @@ const EmergencyContacts = ({ navigation }) => {
                 color: 'white'
               }}
             >
-              Police
+              {`Police`}
             </Text>
             <FontAwesome
               name='car'
@@ -93,6 +95,8 @@ const EmergencyContacts = ({ navigation }) => {
           </Card>
         </TouchableOpacity>
 
+{/*--------------------Ambulance---------------Ambulance-------------------- */}
+
         <TouchableOpacity onPress={() => Call('10177')}>
           <Card style={styles.card1}>
             <Text
@@ -104,7 +108,7 @@ const EmergencyContacts = ({ navigation }) => {
                 color: 'white'
               }}
             >
-              Ambulance
+              {`Ambulance`}
             </Text>
             <FontAwesome
               name='ambulance'
@@ -127,6 +131,7 @@ const EmergencyContacts = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
+{/*--------------------Fire---------------Fire-------------Fire------- */}
       <View>
         <TouchableOpacity onPress={() => Call('999')}>
           <Card style={styles.card2}>
@@ -139,7 +144,7 @@ const EmergencyContacts = ({ navigation }) => {
                 color: 'white'
               }}
             >
-              Fire
+              {`Fire`}
             </Text>
             <FontAwesome
               name='fire'
@@ -161,6 +166,7 @@ const EmergencyContacts = ({ navigation }) => {
           </Card>
         </TouchableOpacity>
 
+{/*---------------AirRescue---------------AirRescue----------------- */}
         <TouchableOpacity onPress={() => Call('083 1999')}>
           <Card style={styles.card3}>
             <Text
@@ -172,7 +178,7 @@ const EmergencyContacts = ({ navigation }) => {
                 color: 'white'
               }}
             >
-              Air Rescue
+              {`Air Rescue`}
             </Text>
             <FontAwesome
               name='plane'
@@ -195,6 +201,7 @@ const EmergencyContacts = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
+{/*---------------Childline---------------Childline----------------- */}
       <View>
         <TouchableOpacity onPress={() => Call('0800 055 555')}>
           <Card style={styles.card4}>
@@ -207,7 +214,7 @@ const EmergencyContacts = ({ navigation }) => {
                 color: 'white'
               }}
             >
-              Childline
+              {`Childline`}
             </Text>
             <FontAwesome
               name='child'
@@ -229,6 +236,7 @@ const EmergencyContacts = ({ navigation }) => {
           </Card>
         </TouchableOpacity>
 
+{/*---------------Suicide---------------Suicide----------------- */}
         <TouchableOpacity onPress={() => Call('0800 567 567')}>
           <Card style={styles.card5}>
             <Text
@@ -240,7 +248,7 @@ const EmergencyContacts = ({ navigation }) => {
                 color: 'white'
               }}
             >
-              Suicide Crisis Line
+              {`Suicide Crisis Line`}
             </Text>
             <FontAwesome
               name='anchor'
@@ -263,71 +271,66 @@ const EmergencyContacts = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <View>
+{/*---------------Violence---------------Violence----------------- */}
+      <View style={{alignItems:'center', justifyContent:'center'}}>
         <TouchableOpacity onPress={() => Call('0800 428 428')}>
-          <Card style={styles.card6}>
+          <Card style={styles.card7}>
             <Text
               style={{
-                marginLeft: 30,
                 fontWeight: 'bold',
                 fontSize: 15,
                 marginTop: 5,
                 color: 'white'
-              }}
-            >
-              Gender Based Violence Command Center
+              }}>
+              {`Gender Based Violence Command Center`}
             </Text>
             <FontAwesome
               name='transgender'
               size={30}
               color='#fff'
-              style={{ marginTop: 1, marginLeft: 160 }}
+              style={{ marginTop: 1, marginLeft:5}}
             />
             <Text
               style={{
-                marginLeft: 120,
                 fontWeight: 'bold',
                 fontSize: 16,
                 marginTop: -1,
                 color: 'white'
               }}
             >
-              0800 428 428
+              {`0800 428 428`}
             </Text>
           </Card>
         </TouchableOpacity>
       </View>
 
+{/*---------------Diseases---------------Diseases----------------- */}
       <View>
         <TouchableOpacity onPress={() => Call('0800 029 999')}>
           <Card style={styles.card7}>
             <Text
               style={{
-                marginLeft: 30,
                 fontWeight: 'bold',
                 fontSize: 15,
                 marginTop: 5,
                 color: 'white'
-              }}
-            >
-              National Institute For Communicable Diseases
+              }}>
+              {`National Institute For Communicable Diseases`}
             </Text>
             <FontAwesome
               name='plus-square'
-              size={30}
+              size={28}
               color='#fff'
-              style={{ marginTop: 1, marginLeft: 160 }}
+              style={{ marginTop: 1 }}
             />
             <Text
               style={{
-                marginLeft: 120,
                 fontWeight: 'bold',
                 fontSize: 16,
                 marginTop: -1,
                 color: 'white'
-              }}
-            >
-              0800 029 999
+              }}>
+              {`0800 029 999`}
             </Text>
           </Card>
         </TouchableOpacity>
@@ -410,14 +413,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F47066',
     marginLeft: 1,
     marginTop: -90
-  },
-
-  card6: {
-    width: 360,
-    height: 90,
-    backgroundColor: '#F47066',
-    marginLeft: 1,
-    marginTop: 10
   },
 
   card7: {
