@@ -1,15 +1,14 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
-;('react-native')
 import { AntDesign } from '@expo/vector-icons'
 
-export default function UrgentHelp ({ navigation }) {
+export default function FollowMore ({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
         <Image
           style={{ height: 350, width: '95%' }}
-          source={require('../../images/UrgentHelpLOGO.png')}
+          source={require('../../images/FollowLOGO.png')}
         />
       </View>
 
@@ -22,15 +21,12 @@ export default function UrgentHelp ({ navigation }) {
             textAlign: 'center',
             color: '#F47066'
           }}
-        >{`Need Urgent Help?`}</Text>
+        >{`Follow for More`}</Text>
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.txtContent}>{`Call for help from`}</Text>
-        <Text style={styles.txtContent}>{`the app immediately`}</Text>
-        <Text
-          style={styles.txtContent}
-        >{`after loging in`}</Text>
+        <Text style={styles.txtContent}>{`Follow your favourite`}</Text>
+        <Text style={styles.txtContent}>{`Medical health professional`}</Text>
       </View>
 
       {/**------Screen Indicators-----------Screen Indicators----------- */}
@@ -38,12 +34,13 @@ export default function UrgentHelp ({ navigation }) {
         style={{
           width: 360,
           alignItems: 'center',
-          marginTop: 80
+          marginTop: 102
         }}
       >
         <View
           style={{
-            width: 280,
+            width: 130,
+            top: -25,
             flexDirection: 'row',
             justifyContent: 'space-evenly'
           }}
@@ -55,34 +52,36 @@ export default function UrgentHelp ({ navigation }) {
       </View>
 
       {/**------btnNext-----------btnNext--------- */}
-      <View style={{ width: 360, marginTop:15,alignItems: 'center' }}>
+      <View style={{ width: 360, marginVertical: 25, alignItems: 'center' }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('SignIn')}
-          style={styles.buttons}
+          onPress={() => navigation.navigate('UrgentHelp')}
+          style={styles.btnNext}
         >
           <Text
             style={{
               fontWeight: 'bold',
               color: '#fff',
-            }}>
-            {`SignIn`}
+              paddingLeft: 25
+            }}
+          >
+            {`NEXT`}
           </Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => navigation.navigate('SignUp')}
-          style={styles.buttons}
-        >
-          <Text
+          <View
             style={{
-              fontWeight: 'bold',
-              color: '#fff',
+              left: 40
             }}>
-            {`Create Account`}
-          </Text>
+            <AntDesign name='arrowright' size={25} color='#fff' />
+          </View>
         </TouchableOpacity>
       </View>
 
+      {/**-------BACK------BACK-------BACK */}
+      <View style={{ marginVertical: 15, alignItems:'center' }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+         <Text>BACK</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -95,18 +94,19 @@ const styles = StyleSheet.create({
 
   logo: {
     width: 360,
-    top: -55,
+    top: -75,
     left: 10,
     right: 10
   },
 
   header: {
     width: 360,
-    top:-40
+    top: -60
   },
 
   content: {
     width: 360,
+    top: -20,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -116,11 +116,11 @@ const styles = StyleSheet.create({
     fontFamily: 'arial'
   },
 
-  buttons: {
+  btnNext: {
     height: 50,
     width: '60%',
+    top: -30,
     borderRadius: 10,
-    marginVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

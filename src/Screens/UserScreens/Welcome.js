@@ -41,7 +41,8 @@ export default function Welcome ({ navigation }) {
         }}>
         <View
           style={{
-            width: 280,
+            width: 130,
+            top: -25,
             flexDirection: 'row',
             justifyContent: 'space-evenly'
           }}
@@ -53,7 +54,7 @@ export default function Welcome ({ navigation }) {
       </View>
 
       {/**------btnNext-----------btnNext--------- */}
-      <View style={{ width: 360, marginVertical: 25, alignItems: 'center' }}>
+      <View style={{ width: 360, marginVertical: 15, alignItems: 'center' }}>
         <TouchableOpacity
           onPress={() => navigation.navigate('FollowMore')}
           style={styles.btnNext}
@@ -96,11 +97,12 @@ const styles = StyleSheet.create({
 
   header: {
     width: 360,
-    top: -50
+    top: -60
   },
 
   content: {
     width: 360,
+    top: -20,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -113,6 +115,7 @@ const styles = StyleSheet.create({
   btnNext: {
     height: 50,
     width: '60%',
+    top: -20,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
