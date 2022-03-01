@@ -16,45 +16,6 @@ export const VideoList = ({ videos, VideoScreen }) => {
   const ref = useRef(null)
 
   return (
-<<<<<<< HEAD
-    <View style={{alignItems:'center', justifyContent:'center'}}>
-      <ScrollView
-        style={{ height: 420, width: 335 }}
-        vertical={true}
-        showsVerticalScrollIndicator={false}
-      >
-        {videos
-          ? videos.map((vid) => (
-              <View
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-                key={vid.id}>
-                <Card
-                  style={{
-                    width: 340,
-                    height: 245,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: '#FAFAFA'
-                  }}
-                >
-                  
-                    <Video
-                      ref={vid.ref}
-                      source={{ uri: vid.url }}
-                      resizeMode='stretch'
-                      isLooping
-                      onPlaybackStatusUpdate={status => setStatus(() => status)}
-                      style={{
-                        width: '100%',
-                        height: 165,
-                        marginTop: 5,
-                        alignSelf: 'center'
-                      }}
-                    />
-=======
 
     <View>
       <ScrollView style={{ height: 420, width: 335 }} vertical={true} showsVerticalScrollIndicator={false} >
@@ -68,7 +29,6 @@ export const VideoList = ({ videos, VideoScreen }) => {
                 <Video ref={ref} source={{ uri: vid.url }} resizeMode='stretch' isLoopingonPlaybackStatusUpdate={status => setStatus(() => status)}
                   style={{ width: '100%', height: 165, marginTop: 5, alignSelf: 'center' }} />
               </TouchableOpacity>
->>>>>>> 1d40590a8e2bcab4c35e24774b1e23e3e2dfff03
 
               <View style={{ justifyContent: 'space-between' }}>
                 <Text style={styles.vidTitle}>{vid.title}</Text>
@@ -80,14 +40,6 @@ export const VideoList = ({ videos, VideoScreen }) => {
                 </View>
 
               </View>
-<<<<<<< HEAD
-            ))
-          : 
-            <>
-            <Text>{`Nothing to show`}</Text>
-            </>
-          }
-=======
             </Card>
             <ItemSeperatorView />
           </View>
@@ -96,7 +48,6 @@ export const VideoList = ({ videos, VideoScreen }) => {
             null
           }
         </View>
->>>>>>> 1d40590a8e2bcab4c35e24774b1e23e3e2dfff03
       </ScrollView>
     </View>
   )

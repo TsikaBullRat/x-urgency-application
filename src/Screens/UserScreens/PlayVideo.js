@@ -34,10 +34,10 @@ import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore } from '../../firebase'
 import { Collect, Post } from '../../firebase'
 
-export default function PlayVideo({ navigation, route }) {
-
+export default function PlayVideo ({ navigation, route }) {
   useEffect(() => {
-    auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
+    auth
+      .signInWithEmailAndPassword('rando@gmail.com', 'KingofRandom')
       .catch(err => {
         console.log(err)
       })

@@ -45,7 +45,8 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator> {id ? (doctor ? (<>
+      <Stack.Navigator> {id ? (doctor ? (
+      <>
         <Stack.Screen name='TakeVideo' component={ForgotPassword} options={{ headerShown: false }} />
 
         <Stack.Screen name='ShareContent' component={ShareContent} options={{ headerShown: false }} />
@@ -66,8 +67,7 @@ export default function App() {
 
         <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
 
-        <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }}
-        />
+        <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }}/>
       </>
       ) : (
         <>

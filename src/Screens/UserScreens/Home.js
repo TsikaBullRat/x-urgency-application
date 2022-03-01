@@ -24,11 +24,11 @@ export default function Home({ navigation, Exit }) {
       ? (setImage(auth.currentUser.photoURL),
         setInitial(auth.currentUser.displayName.substring(0, 1)))
       : auth.onAuthStateChanged(doc => {
-        setImage(doc.photoURL)
-        console.log(doc.displayName)
-        setInitial(doc.displayName.substring(0, 1))
-        console.log(auth.currentUser)
-      })
+          setImage(doc.photoURL)
+          console.log(doc.displayName)
+          setInitial(doc.displayName.substring(0, 1))
+          console.log(auth.currentUser)
+        })
   }, [])
 
   useEffect(() => {
@@ -37,9 +37,9 @@ export default function Home({ navigation, Exit }) {
 
   const [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState(''),
-    VideoScreen = (data) => {
-      navigation.navigate("PlayVideo", { data });
-    };
+    VideoScreen = data => {
+      navigation.navigate('PlayVideo', { data })
+    }
 
   const signOut = () => {
     LogOut()
