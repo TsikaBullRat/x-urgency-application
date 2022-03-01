@@ -99,17 +99,16 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
 
       <ScrollView style={{ height: 580, width: 335, }}
 
-      vertical={true} showsVerticalScrollIndicator={false}>
+        vertical={true} showsVerticalScrollIndicator={false}>
 
-      <Card style={styles.menu2}>
-        <View>
-          <VideoList videos={videos} VideoScreen={VideoScreen} />
-        </View>
-      </Card>
+        <Card style={styles.menu2}>
+          <View>
+            <VideoList videos={videos} VideoScreen={VideoScreen} />
+          </View>
+        </Card>
 
       </ScrollView>
-      <TouchableOpacity
-        style={styles.btnUpload} onPress={() =>Navigate(2)} >
+      <TouchableOpacity style={styles.btnUpload} onPress={() => { navigation.navigate("Upload") }} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>
       </TouchableOpacity>
     </View>

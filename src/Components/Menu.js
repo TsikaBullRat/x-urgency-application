@@ -1,66 +1,40 @@
-import React, {useState} from 'react'
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Platform
-} from 'react-native'
+import React, { useState } from 'react'
+import { Text, View, StyleSheet, Image, TouchableOpacity, Platform } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
 import { auth, LoadSet, firestore } from '../firebase'
 
-export default function Menu ({ list, setVids }) {
-  const categories = [
-    'Stroke',
-    'Cardiac',
-    'Epilepsy',
-    'CPR',
-    'Choking',
-    'Drowning',
-    'Bleeding',
-    'Burns'
-  ]
-  const { selectedCategory, setSelectedCategory } = useState(0)
+export default function Menu({ list, setVids }) {
+  const categories = ['Stroke', 'Cardiac', 'Epilepsy', 'CPR', 'Choking', 'Drowning', 'Bleeding', 'Burns']
+  const { selectedCategory, setSelectedCategory } = useState(1)
+
+const SelectEmergency = (index) => {
+  return
+  setSelectedCategory(index)
+  console.log('category clicked')
+}
 
   return (
     <View>
+
       {/*----------------------Horizontal Menu----------------------*/}
-      <ScrollView
-        style={{
-          width: 350
-        }}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-      >
-        <View
-          style={{
-            width: 695,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            left: 3
-          }}
-        >
+
+      <ScrollView style={{ width: 350 }} horizontal={true} showsHorizontalScrollIndicator={false}>
+        <View style={{ width: 695, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', left: 3 }} >
+
           {categories.map((emergency, index) => (
-            <TouchableOpacity style={{height:30, width:75, borderRadius:20, backgroundColor:'#f47066', alignItems:'center', justifyContent:'center'}}
-                              key={index} activeOpacity={0.8}
-                               //onPress={() => {setSelectedCategory(index)}}
-                               >
-              <View>
-                <Text style={{fontSize:16, 
-                               color: '#fff'
-                               //color: selectedCategory == index ? 'f47066' : '#' 
-                              }}>
-                  {emergency}
-                </Text>
+            <TouchableOpacity     
+              key={index} activeOpacity={0.8}
+              style={{ height: 30, width: 75, borderRadius: 20, backgroundColor: '#f47066', alignItems: 'center', justifyContent: 'center' }} 
+             onPress={SelectEmergency(index)}
+            >
+              <View> <Text style={{
+                fontSize: 16, //color: '#fff'
+                color: selectedCategory == index ? '#fff' : '#fff' 
+              }}> {emergency}</Text>
 
                 {selectedCategory == index && (
-                  <View style={{height:3, width:55, backgroundColor: '#47066',
-                                marginTop:2}}>
-                  
-                  </View>
+                  <View style={{ height: 3, width: 55, backgroundColor: '#47066', marginTop: 15 }}> </View>
                 )}
               </View>
             </TouchableOpacity>

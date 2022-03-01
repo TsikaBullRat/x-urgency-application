@@ -38,25 +38,33 @@ export default function PlayVideo({ route, Navigate }) {
     [comment, setComment] = useState(""),
     [visibleStatusBar, setVisibleStatusBar] = useState(true),
     changeVisibilityStatusBar = () => {
-      setVisibleStatusBar(!visibleStatusBar);
+      setVisibleStatusBar(!visibleStatusBar)
     },
+
+    changeStyleStatusBar = () => {
+      const styleId = styleTypes.indexOf(styleStatusBar) + 1
+      if (styleId === styleTypes.length) {
+        return setStyleStatusBar(styleTypes[0])
+      }
+
+      return setStyleStatusBar(styleTypes[styleId])
+    },
+
     addAct = async () => {
-      let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts')
+      let metadata = firestore
+        .collection('Videos')
+        .doc(data.firestore /*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/)
+        .collection('Acts')
       let found = (await metadata.doc(auth.currentUser.uid).get()).exists
-      found ? (
-        null
-
-      ) : (
-
-        metadata.doc(auth.currentUser.uid).set({
+      found
+        ? null
+        : (metadata.doc(auth.currentUser.uid).set({
           liked: false,
           disliked: false,
           Comments: [null],
           ref: auth.currentUser.uid
         }),
-
-        setViews(views + 1)
-      )
+          setViews(views + 1))
     },
     Delete = remove => {
       firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).get()
@@ -70,13 +78,18 @@ export default function PlayVideo({ route, Navigate }) {
         })
 
         .then(update => {
-          firestore.collection("Videos").doc(data.firestore).collection("Acts").doc(auth.currentUser.uid).update({
-            Comments: update
-          })
+          firestore
+            .collection('Videos')
+            .doc(data.firestore)
+            .collection('Acts')
+            .doc(auth.currentUser.uid)
+            .update({
+              Comments: update
+            })
         })
 
       setComments(Comments.filter(item => item.comment !== remove))
-    };
+    }
 
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
@@ -91,7 +104,6 @@ export default function PlayVideo({ route, Navigate }) {
   }, [])
 
   return (
-
     <View style={styles.contain}>
 
       {/**-------------Video----------------Video-----------------Video---------------- */}
@@ -142,11 +154,13 @@ export default function PlayVideo({ route, Navigate }) {
             <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} size="medium" />
             <Text style={{ paddingTop: "15" }} > {data.owner}</Text>
           </View>
-
+          <View style={{ width: 340, alignItems: 'flex-start' }}>
+              <Text style={{ paddingTop: 35, paddingLeft: 10, fontWeight: 'medium', fontSize: 18 }} > Comments: {count} </Text>
+            </View>
         </View>
 
-      ) : (
-
+            
+      ):(
         /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
           <Card style={{ width: "335", height: "300", borderRadius: "20", backgroundColor: '#fff', marginTop: "15" }}>
 
@@ -193,7 +207,6 @@ export default function PlayVideo({ route, Navigate }) {
         </Card>
       </ScrollView>
     </View>
-
   )
 }
 
@@ -202,25 +215,21 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
 
   descriptionContainer: {
-    width: "335"
+    width: 340
   },
 
   txtCards: {
-    width: "335",
-    height: "40",
+    width: 340,
+    height: 40,
     borderRadius: 10,
     backgroundColor: '#fff',
     marginTop: "5",
     borderWidth: 1,
-    borderColor: '#F47066',
-  },
-
-  dropDown: {
-    marginTop: "-15"
+    borderColor: '#F47066'
   },
 
   comment: {
@@ -228,12 +237,31 @@ const styles = StyleSheet.create({
     height: "38",
     borderRadius: 10,
     backgroundColor: '#fff',
-    paddingLeft: "10",
+    paddingLeft: 10
+  },
+
+  comments: {
+    width: 295,
+    left: 3,
+    marginVertical: 15,
+    flexDirection: 'row',
+    borderRadius: 10,
+    backgroundColor: '#f47066',
+    paddingLeft: 5
+  },
+
+  txtComments: {
+    color: '#fff',
+    padding: 10
+  },
+
+  txtUserComment: {
+    padding: 10,
+    fontSize: 18,
+    color: '#fff'
   },
 
   btnComment: {
-    backgroundColor: "#F47066"
+    backgroundColor: '#F47066'
   }
-
-});
-
+})

@@ -1,5 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { EmergencyContacts } from '../Screens';
 
 export default function Button({ name, Run }) {
 

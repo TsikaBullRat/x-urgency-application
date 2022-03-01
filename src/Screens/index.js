@@ -11,10 +11,8 @@ import Upload from "./DoctorsScreens/Upload"
 import PlayVideo from "./UserScreens/PlayVideo"
 import Doctor from "./UserScreens/Doctor"
 import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
-import { Navigator } from "./Navigation/Navigator"
-
 import Welcome from './UserScreens/Welcome'
-import FollowMore from './UserScreens/FollowMore' 
+import FollowMore from './UserScreens/FollowMore'
 import UrgentHelp from './UserScreens/UrgentHelp'
 import TakeVideo from './UserScreens/TakeVideo'
 import ShareContent from './UserScreens/ShareContent'
