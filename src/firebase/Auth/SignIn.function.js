@@ -4,9 +4,9 @@ import { AlertNote } from "../../Components"
 
 const handleSignIn = (email, password, setMessage) => {
     auth.signInWithEmailAndPassword(email, password)
-        // .then(() => {
-        //     setMessage("Welcome back")
-        // })
+        .then(() => {
+            setMessage("Welcome back")
+        })
 
         .catch(err => {
             switch (err.code) {

@@ -12,30 +12,18 @@ export default function Menu({ list, setVids }) {
     <View>
 
       {/*----------------------Horizontal Menu----------------------*/}
-      <ScrollView
-        style={{
-          width:345 
-        }}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-      >
-        <View
-          style={{
-            width: 695,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            left: 3
-          }}
-        >
+
+      <ScrollView style={{ width: 350 }} horizontal={true} showsHorizontalScrollIndicator={false}>
+        <View style={{ width: 695, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', left: 3 }} >
+
           {categories.map((emergency, index) => (
-            <TouchableOpacity style={{ height: 30, width: 75, borderRadius: 20, backgroundColor: '#f47066', alignItems: 'center', justifyContent: 'center' }}
+            <TouchableOpacity style={{ height: 30, width: 75, borderRadius: 20, backgroundColor: '#f47066', alignItems: 'center', justifyContent: 'center' }}     
               key={index} activeOpacity={0.8}
-            //onPress={() => {setSelectedCategory(index)}}
+            onPress={() => (setSelectedCategory(index))}
             >
               <View> <Text style={{
-                fontSize: 16, color: '#fff'
-                //color: selectedCategory == index ? 'f47066' : '#' 
+                fontSize: 16, //color: '#fff'
+                color: selectedCategory == index ? '#fff' : '#fff' 
               }}> {emergency}</Text>
 
                 {selectedCategory == index && (

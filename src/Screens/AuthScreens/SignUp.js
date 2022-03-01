@@ -134,12 +134,13 @@ export default function SignUp({ navigation }) {
           <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }} > {`SIGNUP`} </Text>
         </TouchableOpacity>
 
-{/**-------BACK------BACK-------BACK */}
-      <View style={{marginTop: 10}}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text>{' BACK '}</Text>
-        </TouchableOpacity>
-      </View>
+        {/**-------BACK------BACK-------BACK */}
+
+        <View style={{ marginTop: 10 }}>
+          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+            <Text>BACK </Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
     </View>

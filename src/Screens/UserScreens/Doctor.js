@@ -144,14 +144,14 @@ const Doctor = ({ navigation }) => {
 
       </View>
 
-      <View style={{ paddingTop: 20, width: 300, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+{/*Socials---------------Socials---------Socials---------- */}
+      <View style={{ paddingTop: 20, width: 335, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
         <Socials text="Following" number="15" />
         <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
         <Socials text="Likes" number="3.1M" />
       </View>
 
       {/**------------------About--------------About-------------About----------- */}
-
       <View style={{ marginTop: 35, width: 335 }}>
         <Text style={styles.txtHead}>{`About`}</Text>
         <Text style={styles.txtAbout}>
@@ -189,13 +189,8 @@ const Doctor = ({ navigation }) => {
       </View>
       {/*--------------BACK------------BACK------------BACK */}
 
-{/*--------------BACK------------BACK------------BACK */}
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: 50}}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+      <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 50 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <Text>{`BACK`} </Text>
         </TouchableOpacity>
       </View>

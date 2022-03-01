@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { View, StyleSheet, TouchableOpacity, Image, Text, ScrollView } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Text,
+  ScrollView
+} from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
 import { auth, LoadSet, firestore, LogOut } from '../../firebase'
@@ -12,7 +19,7 @@ import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
 
-export default function Home({ navigation, Exit }) {
+export default function Home ({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
@@ -52,8 +59,12 @@ export default function Home({ navigation, Exit }) {
   // }, [auth.currentUser])
 
   return (
-
-    <View style={styles.container}> <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+    <View style={styles.container}>
+      <AlertNote
+        modalVisible={displayModal}
+        setModalVisible={setDisplaModal}
+        msg={message}
+      />
 
       {/**------------------CallSiren--------------------CallSiren----------------- */}
       <View
@@ -111,7 +122,6 @@ export default function Home({ navigation, Exit }) {
       </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
-
       <View style={{ marginVertical: 20 }}>
         <ScrollView
           style={{ height: 435, width: 340 }}
@@ -184,5 +194,4 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontFamily: 'Roboto'
   }
-
 })

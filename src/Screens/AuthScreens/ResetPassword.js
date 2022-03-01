@@ -136,16 +136,10 @@ export default function ResetPassword({ navigation }) {
         </TouchableOpacity>
       </View>
 
-{/**-------BACK------BACK-------BACK */}
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginVertical: 20
-        }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text>{' BACK '}</Text>        
-        </TouchableOpacity>
+      {/**-------BACK------BACK-------BACK */}
+
+      <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}> {' '} BACK{' '}</TouchableOpacity>
       </View>
     </View>
   )

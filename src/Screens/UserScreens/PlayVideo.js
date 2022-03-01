@@ -143,7 +143,6 @@ export default function PlayVideo ({ navigation, route }) {
 
     <View>
       {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
-
       {!visibleStatusBar ? (
         <View
           style={{
