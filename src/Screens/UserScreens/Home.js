@@ -14,10 +14,10 @@ import { AlertNote } from '../../Components/Alert'
 
 export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
-  const [videos, setLoad] = useState(null),
-    ref = useRef(null),
-    [image, setImage] = useState(null),
-    [initial, setInitial] = useState('')
+  const [image, setImage] = useState()
+  const [initial, setInitial] = useState()
+  const [videos, setLoad] = useState(null)
+  const ref = useRef(null)
 
   useEffect(() => {
     auth.currentUser
@@ -33,6 +33,7 @@ export default function Home({ navigation, Exit }) {
 
   useEffect(() => {
     LoadSet(setLoad)
+    return () => LoadSet(setLoad)
   }, [])
 
   const [displayModal, setDisplaModal] = useState(false),
@@ -130,7 +131,6 @@ const styles = StyleSheet.create({
     width: 335,
     height: 520,
     borderRadius: 15,
-    shadowOffset: {},
     shadowOpacity: 0.8,
     shadowRadius: 3.84,
     elevation: 5

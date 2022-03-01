@@ -1,6 +1,6 @@
 import { auth } from "../config";
 
-const LogOut = () => {
+const Exit = () => {
     auth.signOut()
         .then(function () {
             console.log("Signed out")
@@ -10,5 +10,4 @@ const LogOut = () => {
             // An error happened.
         });
 }
-
-export default LogOut;
+export default Exit;
