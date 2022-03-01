@@ -6,14 +6,7 @@ import { auth, LoadSet, LogOut, firestore } from '../../firebase';
 import { ProgressBar, VideoList, AlertNote } from '../../Components'
 import { Feather } from '@expo/vector-icons';
 
-export default function MedicalHome({ progress, Log, Exit, Navigate }
-) {
-
-  useEffect(() => {
-    auth.signInWithEmailAndPassword("yomzi123@gmail.com", "Asstastic")
-    auth.onAuthStateChanged(doc => { console.log("Logged in") })
-  }, [])
-
+export default function MedicalHome({ navigation, Exit, credentials }) {
   const [done, setDone] = useState(true);
   const [display, setDisplayModal] = useState(false)
   const [videos, setLoad] = useState(null),
@@ -61,10 +54,6 @@ export default function MedicalHome({ progress, Log, Exit, Navigate }
   const link = "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
 
   useEffect(() => {
-    if (progress === 100) Log(null)
-  }, [progress])
-
-  useEffect(() => {
     LoadSet(setLoad);
   }, []);
 
@@ -87,10 +76,6 @@ export default function MedicalHome({ progress, Log, Exit, Navigate }
           <Text style={{ fontSize: 36, paddingLeft: 30, color: "red", textShadowColor: "grey", textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1, }} > In Da House </Text>
 
         </View>
-        <>
-          {progress ? <ProgressBar status={progress} /> : null}
-        </>
-
         <View style={{ marginTop: 50, marginLeft: 10 }}>
           <TouchableOpacity onPress={Logout}> {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
 
@@ -112,12 +97,17 @@ export default function MedicalHome({ progress, Log, Exit, Navigate }
 
       {loading ? <ProgressBar status={loading} /> : null}
 
+      <ScrollView style={{ height: 580, width: 335, }}
+
+      vertical={true} showsVerticalScrollIndicator={false}>
+
       <Card style={styles.menu2}>
         <View>
           <VideoList videos={videos} VideoScreen={VideoScreen} />
         </View>
       </Card>
 
+      </ScrollView>
       <TouchableOpacity
         style={styles.btnUpload} onPress={() =>Navigate(2)} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>

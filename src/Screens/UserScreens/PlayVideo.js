@@ -27,10 +27,17 @@ import { CommentBox } from "../../Components"
 
 export default function PlayVideo({ param, Navigate }) {
 
-  const [data, setData ] = useState(param)
-  const [userName, setUserName] = useState(data.owner)
-  const [videoPlay, setVideoPlay] = useState(data.url)
-  const [views, setViews] = useState(data.views)
+  useEffect(()=>{
+    auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
+       .catch(err=>{
+         console.log(err)
+      })
+   }, [])
+
+  const data = route.params.data
+  const [userName, setUserName] = useState(data.owner/*"Ntsika"*/)
+  const [videoPlay, setVideoPlay] = useState(data.url/*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/)
+  const [views, setViews] = useState(data.views/*42*/)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
   const refrence = useRef(data.ur)
@@ -116,11 +123,11 @@ export default function PlayVideo({ param, Navigate }) {
       {!visibleStatusBar ? (
         <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent: 'space-between' }}>
 
-          <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between', }}>
-            <Text>
-              <Text style={{ fontWeight: 'bold', color: '#F47066', }}>{data.title}</Text>
-              <Text style={{ fontSize: 10 }}>{`${views} views - ${data.stamp} `}</Text>
-            </Text>
+          <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between' }}>
+            <View>
+              <Text style={{ fontWeight: 'bold', color: '#F47066', }}>{data.title/*"My video"*/}</Text>
+              <Text style={{ fontSize: 10 }}> {views} views - {data.stamp/*"3 weeks ago"*/} </Text>
+            </View>
 
             <View>
               <Text title="topNav" onPress={() => changeVisibilityStatusBar()}><AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} /> </Text>
@@ -185,6 +192,7 @@ export default function PlayVideo({ param, Navigate }) {
 
       )}
 
+<<<<<<< HEAD
       <Card style={styles.txtCards}>
         <View style={{ flexDirection: 'row'}}>
           <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
@@ -192,6 +200,8 @@ export default function PlayVideo({ param, Navigate }) {
             <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title='Comment' />
           </View>
         </View>
+        )}
+>>>>>>> 36f8773e978df9701dfdd2050ef20a2d74cd394d
       </Card>
 
       {/* <CommentBox setComment={setComment} Post={Post}/> */}
@@ -199,7 +209,6 @@ export default function PlayVideo({ param, Navigate }) {
         <Card style={{
           height: 335, width: 315, marginTop: 5
         }}>
-          <Text style={{ paddingTop: 10, paddingLeft: 10 }}>Comments: {count}</Text>
           {Comments.map((item, index) =>
             <Card style={{ backgroundColor: '#e8d7cc', height: 100, marginTop: 10 }} key={index}>
               <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
@@ -210,6 +219,13 @@ export default function PlayVideo({ param, Navigate }) {
           )}
         </Card>
       </ScrollView>
+
+      {/**-------BACK------BACK-------BACK */}
+      <View style={{marginTop: 10}}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text>{`BACK`}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
 
   )

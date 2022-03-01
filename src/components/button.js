@@ -1,16 +1,3 @@
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 05/10/2021 - 12:33:04
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 05/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
-
 import React from 'react'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 

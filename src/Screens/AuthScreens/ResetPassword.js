@@ -84,13 +84,20 @@ export default function ResetPassword ({ Navigate }) {
         msg={message}
       />
       
-      <Card style={styles.card}>
-        <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={110} color="#fff" />
-        </View>
-        <Text style={{ color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
-      </Card>
+      {/**----------Logo------------Logo------------- */}
+      <View>
+        <Card style={styles.card}>
+          <View style={styles.heartIcon}>
+            <FontAwesome name='heartbeat' size={110} color='#fff' />
+          </View>
+          <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}>
+            {' '}
+            {`X-urgency`}{' '}
+          </Text>
+        </Card>
+      </View>
 
+{/**----------Header------------Header------------- */}
       <View style={styles.header}>
         <Text
           style={{
@@ -98,7 +105,7 @@ export default function ResetPassword ({ Navigate }) {
             fontWeight:'bold',
             ...Platform.select({
               web: {
-                fontFamily: 'Felix Titling'
+                fontFamily: 'Arial'
               }
             }),
             color: '#F47066'
@@ -106,27 +113,27 @@ export default function ResetPassword ({ Navigate }) {
         >{`Reset Password`}</Text>
       </View>
 
-      {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
+      {/**----------txtFields------------txtFields------------- */}
+      <View style={styles.textfieldCards}>
+        {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
+        <Card style={styles.txtCards}>
+          <View style={{ flexDirection: 'row' }}>
+            <AntDesign
+              name='user'
+              size={22}
+              color='black'
+              style={{ marginTop: 17, marginLeft: 16 }}
+            />
+            <TextInput
+              style={styles.txtField}
+              name='userName'
+              placeholder='Username'
+              onChangeText={text => setEmail(text)}
+            />
+          </View>
+        </Card>
 
-      <View style={{width:'100%', alignItems:'center'}}>
-      <Card style={styles.txtCards}>
-        <View style={{ flexDirection: 'row' }}>
-          <AntDesign
-            name='user'
-            size={22}
-            color='black'
-            style={{ marginTop: 17, marginLeft: 16 }}
-          />
-          <TextInput
-            style={styles.txtField}
-            name='userName'
-            placeholder='Username'
-            onChangeText={text => setEmail(text)}
-          />
-        </View>
-      </Card>
-      {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
-
+        {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign
@@ -182,30 +189,35 @@ export default function ResetPassword ({ Navigate }) {
           </View>
         </Card>
         {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
+      </View>
 
-        </View>
+{/**----------btnReset------------btnReset------------- */}
+      <View style={styles.signupView}>
+        <TouchableOpacity style={styles.signUp} onPress={Register}>
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: 'Arial',
+              color: '#fff'
+            }}
+          >
+            {`SIGNUP`}
+          </Text>
+        </TouchableOpacity>
+      </View>
 
-        <View style={{ width:'100%', alignItems: 'center', alignContent: 'center' }}>
-          <TouchableOpacity style={styles.signIn} onPress={Register}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontFamily: 'Felix Titling',
-                color: '#fff'
-              }}
-            >
-              {`Reset`}
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={{alignItems:'center', justifyContent:'center', 
-                      marginVertical: 20}}>
-          <TouchableOpacity onPress={() =>Navigate(0)}>
-            BACK
-          </TouchableOpacity>
-        </View>
-
+{/**-------BACK------BACK-------BACK */}
+      <View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginVertical: 20
+        }}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+          {' '}
+          BACK{' '}
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -213,29 +225,47 @@ export default function ResetPassword ({ Navigate }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     backgroundColor: '#fff'
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: '100%',
+    width: 360,
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
+    textAlign: 'center'
+  },
+
+  heartIcon: {
+    marginTop: 30,
+    width: 360
+  },
+
+  header: {
+    marginTop: 20,
+    width: 360
+  },
+
+  textfieldCards: {
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center'
   },
 
-  heartIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30
-  },
-
-  header: {
-    paddingTop: 25,
-    textAlign: 'center'
+  txtUser: {
+    marginTop: 7,
+    paddingLeft: 10,
+    paddingTop: 15,
+    fontSize: 18,
+    fontFamily: 'Arial',
+    borderRadius: 10,
+    ...Platform.select({
+      web: {
+        outlineColor: '#fff',
+        width: 220
+      }
+    })
   },
 
   prompt: {
@@ -243,44 +273,49 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 
+  txtPassword: {
+    height: 35,
+    marginTop: 5,
+    paddingLeft: 6,
+    paddingTop: 20,
+    fontSize: 18,
+    fontFamily: 'Arial',
+    borderRadius: 10,
+    ...Platform.select({
+      web: {
+        outlineColor: '#fff'
+      }
+    })
+  },
+
   txtCards: {
-    width: '80%',
+    width: '95%',
     height: 50,
     borderRadius: 10,
-    marginLeft: 2,
     marginTop: 35,
     borderWidth: 1,
+    backgroundColor: '#fff',
     borderColor: '#F47066'
   },
 
-  txtField: {
-    width: 300,
-    marginTop: 7,
-    paddingLeft: 6,
-    paddingTop: 15,
-    fontSize: 18,
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff',
-        width: 220
-      }
-    })
+  reset: {
+    width: '97%',
+    alignItems: 'flex-end'
   },
 
-  txtEmail: {
-    width: 300,
-    marginTop: 7,
-    paddingLeft: 10,
-    paddingTop: 15,
-    fontSize: 18,
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff',
-        width: 220
-      }
-    })
+  loginView: {
+    width: 360,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  newUser: {
+    width: 335,
+    marginRight: 10,
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   signIn: {

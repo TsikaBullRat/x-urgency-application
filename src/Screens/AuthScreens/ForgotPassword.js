@@ -48,17 +48,17 @@ export default function ForgotPassword( ) {
     <View style={styles.container}>
       <Card style={styles.card}>
         <View style={styles.heartIcon}><FontAwesome name="heartbeat" size={110} color="#fff" /></View>
-        <Text style={{  color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}> 
         <Text style={{
-          fontWeight: 'bold', fontSize: 30,
+          fontWeight: 'bold', fontSize: 30, fontFamily: 'Arial',
           color: '#F47066', justifyContent: "left"
         }}>{`Forgot your password?`}</Text>
       </View>
       <br />
-      <Text style={{ fontWeight: 'light', fontSize: 16, color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
+      <Text style={{ fontWeight: 'light', fontSize: 16, fontFamily: 'Arial', color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
 
       <View style={{ width:'100%', alignItems: 'center' }}>
         <Card style={styles.txtCards}>
@@ -72,14 +72,14 @@ export default function ForgotPassword( ) {
 
       <View style={{ width:'100%', alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('ResetPassword')}  >
-          <Text style={{ fontSize: 20, color: '#fff' }}>{`SEND`} </Text>
+          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>{`SEND`} </Text>
         </TouchableOpacity>
       </View>
 
         <View style={{alignItems:'center', justifyContent:'center', 
                       marginVertical: 20}}>
-          <TouchableOpacity onPress={() =>Navigate(0)}>
-            BACK
+          <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+            <Text>BACK</Text>
           </TouchableOpacity>
         </View>
 
@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
   },
 
   txtField: {
-    width: 300,
     marginTop: 7,
     paddingLeft: 10,
     paddingTop: 20,
@@ -143,6 +142,7 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
     paddingTop: 15,
     fontSize: 18,
+    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {

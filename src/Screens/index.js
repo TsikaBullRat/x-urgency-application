@@ -13,4 +13,14 @@ import Doctor from "./UserScreens/Doctor"
 import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
 import { Navigator } from "./Navigation/Navigator"
 
-export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, Doctor, ResetPassword, Navigator}
+import Welcome from './UserScreens/Welcome'
+import FollowMore from './UserScreens/FollowMore' 
+import UrgentHelp from './UserScreens/UrgentHelp'
+import TakeVideo from './UserScreens/TakeVideo'
+import ShareContent from './UserScreens/ShareContent'
+import LikeConn from './UserScreens/LikeConn'
+
+export { Welcome, FollowMore, TakeVideo, UrgentHelp, ShareContent, LikeConn, Doctor, SignIn, SignUp, ForgotPassword, ResetPassword ,Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn}
+
+
+
