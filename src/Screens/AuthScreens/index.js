@@ -1,7 +1,8 @@
 import SignIn from "./SignIn";
 import SignUp from "./SignUp"
 import ForgotPassword from "./ForgotPassword"
+import ResetPassword from "./ResetPassword"
 import DoctorSignUp from "./DoctorSignUp"
-import MedSignIn from "./MedSignIn"
+import ResetPassword from "./ResetPassword"
 
-export { SignIn, SignUp, MedSignIn, ForgotPassword, DoctorSignUp }
+export { SignIn, SignUp, ResetPassword, ForgotPassword, ResetPassword, DoctorSignUp }

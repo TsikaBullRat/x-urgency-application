@@ -17,7 +17,7 @@ import { Card } from 'react-native-paper';
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleResetPassword } from '../../firebase'
 
-export default function ForgotPassword({ navigation }) {
+export default function ForgotPassword( ) {
 
   const [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
@@ -42,53 +42,46 @@ export default function ForgotPassword({ navigation }) {
     } else {
       handleResetPassword("lindiwe.mpondo@gmail.com")
     }
-  }
-  const Exit = () => {
-    alert("Successfully logged out")
-    navigation.navigate('SignIn')
-  }
+  } 
 
   return (
     <View style={styles.container}>
-
       <Card style={styles.card}>
-        <View style={styles.heartIcon}>
-          <FontAwesome name="heartbeat" size={110} color="#fff" />
-        </View>
-        <Text style={{ fontFamily: 'Felix Titling', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+        <View style={styles.heartIcon}><FontAwesome name="heartbeat" size={110} color="#fff" /></View>
+        <Text style={{  color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
-      <View style={styles.header}>
-  
+      <View style={styles.header}> 
         <Text style={{
-          fontWeight: 'bold', fontSize: 36, fontFamily: 'Felix Titling',
+          fontWeight: 'bold', fontSize: 30,
           color: '#F47066', justifyContent: "left"
         }}>{`Forgot your password?`}</Text>
       </View>
-      <br/>
-       <Text style={{fontWeight: 'light', fontSize: 16, fontFamily: 'Felix Titling',
-          color: '#000000'}}>Enter your Email and we will send<br/> you a link to reset your password</Text>
+      <br />
+      <Text style={{ fontWeight: 'light', fontSize: 16, color: '#000000' }}>Enter your Email and we will send<br /> you a link to reset your password</Text>
 
-      <View style={{ alignItems: 'center' }}>
+      <View style={{ width:'100%', alignItems: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 10, marginLeft: 8 }} />
+            <AntDesign name="mail" size={20} color="black" style={{ marginTop: 16, marginLeft: 18 }} />
             <TextInput style={styles.txtField} name='email' placeholder='example@gmail.com' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
-
-
       </View>
 
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <TouchableOpacity style={styles.signIn} onPress={forgotPassword}>
-          <Text style={{ color: '#fff' }}>{`SEND`} </Text>
+      <View style={{ width:'100%', alignItems: 'center', justifyContent: 'center' }}>
+        <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('ResetPassword')}  >
+          <Text style={{ fontSize: 20, color: '#fff' }}>{`SEND`} </Text>
         </TouchableOpacity>
-
-       
-
       </View>
+
+        <View style={{alignItems:'center', justifyContent:'center', 
+                      marginVertical: 20}}>
+          <TouchableOpacity onPress={() =>Navigate(0)}>
+            BACK
+          </TouchableOpacity>
+        </View>
 
     </View>
 
@@ -104,7 +97,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: '#F47066',
-    width: 335,
+    width: '100%',
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -130,11 +123,6 @@ const styles = StyleSheet.create({
   },
 
   txtField: {
-    marginLeft: 10,
-    marginTop: 10,
-  },
-
-  txtEmail: {
     width: 300,
     marginTop: 7,
     paddingLeft: 10,
@@ -166,7 +154,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 315,
+    width: '80%',
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -177,7 +165,7 @@ const styles = StyleSheet.create({
 
   signIn: {
     height: 50,
-    width: 200,
+    width: '60%',
     marginTop: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',

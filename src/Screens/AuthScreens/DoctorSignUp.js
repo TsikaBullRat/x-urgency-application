@@ -18,8 +18,7 @@ import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleDoctorSignUp } from '../../firebase';
 import { AlertNote } from '../../Components/Alert';
 
-export default function DoctorSignUp({ navigation, setDetails }
-) {
+export default function DoctorSignUp( ) {
 
   const [email, setEmail] = useState(""),
     [name, setName] = useState(""),
@@ -81,7 +80,6 @@ export default function DoctorSignUp({ navigation, setDetails }
     }
   }
 
-
   const Register = () => {
     if (qualification === "" && branch === "" && password === "" && confirmpassword === "") {
       setPrompt("Please enter thr requested information")
@@ -111,15 +109,13 @@ export default function DoctorSignUp({ navigation, setDetails }
   }
 
   return (
-    
-
     <View style={styles.container}>
-
+      
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
         </View>
-        <Text style={{ color: "#fff", fontSize: 30, marginLeft: 8, fontFamily: 'Felix Titling' }}> {`X-urgency`} </Text>
+        <Text style={{ color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
@@ -129,15 +125,14 @@ export default function DoctorSignUp({ navigation, setDetails }
               fontFamily: 'Felix Titling'
             }
           }),
-          
         }}>{`Medical SignUp`}</Text>
       </View>
 
       
-        {visibleStatusBar ? (
-          <ScrollView style={{ height: 550 }}
+      {visibleStatusBar ? (
+        <ScrollView style={{ height: 550, width:'100%' }}
         showsVerticalScrollIndicator={false}>
-
+          <View>
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: 'row' }}>
                 <TextInput style={styles.txtField} name='name' placeholder='Name' onChangeText={text => setEmail(text)} />
@@ -147,22 +142,14 @@ export default function DoctorSignUp({ navigation, setDetails }
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <TextInput
-                  style={styles.txtField}
-                  name="Surname"
-                  placeholder="Surname"
-                  onChangeText={(text) => setSurname(text)} />
+                <TextInput style={styles.txtField} name="Surname" placeholder="Surname" onChangeText={(text) => setSurname(text)} />
               </View>
             </Card>
             {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <TextInput
-                  style={styles.txtField}
-                  name="ContactDetails"
-                  placeholder="Contact Details"
-                  onChangeText={(text) => setContactDetails(text)} />
+                <TextInput style={styles.txtField} name="ContactDetails" placeholder="Contact Details" onChangeText={(text) => setContactDetails(text)} />
               </View>
             </Card>
             {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
@@ -185,17 +172,12 @@ export default function DoctorSignUp({ navigation, setDetails }
                 <Picker.Item label="Ambulance Emergency Assistance" value="AEA" />
                 <Picker.Item label="Critical Care Assist" value="CCA" />
                 <Picker.Item label="Emergency Care Practitioner" value="ECP" />
-
               </Picker>
             </View>
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <TextInput
-                  style={styles.txtField}
-                  name="Qualification"
-                  placeholder="Qualification"
-                  onChangeText={(text) => setQualification(text)} />
+                <TextInput style={styles.txtField} name="Qualification" placeholder="Qualification" onChangeText={(text) => setQualification(text)} />
               </View>
             </Card>
             {prompt5 ? <Text style={styles.prompt}>{prompt5}</Text> : null}
@@ -206,48 +188,34 @@ export default function DoctorSignUp({ navigation, setDetails }
               </TouchableOpacity>
             </View>
 
+          </View>
           </ScrollView>
 
         ) : (
-          <ScrollView style={{ height: 550 }}
-        showsVerticalScrollIndicator={false}>
 
+          <View>
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <TextInput
-                  style={styles.txtField}
-                  name="Description"
-                  placeholder="Description"
-                  onChangeText={(text) => setDescription(text)} />
+                <TextInput style={styles.txtField} name="Description" placeholder="Description" onChangeText={(text) => setDescription(text)} />
               </View>
             </Card>
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: "row" }}>
-                <TextInput
-                  style={styles.txtField}
-                  name="Branch"
-                  placeholder="Branch"
-                  onChangeText={(text) => setBranch(text)} />
+                <TextInput style={styles.txtField} name="Branch" placeholder="Branch" onChangeText={(text) => setBranch(text)} />
               </View>
             </Card>
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: 'row' }}>
-                <TextInput style={styles.txtField}
-                  name='password' placeholder='Password'
-                  secureTextEntry={true}
-                  onChangeText={text => setPassword(text)} />
+                <TextInput style={styles.txtField} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
               </View>
             </Card>
             {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: 'row' }}>
-                <TextInput style={styles.txtField}
-                  name='confirmPassword' placeholder='Confirm Password'
-                  secureTextEntry={true}
-                  onChangeText={text => setPassword(text)} />
+                <TextInput style={styles.txtField} name='confirmPassword' placeholder='Confirm Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
               </View>
             </Card>
             {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
@@ -257,11 +225,9 @@ export default function DoctorSignUp({ navigation, setDetails }
                 <Text style={{ fontSize: 20, color: '#fff', }}>{`SIGNIN`} </Text>
               </TouchableOpacity>
             </View>
-          </ScrollView>
+          </View>
         )}
-      
-
-    </View>
+      </View>
 
   );
 }
@@ -275,7 +241,7 @@ const styles = StyleSheet.create({
 
   card: {
     backgroundColor: "#F47066",
-    width: 335,
+    width: '100%',
     height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -293,7 +259,6 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 25,
     fontSize: 36,
-    fontFamily: 'Cooper',
     color: '#F47066'
   },
 
@@ -315,7 +280,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 315,
+    width: '80%',
     height: 50,
     borderRadius: 10,
     marginLeft: 2,
@@ -332,7 +297,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 2,
     marginTop: 35,
-    fontFamily: 'flexi titling',
     fontSize: 18,
     borderWidth: 1,
     borderColor: '#F47066',
@@ -346,7 +310,7 @@ const styles = StyleSheet.create({
 
   signIn: {
     height: 50,
-    width: 200,
+    width: '60%',
     margin: 40,
     borderRadius: 10,
     backgroundColor: '#F47066',

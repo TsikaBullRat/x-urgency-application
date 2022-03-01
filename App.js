@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createStackNavigator } from "@react-navigation/stack"
 import { auth, firestore, Exit } from './src/firebase'
 import { Loading } from './src/Components'
 import { StyleSheet, NativeModules, View } from 'react-native'
-import { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile,
-   Navigator} from './src/Screens'
+import { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, ResetPassword, Navigator} from './src/Screens'
 
 // const Stack = createNativeStackNavigator()
 const Stack = createStackNavigator()
 
 export default function App() {
 
+  const [Component, setComponent] = useState()
   const [selected, setSelected] = useState(0)
   const [id, setID] = useState(null)
   
@@ -26,7 +26,7 @@ export default function App() {
         setSelected(0)
       )
     })
-  }, [selected])
+  }, [])
 
   const [doctor, setDoctor] = useState(null)
   useEffect(()=>{
@@ -39,8 +39,8 @@ export default function App() {
   }, [id])
 
   const [param, setParam] = useState()
-  const [percentage, setPerc] = useState(null)
-  const [match, setMatch] = useState(null)
+  // const [percentage, setPerc] = useState(null)
+  
   const Navigate = (num, data )=>{
     setSelected(num)
     setParam(data)
@@ -50,6 +50,7 @@ export default function App() {
     Exit()
     setSelected(0)
   }
+  
 
   return (
     id?(
@@ -74,13 +75,16 @@ export default function App() {
             <SignUp Navigate={Navigate}/>
             <DoctorSignUp Navigate={Navigate}/>
             <ForgotPassword Navigate={Navigate}/>
+            <ResetPassword Navigate={Navigate}/>
           </Navigator>
       )
   )
 }
+
 const styles = StyleSheet.create({
   loader: {
     alignItems: 'center',
     justifyContent: 'center'
   }
+
 })

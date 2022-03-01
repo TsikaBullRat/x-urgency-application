@@ -1,19 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Text
-} from 'react-native'
-import {ScrollView} from 'react-native-gesture-handler'
+import { View, StyleSheet, TouchableOpacity, Image, Text } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
 import { auth, LoadSet, firestore } from '../../firebase'
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
+import CallSiren from '../../Components/CallSiren'
+import LogOutComp from '../../Components/LogOutComp'
 import { VideoList } from '../../Components/VideoList'
-import { Feather } from '@expo/vector-icons';
-import { Avatar, Badge } from 'react-native-elements';
+import { Feather } from '@expo/vector-icons'
+import { Avatar, Badge } from 'react-native-elements'
 
 export default function Home ({ Navigate, Exit }) {
   const [status, setStatus] = useState({})
@@ -22,53 +18,94 @@ export default function Home ({ Navigate, Exit }) {
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
     VideoScreen = data => {
+      console.log(data)
       Navigate(1, data)
     },
-    
     Emergency = () => {
       Navigate(2)
     }
 
   useEffect(() => {
     LoadSet(setLoad)
-  }, [])
-
-  useEffect(()=>{
-    console.log(Exit)
+    return ()=>LoadSet(setLoad)
   }, [])
 
   return (
     <View style={styles.container}>
-      
+      {/**------------------CallSiren--------------------CallSiren----------------- */}
+      <View
+        style={{
+          width: '80%',
+          flexDirection: 'row',
+          marginVertical: 15,
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}
+      >
+
+        <View>
+          <TouchableOpacity onPress={() =>Navigate(2)}>
+            <CallSiren />
+          </TouchableOpacity>
+        </View>
+
+        <View>
+          <TouchableOpacity
+            style={{
+              width: 335,
+              alignItems: 'flex-end',
+              justifyContent: 'center'
+            }}
+            onPress={Exit}
+          >
+            <LogOutComp />
+          </TouchableOpacity>
+        </View>
+      </View>
 
       {/**------------------Header-----------------------Header----------------- */}
+
       <View style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>
-        <Header Exit={Exit} Emergency={Emergency} />
+        <Header Exit={Exit} />
 
-        <View style={{ marginTop: 50, marginLeft: 10 }}>
+        <View>
           <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-            {image ? (<Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
-
+            {image ? (
+              <Avatar
+                style={styles.avatar}
+                rounded
+                source={{ uri: image }}
+                size='large'
+              />
             ) : (
-
               <View style={styles.temp}>
                 <Text style={styles.temp_text}> {initial} </Text>
               </View>
             )}
-
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { navigation.navigate("Update") }} >
-            <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Update')
+            }}
+          >
+            <Feather
+              name='edit'
+              size={24}
+              color='#F47066'
+              style={{ left: 120, top: -20 }}
+            />
           </TouchableOpacity>
         </View>
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
+
       <View style={{ width: 335, alignItems: 'center' }}>
         <Menu list={videos} setVids={setLoad} />
       </View>
 
+      {/**-----------Medical Personel--------------Most View--------------------- */}
       <View
         style={{
           width: 335,
@@ -79,12 +116,11 @@ export default function Home ({ Navigate, Exit }) {
         }}
       >
         <Text style={{ fontFamily: 'Roboto' }}> {`Most Viewed`} </Text>
-
         <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
           <Text
             style={{ fontSize: 18, fontFamily: 'Roboto', color: '#F96056' }}
           >
-            {`Medical Personel`}{' '}
+            {`Medical Personel`}
           </Text>
         </TouchableOpacity>
       </View>
@@ -109,6 +145,7 @@ export default function Home ({ Navigate, Exit }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
     alignItems: 'center',
     backgroundColor: '#fff'
   },
@@ -116,19 +153,6 @@ const styles = StyleSheet.create({
   logoutIMG: {
     width: 15,
     height: 15
-  },
-
-  header: {
-    fontWeight: '200',
-    fontSize: 18,
-    color: '#F96056',
-    paddingTop: 20
-  },
-
-  avatar: {
-    width: 70,
-    height: 70,
-    borderRadius: 50
   },
 
   menu2: {
@@ -157,7 +181,7 @@ const styles = StyleSheet.create({
   },
 
   avatar: {
-    //top: -60,
+    top: -60,
     left: -3
   },
 
@@ -165,7 +189,6 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 80,
     backgroundColor: 'turquoise',
     textAlign: 'center',
     justifyContent: 'center'

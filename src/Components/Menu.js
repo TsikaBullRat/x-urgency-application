@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, Pressable, Platform } from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler'
+import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper';
 import { LoadSet } from "../firebase";
 
@@ -123,4 +123,3 @@ const styles = StyleSheet.create({
   },
 
 })
- 

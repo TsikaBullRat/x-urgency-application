@@ -23,7 +23,7 @@ import { AlertNote } from '../../Components'
 // const btoa = require("btoa")
 // const atob = require("atob")
 
-export default function Upload({ navigation, Log }) {
+export default function Upload({ Log, Navigate }) {
 
   const ref = useRef(null);
   const [status, setStatus] = useState({});
@@ -67,8 +67,7 @@ export default function Upload({ navigation, Log }) {
         selectedValue,
         Log
       ),
-
-        navigation.goBack(),
+        Navigate(0),
         alert('Uploaded Video')
       ) : (null)
 
@@ -84,10 +83,10 @@ export default function Upload({ navigation, Log }) {
         mediaTypes: ImagePicker.MediaTypeOptions.Videos,
         allowsEditing: true
       });
-     if (!result.cancelled) {
+      if (!result.cancelled) {
         setSelectedImage({ localUri: result.uri })
       }
-   }
+    }
 
   return (
 
@@ -98,11 +97,7 @@ export default function Upload({ navigation, Log }) {
       <Text style={styles.header}>Upload Or Create Your First Aid Video Here</Text>
 
       <View style={{ flexDirection: "row" }}>
-        <TextInput
-          style={styles.txtField}
-          name="username"
-          placeholder="Title"
-          onChangeText={text => setTitle(text)} />
+        <TextInput style={styles.txtField} name="username" placeholder="Title" onChangeText={text => setTitle(text)} />
       </View>
 
       <View>
@@ -122,21 +117,12 @@ export default function Upload({ navigation, Log }) {
       </View>
 
       <View style={{ flexDirection: "row" }}>
-        <TextInput
-          style={styles.txtField}
-          name="password"
-          placeholder="Description"
-          onChangeText={text => setDescription(text)} />
+        <TextInput style={styles.txtField} name="password" placeholder="Description" onChangeText={text => setDescription(text)} />
       </View>
 
       {selectedImage ? (
         <Video ref={ref} source={{ uri: selectedImage.localUri }} resizeMode="stretch" isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-          style={{
-            width: 380,
-            height: 220,
-            marginTop: 5,
-            alignSelf: "center",
-          }} />
+          style={{ width: 380, height: 220, marginTop: 5, alignSelf: "center", }} />
 
       ) : (
 
@@ -150,7 +136,7 @@ export default function Upload({ navigation, Log }) {
         </Pressable>
       )}
 
-      <TouchableOpacity onPress={() => { navigation.navigate('uploadVideo') }}>
+      <TouchableOpacity onPress={() =>Navigate(3)}>
         <View style={styles.iconContainer}>
           <Icon name="camera" color='white' size={30} />
         </View>
@@ -163,11 +149,6 @@ export default function Upload({ navigation, Log }) {
     </View>
   );
 }
-
-
-
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -183,7 +164,6 @@ const styles = StyleSheet.create({
     color: "#F47066",
     fontWeight: "bold",
     marginBottom: 30,
-   
   },
 
   txtField: {
@@ -197,7 +177,6 @@ const styles = StyleSheet.create({
     borderColor: "#F47066",
     marginBottom: 20,
     fontSize: 16,
- 
   },
 
   txtUser: {
@@ -209,7 +188,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderWidth: 1,
     borderColor: "#F47066",
-    
   },
 
   icon: {
@@ -223,7 +201,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#F96056',
-  
   },
 
   input1: {
@@ -289,7 +266,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     marginTop: -5,
-  
   },
 
 });

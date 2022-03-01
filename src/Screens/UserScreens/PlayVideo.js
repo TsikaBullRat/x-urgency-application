@@ -12,7 +12,7 @@
 **/
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button, Pressable } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, ScrollView, TextInput, Button} from 'react-native';
 import { Card } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
@@ -23,19 +23,11 @@ import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore } from '../../firebase'
 import { Collect, Post, } from '../../firebase';
+import { CommentBox } from "../../Components"
 
-export default function PlayVideo({ navigation, route, param }) {
+export default function PlayVideo({ param, Navigate }) {
 
-  // useEffect(()=>{
-  //   auth.signInWithEmailAndPassword("rando@gmail.com", "KingofRandom")
-  //     .catch(err=>{
-  //       console.log(err)
-  //     })
-  // }, [])
-
-  const [data, setData ] = useState(
-
-  )
+  const [data, setData ] = useState(param)
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.url)
   const [views, setViews] = useState(data.views)
@@ -79,9 +71,8 @@ export default function PlayVideo({ navigation, route, param }) {
       )
     },
 
-    Navigate = () => {
-      let match = data.match
-      navigation.navigate('Doctor', { match })
+    NavigateTo = () => {
+      Navigate(4, data.match)
     },
 
     Delete = remove => {
@@ -116,30 +107,23 @@ export default function PlayVideo({ navigation, route, param }) {
 
     <View style={styles.contain}>
 
-{/**-------------Video----------------Video-----------------Video---------------- */}
+      {/**-------------Video----------------Video-----------------Video---------------- */}
       <View style={{ width: 335, marginTop: 50 }}>
-        <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping
-          style={{ width: 335, height: 180, }} />
+        <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping style={{ width: 335, height: 180, }} />
       </View>
 
-{/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
+      {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
       {!visibleStatusBar ? (
         <View style={{ width: 335, marginTop: 15, alignItems: 'center', justifyContent: 'space-between' }}>
 
           <View style={{ flexDirection: 'row', width: 335, alignItems: 'center', justifyContent: 'space-between', }}>
-            <View>
+            <Text>
               <Text style={{ fontWeight: 'bold', color: '#F47066', }}>{data.title}</Text>
-              <Text style={{ fontSize: 10 }}> {views} views - {data.stamp} </Text>
-            </View>
+              <Text style={{ fontSize: 10 }}>{`${views} views - ${data.stamp} `}</Text>
+            </Text>
 
             <View>
-              <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()}>
-                <AntDesign
-                  name="downcircle"
-                  size={18}
-                  color="black"
-                  style={styles.dropDown} />
-              </TouchableOpacity>
+              <Text title="topNav" onPress={() => changeVisibilityStatusBar()}><AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} /> </Text>
             </View>
           </View>
 
@@ -153,75 +137,43 @@ export default function PlayVideo({ navigation, route, param }) {
               {<Dislikes data={data.firestore} />}
             </View>
 
-            <TouchableOpacity onPress={() => ShareItem(data.url)}>
+            <Text onPress={() => ShareItem(data.url)}>
               <FontAwesome5
                 name="share"
                 size={20}
                 color="black"
               />
-              <Text style={{ paddingTop: 5 }}> Share </Text>
-            </TouchableOpacity>
+              <Text style={{ paddingTop: 5 }}>{" Share "}</Text>
+            </Text>
 
             <View>
               <Entypo name="save" size={20} color="black" />
-              <Text style={{ paddingTop: 5 }}> Save </Text>
+              <Text style={{ paddingTop: 5 }}>{" Save "}</Text>
             </View>
           </View>
 
-          <View
-            style={{ width: 335, marginTop: 50, flexDirection: 'row', justifyContent: 'flex' }}>
-            <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} size="medium" onPress={Navigate} />
+          <View style={{ width: 335, marginTop: 50, flexDirection: 'row', justifyContent: 'flex' }}>
+            <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} size="medium" onPress={NavigateTo} />
             <Text style={{ paddingTop: 15 }} > {data.owner}</Text>
           </View>
-
-          <Card style={styles.txtCards}>
-            <View style={{ flexDirection: 'row' }}>
-              <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
-              <View style={{ width: 90, height: 40, borderRadius: 30 }}>
-                <Button color="#F47066"
-                  onPress={() => Post(comment, data.firestore)} title='Comment' />
-              </View>
-            </View>
-          </Card>
 
         </View>
 
       ) : (
-         
-/**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
+
+        /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
         <View>
-          <Card
-            style={{
-              width: 335,
-              height: 300,
-              borderRadius: 20,
-              backgroundColor: '#fff',
-              marginTop: 15,
-            }}>
+          <Card style={{ width: 335, height: 300, borderRadius: 20, backgroundColor: '#fff', marginTop: 15, }}>
 
             <View style={{ width: 335, flexDirection: 'row', justifyContent: 'space-between' }}>
 
-              <View>
-                <Text
-                  style={{
-                    fontWeight: 'bold',
-                    color: '#F47066',
-                    fontSize: 16,
-                  }}>
-                  Description:
-                </Text>
+              <Text>
+                <Text style={{ fontWeight: 'bold', color: '#F47066', fontSize: 16, }}>{"  Description: "}</Text>
+                <Text style={{ maxWidth: 315, paddinLeft: 20 }}>  {data.description} </Text>
+              </Text>
 
-                <Text style={{ maxWidth: 315, paddinLeft: 20 }}>
-                  {data.description}
-                </Text>
-              </View>
-
-              <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                <AntDesign
-                  name="closecircle"
-                  size={18}
-                  color="black" />
-              </TouchableOpacity>
+              <Text onPress={() => changeVisibilityStatusBar()}>
+                <AntDesign name="closecircle" size={18} color="black" />  </Text>
             </View>
 
             <View style={{ marginTop: 50, flexDirection: 'row' }}>
@@ -233,6 +185,16 @@ export default function PlayVideo({ navigation, route, param }) {
 
       )}
 
+      <Card style={styles.txtCards}>
+        <View style={{ flexDirection: 'row'}}>
+          <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={text => setComment(text)} />
+          <View style={{ width: 90, height: 40, borderRadius: 30 }}>
+            <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title='Comment' />
+          </View>
+        </View>
+      </Card>
+
+      {/* <CommentBox setComment={setComment} Post={Post}/> */}
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card style={{
           height: 335, width: 315, marginTop: 5
@@ -241,8 +203,8 @@ export default function PlayVideo({ navigation, route, param }) {
           {Comments.map((item, index) =>
             <Card style={{ backgroundColor: '#e8d7cc', height: 100, marginTop: 10 }} key={index}>
               <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
-                <Text><Text style={{ color: 'red' }}>{item.user}</Text>: {item.comment}</Text>
-                {item.user === auth.currentUser.displayName ? <Pressable onPress={() => Delete(item.comment)}><Text>remove</Text></Pressable> : null}
+                <Text><Text style={{ color: 'red' }}>{item.user}</Text>{`: ${item.comment}`}</Text>
+                {item.user === auth.currentUser.displayName ? <Text onPress={() => Delete(item.comment)}><Text>{"remove"}</Text></Text> : null}
               </SafeAreaView>
             </Card>
           )}

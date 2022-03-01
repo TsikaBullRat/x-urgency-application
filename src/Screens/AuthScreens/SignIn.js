@@ -28,7 +28,7 @@ export default function SignIn({ Navigate }) {
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null);
 
-  const Login = () => {
+  const Login = (setDone) => {
     if (email === "" && password === "") {
       setPrompt("Please enter thr requested information")
     } else if (email === "") {
@@ -42,7 +42,6 @@ export default function SignIn({ Navigate }) {
     } else {
       handleSignIn(email, password, setMessage)
       setDisplaModal(true)
-      //navigation.navigate('Home', {setDone})
     }
 
   }
@@ -51,6 +50,7 @@ export default function SignIn({ Navigate }) {
 
     <View style={styles.container}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      
       <Card style={styles.card}>
         <View style={styles.heartIcon}>
           <FontAwesome name="heartbeat" size={110} color="#fff" />
@@ -64,7 +64,8 @@ export default function SignIn({ Navigate }) {
 
       <View style={styles.header}>
         <Text style={{
-          fontSize: 30, ...Platform.select({
+          fontSize: 30,
+          fontWeight:'bold', ...Platform.select({
             web: {
               fontFamily: 'Felix Titling'
             }
@@ -74,7 +75,7 @@ export default function SignIn({ Navigate }) {
       </View>
       {prompt ? <Text style={styles.prompt} >{prompt}</Text> : null}
 
-      <View style={{width:'100%', alignItems:'center', justifyContent:'center'}}>
+      <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name="user" size={22} color="black" style={{ marginTop: 16, marginLeft: 18 }} />
@@ -86,10 +87,7 @@ export default function SignIn({ Navigate }) {
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <EvilIcons name="lock" size={32} color="black" style={{ marginTop: 12, marginLeft: 12 }} />
-            <TextInput style={styles.txtPassword}
-              name='password' placeholder='Password'
-              secureTextEntry={true}
-              onChangeText={text => setPassword(text)} />
+            <TextInput style={styles.txtPassword} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
           </View>
         </Card>
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
@@ -101,7 +99,7 @@ export default function SignIn({ Navigate }) {
           </TouchableOpacity>
         </View>
 
-        <View style={{ width:'100%', alignItems: 'center', alignContent: 'center' }}>
+        <View style={{ width: '100%', alignItems: 'center', alignContent: 'center' }}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
             <Text style={{ fontSize: 20, color: '#fff', }}>{`LOGIN`} </Text>
           </TouchableOpacity>
@@ -115,9 +113,8 @@ export default function SignIn({ Navigate }) {
           </TouchableOpacity>
         </View>
 
-        <View style={{marginTop:10,}} >
-        <Text style={{ paddingTop: 10, fontWeight:'bold', color:'grey', fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
-
+        <View style={{ marginTop: 10, }} >
+          <Text style={{ paddingTop: 10, fontWeight: 'bold', color: 'grey', fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`} </Text>
           <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
             <TouchableOpacity onPress={() => Navigate(2)}>
               <Text style={{ fontSize: 20, paddingTop: 5, color: '#F47066' }}> {`SignIn`} </Text>
@@ -140,6 +137,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#F47066',
     width: '100%',
+    height: 200,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
@@ -156,7 +154,6 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 25,
     fontSize: 36,
-    fontFamily: 'Cooper',
     color: '#F47066'
   },
 
