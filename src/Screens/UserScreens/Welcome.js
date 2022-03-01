@@ -1,15 +1,14 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
-;('react-native')
 import { AntDesign } from '@expo/vector-icons'
 
-export default function UrgentHelp ({ navigation }) {
+export default function Welcome ({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
         <Image
           style={{ height: 350, width: '95%' }}
-          source={require('../../images/UrgentHelpLOGO.png')}
+          source={require('../../images/WatchLOGO.png')}
         />
       </View>
 
@@ -22,7 +21,7 @@ export default function UrgentHelp ({ navigation }) {
             textAlign: 'center',
             color: '#F47066'
           }}
-        >{`Need Urgent Help?`}</Text>
+        >{`Watch and Learn`}</Text>
       </View>
 
       <View style={styles.content}>
@@ -39,11 +38,11 @@ export default function UrgentHelp ({ navigation }) {
           width: 360,
           alignItems: 'center',
           marginTop: 80
-        }}
-      >
+        }}>
         <View
           style={{
-            width: 280,
+            width: 130,
+            top: -25,
             flexDirection: 'row',
             justifyContent: 'space-evenly'
           }}
@@ -55,34 +54,30 @@ export default function UrgentHelp ({ navigation }) {
       </View>
 
       {/**------btnNext-----------btnNext--------- */}
-      <View style={{ width: 360, marginTop:15,alignItems: 'center' }}>
+      <View style={{ width: 360, marginVertical: 15, alignItems: 'center' }}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Sign In')}
-          style={styles.buttons}
+          onPress={() => navigation.navigate('FollowMore')}
+          style={styles.btnNext}
         >
           <Text
             style={{
               fontWeight: 'bold',
               color: '#fff',
-            }}>
-            {`SignIn`}
+              paddingLeft: 25
+            }}
+          >
+            {`NEXT`}
           </Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Sign Up')}
-          style={styles.buttons}
-        >
-          <Text
+          <View
             style={{
-              fontWeight: 'bold',
-              color: '#fff',
-            }}>
-            {`Create Account`}
-          </Text>
+              left: 40
+            }}
+          >
+            <AntDesign name='arrowright' size={25} color='#fff' />
+          </View>
         </TouchableOpacity>
       </View>
-
     </View>
   )
 }
@@ -95,18 +90,19 @@ const styles = StyleSheet.create({
 
   logo: {
     width: 360,
-    top: -55,
+    top: -15,
     left: 10,
     right: 10
   },
 
   header: {
     width: 360,
-    top:-40
+    top: -60
   },
 
   content: {
     width: 360,
+    top: -20,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -116,11 +112,11 @@ const styles = StyleSheet.create({
     fontFamily: 'arial'
   },
 
-  buttons: {
+  btnNext: {
     height: 50,
     width: '60%',
+    top: -20,
     borderRadius: 10,
-    marginVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

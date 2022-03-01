@@ -3,59 +3,51 @@ import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import { Card } from 'react-native-paper'
 
-export default function EmergencyContacts ({ navigation }) {
-  const Call = (number) => {
+const EmergencyContacts = ({ navigation }) => {
+  const Call = number => {
     Linking.openURL(`tel:${number}`)
   }
 
   return (
     <View style={styles.container}>
-      <View>
-        <View
-          style={{
-            alignItems: 'flex-start'
-          }}
-        >
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-            {'<='}
-          </TouchableOpacity>
-        </View>
 
         <View
           style={{
-            width: '100%',
             marginTop: 20,
             alignItems: 'center',
             justifyContent: 'center'
-          }}
-        >
-          <Text style={styles.head}> {'EMERGENCY?'} </Text>
+          }}>
+          <Text style={{ paddingLeft:25, color: '#F47066', fontSize: 30, fontFamily: 'arial' }}>
+
+            {'EMERGENCY?'}
+          </Text>
           <Text style={styles.head}> {'CALL NOW!'}</Text>
         </View>
-      </View>
 
-      <View style={{width:360, alignItems:'center', justifyContent:'center'}}>
+{/*-----------NationWide-----------NationWide-------------------- */}
+      <View
+        style={{ width: 360, alignItems: 'center', justifyContent: 'center' }}>
         <TouchableOpacity onPress={() => Call('112')}>
           <Card style={styles.card7}>
             <Text
               style={{
                 fontWeight: 'bold',
                 fontSize: 15,
-                paddingTop:10,
+                paddingTop: 10,
                 color: 'white'
               }}
             >
-              Nationwide
+              {`Nationwide`}
             </Text>
             <FontAwesome
               name='arrows'
               size={30}
               color='#ffffff'
-              style={{ marginTop: 1, alignSelf:'center' }}
+              style={{ marginTop: 1, alignSelf: 'center' }}
             />
             <Text
               style={{
-                textAlign:'center',
+                textAlign: 'center',
                 fontWeight: 'bold',
                 fontSize: 16,
                 marginTop: -1,
@@ -68,6 +60,7 @@ export default function EmergencyContacts ({ navigation }) {
         </TouchableOpacity>
       </View>
 
+{/*--------------------Police---------------Police-------------------- */}
       <View>
         <TouchableOpacity onPress={() => Call('10111')}>
           <Card style={styles.card}>
@@ -80,7 +73,7 @@ export default function EmergencyContacts ({ navigation }) {
                 color: 'white'
               }}
             >
-              Police
+              {`Police`}
             </Text>
             <FontAwesome
               name='car'
@@ -102,6 +95,8 @@ export default function EmergencyContacts ({ navigation }) {
           </Card>
         </TouchableOpacity>
 
+{/*--------------------Ambulance---------------Ambulance-------------------- */}
+
         <TouchableOpacity onPress={() => Call('10177')}>
           <Card style={styles.card1}>
             <Text
@@ -113,7 +108,7 @@ export default function EmergencyContacts ({ navigation }) {
                 color: 'white'
               }}
             >
-              Ambulance
+              {`Ambulance`}
             </Text>
             <FontAwesome
               name='ambulance'
@@ -136,6 +131,7 @@ export default function EmergencyContacts ({ navigation }) {
         </TouchableOpacity>
       </View>
 
+{/*--------------------Fire---------------Fire-------------Fire------- */}
       <View>
         <TouchableOpacity onPress={() => Call('999')}>
           <Card style={styles.card2}>
@@ -148,7 +144,7 @@ export default function EmergencyContacts ({ navigation }) {
                 color: 'white'
               }}
             >
-              Fire
+              {`Fire`}
             </Text>
             <FontAwesome
               name='fire'
@@ -170,6 +166,7 @@ export default function EmergencyContacts ({ navigation }) {
           </Card>
         </TouchableOpacity>
 
+{/*---------------AirRescue---------------AirRescue----------------- */}
         <TouchableOpacity onPress={() => Call('083 1999')}>
           <Card style={styles.card3}>
             <Text
@@ -181,7 +178,7 @@ export default function EmergencyContacts ({ navigation }) {
                 color: 'white'
               }}
             >
-              Air Rescue
+              {`Air Rescue`}
             </Text>
             <FontAwesome
               name='plane'
@@ -204,6 +201,7 @@ export default function EmergencyContacts ({ navigation }) {
         </TouchableOpacity>
       </View>
 
+{/*---------------Childline---------------Childline----------------- */}
       <View>
         <TouchableOpacity onPress={() => Call('0800 055 555')}>
           <Card style={styles.card4}>
@@ -216,7 +214,7 @@ export default function EmergencyContacts ({ navigation }) {
                 color: 'white'
               }}
             >
-              Childline
+              {`Childline`}
             </Text>
             <FontAwesome
               name='child'
@@ -238,6 +236,7 @@ export default function EmergencyContacts ({ navigation }) {
           </Card>
         </TouchableOpacity>
 
+{/*---------------Suicide---------------Suicide----------------- */}
         <TouchableOpacity onPress={() => Call('0800 567 567')}>
           <Card style={styles.card5}>
             <Text
@@ -249,7 +248,7 @@ export default function EmergencyContacts ({ navigation }) {
                 color: 'white'
               }}
             >
-              Suicide Crisis Line
+              {`Suicide Crisis Line`}
             </Text>
             <FontAwesome
               name='anchor'
@@ -272,73 +271,75 @@ export default function EmergencyContacts ({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <View>
+{/*---------------Violence---------------Violence----------------- */}
+      <View style={{alignItems:'center', justifyContent:'center'}}>
         <TouchableOpacity onPress={() => Call('0800 428 428')}>
-          <Card style={styles.card6}>
+          <Card style={styles.card7}>
             <Text
               style={{
-                marginLeft: 30,
                 fontWeight: 'bold',
                 fontSize: 15,
                 marginTop: 5,
                 color: 'white'
-              }}
-            >
-              Gender Based Violence Command Center
+              }}>
+              {`Gender Based Violence Command Center`}
             </Text>
             <FontAwesome
               name='transgender'
               size={30}
               color='#fff'
-              style={{ marginTop: 1, marginLeft: 160 }}
+              style={{ marginTop: 1, marginLeft:5}}
             />
             <Text
               style={{
-                marginLeft: 120,
                 fontWeight: 'bold',
                 fontSize: 16,
                 marginTop: -1,
                 color: 'white'
               }}
             >
-              0800 428 428
+              {`0800 428 428`}
             </Text>
           </Card>
         </TouchableOpacity>
       </View>
 
+{/*---------------Diseases---------------Diseases----------------- */}
       <View>
         <TouchableOpacity onPress={() => Call('0800 029 999')}>
           <Card style={styles.card7}>
             <Text
               style={{
-                marginLeft: 30,
                 fontWeight: 'bold',
                 fontSize: 15,
                 marginTop: 5,
                 color: 'white'
-              }}
-            >
-              National Institute For Communicable Diseases
+              }}>
+              {`National Institute For Communicable Diseases`}
             </Text>
             <FontAwesome
               name='plus-square'
-              size={30}
+              size={28}
               color='#fff'
-              style={{ marginTop: 1, marginLeft: 160 }}
+              style={{ marginTop: 1 }}
             />
             <Text
               style={{
-                marginLeft: 120,
                 fontWeight: 'bold',
                 fontSize: 16,
                 marginTop: -1,
                 color: 'white'
-              }}
-            >
-              0800 029 999
+              }}>
+              {`0800 029 999`}
             </Text>
           </Card>
+        </TouchableOpacity>
+      </View>
+
+      {/**-------BACK------BACK-------BACK */}
+      <View style={{ marginVertical: 15, alignItems:'center' }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+         <Text>{`BACK`}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -354,8 +355,7 @@ const styles = StyleSheet.create({
 
   head: {
     color: '#F47066',
-    fontSize: 35,
-    textAlign: 'center',
+    fontSize: 30,
     fontFamily: 'arial'
   },
 
@@ -415,21 +415,14 @@ const styles = StyleSheet.create({
     marginTop: -90
   },
 
-  card6: {
-    width: 360,
-    height: 90,
-    backgroundColor: '#F47066',
-    marginLeft: 1,
-    marginTop: 10
-  },
-
   card7: {
     width: 371,
     height: 90,
-    textAlign:'center',
+    textAlign: 'center',
     backgroundColor: '#F47066',
     marginLeft: 1,
     marginTop: 10
   }
 })
 
+export default EmergencyContacts

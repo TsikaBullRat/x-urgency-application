@@ -39,7 +39,8 @@ export default function FollowMore ({ navigation }) {
       >
         <View
           style={{
-            width: 280,
+            width: 130,
+            top: -25,
             flexDirection: 'row',
             justifyContent: 'space-evenly'
           }}
@@ -93,18 +94,19 @@ const styles = StyleSheet.create({
 
   logo: {
     width: 360,
-    top: -85,
+    top: -75,
     left: 10,
     right: 10
   },
 
   header: {
     width: 360,
-    top: -50
+    top: -60
   },
 
   content: {
     width: 360,
+    top: -20,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -117,6 +119,7 @@ const styles = StyleSheet.create({
   btnNext: {
     height: 50,
     width: '60%',
+    top: -30,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',

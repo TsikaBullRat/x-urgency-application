@@ -10,7 +10,7 @@ const ItemSeperatorView = () => {
   )
 }
 
-export const VideoList = ({ videos, VideoScreen }) => {
+export const VideoList = ({ videos, navigation }) => {
   const [status, setStatus] = useState({})
   const ref = useRef(null)
 
@@ -41,10 +41,7 @@ export const VideoList = ({ videos, VideoScreen }) => {
                     backgroundColor: '#FAFAFA'
                   }}
                 >
-                  <TouchableOpacity
-                    style={{ alignItems: 'center', justifyContent: 'center' }}
-                    onPress={() => VideoScreen(vid)}
-                  >
+                  
                     <Video
                       ref={ref}
                       source={{ uri: vid.url }}
@@ -58,7 +55,7 @@ export const VideoList = ({ videos, VideoScreen }) => {
                         alignSelf: 'center'
                       }}
                     />
-                  </TouchableOpacity>
+
 
                   <View style={{ justifyContent: 'space-between' }}>
                     <Text style={styles.vidTitle}>{vid.title}</Text>
