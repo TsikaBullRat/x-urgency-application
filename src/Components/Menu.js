@@ -23,8 +23,7 @@ export default function Menu({ list, setVids }) {
                   fontSize: 16, //color: '#fff' color: selectedCategory == index ? '#fff' : '#fff' 
                 }}> {emergency}</Text>
 
-                {selectedCategory == index && (
-                  <View style={{ height: 3, width: 55, backgroundColor: '#47066', marginTop: 2 }}> </View>)}
+                {selectedCategory == index && (<View style={{ height: 3, width: 55, backgroundColor: '#47066', marginTop: 2 }}> </View>)}
               </View>
             </TouchableOpacity>
           ))}
@@ -56,4 +55,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: '#f96056'
   }
+
 })

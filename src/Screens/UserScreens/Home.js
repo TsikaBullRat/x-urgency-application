@@ -1,12 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Text,
-  ScrollView
-} from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Image, Text, ScrollView } from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
 import { auth, LoadSet, firestore, LogOut } from '../../firebase'
