@@ -90,9 +90,9 @@ export default function App() {
 
           <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
 
-          <Stack.Screen name='EmergencyContacts' components={EmergencyContacts} options={{ headerShown: false }}>
+          {<Stack.Screen name='EmergencyContacts' components={EmergencyContacts} options={{ headerShown: false }}>
             {props => <EmergencyContacts {...props} />}
-          </Stack.Screen>
+          </Stack.Screen>}
         </>
       )
       ) : (
