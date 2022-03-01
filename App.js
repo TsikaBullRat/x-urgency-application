@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { auth, firestore, LogOut } from './src/firebase'
 import { Loading } from './src/Components'
 import { StyleSheet, NativeModules, View } from 'react-native'
-import { Welcome, FollowMore, UrgentHelp, TakeVideo, ShareContent, LikeConn, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, EmergencyContacts, SignIn, SignUp, ForgotPassword, DoctorSignUp, PlayVideo, Doctor } from './src/Screens'
+import { Welcome, FollowMore, UrgentHelp, TakeVideo, ShareContent, LikeConn, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, EmergencyContacts, SignIn, MedSigIn, SignUp, ForgotPassword, ResetPassword, DoctorSignUp, PlayVideo, Doctor } from './src/Screens'
 
 // const Stack = createNativeStackNavigator()
 const Stack = createStackNavigator()
@@ -65,7 +65,7 @@ export default function App() {
 
         <Stack.Screen name='UploadVideo' component={UploadVideo} options={{ headerShown: false }} />
 
-        {/* <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} /> */}
+        <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
 
         <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }}
         />
@@ -90,20 +90,39 @@ export default function App() {
           <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }} />
 
           <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
-          
 
           <Stack.Screen name='EmergencyContacts' components={EmergencyContacts} options={{ headerShown: false }}>
             {props => <EmergencyContacts {...props} />}
           </Stack.Screen>
+
+          {/* <Stack.Screen name='MedSigIn' component={MedSigIn} options={{ headerShown: false }} />
+
+          <Stack.Screen name='DocSignUp' component={DocSignUp} options={{ headerShown: false }} />
+
+          <Stack.Screen name='ForgotPassword' component={ForgotPassword} options={{ headerShown: false }} />
+
+          <Stack.Screen name='ResetPassword' component={ForgotPassword} options={{ headerShown: false }} /> */}
+
         </Stack.Navigator>
       )
       ) : (
         <Stack.Navigator initialRouteName='Sign In'>
           <Stack.Screen name='Sign In' options={{ headerShown: false }} component={SignIn} />
+
           <Stack.Screen name='Doctor SignUp' options={{ headerShown: false }} component={DoctorSignUp} />
+
           <Stack.Screen name='Sign Up' options={{ headerShown: false }} component={SignUp} />
-          <Stack.Screen name='Reset Password' component={ForgotPassword} options={{ headerShown: false }}
+
+          <Stack.Screen name='ForgotPassword' component={ForgotPassword} options={{ headerShown: false }}
           />
+
+          <Stack.Screen name='ResetPassword' component={ResetPassword} options={{ headerShown: false }}
+          />
+
+          <Stack.Screen name='MedSigIn' component={MedSigIn} options={{ headerShown: false }}
+          >
+          {props => <MedSigIn {...props} />}
+          </Stack.Screen>
         </Stack.Navigator>
       )}
       </>

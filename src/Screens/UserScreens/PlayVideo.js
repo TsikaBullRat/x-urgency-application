@@ -61,6 +61,7 @@ export default function PlayVideo ({ navigation, route }) {
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
     },
+
     changeStyleStatusBar = () => {
       const styleId = styleTypes.indexOf(styleStatusBar) + 1
       if (styleId === styleTypes.length) {
@@ -69,6 +70,7 @@ export default function PlayVideo ({ navigation, route }) {
 
       return setStyleStatusBar(styleTypes[styleId])
     },
+
     addAct = async () => {
       let metadata = firestore
         .collection('Videos')
@@ -85,10 +87,12 @@ export default function PlayVideo ({ navigation, route }) {
           }),
           setViews(views + 1))
     },
+
     Navigate = () => {
       let match = data.match
       navigation.navigate('Doctor', { match })
     },
+    
     Delete = remove => {
       firestore
         .collection('Videos')

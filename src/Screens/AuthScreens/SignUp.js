@@ -137,8 +137,8 @@ export default function SignUp({ navigation }) {
         {/**-------BACK------BACK-------BACK */}
 
         <View style={{ marginTop: 10 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-            <Text>BACK </Text>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Text>{`BACK`} </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
 
-  txtUser: {
+  txtField: {
     marginTop: 7,
     paddingLeft: 10,
     paddingTop: 15,
@@ -198,21 +198,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 
-  txtPassword: {
-    height: 35,
-    marginTop: 5,
-    paddingLeft: 6,
-    paddingTop: 20,
-    fontSize: 18,
-    fontFamily: 'Arial',
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff'
-      }
-    })
-  },
-
   txtCards: {
     width: '95%',
     height: 50,
@@ -222,7 +207,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: '#F47066'
   },
-
+  
   reset: {
     width: '97%',
     alignItems: 'flex-end'

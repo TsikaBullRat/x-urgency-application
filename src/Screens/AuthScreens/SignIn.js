@@ -70,6 +70,7 @@ export default function SignIn({ navigation }) {
 
       <View style={styles.textfieldCards}>
         {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
+        
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name='user' size={22} color='black' style={{ marginTop: 16, marginLeft: 18 }} />
@@ -91,7 +92,7 @@ export default function SignIn({ navigation }) {
 
       <View style={styles.reset}>
         <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword') }} >
-          <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }} >{`Forgot Password?`}{' '} </Text>
+          <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }} >{`Forgot Password?`} </Text>
         </TouchableOpacity>
       </View>
 
@@ -99,7 +100,7 @@ export default function SignIn({ navigation }) {
 
       <View style={styles.loginView}>
         <TouchableOpacity style={styles.signIn} onPress={Login}>
-          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>{`LOGIN`}{' '}  </Text>
+          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>{`LOGIN`} </Text>
         </TouchableOpacity>
       </View>
 
