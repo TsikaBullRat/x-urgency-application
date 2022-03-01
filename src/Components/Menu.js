@@ -29,7 +29,7 @@ export default function Menu ({ list, setVids }) {
       {/*----------------------Horizontal Menu----------------------*/}
       <ScrollView
         style={{
-          width: 350
+          width:345 
         }}
         horizontal={true}
         showsHorizontalScrollIndicator={false}

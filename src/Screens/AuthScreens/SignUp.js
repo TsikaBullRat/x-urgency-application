@@ -207,10 +207,8 @@ export default function SignUp ({ navigation }) {
 
 {/**-------BACK------BACK-------BACK */}
       <View style={{marginTop: 10}}>
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-          <Text>
-            BACK
-          </Text>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text>{' BACK '}</Text>
         </TouchableOpacity>
       </View>
       </View>

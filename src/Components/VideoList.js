@@ -15,26 +15,23 @@ export const VideoList = ({ videos, navigation }) => {
   const ref = useRef(null)
 
   return (
-    <View>
+    <View style={{alignItems:'center', justifyContent:'center'}}>
       <ScrollView
         style={{ height: 420, width: 335 }}
         vertical={true}
         showsVerticalScrollIndicator={false}
       >
-
-      <View>
         {videos
           ? videos.map((vid) => (
               <View
                 style={{
-                  width: 335,
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}
                 key={vid.id}>
                 <Card
                   style={{
-                    width: 335,
+                    width: 340,
                     height: 245,
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -43,7 +40,7 @@ export const VideoList = ({ videos, navigation }) => {
                 >
                   
                     <Video
-                      ref={ref}
+                      ref={vid.ref}
                       source={{ uri: vid.url }}
                       resizeMode='stretch'
                       isLooping
@@ -76,9 +73,10 @@ export const VideoList = ({ videos, navigation }) => {
               </View>
             ))
           : 
-            null
+            <>
+            <Text>{`Nothing to show`}</Text>
+            </>
           }
-          </View>
       </ScrollView>
     </View>
   )

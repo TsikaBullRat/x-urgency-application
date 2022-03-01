@@ -83,8 +83,8 @@ export default function ForgotPassword({ navigation }) {
 
         <View style={{alignItems:'center', justifyContent:'center', 
                       marginVertical: 20}}>
-          <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
-            <Text>BACK</Text>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Text>{' BACK '}</Text>
           </TouchableOpacity>
         </View>
 

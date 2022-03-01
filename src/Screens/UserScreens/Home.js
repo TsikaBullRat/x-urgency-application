@@ -28,8 +28,7 @@ export default function Home ({ navigation, Exit }) {
 
   useEffect(() => {
     auth.currentUser
-      ? (
-        setImage(auth.currentUser.photoURL),
+      ? (setImage(auth.currentUser.photoURL),
         setInitial(auth.currentUser.displayName.substring(0, 1)))
       : auth.onAuthStateChanged(doc => {
           setImage(doc.photoURL)
@@ -37,7 +36,7 @@ export default function Home ({ navigation, Exit }) {
           setInitial(doc.displayName.substring(0, 1))
           console.log(auth.currentUser)
         })
-  }, []) 
+  }, [])
 
   useEffect(() => {
     LoadSet(setLoad)
@@ -45,9 +44,9 @@ export default function Home ({ navigation, Exit }) {
 
   const [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState(''),
-    VideoScreen = (data) => {
-      navigation.navigate("PlayVideo", {data});
-    };
+    VideoScreen = data => {
+      navigation.navigate('PlayVideo', { data })
+    }
 
   const signOut = () => {
     LogOut()
@@ -70,14 +69,13 @@ export default function Home ({ navigation, Exit }) {
       {/**------------------CallSiren--------------------CallSiren----------------- */}
       <View
         style={{
-          width: '90%',
+          width: 340,
           flexDirection: 'row',
           marginVertical: 35,
-          alignItems: 'center',
+          left: -5,
           justifyContent: 'flex-end'
-        }}
-      >
-        <View style={{left:-15}}>
+        }}>
+        <View style={{ left: -15 }}>
           <TouchableOpacity
             onPress={() => navigation.navigate('EmergencyContacts')}
           >
@@ -85,7 +83,7 @@ export default function Home ({ navigation, Exit }) {
           </TouchableOpacity>
         </View>
 
-        <View>
+        <View style={{marginTop: 10}}> 
           <TouchableOpacity onPress={signOut}>
             <LogOutComp />
           </TouchableOpacity>
@@ -95,15 +93,18 @@ export default function Home ({ navigation, Exit }) {
       {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
       <View
         style={{
-          flexDirection:'row',
-          width: '95%',
-          alignItems: 'center',
+          flexDirection: 'row',
+          width: 345,
+          left: -4,
           justifyContent: 'space-between'
-      }}>
-          <Header />
+        }}>
 
-          <TouchableOpacity style={{top:-24}}
-          onPress={() => navigation.navigate('Doctor')}>
+          <Header />
+ 
+          <TouchableOpacity
+            style={{ top: -24 }}
+            onPress={() => navigation.navigate('Doctor')}
+          >
             {image ? (
               <Avatar rounded source={{ uri: image }} size='large' />
             ) : (
@@ -112,28 +113,29 @@ export default function Home ({ navigation, Exit }) {
               </View>
             )}
           </TouchableOpacity>
+
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={{ width: 335, alignItems: 'center' }}>
+      <View style={{ left:-3 }}>
         <Menu />
       </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
       <View style={{ marginVertical: 20 }}>
         <ScrollView
-          style={{ height: 435, width: 335 }}
+          style={{ height: 435, width: 340 }}
           vertical={true}
           showsVerticalScrollIndicator={false}
         >
-            <Card style={styles.menu2}>
-              <TouchableOpacity
-                    style={{ alignItems: 'center', justifyContent: 'center' }}
-                    onPress={VideoScreen}
-                  >
-                <VideoList videos={videos} />
-              </TouchableOpacity>
-            </Card>
+          <Card style={styles.menu2}>
+            <TouchableOpacity
+              style={{ alignItems: 'center', justifyContent: 'center' }}
+              onPress={VideoScreen}
+            >
+              <VideoList videos={videos} />
+            </TouchableOpacity>
+          </Card>
         </ScrollView>
       </View>
     </View>
@@ -143,7 +145,6 @@ export default function Home ({ navigation, Exit }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
     alignItems: 'center',
     backgroundColor: '#fff'
   },
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
   },
 
   menu2: {
-    width: 320,
+    width: 335,
     height: 520,
     borderRadius: 15,
     shadowOffset: {},

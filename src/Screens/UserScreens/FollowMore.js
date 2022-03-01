@@ -78,7 +78,7 @@ export default function FollowMore ({ navigation }) {
 
       {/**-------BACK------BACK-------BACK */}
       <View style={{ marginVertical: 15, alignItems:'center' }}>
-        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
          <Text>BACK</Text>
         </TouchableOpacity>
       </View>

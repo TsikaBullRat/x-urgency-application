@@ -287,7 +287,7 @@ const Doctor = ({ navigation }) => {
           alignItems: 'center',
           justifyContent: 'center',
           marginTop: 50}}>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text>{`BACK`} </Text>
         </TouchableOpacity>
       </View>
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
   },
 
   txtHead: {
-    fontSize: 22,
+    fontSize: 30,
     fontFamily: 'flexi-titling',
     color: '#F47066'
   },
@@ -378,6 +378,11 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 25,
     marginTop: 5
+  },
+
+  txtAbout:{
+    fontSize:16, 
+    paddingTop:15
   },
 
   docCards: {

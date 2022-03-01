@@ -318,6 +318,14 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
             </ScrollView>
           )}
         </View>
+
+        {/**-------BACK------BACK-------BACK */}
+      <View style={{marginTop: 10}}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text>{' BACK '}</Text>
+        </TouchableOpacity>
+      </View>
+      
       </View>
     )
   }

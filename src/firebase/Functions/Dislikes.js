@@ -28,9 +28,7 @@ function Counter({ video }) {
         firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
           disliked: false
         }),
-
         setPressed(!pressed)
-
       ) : (
 
         thisLike ? (
