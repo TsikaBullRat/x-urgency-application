@@ -10,7 +10,6 @@ const BottomNav = () => {
 
     <View>
       {!visibleStatusBar ? (
-
         <View>
           <View style={{ flexDirection: 'row', paddingLeft: 50, marginTop: 10 }}>
             <Text style={{ fontWeight: 'bold' }}>Stroke Emergency Video</Text>
@@ -57,23 +56,10 @@ const BottomNav = () => {
 
         <View>
 
-          <Card style={{
-            width: 315,
-            height: 300,
-            marginLeft: 28,
-            borderRadius: 20,
-            backgroundColor: '#fff',
-            marginTop: 20
-          }}>
+          <Card style={{ width: 315, height: 300, marginLeft: 28, borderRadius: 20, backgroundColor: '#fff', marginTop: 20 }}>
 
             <View style={{ flexDirection: 'row' }}>
-              <Text
-                style={{
-                  paddingLeft: 10,
-                  paddingTop: 15,
-                  fontWeight: 'bold',
-                  fontSize: 16,
-                }}>
+              <Text style={{ paddingLeft: 10, paddingTop: 15, fontWeight: 'bold', fontSize: 16, }}>
 
                 Description:
 
@@ -83,24 +69,14 @@ const BottomNav = () => {
               </TouchableOpacity>
             </View>
 
-            <View
-              style={{
-                marginTop: 10,
-                marginLeft: 12,
-                width: 255,
-              }}>
+            <View style={{ marginTop: 10, marginLeft: 12, width: 255, }}>
 
               <Text > Stroke Emergency Video </Text>
 
               <Text style={{ fontSize: 10, color: 'grey' }}> 1 000 000 Views </Text>
             </View>
 
-            <View
-              style={{
-                marginTop: 10,
-                marginLeft: 12,
-                width: 255,
-              }}>
+            <View style={{ marginTop: 10, marginLeft: 12, width: 255, }}>
 
               <Text style={{ paddingTop: 10 }}>
                 Lost your faith in ambulance response time?
@@ -111,6 +87,7 @@ const BottomNav = () => {
               </Text>
 
               <Text style={{ paddingTop: 10, fontWeight: 'bold' }}>Thank you for your support.</Text>
+
             </View>
           </Card>
         </View>

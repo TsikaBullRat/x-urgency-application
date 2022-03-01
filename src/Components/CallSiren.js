@@ -4,36 +4,18 @@ import { color } from 'react-native-elements/dist/helpers'
 import { Feather } from '@expo/vector-icons'
 import { EmergencyContacts } from '../Screens'
 
-export default function CallSiren () {
+export default function CallSiren() {
   return (
-    <View style={{flexDirection:'row'}}>
+
+    <View style={{ flexDirection: 'row' }}>
+
       {/**---------Call Siren------------Call Siren---------Call Siren-------------------- */}
-      <Image
-        source={require('../../img/siren.jpg')}
-        style={{ width: 30, height: 35 }}
-      />
+
+      <Image source={require('../../img/siren.jpg')} style={{ width: 30, height: 35 }} />
 
       <View style={{ paddingVertical: 10 }}>
-        <Text
-          style={{
-            fontSize: 12,
-            fontWeight: 'bold',
-            fontFamily: 'Arial',
-            color: '#F47066'
-          }}
-        >
-          Call
-        </Text>
-        <Text
-          style={{
-            fontSize: 12,
-            fontWeight: 'bold',
-            fontFamily: 'Arial',
-            color: '#F47066'
-          }}
-        >
-          Now
-        </Text>
+        <Text style={{ fontSize: 12, fontWeight: 'bold', fontFamily: 'Arial', color: '#F47066' }} > Call</Text>
+        <Text style={{ fontSize: 12, fontWeight: 'bold', fontFamily: 'Arial', color: '#F47066' }}> Now</Text>
       </View>
     </View>
   )
@@ -45,4 +27,5 @@ const styles = StyleSheet.create({
     height: 20,
     top: -30,
   }
+
 })
