@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { color } from 'react-native-elements/dist/helpers'
 import { Feather } from '@expo/vector-icons'
+import { EmergencyContacts } from '../Screens'
 
 export default function CallSiren() {
   return (
