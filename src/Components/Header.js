@@ -12,8 +12,8 @@ export default function Header() {
       {/*---------------------------Header--------------------------*/}
 
       <View style={{ top: -20 }}>
-        <Text style={styles.header}> WHAT'S YOUR</Text>
-        <Text style={styles.header}> EMERGENCY ?</Text>
+        <Text style={styles.header}> {`WHAT'S YOUR`}</Text>
+        <Text style={styles.header}> {`EMERGENCY ?`}</Text>
       </View>
     </View>
   )

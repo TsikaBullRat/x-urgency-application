@@ -17,18 +17,14 @@ export default function Menu({ list, setVids }) {
         <View style={{ width: 695, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', left: 3 }} >
 
           {categories.map((emergency, index) => (
-            <TouchableOpacity style={{ height: 30, width: 75, borderRadius: 20, backgroundColor: '#f47066', alignItems: 'center', justifyContent: 'center' }}
-              key={index} activeOpacity={0.8}
-            //onPress={() => {setSelectedCategory(index)}}
-            >
-              <View> <Text style={{
-                fontSize: 16, color: '#fff'
-                //color: selectedCategory == index ? 'f47066' : '#' 
-              }}> {emergency}</Text>
+            <TouchableOpacity style={{ height: 30, width: 75, borderRadius: 20, backgroundColor: '#f47066', alignItems: 'center', justifyContent: 'center' }} key={index} activeOpacity={0.8} onPress={() => (setSelectedCategory(index))}>
+              <View>
+                <Text style={{
+                  fontSize: 16, //color: '#fff' color: selectedCategory == index ? '#fff' : '#fff' 
+                }}> {emergency}</Text>
 
                 {selectedCategory == index && (
-                  <View style={{ height: 3, width: 55, backgroundColor: '#47066', marginTop: 2 }}> </View>
-                )}
+                  <View style={{ height: 3, width: 55, backgroundColor: '#47066', marginTop: 2 }}> </View>)}
               </View>
             </TouchableOpacity>
           ))}

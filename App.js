@@ -45,31 +45,33 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <Stack.Navigator> {id ? (doctor ? (<>
-        {/* <Stack.Screen name='TakeVideo' component={ForgotPassword} options={{ headerShown: false }} /> */}
+      <> {id ? (doctor ? (
+        <Stack.Navigator initialRouteName='DocHome'>
+          <Stack.Screen name='TakeVideo' component={ForgotPassword} options={{ headerShown: false }} />
 
-        <Stack.Screen name='ShareContent' component={ShareContent} options={{ headerShown: false }} />
+          <Stack.Screen name='ShareContent' component={ShareContent} options={{ headerShown: false }} />
 
-        <Stack.Screen name='LikeConn' component={LikeConn} options={{ headerShown: false }} />
+          <Stack.Screen name='LikeConn' component={LikeConn} options={{ headerShown: false }} />
 
-        <Stack.Screen name='DocHome' options={{ headerShown: false }}>
-          {props => <MedicalHome {...props} Exit={Exit} />}
-        </Stack.Screen>
+          <Stack.Screen name='DocHome' options={{ headerShown: false }}>
+            {props => <MedicalHome {...props} Exit={Exit} />}
+          </Stack.Screen>
 
-        <Stack.Screen name='Upload' options={{ headerShown: false }}>
-          {props => <Upload {...props} />}
-        </Stack.Screen>
+          <Stack.Screen name='Upload' options={{ headerShown: false }}>
+            {props => <Upload {...props} />}
+          </Stack.Screen>
 
-        <Stack.Screen name='Update' component={UpdateProfile} options={{ headerShown: false }} />
+          <Stack.Screen name='Update' component={UpdateProfile} options={{ headerShown: false }} />
 
-        <Stack.Screen name='UploadVideo' component={UploadVideo} options={{ headerShown: false }} />
+          <Stack.Screen name='UploadVideo' component={UploadVideo} options={{ headerShown: false }} />
 
-        <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
+          {/* <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} /> */}
 
-        <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }} />
-      </>
+          <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
       ) : (
-        <>
+        <Stack.Navigator initialRouteName='Welcome'>
           <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
 
           <Stack.Screen name='FollowMore' component={FollowMore} options={{ headerShown: false }} />
@@ -89,21 +91,22 @@ export default function App() {
 
           <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
 
+
           <Stack.Screen name='EmergencyContacts' options={{ headerShown: false }}>
             {props => <EmergencyContacts {...props} />}
           </Stack.Screen>
-        </>
+        </Stack.Navigator>
       )
       ) : (
-        <>
+        <Stack.Navigator initialRouteName='Sign In'>
           <Stack.Screen name='Sign In' options={{ headerShown: false }} component={SignIn} />
           <Stack.Screen name='Doctor SignUp' options={{ headerShown: false }} component={DoctorSignUp} />
           <Stack.Screen name='Sign Up' options={{ headerShown: false }} component={SignUp} />
           <Stack.Screen name='Reset Password' component={ForgotPassword} options={{ headerShown: false }}
           />
-        </>
+        </Stack.Navigator>
       )}
-      </Stack.Navigator>
+      </>
     </NavigationContainer>
   )
 }
