@@ -25,7 +25,7 @@ import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleSignIn, auth, firestore } from '../../firebase'
 import { AlertNote } from '../../Components'
 
-export default function SignIn ({ navigation }) {
+export default function SignIn ({ navigation, UrgentHelp }) {
   const [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
     [displayModal, setDisplaModal] = useState(false),
