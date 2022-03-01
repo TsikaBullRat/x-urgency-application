@@ -10,6 +10,7 @@ export default function Menu({ list, setVids }) {
 
   return (
     <View>
+
       {/*----------------------Horizontal Menu----------------------*/}
 
       <ScrollView style={{ width: 350 }} horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -20,22 +21,13 @@ export default function Menu({ list, setVids }) {
               key={index} activeOpacity={0.8}
             //onPress={() => {setSelectedCategory(index)}}
             >
-              <View>
-                <Text style={{
-                  fontSize: 16,
-                  color: '#fff'
-                  //color: selectedCategory == index ? 'f47066' : '#' 
-                }}>
-                  {emergency}
-                </Text>
+              <View> <Text style={{
+                fontSize: 16, color: '#fff'
+                //color: selectedCategory == index ? 'f47066' : '#' 
+              }}> {emergency}</Text>
 
                 {selectedCategory == index && (
-                  <View style={{
-                    height: 3, width: 55, backgroundColor: '#47066',
-                    marginTop: 2
-                  }}>
-
-                  </View>
+                  <View style={{ height: 3, width: 55, backgroundColor: '#47066', marginTop: 2 }}> </View>
                 )}
               </View>
             </TouchableOpacity>

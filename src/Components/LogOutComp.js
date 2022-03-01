@@ -6,12 +6,13 @@ import { Feather } from '@expo/vector-icons'
 
 export default function LogOutComp({ navigation }) {
   return (
+
     <View>
+
       {/*---------------------------Header--------------------------*/}
-      <Image
-        source={require('../images/logOut.png')}
-        style={styles.logoutIMG}
-      />
+
+      <Image source={require('../images/logOut.png')} style={styles.logoutIMG} />
+
     </View>
   )
 }

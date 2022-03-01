@@ -1,12 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Text,
-  ScrollView
-} from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Image, Text, ScrollView } from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
 import { auth, LoadSet, firestore, LogOut } from '../../firebase'
@@ -46,7 +39,7 @@ export default function Home({ navigation, Exit }) {
   const [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState(''),
     VideoScreen = (data) => {
-      navigation.navigate("PlayVideo", {data});
+      navigation.navigate("PlayVideo", { data });
     };
 
   const signOut = () => {
@@ -60,46 +53,25 @@ export default function Home({ navigation, Exit }) {
   // }, [auth.currentUser])
 
   return (
-    <View style={styles.container}>
-      <AlertNote
-        modalVisible={displayModal}
-        setModalVisible={setDisplaModal}
-        msg={message}
-      />
+
+    <View style={styles.container}> <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
 
       {/**------------------CallSiren--------------------CallSiren----------------- */}
-      <View
-        style={{
-          width: '90%',
-          flexDirection: 'row',
-          marginVertical: 35,
-          alignItems: 'center',
-          justifyContent: 'flex-end'
-        }}
-      >
+
+      <View style={{ width: '90%', flexDirection: 'row', marginVertical: 35, alignItems: 'center', justifyContent: 'flex-end' }} >
         <View style={{ left: -15 }}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('EmergencyContacts')}
-          >
-            <CallSiren />
-          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')} > <CallSiren /> </TouchableOpacity>
         </View>
 
         <View>
-          <TouchableOpacity onPress={signOut}>
-            <LogOutComp />
-          </TouchableOpacity>
+          <TouchableOpacity onPress={signOut}>   <LogOutComp /> </TouchableOpacity>
         </View>
       </View>
 
       {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
-      <View
-        style={{
-          flexDirection: 'row',
-          width: '95%',
-          alignItems: 'center',
-          justifyContent: 'space-between'
-        }}>
+
+      <View style={{ flexDirection: 'row', width: '95%', alignItems: 'center', justifyContent: 'space-between' }}>
+
         <Header />
 
         <TouchableOpacity style={{ top: -24 }}
@@ -115,25 +87,18 @@ export default function Home({ navigation, Exit }) {
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={{ width: 335, alignItems: 'center' }}>
-        <Menu />
-      </View>
+
+      <View style={{ width: 335, alignItems: 'center' }}>  <Menu /> </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
+
       <View style={{ marginVertical: 20 }}>
-        <ScrollView
-          style={{ height: 435, width: 335 }}
-          vertical={true}
-          showsVerticalScrollIndicator={false}
-        >
-            <Card style={styles.menu2}>
-              <TouchableOpacity
-                    style={{ alignItems: 'center', justifyContent: 'center' }}
-                    onPress={VideoScreen}
-                  >
-                <VideoList videos={videos} />
-              </TouchableOpacity>
-            </Card>
+        <ScrollView style={{ height: 435, width: 335 }} vertical={true} showsVerticalScrollIndicator={false} >
+          <Card style={styles.menu2}>
+            <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} onPress={VideoScreen} >
+              <VideoList videos={videos} />
+            </TouchableOpacity>
+          </Card>
         </ScrollView>
       </View>
     </View>
@@ -193,4 +158,5 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontFamily: 'Roboto'
   }
+
 })

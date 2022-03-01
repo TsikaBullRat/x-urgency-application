@@ -6,10 +6,7 @@ export default function TakeVideo({ navigation }) {
     <View>
 
       <View style={styles.logo}>
-        <Image
-          style={{ height: 310, width: 250 }}
-          source={require('../../images/TakeVideoLOGO.png')}
-        />
+        <Image style={{ height: 310, width: 250 }} source={require('../../images/TakeVideoLOGO.png')} />
       </View>
 
       <View>
@@ -32,6 +29,5 @@ const styles = StyleSheet.create({
   },
 
   header: {},
-
   content: {}
 })

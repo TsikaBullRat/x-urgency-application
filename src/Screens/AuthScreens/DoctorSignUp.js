@@ -159,8 +159,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
                 {prompt5 ? <Text style={styles.prompt}>{prompt5}</Text> : null}
 
                 <View style={{ alignItems: 'center' }}>
-                  <TouchableOpacity
-                    style={styles.signIn} onPress={changeVisibilityStatusBar}>
+                  <TouchableOpacity style={styles.signIn} onPress={changeVisibilityStatusBar}>
                     <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}  >  {`NEXT`}{' '}</Text>
                   </TouchableOpacity>
                 </View>

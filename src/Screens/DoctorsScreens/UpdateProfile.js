@@ -170,6 +170,7 @@ export const UpdateProfile = () => {
         })
     }, [])
     return (
+
         <View style={styles.body}>
             <ScrollView contentContainerStyle={styles.body}>
                 <Pressable onPress={openImagePickerAsync}>

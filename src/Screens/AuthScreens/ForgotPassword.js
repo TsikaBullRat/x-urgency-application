@@ -50,6 +50,7 @@ export default function ForgotPassword({ navigation }) {
   }
 
   return (
+
     <View style={styles.container}>
       <Card style={styles.card}>
         <View style={styles.heartIcon}><FontAwesome name="heartbeat" size={110} color="#fff" /></View>
@@ -78,12 +79,11 @@ export default function ForgotPassword({ navigation }) {
         </TouchableOpacity>
       </View>
 
-        <View style={{alignItems:'center', justifyContent:'center', 
-                      marginVertical: 20}}>
-          <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
-            <Text>BACK</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+          <Text>BACK</Text>
+        </TouchableOpacity>
+      </View>
 
     </View>
 
