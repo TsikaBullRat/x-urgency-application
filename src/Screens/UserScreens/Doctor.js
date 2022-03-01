@@ -144,7 +144,8 @@ const Doctor = ({ navigation }) => {
 
       </View>
 
-{/*Socials---------------Socials---------Socials---------- */}
+      {/*Socials---------------Socials---------Socials---------- */}
+
       <View style={{ paddingTop: 20, width: 335, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
         <Socials text="Following" number="15" />
         <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
@@ -152,6 +153,7 @@ const Doctor = ({ navigation }) => {
       </View>
 
       {/**------------------About--------------About-------------About----------- */}
+
       <View style={{ marginTop: 35, width: 335 }}>
         <Text style={styles.txtHead}>{`About`}</Text>
         <Text style={styles.txtAbout}>
@@ -284,9 +286,9 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 
-  txtAbout:{
-    fontSize:16, 
-    paddingTop:15
+  txtAbout: {
+    fontSize: 16,
+    paddingTop: 15
   },
 
   docCards: {

@@ -19,7 +19,7 @@ import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
 
-export default function Home ({ navigation, Exit }) {
+export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
     ref = useRef(null),
@@ -31,11 +31,11 @@ export default function Home ({ navigation, Exit }) {
       ? (setImage(auth.currentUser.photoURL),
         setInitial(auth.currentUser.displayName.substring(0, 1)))
       : auth.onAuthStateChanged(doc => {
-          setImage(doc.photoURL)
-          console.log(doc.displayName)
-          setInitial(doc.displayName.substring(0, 1))
-          console.log(auth.currentUser)
-        })
+        setImage(doc.photoURL)
+        console.log(doc.displayName)
+        setInitial(doc.displayName.substring(0, 1))
+        console.log(auth.currentUser)
+      })
   }, [])
 
   useEffect(() => {
@@ -67,23 +67,15 @@ export default function Home ({ navigation, Exit }) {
       />
 
       {/**------------------CallSiren--------------------CallSiren----------------- */}
-      <View
-        style={{
-          width: 340,
-          flexDirection: 'row',
-          marginVertical: 35,
-          left: -5,
-          justifyContent: 'flex-end'
-        }}>
+
+      <View style={{ width: 340, flexDirection: 'row', marginVertical: 35, left: -5, justifyContent: 'flex-end' }}>
         <View style={{ left: -15 }}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('EmergencyContacts')}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')}  >
             <CallSiren />
           </TouchableOpacity>
         </View>
 
-        <View style={{marginTop: 10}}> 
+        <View style={{ marginTop: 10 }}>
           <TouchableOpacity onPress={signOut}>
             <LogOutComp />
           </TouchableOpacity>
@@ -91,48 +83,35 @@ export default function Home ({ navigation, Exit }) {
       </View>
 
       {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
-      <View
-        style={{
-          flexDirection: 'row',
-          width: 345,
-          left: -4,
-          justifyContent: 'space-between'
-        }}>
 
-          <Header />
- 
-          <TouchableOpacity
-            style={{ top: -24 }}
-            onPress={() => navigation.navigate('Doctor')}
-          >
-            {image ? (
-              <Avatar rounded source={{ uri: image }} size='large' />
-            ) : (
-              <View style={styles.temp}>
-                <Text style={styles.temp_text}> {initial} </Text>
-              </View>
-            )}
-          </TouchableOpacity>
+      <View style={{ flexDirection: 'row', width: 345, left: -4, justifyContent: 'space-between' }}>
+
+        <Header />
+
+        <TouchableOpacity style={{ top: -24 }} onPress={() => navigation.navigate('Doctor')} >
+          {image ? (
+            <Avatar rounded source={{ uri: image }} size='large' />
+          ) : (
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
+        </TouchableOpacity>
 
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={{ left:-3 }}>
+
+      <View style={{ left: -3 }}>
         <Menu />
       </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
+
       <View style={{ marginVertical: 20 }}>
-        <ScrollView
-          style={{ height: 435, width: 340 }}
-          vertical={true}
-          showsVerticalScrollIndicator={false}
-        >
+        <ScrollView style={{ height: 435, width: 340 }} vertical={true} showsVerticalScrollIndicator={false} >
           <Card style={styles.menu2}>
-            <TouchableOpacity
-              style={{ alignItems: 'center', justifyContent: 'center' }}
-              onPress={VideoScreen}
-            >
+            <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} onPress={VideoScreen}>
               <VideoList videos={videos} />
             </TouchableOpacity>
           </Card>

@@ -206,12 +206,13 @@ export default function DoctorSignUp({ navigation, setDetails }) {
         </View>
 
         {/**-------BACK------BACK-------BACK */}
-      <View style={{marginTop: 10}}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text>{' BACK '}</Text>
-        </TouchableOpacity>
-      </View>
-      
+
+        <View style={{ marginTop: 10 }}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Text>{' BACK '}</Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
     )
   }

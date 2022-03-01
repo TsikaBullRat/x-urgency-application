@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// import { createStackNavigator } from '@react-navigation/stack'
 import { auth, firestore, LogOut } from './src/firebase'
 import { Loading } from './src/Components'
 import { StyleSheet, NativeModules, View } from 'react-native'
 import { Welcome, FollowMore, UrgentHelp, TakeVideo, ShareContent, LikeConn, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, EmergencyContacts, SignIn, MedSigIn, SignUp, ForgotPassword, ResetPassword, DoctorSignUp, PlayVideo, Doctor } from './src/Screens'
 
-// const Stack = createNativeStackNavigator()
-const Stack = createStackNavigator()
+const Stack = createNativeStackNavigator()
+// const Stack = createStackNavigator()
 
 export default function App() {
   const [run, setRun] = useState(0)
@@ -46,30 +46,30 @@ export default function App() {
 
     <NavigationContainer>
       <> {id ? (doctor ? (
-      <Stack.Navigator initialRouteName='DocHome'>
-        <Stack.Screen name='TakeVideo' component={ForgotPassword} options={{ headerShown: false }} />
+        <Stack.Navigator initialRouteName='DocHome'>
+          <Stack.Screen name='TakeVideo' component={ForgotPassword} options={{ headerShown: false }} />
 
-        <Stack.Screen name='ShareContent' component={ShareContent} options={{ headerShown: false }} />
+          <Stack.Screen name='ShareContent' component={ShareContent} options={{ headerShown: false }} />
 
-        <Stack.Screen name='LikeConn' component={LikeConn} options={{ headerShown: false }} />
+          <Stack.Screen name='LikeConn' component={LikeConn} options={{ headerShown: false }} />
 
-        <Stack.Screen name='DocHome' options={{ headerShown: false }}>
-          {props => <MedicalHome {...props} Exit={Exit} />}
-        </Stack.Screen>
+          <Stack.Screen name='DocHome' options={{ headerShown: false }}>
+            {props => <MedicalHome {...props} Exit={Exit} />}
+          </Stack.Screen>
 
-        <Stack.Screen name='Upload' options={{ headerShown: false }}>
-          {props => <Upload {...props} />}
-        </Stack.Screen>
+          <Stack.Screen name='Upload' options={{ headerShown: false }}>
+            {props => <Upload {...props} />}
+          </Stack.Screen>
 
-        <Stack.Screen name='Update' component={UpdateProfile} options={{ headerShown: false }} />
+          <Stack.Screen name='Update' component={UpdateProfile} options={{ headerShown: false }} />
 
-        <Stack.Screen name='UploadVideo' component={UploadVideo} options={{ headerShown: false }} />
+          <Stack.Screen name='UploadVideo' component={UploadVideo} options={{ headerShown: false }} />
 
-        <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
+          {/* <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} /> */}
 
-        <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
+          <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
       ) : (
         <Stack.Navigator initialRouteName='Welcome'>
           <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
@@ -91,7 +91,8 @@ export default function App() {
 
           <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
 
-          <Stack.Screen name='EmergencyContacts' components={EmergencyContacts} options={{ headerShown: false }}>
+
+          <Stack.Screen name='EmergencyContacts' options={{ headerShown: false }}>
             {props => <EmergencyContacts {...props} />}
           </Stack.Screen>
 
