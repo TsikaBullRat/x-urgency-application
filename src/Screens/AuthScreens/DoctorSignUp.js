@@ -321,7 +321,6 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
         </View>
       </View>
     )
-  }
 }
 
 const styles = StyleSheet.create({

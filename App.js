@@ -24,7 +24,8 @@ import {
   ForgotPassword,
   DoctorSignUp,
   PlayVideo,
-  Doctor
+  Doctor,
+  Clone
 } from './src/Screens'
 
 // const Stack = createNativeStackNavigator()
@@ -107,7 +108,7 @@ export default function App () {
 
               <Stack.Screen
                 name='PlayVideo'
-                component={PlayVideo}
+                component={Clone}
                 options={{ headerShown: false }}
               />
 
@@ -166,7 +167,7 @@ export default function App () {
 
               <Stack.Screen
                 name='PlayVideo'
-                component={PlayVideo}
+                component={Clone}
                 options={{ headerShown: false }}
               />
 

@@ -23,10 +23,8 @@ export default function Home ({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [image, setImage ] = useState()
   const[ initial , setInitial ] = useState()
-  const [videos, setLoad] = useState(null),
-    ref = useRef(null),
-    [image, setImage] = useState(null),
-    [initial, setInitial] = useState('')
+  const [videos, setLoad] = useState(null)
+  const ref = useRef(null)
 
   useEffect(() => {
     auth.currentUser
@@ -118,7 +116,7 @@ export default function Home ({ navigation, Exit }) {
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={{ width: 335, alignItems: 'center' }}>
+      <View style={{ width: 335 }}>
         <Menu />
       </View>
 
@@ -130,12 +128,11 @@ export default function Home ({ navigation, Exit }) {
           showsVerticalScrollIndicator={false}
         >
             <Card style={styles.menu2}>
-              <TouchableOpacity
+              <View
                     style={{ alignItems: 'center', justifyContent: 'center' }}
-                    onPress={VideoScreen}
                   >
-                <VideoList videos={videos} />
-              </TouchableOpacity>
+                <VideoList videos={videos} VideoScreen={VideoScreen}/>
+              </View>
             </Card>
         </ScrollView>
       </View>

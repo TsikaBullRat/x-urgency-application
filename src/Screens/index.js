@@ -20,7 +20,11 @@ import TakeVideo from './UserScreens/TakeVideo'
 import ShareContent from './UserScreens/ShareContent'
 import LikeConn from './UserScreens/LikeConn'
 
-export { Welcome, FollowMore, TakeVideo, UrgentHelp, ShareContent, LikeConn, Doctor, SignIn, SignUp, ForgotPassword, ResetPassword ,Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, MedSignIn}
+//remove clone after testing
+
+export {Clone} from './Clone'
+
+export { Welcome, FollowMore, TakeVideo, UrgentHelp, ShareContent, LikeConn, Doctor, SignIn, SignUp, ForgotPassword, ResetPassword ,Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile}
 
 
 

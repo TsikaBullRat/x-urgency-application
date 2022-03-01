@@ -10,7 +10,7 @@ const ItemSeperatorView = () => {
   )
 }
 
-export const VideoList = ({ videos, navigation }) => {
+export const VideoList = ({ videos, VideoScreen }) => {
   const [status, setStatus] = useState({})
   const ref = useRef(null)
 
@@ -25,12 +25,13 @@ export const VideoList = ({ videos, navigation }) => {
       <View>
         {videos
           ? videos.map((vid) => (
-              <View
+              <TouchableOpacity
                 style={{
                   width: 335,
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}
+                onPress={()=>VideoScreen(vid)}
                 key={vid.id}>
                 <Card
                   style={{
@@ -73,7 +74,7 @@ export const VideoList = ({ videos, navigation }) => {
                   </View>
                 </Card>
                 <ItemSeperatorView />
-              </View>
+              </TouchableOpacity>
             ))
           : 
             null
