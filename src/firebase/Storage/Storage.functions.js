@@ -62,7 +62,7 @@ const LoadSet = (Load, query) => {
     var getLink
     var metadata = firestore.collection('Videos')
     var info = firestore.collection("Users")
-    
+
     const getTimeFrame = (date) => {
         let today = new Date()
         let frame

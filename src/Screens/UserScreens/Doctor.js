@@ -1,99 +1,67 @@
-import React, { useState, useEffect } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import SwitchSelector from 'react-native-switch-selector'
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import SwitchSelector from "react-native-switch-selector";
 import { Card } from 'react-native-paper'
-import { Avatar, Badge } from 'react-native-elements'
-import { Socials } from '../../Components'
-import { auth, firestore } from '../../firebase'
-import Button from '../../Components/button'
-import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons'
+import { Avatar, Badge } from 'react-native-elements';
+import { Socials, } from '../../Components';
+import { auth, firestore } from '../../firebase';
+import Button from '../../Components/button';
+import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Doctor = ({ navigation }) => {
-  const [About, setAbout] = useState(true)
-  const [Qualification, setQualification] = useState(false)
-  const [Specialization, setSpecialization] = useState(false)
-  const [Contact, setContact] = useState(false)
-  const [doctor, setDoctor] = useState('')
-  const [email, setEmail] = useState('')
-  const [data, setData] = useState(null)
-  const [subscription, setSubscription] = useState({
-    text: '',
-    Func: () => null
-  })
 
-  {/*-----------------------------------doc.data().username was the wrong way to open document!-----------------------------------*/}
+  const [About, setAbout] = useState(true);
+  const [Qualification, setQualification] = useState(false);
+  const [Specialization, setSpecialization] = useState(false);
+  const [Contact, setContact] = useState(false);
+  const [doctor, setDoctor] = useState("")
+  const [email, setEmail] = useState("")
+  const [data, setData] = useState(null);
+  const [subscription, setSubscription] = useState({ text: "", Func: () => null })
 
   const getDoctorInfo = () => {
-    firestore
-      .collection('Users')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .collection('cred')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .get()
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
       .then(doc => {
         setData(doc.data())
       })
 
-    firestore
-      .collection('Users')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .get()
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
       .then(doc => {
-        setDoctor(doc.username)
-        setEmail(doc.email)
+        setDoctor(doc.data().username)
+        setEmail(doc.data().email)
       })
   }
 
   const Subscribe = async () => {
-    let change = await firestore
-      .collection('Users')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .collection('cred')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .get()
+    let change = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
       .then(doc => {
-        return doc.subscribers
+        return doc.data().subscribers
       })
 
-    firestore
-      .collection('Users')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .collection('cred')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .update({
-        subscribers: [...change, auth.currentUser.uid]
-      })
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").update({
+      subscribers: [...change, auth.currentUser.uid]
+    })
 
     setSubscription({
       Func: unSubscribe,
-      text: 'unfollow'
+      text: "unfollow"
     })
   }
 
   const unSubscribe = async () => {
-    let change = await firestore
-      .collection('Users')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .collection('cred')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .get()
+    let change = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
       .then(doc => {
         return doc.data().subscribers
       })
 
     change = change.filter(item => item !== auth.currentUser.uid)
-    firestore
-      .collection('Users')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .collection('cred')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .update({
-        subscribers: change
-      })
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").update({
+      subscribers: change
+    })
 
     setSubscription({
       Func: Subscribe,
-      text: 'follow'
+      text: "follow"
     })
   }
 
@@ -102,15 +70,11 @@ const Doctor = ({ navigation }) => {
   }, [])
 
   const [image, setImage] = useState(null)
-  const [initial, setInitial] = useState('N')
+  const [initial, setInitial] = useState("N")
   const getProfile = async () => {
     let name
     setImage(false)
-    name = await firestore
-      .collection('Users')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .get()
-      .then(doc => doc.username) 
+    name = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get().then(doc => doc.data().username)
     setInitial(name.substring(0, 1))
   }
 
@@ -119,115 +83,75 @@ const Doctor = ({ navigation }) => {
   }, [])
 
   useEffect(() => {
-    firestore
-      .collection('Users')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .collection('cred')
-      .doc(/*info*/ 'XYRltIaLknbfJrvZG4OfyOtGYTz2')
-      .get()
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
       .then(doc => {
         let array = []
-        array = [...array, doc.subscribers]
+        array = [...array, doc.data().subscribers]
         let index = array.indexOf(auth.currentUser.uid)
         if (index === -1) {
           setSubscription({
             Func: unSubscribe,
-            text: 'unfollow'
+            text: "unfollow"
           })
+
         } else {
           setSubscription({
             Func: Subscribe,
-            text: 'follow'
+            text: "follow"
           })
         }
       })
   }, [])
 
   return (
+
     <View style={styles.container}>
       <View>
-        {image ? (
-          <Avatar
-            style={styles.avatar}
-            rounded
-            source={{ uri: image }}
-            size='large'
-          />
-        ) : (
-          <View style={styles.temp}>
-            <Text style={styles.temp_text}> {initial} </Text>
-          </View>
-        )}
+        {
+          image ? (
+            <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+          ) : (
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
       </View>
 
       {/*Doctor-Cards---------------Doctor-Cards---------Doctor-Cards */}
 
-      <View
-        style={{
-          width: 355,
-          marginTop: 10,
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          flexDirection: 'row'
-        }}
-      >
+      <View style={{ width: 355, marginTop: 10, alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row', }}>
+
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
-            <MaterialCommunityIcons
-              name='certificate-outline'
-              size={34}
-              color='#fff'
-            />
-            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
-              {' '}
-              {`Qualifiation`}
-            </Text>
+            <MaterialCommunityIcons name="certificate-outline" size={34} color="#fff" />
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}> {`Qualifiation`}</Text>
           </View>
         </Card>
 
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
-            <MaterialCommunityIcons
-              name='briefcase-clock-outline'
-              size={34}
-              color='#fff'
-            />
-            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
-              {' '}
-              {`Experience`}{' '}
-            </Text>
+            <MaterialCommunityIcons name="briefcase-clock-outline" size={34} color="#fff" />
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>  {`Experience`} </Text>
           </View>
         </Card>
 
         <Card style={styles.docCards}>
           <View style={{ marginTop: 10, alignItems: 'center' }}>
-            <Feather name='award' size={32} color='#fff' />
-            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>
-              {' '}
-              {`Awards`}{' '}
-            </Text>
+            <Feather name="award" size={32} color="#fff" />
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>  {`Awards`} </Text>
           </View>
         </Card>
+
       </View>
 
-      <View
-        style={{
-          paddingTop: 20,
-          width: 300,
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-around'
-        }}
-      >
-        <Socials text='Following' number='15' />
-        <Socials
-          text='Followers'
-          number={/*data.subscribers ? data.subscribers.length :*/ 0}
-        />
-        <Socials text='Likes' number='3.1M' />
+      <View style={{ paddingTop: 20, width: 300, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+        <Socials text="Following" number="15" />
+        <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
+        <Socials text="Likes" number="3.1M" />
       </View>
 
       {/**------------------About--------------About-------------About----------- */}
+
       <View style={{ marginTop: 35, width: 335 }}>
         <Text style={styles.txtHead}>{`About`}</Text>
         <Text style={styles.txtAbout}>
@@ -236,50 +160,34 @@ const Doctor = ({ navigation }) => {
       </View>
 
       {/**----------------Contacts---------Contacts------------Contacts----------- */}
-      <View style={{ width: 335, marginTop: 35, alignItems:'center' }}>
 
-      {/*-------------CALL------------CALL---------CALL--------- */}
-          <View style={{ width:220, flexDirection: 'row', justifyContent:'space-evenly'}}>
-            <Feather name='phone' size={20} color='black' />
-            <Text
-              style={{
-                textAlign:'center',
-                paddingTop: 2,
-                fontSize: 16,
-                color: '#F47066'
-              }}
-            >
-              {`Call Now`}
-            </Text>
-            <Text style={{ paddingTop: 2, fontSize: 16 }}>
-              {`(053) 871 2956`}
-            </Text>
-          </View>
+      <View style={{ width: 335, marginTop: 35, alignItems: 'center' }}>
 
-          <View style={{marginTop:10}}>
-            <Text style={{paddingTop: 5, textAlign:'center' }}>{`OR`}</Text>
-          </View>
+        {/*-------------CALL------------CALL---------CALL--------- */}
 
-{/*---------------SMS---------------SMS----------------SMS----- */}
-          <View style={{ marginTop:10, width:175, flexDirection: 'row', justifyContent:'space-evenly' }}>
-            <AntDesign name='mail' size={20} color='black' />
-            <Text
-              style={{
-                paddingLeft: 10,
-                paddingTop: 2,
-                fontSize: 16,
-                color: '#F47066'
-              }}
-            >
-              {' '}
-              {`SMS`}
-            </Text>
-            <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
-              {`078 454 2123`}
-            </Text>
-          </View>
+        <View style={{ width: 220, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+          <Feather name='phone' size={20} color='black' />
+          <Text style={{ textAlign: 'center', paddingTop: 2, fontSize: 16, color: '#F47066' }} > {`Call Now`}</Text>
+          <Text style={{ paddingTop: 2, fontSize: 16 }}>
+            {`(053) 871 2956`}
+          </Text>
+        </View>
+
+        <View style={{ marginTop: 10 }}>
+          <Text style={{ paddingTop: 5, textAlign: 'center' }}>{`OR`}</Text>
+        </View>
+
+        {/*---------------SMS---------------SMS----------------SMS----- */}
+
+        <View style={{ marginTop: 10, width: 175, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+          <AntDesign name='mail' size={20} color='black' />
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066' }} >  {' '} {`SMS`} </Text>
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+            {`078 454 2123`}
+          </Text>
+        </View>
       </View>
-
+      {/*--------------BACK------------BACK------------BACK */}
 
 {/*--------------BACK------------BACK------------BACK */}
       <View
@@ -292,6 +200,7 @@ const Doctor = ({ navigation }) => {
         </TouchableOpacity>
       </View>
     </View>
+
   )
 }
 
@@ -299,29 +208,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
 
   textTitle: {
     fontFamily: 'Roboto',
     color: '#F47066',
     fontSize: 25,
-    marginTop: 5
+    marginTop: 5,
   },
 
   textTitle2: {
     fontSize: 15,
     marginTop: 20,
-    marginLeft: 5
+    marginLeft: 5,
   },
 
   box: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
 
   tab: {
     paddingLeft: 5,
-    width: 380
+    width: 380,
   },
 
   avatar: {
@@ -334,23 +243,23 @@ const styles = StyleSheet.create({
     shadowColor: 'grey',
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.4,
-    elevation: 1
+    elevation: 1,
   },
 
   words: {
     width: 250,
     textAlign: 'center',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
 
   follow: {
     top: 10,
-    backgroundColor: '#f47066',
+    backgroundColor: "#f47066",
     width: 70,
     height: 40,
     borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   txtHead: {
@@ -371,13 +280,13 @@ const styles = StyleSheet.create({
 
   temp_text: {
     fontSize: 40,
-    color: '#fff'
+    color: '#fff',
   },
 
   textTitle: {
     color: 'red',
     fontSize: 25,
-    marginTop: 5
+    marginTop: 5,
   },
 
   txtAbout:{
@@ -390,8 +299,9 @@ const styles = StyleSheet.create({
     height: 80,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F47066'
-  }
-})
+    backgroundColor: '#F47066',
+  },
 
-export default Doctor
+});
+
+export default Doctor;
