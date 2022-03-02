@@ -11,9 +11,13 @@ const ItemSeperatorView = () => {
   )
 }
 
-export const VideoList = ({ videos, VideoScreen }) => {
+export const VideoList = ({ videos, VideoScreen, navigation }) => {
   const [status, setStatus] = useState({})
   const ref = useRef(null)
+
+  VideoScreen = (data) => {
+      navigation.navigate('PlayVideo', { data })
+    }
 
   return (
 
@@ -21,7 +25,6 @@ export const VideoList = ({ videos, VideoScreen }) => {
       <ScrollView style={{ height: 420, width: 335 }} vertical={true} showsVerticalScrollIndicator={false} >
         <View>
           {videos ? videos.map((vid) => (<View style={{ width: 335, alignItems: 'center', justifyContent: 'center' }}
-
             key={vid.id}>
             <Card style={{ width: 335, height: 245, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FAFAFA' }} >
 
@@ -67,5 +70,4 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'Roboto'
   }
-
 })

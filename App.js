@@ -79,55 +79,30 @@ export default function App() {
         {id ? (
           doctor ? (
             <>
-              <Stack.Screen
-                name='TakeVideo'
-                component={ForgotPassword}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                name='ShareContent'
-                component={ShareContent}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                name='LikeConn'
-                component={LikeConn}
-                options={{ headerShown: false }}
-              />
-
+              {
+                firstTimeUser?(
+                  <>
+                    <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
+                    <Stack.Screen name='FollowMore' component={FollowMore} options={{ headerShown: false }} />
+                    <Stack.Screen name='UrgentHelp' component={UrgentHelp} options={{ headerShown: false }} />
+                    <Stack.Screen name='TakeVideo' component={TakeVideo} options={{ headerShown: false }} />
+                    <Stack.Screen name='ShareContent' component={ShareContent} options={{ headerShown: false }} />
+                    <Stack.Screen name='LikeConn' component={LikeConn} options={{ headerShown: false }} />
+                  </>
+                ):(
+                  null
+                )
+              }
               <Stack.Screen name='DocHome' options={{ headerShown: false }}>
                 {props => <MedicalHome {...props} Exit={Exit} />}
               </Stack.Screen>
-
               <Stack.Screen name='Upload' options={{ headerShown: false }}>
                 {props => <Upload {...props} />}
               </Stack.Screen>
-
-              <Stack.Screen
-                name='Update'
-                component={UpdateProfile}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                name='UploadVideo'
-                component={UploadVideo}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                name='PlayVideo'
-                component={Clone}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                name='Doctor'
-                component={Doctor}
-                options={{ headerShown: false }}
-              />
+              <Stack.Screen name='Update' component={UpdateProfile} options={{ headerShown: false }} />
+              <Stack.Screen name='UploadVideo' component={UploadVideo} options={{ headerShown: false }} />
+              <Stack.Screen name='PlayVideo' component={Clone} options={{ headerShown: false }} />
+              <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }} />
             </>
           ) : (
             <>
@@ -137,23 +112,9 @@ export default function App() {
                     <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
                     <Stack.Screen name='FollowMore' component={FollowMore} options={{ headerShown: false }} />
                     <Stack.Screen name='UrgentHelp' component={UrgentHelp} options={{ headerShown: false }} />
-                    <Stack.Screen
-                name='TakeVideo'
-                component={TakeVideo}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                name='ShareContent'
-                component={ShareContent}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                name='LikeConn'
-                component={LikeConn}
-                options={{ headerShown: false }}
-              />
+                    <Stack.Screen name='TakeVideo' component={TakeVideo} options={{ headerShown: false }} />
+                    <Stack.Screen name='ShareContent' component={ShareContent} options={{ headerShown: false }} />
+                    <Stack.Screen name='LikeConn' component={LikeConn} options={{ headerShown: false }} />
                   </>
                 ):(
                   null
@@ -162,17 +123,8 @@ export default function App() {
               <Stack.Screen name="Home" options={{ headerShown: false }} >
                 {props => <Home {...props} Exit={Exit} />}
               </Stack.Screen>
-              <Stack.Screen
-                name='Doctor'
-                component={Doctor}
-                options={{ headerShown: false }}
-              />
-
-              <Stack.Screen
-                name='PlayVideo'
-                component={Clone}
-                options={{ headerShown: false }}
-              />
+              <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }} />
+              <Stack.Screen name='PlayVideo' component={Clone} options={{ headerShown: false }} />
               <Stack.Screen name='EmergencyContacts' options={{ headerShown: false }} >
                 {props => <EmergencyContacts {...props} />}
               </Stack.Screen>

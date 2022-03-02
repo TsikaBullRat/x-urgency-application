@@ -1,8 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { View, StyleSheet, TouchableOpacity, Image, Text, ScrollView } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Text,
+  ScrollView
+} from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
-import { auth, LoadSet, firestore, LogOut } from '../../firebase'
+import { auth, LoadSet, firestore 
+} from '../../firebase'
+import LogOut from '../../firebase/Auth/LogOut'
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import CallSiren from '../../Components/CallSiren'
@@ -14,10 +23,10 @@ import { AlertNote } from '../../Components/Alert'
 
 export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
-  const [image, setImage] = useState()
-  const [initial, setInitial] = useState()
-  const [videos, setLoad] = useState(null)
-  const ref = useRef(null)
+  const [videos, setLoad] = useState(null),
+    ref = useRef(null),
+    [image, setImage] = useState(null),
+    [initial, setInitial] = useState('')
 
   useEffect(() => {
     auth.currentUser
@@ -33,11 +42,12 @@ export default function Home({ navigation, Exit }) {
 
   useEffect(() => {
     LoadSet(setLoad)
-    return () => LoadSet(setLoad)
   }, [])
 
   const [displayModal, setDisplaModal] = useState(false),
-    [message, setMessage] = useState(''),
+    
+  [message, setMessage] = useState(''),
+    
     VideoScreen = data => {
       navigation.navigate('PlayVideo', { data })
     }
@@ -118,7 +128,7 @@ export default function Home({ navigation, Exit }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems:'center',
     backgroundColor: '#fff'
   },
 
@@ -131,6 +141,7 @@ const styles = StyleSheet.create({
     width: 335,
     height: 520,
     borderRadius: 15,
+    shadowOffset: {},
     shadowOpacity: 0.8,
     shadowRadius: 3.84,
     elevation: 5

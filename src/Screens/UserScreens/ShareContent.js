@@ -32,7 +32,7 @@ export default function ShareContent({ navigation }) {
       {/**------btnNext-----------btnNext--------- */}
 
       <View style={{ width: 360, marginVertical: 25, alignItems: 'center' }}>
-        <TouchableOpacity onPress={() => navigation.navigate('FollowMore')} style={styles.btnNext} >
+        <TouchableOpacity onPress={() => navigation.navigate('LikeConn')} style={styles.btnNext} >
           <Text style={{ fontWeight: 'bold', color: '#fff', paddingLeft: 25 }} >   {`NEXT`} </Text>
 
           <View style={{ left: 40 }} >

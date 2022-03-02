@@ -5,6 +5,7 @@ import SignUp from './AuthScreens/SignUp'
 import DoctorSignUp from './AuthScreens/DoctorSignUp'
 import ForgotPassword from './AuthScreens/ForgotPassword'
 import ResetPassword from './AuthScreens/ResetPassword'
+import MedSignIn from './AuthScreens/MedSignIn'
 import UploadVideo from "./DoctorsScreens/UploadVideo"
 import MedicalHome from "./DoctorsScreens/MedicalHome"
 import Upload from "./DoctorsScreens/Upload"
@@ -18,11 +19,8 @@ import TakeVideo from './UserScreens/TakeVideo'
 import ShareContent from './UserScreens/ShareContent'
 import LikeConn from './UserScreens/LikeConn'
 
-//remove clone after testing
 
-export { Clone } from './Clone'
-
-export { Welcome, FollowMore, TakeVideo, UrgentHelp, ShareContent, LikeConn, Doctor, SignIn, SignUp, ForgotPassword, ResetPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile }
+export { Welcome, FollowMore, TakeVideo, UrgentHelp, ShareContent, LikeConn, Doctor, SignIn, SignUp, MedSignIn, ForgotPassword, ResetPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile }
 
 
 
