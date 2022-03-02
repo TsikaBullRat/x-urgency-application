@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth, firestore, LogOut } from './src/firebase'
 import { Loading } from './src/Components'
 import { StyleSheet, NativeModules, View } from 'react-native'
-import { Welcome, FollowMore, UrgentHelp, TakeVideo, ShareContent, LikeConn, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, EmergencyContacts, SignIn, MedSigIn, SignUp, ForgotPassword, ResetPassword, DoctorSignUp, PlayVideo, Doctor } from './src/Screens'
+import { Welcome, FollowMore, UrgentHelp, TakeVideo, ShareContent, LikeConn, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, EmergencyContacts, SignIn, MedSignIn, SignUp, ForgotPassword, ResetPassword, DoctorSignUp, PlayVideo, Doctor } from './src/Screens'
 
 const Stack = createNativeStackNavigator()
 // const Stack = createStackNavigator()
@@ -91,7 +91,6 @@ export default function App() {
 
           <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
 
-
           <Stack.Screen name='EmergencyContacts' options={{ headerShown: false }}>
             {props => <EmergencyContacts {...props} />}
           </Stack.Screen>
@@ -120,10 +119,8 @@ export default function App() {
           <Stack.Screen name='ResetPassword' component={ResetPassword} options={{ headerShown: false }}
           />
 
-          <Stack.Screen name='MedSigIn' component={MedSigIn} options={{ headerShown: false }}
-          >
-          {props => <MedSigIn {...props} />}
-          </Stack.Screen>
+          <Stack.Screen name='MedSignIn' component={MedSignIn} options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       )}
       </>

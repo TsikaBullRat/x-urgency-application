@@ -11,9 +11,11 @@ const ItemSeperatorView = () => {
   )
 }
 
-export const VideoList = ({ videos, VideoScreen }) => {
+export const VideoList = ({ videos }) => {
   const [status, setStatus] = useState({})
   const ref = useRef(null)
+
+  
 
   return (
 

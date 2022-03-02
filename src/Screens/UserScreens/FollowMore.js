@@ -31,9 +31,9 @@ export default function FollowMore({ navigation }) {
 
       {/**------btnNext-----------btnNext--------- */}
 
-      <View style={{ width: 360, marginVertical: 25, alignItems: 'center' }}>
+      <View style={{ width: 360, marginVertical: 15, alignItems: 'center' }}>
         <TouchableOpacity onPress={() => navigation.navigate('UrgentHelp')} style={styles.btnNext} >
-          <Text style={{ fontWeight: 'bold', color: '#fff', paddingLeft: 25 }} > {`NEXT`} </Text>
+         <Text style={{ fontWeight: 'bold', color: '#fff', paddingLeft: 25 }} > {`NEXT`}</Text>
           <View style={{ left: 40 }}>
             <AntDesign name='arrowright' size={25} color='#fff' />
           </View>
@@ -42,9 +42,9 @@ export default function FollowMore({ navigation }) {
 
       {/**-------BACK------BACK-------BACK */}
 
-      <View style={{ marginVertical: 15, alignItems: 'center' }}>
-        <TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
-          <Text>BACK</Text>
+      <View style={{ width: 360, marginVertical: 15, alignItems: 'center' }}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={{textAlign:'center'}}>{`BACK`}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   btnNext: {
     height: 50,
     width: '60%',
-    top: -30,
+    top: -20,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',

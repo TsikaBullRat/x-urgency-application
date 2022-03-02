@@ -12,7 +12,17 @@
  **/
 
 import React, { useState, useEffect, useRef } from 'react'
-import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button, Pressable } from 'react-native'
+import {
+  Text,
+  View,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+  ScrollView,
+  TextInput,
+  Button,
+  Pressable
+} from 'react-native'
 import { Card } from 'react-native-paper'
 import { AntDesign } from '@expo/vector-icons'
 import { Entypo } from '@expo/vector-icons'
@@ -24,7 +34,7 @@ import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore } from '../../firebase'
 import { Collect, Post } from '../../firebase'
 
-export default function PlayVideo({ navigation, route }) {
+export default function PlayVideo ({ navigation, route }) {
   useEffect(() => {
     auth
       .signInWithEmailAndPassword('rando@gmail.com', 'KingofRandom')
@@ -41,7 +51,7 @@ export default function PlayVideo({ navigation, route }) {
   const [views, setViews] = useState(data.views /*42*/)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
-  const refrence = useRef(
+  const reference = useRef(
     data.url /*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/
   )
   const [info, setInfo] = useState()
@@ -51,7 +61,6 @@ export default function PlayVideo({ navigation, route }) {
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
     },
-
     changeStyleStatusBar = () => {
       const styleId = styleTypes.indexOf(styleStatusBar) + 1
       if (styleId === styleTypes.length) {
@@ -60,7 +69,6 @@ export default function PlayVideo({ navigation, route }) {
 
       return setStyleStatusBar(styleTypes[styleId])
     },
-
     addAct = async () => {
       let metadata = firestore
         .collection('Videos')
@@ -70,19 +78,17 @@ export default function PlayVideo({ navigation, route }) {
       found
         ? null
         : (metadata.doc(auth.currentUser.uid).set({
-          liked: false,
-          disliked: false,
-          Comments: [null],
-          ref: auth.currentUser.uid
-        }),
+            liked: false,
+            disliked: false,
+            Comments: [null],
+            ref: auth.currentUser.uid
+          }),
           setViews(views + 1))
     },
-
     Navigate = () => {
       let match = data.match
       navigation.navigate('Doctor', { match })
     },
-    
     Delete = remove => {
       firestore
         .collection('Videos')
@@ -124,17 +130,43 @@ export default function PlayVideo({ navigation, route }) {
   return (
     <View style={styles.contain}>
 
+    {/**-------BACK------BACK-------BACK */}
+
+      <View style={{ marginTop: 10, width:340, alignItems:'flex-start' }}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text>{`BACK`}</Text>
+        </TouchableOpacity>
+      </View>
+
       {/**-------------Video----------------Video-----------------Video---------------- */}
 
-      <View style={{ width: 340, marginTop: 50 }}>
-        <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode='stretch' isLooping style={{ width: 340, height: 180 }} />
+      <View style={{ width: 340, marginTop: 25 }}>
+        <Video
+          ref={reference}
+          source={{ uri: videoPlay }}
+          useNativeControls
+          resizeMode='stretch'
+          isLooping
+          style={{ width: 340, height: 180 }}
+        />
       </View>
 
       <View>
         {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
         {!visibleStatusBar ? (
-          <View style={{ width: 340, marginTop: 15, alignItems: 'center', justifyContent: 'space-between' }} >
-            <View style={{ flexDirection: 'row', width: 340, alignItems: 'center', justifyContent: 'space-between' }}>
+          <View
+            style={{
+              width: 340,
+              //marginTop: 15,
+              justifyContent: 'space-between'
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                width: 340,
+                alignItems: 'center',
+                justifyContent: 'space-between'
+              }}>
               <View>
                 <Text style={{ fontWeight: 'bold', color: '#F47066' }}>
                   {data.title /*"My video"*/}
@@ -147,24 +179,40 @@ export default function PlayVideo({ navigation, route }) {
               {/*------------DropDown-------------DropDown--------DropDown*/}
 
               <View style={{ marginLeft: 25, marginTop: 20 }}>
-                <TouchableOpacity title='topNav' onPress={() => changeVisibilityStatusBar()} >
-                  <AntDesign name='downcircle' size={18} color='black' style={styles.drop} />
+                <TouchableOpacity
+                  title='topNav'
+                  onPress={() => changeVisibilityStatusBar()}
+                >
+                  <AntDesign
+                    name='downcircle'
+                    size={18}
+                    color='black'
+                    style={styles.drop}
+                  />
                 </TouchableOpacity>
               </View>
-
             </View>
 
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
 
             <View
-              style={{ width: 360, flexDirection: 'row', marginTop: 25, alignItems: 'center', justifyContent: 'space-around' }}  >
-
+              style={{
+                width: 360,
+                flexDirection: 'row',
+                marginTop: 15,
+                borderTopWidth:1,
+                borderBottomWidth:1,
+                borderColor:'#f47066',        alignItems: 'center',
+                justifyContent: 'space-around'
+              }}
+            >
               {/*------------Likes-------------Likes--------Likes*/}
 
               <View style={{ left: -8 }}>
                 {
                   <Likes
-                    data={data.firestore /*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/
+                    data={
+                      data.firestore /*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/
                     }
                   />
                 }
@@ -174,8 +222,10 @@ export default function PlayVideo({ navigation, route }) {
 
               <View style={{ marginLeft: 10, marginTop: 3 }}>
                 {
-                  <Dislikes data={data.firestore /*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/
-                  }
+                  <Dislikes
+                    data={
+                      data.firestore /*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/
+                    }
                   />
                 }
               </View>
@@ -183,13 +233,13 @@ export default function PlayVideo({ navigation, route }) {
               {/*------------Share-------------Share--------Share*/}
 
               <View style={{ marginLeft: 15 }}>
-                <TouchableOpacity onPress={() => ShareItem(data.url /*videoPlay*/)} >
-
+                <TouchableOpacity
+                  onPress={() => ShareItem(data.url /*videoPlay*/)}
+                >
                   <View style={{ marginLeft: 8 }}>
                     <FontAwesome5 name='share' size={20} color='black' />
                   </View>
                   <Text style={{ paddingTop: 5 }}> Share </Text>
-
                 </TouchableOpacity>
               </View>
 
@@ -201,13 +251,26 @@ export default function PlayVideo({ navigation, route }) {
                 </View>
                 <Text style={{ paddingTop: 5 }}> Save </Text>
               </View>
-
             </View>
 
             {/*------------Avatar-------------Avatar--------Avatar*/}
 
-            <View style={{ width: 340, marginTop: 50, flexDirection: 'row', justifyContent: 'flex' }}>
-              <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} size='medium' onPress={Navigate} />
+            <View
+              style={{
+                width: 340,
+                marginTop: 25,
+                flexDirection: 'row',
+                justifyContent: 'flex'
+              }}
+            >
+              <Avatar
+                rounded
+                source={{
+                  uri: 'https://randomuser.me/api/portraits/men/41.jpg'
+                }}
+                size='medium'
+                onPress={Navigate}
+              />
               <Text style={{ paddingTop: 15 }}> {data.owner}</Text>
             </View>
 
@@ -215,40 +278,69 @@ export default function PlayVideo({ navigation, route }) {
 
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: 'row' }}>
-                <TextInput style={styles.comment} name='comment' placeholder='Write a comment' onChangeText={text => setComment(text)} />
-                <View style={{ width: 90, height: 50, borderRadius: 15, marginTop: 2 }}>
-                  <Button color='#F47066' onPress={() => Post(comment, data.firestore)} title='Comment' />
+                <TextInput
+                  style={styles.comment}
+                  name='comment'
+                  placeholder='Write a comment'
+                  onChangeText={text => setComment(text)}
+                />
+                <View
+                  style={{
+                    width: 90,
+                    height: 50,
+                    borderRadius: 15,
+                    marginTop: 2
+                  }}
+                >
+                  <Button
+                    color='#F47066'
+                    onPress={() => Post(comment, data.firestore)}
+                    title='Comment'
+                  />
                 </View>
               </View>
             </Card>
 
             <View style={{ width: 340, alignItems: 'flex-start' }}>
-              <Text style={{ paddingTop: 35, paddingLeft: 10, fontWeight: 'medium', fontSize: 18 }} > Comments: {count} </Text>
+              <Text
+                style={{
+                  paddingTop: 15,
+                  paddingLeft: 10,
+                  fontWeight: 'medium',
+                  fontSize: 18
+                }}>
+                Comments: {count}
+              </Text>
             </View>
 
-            <ScrollView style={{ height: 250 }} showsVerticalScrollIndicator={false} >
+            <ScrollView
+              style={{ height: 220 }}
+              showsVerticalScrollIndicator={false}>
               <Card style={{ height: 340, width: 340 }}>
-                {/* {Comments.map((item, index) => (
-                <Card
-                  style={{
-                    backgroundColor: '#e8d7cc',
-                    height: 100,
-                    marginTop: 10
-                  }}
-                  key={index}>
-                  <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
-                    <Text>
-                      <Text style={{ color: 'red' }}>{item.user}</Text>:{' '}
-                      {item.comment}
-                    </Text>
-                    {item.user === auth.currentUser.displayName ? (
-                      <Pressable onPress={() => Delete(item.comment)}>
-                        <Text>remove</Text>
-                      </Pressable>
-                    ) : <></>}
-                  </SafeAreaView>
-                </Card>
-              ))} */}
+                {Comments.map((item, index) => (
+                  <Card
+                    style={{
+                      backgroundColor: '#e8d7cc',
+                      height: 100,
+                      marginTop: 10
+                    }}
+                    key={index}
+                  >
+                    <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
+                      <Text>
+                        <Text style={{ color: 'red' }}>{item.user}</Text>:{' '}
+                        {item.comment}
+                      </Text>
+                      {item.user === auth.currentUser.displayName ? (
+                        <Pressable onPress={() => Delete(item.comment)}>
+                          <Text>remove</Text>
+                        </Pressable>
+                      ) : (
+                        <></>
+                      )}
+                    </SafeAreaView>
+                  </Card>
+                ))}
 
                 <>
                   <View style={styles.comments}>
@@ -290,13 +382,21 @@ export default function PlayVideo({ navigation, route }) {
             </ScrollView>
           </View>
         ) : (
-
           /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
 
           <View style={{ backgroundColor: '#fff', marginTop: 15 }}>
-            <View style={{ width: 340, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }} >
+            <View
+              style={{
+                width: 340,
+                marginTop: 20,
+                flexDirection: 'row',
+                justifyContent: 'space-between'
+              }}
+            >
               <View>
-                <Text style={{ fontWeight: 'bold', color: '#F47066', fontSize: 22 }} >
+                <Text
+                  style={{ fontWeight: 'bold', color: '#F47066', fontSize: 22 }}
+                >
                   {'Description: '}
                 </Text>
                 <Text style={{ maxWidth: 315, paddinLeft: 20 }}>
@@ -308,25 +408,22 @@ export default function PlayVideo({ navigation, route }) {
                 <AntDesign name='closecircle' size={18} color='black' />
               </TouchableOpacity>
             </View>
+
+            <View
+              style={{ width: 340, marginTop: 25, alignItems: 'flex-start' }}
+            >
+              <Text>
+                tgvhtvvt htvvvhg vvgvgh hgvhgvghv hgvhgv ghvhgv hgvhgv hgvhgv
+                hgvghv hgvhgv hgvhgv hgvhgvh gvhgvghv hgvhgv hgvhgv ghv ghvghvgh
+                hgvhgv hvhgv hgvhgv hgvhv hgvhgv hgvhgv hgvgh ghvhgvhvhgv hgvhgv
+                hgvhgv hgvghv hgvhgv ghvhgvghvhgv hgvhvh v
+              </Text>
+            </View>
           </View>
         )}
-
       </View>
 
-      <View style={{ width: 340, marginTop: 25, alignItems: 'flex-start' }}>
-        <Text>
-          tgvhtvvt htvvvhg vvgvgh hgvhgvghv hgvhgv ghvhgv hgvhgv hgvhgv hgvghv hgvhgv hgvhgv hgvhgvh
-          gvhgvghv hgvhgv hgvhgv ghv ghvghvgh hgvhgv hvhgv hgvhgv hgvhv hgvhgv hgvhgv hgvgh ghvhgvhvhgv hgvhgv hgvhgv hgvghv hgvhgv ghvhgvghvhgv hgvhvh v
-        </Text>
-      </View>
-
-      {/**-------BACK------BACK-------BACK */}
-
-      <View style={{ marginTop: 10 }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text>{`BACK`}</Text>
-        </TouchableOpacity>
-      </View>
+      
     </View>
   )
 }
@@ -363,7 +460,7 @@ const styles = StyleSheet.create({
   comments: {
     width: 295,
     left: 3,
-    marginVertical: 15,
+    marginVertical: 10,
     flexDirection: 'row',
     borderRadius: 10,
     backgroundColor: '#f47066',

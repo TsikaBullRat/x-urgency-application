@@ -43,7 +43,9 @@ export default function Home({ navigation, Exit }) {
   }, [])
 
   const [displayModal, setDisplaModal] = useState(false),
-    [message, setMessage] = useState(''),
+    
+  [message, setMessage] = useState(''),
+    
     VideoScreen = data => {
       navigation.navigate('PlayVideo', { data })
     }
@@ -124,7 +126,7 @@ export default function Home({ navigation, Exit }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems:'center',
     backgroundColor: '#fff'
   },
 
