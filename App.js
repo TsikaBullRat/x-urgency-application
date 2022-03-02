@@ -140,6 +140,7 @@ export default function App() {
               <Stack.Screen name='Home' options={{ headerShown: false }}>
                 {props => <Home {...props} Exit={Exit} />}
               </Stack.Screen>
+
               <Stack.Screen
                 name='Doctor'
                 component={Doctor}
@@ -168,16 +169,19 @@ export default function App() {
               options={{ headerShown: false }}
               component={SignIn}
             />
+
             <Stack.Screen
               name='Doctor SignUp'
               options={{ headerShown: false }}
               component={DoctorSignUp}
             />
+
             <Stack.Screen
               name='Sign Up'
               options={{ headerShown: false }}
               component={SignUp}
             />
+
             <Stack.Screen
               name='Reset Password'
               component={ForgotPassword}
