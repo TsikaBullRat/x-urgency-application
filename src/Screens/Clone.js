@@ -67,11 +67,7 @@ export const Clone = ({ route }) => {
                         </View>
 
                         <Text onPress={() => ShareItem(data.url)}>
-                            <FontAwesome5
-                                name="share"
-                                size={20}
-                                color="black"
-                            />
+                            <FontAwesome5 name="share" size={20} color="black" />
                             <Text style={{ paddingTop: "5" }}>{" Share "}</Text>
                         </Text>
 
