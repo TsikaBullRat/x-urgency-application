@@ -28,7 +28,7 @@ import { View, StyleSheet, } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import { auth } from '../../firebase';
 
-export default function MedicalHome({ navigation }) {
+export default function MedicalHome() {
   const Logout = () => {
     auth.signOut()
     setDone(false)

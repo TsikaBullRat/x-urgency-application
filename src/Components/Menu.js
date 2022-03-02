@@ -8,11 +8,11 @@ export default function Menu({ list, setVids }) {
   const categories = ['Stroke', 'Cardiac', 'Epilepsy', 'CPR', 'Choking', 'Drowning', 'Bleeding', 'Burns']
   const { selectedCategory, setSelectedCategory } = useState(1)
 
-const SelectEmergency = (index) => {
-  return
-  setSelectedCategory(index)
-  console.log('category clicked')
-}
+  const SelectEmergency = (index) => {
+    return
+    setSelectedCategory(index)
+    console.log('category clicked')
+  }
 
   return (
     <View>
@@ -23,19 +23,17 @@ const SelectEmergency = (index) => {
         <View style={{ width: 695, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', left: 3 }} >
 
           {categories.map((emergency, index) => (
-            <TouchableOpacity     
+            <TouchableOpacity
               key={index} activeOpacity={0.8}
-              style={{ height: 30, width: 75, borderRadius: 20, backgroundColor: '#f47066', alignItems: 'center', justifyContent: 'center' }} 
-             onPress={SelectEmergency(index)}
+              style={{ height: 30, width: 75, borderRadius: 20, backgroundColor: '#f47066', alignItems: 'center', justifyContent: 'center' }}
+              onPress={SelectEmergency(index)}
             >
               <View> <Text style={{
                 fontSize: 16, //color: '#fff'
-                color: selectedCategory == index ? '#fff' : '#fff' 
+                color: selectedCategory == index ? '#fff' : '#fff'
               }}> {emergency}</Text>
 
-                {selectedCategory == index && (
-                  <View style={{ height: 3, width: 55, backgroundColor: '#47066', marginTop: 15 }}> </View>
-                )}
+                {selectedCategory == index && (<View style={{ height: 3, width: 55, backgroundColor: '#47066', marginTop: 2 }}> </View>)}
               </View>
             </TouchableOpacity>
           ))}
@@ -67,4 +65,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: '#f96056'
   }
+
 })

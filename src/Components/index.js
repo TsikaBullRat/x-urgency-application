@@ -4,10 +4,10 @@ import button from "./button"
 import Header from "./Header"
 import Socials from "./Socials"
 import { ProgressBar, Loading } from "./Loader"
-import { Comments } from "./CommentsSection"
 import { VideoList } from "./VideoList"
 import { DisplayPicture } from "./DisplayPicture"
 import { LargeInput } from "./LargeInput"
 import Menu from './Menu'
+import { CommentBox } from "./CommentBox"
 
-export { AlertNote, BottomNav, button, Header, Socials, ProgressBar, Comments, VideoList, Loading, DisplayPicture, LargeInput, Menu }
+export { AlertNote, BottomNav, button, Header, Socials, ProgressBar, VideoList, Loading, DisplayPicture, LargeInput, Menu, CommentBox }

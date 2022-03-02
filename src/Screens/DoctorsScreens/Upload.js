@@ -23,7 +23,7 @@ import { AlertNote } from '../../Components'
 // const btoa = require("btoa")
 // const atob = require("atob")
 
-export default function Upload({ navigation, Log }) {
+export default function Upload({ Log, Navigate }) {
 
   const ref = useRef(null);
   const [status, setStatus] = useState({});
@@ -67,8 +67,7 @@ export default function Upload({ navigation, Log }) {
         selectedValue,
         Log
       ),
-
-        navigation.goBack(),
+        Navigate(0),
         alert('Uploaded Video')
       ) : (null)
 

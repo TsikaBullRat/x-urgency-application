@@ -11,11 +11,13 @@ const ItemSeperatorView = () => {
   )
 }
 
-export const VideoList = ({ videos }) => {
+export const VideoList = ({ videos, VideoScreen, navigation }) => {
   const [status, setStatus] = useState({})
   const ref = useRef(null)
 
-  
+  VideoScreen = (data) => {
+      navigation.navigate('PlayVideo', { data })
+    }
 
   return (
 

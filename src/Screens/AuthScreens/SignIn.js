@@ -70,7 +70,7 @@ export default function SignIn({ navigation }) {
 
       <View style={styles.textfieldCards}>
         {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
-        
+
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
             <AntDesign name='user' size={22} color='black' style={{ marginTop: 16, marginLeft: 18 }} />
@@ -168,6 +168,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     ...Platform.select({
       web: {
+        fontFamily: 'flexi titling',
         outlineColor: '#fff',
         width: 220
       }

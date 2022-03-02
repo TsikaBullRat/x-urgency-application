@@ -88,7 +88,7 @@ export default function ResetPassword({ navigation }) {
       {/**----------Header------------Header------------- */}
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 30, fontWeight: 'bold', ...Platform.select({ web: { fontFamily: 'Arial' } }), color: '#F47066', textAlign:'center' }} >{`Reset Password`}</Text>
+        <Text style={{ fontSize: 30, fontWeight: 'bold', ...Platform.select({ web: { fontFamily: 'Arial' } }), color: '#F47066', textAlign: 'center' }} >{`Reset Password`}</Text>
       </View>
 
       {/**----------txtFields------------txtFields------------- */}
@@ -140,7 +140,7 @@ export default function ResetPassword({ navigation }) {
       {/**-------BACK------BACK-------BACK */}
 
       <View style={{ alignItems: 'center', justifyContent: 'center', marginVertical: 20 }}>
-        <TouchableOpacity onPress={() => navigation.goBack()}> 
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text>{' BACK'}</Text>
         </TouchableOpacity>
       </View>
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: '60%',
     marginTop: 40,
-    alignSelf:'center',
+    alignSelf: 'center',
     borderRadius: 10,
     backgroundColor: '#F47066',
     alignItems: 'center',

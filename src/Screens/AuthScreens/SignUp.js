@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: '#F47066'
   },
-  
+
   reset: {
     width: '97%',
     alignItems: 'flex-end'
