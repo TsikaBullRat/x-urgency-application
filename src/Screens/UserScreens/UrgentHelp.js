@@ -37,7 +37,7 @@ export default function UrgentHelp({ navigation }) {
           <Text style={{ fontWeight: 'bold', color: '#fff', }}> {`SignIn`} </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Sign Up')}
+        <TouchableOpacity onPress={() => navigation.navigate('TakeVideo')}
           style={styles.buttons} >
           <Text style={{ fontWeight: 'bold', color: '#fff', }}>  {`Create Account`} </Text>
         </TouchableOpacity>

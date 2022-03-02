@@ -18,13 +18,14 @@ import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons';
 import { handleSignIn } from '../../firebase'
 import { AlertNote } from '../../Components';
 
-export default function MedSignIn({ navigation, setDone }) {
+export default function MedSignIn({ navigation }) {
 
   const
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [displayModal, setDisplaModal] = useState(false),
     [message, setMessage] = useState("");
+  
   const Login = () => {
     handleSignIn(email, password, setMessage, setDone)
     setDisplaModal(true)
@@ -43,7 +44,7 @@ export default function MedSignIn({ navigation, setDone }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 30, color: '#F47066', fontWeight: 'bold', ...Platform.select({ web: { fontFamily: 'Arial' } }) }}>{`Medical SignIn`}</Text>
+        <Text style={{ fontSize: 30, textAlign:'center', color: '#F47066', fontWeight: 'bold', ...Platform.select({ web: { fontFamily: 'Arial' } }) }}>{`Medical SignIn`}</Text>
 
       </View>
 
@@ -81,8 +82,11 @@ export default function MedSignIn({ navigation, setDone }) {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={{ marginVertical: 20 }} onPress={() => navigation.navigate('SignIn')}>
-          <Text>BACK</Text>
+        <TouchableOpacity style={{ marginVertical: 20 }} onPress={() => navigation.goBack(
+
+          
+        )}>
+          <Text>{`BACK`}</Text>
         </TouchableOpacity>
 
       </View>

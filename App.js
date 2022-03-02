@@ -73,6 +73,7 @@ export default function App() {
         </Stack.Navigator>
       ) : (
         <Stack.Navigator initialRouteName='Welcome'>
+        
           <Stack.Screen name='Welcome' component={Welcome} options={{ headerShown: false }} />
 
           <Stack.Screen name='FollowMore' component={FollowMore} options={{ headerShown: false }} />
@@ -96,9 +97,9 @@ export default function App() {
             {props => <EmergencyContacts {...props} />}
           </Stack.Screen>
 
-          {/* <Stack.Screen name='MedSigIn' component={MedSigIn} options={{ headerShown: false }} />
+           {/* <Stack.Screen name='MedSignIn' component={MedSignIn} options={{ headerShown: false }} /> */}
 
-          <Stack.Screen name='DocSignUp' component={DocSignUp} options={{ headerShown: false }} />
+          {/*<Stack.Screen name='DocSignUp' component={DocSignUp} options={{ headerShown: false }} />
 
           <Stack.Screen name='ForgotPassword' component={ForgotPassword} options={{ headerShown: false }} />
 
@@ -120,8 +121,8 @@ export default function App() {
           <Stack.Screen name='ResetPassword' component={ResetPassword} options={{ headerShown: false }}
           />
 
-          {/* <Stack.Screen name='MedSignIn' component={MedSignIn} options={{ headerShown: false }}
-          /> */}
+          <Stack.Screen name='MedSignIn' component={MedSignIn} options={{ headerShown: false }}/>
+          
         </Stack.Navigator>
       )}
       </>

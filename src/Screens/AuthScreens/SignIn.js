@@ -27,7 +27,7 @@ export default function SignIn({ navigation }) {
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null)
 
-  const Login = setDone => {
+  const Login = (setDone) => {
     if (email === '' && password === '') {
       setPrompt('Please enter thr requested information')
     } else if (email === '') {

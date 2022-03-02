@@ -132,22 +132,7 @@ const styles = StyleSheet.create({
   txtField: {
     marginTop: 7,
     paddingLeft: 10,
-    paddingTop: 20,
-    fontSize: 18,
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        fontFamily: 'flexi titling',
-        outlineColor: '#fff',
-        width: 220
-      }
-    })
-  },
-
-  txtPassword: {
-    width: 300,
-    paddingLeft: 6,
-    paddingTop: 15,
+    paddingTop: 10,
     fontSize: 18,
     fontFamily: 'Arial',
     borderRadius: 10,

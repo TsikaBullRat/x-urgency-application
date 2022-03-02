@@ -9,8 +9,9 @@ import {
 } from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
-import { auth, LoadSet, firestore, //LogOut 
+import { auth, LoadSet, firestore 
 } from '../../firebase'
+import LogOut from '../../firebase/Auth/LogOut'
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import CallSiren from '../../Components/CallSiren'
