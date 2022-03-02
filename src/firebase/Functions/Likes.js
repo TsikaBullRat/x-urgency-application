@@ -12,9 +12,8 @@ function Counter({ video }) {
         .then(doc => (doc.data().liked))
       firestore.collection('Videos').doc(video).collection('Acts').where("liked", "==", true)
         .onSnapshot(query => {
-          setCount(0)
           query.forEach(doc => {
-            setCount(count + 1)
+            doc.exists ? setCount(count + 1) : null
           })
         })
     },

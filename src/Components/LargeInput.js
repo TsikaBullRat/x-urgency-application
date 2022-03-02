@@ -3,6 +3,7 @@ import { TextInput, StyleSheet } from 'react-native'
 
 export const LargeInput = () => {
     return (
+
         <TextInput style={styles.input} placeholder="Tell us about yourself" multiline />
     )
 }
@@ -21,4 +22,5 @@ const styles = StyleSheet.create({
         paddingTop: 25,
         textAlignVertical: 'top'
     }
+
 })

@@ -23,7 +23,7 @@ import { AlertNote } from '../../Components'
 // const btoa = require("btoa")
 // const atob = require("atob")
 
-export default function Upload({ navigation, Log }) {
+export default function Upload({ Log, Navigate }) {
 
   const ref = useRef(null);
   const [status, setStatus] = useState({});
@@ -67,8 +67,7 @@ export default function Upload({ navigation, Log }) {
         selectedValue,
         Log
       ),
-
-        navigation.goBack(),
+        Navigate(0),
         alert('Uploaded Video')
       ) : (null)
 
@@ -99,55 +98,55 @@ export default function Upload({ navigation, Log }) {
 
       <ScrollView>
 
-      <View style={{ flexDirection: "row" }}>
-        <TextInput style={styles.txtField} name="username" placeholder="Title" onChangeText={text => setTitle(text)} />
-      </View>
-
-      <View>
-        <Picker
-          selectedValue={selectedValue}
-          style={styles.picker}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
-          <Picker.Item label="Stroke" value="Stroke" />
-          <Picker.Item label="Heart-Attack" value="Heart-Attack" />
-          <Picker.Item label="Epilepsy" value="Epilepsy" />
-          <Picker.Item label="CPR" value="CPR" />
-          <Picker.Item label="Drowning" value="Drowning" />
-          <Picker.Item label="Choking" value="Choking" />
-          <Picker.Item label="Java" value="Java" />
-          <Picker.Item label="Burns" value="Burns" />
-        </Picker>
-      </View>
-
-      <View style={{ flexDirection: "row" }}>
-        <TextInput style={styles.txtField} name="password" placeholder="Description" onChangeText={text => setDescription(text)} />
-      </View>
-
-      {selectedImage ? (
-        <Video ref={ref} source={{ uri: selectedImage.localUri }} resizeMode="stretch" isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-          style={{ width: 380, height: 220, marginTop: 5, alignSelf: "center", }} />
-
-      ) : (
-
-        <Pressable onPress={openImagePickerAsync} style={{ flexDirection: 'row' }}>
-          <Card style={styles.txtUser}>
-            <View>
-              <Text style={{ fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray' }}>Upload Video Here!</Text>
-            </View>
-            <Icon style={styles.icon} name="slideshow" color="#F47066" size={40} />
-          </Card>
-        </Pressable>
-      )}
-
-      <TouchableOpacity onPress={() => { navigation.navigate('uploadVideo') }}>
-        <View style={styles.iconContainer}>
-          <Icon name="camera" color='white' size={30} />
+        <View style={{ flexDirection: "row" }}>
+          <TextInput style={styles.txtField} name="username" placeholder="Title" onChangeText={text => setTitle(text)} />
         </View>
-      </TouchableOpacity>
 
-      <TouchableOpacity onPress={Run} style={styles.button}>
-        <Text style={styles.buttonText}>Upload Video</Text>
-      </TouchableOpacity>
+        <View>
+          <Picker
+            selectedValue={selectedValue}
+            style={styles.picker}
+            onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
+            <Picker.Item label="Stroke" value="Stroke" />
+            <Picker.Item label="Heart-Attack" value="Heart-Attack" />
+            <Picker.Item label="Epilepsy" value="Epilepsy" />
+            <Picker.Item label="CPR" value="CPR" />
+            <Picker.Item label="Drowning" value="Drowning" />
+            <Picker.Item label="Choking" value="Choking" />
+            <Picker.Item label="Java" value="Java" />
+            <Picker.Item label="Burns" value="Burns" />
+          </Picker>
+        </View>
+
+        <View style={{ flexDirection: "row" }}>
+          <TextInput style={styles.txtField} name="password" placeholder="Description" onChangeText={text => setDescription(text)} />
+        </View>
+
+        {selectedImage ? (
+          <Video ref={ref} source={{ uri: selectedImage.localUri }} resizeMode="stretch" isLooping onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+            style={{ width: 380, height: 220, marginTop: 5, alignSelf: "center", }} />
+
+        ) : (
+
+          <Pressable onPress={openImagePickerAsync} style={{ flexDirection: 'row' }}>
+            <Card style={styles.txtUser}>
+              <View>
+                <Text style={{ fontSize: 16, paddingTop: -300, marginLeft: -20, marginTop: 30, color: 'lightgray' }}>Upload Video Here!</Text>
+              </View>
+              <Icon style={styles.icon} name="slideshow" color="#F47066" size={40} />
+            </Card>
+          </Pressable>
+        )}
+
+        <TouchableOpacity onPress={() => { navigation.navigate('uploadVideo') }}>
+          <View style={styles.iconContainer}>
+            <Icon name="camera" color='white' size={30} />
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={Run} style={styles.button}>
+          <Text style={styles.buttonText}>Upload Video</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );

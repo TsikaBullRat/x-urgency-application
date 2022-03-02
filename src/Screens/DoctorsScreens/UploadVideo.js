@@ -9,7 +9,7 @@ const WINDOW_HEIGHT = Dimensions.get('window').height
 const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032)
 const captureSize = Math.floor(WINDOW_HEIGHT * 0.09)
 
-export default function UploadVideo({ navigation }) {
+export default function UploadVideo({ Navigate }) {
   const [visible, setVisible] = useState(false)
   const [hasPermission, setHasPermission] = useState(null)
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back)
@@ -46,7 +46,7 @@ export default function UploadVideo({ navigation }) {
 
     //-----???????----------???????----------
 
-    Run = () => { openImagePickerAsync(); selectedImage ? (UploadVideo(selectedImage.localUri, title, description, selectedValue, Log), navigation.goBack()) : null },
+    Run = () => { openImagePickerAsync(); selectedImage ? (UploadVideo(selectedImage.localUri, title, description, selectedValue, Log), Navigate(0)) : null },
 
     //-------Opening Camera---------Opening Camera---------
 

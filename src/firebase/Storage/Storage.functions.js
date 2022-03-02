@@ -17,8 +17,8 @@ const Collect = async (doc, SetCollection, Count) => {
                 let load = []
 
                 if (doc.data().comments !== undefined) {
-                    if (doc.data().comments[0] !== null)
-                        count = doc.data().comments.length
+                    if (doc.data().comments[0] !== null) count = doc.data().comments.length
+                    else count = 0
                 }
 
                 if (doc.data().comments !== undefined) {
@@ -62,7 +62,7 @@ const LoadSet = (Load, query) => {
     var getLink
     var metadata = firestore.collection('Videos')
     var info = firestore.collection("Users")
-    
+
     const getTimeFrame = (date) => {
         let today = new Date()
         let frame
@@ -201,10 +201,8 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
             Log(progress)
             switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED:
-                    // console.log("Task paused")
                     break
                 case firebase.storage.TaskState.RUNNING:
-                    // console.log("Task running")
                     break
             }
 

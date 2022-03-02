@@ -1,20 +1,11 @@
 import React, { useState } from 'react'
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Platform,
-  Picker,
-  ScrollView
-} from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, Picker, ScrollView } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleDoctorSignUp } from '../../firebase'
 import { AlertNote } from '../../Components/Alert'
 
-export default function DoctorSignUp ({ navigation, setDetails }) {
+export default function DoctorSignUp({ navigation, setDetails }) {
   const [email, setEmail] = useState(''),
     [name, setName] = useState(''),
     [surname, setSurname] = useState(''),
@@ -73,6 +64,7 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
     } else {
       setVisibleStatusBar(!visibleStatusBar)
     }
+  }
 
   const Register = () => {
     if (qualification === "" && branch === "" && password === "" && confirmpassword === "") {
@@ -102,225 +94,128 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
     }
   }
 
-    return (
-      <View style={styles.container}>
-        <View>
-          <Card style={styles.card}>
-            <View style={styles.heartIcon}>
-              <FontAwesome name='heartbeat' size={110} color='#fff' />
-            </View>
-            <Text
-              style={{
-                fontFamily: 'Arial',
-                color: '#fff',
-                fontSize: 30
-              }}
-            >
-              {' '}
-              {`X-urgency`}{' '}
-            </Text>
-          </Card>
-        </View>
+  return (
+    <View style={styles.container}>
+      <View>
+        <Card style={styles.card}>
+          <View style={styles.heartIcon}>
+            <FontAwesome name='heartbeat' size={110} color='#fff' />
+          </View>
+          <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }} >  {' '}  {`X-urgency`}{' '} </Text>
+        </Card>
+      </View>
 
-        <View style={styles.header}>
-          <Text
-            style={{
-              fontSize: 30,
-              color: '#F47066',
-              ...Platform.select({
-                web: {
-                  fontFamily: 'Arial'
-                }
-              })
-            }}
-          >{`Medical SignUp`}</Text>
-        </View>
+      <View style={styles.header}>
+        <Text style={{ fontSize: 30, color: '#F47066', ...Platform.select({ web: { fontFamily: 'Arial' } }) }} >{`Medical SignUp`}</Text>
+      </View>
 
-        <View>
-          {visibleStatusBar ? (
-            <ScrollView
-              style={{ height: 550 }}
-              showsVerticalScrollIndicator={false}
-            >
-              <View>
-                <Card style={styles.txtCards}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='name'
-                      placeholder='Name'
-                      onChangeText={text => setEmail(text)}
-                    />
-                  </View>
-                </Card>
-                {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
-
-                <Card style={styles.txtCards}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='Surname'
-                      placeholder='Surname'
-                      onChangeText={text => setSurname(text)}
-                    />
-                  </View>
-                </Card>
-                {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
-
-                <Card style={styles.txtCards}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='ContactDetails'
-                      placeholder='Contact Details'
-                      onChangeText={text => setContactDetails(text)}
-                    />
-                  </View>
-                </Card>
-                {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
-
-                <Card style={styles.txtCards}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='email'
-                      placeholder='Email'
-                      onChangeText={text => setEmail(text)}
-                    />
-                  </View>
-                </Card>
-                {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
-
+      <View>
+        {visibleStatusBar ? (
+          <ScrollView style={{ height: 550 }} showsVerticalScrollIndicator={false} >
+            <View>
+              <Card style={styles.txtCards}>
                 <View style={{ flexDirection: 'row' }}>
-                  <Picker
-                    specialization={specialization}
-                    style={styles.picker}
-                    onValueChange={(itemValue, itemIndex) =>
-                      setSpecialization(itemValue)
-                    }
-                  >
-                    <Picker.Item label='Doctor' value='Doctor' />
-                    <Picker.Item label='Nurse' value='Nurse' />
-                    <Picker.Item
-                      label='Basic Abulance Assistance'
-                      value='BEA'
-                    />
-                    <Picker.Item
-                      label='Ambulance Emergency Assistance'
-                      value='AEA'
-                    />
-                    <Picker.Item label='Critical Care Assist' value='CCA' />
-                    <Picker.Item
-                      label='Emergency Care Practitioner'
-                      value='ECP'
-                    />
-                  </Picker>
+                  <TextInput style={styles.txtField} name='name' placeholder='Name' onChangeText={text => setEmail(text)} />
                 </View>
+              </Card>
+              {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
-                <Card style={styles.txtCards}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='Qualification'
-                      placeholder='Qualification'
-                      onChangeText={text => setQualification(text)}
-                    />
-                  </View>
-                </Card>
-                {prompt5 ? <Text style={styles.prompt}>{prompt5}</Text> : null}
-
-                <View style={{ alignItems: 'center' }}>
-                  <TouchableOpacity
-                    style={styles.signIn}
-                    onPress={changeVisibilityStatusBar}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 20,
-                        fontFamily: 'Arial',
-                        color: '#fff'
-                      }}
-                    >
-                      {`NEXT`}{' '}
-                    </Text>
-                  </TouchableOpacity>
+              <Card style={styles.txtCards}>
+                <View style={{ flexDirection: 'row' }}>
+                  <TextInput style={styles.txtField} name='Surname' placeholder='Surname' onChangeText={text => setSurname(text)} />
                 </View>
+              </Card>
+              {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
+
+              <Card style={styles.txtCards}>
+                <View style={{ flexDirection: 'row' }}>
+                  <TextInput style={styles.txtField} name='ContactDetails' placeholder='Contact Details' onChangeText={text => setContactDetails(text)} />
+                </View>
+              </Card>
+              {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
+
+              <Card style={styles.txtCards}>
+                <View style={{ flexDirection: 'row' }}>
+                  <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
+                </View>
+              </Card>
+              {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
+
+              <View style={{ flexDirection: 'row' }}>
+                <Picker specialization={specialization} style={styles.picker} onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
+                  <Picker.Item label='Doctor' value='Doctor' />
+                  <Picker.Item label='Nurse' value='Nurse' />
+                  <Picker.Item label='Basic Abulance Assistance' value='BEA' />
+                  <Picker.Item label='Ambulance Emergency Assistance' value='AEA' />
+                  <Picker.Item label='Critical Care Assist' value='CCA' />
+                  <Picker.Item label='Emergency Care Practitioner' value='ECP' />
+                </Picker>
               </View>
-            </ScrollView>
-          ) : (
-            <ScrollView
-              style={{ height: 550, width: '100%' }}
-              showsVerticalScrollIndicator={false}
-            >
-              <View>
-                <Card style={styles.txtCards}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='Description'
-                      placeholder='Description'
-                      onChangeText={text => setDescription(text)}
-                    />
-                  </View>
-                </Card>
 
-                <Card style={styles.txtCards}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='Branch'
-                      placeholder='Branch'
-                      onChangeText={text => setBranch(text)}
-                    />
-                  </View>
-                </Card>
-
-                <Card style={styles.txtCards}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='password'
-                      placeholder='Password'
-                      secureTextEntry={true}
-                      onChangeText={text => setPassword(text)}
-                    />
-                  </View>
-                </Card>
-                {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
-
-                <Card style={styles.txtCards}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='confirmPassword'
-                      placeholder='Confirm Password'
-                      secureTextEntry={true}
-                      onChangeText={text => setPassword(text)}
-                    />
-                  </View>
-                </Card>
-                {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
-              </View>
+              <Card style={styles.txtCards}>
+                <View style={{ flexDirection: 'row' }}>
+                  <TextInput style={styles.txtField} name='Qualification' placeholder='Qualification' onChangeText={text => setQualification(text)} />
+                </View>
+              </Card>
+              {prompt5 ? <Text style={styles.prompt}>{prompt5}</Text> : null}
 
               <View style={{ alignItems: 'center' }}>
-                <TouchableOpacity style={styles.signIn} onPress={Register}>
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      fontFamily: 'Arial',
-                      color: '#fff'
-                    }}
-                  >
-                    {`SIGNIN`}
-                  </Text>
+                <TouchableOpacity style={styles.signIn} onPress={changeVisibilityStatusBar}>
+                  <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}  >  {`NEXT`}{' '}</Text>
                 </TouchableOpacity>
               </View>
-            </ScrollView>
-          )}
-        </View>
+            </View>
+          </ScrollView>
+        ) : (
+          <ScrollView style={{ height: 550, width: '100%' }} showsVerticalScrollIndicator={false}>
+            <View>
+              <Card style={styles.txtCards}>
+                <View style={{ flexDirection: 'row' }}>
+                  <TextInput style={styles.txtField} name='Description' placeholder='Description' onChangeText={text => setDescription(text)} />
+                </View>
+              </Card>
+
+              <Card style={styles.txtCards}>
+                <View style={{ flexDirection: 'row' }}>
+                  <TextInput style={styles.txtField} name='Branch' placeholder='Branch' onChangeText={text => setBranch(text)} />
+                </View>
+              </Card>
+
+              <Card style={styles.txtCards}>
+                <View style={{ flexDirection: 'row' }}>
+                  <TextInput style={styles.txtField} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
+                </View>
+              </Card>
+              {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
+
+              <Card style={styles.txtCards}>
+                <View style={{ flexDirection: 'row' }}>
+                  <TextInput style={styles.txtField} name='confirmPassword' placeholder='Confirm Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
+                </View>
+              </Card>
+              {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
+            </View>
+
+            <View style={{ alignItems: 'center' }}>
+              <TouchableOpacity style={styles.signIn} onPress={Register}>
+                <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }} > {`SIGNIN`}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        )}
       </View>
-    )
-  }
+
+      {/**-------BACK------BACK-------BACK */}
+
+      <View style={{ marginTop: 10 }}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text>{' BACK '}</Text>
+        </TouchableOpacity>
+      </View>
+
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -350,7 +245,6 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 25,
     fontSize: 36,
-    fontFamily: 'Cooper',
     color: '#F47066'
   },
 
@@ -365,6 +259,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     ...Platform.select({
       web: {
+        fontFamily: 'flexi titling',
         outlineColor: '#fff',
         width: 220
       }

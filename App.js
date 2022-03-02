@@ -24,7 +24,8 @@ import {
   ForgotPassword,
   DoctorSignUp,
   PlayVideo,
-  Doctor
+  Doctor,
+  Clone
 } from './src/Screens'
 
 // const Stack = createNativeStackNavigator()
@@ -34,7 +35,7 @@ export default function App() {
   
   const [ run, setRun ] = useState(0)
   const [ id, setID] = useState(null)
-  const [ doctor, setDoctor ] = useState()
+  const [ doctor, setDoctor ] = useState(null)
   const [ firstTimeUser, setFirstTimeUser ] = useState(false)
 
   const Exit = () => {
@@ -43,13 +44,13 @@ export default function App() {
 
   useEffect(() => {
     if (auth.currentUser) {
-      run === 0 ? setRun(1) : setRun(0)
-    } else {
       try {
         auth.onAuthStateChanged(doc => (doc ? setID(doc.uid) : setID(null)))
       } catch (err) {
         null
       }
+    } else {
+      run === 0 ? setRun(1) : setRun(0)
     }
   }, [run])
 
@@ -72,6 +73,7 @@ export default function App() {
   }, [auth.currentUser])
 
   return (
+
     <NavigationContainer>
       <Stack.Navigator>
         {id ? (
@@ -117,7 +119,7 @@ export default function App() {
 
               <Stack.Screen
                 name='PlayVideo'
-                component={PlayVideo}
+                component={Clone}
                 options={{ headerShown: false }}
               />
 
@@ -159,10 +161,21 @@ export default function App() {
               }
               <Stack.Screen name="Home" options={{ headerShown: false }} >
                 {props => <Home {...props} Exit={Exit} />}
-              </Stack.Screen>    
-              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
-              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
-              {/* <Stack.Screen name="EmergencyContacts" components={EmergencyContacts} options={{headerShown: false}} /> */}
+              </Stack.Screen>
+              <Stack.Screen
+                name='Doctor'
+                component={Doctor}
+                options={{ headerShown: false }}
+              />
+
+              <Stack.Screen
+                name='PlayVideo'
+                component={Clone}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen name='EmergencyContacts' options={{ headerShown: false }} >
+                {props => <EmergencyContacts {...props} />}
+              </Stack.Screen>
             </>
           )
         ) : (
@@ -183,4 +196,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
+
 })
