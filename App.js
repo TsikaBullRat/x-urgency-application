@@ -25,7 +25,6 @@ import {
   DoctorSignUp,
   PlayVideo,
   Doctor,
-  Clone
 } from './src/Screens'
 
 // const Stack = createNativeStackNavigator()
@@ -101,7 +100,7 @@ export default function App() {
               </Stack.Screen>
               <Stack.Screen name='Update' component={UpdateProfile} options={{ headerShown: false }} />
               <Stack.Screen name='UploadVideo' component={UploadVideo} options={{ headerShown: false }} />
-              <Stack.Screen name='PlayVideo' component={Clone} options={{ headerShown: false }} />
+              <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
               <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }} />
             </>
           ) : (
@@ -124,7 +123,7 @@ export default function App() {
                 {props => <Home {...props} Exit={Exit} />}
               </Stack.Screen>
               <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }} />
-              <Stack.Screen name='PlayVideo' component={Clone} options={{ headerShown: false }} />
+              <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
               <Stack.Screen name='EmergencyContacts' options={{ headerShown: false }} >
                 {props => <EmergencyContacts {...props} />}
               </Stack.Screen>
