@@ -43,16 +43,12 @@ export default function App() {
   }
 
   useEffect(() => {
-    if (auth.currentUser) {
       try {
         auth.onAuthStateChanged(doc => (doc ? setID(doc.uid) : setID(null)))
       } catch (err) {
         null
       }
-    } else {
-      run === 0 ? setRun(1) : setRun(0)
-    }
-  }, [run])
+  }, [])
 
   useEffect(() => {
     if (id) {

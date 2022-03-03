@@ -105,18 +105,14 @@ export default function Home({ navigation, Exit }) {
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-
-      <View style={{ left: -3 }}>
-        <Menu />
-      </View>
-
+      <Menu />
       {/*---------------------- Video Scroll View--------------------*/}
 
       <View style={{ marginVertical: 20 }}>
         <ScrollView style={{ height: 435, width: 340 }} vertical={true} showsVerticalScrollIndicator={false} >
           <Card style={styles.menu2}>
-            <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} onPress={VideoScreen}>
-              <VideoList videos={videos} />
+            <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }}>
+              <VideoList videos={videos} VideoScreen={VideoScreen}/>
             </TouchableOpacity>
           </Card>
         </ScrollView>

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { Video } from 'expo-av';
 import { AntDesign, FontAwesome5, Entypo } from '@expo/vector-icons';
 import { Avatar } from 'react-native-elements';
-
+import { Card } from 'react-native-paper'
 import { Likes } from '../firebase/Functions/Likes'
 import { Dislikes } from '../firebase/Functions/Dislikes'
 
@@ -11,6 +11,7 @@ export const Clone = ({ route }) => {
 
     const { data } = route.params
     const refrence = useRef(data.url)
+    const [userName, setUserName] = useState(data.owner)
     const [videoPlay, setVideoPlay] = useState(data.url)
     const [views, setViews] = useState(data.views)
     const [visibleStatusBar, setVisibleStatusBar] = useState(false)
@@ -77,7 +78,7 @@ export const Clone = ({ route }) => {
                         </Text>
                     </View>
 
-                    <View style={styles.avatar}>
+                    <View style={styles.avatar1}>
                         <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} size="medium" />
                         <Text style={{ paddingTop: "15" }} > {data.owner}</Text>
                     </View>
@@ -86,9 +87,9 @@ export const Clone = ({ route }) => {
             ) : (
                 /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
 
-                <Card style={{ width: "335", height: "300", borderRadius: "20", backgroundColor: '#fff', marginTop: "15" }}>
+                <Card style={styles.sect2}>
 
-                    <View style={{ width: "335", flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View style={styles.description}>
 
                         <Text>
                             <Text style={{ fontWeight: 'bold', color: '#F47066', fontSize: 16, }}>{"  Description: "}</Text>
@@ -96,10 +97,11 @@ export const Clone = ({ route }) => {
                         </Text>
 
                         <Text onPress={changeVisibilityStatusBar}>
-                            <AntDesign name="closecircle" size={18} color="black" />  </Text>
+                            <AntDesign name="closecircle" size={18} color="black" />  
+                        </Text>
                     </View>
 
-                    <View style={{ marginTop: "50", flexDirection: 'row' }}>
+                    <View style={styles.avatar2}>
                         <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg', }} size="medium" />
                         <Text>{userName}</Text>
                     </View>
@@ -131,10 +133,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between'
     },
+    sect2:{
+        width: 335, 
+        height: 300, 
+        borderRadius: 20, 
+        backgroundColor: '#fff', 
+        marginTop: 15 
+    },
     arrow: {
         flexDirection: 'row',
         width: 335,
         alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    description:{
+        width: 335,
+        flexDirection: 'row',
         justifyContent: 'space-between'
     },
     buttons: {
@@ -144,10 +158,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-around'
     },
-    avatar: {
+    avatar1: {
         width: 335,
         marginTop: 50,
         flexDirection: 'row',
         justifyContent: 'flex'
+    },
+    avatar2:{
+        marginTop: 50,
+        flexDirection: 'row'
     }
 });

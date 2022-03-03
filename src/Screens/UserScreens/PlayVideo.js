@@ -35,25 +35,14 @@ import { auth, firestore } from '../../firebase'
 import { Collect, Post } from '../../firebase'
 
 export default function PlayVideo ({ navigation, route }) {
-  useEffect(() => {
-    auth
-      .signInWithEmailAndPassword('rando@gmail.com', 'KingofRandom')
-      .catch(err => {
-        console.log(err)
-      })
-  }, [])
 
   const data = route.params.data
-  const [userName, setUserName] = useState(data.owner /*"Ntsika"*/)
-  const [videoPlay, setVideoPlay] = useState(
-    data.url /*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/
-  )
-  const [views, setViews] = useState(data.views /*42*/)
+  const [userName, setUserName] = useState(data.owner)
+  const [videoPlay, setVideoPlay] = useState(data.url)
+  const [views, setViews] = useState(data.views)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
-  const reference = useRef(
-    data.url /*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/
-  )
+  const reference = useRef(data.url)
   const [info, setInfo] = useState()
   const [Comments, setComments] = useState([]),
     [comment, setComment] = useState(''),
@@ -72,7 +61,7 @@ export default function PlayVideo ({ navigation, route }) {
     addAct = async () => {
       let metadata = firestore
         .collection('Videos')
-        .doc(data.firestore /*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/)
+        .doc(data.firestore)
         .collection('Acts')
       let found = (await metadata.doc(auth.currentUser.uid).get()).exists
       found
@@ -92,7 +81,7 @@ export default function PlayVideo ({ navigation, route }) {
     Delete = remove => {
       firestore
         .collection('Videos')
-        .doc(data.firestore /*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/)
+        .doc(data.firestore)
         .collection('Acts')
         .doc(auth.currentUser.uid)
         .get()
@@ -169,10 +158,10 @@ export default function PlayVideo ({ navigation, route }) {
               }}>
               <View>
                 <Text style={{ fontWeight: 'bold', color: '#F47066' }}>
-                  {data.title /*"My video"*/}
+                  {data.title}
                 </Text>
                 <Text style={{ fontSize: 10 }}>
-                  {views} views - {data.stamp /*"3 weeks ago"*/}
+                  {views} views - {data.stamp}
                 </Text>
               </View>
 
@@ -212,7 +201,7 @@ export default function PlayVideo ({ navigation, route }) {
                 {
                   <Likes
                     data={
-                      data.firestore /*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/
+                      data.firestore
                     }
                   />
                 }
@@ -224,7 +213,7 @@ export default function PlayVideo ({ navigation, route }) {
                 {
                   <Dislikes
                     data={
-                      data.firestore /*"53b6444b-ce3b-4c39-b22d-0828f092e43f"*/
+                      data.firestore
                     }
                   />
                 }
@@ -234,7 +223,7 @@ export default function PlayVideo ({ navigation, route }) {
 
               <View style={{ marginLeft: 15 }}>
                 <TouchableOpacity
-                  onPress={() => ShareItem(data.url /*videoPlay*/)}
+                  onPress={() => ShareItem(data.url)}
                 >
                   <View style={{ marginLeft: 8 }}>
                     <FontAwesome5 name='share' size={20} color='black' />
