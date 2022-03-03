@@ -131,6 +131,7 @@ export default function SignIn({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems:'center',
     backgroundColor: '#fff'
   },
 
@@ -138,6 +139,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F47066',
     width: 360,
     height: 200,
+    marginTop:35,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     textAlign: 'center'
