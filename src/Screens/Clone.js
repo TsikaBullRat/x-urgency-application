@@ -47,7 +47,7 @@ export const Clone = ({ route }) => {
             <View style={styles.vidContainer}>
                 <Video ref={refrence} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping style={styles.vid} />
             </View>
-            {!visibleStatusBar ? (
+            {visibleStatusBar ? (
                 <View style={styles.sect1}>
                     <View style={styles.arrow}>
                         <Text>
@@ -55,7 +55,7 @@ export const Clone = ({ route }) => {
                             <Text style={{ fontSize: 10 }}> {views} views - {data.stamp} </Text>
                         </Text>
                         <Text>
-                            <Text title="topNav" onPress={() => changeVisibilityStatusBar()}><AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} /> </Text>
+                            <Text title="topNav" onPress={changeVisibilityStatusBar}><AntDesign name="downcircle" size={18} color="black" style={styles.dropDown} /> </Text>
                         </Text>
                     </View>
 
@@ -95,7 +95,7 @@ export const Clone = ({ route }) => {
                             <Text style={{ maxWidth: "315", paddinLeft: "20" }}>  {data.description} </Text>
                         </Text>
 
-                        <Text onPress={() => changeVisibilityStatusBar()}>
+                        <Text onPress={changeVisibilityStatusBar}>
                             <AntDesign name="closecircle" size={18} color="black" />  </Text>
                     </View>
 

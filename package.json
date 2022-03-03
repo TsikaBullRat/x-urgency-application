@@ -10,6 +10,7 @@
   "dependencies": {
     "@expo/ngrok": "^4.1.0",
     "@expo/vector-icons": "^12.0.0",
+    "@koale/useworker": "^4.0.2",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.2.5",
