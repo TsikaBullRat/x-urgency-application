@@ -248,31 +248,33 @@ const styles = StyleSheet.create({
     color: '#F47066'
   },
 
-  txtField: {
-    width: 300,
+ txtField: {
     marginTop: 7,
-    marginLeft: 38,
-    paddingLeft: 2,
+    paddingLeft: 10,
     paddingTop: 15,
     fontSize: 18,
     fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        fontFamily: 'flexi titling',
         outlineColor: '#fff',
         width: 220
       }
     })
   },
 
+  prompt: {
+    color: '#F47066',
+    textAlign: 'center'
+  },
+
   txtCards: {
-    width: '80%',
+    width: '95%',
     height: 50,
     borderRadius: 10,
-    marginLeft: 2,
     marginTop: 35,
     borderWidth: 1,
+    backgroundColor: '#fff',
     borderColor: '#F47066'
   },
 
@@ -289,11 +291,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#F47066',
     opacity: 0.8
-  },
-
-  prompt: {
-    color: '#F47066',
-    textAlign: 'center'
   },
 
   signIn: {

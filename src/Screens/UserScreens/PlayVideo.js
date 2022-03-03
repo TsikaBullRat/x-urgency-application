@@ -34,7 +34,7 @@ import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore } from '../../firebase'
 import { Collect, Post } from '../../firebase'
 
-export default function PlayVideo ({ navigation, route }) {
+export default function PlayVideo ({ route, navigation }) {
   useEffect(() => {
     auth
       .signInWithEmailAndPassword('rando@gmail.com', 'KingofRandom')
@@ -43,24 +43,27 @@ export default function PlayVideo ({ navigation, route }) {
       })
   }, [])
 
-  const data = route.params.data
-  const [userName, setUserName] = useState(data.owner /*"Ntsika"*/)
+  const data = route.params
+  const [userName, setUserName] = useState(data.title)
   const [videoPlay, setVideoPlay] = useState(
-    data.url /*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/
+    // data.url 
+    "https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"
   )
   const [views, setViews] = useState(data.views /*42*/)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
   const reference = useRef(
-    data.url /*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/
+    data.ref /*"https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"*/
   )
   const [info, setInfo] = useState()
   const [Comments, setComments] = useState([]),
     [comment, setComment] = useState(''),
     [visibleStatusBar, setVisibleStatusBar] = useState(false),
+    
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
     },
+
     changeStyleStatusBar = () => {
       const styleId = styleTypes.indexOf(styleStatusBar) + 1
       if (styleId === styleTypes.length) {
@@ -69,6 +72,7 @@ export default function PlayVideo ({ navigation, route }) {
 
       return setStyleStatusBar(styleTypes[styleId])
     },
+
     addAct = async () => {
       let metadata = firestore
         .collection('Videos')
@@ -85,10 +89,12 @@ export default function PlayVideo ({ navigation, route }) {
           }),
           setViews(views + 1))
     },
+
     Navigate = () => {
       let match = data.match
       navigation.navigate('Doctor', { match })
     },
+
     Delete = remove => {
       firestore
         .collection('Videos')
@@ -121,11 +127,9 @@ export default function PlayVideo ({ navigation, route }) {
 
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
-  }, [])
-
-  useEffect(() => {
     addAct()
   }, [])
+
 
   return (
     <View style={styles.contain}>
@@ -140,33 +144,17 @@ export default function PlayVideo ({ navigation, route }) {
 
       {/**-------------Video----------------Video-----------------Video---------------- */}
 
-      <View style={{ width: 340, marginTop: 25 }}>
+      <View style={{ width: 344, marginTop: 25, 
+       backgroundColor:'#f7eeed' }}>
         <Video
           ref={reference}
           source={{ uri: videoPlay }}
           useNativeControls
           resizeMode='stretch'
           isLooping
-          style={{ width: 340, height: 180 }}
+          style={{ width: 340, height: 180, left:2 }}
         />
-      </View>
 
-      <View>
-        {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
-        {!visibleStatusBar ? (
-          <View
-            style={{
-              width: 340,
-              //marginTop: 15,
-              justifyContent: 'space-between'
-            }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                width: 340,
-                alignItems: 'center',
-                justifyContent: 'space-between'
-              }}>
               <View>
                 <Text style={{ fontWeight: 'bold', color: '#F47066' }}>
                   {data.title /*"My video"*/}
@@ -176,22 +164,22 @@ export default function PlayVideo ({ navigation, route }) {
                 </Text>
               </View>
 
-              {/*------------DropDown-------------DropDown--------DropDown*/}
+            <View style={{marginVertical:5}} />
+      </View>
 
-              <View style={{ marginLeft: 25, marginTop: 20 }}>
-                <TouchableOpacity
-                  title='topNav'
-                  onPress={() => changeVisibilityStatusBar()}
-                >
-                  <AntDesign
-                    name='downcircle'
-                    size={18}
-                    color='black'
-                    style={styles.drop}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
+      <View>
+        {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
+        {!visibleStatusBar ? (
+
+         
+
+          <View
+            style={{
+              width: 340,
+              //marginTop: 15,
+              justifyContent: 'space-between'
+            }}>
+            
 
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
 
@@ -388,7 +376,7 @@ export default function PlayVideo ({ navigation, route }) {
             <View
               style={{
                 width: 340,
-                marginTop: 20,
+                marginTop: 5,
                 flexDirection: 'row',
                 justifyContent: 'space-between'
               }}
@@ -413,10 +401,11 @@ export default function PlayVideo ({ navigation, route }) {
               style={{ width: 340, marginTop: 25, alignItems: 'flex-start' }}
             >
               <Text>
-                tgvhtvvt htvvvhg vvgvgh hgvhgvghv hgvhgv ghvhgv hgvhgv hgvhgv
+              {data.description}
+                {/* tgvhtvvt htvvvhg vvgvgh hgvhgvghv hgvhgv ghvhgv hgvhgv hgvhgv
                 hgvghv hgvhgv hgvhgv hgvhgvh gvhgvghv hgvhgv hgvhgv ghv ghvghvgh
                 hgvhgv hvhgv hgvhgv hgvhv hgvhgv hgvhgv hgvgh ghvhgvhvhgv hgvhgv
-                hgvhgv hgvghv hgvhgv ghvhgvghvhgv hgvhvh v
+                hgvhgv hgvghv hgvhgv ghvhgvghvhgv hgvhvh v */}
               </Text>
             </View>
           </View>

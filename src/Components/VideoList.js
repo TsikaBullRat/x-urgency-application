@@ -11,13 +11,13 @@ const ItemSeperatorView = () => {
   )
 }
 
-export const VideoList = ({ videos, VideoScreen, navigation }) => {
+export const VideoList = ({ videos, navigation }) => {
   const [status, setStatus] = useState({})
-  const ref = useRef(null)
+  const ref = useRef(null),
 
-  VideoScreen = (data) => {
-      navigation.navigate('PlayVideo', { data })
-    }
+ VideoScreen = (vid) => {
+      navigation.navigate('PlayVideo', {vid})
+  }
 
   return (
 
@@ -28,7 +28,7 @@ export const VideoList = ({ videos, VideoScreen, navigation }) => {
             key={vid.id}>
             <Card style={{ width: 335, height: 245, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FAFAFA' }} >
 
-              <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} onPress={() => VideoScreen(vid)} >
+              <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate('PlayVideo', {vid})} >
                 <Video ref={ref} source={{ uri: vid.url }} resizeMode='stretch' isLoopingonPlaybackStatusUpdate={status => setStatus(() => status)}
                   style={{ width: '100%', height: 165, marginTop: 5, alignSelf: 'center' }} />
               </TouchableOpacity>

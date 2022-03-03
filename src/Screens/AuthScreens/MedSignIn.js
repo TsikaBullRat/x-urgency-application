@@ -77,7 +77,7 @@ export default function MedSignIn({ navigation }) {
 
         <View style={{ marginTop: 10, flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <Text style={{ paddingTop: 10, fontSize: 15, }}>  {`New User?`} </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('DoctorSignUp')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Doctor SignUp')}>
             <Text style={{ paddingTop: 10, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`}</Text>
           </TouchableOpacity>
         </View>
