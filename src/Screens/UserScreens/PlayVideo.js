@@ -46,8 +46,8 @@ export default function PlayVideo ({ route, navigation }) {
   const data = route.params
   const [userName, setUserName] = useState(data.title)
   const [videoPlay, setVideoPlay] = useState(
-    // data.url 
-    "https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"
+    // data.url
+    'https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa'
   )
   const [views, setViews] = useState(data.views /*42*/)
   const [videoVisible, setVideoVisible] = useState(true)
@@ -59,11 +59,9 @@ export default function PlayVideo ({ route, navigation }) {
   const [Comments, setComments] = useState([]),
     [comment, setComment] = useState(''),
     [visibleStatusBar, setVisibleStatusBar] = useState(false),
-    
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
     },
-
     changeStyleStatusBar = () => {
       const styleId = styleTypes.indexOf(styleStatusBar) + 1
       if (styleId === styleTypes.length) {
@@ -72,7 +70,6 @@ export default function PlayVideo ({ route, navigation }) {
 
       return setStyleStatusBar(styleTypes[styleId])
     },
-
     addAct = async () => {
       let metadata = firestore
         .collection('Videos')
@@ -89,12 +86,10 @@ export default function PlayVideo ({ route, navigation }) {
           }),
           setViews(views + 1))
     },
-
     Navigate = () => {
       let match = data.match
       navigation.navigate('Doctor', { match })
     },
-
     Delete = remove => {
       firestore
         .collection('Videos')
@@ -130,13 +125,11 @@ export default function PlayVideo ({ route, navigation }) {
     addAct()
   }, [])
 
-
   return (
     <View style={styles.contain}>
+      {/**-------BACK------BACK-------BACK */}
 
-    {/**-------BACK------BACK-------BACK */}
-
-      <View style={{ marginTop: 10, width:340, alignItems:'flex-start' }}>
+      <View style={{ marginTop: 10, width: 340, alignItems: 'flex-start' }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text>{`BACK`}</Text>
         </TouchableOpacity>
@@ -144,35 +137,31 @@ export default function PlayVideo ({ route, navigation }) {
 
       {/**-------------Video----------------Video-----------------Video---------------- */}
 
-      <View style={{ width: 344, marginTop: 25, 
-       backgroundColor:'#f7eeed' }}>
+      <View style={{ width: 344, marginTop: 25, backgroundColor: '#f7eeed' }}>
         <Video
           ref={reference}
           source={{ uri: videoPlay }}
           useNativeControls
           resizeMode='stretch'
           isLooping
-          style={{ width: 340, height: 180, left:2 }}
+          style={{ width: 340, height: 180, left: 2 }}
         />
 
-              <View>
-                <Text style={{ fontWeight: 'bold', color: '#F47066' }}>
-                  {data.title /*"My video"*/}
-                </Text>
-                <Text style={{ fontSize: 10 }}>
-                  {views} views - {data.stamp /*"3 weeks ago"*/}
-                </Text>
-              </View>
+        <View>
+          <Text style={{ fontWeight: 'bold', color: '#F47066' }}>
+            {data.title /*"My video"*/}
+          </Text>
+          <Text style={{ fontSize: 10 }}>
+            {views} views - {data.stamp /*"3 weeks ago"*/}
+          </Text>
+        </View>
 
-            <View style={{marginVertical:5}} />
+        <View style={{ marginVertical: 5 }} />
       </View>
 
       <View>
         {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
         {!visibleStatusBar ? (
-
-         
-
           <View
             style={{
               width: 340,
@@ -188,9 +177,10 @@ export default function PlayVideo ({ route, navigation }) {
                 width: 360,
                 flexDirection: 'row',
                 marginTop: 15,
-                borderTopWidth:1,
-                borderBottomWidth:1,
-                borderColor:'#f47066',        alignItems: 'center',
+                borderTopWidth: 1,
+                borderBottomWidth: 1,
+                borderColor: '#f47066',
+                alignItems: 'center',
                 justifyContent: 'space-around'
               }}
             >
@@ -296,14 +286,16 @@ export default function PlayVideo ({ route, navigation }) {
                   paddingLeft: 10,
                   fontWeight: 'medium',
                   fontSize: 18
-                }}>
+                }}
+              >
                 Comments: {count}
               </Text>
             </View>
 
             <ScrollView
               style={{ height: 220 }}
-              showsVerticalScrollIndicator={false}>
+              showsVerticalScrollIndicator={false}
+            >
               <Card style={{ height: 340, width: 340 }}>
                 {Comments.map((item, index) => (
                   <Card
@@ -379,8 +371,7 @@ export default function PlayVideo ({ route, navigation }) {
                 marginTop: 5,
                 flexDirection: 'row',
                 justifyContent: 'space-between'
-              }}
-            >
+              }}>
               <View>
                 <Text
                   style={{ fontWeight: 'bold', color: '#F47066', fontSize: 22 }}
@@ -392,16 +383,18 @@ export default function PlayVideo ({ route, navigation }) {
                 </Text>
               </View>
 
-              <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                <AntDesign name='closecircle' size={18} color='black' />
-              </TouchableOpacity>
+              <View style={{marginTop:5}}>
+                <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
+                  <AntDesign name='closecircle' size={18} color='black' />
+                </TouchableOpacity>
+              </View>
             </View>
 
             <View
               style={{ width: 340, marginTop: 25, alignItems: 'flex-start' }}
             >
               <Text>
-              {data.description}
+                {data.description}
                 {/* tgvhtvvt htvvvhg vvgvgh hgvhgvghv hgvhgv ghvhgv hgvhgv hgvhgv
                 hgvghv hgvhgv hgvhgv hgvhgvh gvhgvghv hgvhgv hgvhgv ghv ghvghvgh
                 hgvhgv hvhgv hgvhgv hgvhv hgvhgv hgvhgv hgvgh ghvhgvhvhgv hgvhgv
@@ -411,8 +404,6 @@ export default function PlayVideo ({ route, navigation }) {
           </View>
         )}
       </View>
-
-      
     </View>
   )
 }

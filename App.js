@@ -3,7 +3,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createStackNavigator } from '@react-navigation/stack'
-import { auth, firestore, LogOut } from './src/firebase'
+import { auth, firestore, Exit } from './src/firebase'
+// import {LogOut } from './src/firebase/Auth/LogOut'
+
 import { Loading } from './src/Components'
 import { StyleSheet, NativeModules, View } from 'react-native'
 import {
