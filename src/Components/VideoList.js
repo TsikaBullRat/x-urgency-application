@@ -24,7 +24,7 @@ export const VideoList = ({ videos, VideoScreen }) => {
             key={vid.id}>
             <Card style={{ width: 335, height: 245, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FAFAFA' }} >
 
-              <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} onPress={() => VideoScreen(vid)} >
+              <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate('PlayVideo', {vid})} >
                 <Video ref={ref} source={{ uri: vid.url }} resizeMode='stretch' isLoopingonPlaybackStatusUpdate={status => setStatus(() => status)}
                   style={{ width: '100%', height: 165, marginTop: 5, alignSelf: 'center' }} />
               </TouchableOpacity>

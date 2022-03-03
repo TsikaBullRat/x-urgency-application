@@ -3,7 +3,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createStackNavigator } from '@react-navigation/stack'
-import { auth, firestore, LogOut } from './src/firebase'
+import { auth, firestore, Exit } from './src/firebase'
+// import {LogOut } from './src/firebase/Auth/LogOut'
+
 import { Loading } from './src/Components'
 import { StyleSheet, NativeModules, View } from 'react-native'
 import {
@@ -25,7 +27,6 @@ import {
   DoctorSignUp,
   PlayVideo,
   Doctor,
-  Clone
 } from './src/Screens'
 
 // const Stack = createNativeStackNavigator()
@@ -97,7 +98,7 @@ export default function App() {
               </Stack.Screen>
               <Stack.Screen name='Update' component={UpdateProfile} options={{ headerShown: false }} />
               <Stack.Screen name='UploadVideo' component={UploadVideo} options={{ headerShown: false }} />
-              <Stack.Screen name='PlayVideo' component={Clone} options={{ headerShown: false }} />
+              <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
               <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }} />
             </>
           ) : (
@@ -120,7 +121,7 @@ export default function App() {
                 {props => <Home {...props} Exit={Exit} />}
               </Stack.Screen>
               <Stack.Screen name='Doctor' component={Doctor} options={{ headerShown: false }} />
-              <Stack.Screen name='PlayVideo' component={Clone} options={{ headerShown: false }} />
+              <Stack.Screen name='PlayVideo' component={PlayVideo} options={{ headerShown: false }} />
               <Stack.Screen name='EmergencyContacts' options={{ headerShown: false }} >
                 {props => <EmergencyContacts {...props} />}
               </Stack.Screen>

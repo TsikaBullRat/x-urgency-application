@@ -9,8 +9,7 @@ import {
 } from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
-import { auth, LoadSet, firestore 
-} from '../../firebase'
+import { auth, LoadSet, firestore } from '../../firebase'
 import LogOut from '../../firebase/Auth/LogOut'
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
@@ -20,47 +19,105 @@ import { VideoList } from '../../Components/VideoList'
 import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
+import { Video } from 'expo-av'
+import { firebase } from '../../firebase/config'
 
-export default function Home({ navigation, Exit }) {
+export default function Home ({ navigation, Exit, route }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
-    ref = useRef(null),
+     [videoPlay, setVideoPlay] = useState(
+    // data.url 
+    "https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"
+  )
+
+  const reference = useRef(
+    //data.ref 
+    "https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"
+  ),
+
+   data = route.params,
+
     [image, setImage] = useState(null),
     [initial, setInitial] = useState('')
+
+  const [collection, setCollection] = useState([])
 
   useEffect(() => {
     auth.currentUser
       ? (setImage(auth.currentUser.photoURL),
         setInitial(auth.currentUser.displayName.substring(0, 1)))
       : auth.onAuthStateChanged(doc => {
-        setImage(doc.photoURL)
-        console.log(doc.displayName)
-        setInitial(doc.displayName.substring(0, 1))
-        console.log(auth.currentUser)
-      })
+          setImage(doc.photoURL)
+          console.log(doc.displayName)
+          setInitial(doc.displayName.substring(0, 1))
+          console.log(auth.currentUser)
+        })
   }, [])
 
   useEffect(() => {
-    LoadSet(setLoad)
+    firestore.collection('Videos').onSnapshot(snapshot => {
+      const videos = snapshot.docs.map(doc => ({
+        ...doc.data()
+      }))
+      setCollection(videos)
+      // setFilteredData(videos);
+      console.log(videos)
+    })
+
+    //query.forEach(async doc => {
+    // let locator
+    // let user
+    // let comment
+    // let time
+    // let load = []
+
+    // if (doc.data().comments !== undefined) {
+    //     if (doc.data().comments[0] !== null) count = doc.data().comments.length
+    //     else count = 0
+    // }
+
+    // if (doc.data().comments !== undefined) {
+    //     if (doc.data().comments[0] !== null) {
+    //         for (var i = 0; i < doc.data().comments.length; i++) {
+    //             locator = doc.data().ref
+    //             user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username ? doc.data().username : null)
+    //             comment = doc.data().comments[i].comment
+    //             time = doc.data().comments[i].time.toDate()
+    //             load = [...load, { user, comment, time }]
+    //         }
+    //     }
+    // }
+    // set = [...set, ...load]
+    // SetCollection(set)
+    //     })
+    //     Count(count)
+    // })
   }, [])
 
-  const [displayModal, setDisplaModal] = useState(false),
-    
-  [message, setMessage] = useState(''),
-    
-    VideoScreen = data => {
-      navigation.navigate('PlayVideo', { data })
-    }
-
-  const signOut = () => {
-    LogOut()
-    setMessage('Signed out successfully')
-    setDisplaModal(true)
+  const ItemSeperatorView = () => {
+    return (
+      <View
+        style={{
+          height: 0.5,
+          width: 380,
+          left: -10,
+          backgroundColor: '#c8c8c8'
+        }}
+      />
+    )
   }
 
-  // useEffect(()=>{
-  //   console.log(auth.currentUser)
-  // }, [auth.currentUser])
+  const [displayModal, setDisplaModal] = useState(false),
+    [message, setMessage] = useState(''),
+    signOut = () => {
+      LogOut()
+      setMessage('Signed out successfully')
+      setDisplaModal(true)
+    }
+
+  useEffect(() => {
+    console.log(auth.currentUser)
+  }, [auth.currentUser])
 
   return (
     <View style={styles.container}>
@@ -71,10 +128,17 @@ export default function Home({ navigation, Exit }) {
       />
 
       {/**------------------CallSiren--------------------CallSiren----------------- */}
-
-      <View style={{ width: 340, flexDirection: 'row', marginVertical: 35, left: -5, justifyContent: 'flex-end' }}>
+      <View
+        style={{
+          width: 345,
+          flexDirection: 'row',
+          marginVertical: 35,
+          justifyContent: 'flex-end'
+        }}>
         <View style={{ left: -15 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')}  >
+          <TouchableOpacity
+            onPress={() => navigation.navigate('EmergencyContacts')}
+          >
             <CallSiren />
           </TouchableOpacity>
         </View>
@@ -87,12 +151,21 @@ export default function Home({ navigation, Exit }) {
       </View>
 
       {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
+      <View
+        style={{
+          flexDirection: 'row',
+          width: 350,
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}>
+        {/*-------------Header---------------Header--------------Header------- */}
+        <View style={{ left: 6 }}>
+          <Header />
+        </View>
 
-      <View style={{ flexDirection: 'row', width: 345, left: -4, justifyContent: 'space-between' }}>
-
-        <Header />
-
-        <TouchableOpacity style={{ top: -24 }} onPress={() => navigation.navigate('Doctor')} >
+        <TouchableOpacity
+          style={{ top: -24 }}
+          onPress={() => navigation.navigate('Doctor')}>
           {image ? (
             <Avatar rounded source={{ uri: image }} size='large' />
           ) : (
@@ -101,20 +174,57 @@ export default function Home({ navigation, Exit }) {
             </View>
           )}
         </TouchableOpacity>
-
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <Menu />
-      {/*---------------------- Video Scroll View--------------------*/}
+      <View style={{ width: 360, left: 2 }}>
+        <Menu />
+      </View>
 
+      {/*---------------------- Video Scroll View--------------------*/}
       <View style={{ marginVertical: 20 }}>
-        <ScrollView style={{ height: 435, width: 340 }} vertical={true} showsVerticalScrollIndicator={false} >
-          <Card style={styles.menu2}>
-            <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }}>
-              <VideoList videos={videos} VideoScreen={VideoScreen}/>
-            </TouchableOpacity>
-          </Card>
+        <ScrollView
+          style={{ height: 435 }}
+          vertical={true}
+          showsVerticalScrollIndicator={false}
+        >
+          {collection
+            ? collection.map((vid, index) => (
+                <View
+                  style={{ width: 340, left: 11, backgroundColor: '#ffe7e6' }}
+                  key={index}
+                >
+                  <TouchableOpacity
+                    style={{ alignItems: 'center', justifyContent: 'center' }}
+                    onPress={() => navigation.navigate('PlayVideo', { vid })}
+                  >
+                    <Video
+                      ref={reference}
+                      source={{ uri: videoPlay }}
+                      resizeMode='stretch'
+                      isLooping
+                      style={{ width: 340, height: 180 }}
+                    />
+                  </TouchableOpacity>
+
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    margin:3,
+                    justifyContent: 'space-between'}} >
+                    <Text style={styles.vidTitle}>{vid.title}</Text>
+                    <Text style={styles.tag}>{vid.views}Views</Text>
+                  </View>
+
+                  <View style={{ margin:3}}>
+                    <Text style={styles.tag}>{vid.tag} </Text>
+                    <Text style={styles.tag}>{vid.stamp}</Text>
+                  </View>
+
+                  <ItemSeperatorView />
+                </View>
+              ))
+            : null}
         </ScrollView>
       </View>
     </View>
@@ -124,7 +234,6 @@ export default function Home({ navigation, Exit }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems:'center',
     backgroundColor: '#fff'
   },
 
@@ -164,13 +273,14 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 50,
     backgroundColor: 'turquoise',
-    textAlign: 'center',
+    alignItems: 'center',
     justifyContent: 'center'
   },
 
   temp_text: {
     fontSize: 40,
     color: '#fff',
+    textAlign: 'center',
     fontFamily: 'Roboto'
   }
 })

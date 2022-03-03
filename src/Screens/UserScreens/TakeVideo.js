@@ -40,6 +40,14 @@ export default function TakeVideo({ navigation }) {
         </TouchableOpacity>
       </View>
 
+      {/**-------BACK------BACK-------BACK */}
+
+      <View style={{ width: 360, marginVertical: 15, alignItems: 'center' }}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={{textAlign:'center'}}>{`BACK`}</Text>
+        </TouchableOpacity>
+      </View>
+
     </View>
   )
 }

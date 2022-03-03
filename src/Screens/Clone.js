@@ -10,6 +10,9 @@ import { Dislikes } from '../firebase/Functions/Dislikes'
 export const Clone = ({ route }) => {
 
     const { data } = route.params
+    useEffect(()=>{
+        console.log(data)
+    }, [])
     const refrence = useRef(data.url)
     const [userName, setUserName] = useState(data.owner)
     const [videoPlay, setVideoPlay] = useState(data.url)

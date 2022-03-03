@@ -158,6 +158,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F47066',
     width: 360,
     height: 200,
+    marginTop:35,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     textAlign: 'center'

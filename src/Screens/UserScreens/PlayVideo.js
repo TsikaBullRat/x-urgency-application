@@ -110,18 +110,14 @@ export default function PlayVideo ({ navigation, route }) {
 
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
-  }, [])
-
-  useEffect(() => {
     addAct()
   }, [])
 
   return (
     <View style={styles.contain}>
+      {/**-------BACK------BACK-------BACK */}
 
-    {/**-------BACK------BACK-------BACK */}
-
-      <View style={{ marginTop: 10, width:340, alignItems:'flex-start' }}>
+      <View style={{ marginTop: 10, width: 340, alignItems: 'flex-start' }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text>{`BACK`}</Text>
         </TouchableOpacity>
@@ -129,15 +125,26 @@ export default function PlayVideo ({ navigation, route }) {
 
       {/**-------------Video----------------Video-----------------Video---------------- */}
 
-      <View style={{ width: 340, marginTop: 25 }}>
+      <View style={{ width: 344, marginTop: 25, backgroundColor: '#f7eeed' }}>
         <Video
           ref={reference}
           source={{ uri: videoPlay }}
           useNativeControls
           resizeMode='stretch'
           isLooping
-          style={{ width: 340, height: 180 }}
+          style={{ width: 340, height: 180, left: 2 }}
         />
+
+        <View>
+          <Text style={{ fontWeight: 'bold', color: '#F47066' }}>
+            {data.title /*"My video"*/}
+          </Text>
+          <Text style={{ fontSize: 10 }}>
+            {views} views - {data.stamp /*"3 weeks ago"*/}
+          </Text>
+        </View>
+
+        <View style={{ marginVertical: 5 }} />
       </View>
 
       <View>
@@ -189,9 +196,10 @@ export default function PlayVideo ({ navigation, route }) {
                 width: 360,
                 flexDirection: 'row',
                 marginTop: 15,
-                borderTopWidth:1,
-                borderBottomWidth:1,
-                borderColor:'#f47066',        alignItems: 'center',
+                borderTopWidth: 1,
+                borderBottomWidth: 1,
+                borderColor: '#f47066',
+                alignItems: 'center',
                 justifyContent: 'space-around'
               }}
             >
@@ -297,14 +305,16 @@ export default function PlayVideo ({ navigation, route }) {
                   paddingLeft: 10,
                   fontWeight: 'medium',
                   fontSize: 18
-                }}>
+                }}
+              >
                 Comments: {count}
               </Text>
             </View>
 
             <ScrollView
               style={{ height: 220 }}
-              showsVerticalScrollIndicator={false}>
+              showsVerticalScrollIndicator={false}
+            >
               <Card style={{ height: 340, width: 340 }}>
                 {Comments.map((item, index) => (
                   <Card
@@ -377,11 +387,10 @@ export default function PlayVideo ({ navigation, route }) {
             <View
               style={{
                 width: 340,
-                marginTop: 20,
+                marginTop: 5,
                 flexDirection: 'row',
                 justifyContent: 'space-between'
-              }}
-            >
+              }}>
               <View>
                 <Text
                   style={{ fontWeight: 'bold', color: '#F47066', fontSize: 22 }}
@@ -393,26 +402,27 @@ export default function PlayVideo ({ navigation, route }) {
                 </Text>
               </View>
 
-              <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                <AntDesign name='closecircle' size={18} color='black' />
-              </TouchableOpacity>
+              <View style={{marginTop:5}}>
+                <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
+                  <AntDesign name='closecircle' size={18} color='black' />
+                </TouchableOpacity>
+              </View>
             </View>
 
             <View
               style={{ width: 340, marginTop: 25, alignItems: 'flex-start' }}
             >
               <Text>
-                tgvhtvvt htvvvhg vvgvgh hgvhgvghv hgvhgv ghvhgv hgvhgv hgvhgv
+                {data.description}
+                {/* tgvhtvvt htvvvhg vvgvgh hgvhgvghv hgvhgv ghvhgv hgvhgv hgvhgv
                 hgvghv hgvhgv hgvhgv hgvhgvh gvhgvghv hgvhgv hgvhgv ghv ghvghvgh
                 hgvhgv hvhgv hgvhgv hgvhv hgvhgv hgvhgv hgvgh ghvhgvhvhgv hgvhgv
-                hgvhgv hgvghv hgvhgv ghvhgvghvhgv hgvhvh v
+                hgvhgv hgvghv hgvhgv ghvhgvghvhgv hgvhvh v */}
               </Text>
             </View>
           </View>
         )}
       </View>
-
-      
     </View>
   )
 }
