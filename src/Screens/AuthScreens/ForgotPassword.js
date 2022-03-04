@@ -15,7 +15,7 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import { handleResetPassword } from '../../firebase'
+import { handleResetPassword } from '../../firebase/Auth/resetpassword'
 
 export default function ForgotPassword({ navigation }) {
   const [email, setEmail] = useState(''),
@@ -54,17 +54,20 @@ export default function ForgotPassword({ navigation }) {
         <View style={styles.heartIcon}>
           <FontAwesome name='heartbeat' size={110} color='#fff' />
         </View>
-        <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {' '} {`X-urgency`}{' '} </Text>
+        <Text style={{ color: '#fff', fontSize: 30 }}>{`X-urgency`} </Text>
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 30, fontFamily: 'Arial', color: '#F47066', justifyContent: 'left' }} >{`Forgot your password?`}</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 30, color: '#F47066', justifyContent: 'center' }} >{`Forgot your password?`}</Text>
       </View>
-      <br />
+      
 
       <View style={{ marginTop: 50 }}>
-        <Text style={{ fontWeight: 'light', fontSize: 18, fontFamily: 'Arial', fontWeight: 'mdium', color: '#000000' }}>
-          Enter your Email and we will send <br /> you a link to reset your password
+        <Text style={{ fontWeight: 'light', fontSize: 18, fontWeight: 'mdium', color: '#000000' }}>
+          {`Enter your Email and we will send`} 
+        </Text>
+        <Text style={{ fontWeight: 'light', fontSize: 18, fontWeight: 'mdium', color: '#000000' }}>
+        {`you a link to reset your password`}
         </Text>
       </View>
 
@@ -80,8 +83,8 @@ export default function ForgotPassword({ navigation }) {
 
       <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }} >
         <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('ResetPassword')}>
-          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>
-            {`SEND`}{' '}
+          <Text style={{ fontSize: 20, color: '#fff' }}>
+            {`SEND`}
           </Text>
         </TouchableOpacity>
       </View>
@@ -98,36 +101,29 @@ export default function ForgotPassword({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    width:360,
+    alignItems:'center',
     backgroundColor: '#fff'
   },
 
   card: {
-    backgroundColor: '#F47066',
-    width: '100%',
+    width: 360,
     height: 200,
     marginTop:35,
+    backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    textAlign: 'center'
-  },
-
-  prompt: {
-    color: '#F47066',
-    textAlign: 'center'
   },
 
   heartIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30
+    marginTop: 30,
+    alignItems:'center'
   },
 
   header: {
-    paddingTop: 25,
-    textAlign: 'center'
+    marginTop: 20,
   },
 
   txtField: {
@@ -135,11 +131,9 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 10,
     fontSize: 18,
-    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
-        fontFamily: 'flexi titling',
         outlineColor: '#fff',
         width: 220
       }

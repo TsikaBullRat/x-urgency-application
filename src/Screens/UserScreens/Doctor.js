@@ -3,8 +3,8 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Card } from 'react-native-paper'
 import { Avatar, Badge } from 'react-native-elements';
-import { Socials, } from '../../Components';
-import { auth, firestore } from '../../firebase';
+import { Socials, } from '../../Components/Socials';
+import { auth, firestore } from '../../firebase/config';
 import Button from '../../Components/button';
 import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 

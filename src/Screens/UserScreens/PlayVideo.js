@@ -31,8 +31,8 @@ import { Avatar } from 'react-native-elements'
 import { Video } from 'expo-av'
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
-import { auth, firestore } from '../../firebase'
-import { Collect, Post } from '../../firebase'
+import { auth, firestore } from '../../firebase/config'
+import { Collect, Post } from '../../firebase/Storage/Storage.functions'
 
 export default function PlayVideo ({ navigation, route }) {
 
@@ -50,6 +50,7 @@ export default function PlayVideo ({ navigation, route }) {
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
     },
+
     changeStyleStatusBar = () => {
       const styleId = styleTypes.indexOf(styleStatusBar) + 1
       if (styleId === styleTypes.length) {
@@ -58,6 +59,7 @@ export default function PlayVideo ({ navigation, route }) {
 
       return setStyleStatusBar(styleTypes[styleId])
     },
+
     addAct = async () => {
       let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid)
       let found = (await metadata.get()).exists
@@ -71,10 +73,12 @@ export default function PlayVideo ({ navigation, route }) {
           }),
           setViews(views + 1))
     },
+
     Navigate = () => {
       let match = data.match
       navigation.navigate('Doctor', { match })
     },
+    
     Delete = remove => {
       firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => {

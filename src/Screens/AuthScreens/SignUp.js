@@ -15,7 +15,7 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import { handleSignUp } from '../../firebase'
+import {handleSignUp} from '../../firebase/Auth/SignUp.function'
 import { AlertNote } from '../../Components/Alert'
 
 export default function SignUp({ navigation }) {
@@ -82,12 +82,12 @@ export default function SignUp({ navigation }) {
           <View style={styles.heartIcon}>
             <FontAwesome name='heartbeat' size={110} color='#fff' />
           </View>
-          <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {' '} {`X-urgency`}{' '} </Text>
+          <Text style={{  color: '#fff', fontSize: 30 }}> {' '} {`X-urgency`}{' '} </Text>
         </Card>
       </View>
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 30, fontWeight: 'bold', textAlign: 'center', ...Platform.select({ web: { fontFamily: 'Arial' } }), color: '#F47066' }}>{`SignUp`}</Text>
+        <Text style={{ fontSize: 30, fontWeight: 'bold', textAlign: 'center', color: '#F47066' }}>{`SignUp`}</Text>
       </View>
 
       {/**----------txtFields------------txtFields------------- */}
@@ -131,7 +131,7 @@ export default function SignUp({ navigation }) {
 
       <View style={styles.signupView}>
         <TouchableOpacity style={styles.signUp} onPress={Register}>
-          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }} > {`SIGNUP`} </Text>
+          <Text style={{ fontSize: 20,  color: '#fff' }} > {`SIGNUP`} </Text>
         </TouchableOpacity>
 
         {/**-------BACK------BACK-------BACK */}
@@ -150,27 +150,29 @@ export default function SignUp({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width:360,
+    alignItems:'center',
     backgroundColor: '#fff'
   },
 
   card: {
-    backgroundColor: '#F47066',
     width: 360,
     height: 200,
     marginTop:35,
+    backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    textAlign: 'center'
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   heartIcon: {
     marginTop: 30,
-    width: 360
+    alignItems:'center'
   },
 
   header: {
     marginTop: 20,
-    width: 360
   },
 
   textfieldCards: {
@@ -182,9 +184,9 @@ const styles = StyleSheet.create({
   txtField: {
     marginTop: 7,
     paddingLeft: 10,
-    paddingTop: 15,
+    paddingTop: 10,
     fontSize: 18,
-    fontFamily: 'Arial',
+    
     borderRadius: 10,
     ...Platform.select({
       web: {

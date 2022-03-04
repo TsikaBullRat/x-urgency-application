@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, Picker, ScrollView } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import { handleDoctorSignUp } from '../../firebase'
+import { handleDoctorSignUp } from '../../firebase/Auth/SignIn.function'
 import { AlertNote } from '../../Components/Alert'
 
 export default function DoctorSignUp({ navigation, setDetails }) {
@@ -221,7 +221,8 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    width:360,
+    alignItems:'center',
     backgroundColor: '#fff'
   },
 

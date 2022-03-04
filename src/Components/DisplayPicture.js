@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { View, Text, StyleSheet } from 'react-native'
-import { auth } from "../firebase"
+import { auth } from "../firebase/config"
 import { Avatar } from 'react-native-elements'
 
 export const DisplayPicture = () => {

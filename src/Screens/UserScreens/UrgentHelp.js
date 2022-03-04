@@ -6,12 +6,13 @@ export default function UrgentHelp({ navigation }) {
   return (
 
     <View style={styles.container}>
-      <View style={styles.logo}>
+      <TouchableOpacity onPress={() => navigation.navigate('SignIn')}
+      style={styles.logo}>
         <Image style={{ height: 350, width: '95%' }} source={require('../../images/UrgentHelpLOGO.png')} />
-      </View>
+      </TouchableOpacity>
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 34, fontWeight: 'bold', fontFamily: 'arial', textAlign: 'center', color: '#F47066' }} >{`Need Urgent Help?`}</Text>
+        <Text style={{ fontSize: 34, fontWeight: 'bold', textAlign: 'center', color: '#F47066' }} >{`Need Urgent Help?`}</Text>
       </View>
 
       <View style={styles.content}>
@@ -37,7 +38,7 @@ export default function UrgentHelp({ navigation }) {
           <Text style={{ fontWeight: 'bold', color: '#fff', }}> {`SignIn`} </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('TakeVideo')}
+        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}
           style={styles.buttons} >
           <Text style={{ fontWeight: 'bold', color: '#fff', }}>  {`Create Account`} </Text>
         </TouchableOpacity>
@@ -50,6 +51,7 @@ export default function UrgentHelp({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems:'center',
     backgroundColor: '#fff'
   },
 
@@ -73,7 +75,6 @@ const styles = StyleSheet.create({
 
   txtContent: {
     fontSize: 19,
-    fontFamily: 'arial'
   },
 
   buttons: {

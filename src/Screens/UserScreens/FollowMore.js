@@ -6,12 +6,13 @@ export default function FollowMore({ navigation }) {
   return (
 
     <View style={styles.container}>
-      <View style={styles.logo}>
+      <TouchableOpacity style={styles.logo}
+      onPress={() => navigation.navigate('UrgentHelp')}>
         <Image style={{ height: 350, width: '95%' }} source={require('../../images/FollowLOGO.png')} />
-      </View>
+      </TouchableOpacity>
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 34, fontWeight: 'bold', fontFamily: 'arial', textAlign: 'center', color: '#F47066' }} >{`Follow for More`}</Text>
+        <Text style={{ fontSize: 34, fontWeight: 'bold', textAlign: 'center', color: '#F47066' }} >{`Follow for More`}</Text>
       </View>
 
       <View style={styles.content}>
@@ -54,6 +55,7 @@ export default function FollowMore({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems:'center',
     backgroundColor: '#fff'
   },
 
@@ -78,7 +80,6 @@ const styles = StyleSheet.create({
 
   txtContent: {
     fontSize: 19,
-    fontFamily: 'arial'
   },
 
   btnNext: {

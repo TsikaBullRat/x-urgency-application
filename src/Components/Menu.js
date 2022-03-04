@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, Image, TouchableOpacity, Platform } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
-import { auth, LoadSet, firestore } from '../firebase'
+import { auth, LoadSet, firestore } from '../firebase/config'
 
 export default function Menu({ list, setVids }) {
   const categories = ['Stroke', 'Cardiac', 'Epilepsy', 'CPR', 'Choking', 'Drowning', 'Bleeding', 'Burns']

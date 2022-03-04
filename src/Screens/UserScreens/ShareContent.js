@@ -11,7 +11,7 @@ export default function ShareContent({ navigation }) {
       </View>
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 34, fontWeight: 'bold', fontFamily: 'arial', textAlign: 'center', color: '#F47066' }} >{`Share Content?`}</Text>
+        <Text style={{ fontSize: 34, fontWeight: 'bold', textAlign: 'center', color: '#F47066' }} >{`Share Content?`}</Text>
       </View>
 
       <View style={styles.content}>
@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
 
   txtContent: {
     fontSize: 19,
-    fontFamily: 'arial'
   },
 
   btnNext: {

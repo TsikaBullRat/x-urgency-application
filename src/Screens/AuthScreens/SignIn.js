@@ -15,7 +15,8 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import { handleSignIn, auth, firestore } from '../../firebase'
+import { auth, firestore } from '../../firebase/config'
+import {handleSignIn} from '../../firebase/Auth/SignIn.function'
 import { AlertNote } from '../../Components'
 
 export default function SignIn({ navigation }) {
@@ -56,14 +57,14 @@ export default function SignIn({ navigation }) {
           <View style={styles.heartIcon}>
             <FontAwesome name='heartbeat' size={110} color='#fff' />
           </View>
-          <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {' '} {`X-urgency`}{' '} </Text>
+          <Text style={{  color: '#fff', fontSize: 30 }}>  {`X-urgency`} </Text>
         </Card>
       </View>
 
       {/**----------Header------------Header------------- */}
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 30, fontWeight: 'bold', textAlign: 'center', ...Platform.select({ web: { fontFamily: 'Arial' } }), color: '#F47066' }}>{`SignIn`}</Text>
+        <Text style={{ fontSize: 30, fontWeight: 'bold', textAlign: 'center',  color: '#F47066' }}>{`SignIn`}</Text>
       </View>
 
       {/**----------txtFields------------txtFields------------- */}
@@ -92,7 +93,7 @@ export default function SignIn({ navigation }) {
 
       <View style={styles.reset}>
         <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword') }} >
-          <Text style={{ paddingTop: 20, fontSize: 18, fontFamily: 'Arial', color: '#F47066' }} >{`Forgot Password?`} </Text>
+          <Text style={{ paddingTop: 20, fontSize: 18,  color: '#F47066' }} >{`Forgot Password?`} </Text>
         </TouchableOpacity>
       </View>
 
@@ -100,7 +101,7 @@ export default function SignIn({ navigation }) {
 
       <View style={styles.loginView}>
         <TouchableOpacity style={styles.signIn} onPress={Login}>
-          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>{`LOGIN`} </Text>
+          <Text style={{ fontSize: 20,  color: '#fff' }}>{`LOGIN`} </Text>
         </TouchableOpacity>
       </View>
 
@@ -111,16 +112,16 @@ export default function SignIn({ navigation }) {
 
         <View style={{ marginTop: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
           <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }} >
-            <Text style={{ paddingTop: 9, fontSize: 20, fontFamily: 'Arial', color: '#F47066' }}> {`SignUp`} </Text>
+            <Text style={{ paddingTop: 9, fontSize: 20,  color: '#F47066' }}> {`SignUp`} </Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View style={{ marginTop: 10, width: 360 }}>
-        <Text style={{ paddingTop: 10, fontWeight: 'bold', color: 'grey', fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {' '}{`Medical Personel?`}{' '}</Text>
+        <Text style={{ paddingTop: 10, fontWeight: 'bold', color: 'grey', fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`}</Text>
         <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
           <TouchableOpacity onPress={() => navigation.navigate('MedSignIn')}>
-            <Text style={{ fontFamily: 'Arial', fontSize: 20, paddingTop: 5, color: '#F47066' }} >{' '}  {`SignIn`}{' '}</Text>
+            <Text style={{  fontSize: 20, paddingTop: 5, color: '#F47066' }} > {`SignIn`}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -131,28 +132,29 @@ export default function SignIn({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width:360,
     alignItems:'center',
     backgroundColor: '#fff'
   },
 
   card: {
-    backgroundColor: '#F47066',
     width: 360,
     height: 200,
     marginTop:35,
+    backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    textAlign: 'center'
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   heartIcon: {
     marginTop: 30,
-    width: 360
+    alignItems:'center'
   },
 
   header: {
     marginTop: 20,
-    width: 360
   },
 
   textfieldCards: {
@@ -164,13 +166,12 @@ const styles = StyleSheet.create({
   txtField: {
     marginTop: 7,
     paddingLeft: 10,
-    paddingTop: 15,
+    paddingTop: 10,
     fontSize: 18,
-    fontFamily: 'Arial',
+    
     borderRadius: 10,
     ...Platform.select({
       web: {
-        fontFamily: 'flexi titling',
         outlineColor: '#fff',
         width: 220
       }
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
 
   newUser: {
     width: 360,
-    marginRight: 10,
+    // marginRight: 10,
     marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',
