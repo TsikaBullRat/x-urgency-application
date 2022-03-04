@@ -106,7 +106,6 @@ export default function PlayVideo ({ navigation, route }) {
   return (
     <View style={styles.contain}>
       {/**-------BACK------BACK-------BACK */}
-
       <View style={styles.back}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text>{`BACK`}</Text>
@@ -114,7 +113,6 @@ export default function PlayVideo ({ navigation, route }) {
       </View>
 
       {/**-------------Video----------------Video-----------------Video---------------- */}
-
       <View style={styles.videoContainer}>
         <Video
           ref={reference}
@@ -154,7 +152,6 @@ export default function PlayVideo ({ navigation, route }) {
               </View>
 
               {/*------------DropDown-------------DropDown--------DropDown*/}
-
               <View style={styles.dropdown}>
                 <TouchableOpacity
                   title='topNav'
@@ -171,7 +168,6 @@ export default function PlayVideo ({ navigation, route }) {
             </View>
 
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
-
             <View style={styles.socialIcons}>
               {/*------------Likes-------------Likes--------Likes*/}
 
@@ -184,7 +180,6 @@ export default function PlayVideo ({ navigation, route }) {
               </View>
 
               {/*------------DisLikes-------------DisLikes--------DisLikes*/}
-
               <View style={styles.dislike}>
                 {
                   <Dislikes
@@ -196,7 +191,6 @@ export default function PlayVideo ({ navigation, route }) {
               </View>
 
               {/*------------Share-------------Share--------Share*/}
-
               <View style={styles.share}>
                 <TouchableOpacity
                   onPress={() => ShareItem(data.url)}
@@ -209,7 +203,6 @@ export default function PlayVideo ({ navigation, route }) {
               </View>
 
               {/*------------Save-------------Save--------Save*/}
-
               <View style={{ marginLeft: 2 }}>
                 <Text style={{ marginLeft: 8 }}>
                   <Entypo name='save' size={20} color='black' />
@@ -219,7 +212,6 @@ export default function PlayVideo ({ navigation, route }) {
             </View>
 
             {/*------------Avatar-------------Avatar--------Avatar*/}
-
             <View
               style={styles.avatar}
             >
@@ -235,7 +227,6 @@ export default function PlayVideo ({ navigation, route }) {
             </View>
 
             {/*------------Comments-------------Comments--------Comments*/}
-
             <Card style={styles.txtCards}>
               <View style={{ flexDirection: 'row' }}>
                 <TextInput
@@ -271,8 +262,7 @@ export default function PlayVideo ({ navigation, route }) {
 
             <ScrollView
               style={{ height: 220 }}
-              showsVerticalScrollIndicator={false}
-            >
+              showsVerticalScrollIndicator={false}>
               <Card style={{ height: 340, width: 340 }}>
                 {Comments.map((item, index) => (
                   <Card
@@ -379,6 +369,7 @@ export default function PlayVideo ({ navigation, route }) {
 const styles = StyleSheet.create({
   contain: {
     flex: 1,
+    width:'100%',
     alignItems: 'center',
     backgroundColor: '#fff'
   },
@@ -388,7 +379,7 @@ const styles = StyleSheet.create({
   },
 
   txtCards: {
-    width: 340,
+    width: '100%',
     height: 40,
     borderRadius: 10,
     backgroundColor: '#fff',
@@ -398,7 +389,7 @@ const styles = StyleSheet.create({
   },
 
   comment: {
-    width: 295,
+    width: '65%',
     height: 38,
     borderRadius: 10,
     backgroundColor: '#fff',
@@ -406,13 +397,12 @@ const styles = StyleSheet.create({
   },
 
   comments: {
-    width: 295,
+    width: '65%',
     left: 3,
     marginVertical: 10,
     flexDirection: 'row',
     borderRadius: 10,
     backgroundColor: '#f47066',
-    paddingLeft: 5
   },
 
   txtComments: {

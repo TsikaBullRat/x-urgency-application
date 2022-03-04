@@ -22,7 +22,7 @@ import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
 import { Video } from 'expo-av'
 
-export default function Home ({ navigation, route }) {
+export default function Home ({ route }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
      [videoPlay, setVideoPlay] = useState(
@@ -68,34 +68,34 @@ export default function Home ({ navigation, route }) {
   //     console.log(videos)
   //   })
 
-  //   //query.forEach(async doc => {
-  //   // let locator
-  //   // let user
-  //   // let comment
-  //   // let time
-  //   // let load = []
+  //   query.forEach(async doc => {
+  //   let locator
+  //   let user
+  //   let comment
+  //   let time
+  //   let load = []
 
-  //   // if (doc.data().comments !== undefined) {
-  //   //     if (doc.data().comments[0] !== null) count = doc.data().comments.length
-  //   //     else count = 0
-  //   // }
+  //   if (doc.data().comments !== undefined) {
+  //       if (doc.data().comments[0] !== null) count = doc.data().comments.length
+  //       else count = 0
+  //   }
 
-  //   // if (doc.data().comments !== undefined) {
-  //   //     if (doc.data().comments[0] !== null) {
-  //   //         for (var i = 0; i < doc.data().comments.length; i++) {
-  //   //             locator = doc.data().ref
-  //   //             user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username ? doc.data().username : null)
-  //   //             comment = doc.data().comments[i].comment
-  //   //             time = doc.data().comments[i].time.toDate()
-  //   //             load = [...load, { user, comment, time }]
-  //   //         }
-  //   //     }
-  //   // }
-  //   // set = [...set, ...load]
-  //   // SetCollection(set)
-  //   //     })
-  //   //     Count(count)
-  //   // })
+  //   if (doc.data().comments !== undefined) {
+  //       if (doc.data().comments[0] !== null) {
+  //           for (var i = 0; i < doc.data().comments.length; i++) {
+  //               locator = doc.data().ref
+  //               user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username ? doc.data().username : null)
+  //               comment = doc.data().comments[i].comment
+  //               time = doc.data().comments[i].time.toDate()
+  //               load = [...load, { user, comment, time }]
+  //           }
+  //       }
+  //   }
+  //   set = [...set, ...load]
+  //   SetCollection(set)
+  //       })
+  //       Count(count)
+  //   })
   // }, [])
 
   const ItemSeperatorView = () => {
@@ -130,7 +130,7 @@ export default function Home ({ navigation, route }) {
       {/**------------------CallSiren--------------------CallSiren----------------- */}
       <View
         style={{
-          width: 345,
+          width: '95%',
           flexDirection: 'row',
           marginVertical: 35,
           justifyContent: 'flex-end'
@@ -154,7 +154,7 @@ export default function Home ({ navigation, route }) {
       <View
         style={{
           flexDirection: 'row',
-          width: 350,
+          width: '95%',
           alignItems: 'center',
           justifyContent: 'space-between'
         }}>
@@ -177,12 +177,12 @@ export default function Home ({ navigation, route }) {
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={{ width: 360, left: 2 }}>
+      <View style={{ width: '95%', left: 2 }}>
         <Menu />
       </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
-      <View style={{ marginVertical: 20 }}>
+      <View style={{ width:'100%', alignItems:' center'}}>
         <ScrollView
           style={{ height: 435 }}
           vertical={true}
@@ -234,6 +234,7 @@ export default function Home ({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width:'100%',
     backgroundColor: '#fff'
   },
 
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
   },
 
   menu2: {
-    width: 335,
+    width: '95%',
     height: 520,
     borderRadius: 15,
     shadowOffset: {},
@@ -281,6 +282,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: '#fff',
     textAlign: 'center',
-    fontFamily: 'Roboto'
+    
   }
 })

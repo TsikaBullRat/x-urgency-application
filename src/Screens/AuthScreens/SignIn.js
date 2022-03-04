@@ -16,7 +16,7 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'r
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { auth, firestore } from '../../firebase/config'
-import {handleSignIn} from '../../firebase/Auth/SignIn.function'
+import {handleSignIn} from '../../firebase/Auth/HandleSignIn'
 import { AlertNote } from '../../Components'
 
 export default function SignIn({ navigation }) {
@@ -40,7 +40,7 @@ export default function SignIn({ navigation }) {
       setPrompt1(null)
       setPrompt2('Please enter password')
     } else {
-      handleSignIn(email, password, setMessage, setDone)
+      handleSignIn(email, password)
       setDisplaModal(true)
     }
   }
@@ -51,8 +51,7 @@ export default function SignIn({ navigation }) {
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
 
       {/**----------Logo------------Logo------------- */}
-
-      <View>
+      <View style={{width:410}}>
         <Card style={styles.card}>
           <View style={styles.heartIcon}>
             <FontAwesome name='heartbeat' size={110} color='#fff' />
@@ -62,19 +61,17 @@ export default function SignIn({ navigation }) {
       </View>
 
       {/**----------Header------------Header------------- */}
-
       <View style={styles.header}>
         <Text style={{ fontSize: 30, fontWeight: 'bold', textAlign: 'center',  color: '#F47066' }}>{`SignIn`}</Text>
       </View>
 
       {/**----------txtFields------------txtFields------------- */}
-
       <View style={styles.textfieldCards}>
         {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name='user' size={22} color='black' style={{ marginTop: 16, marginLeft: 18 }} />
+            <AntDesign name='user' size={22} color='black' style={{ marginTop: 11, marginLeft: 18 }} />
             <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
@@ -82,7 +79,7 @@ export default function SignIn({ navigation }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name='lock' size={32} color='black' style={{ marginTop: 12, marginLeft: 12 }} />
+            <EvilIcons name='lock' size={32} color='black' style={{ marginTop: 10, marginLeft: 12 }} />
             <TextInput style={styles.txtField} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
           </View>
         </Card>
@@ -90,7 +87,6 @@ export default function SignIn({ navigation }) {
       </View>
 
       {/**----------ResetPassword------------ResetPassword------------- */}
-
       <View style={styles.reset}>
         <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword') }} >
           <Text style={{ paddingTop: 20, fontSize: 18,  color: '#F47066' }} >{`Forgot Password?`} </Text>
@@ -98,7 +94,6 @@ export default function SignIn({ navigation }) {
       </View>
 
       {/**----------btnLogIn------------btnLogIn------------- */}
-
       <View style={styles.loginView}>
         <TouchableOpacity style={styles.signIn} onPress={Login}>
           <Text style={{ fontSize: 20,  color: '#fff' }}>{`LOGIN`} </Text>
@@ -106,12 +101,11 @@ export default function SignIn({ navigation }) {
       </View>
 
       {/*----------------------New User--------------New User------ */}
-
       <View style={styles.newUser}>
         <Text style={{ paddingTop: 10, fontWeight: 'bold', textAlign: 'center', color: 'grey', fontSize: 15 }} > {`New User?`} </Text>
 
         <View style={{ marginTop: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }} >
+          <TouchableOpacity onPress={() => { navigation.navigate('SignUp') }} >
             <Text style={{ paddingTop: 9, fontSize: 20,  color: '#F47066' }}> {`SignUp`} </Text>
           </TouchableOpacity>
         </View>
@@ -132,15 +126,14 @@ export default function SignIn({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width:360,
+    width:'100%',
     alignItems:'center',
     backgroundColor: '#fff'
   },
 
   card: {
-    width: 360,
-    height: 200,
-    marginTop:35,
+    width: '100%',
+    height: 310,
     backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -149,7 +142,7 @@ const styles = StyleSheet.create({
   },
 
   heartIcon: {
-    marginTop: 30,
+    marginTop: 85,
     alignItems:'center'
   },
 
@@ -166,9 +159,8 @@ const styles = StyleSheet.create({
   txtField: {
     marginTop: 7,
     paddingLeft: 10,
-    paddingTop: 10,
+    paddingTop: 4,
     fontSize: 18,
-    
     borderRadius: 10,
     ...Platform.select({
       web: {
@@ -206,7 +198,6 @@ const styles = StyleSheet.create({
 
   newUser: {
     width: 360,
-    // marginRight: 10,
     marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',

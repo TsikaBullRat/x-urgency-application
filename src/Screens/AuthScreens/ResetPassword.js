@@ -15,7 +15,7 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import {handleSignUp} from '../../firebase/Auth/SignUp.function'
+import {handleResetPassword} from '../../firebase/Auth/ResetPassword'
 import { AlertNote } from '../../Components/Alert'
 
 export default function ResetPassword({ navigation }) {
@@ -151,15 +151,14 @@ export default function ResetPassword({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width:360,
+    width:'100%',
     alignItems:'center',
     backgroundColor: '#fff'
   },
 
   card: {
-    width: 360,
-    height: 200,
-    marginTop:35,
+    width: '100%',
+    height: 310,
     backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -168,7 +167,7 @@ const styles = StyleSheet.create({
   },
 
   heartIcon: {
-    marginTop: 30,
+    marginTop: 85,
     alignItems:'center'
   },
 

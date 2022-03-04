@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, Picker, ScrollView } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import { handleDoctorSignUp } from '../../firebase/Auth/SignIn.function'
+import { handleDoctorSignUp } from '../../firebase/Auth/HandleSignUp'
 import { AlertNote } from '../../Components/Alert'
 
 export default function DoctorSignUp({ navigation, setDetails }) {
@@ -96,7 +96,8 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 
   return (
     <View style={styles.container}>
-      <View>
+      
+      <View style={{width:410}}>
         <Card style={styles.card}>
           <View style={styles.heartIcon}>
             <FontAwesome name='heartbeat' size={110} color='#fff' />
@@ -221,7 +222,7 @@ export default function DoctorSignUp({ navigation, setDetails }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width:360,
+    width:'100%',
     alignItems:'center',
     backgroundColor: '#fff'
   },
@@ -229,7 +230,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#F47066',
     width: '100%',
-    height: 200,
+    height: 310,
     marginTop:35,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
