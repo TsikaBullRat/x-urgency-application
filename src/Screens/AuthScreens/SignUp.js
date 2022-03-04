@@ -82,12 +82,12 @@ export default function SignUp({ navigation }) {
           <View style={styles.heartIcon}>
             <FontAwesome name='heartbeat' size={110} color='#fff' />
           </View>
-          <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {' '} {`X-urgency`}{' '} </Text>
+          <Text style={{  color: '#fff', fontSize: 30 }}> {' '} {`X-urgency`}{' '} </Text>
         </Card>
       </View>
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 30, fontWeight: 'bold', textAlign: 'center', ...Platform.select({ web: { fontFamily: 'Arial' } }), color: '#F47066' }}>{`SignUp`}</Text>
+        <Text style={{ fontSize: 30, fontWeight: 'bold', textAlign: 'center', color: '#F47066' }}>{`SignUp`}</Text>
       </View>
 
       {/**----------txtFields------------txtFields------------- */}
@@ -131,7 +131,7 @@ export default function SignUp({ navigation }) {
 
       <View style={styles.signupView}>
         <TouchableOpacity style={styles.signUp} onPress={Register}>
-          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }} > {`SIGNUP`} </Text>
+          <Text style={{ fontSize: 20,  color: '#fff' }} > {`SIGNUP`} </Text>
         </TouchableOpacity>
 
         {/**-------BACK------BACK-------BACK */}
@@ -150,17 +150,19 @@ export default function SignUp({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width:360,
+    alignItems:'center',
     backgroundColor: '#fff'
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: 360,
+    width: '100%',
     height: 200,
     marginTop:35,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    textAlign: 'center'
+    alignItems: 'center'
   },
 
   heartIcon: {
@@ -184,7 +186,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 15,
     fontSize: 18,
-    fontFamily: 'Arial',
+    
     borderRadius: 10,
     ...Platform.select({
       web: {

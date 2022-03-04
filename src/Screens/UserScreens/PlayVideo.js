@@ -36,7 +36,7 @@ import { Collect, Post } from '../../firebase'
 
 export default function PlayVideo ({ navigation, route }) {
 
-  const data = route.params.data
+  const data = route.params
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.url)
   const [views, setViews] = useState(data.views)
@@ -50,6 +50,7 @@ export default function PlayVideo ({ navigation, route }) {
     changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
     },
+
     changeStyleStatusBar = () => {
       const styleId = styleTypes.indexOf(styleStatusBar) + 1
       if (styleId === styleTypes.length) {
@@ -58,6 +59,7 @@ export default function PlayVideo ({ navigation, route }) {
 
       return setStyleStatusBar(styleTypes[styleId])
     },
+
     addAct = async () => {
       let metadata = firestore
         .collection('Videos')
@@ -74,10 +76,12 @@ export default function PlayVideo ({ navigation, route }) {
           }),
           setViews(views + 1))
     },
+
     Navigate = () => {
       let match = data.match
       navigation.navigate('Doctor', { match })
     },
+    
     Delete = remove => {
       firestore
         .collection('Videos')

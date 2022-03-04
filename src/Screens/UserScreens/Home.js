@@ -43,12 +43,12 @@ export default function Home ({ navigation, Exit, route }) {
   const [collection, setCollection] = useState([])
 
   useEffect(() => {
-    auth.currentUser
-      ? (setImage(auth.currentUser.photoURL),
-        setInitial(auth.currentUser.displayName.substring(0, 1)))
+    auth.currentUser ?
+      //  (setImage(auth.currentUser.photoURL),
+        setInitial(auth.currentUser.displayName.substring(0, 1))
       : auth.onAuthStateChanged(doc => {
-          setImage(doc.photoURL)
-          console.log(doc.displayName)
+          // setImage(doc.photoURL)
+          // console.log(doc.displayName)
           setInitial(doc.displayName.substring(0, 1))
           console.log(auth.currentUser)
         })
@@ -144,7 +144,7 @@ export default function Home ({ navigation, Exit, route }) {
         </View>
 
         <View style={{ marginTop: 10 }}>
-          <TouchableOpacity onPress={signOut}>
+          <TouchableOpacity onPress={Exit}>
             <LogOutComp />
           </TouchableOpacity>
         </View>

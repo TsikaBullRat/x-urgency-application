@@ -97,12 +97,14 @@ export default function MedSignIn({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width:360,
+    alignItems:'center',
     backgroundColor: '#fff'
   },
 
   card: {
     backgroundColor: '#F47066',
-    width: 360,
+    width: '100%',
     height: 200,
     marginTop:35,
     borderBottomLeftRadius: 30,
