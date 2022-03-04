@@ -20,7 +20,6 @@ import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
 import { Video } from 'expo-av'
-import { firebase } from '../../firebase/config'
 
 export default function Home ({ navigation, Exit, route }) {
   const [status, setStatus] = useState({})
@@ -54,45 +53,49 @@ export default function Home ({ navigation, Exit, route }) {
         })
   }, [])
 
-  useEffect(() => {
-    firestore.collection('Videos').onSnapshot(snapshot => {
-      const videos = snapshot.docs.map(doc => ({
-        ...doc.data()
-      }))
-      setCollection(videos)
-      // setFilteredData(videos);
-      console.log(videos)
-    })
-
-    //query.forEach(async doc => {
-    // let locator
-    // let user
-    // let comment
-    // let time
-    // let load = []
-
-    // if (doc.data().comments !== undefined) {
-    //     if (doc.data().comments[0] !== null) count = doc.data().comments.length
-    //     else count = 0
-    // }
-
-    // if (doc.data().comments !== undefined) {
-    //     if (doc.data().comments[0] !== null) {
-    //         for (var i = 0; i < doc.data().comments.length; i++) {
-    //             locator = doc.data().ref
-    //             user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username ? doc.data().username : null)
-    //             comment = doc.data().comments[i].comment
-    //             time = doc.data().comments[i].time.toDate()
-    //             load = [...load, { user, comment, time }]
-    //         }
-    //     }
-    // }
-    // set = [...set, ...load]
-    // SetCollection(set)
-    //     })
-    //     Count(count)
-    // })
+  useEffect(()=>{
+    LoadSet(setCollection)
   }, [])
+
+  // useEffect(() => {
+  //   firestore.collection('Videos').onSnapshot(snapshot => {
+  //     const videos = snapshot.docs.map(doc => ({
+  //       ...doc.data()
+  //     }))
+  //     setCollection(videos)
+  //     // setFilteredData(videos);
+  //     console.log(videos)
+  //   })
+
+  //   //query.forEach(async doc => {
+  //   // let locator
+  //   // let user
+  //   // let comment
+  //   // let time
+  //   // let load = []
+
+  //   // if (doc.data().comments !== undefined) {
+  //   //     if (doc.data().comments[0] !== null) count = doc.data().comments.length
+  //   //     else count = 0
+  //   // }
+
+  //   // if (doc.data().comments !== undefined) {
+  //   //     if (doc.data().comments[0] !== null) {
+  //   //         for (var i = 0; i < doc.data().comments.length; i++) {
+  //   //             locator = doc.data().ref
+  //   //             user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username ? doc.data().username : null)
+  //   //             comment = doc.data().comments[i].comment
+  //   //             time = doc.data().comments[i].time.toDate()
+  //   //             load = [...load, { user, comment, time }]
+  //   //         }
+  //   //     }
+  //   // }
+  //   // set = [...set, ...load]
+  //   // SetCollection(set)
+  //   //     })
+  //   //     Count(count)
+  //   // })
+  // }, [])
 
   const ItemSeperatorView = () => {
     return (
@@ -114,10 +117,6 @@ export default function Home ({ navigation, Exit, route }) {
       setMessage('Signed out successfully')
       setDisplaModal(true)
     }
-
-  useEffect(() => {
-    console.log(auth.currentUser)
-  }, [auth.currentUser])
 
   return (
     <View style={styles.container}>

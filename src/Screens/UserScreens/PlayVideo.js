@@ -36,7 +36,7 @@ import { Collect, Post } from '../../firebase'
 
 export default function PlayVideo ({ navigation, route }) {
 
-  const data = route.params
+  const data = route.params.vid
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.url)
   const [views, setViews] = useState(data.views)
@@ -61,14 +61,11 @@ export default function PlayVideo ({ navigation, route }) {
     },
 
     addAct = async () => {
-      let metadata = firestore
-        .collection('Videos')
-        .doc(data.firestore)
-        .collection('Acts')
-      let found = (await metadata.doc(auth.currentUser.uid).get()).exists
+      let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid)
+      let found = (await metadata.get()).exists
       found
         ? null
-        : (metadata.doc(auth.currentUser.uid).set({
+        : (metadata.set({
             liked: false,
             disliked: false,
             Comments: [null],
@@ -83,27 +80,16 @@ export default function PlayVideo ({ navigation, route }) {
     },
     
     Delete = remove => {
-      firestore
-        .collection('Videos')
-        .doc(data.firestore)
-        .collection('Acts')
-        .doc(auth.currentUser.uid)
-        .get()
+      firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => {
           return doc.data().Comments
         })
-
         .then(item => {
           let update = item.filter(item => item.comment !== remove)
           return update
         })
-
         .then(update => {
-          firestore
-            .collection('Videos')
-            .doc(data.firestore)
-            .collection('Acts')
-            .doc(auth.currentUser.uid)
+          firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid)
             .update({
               Comments: update
             })
@@ -121,7 +107,7 @@ export default function PlayVideo ({ navigation, route }) {
     <View style={styles.contain}>
       {/**-------BACK------BACK-------BACK */}
 
-      <View style={{ marginTop: 10, width: 340, alignItems: 'flex-start' }}>
+      <View style={styles.back}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text>{`BACK`}</Text>
         </TouchableOpacity>
@@ -129,7 +115,7 @@ export default function PlayVideo ({ navigation, route }) {
 
       {/**-------------Video----------------Video-----------------Video---------------- */}
 
-      <View style={{ width: 344, marginTop: 25, backgroundColor: '#f7eeed' }}>
+      <View style={styles.videoContainer}>
         <Video
           ref={reference}
           source={{ uri: videoPlay }}
@@ -141,32 +127,23 @@ export default function PlayVideo ({ navigation, route }) {
 
         <View>
           <Text style={{ fontWeight: 'bold', color: '#F47066' }}>
-            {data.title /*"My video"*/}
+            {data.title}
           </Text>
           <Text style={{ fontSize: 10 }}>
-            {views} views - {data.stamp /*"3 weeks ago"*/}
+            {views} views - {data.stamp}
           </Text>
         </View>
 
-        <View style={{ marginVertical: 5 }} />
+        {/* <View style={{ marginVertical: 5 }} /> */}
       </View>
 
       <View>
         {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
         {!visibleStatusBar ? (
           <View
-            style={{
-              width: 340,
-              //marginTop: 15,
-              justifyContent: 'space-between'
-            }}>
+            style={styles.statusOff}>
             <View
-              style={{
-                flexDirection: 'row',
-                width: 340,
-                alignItems: 'center',
-                justifyContent: 'space-between'
-              }}>
+              style={styles.title}>
               <View>
                 <Text style={{ fontWeight: 'bold', color: '#F47066' }}>
                   {data.title}
@@ -178,7 +155,7 @@ export default function PlayVideo ({ navigation, route }) {
 
               {/*------------DropDown-------------DropDown--------DropDown*/}
 
-              <View style={{ marginLeft: 25, marginTop: 20 }}>
+              <View style={styles.dropdown}>
                 <TouchableOpacity
                   title='topNav'
                   onPress={() => changeVisibilityStatusBar()}
@@ -195,33 +172,20 @@ export default function PlayVideo ({ navigation, route }) {
 
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
 
-            <View
-              style={{
-                width: 360,
-                flexDirection: 'row',
-                marginTop: 15,
-                borderTopWidth: 1,
-                borderBottomWidth: 1,
-                borderColor: '#f47066',
-                alignItems: 'center',
-                justifyContent: 'space-around'
-              }}
-            >
+            <View style={styles.socialIcons}>
               {/*------------Likes-------------Likes--------Likes*/}
 
-              <View style={{ left: -8 }}>
-                {
+              <View style={styles.like}>
                   <Likes
                     data={
                       data.firestore
                     }
                   />
-                }
               </View>
 
               {/*------------DisLikes-------------DisLikes--------DisLikes*/}
 
-              <View style={{ marginLeft: 10, marginTop: 3 }}>
+              <View style={styles.dislike}>
                 {
                   <Dislikes
                     data={
@@ -233,7 +197,7 @@ export default function PlayVideo ({ navigation, route }) {
 
               {/*------------Share-------------Share--------Share*/}
 
-              <View style={{ marginLeft: 15 }}>
+              <View style={styles.share}>
                 <TouchableOpacity
                   onPress={() => ShareItem(data.url)}
                 >
@@ -247,9 +211,9 @@ export default function PlayVideo ({ navigation, route }) {
               {/*------------Save-------------Save--------Save*/}
 
               <View style={{ marginLeft: 2 }}>
-                <View style={{ marginLeft: 8 }}>
+                <Text style={{ marginLeft: 8 }}>
                   <Entypo name='save' size={20} color='black' />
-                </View>
+                </Text>
                 <Text style={{ paddingTop: 5 }}> Save </Text>
               </View>
             </View>
@@ -257,12 +221,7 @@ export default function PlayVideo ({ navigation, route }) {
             {/*------------Avatar-------------Avatar--------Avatar*/}
 
             <View
-              style={{
-                width: 340,
-                marginTop: 25,
-                flexDirection: 'row',
-                justifyContent: 'flex'
-              }}
+              style={styles.avatar}
             >
               <Avatar
                 rounded
@@ -286,12 +245,7 @@ export default function PlayVideo ({ navigation, route }) {
                   onChangeText={text => setComment(text)}
                 />
                 <View
-                  style={{
-                    width: 90,
-                    height: 50,
-                    borderRadius: 15,
-                    marginTop: 2
-                  }}
+                  style={styles.commentButton}
                 >
                   <Button
                     color='#F47066'
@@ -302,7 +256,7 @@ export default function PlayVideo ({ navigation, route }) {
               </View>
             </Card>
 
-            <View style={{ width: 340, alignItems: 'flex-start' }}>
+            <View style={styles.commentCount}>
               <Text
                 style={{
                   paddingTop: 15,
@@ -329,7 +283,7 @@ export default function PlayVideo ({ navigation, route }) {
                     }}
                     key={index}
                   >
-                    <SafeAreaView style={{ paddingLeft: 20, paddingTop: 10 }}>
+                    <SafeAreaView style={styles.safeArea}>
                       <Text>
                         <Text style={{ color: 'red' }}>{item.user}</Text>:{' '}
                         {item.comment}
@@ -387,14 +341,9 @@ export default function PlayVideo ({ navigation, route }) {
         ) : (
           /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
 
-          <View style={{ backgroundColor: '#fff', marginTop: 15 }}>
+          <View style={styles.hiddenDescription}>
             <View
-              style={{
-                width: 340,
-                marginTop: 5,
-                flexDirection: 'row',
-                justifyContent: 'space-between'
-              }}>
+              style={styles.description}>
               <View>
                 <Text
                   style={{ fontWeight: 'bold', color: '#F47066', fontSize: 22 }}
@@ -418,10 +367,6 @@ export default function PlayVideo ({ navigation, route }) {
             >
               <Text>
                 {data.description}
-                {/* tgvhtvvt htvvvhg vvgvgh hgvhgvghv hgvhgv ghvhgv hgvhgv hgvhgv
-                hgvghv hgvhgv hgvhgv hgvhgvh gvhgvghv hgvhgv hgvhgv ghv ghvghvgh
-                hgvhgv hvhgv hgvhgv hgvhv hgvhgv hgvhgv hgvgh ghvhgvhvhgv hgvhgv
-                hgvhgv hgvghv hgvhgv ghvhgvghvhgv hgvhvh v */}
               </Text>
             </View>
           </View>
@@ -483,5 +428,73 @@ const styles = StyleSheet.create({
 
   btnComment: {
     backgroundColor: '#F47066'
+  }, 
+  back:{
+    marginTop: 10, 
+    width: 340, 
+    alignItems: 'flex-start' 
+  },
+  videoContainer:{
+    width: 344,
+    marginTop: 25,
+    backgroundColor: '#f7eeed' 
+  },
+  statusOff:{
+    width: 340,
+    //marginTop: 15,
+    justifyContent: 'space-between'
+  },
+  socialIcons:{
+    width: 360,
+    flexDirection: 'row',
+    marginTop: 15,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#f47066',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  avatar:{
+    width: 340,
+    marginTop: 25,
+    flexDirection: 'row',
+    justifyContent: 'flex'
+  },
+  hiddenDescription:{ 
+    backgroundColor: '#fff', 
+    marginTop: 15 
+  },
+  safeArea:{ 
+    paddingLeft: 20, 
+    paddingTop: 10 
+  },
+  commentCount:{ 
+    width: 340, 
+    alignItems: 'flex-start' 
+  },
+  description:{
+    width: 340,
+    marginTop: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  title:{
+    flexDirection: 'row',
+    width: 340,
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  dropdown:{ 
+    marginLeft: 25, 
+    marginTop: 20 
+  },
+  like:{ left: -8 },
+  dislike:{ marginLeft: 10, marginTop: 3 },
+  share: { marginLeft: 15 },
+  commentButton:{
+    width: 90,
+    height: 50,
+    borderRadius: 15,
+    marginTop: 2
   }
 })
