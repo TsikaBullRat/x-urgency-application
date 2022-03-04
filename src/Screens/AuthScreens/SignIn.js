@@ -15,7 +15,8 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import { handleSignIn, auth, firestore } from '../../firebase'
+import { auth, firestore } from '../../firebase/config'
+import {handleSignIn} from '../../firebase/Auth/SignIn.function'
 import { AlertNote } from '../../Components'
 
 export default function SignIn({ navigation }) {
@@ -137,22 +138,23 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    backgroundColor: '#F47066',
-    width: '100%',
+    width: 360,
     height: 200,
     marginTop:35,
+    backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
-    alignItems:'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   heartIcon: {
-    marginTop: 30
+    marginTop: 30,
+    alignItems:'center'
   },
 
   header: {
     marginTop: 20,
-    width: 360
   },
 
   textfieldCards: {
@@ -164,7 +166,7 @@ const styles = StyleSheet.create({
   txtField: {
     marginTop: 7,
     paddingLeft: 10,
-    paddingTop: 15,
+    paddingTop: 10,
     fontSize: 18,
     
     borderRadius: 10,
@@ -204,7 +206,7 @@ const styles = StyleSheet.create({
 
   newUser: {
     width: 360,
-    marginRight: 10,
+    // marginRight: 10,
     marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',

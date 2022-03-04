@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { View, StyleSheet, TextInput, Pressable, Text, ScrollView, Image } from 'react-native'
 import { Feather } from '@expo/vector-icons';
-import { auth, firestore } from '../../firebase'
+import { auth, firestore, storage } from '../../firebase/config'
 import { DisplayPicture, LargeInput } from '../../Components'
 import * as ImagePicker from 'expo-image-picker';
 import { Avatar } from 'react-native-elements';
 import { v4 as uuidv4 } from 'uuid'
-import { storage } from "../../firebase";
 import firebase from 'firebase'
 
 var atob = require('atob')

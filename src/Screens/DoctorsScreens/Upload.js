@@ -14,7 +14,7 @@
 import React, { useState, useRef } from "react";
 import { StyleSheet, Picker, Text, TouchableOpacity, View, TextInput, Pressable, ScrollView } from "react-native";
 import { Card } from "react-native-paper";
-import { UploadVideo } from "../../firebase";
+import { UploadVideo } from "../../firebase/Storage/Storage.functions";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
 import { Video } from "expo-av";

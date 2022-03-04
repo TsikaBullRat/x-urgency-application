@@ -15,7 +15,7 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import { handleResetPassword } from '../../firebase'
+import { handleResetPassword } from '../../firebase/Auth/resetpassword'
 
 export default function ForgotPassword({ navigation }) {
   const [email, setEmail] = useState(''),
@@ -58,9 +58,9 @@ export default function ForgotPassword({ navigation }) {
       </Card>
 
       <View style={styles.header}>
-        <Text style={{ fontWeight: 'bold', fontSize: 30, color: '#F47066', justifyContent: 'left' }} >{`Forgot your password?`}</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 30, color: '#F47066', justifyContent: 'center' }} >{`Forgot your password?`}</Text>
       </View>
-      <br />
+      
 
       <View style={{ marginTop: 50 }}>
         <Text style={{ fontWeight: 'light', fontSize: 18, fontWeight: 'mdium', color: '#000000' }}>
@@ -107,31 +107,23 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    backgroundColor: '#F47066',
-    width: '100%',
+    width: 360,
     height: 200,
     marginTop:35,
+    backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    textAlign: 'center'
-  },
-
-  prompt: {
-    color: '#F47066',
-    textAlign: 'center'
   },
 
   heartIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30
+    marginTop: 30,
+    alignItems:'center'
   },
 
   header: {
-    paddingTop: 25,
-    textAlign: 'center'
+    marginTop: 20,
   },
 
   txtField: {

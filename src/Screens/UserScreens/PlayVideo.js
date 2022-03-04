@@ -31,8 +31,8 @@ import { Avatar } from 'react-native-elements'
 import { Video } from 'expo-av'
 import { Likes } from '../../firebase/Functions/Likes'
 import { Dislikes } from '../../firebase/Functions/Dislikes'
-import { auth, firestore } from '../../firebase'
-import { Collect, Post } from '../../firebase'
+import { auth, firestore } from '../../firebase/config'
+import { Collect, Post } from '../../firebase/Storage/Storage.functions'
 
 export default function PlayVideo ({ navigation, route }) {
 

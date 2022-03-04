@@ -9,19 +9,20 @@ import {
 } from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
-import { auth, LoadSet, firestore } from '../../firebase'
-import LogOut from '../../firebase/Auth/LogOut'
+import { auth, firestore } from '../../firebase/config'
+import {LoadSet} from '../../firebase/Storage/Storage.functions'
+import {Exit} from '../../firebase/Auth/LogOut'
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import CallSiren from '../../Components/CallSiren'
 import LogOutComp from '../../Components/LogOutComp'
-import { VideoList } from '../../Components/VideoList'
+import VideoList from '../../Components/VideoList'
 import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
 import { Video } from 'expo-av'
 
-export default function Home ({ navigation, Exit, route }) {
+export default function Home ({ navigation, route }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null),
      [videoPlay, setVideoPlay] = useState(
@@ -30,7 +31,7 @@ export default function Home ({ navigation, Exit, route }) {
   )
 
   const reference = useRef(
-    //data.ref 
+    // data.ref 
     "https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"
   ),
 
@@ -198,7 +199,7 @@ export default function Home ({ navigation, Exit, route }) {
                     onPress={() => navigation.navigate('PlayVideo', { vid })}
                   >
                     <Video
-                      ref={reference}
+                      //ref={reference}
                       source={{ uri: videoPlay }}
                       resizeMode='stretch'
                       isLooping

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Pressable } from 'react-native';
 import { Avatar, Badge } from 'react-native-elements';
 import { Card } from 'react-native-paper';
-import { auth, LoadSet, LogOut, firestore } from '../../firebase';
+import { auth, firestore, LoadSet } from '../../firebase/config';
+
+import {LogOut} from '../../firebase/Auth/LogOut'
 import { ProgressBar, VideoList, AlertNote } from '../../Components'
 import { Feather } from '@expo/vector-icons';
 
