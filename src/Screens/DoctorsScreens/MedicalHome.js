@@ -95,17 +95,14 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
           {"\n"}
           <Text style={{ fontSize: 36, paddingLeft: 30, color: "red", textShadowColor: "grey", textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1, }} > In Da House </Text>
         </Text>
-        <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <TouchableOpacity onPress={Logout}> 
+        <View style={{ marginTop: 10, marginLeft: 10 }}>
             {image ? (
               <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
             ) : (
-              <Text style={styles.temp}>
+              <View style={styles.temp}>
                 <Text style={styles.temp_text}> {initial} </Text>
-              </Text>
+              </View>
           )}
-
-          </TouchableOpacity>
           <Text onPress={() => navigation.navigate("Update")} >
             <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
           </Text>
@@ -224,15 +221,16 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 80,
     backgroundColor: 'turquoise',
-    textAlign: 'center',
+    alignItems: 'center',
     justifyContent: 'center'
   },
 
   temp_text: {
     fontSize: 40,
     color: '#fff',
+    textAlign: 'center',
+    fontFamily: 'Roboto'
   }
 
 });
