@@ -1,149 +1,232 @@
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 07/10/2021 - 10:05:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 07/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
-/**
-    * @description      : 
-    * @author           : MLab
-    * @group            : 
-    * @created          : 05/10/2021 - 14:22:53
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 05/10/2021
-    * - Author          : MLab
-    * - Modification    : 
-**/
-
-import React from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableOpacity, } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import SwitchSelector from "react-native-switch-selector";
+import { Card } from 'react-native-paper'
 import { Avatar, Badge } from 'react-native-elements';
-import { Card } from 'react-native-paper';
-import { Video, } from 'expo-av';
-import { auth } from '../firebase';
+import { Socials, } from '../../Components/Socials';
+import { auth, firestore } from '../../firebase/config';
+import Button from '../../Components/button';
+import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function MedicalProfile({ navigation, setDone }) {
-  const Logout = () => {
-    auth.signOut()
-    setDone(false)
+export const MedProfile = ({ navigation, route }) => {
+
+
+  const info = route.params.match
+  const [About, setAbout] = useState(true);
+  const [Qualification, setQualification] = useState(false);
+  const [Specialization, setSpecialization] = useState(false);
+  const [Contact, setContact] = useState(false);
+  const [doctor, setDoctor] = useState("")
+  const [email, setEmail] = useState("")
+  const [data, setData] = useState(null);
+  const [subscription, setSubscription] = useState({ text: "", Func: () => null })
+
+  const getDoctorInfo = () => {
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+      .then(doc => {
+        setData(doc.data())
+      })
+
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+      .then(doc => {
+        setDoctor(doc.data().username)
+        setEmail(doc.data().email)
+      })
   }
 
-  const videos = [
-    {
-      id: 1,
-      title: "Stroke",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
+  const Subscribe = async () => {
+    let change = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+      .then(doc => {
+        return doc.data().subscribers
+      })
 
-    {
-      id: 2,
-      title: "Heart-Attack",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").update({
+      subscribers: [...change, auth.currentUser.uid]
+    })
 
-    {
-      id: 3,
-      title: "Epilepsy",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
+    setSubscription({
+      Func: unSubscribe,
+      text: "unfollow"
+    })
+  }
 
-    {
-      id: 4,
-      title: "CPR",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
+  const unSubscribe = async () => {
+    let change = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+      .then(doc => {
+        return doc.data().subscribers
+      })
 
-    {
-      id: 5,
-      title: "Bleeding",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
+    change = change.filter(item => item !== auth.currentUser.uid)
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").update({
+      subscribers: change
+    })
 
-    {
-      id: 6,
-      title: "Choking",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
+    setSubscription({
+      Func: Subscribe,
+      text: "follow"
+    })
+  }
 
-    {
-      id: 7,
-      title: "Drowning",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
+  useEffect(() => {
+    getDoctorInfo()
+  }, [])
 
-    {
-      id: 8,
-      title: "Burn",
-      url: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
-  ];
+  const [image, setImage] = useState(null)
+  const [initial, setInitial] = useState("N")
+  const getProfile = async () => {
+    let name
+    setImage(false)
+    name = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get().then(doc => doc.data().username)
+    setInitial(name.substring(0, 1))
+  }
 
-  const video = React.useRef('http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4');
-  const [status, setStatus] = React.useState({});
-  const link = 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
+  useEffect(() => {
+    getProfile()
+  }, [])
+
+  useEffect(() => {
+    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+      .then(doc => {
+        let array = []
+        array = [...array, doc.data().subscribers]
+        let index = array.indexOf(auth.currentUser.uid)
+        if (index === -1) {
+          setSubscription({
+            Func: unSubscribe,
+            text: "unfollow"
+          })
+
+        } else {
+          setSubscription({
+            Func: Subscribe,
+            text: "follow"
+          })
+        }
+      })
+  }, [])
 
   return (
 
-    <View style={styles.contain}>
-
-      {/*---------------------------Header--------------------------*/}
-
-      <View style={{ flexDirection: 'row' }}>
-        <View style={styles.header}>
-          <Text style={{ fontSize: 36, paddingLeft: 30, color: 'turquoise', textShadowColor: 'grey', textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1 }} > Dr. DoLittle </Text>
-        </View>
-
-        <View style={{ marginTop: 50, marginLeft: 10 }}>
-          <Avatar style={styles.avatar} rounded source={{ uri: 'https://randomuser.me/api/portraits/men/40.jpg', }} size="large" />
-          <Badge status="success" containerStyle={{ position: 'absolute', top: -4, right: -4 }} />
-        </View>
+    <View style={styles.container}>
+      <View>
+        {
+          image ? (
+            <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+          ) : (
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
+          )}
       </View>
 
-      {/*---------------------- Video Scroll View--------------------*/}
+      {/*Doctor-Cards---------------Doctor-Cards---------Doctor-Cards */}
 
-      <ScrollView vertical={true} >
-        <Card style={styles.menu2}>
-          <View>
-            {videos.map(vid => (<ol >
+      <View style={{ width: 355, marginTop: 10, alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row', }}>
 
-              <TouchableOpacity onPress={() => { navigation.navigate('Strokes') }}>
-
-                <Video ref={video} source={{ uri: link }} resizeMode="contain" isLooping onPlaybackStatusUpdate={status => setStatus(() => status)}
-
-                  style={{ width: 180, marginLeft: -40, borderRadius: 25 }} />
-
-                <h4>{vid.title}</h4>
-
-              </TouchableOpacity> </ol>))}
-
+        <Card style={styles.docCards}>
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+            <MaterialCommunityIcons name="certificate-outline" size={34} color="#fff" />
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}> {`Qualifiation`}</Text>
           </View>
-        </Card  >
-      </ScrollView >
+        </Card>
+
+        <Card style={styles.docCards}>
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+            <MaterialCommunityIcons name="briefcase-clock-outline" size={34} color="#fff" />
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>  {`Experience`} </Text>
+          </View>
+        </Card>
+
+        <Card style={styles.docCards}>
+          <View style={{ marginTop: 10, alignItems: 'center' }}>
+            <Feather name="award" size={32} color="#fff" />
+            <Text style={{ paddingTop: 10, fontSize: 16, color: '#fff' }}>  {`Awards`} </Text>
+          </View>
+        </Card>
+
+      </View>
+
+      {/*Socials---------------Socials---------Socials---------- */}
+
+      <View style={{ paddingTop: 20, width: 335, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+        <Socials text="Following" number="15" />
+        <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
+        <Socials text="Likes" number="3.1M" />
+      </View>
+
+      {/**------------------About--------------About-------------About----------- */}
+
+      <View style={{ marginTop: 35, width: 335 }}>
+        <Text style={styles.txtHead}>{`About`}</Text>
+        <Text style={styles.txtAbout}>
+          {`Neurologists These are specialists in the nervous system, which includes the brain, spinal cord, and nerves. They treat strokes, brain and spinal tumors, epilepsy, Parkinson's disease, and Alzheimer's disease.`}
+        </Text>
+      </View>
+
+      {/**----------------Contacts---------Contacts------------Contacts----------- */}
+
+      <View style={{ width: 335, marginTop: 35, alignItems: 'center' }}>
+
+        {/*-------------CALL------------CALL---------CALL--------- */}
+
+        <View style={{ width: 220, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+          <Feather name='phone' size={20} color='black' />
+          <Text style={{ textAlign: 'center', paddingTop: 2, fontSize: 16, color: '#F47066' }} > {`Call Now`}</Text>
+          <Text style={{ paddingTop: 2, fontSize: 16 }}>
+            {`(053) 871 2956`}
+          </Text>
+        </View>
+
+        <View style={{ marginTop: 10 }}>
+          <Text style={{ paddingTop: 5, textAlign: 'center' }}>{`OR`}</Text>
+        </View>
+
+        {/*---------------SMS---------------SMS----------------SMS----- */}
+
+        <View style={{ marginTop: 10, width: 175, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+          <AntDesign name='mail' size={20} color='black' />
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16, color: '#F47066' }} >  {' '} {`SMS`} </Text>
+          <Text style={{ paddingLeft: 10, paddingTop: 2, fontSize: 16 }}>
+            {`078 454 2123`}
+          </Text>
+        </View>
+      </View>
+      {/*--------------BACK------------BACK------------BACK */}
+
+      <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 50 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Text>{`BACK`} </Text>
+        </TouchableOpacity>
+      </View>
     </View>
 
   )
 }
 
 const styles = StyleSheet.create({
-  contain: {
+  container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems:'center',
     backgroundColor: '#fff',
   },
-
-  header: {
-    flexDirection: 'row',
-    paddingTop: 50
+  textTitle: {
+    fontFamily: 'Roboto',
+    color: '#F47066',
+    fontSize: 25,
+    marginTop: 5,
   },
-
+  textTitle2: {
+    fontSize: 15,
+    marginTop: 20,
+    marginLeft: 5,
+  },
+  box: {
+    flexDirection: 'row',
+  },
+  tab: {
+    paddingLeft: 5,
+    width: 380,
+  },
   avatar: {
     width: 70,
     height: 70,
@@ -152,36 +235,59 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     borderColor: 'turquoise',
     shadowColor: 'grey',
-    shadowOffset: { width: 2, height: 2 },
+    shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.4,
     elevation: 1,
   },
-
-  txtCards: {
-    backgroundColor: 'lightgrey',
-    width: 355,
-    height: 50,
-    borderRadius: 10,
-    marginLeft: 10,
-    marginTop: 25
+  words: {
+    width: 250,
+    textAlign: 'center',
+    alignSelf: 'center',
   },
-
-  menu2: {
-    width: 355,
-    height: 520,
-    marginLeft: 10,
-    marginTop: 20,
+  follow: {
+    top: 10,
+    backgroundColor: "#f47066",
+    width: 70,
+    height: 40,
     borderRadius: 15,
-    shadowColor: "#fff",
-    shadowOffset: {
-    },
-
-    shadowOpacity: 0.8,
-    shadowRadius: 3.84,
-    borderBottomWidth: 4,
-    borderRightWidth: 2,
-    elevation: 5,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  txtHead: {
+    fontSize: 30,
+    fontFamily: 'flexi-titling',
+    color: '#F47066'
+  },
+  temp: {
+    width: 70,
+    height: 70,
+    borderRadius: 50,
+    marginTop: 80,
+    backgroundColor: 'turquoise',
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
+  temp_text: {
+    fontSize: 40,
+    color: '#fff',
+  },
+  textTitle: {
+    color: 'red',
+    fontSize: 25,
+    marginTop: 5,
+  },
+  txtAbout: {
+    fontSize: 16,
+    paddingTop: 15
+  },
+  docCards: {
+    width: 100,
+    height: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F47066',
   },
 
 });
 
+// export default Doctor;

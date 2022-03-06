@@ -11,7 +11,6 @@ import {
 import { Card } from 'react-native-paper'
 import { auth, firestore } from '../../firebase/config'
 import {LoadSet} from '../../firebase/Storage/Storage.functions'
-import {Exit} from '../../firebase/Auth/LogOut'
 import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import CallSiren from '../../Components/CallSiren'
@@ -22,24 +21,11 @@ import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
 import { Video } from 'expo-av'
 
-export default function Home ({ navigation, route }) {
+export default function Home ({ navigation, Exit }) {
   const [status, setStatus] = useState({})
-  const [videos, setLoad] = useState(null),
-     [videoPlay, setVideoPlay] = useState(
-    // data.url 
-    "https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"
-  )
-
-  const reference = useRef(
-    // data.ref 
-    "https://firebasestorage.googleapis.com/v0/b/x-urgency.appspot.com/o/Videos%2F53b6444b-ce3b-4c39-b22d-0828f092e43f.mp4?alt=media&token=8f52518d-65a8-4d1f-b18b-a6511a056caa"
-  ),
-
-   data = route.params,
-
-    [image, setImage] = useState(null),
-    [initial, setInitial] = useState('')
-
+  const [videos, setLoad] = useState(null)
+  const [image, setImage] = useState(null)
+  const [initial, setInitial] = useState('')
   const [collection, setCollection] = useState([])
 
   useEffect(() => {
@@ -58,45 +44,11 @@ export default function Home ({ navigation, route }) {
     LoadSet(setCollection)
   }, [])
 
-  // useEffect(() => {
-  //   firestore.collection('Videos').onSnapshot(snapshot => {
-  //     const videos = snapshot.docs.map(doc => ({
-  //       ...doc.data()
-  //     }))
-  //     setCollection(videos)
-  //     // setFilteredData(videos);
-  //     console.log(videos)
-  //   })
+  const reference = useRef(collection.map(item=>item.url))
 
-  //   //query.forEach(async doc => {
-  //   // let locator
-  //   // let user
-  //   // let comment
-  //   // let time
-  //   // let load = []
-
-  //   // if (doc.data().comments !== undefined) {
-  //   //     if (doc.data().comments[0] !== null) count = doc.data().comments.length
-  //   //     else count = 0
-  //   // }
-
-  //   // if (doc.data().comments !== undefined) {
-  //   //     if (doc.data().comments[0] !== null) {
-  //   //         for (var i = 0; i < doc.data().comments.length; i++) {
-  //   //             locator = doc.data().ref
-  //   //             user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username ? doc.data().username : null)
-  //   //             comment = doc.data().comments[i].comment
-  //   //             time = doc.data().comments[i].time.toDate()
-  //   //             load = [...load, { user, comment, time }]
-  //   //         }
-  //   //     }
-  //   // }
-  //   // set = [...set, ...load]
-  //   // SetCollection(set)
-  //   //     })
-  //   //     Count(count)
-  //   // })
-  // }, [])
+  useEffect(()=>{
+    console.log(collection)
+  }, [])
 
   const ItemSeperatorView = () => {
     return (
@@ -111,13 +63,8 @@ export default function Home ({ navigation, route }) {
     )
   }
 
-  const [displayModal, setDisplaModal] = useState(false),
-    [message, setMessage] = useState(''),
-    signOut = () => {
-      LogOut()
-      setMessage('Signed out successfully')
-      setDisplaModal(true)
-    }
+  const [displayModal, setDisplaModal] = useState(false)
+  const [message, setMessage] = useState('')
 
   return (
     <View style={styles.container}>
@@ -199,8 +146,8 @@ export default function Home ({ navigation, route }) {
                     onPress={() => navigation.navigate('PlayVideo', { vid })}
                   >
                     <Video
-                      //ref={reference}
-                      source={{ uri: videoPlay }}
+                      ref={reference[index]}
+                      source={{ uri: vid.url }}
                       resizeMode='stretch'
                       isLooping
                       style={{ width: 340, height: 180 }}

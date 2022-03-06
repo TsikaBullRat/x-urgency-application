@@ -44,23 +44,13 @@ export default function PlayVideo ({ navigation, route }) {
   const [count, setCount] = useState(0)
   const reference = useRef(data.url)
   const [info, setInfo] = useState()
-  const [Comments, setComments] = useState([]),
-    [comment, setComment] = useState(''),
-    [visibleStatusBar, setVisibleStatusBar] = useState(false),
-    changeVisibilityStatusBar = () => {
+  const [Comments, setComments] = useState([])
+  const [comment, setComment] = useState('')
+  const [visibleStatusBar, setVisibleStatusBar] = useState(false)
+  const changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
-    },
-
-    changeStyleStatusBar = () => {
-      const styleId = styleTypes.indexOf(styleStatusBar) + 1
-      if (styleId === styleTypes.length) {
-        return setStyleStatusBar(styleTypes[0])
-      }
-
-      return setStyleStatusBar(styleTypes[styleId])
-    },
-
-    addAct = async () => {
+  }
+  const addAct = async () => {
       let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid)
       let found = (await metadata.get()).exists
       found
@@ -72,14 +62,12 @@ export default function PlayVideo ({ navigation, route }) {
             ref: auth.currentUser.uid
           }),
           setViews(views + 1))
-    },
-
-    Navigate = () => {
+  }
+  const Navigate = () => {
       let match = data.match
       navigation.navigate('Doctor', { match })
-    },
-    
-    Delete = remove => {
+  }
+  const Delete = remove => {
       firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => {
           return doc.data().Comments
@@ -96,7 +84,7 @@ export default function PlayVideo ({ navigation, route }) {
         })
 
       setComments(Comments.filter(item => item.comment !== remove))
-    }
+  }
 
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
@@ -120,9 +108,10 @@ export default function PlayVideo ({ navigation, route }) {
           ref={reference}
           source={{ uri: videoPlay }}
           useNativeControls
-          resizeMode='stretch'
+          resizeMode='contain'
           isLooping
           style={styles.video}
+          onPlaybackStatusUpdate={status => setStatus(() => status)}
         />
       </View>
 
@@ -363,7 +352,6 @@ const styles = StyleSheet.create({
   },
   statusOff:{
     width: 340,
-    //marginTop: 15,
     justifyContent: 'space-between'
   },
   socialIcons:{
@@ -380,7 +368,7 @@ const styles = StyleSheet.create({
     width: 340,
     marginTop: 25,
     flexDirection: 'row',
-    justifyContent: 'flex'
+    // justifyContent: 'flex'
   },
   hiddenDescription:{ 
     backgroundColor: '#fff', 
