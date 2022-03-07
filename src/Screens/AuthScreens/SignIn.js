@@ -16,7 +16,7 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'r
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { auth, firestore } from '../../firebase/config'
-import handleSignIn from '../../firebase/Auth/SignIn.function'
+import {handleSignIn} from '../../firebase/Auth/HandleSignIn'
 import { AlertNote } from '../../Components'
 
 export default function SignIn({ navigation }) {
@@ -28,7 +28,7 @@ export default function SignIn({ navigation }) {
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null)
 
-  const Login = (setDone) => {
+  const Login = (setDone, setMessage) => {
     if (email === '' && password === '') {
       setPrompt('Please enter thr requested information')
     } else if (email === '') {
@@ -43,6 +43,8 @@ export default function SignIn({ navigation }) {
       handleSignIn(email, password)
       setDisplaModal(true)
     }
+
+    navigation.navigate('Home')
   }
 
   return (
@@ -158,7 +160,7 @@ const styles = StyleSheet.create({
 
   txtField: {
     marginTop: 7,
-    paddingLeft: 10,
+    // paddinLeft: 10,
     paddingTop: 4,
     fontSize: 18,
     borderRadius: 10,

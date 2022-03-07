@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
 
   txtUser: {
     marginTop: 7,
-    paddingLeft: 10,
+    // paddingLeft: 10,
     paddingTop: 10,
     fontSize: 18,
     fontFamily: 'Arial',
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
   txtPassword: {
     height: 35,
     marginTop: 5,
-    paddingLeft: 6,
+    // paddingLeft: 6,
     paddingTop: 20,
     fontSize: 18,
     fontFamily: 'Arial',

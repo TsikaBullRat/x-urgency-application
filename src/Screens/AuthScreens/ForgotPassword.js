@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
 
   txtField: {
     marginTop: 7,
-    paddingLeft: 10,
+    // paddingLeft: 10,
     paddingTop: 10,
     fontSize: 18,
     borderRadius: 10,

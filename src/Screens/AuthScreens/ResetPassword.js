@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
 
   txtFields: {
     marginTop: 7,
-    paddingLeft: 10,
+    // paddingLeft: 10,
     paddingTop: 10,
     fontSize: 18,
     fontFamily: 'Arial',

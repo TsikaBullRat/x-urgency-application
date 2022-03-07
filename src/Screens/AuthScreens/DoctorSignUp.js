@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
 
  txtField: {
     marginTop: 7,
-    paddingLeft: 10,
+    // paddingLeft: 10,
     paddingTop: 15,
     fontSize: 18,
     fontFamily: 'Arial',
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
   picker: {
     width: 315,
     height: 50,
-    paddingLeft: 38,
+    // paddingLeft: 38,
     paddingTop: 13,
     borderRadius: 10,
     marginLeft: 2,

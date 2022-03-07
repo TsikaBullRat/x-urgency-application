@@ -47,9 +47,11 @@ export default function PlayVideo ({ navigation, route }) {
   const [Comments, setComments] = useState([])
   const [comment, setComment] = useState('')
   const [visibleStatusBar, setVisibleStatusBar] = useState(false)
+  
   const changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
   }
+  
   const addAct = async () => {
       let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid)
       let found = (await metadata.get()).exists
@@ -67,6 +69,7 @@ export default function PlayVideo ({ navigation, route }) {
       let match = data.match
       navigation.navigate('Doctor', { match })
   }
+
   const Delete = remove => {
       firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => {
@@ -253,7 +256,7 @@ export default function PlayVideo ({ navigation, route }) {
         ) : (
           /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
 
-          <View style={styles.hiddenDescription}>
+          <View style={styles.descriptionContainer}>
             <View
               style={styles.description}>
               <View>
@@ -273,8 +276,7 @@ export default function PlayVideo ({ navigation, route }) {
             </View>
 
             <View
-              style={styles.descriptionBox}
-            >
+              style={styles.descriptionBox}>
               <Text>
                 {data.description}
               </Text>
@@ -293,148 +295,220 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff'
   },
-  descriptionContainer: {
-    width: 340
-  },
-  txtCards: {
-    width: '100%',
-    height: 40,
-    borderRadius: 10,
-    backgroundColor: '#fff',
-    marginTop: 5,
-    borderWidth: 1,
-    borderColor: '#F47066'
-  },
-  comment: {
-    width: '65%',
-    height: 38,
-    borderRadius: 10,
-    backgroundColor: '#fff',
-    paddingLeft: 10
-  },
-  comments: {
-    width: '65%',
-    left: 3,
-    marginVertical: 10,
-    flexDirection: 'row',
-    borderRadius: 10,
-    backgroundColor: '#f47066',
-  },
-  txtComments: {
-    color: '#fff',
-    padding: 10
-  },
-  txtUserComment: {
-    padding: 10,
-    fontSize: 18,
-    color: '#fff'
-  },
-  btnComment: {
-    backgroundColor: '#F47066'
-  }, 
+
   back:{
     marginTop: 10, 
-    width: 340, 
-    alignItems: 'flex-start' 
   },
+
   videoContainer:{
     width: 344,
     marginTop: 25,
     backgroundColor: '#f7eeed' 
   },
+
   statusOff:{
     width: 340,
     justifyContent: 'space-between'
   },
-  socialIcons:{
-    width: 360,
-    flexDirection: 'row',
-    marginTop: 15,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#f47066',
-    alignItems: 'center',
-    justifyContent: 'space-around'
-  },
-  avatar:{
-    width: 340,
-    marginTop: 25,
-    flexDirection: 'row',
-    // justifyContent: 'flex'
-  },
-  hiddenDescription:{ 
-    backgroundColor: '#fff', 
-    marginTop: 15 
-  },
-  safeArea:{ 
-    paddingLeft: 20, 
-    paddingTop: 10 
-  },
-  commentCount:{ 
-    width: 340, 
-    alignItems: 'flex-start' 
-  },
-  description:{
-    width: 340,
-    marginTop: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
+
   title:{
     flexDirection: 'row',
     width: 340,
     alignItems: 'center',
     justifyContent: 'space-between'
   },
-  dropdown:{ 
-    marginLeft: 25, 
-    marginTop: 20 
+
+  vidTitle:{ 
+    fontWeight: 'bold',
+    color: '#F47066' 
   },
-  like:{ left: "-8" },
-  dislike:{ marginLeft: 10, marginTop: 3 },
-  share: { marginLeft: 15 },
-  commentButton:{
-    width: 90,
-    height: 50,
-    borderRadius: 15,
-    marginTop: 2
-  },
-  save:{ marginLeft: 2 },
-  close:{marginTop:5},
-  commentBox:{ flexDirection: 'row' },
-  vidTitle:{ fontWeight: 'bold', color: '#F47066' },
-  video:{ 
-    width: 340, 
-    height: 180, 
-    left: 2 
-  },
+
   viewCount: { 
     width: 340,
     left: 2 
   },
-  commentSect: { height: 220 },
-  commentsInner: { 
-    height: 340, 
-    width: 340 
+
+  dropdown:{ 
+    marginLeft: 25, 
+    marginTop: 20 
   },
-  descriptionBox: { 
-    width: 340, 
-    marginTop: 25, 
-    alignItems: 'flex-start' 
+
+  drop: {
+    
   },
-  descriptionText:{
-    maxWidth: 315,
-    paddinLeft: 20 
-  },
-  shareIcon: { marginLeft: 8 },
-  shareText: { paddingTop: 5 },
-  saveText: { paddingTop: 5 },
-  owner: { paddingTop: 15 },
-  commentCount: {
-    paddingTop: 15,
-    paddingLeft: 10,
-    fontWeight: 'medium',
-    fontSize: 18
-  },
-  descriptionHead: { fontWeight: 'bold', color: '#F47066', fontSize: 22 }
+
+  // descriptionContainer: {
+  //   width: 340
+  // },
+
+  // txtCards: {
+  //   width: '100%',
+  //   height: 40,
+  //   borderRadius: 10,
+  //   backgroundColor: '#fff',
+  //   marginTop: 5,
+  //   borderWidth: 1,
+  //   borderColor: '#F47066'
+  // },
+
+  // comment: {
+  //   width: '65%',
+  //   height: 38,
+  //   borderRadius: 10,
+  //   backgroundColor: '#fff',
+  // },
+    
+  // comments: {
+  //   width: '65%',
+  //   left: 3,
+  //   marginVertical: 10,
+  //   flexDirection: 'row',
+  //   borderRadius: 10,
+  //   backgroundColor: '#f47066',
+  // },
+
+  // txtComments: {
+  //   color: '#fff',
+  //   padding: 10
+  // },
+
+  // txtUserComment: {
+  //   padding: 10,
+  //   fontSize: 18,
+  //   color: '#fff'
+  // },
+
+  // btnComment: {
+  //   backgroundColor: '#F47066'
+  // }, 
+
+  // socialIcons:{
+  //   width: 360,
+  //   flexDirection: 'row',
+  //   marginTop: 15,
+  //   borderTopWidth: 1,
+  //   borderBottomWidth: 1,
+  //   borderColor: '#f47066',
+  //   alignItems: 'center',
+  //   justifyContent: 'space-around'
+  // },
+
+  // avatar:{
+  //   width: 340,
+  //   marginTop: 25,
+  //   flexDirection: 'row',
+  // },
+
+  // hiddenDescription:{ 
+  //   backgroundColor: '#fff', 
+  //   marginTop: 15 
+  // },
+
+  // safeArea:{     
+  //   marginTop: 10 
+  // },
+
+  // commentCount:{ 
+  //   width: 340, 
+  //   alignItems: 'flex-start' 
+  // },
+
+  // description:{
+  //   width: 340,
+  //   marginTop: 5,
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between'
+  // },
+
+  
+
+  
+
+  // like:{ 
+  //   left: -8 
+  // },
+
+  // dislike:{ 
+  //   marginLeft: 10, 
+  //   marginTop: 3 
+  // },
+
+  // share: { 
+  //   marginLeft: 15 
+  // },
+
+  // commentButton:{
+  //   width: 90,
+  //   height: 50,
+  //   borderRadius: 15,
+  //   marginTop: 2
+  // },
+
+  // save:{ 
+  //   marginLeft: 2 
+  // },
+
+  // close:{
+  //   marginTop:5
+  // },
+
+  // commentBox:{ 
+  //   flexDirection: 'row' 
+  // },
+
+  // video:{ 
+  //   width: 340, 
+  //   height: 180, 
+  //   left: 2 
+  // },
+
+  // commentSect: { 
+  //   height: 220 
+  // },
+
+  // commentsInner: { 
+  //   height: 340, 
+  //   width: 340 
+  // },
+
+  // descriptionBox: { 
+  //   width: 340, 
+  //   marginTop: 25, 
+  //   alignItems: 'flex-start' 
+  // },
+
+  // descriptionText:{
+  //   maxWidth: 315,
+  // },
+
+  // shareIcon: { 
+  //   marginLeft: 8 
+  // },
+
+  // shareText: { 
+  //   paddingTop: 5 
+  // },
+
+  // saveText: { 
+  //   paddingTop: 5 
+  // },
+
+  // owner: { 
+  //   paddingTop: 15 
+  // },
+
+  // commentCount: {
+  //   paddingTop: 15,
+  // } ,
+    
+  //   fontWeight: 'bold',
+  //   fontSize: 18
+  // },
+  
+  // descriptionHead: { 
+  //   fontWeight: 'bold', 
+  //   color: '#F47066', 
+  //   fontSize: 22 
+  // },
+
 })

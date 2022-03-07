@@ -20,7 +20,7 @@ import ShareContent from './UserScreens/ShareContent'
 import LikeConn from './UserScreens/LikeConn'
 import {MedProfile} from './DoctorsScreens/MedProfile'
 
-// import {Clone} from "./Clone"
+import {Clone} from "./Clone"
 
 export { MedProfile, Welcome, FollowMore, TakeVideo, UrgentHelp, ShareContent, LikeConn, Doctor, SignIn, SignUp, MedSignIn, ForgotPassword, ResetPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, Clone }
 
