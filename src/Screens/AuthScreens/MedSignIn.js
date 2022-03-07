@@ -29,138 +29,138 @@ export default function MedSignIn ({ navigation }) {
   const [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
     [displayModal, setDisplaModal] = useState(false),
-    [message, setMessage] = useState('')
+    [message, setMessage] = useState(''),
+    [prompt, setPrompt] = useState(null),
+    [prompt1, setPrompt1] = useState(null),
+    [prompt2, setPrompt2] = useState(null)
 
-  const Login = () => {
-    handleSignIn(email, password, setMessage, setDone)
-    setDisplaModal(true)
+  const Login = (setDone, setMessage) => {
+    if (email === '' && password === '') {
+      setPrompt('Please enter thr requested information')
+    } else if (email === '') {
+      setPrompt(null)
+      setPrompt1('Please enter email address')
+      setPrompt2(null)
+    } else if (password === '') {
+      setPrompt(null)
+      setPrompt1(null)
+      setPrompt2('Please enter password')
+    } else {
+      handleSignIn(email, password)
+      setDisplaModal(true)
+    }
+
+    navigation.navigate('Home')
   }
 
   return (
     <View style={styles.container}>
-      <AlertNote
-        modalVisible={displayModal}
-        setModalVisible={setDisplaModal}
-        msg={message}
-      />
+      
+      <View style={{ width: '100%' }}>
+        <AlertNote
+          modalVisible={displayModal}
+          setModalVisible={setDisplaModal}
+          msg={message}
+        />
 
-      <View style={{ width: 410 }}>
-        <Card style={styles.card}>
-          <View style={styles.heartIcon}>
-            <FontAwesome name='heartbeat' size={110} color='#fff' />
-          </View>
-          <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}>
-            {' '}
-            {`X-urgency`}{' '}
-          </Text>
-        </Card>
-      </View>
+        {/**----------Logo------------Logo------------- */}
+        <View>
+          <Card style={styles.card}>
+            <View style={styles.heartIcon}>
+              <FontAwesome name='heartbeat' size={110} color='#fff' />
+            </View>
+            <Text style={{ color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+          </Card>
+        </View>
 
-      <View style={styles.header}>
-        <Text
-          style={{
-            fontSize: 30,
-            textAlign: 'center',
-            color: '#F47066',
-            fontWeight: 'bold',
-            ...Platform.select({ web: { fontFamily: 'Arial' } })
-          }}
-        >{`Medical SignIn`}</Text>
-      </View>
+        {/**----------Header------------Header------------- */}
+        <View style={styles.header}>
+          <Text
+            style={{ fontSize: 36, textAlign: 'center', color: '#F47066' }}
+          >{`Medical SignIn`}</Text>
+        </View>
 
-      <View
-        style={{
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-        <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <AntDesign
-              name='user'
-              size={22}
-              color='black'
-              style={{ marginTop: 16, marginLeft: 18 }}
-            />
-            <TextInput
-              style={styles.txtUser}
-              name='username'
-              placeholder='Username'
-              onChangeText={text => setEmail(text)}
-            />
-          </View>
-        </Card>
+        {/**----------txtFields------------txtFields------------- */}
+        <View style={styles.textfieldCards}>
+          {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
 
-        <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <EvilIcons
-              name='lock'
-              size={32}
-              color='black'
-              style={{ marginTop: 12, marginLeft: 12 }}
-            />
-            <TextInput
-              style={styles.txtPassword}
-              name='password'
-              placeholder='Password'
-              secureTextEntry={true}
-              onChangeText={text => setPassword(text)}
-            />
-          </View>
-        </Card>
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: 'row' }}>
+              <AntDesign
+                name='user'
+                size={20}
+                color='black'
+                style={{ margin: 13 }}
+              />
+              <TextInput
+                style={styles.txtField}
+                name='username'
+                placeholder='Username'
+                onChangeText={text => setEmail(text)}
+              />
+            </View>
+          </Card>
+          {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
-        <View style={{ width: '80%', alignItems: 'flex-end' }}>
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: 'row' }}>
+              <EvilIcons
+                name='lock'
+                size={29}
+                color='black'
+                style={{ margin: 10 }}
+              />
+              <TextInput
+                style={styles.txtField}
+                name='password'
+                placeholder='Password'
+                secureTextEntry={true}
+                onChangeText={text => setPassword(text)}
+              />
+            </View>
+          </Card>
+          {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
+        </View>
+
+        {/**----------ResetPassword------------ResetPassword------------- */}
+        <View style={styles.reset}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('ForgotPassword')}
+            onPress={() => {
+              navigation.navigate('ForgotPassword')
+            }}
           >
-            <Text
-              style={{
-                paddingTop: 20,
-                fontSize: 18,
-                fontFamily: 'Arial',
-                color: '#F47066'
-              }}
-            >
+            <Text style={{ paddingTop: 20, fontSize: 18, color: '#F47066' }}>
               {`Forgot Password?`}{' '}
             </Text>
           </TouchableOpacity>
         </View>
 
-        <View
-          style={{
-            width: '100%',
-            alignItems: 'center',
-            alignContent: 'center'
-          }}
-        >
+        {/**----------btnLogIn------------btnLogIn------------- */}
+        <View style={styles.loginView}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
-            <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}>
-              {`LOGIN`}{' '}
-            </Text>
+            <Text style={{ fontSize: 20, color: '#fff' }}>{`LOGIN`} </Text>
           </TouchableOpacity>
         </View>
 
-        <View
-          style={{
-            marginTop: 10,
-            flexDirection: 'row',
-            textAlign: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <Text style={{ paddingTop: 10, fontSize: 15 }}> {`New User?`} </Text>
+        {/*----------------------New User--------------New User------ */}
+        <View style={styles.newUser}>
+          <Text
+            style={{
+              paddingTop: 10,
+              textAlign: 'center',
+              color: 'grey',
+              fontSize: 14
+            }}>
+            {' '}
+            {`New User?`}
+          </Text>
+
           <TouchableOpacity
-            onPress={() => navigation.navigate('Doctor SignUp')}
-          >
-            <Text
-              style={{
-                paddingTop: 10,
-                fontSize: 20,
-                fontFamily: 'Arial',
-                color: '#F47066'
-              }}
-            >
-              {' '}
+            onPress={() => {
+              navigation.navigate('DoctorSignUp')
+            }}
+            style={{ left: 5 }}>
+            <Text style={{ paddingTop: 4, fontSize: 20, color: '#F47066' }}>
               {`SignUp`}
             </Text>
           </TouchableOpacity>
@@ -170,9 +170,10 @@ export default function MedSignIn ({ navigation }) {
           style={{ marginVertical: 20 }}
           onPress={() => navigation.goBack()}
         >
-          <Text>{`BACK`}</Text>
+          <Text style={{textAlign: 'center'}}>{`BACK`}</Text>
         </TouchableOpacity>
       </View>
+
     </View>
   )
 }
@@ -181,13 +182,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
+    height: '100%',
     alignItems: 'center',
     backgroundColor: '#fff'
   },
 
   card: {
     width: '100%',
-    height: 310,
+    height: '100%',
     backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -210,17 +212,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
 
-  txtUser: {
-    marginTop: 7,
-    // paddingLeft: 10,
-    paddingTop: 10,
+  txtField: {
+    marginTop: 14,
     fontSize: 18,
-    fontFamily: 'Arial',
     borderRadius: 10,
     ...Platform.select({
       web: {
         outlineColor: '#fff',
-        width: 220
+        height: 25
       }
     })
   },
@@ -228,21 +227,6 @@ const styles = StyleSheet.create({
   prompt: {
     color: '#F47066',
     textAlign: 'center'
-  },
-
-  txtPassword: {
-    height: 35,
-    marginTop: 5,
-    // paddingLeft: 6,
-    paddingTop: 20,
-    fontSize: 18,
-    fontFamily: 'Arial',
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff'
-      }
-    })
   },
 
   txtCards: {
@@ -261,14 +245,13 @@ const styles = StyleSheet.create({
   },
 
   loginView: {
-    width: 360,
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center'
   },
 
   newUser: {
-    width: 335,
-    marginRight: 10,
+    width: '100%',
     marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',

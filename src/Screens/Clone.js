@@ -16,7 +16,7 @@ import { Likes } from "../firebase/Functions/Likes";
 import { Dislikes } from "../firebase/Functions/Dislikes";
 import { Collect, Post } from "../firebase/Storage/Storage.functions";
 
-export const Clone = ({ route, navigation }) => {
+const Clone = ({ route, navigation }) => {
   const data = route.params.vid;
   const [userName, setUserName] = useState(data.owner);
   const [videoPlay, setVideoPlay] = useState(data.url);
@@ -384,3 +384,5 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start' 
   },
 });
+
+export default {Clone}

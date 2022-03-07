@@ -68,6 +68,8 @@ export default function Home ({ navigation, Exit }) {
 
   return (
     <View style={styles.container}>
+
+<View style={{ width: '100%', alignItems:'center' }}>
       <AlertNote
         modalVisible={displayModal}
         setModalVisible={setDisplaModal}
@@ -173,6 +175,8 @@ export default function Home ({ navigation, Exit }) {
               ))
             : null}
         </ScrollView>
+      </View>
+
       </View>
     </View>
   )
