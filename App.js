@@ -71,7 +71,7 @@ export default function App () {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {id ? (
+        {/* {id ? (
           doctor ? (
             <>
               {firstTimeUser ? (
@@ -193,7 +193,7 @@ export default function App () {
               </Stack.Screen>
             </>
           )
-        ) : (
+        ) : ( */}
           <>
             <Stack.Screen
               name='Welcome'
@@ -266,7 +266,7 @@ export default function App () {
               {props => <EmergencyContacts {...props} />}
             </Stack.Screen>
           </>
-        )}
+        {/* )} */}
       </Stack.Navigator>
     </NavigationContainer>
   )

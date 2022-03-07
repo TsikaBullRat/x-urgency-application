@@ -11,7 +11,7 @@ import MedicalHome from "./DoctorsScreens/MedicalHome"
 import Upload from "./DoctorsScreens/Upload"
 import PlayVideo from "./UserScreens/PlayVideo"
 import Doctor from "./UserScreens/Doctor"
-import { UpdateProfile } from "./DoctorsScreens/UpdateProfile"
+import  UpdateProfile  from "./DoctorsScreens/UpdateProfile"
 import Welcome from './UserScreens/Welcome'
 import FollowMore from './UserScreens/FollowMore'
 import UrgentHelp from './UserScreens/UrgentHelp'
