@@ -120,7 +120,18 @@ const LoadSet = (Load, query) => {
                             })
                             return views
                         })
-                    getLink = itemRef.getDownloadURL().then(url => url)
+                        getLink = itemRef.getDownloadURL().then(url =>{
+                            var xhr = new XMLHttpRequest()
+                            xhr.responseType = 'blob'
+                            xhr.onload = (event) =>{
+                                var blob = xhr.response
+                            }
+                            xhr.open('GET', url)
+                            xhr.send()
+
+                            return url
+                        })
+                        .catch(err=>console.log(err))
                     let link = await getLink
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title
@@ -151,7 +162,18 @@ const LoadSet = (Load, query) => {
                             })
                             return views
                         })
-                    getLink = itemRef.getDownloadURL().then(url => url)
+                    getLink = itemRef.getDownloadURL().then(url =>{
+                        var xhr = new XMLHttpRequest()
+                        xhr.responseType = 'blob'
+                        xhr.onload = (event) =>{
+                            var blob = xhr.response
+                        }
+                        xhr.open('GET', url)
+                        xhr.send()
+
+                        return url
+                    })
+                    .catch(err=>console.log(err))
                     let link = await getLink
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title
@@ -176,7 +198,6 @@ const UploadVideo = async (uri, title, description, cat, Log) => {
     var id = uuidv4()
     var byteString = atob(uri.split(',')[1])
     var MIMEstring = uri.split(',')[0].split(':')[1].split(';')[0]
-    console.log(byteString)
 
     var ab = new ArrayBuffer(byteString.length)
     var ia = new Uint8Array(ab)

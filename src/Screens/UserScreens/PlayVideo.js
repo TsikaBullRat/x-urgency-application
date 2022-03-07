@@ -44,23 +44,13 @@ export default function PlayVideo ({ navigation, route }) {
   const [count, setCount] = useState(0)
   const reference = useRef(data.url)
   const [info, setInfo] = useState()
-  const [Comments, setComments] = useState([]),
-    [comment, setComment] = useState(''),
-    [visibleStatusBar, setVisibleStatusBar] = useState(false),
-    changeVisibilityStatusBar = () => {
+  const [Comments, setComments] = useState([])
+  const [comment, setComment] = useState('')
+  const [visibleStatusBar, setVisibleStatusBar] = useState(false)
+  const changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
-    },
-
-    changeStyleStatusBar = () => {
-      const styleId = styleTypes.indexOf(styleStatusBar) + 1
-      if (styleId === styleTypes.length) {
-        return setStyleStatusBar(styleTypes[0])
-      }
-
-      return setStyleStatusBar(styleTypes[styleId])
-    },
-
-    addAct = async () => {
+  }
+  const addAct = async () => {
       let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid)
       let found = (await metadata.get()).exists
       found
@@ -72,14 +62,12 @@ export default function PlayVideo ({ navigation, route }) {
             ref: auth.currentUser.uid
           }),
           setViews(views + 1))
-    },
-
-    Navigate = () => {
+  }
+  const Navigate = () => {
       let match = data.match
       navigation.navigate('Doctor', { match })
-    },
-    
-    Delete = remove => {
+  }
+  const Delete = remove => {
       firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => {
           return doc.data().Comments
@@ -96,7 +84,7 @@ export default function PlayVideo ({ navigation, route }) {
         })
 
       setComments(Comments.filter(item => item.comment !== remove))
-    }
+  }
 
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
@@ -118,21 +106,11 @@ export default function PlayVideo ({ navigation, route }) {
           ref={reference}
           source={{ uri: videoPlay }}
           useNativeControls
-          resizeMode='stretch'
+          resizeMode='contain'
           isLooping
-          style={{ width: 340, height: 180, left: 2 }}
+          style={styles.video}
+          onPlaybackStatusUpdate={status => setStatus(() => status)}
         />
-
-        <View>
-          <Text style={{ fontWeight: 'bold', color: '#F47066' }}>
-            {data.title}
-          </Text>
-          <Text style={{ fontSize: 10 }}>
-            {views} views - {data.stamp}
-          </Text>
-        </View>
-
-        {/* <View style={{ marginVertical: 5 }} /> */}
       </View>
 
       <View>
@@ -143,10 +121,10 @@ export default function PlayVideo ({ navigation, route }) {
             <View
               style={styles.title}>
               <View>
-                <Text style={{ fontWeight: 'bold', color: '#F47066' }}>
+                <Text style={styles.vidTitle}>
                   {data.title}
                 </Text>
-                <Text style={{ fontSize: 10 }}>
+                <Text style={styles.viewCount}>
                   {views} views - {data.stamp}
                 </Text>
               </View>
@@ -195,19 +173,20 @@ export default function PlayVideo ({ navigation, route }) {
                 <TouchableOpacity
                   onPress={() => ShareItem(data.url)}
                 >
-                  <View style={{ marginLeft: 8 }}>
+                  <Text style={styles.shareIcon}>
                     <FontAwesome5 name='share' size={20} color='black' />
-                  </View>
-                  <Text style={{ paddingTop: 5 }}> Share </Text>
+                  </Text>
+                  <Text style={styles.shareText}> Share </Text>
                 </TouchableOpacity>
               </View>
 
               {/*------------Save-------------Save--------Save*/}
-              <View style={{ marginLeft: 2 }}>
-                <Text style={{ marginLeft: 8 }}>
+
+              <View style={styles.save}>
+                <Text style={styles.saveIcon}>
                   <Entypo name='save' size={20} color='black' />
                 </Text>
-                <Text style={{ paddingTop: 5 }}> Save </Text>
+                <Text style={styles.saveText}> Save </Text>
               </View>
             </View>
 
@@ -223,12 +202,12 @@ export default function PlayVideo ({ navigation, route }) {
                 size='medium'
                 onPress={Navigate}
               />
-              <Text style={{ paddingTop: 15 }}> {data.owner}</Text>
+              <Text style={styles.owner}> {data.owner}</Text>
             </View>
 
             {/*------------Comments-------------Comments--------Comments*/}
             <Card style={styles.txtCards}>
-              <View style={{ flexDirection: 'row' }}>
+              <View style={styles.commentBox}>
                 <TextInput
                   style={styles.comment}
                   name='comment'
@@ -249,82 +228,25 @@ export default function PlayVideo ({ navigation, route }) {
 
             <View style={styles.commentCount}>
               <Text
-                style={{
-                  paddingTop: 15,
-                  paddingLeft: 10,
-                  fontWeight: 'medium',
-                  fontSize: 18
-                }}
+                style={styles.commentCount}
               >
                 Comments: {count}
               </Text>
             </View>
 
             <ScrollView
-              style={{ height: 220 }}
-              showsVerticalScrollIndicator={false}>
-              <Card style={{ height: 340, width: 340 }}>
-                {Comments.map((item, index) => (
-                  <Card
-                    style={{
-                      backgroundColor: '#e8d7cc',
-                      height: 100,
-                      marginTop: 10
-                    }}
-                    key={index}
-                  >
-                    <SafeAreaView style={styles.safeArea}>
-                      <Text>
-                        <Text style={{ color: 'red' }}>{item.user}</Text>:{' '}
+              style={styles.commentSect}
+              showsVerticalScrollIndicator={false}
+            >
+              <Card style={styles.commentsInner}>
+                {Comments.map((item, index) =>(
+                  <View style={styles.comments} key={index}>
+                    <Text style={styles.txtUserComment}>{item.user}</Text>
+                      <Text style={styles.txtComments}>
                         {item.comment}
                       </Text>
-                      {item.user === auth.currentUser.displayName ? (
-                        <Pressable onPress={() => Delete(item.comment)}>
-                          <Text>remove</Text>
-                        </Pressable>
-                      ) : (
-                        <></>
-                      )}
-                    </SafeAreaView>
-                  </Card>
+                  </View>
                 ))}
-
-                <>
-                  <View style={styles.comments}>
-                    <Text style={styles.txtUserComment}>{`Rando121:`}</Text>
-                    <Text style={styles.txtComments}>
-                      {`bnjjbh hbjhbb kjnknn jnkj nkjn jkn knj nml nknjnkkn jknkj njknkn iuhuhk khkuh yubj bjb`}
-                    </Text>
-                  </View>
-
-                  <View style={styles.comments}>
-                    <Text style={styles.txtUserComment}>{`Thabs474:`}</Text>
-                    <Text style={styles.txtComments}>
-                      {`bnjjbh hbjhbb kjnknn jnkj nkjn jkn knj nml nknjnkkn jknkj njknkn iuhuhk khkuh yubj bjb`}
-                    </Text>
-                  </View>
-
-                  <View style={styles.comments}>
-                    <Text style={styles.txtUserComment}>{`Kheyara5454:`}</Text>
-                    <Text style={styles.txtComments}>
-                      {`bnjjbh hbjhbb kjnknn jnkj nkjn jkn knj nml nknjnkkn jknkj njknkn iuhuhk khkuh yubj bjb`}
-                    </Text>
-                  </View>
-
-                  <View style={styles.comments}>
-                    <Text style={styles.txtUserComment}>{`Lindi866:`}</Text>
-                    <Text style={styles.txtComments}>
-                      {`bnjjbh hbjhbb kjnknn jnkj nkjn jkn knj nml nknjnkkn jknkj njknkn iuhuhk khkuh yubj bjb`}
-                    </Text>
-                  </View>
-
-                  <View style={styles.comments}>
-                    <Text style={styles.txtUserComment}>{`Rando121:`}</Text>
-                    <Text style={styles.txtComments}>
-                      {`bnjjbh hbjhbb kjnknn jnkj nkjn jkn knj nml nknjnkkn jknkj njknkn iuhuhk khkuh yubj bjb`}
-                    </Text>
-                  </View>
-                </>
               </Card>
             </ScrollView>
           </View>
@@ -335,17 +257,15 @@ export default function PlayVideo ({ navigation, route }) {
             <View
               style={styles.description}>
               <View>
-                <Text
-                  style={{ fontWeight: 'bold', color: '#F47066', fontSize: 22 }}
-                >
+                <Text style={styles.descriptionHead}>
                   {'Description: '}
                 </Text>
-                <Text style={{ maxWidth: 315, paddinLeft: 20 }}>
+                <Text style={styles.descriptionText}>
                   {data.description}
                 </Text>
               </View>
 
-              <View style={{marginTop:5}}>
+              <View style={styles.close}>
                 <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
                   <AntDesign name='closecircle' size={18} color='black' />
                 </TouchableOpacity>
@@ -353,7 +273,7 @@ export default function PlayVideo ({ navigation, route }) {
             </View>
 
             <View
-              style={{ width: 340, marginTop: 25, alignItems: 'flex-start' }}
+              style={styles.descriptionBox}
             >
               <Text>
                 {data.description}
@@ -373,11 +293,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff'
   },
-
   descriptionContainer: {
     width: 340
   },
-
   txtCards: {
     width: '100%',
     height: 40,
@@ -387,7 +305,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#F47066'
   },
-
   comment: {
     width: '65%',
     height: 38,
@@ -395,7 +312,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingLeft: 10
   },
-
   comments: {
     width: '65%',
     left: 3,
@@ -404,18 +320,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#f47066',
   },
-
   txtComments: {
     color: '#fff',
     padding: 10
   },
-
   txtUserComment: {
     padding: 10,
     fontSize: 18,
     color: '#fff'
   },
-
   btnComment: {
     backgroundColor: '#F47066'
   }, 
@@ -431,7 +344,6 @@ const styles = StyleSheet.create({
   },
   statusOff:{
     width: 340,
-    //marginTop: 15,
     justifyContent: 'space-between'
   },
   socialIcons:{
@@ -448,7 +360,7 @@ const styles = StyleSheet.create({
     width: 340,
     marginTop: 25,
     flexDirection: 'row',
-    justifyContent: 'flex'
+    // justifyContent: 'flex'
   },
   hiddenDescription:{ 
     backgroundColor: '#fff', 
@@ -478,7 +390,7 @@ const styles = StyleSheet.create({
     marginLeft: 25, 
     marginTop: 20 
   },
-  like:{ left: -8 },
+  like:{ left: "-8" },
   dislike:{ marginLeft: 10, marginTop: 3 },
   share: { marginLeft: 15 },
   commentButton:{
@@ -486,5 +398,43 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 15,
     marginTop: 2
-  }
+  },
+  save:{ marginLeft: 2 },
+  close:{marginTop:5},
+  commentBox:{ flexDirection: 'row' },
+  vidTitle:{ fontWeight: 'bold', color: '#F47066' },
+  video:{ 
+    width: 340, 
+    height: 180, 
+    left: 2 
+  },
+  viewCount: { 
+    width: 340,
+    left: 2 
+  },
+  commentSect: { height: 220 },
+  commentsInner: { 
+    height: 340, 
+    width: 340 
+  },
+  descriptionBox: { 
+    width: 340, 
+    marginTop: 25, 
+    alignItems: 'flex-start' 
+  },
+  descriptionText:{
+    maxWidth: 315,
+    paddinLeft: 20 
+  },
+  shareIcon: { marginLeft: 8 },
+  shareText: { paddingTop: 5 },
+  saveText: { paddingTop: 5 },
+  owner: { paddingTop: 15 },
+  commentCount: {
+    paddingTop: 15,
+    paddingLeft: 10,
+    fontWeight: 'medium',
+    fontSize: 18
+  },
+  descriptionHead: { fontWeight: 'bold', color: '#F47066', fontSize: 22 }
 })
