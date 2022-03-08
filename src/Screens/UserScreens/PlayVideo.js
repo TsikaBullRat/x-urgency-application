@@ -111,7 +111,6 @@ export default function PlayVideo ({ navigation, route }) {
           useNativeControls
           resizeMode='contain'
           isLooping
-          style={styles.video}
           onPlaybackStatusUpdate={status => setStatus(() => status)}
         />
       </View>
@@ -121,8 +120,8 @@ export default function PlayVideo ({ navigation, route }) {
         {!visibleStatusBar ? (
           <View
             style={styles.statusOff}>
-            <View
-              style={styles.title}>
+
+            <View style={styles.title}>
               <View>
                 <Text style={styles.vidTitle}>
                   {data.title}
@@ -142,7 +141,6 @@ export default function PlayVideo ({ navigation, route }) {
                     name='downcircle'
                     size={18}
                     color='black'
-                    style={styles.drop}
                   />
                 </TouchableOpacity>
               </View>
@@ -195,8 +193,7 @@ export default function PlayVideo ({ navigation, route }) {
 
             {/*------------Avatar-------------Avatar--------Avatar*/}
             <View
-              style={styles.avatar}
-            >
+              style={styles.avatar}>
               <Avatar
                 rounded
                 source={{
@@ -239,8 +236,7 @@ export default function PlayVideo ({ navigation, route }) {
 
             <ScrollView
               style={styles.commentSect}
-              showsVerticalScrollIndicator={false}
-            >
+              showsVerticalScrollIndicator={false}>
               <Card style={styles.commentsInner}>
                 {Comments.map((item, index) =>(
                   <View style={styles.comments} key={index}>
@@ -301,10 +297,11 @@ const styles = StyleSheet.create({
   },
 
   videoContainer:{
-    width: 344,
     marginTop: 25,
+    width: '100%',
     backgroundColor: '#f7eeed' 
   },
+
 
   statusOff:{
     width: 340,
@@ -312,14 +309,14 @@ const styles = StyleSheet.create({
   },
 
   title:{
+    width: '100%',
     flexDirection: 'row',
-    width: 340,
     alignItems: 'center',
     justifyContent: 'space-between'
   },
 
   vidTitle:{ 
-    fontWeight: 'bold',
+    fontSize: 18,
     color: '#F47066' 
   },
 
@@ -329,186 +326,177 @@ const styles = StyleSheet.create({
   },
 
   dropdown:{ 
-    marginLeft: 25, 
+    marginTop: 2,
+    left: -18
+  },
+
+  close:{
+    marginTop:5
+  },
+
+  avatar:{
+    width: 340,
+    marginTop: 25,
+    flexDirection: 'row',
+  },
+
+  descriptionContainer: {
+    width: 340
+  },
+
+  txtCards: {
+    width: '100%',
+    height: 40,
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    marginTop: 5,
+    borderWidth: 1,
+    borderColor: '#F47066'
+  },
+
+  like:{ 
+    left: -8 
+  },
+
+  dislike:{ 
+    marginLeft: 10, 
+    marginTop: 3 
+  },
+
+  share: { 
+    marginLeft: 15 
+  },
+
+  commentButton:{
+    width: '60%',
+    height: 50,
+    borderRadius: 15,
+    marginTop: 2
+  },
+
+  save:{ 
+    marginLeft: 2 
+  },
+
+  saveIcon: {
+    marginLeft: 8
+  },
+
+  
+
+  commentBox:{ 
+    flexDirection: 'row' 
+  },
+
+  comment: {
+    width: '65%',
+    height: 38,
+    borderRadius: 10,
+    backgroundColor: '#fff',
+  },
+    
+  comments: {
+    width: '65%',
+    left: 3,
+    marginVertical: 10,
+    flexDirection: 'row',
+    borderRadius: 10,
+    backgroundColor: '#f47066',
+  },
+
+  txtComments: {
+    color: '#fff',
+    padding: 10
+  },
+
+  txtUserComment: {
+    padding: 10,
+    fontSize: 18,
+    color: '#fff'
+  },
+
+  btnComment: {
+    backgroundColor: '#F47066'
+  }, 
+
+  socialIcons:{
+    width: 360,
+    flexDirection: 'row',
+    marginTop: 15,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#f47066',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+
+  hiddenDescription:{ 
+    backgroundColor: '#fff', 
     marginTop: 20 
   },
 
-  drop: {
-    
+  safeArea:{     
+    marginTop: 10 
   },
 
-  // descriptionContainer: {
-  //   width: 340
-  // },
+  description:{
+    width: '100%',
+    marginTop: 8,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
 
-  // txtCards: {
-  //   width: '100%',
-  //   height: 40,
-  //   borderRadius: 10,
-  //   backgroundColor: '#fff',
-  //   marginTop: 5,
-  //   borderWidth: 1,
-  //   borderColor: '#F47066'
-  // },
+  descriptionBox: { 
+    width: 340, 
+    marginTop: 25, 
+    alignItems: 'flex-start' 
+  },
 
-  // comment: {
-  //   width: '65%',
-  //   height: 38,
-  //   borderRadius: 10,
-  //   backgroundColor: '#fff',
-  // },
-    
-  // comments: {
-  //   width: '65%',
-  //   left: 3,
-  //   marginVertical: 10,
-  //   flexDirection: 'row',
-  //   borderRadius: 10,
-  //   backgroundColor: '#f47066',
-  // },
+  descriptionHead: { 
+    fontWeight: 'bold', 
+    color: '#F47066', 
+    fontSize: 22 
+  },
 
-  // txtComments: {
-  //   color: '#fff',
-  //   padding: 10
-  // },
+  descriptionText:{
+    maxWidth: 315,
+  },
 
-  // txtUserComment: {
-  //   padding: 10,
-  //   fontSize: 18,
-  //   color: '#fff'
-  // },
+  shareIcon: { 
+    marginLeft: 8 
+  },
 
-  // btnComment: {
-  //   backgroundColor: '#F47066'
-  // }, 
+  shareText: { 
+    paddingTop: 5 
+  },
 
-  // socialIcons:{
-  //   width: 360,
-  //   flexDirection: 'row',
-  //   marginTop: 15,
-  //   borderTopWidth: 1,
-  //   borderBottomWidth: 1,
-  //   borderColor: '#f47066',
-  //   alignItems: 'center',
-  //   justifyContent: 'space-around'
-  // },
+  saveText: { 
+    paddingTop: 5 
+  },
 
-  // avatar:{
-  //   width: 340,
-  //   marginTop: 25,
-  //   flexDirection: 'row',
-  // },
+  owner: { 
+    paddingTop: 15 
+  },
 
-  // hiddenDescription:{ 
-  //   backgroundColor: '#fff', 
-  //   marginTop: 15 
-  // },
+  commentCount:{ 
+    width: 340, 
+    alignItems: 'flex-start' 
+  },
 
-  // safeArea:{     
-  //   marginTop: 10 
-  // },
+  commentSect: { 
+    height: 220 
+  },
 
-  // commentCount:{ 
-  //   width: 340, 
-  //   alignItems: 'flex-start' 
-  // },
+  commentsInner: { 
+    height: 340, 
+    width: 340 
+  },
 
-  // description:{
-  //   width: 340,
-  //   marginTop: 5,
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between'
-  // },
 
+  commentCount: {
+    paddingTop: 15,
+  } ,
   
-
-  
-
-  // like:{ 
-  //   left: -8 
-  // },
-
-  // dislike:{ 
-  //   marginLeft: 10, 
-  //   marginTop: 3 
-  // },
-
-  // share: { 
-  //   marginLeft: 15 
-  // },
-
-  // commentButton:{
-  //   width: 90,
-  //   height: 50,
-  //   borderRadius: 15,
-  //   marginTop: 2
-  // },
-
-  // save:{ 
-  //   marginLeft: 2 
-  // },
-
-  // close:{
-  //   marginTop:5
-  // },
-
-  // commentBox:{ 
-  //   flexDirection: 'row' 
-  // },
-
-  // video:{ 
-  //   width: 340, 
-  //   height: 180, 
-  //   left: 2 
-  // },
-
-  // commentSect: { 
-  //   height: 220 
-  // },
-
-  // commentsInner: { 
-  //   height: 340, 
-  //   width: 340 
-  // },
-
-  // descriptionBox: { 
-  //   width: 340, 
-  //   marginTop: 25, 
-  //   alignItems: 'flex-start' 
-  // },
-
-  // descriptionText:{
-  //   maxWidth: 315,
-  // },
-
-  // shareIcon: { 
-  //   marginLeft: 8 
-  // },
-
-  // shareText: { 
-  //   paddingTop: 5 
-  // },
-
-  // saveText: { 
-  //   paddingTop: 5 
-  // },
-
-  // owner: { 
-  //   paddingTop: 15 
-  // },
-
-  // commentCount: {
-  //   paddingTop: 15,
-  // } ,
-    
-  //   fontWeight: 'bold',
-  //   fontSize: 18
-  // },
-  
-  // descriptionHead: { 
-  //   fontWeight: 'bold', 
-  //   color: '#F47066', 
-  //   fontSize: 22 
-  // },
+ 
 
 })
