@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  Share
 } from "react-native";
 import { Video } from "expo-av";
 import { AntDesign, FontAwesome5, Entypo } from "@expo/vector-icons";
@@ -19,17 +20,21 @@ import { Collect, Post } from "../firebase/Storage/Storage.functions";
 export const Clone = ({ route, navigation }) => {
   const data = route.params.vid;
   const [userName, setUserName] = useState(data.owner);
-  const [videoPlay, setVideoPlay] = useState(data.url);
+  const [videoPlay, setVideoPlay] = useState();
   const [views, setViews] = useState(data.views);
   const [videoVisible, setVideoVisible] = useState(true);
   const [count, setCount] = useState(0);
-  const reference = useRef(data.url.split("?")[0]);
+  const reference = useRef(data.url);
   const [info, setInfo] = useState();
   const [Comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
   const [status, setStatus] = React.useState({});
 
+  const LoadVideo = () =>{
+    const uri = data.url
+    console.log(data.url)
+  }
   const changeVisibilityStatusBar = () => {
     setVisibleStatusBar(!visibleStatusBar);
   };
@@ -39,7 +44,7 @@ export const Clone = ({ route, navigation }) => {
       .doc(data.firestore)
       .collection("Acts")
       .doc(auth.currentUser.uid);
-    let found = (await metadata.get()).exists;
+    let found = await metadata.get().then(doc=>doc.exist);
     found
       ? null
       : (metadata.set({
@@ -82,14 +87,32 @@ export const Clone = ({ route, navigation }) => {
     setComments(Comments.filter((item) => item.comment !== remove));
   };
 
+  const ShareItem = async (url) => {
+    try {
+      const result = await Share.share({ url: url, });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          console.log("Shared with activity type") // shared with activity type of result.activityType
+          console.log(result.activityType)
+        } else {
+          console.log("Shared") // shared
+          console.log(result.action)
+        }
+      } else if (result.action === Share.dismissedAction) {
+        console.log("Could not share") // dismissed
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   useEffect(() => {
     Collect(data.firestore, setComments, setCount);
-    addAct();
   }, []);
 
   useEffect(()=>{
-    console.log(data.url)
-  })
+    LoadVideo()
+  }, [])
 
   return (
     <View style={styles.contain}>
@@ -143,12 +166,12 @@ export const Clone = ({ route, navigation }) => {
             <View style={styles.socialIcons}>
               {/*------------Likes-------------Likes--------Likes*/}
               <View style={styles.like}>
-                <Likes data={data.firestore} />
+                <Likes data={data.firestore} Dependent={Dislikes} />
               </View>
 
               {/*------------DisLikes-------------DisLikes--------DisLikes*/}
               <View style={styles.dislike}>
-                <Dislikes data={data.firestore} />
+                <Dislikes data={data.firestore} Dependent={Likes}/>
               </View>
 
               {/*------------Share-------------Share--------Share*/}

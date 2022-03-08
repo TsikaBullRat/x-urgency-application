@@ -10,7 +10,7 @@ import firebase from 'firebase'
 
 var atob = require('atob')
 
-export const UpdateProfile = () => {
+export const UpdateProfile = ({navigation}) => {
 
     //Copies for testing
     const [uid, setID] = useState(null)
@@ -133,6 +133,8 @@ export const UpdateProfile = () => {
         if (document.branch !== branch) firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({ branch: branch })
         if (document.contact !== contact) firestore.collection("Users").doc(auth.currentUser.uid).collection("cred").doc(auth.currentUser.uid).update({ contact: contact })
         if (document.email !== email) auth.currentUser.updateEmail(email)
+
+        navigation.goBack()
     }
 
     //------------------Opening Image Picker------------------Opening Image Picker

@@ -21,7 +21,8 @@ import {
   ScrollView,
   TextInput,
   Button,
-  Pressable
+  Pressable,
+  Share
 } from 'react-native'
 import { Card } from 'react-native-paper'
 import { AntDesign } from '@expo/vector-icons'
@@ -86,6 +87,24 @@ export default function PlayVideo ({ navigation, route }) {
       setComments(Comments.filter(item => item.comment !== remove))
   }
 
+  const ShareItem = async (url) => {
+    try {
+      const result = await Share.share({ url: url, });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          console.log("Shared with activity type") // shared with activity type of result.activityType
+          console.log(result.activityType)
+        } else {
+          console.log("Shared") // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        console.log("Could not share") // dismissed
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
     addAct()
@@ -134,16 +153,8 @@ export default function PlayVideo ({ navigation, route }) {
               {/*------------DropDown-------------DropDown--------DropDown*/}
 
               <View style={styles.dropdown}>
-                <TouchableOpacity
-                  title='topNav'
-                  onPress={() => changeVisibilityStatusBar()}
-                >
-                  <AntDesign
-                    name='downcircle'
-                    size={18}
-                    color='black'
-                    style={styles.drop}
-                  />
+                <TouchableOpacity title='topNav' onPress={() => changeVisibilityStatusBar()} >
+                  <AntDesign name='downcircle' size={18} color='black' style={styles.drop} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -153,32 +164,16 @@ export default function PlayVideo ({ navigation, route }) {
             <View style={styles.socialIcons}>
               {/*------------Likes-------------Likes--------Likes*/}
 
-              <View style={styles.like}>
-                  <Likes
-                    data={
-                      data.firestore
-                    }
-                  />
-              </View>
+              <Likes data={ data.firestore } />
 
               {/*------------DisLikes-------------DisLikes--------DisLikes*/}
 
-              <View style={styles.dislike}>
-                {
-                  <Dislikes
-                    data={
-                      data.firestore
-                    }
-                  />
-                }
-              </View>
+              <Dislikes data={ data.firestore } />
 
               {/*------------Share-------------Share--------Share*/}
 
               <View style={styles.share}>
-                <TouchableOpacity
-                  onPress={() => ShareItem(data.url)}
-                >
+                <TouchableOpacity onPress={() => ShareItem(data.url)} >
                   <Text style={styles.shareIcon}>
                     <FontAwesome5 name='share' size={20} color='black' />
                   </Text>

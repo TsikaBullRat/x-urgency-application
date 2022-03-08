@@ -3,14 +3,14 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { Entypo } from 'react-native-vector-icons';
 import { firestore, auth } from '../config';
 
-function Counter({ video }) {
+function Dislikes({ data }) {
   const [count, setCount] = useState(0),
 
     [pressed, setPressed] = useState(false),
     Check = async () => {
-      let myDislike = await firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).get()
+      let myDislike = await firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => (doc.data().disliked))
-      firestore.collection('Videos').doc(video).collection('Acts').where("disliked", "==", true)
+      firestore.collection('Videos').doc(data).collection('Acts').where("disliked", "==", true)
         .onSnapshot(query => {
           query.forEach(doc => {
             doc.exists ? setCount(count + 1) : null
@@ -19,19 +19,19 @@ function Counter({ video }) {
     },
 
     Like = async () => {
-      let thisLike = await firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).get()
+      let thisLike = await firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => (doc.data().liked))
-      let thisDislike = await firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).get()
+      let thisDislike = await firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => (doc.data().disliked))
       thisDislike ? (
-        firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
+        firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).update({
           disliked: false
         }),
         setPressed(!pressed)
       ) : (
 
         thisLike ? (
-          firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
+          firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).update({
             liked: false,
             disliked: true
           }),
@@ -40,7 +40,7 @@ function Counter({ video }) {
 
         ) : (
 
-          firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
+          firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).update({
             disliked: true
           }),
 
@@ -48,24 +48,18 @@ function Counter({ video }) {
 
         )
       )
-
+      Check()
     };
 
   useEffect(() => { Check() }, [pressed])
 
   return (
-    <View>
-      <View>
         <TouchableOpacity onPress={Like}>
           <Entypo name="thumbs-down" size={20} color="black" />
           <Text style={{ paddingTop: 6 }}> {count}</Text>
         </TouchableOpacity>
-      </View>
-    </View>
 
   );
 }
-
-const Dislikes = ({ data }) => (<Counter video={data} />);
 
 export { Dislikes }

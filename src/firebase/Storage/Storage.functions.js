@@ -3,6 +3,7 @@ import firebase from 'firebase'
 import { v4 as uuidv4 } from 'uuid'
 
 var atob = require('atob')
+var btoa = require('btoa')
 
 const Collect = async (doc, SetCollection, Count) => {
     var count
@@ -167,10 +168,10 @@ const LoadSet = (Load, query) => {
                         xhr.responseType = 'blob'
                         xhr.onload = (event) =>{
                             var blob = xhr.response
+                            console.log(blob)
                         }
+                        console.log(xhr.open('GET', url))
                         xhr.open('GET', url)
-                        xhr.send()
-
                         return url
                     })
                     .catch(err=>console.log(err))
