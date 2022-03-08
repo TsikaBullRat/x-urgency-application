@@ -47,6 +47,7 @@ export default function PlayVideo ({ navigation, route }) {
   const [Comments, setComments] = useState([])
   const [comment, setComment] = useState('')
   const [visibleStatusBar, setVisibleStatusBar] = useState(false)
+  const [ status, setStatus] = useState()
   
   const changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
@@ -215,8 +216,7 @@ export default function PlayVideo ({ navigation, route }) {
                   onChangeText={text => setComment(text)}
                 />
                 <View
-                  style={styles.commentButton}
-                >
+                  style={styles.commentButton}>
                   <Button
                     color='#F47066'
                     onPress={() => Post(comment, data.firestore)}
@@ -334,26 +334,7 @@ const styles = StyleSheet.create({
     marginTop:5
   },
 
-  avatar:{
-    width: 340,
-    marginTop: 25,
-    flexDirection: 'row',
-  },
-
-  descriptionContainer: {
-    width: 340
-  },
-
-  txtCards: {
-    width: '100%',
-    height: 40,
-    borderRadius: 10,
-    backgroundColor: '#fff',
-    marginTop: 5,
-    borderWidth: 1,
-    borderColor: '#F47066'
-  },
-
+  /*--------------Socials--------------------Socials----------------- */
   like:{ 
     left: -8 
   },
@@ -367,13 +348,6 @@ const styles = StyleSheet.create({
     marginLeft: 15 
   },
 
-  commentButton:{
-    width: '60%',
-    height: 50,
-    borderRadius: 15,
-    marginTop: 2
-  },
-
   save:{ 
     marginLeft: 2 
   },
@@ -382,7 +356,26 @@ const styles = StyleSheet.create({
     marginLeft: 8
   },
 
-  
+  avatar:{
+    width: 340,
+    marginTop: 25,
+    flexDirection: 'row',
+  },
+
+  descriptionContainer: {
+    width: 340
+  },
+
+  /*------------Comments------------------Comments----------------------- */
+  txtCards: {
+    width: '100%',
+    height: 40,
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    marginTop: 5,
+    borderWidth: 1,
+    borderColor: '#F47066'
+  },
 
   commentBox:{ 
     flexDirection: 'row' 
@@ -394,6 +387,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
   },
+
+  commentButton:{
+    width: '35%',
+    height: 50,
+    borderRadius: 15,
+    marginTop: 2
+  },
+
+
+
+  
+
+  
+
+  
     
   comments: {
     width: '65%',
@@ -475,7 +483,9 @@ const styles = StyleSheet.create({
   },
 
   owner: { 
-    paddingTop: 15 
+    paddingTop: 15,
+    fontSize: 17,
+    color: '#f47066'
   },
 
   commentCount:{ 
