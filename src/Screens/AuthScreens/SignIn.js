@@ -65,7 +65,7 @@ export default function SignIn ({ navigation }) {
         />
 
         {/**----------Logo------------Logo------------- */}
-        <View>
+        <View style={{height: '35%'}}>
           <Card style={styles.card}>
             <View style={styles.heartIcon}>
               <FontAwesome name='heartbeat' size={110} color='#fff' />
@@ -75,11 +75,13 @@ export default function SignIn ({ navigation }) {
         </View>
 
         {/**----------Header------------Header------------- */}
+
         <View style={styles.header}>
           <Text
             style={{ fontSize: 36, textAlign: 'center', color: '#F47066' }}
           >{`SignIn`}</Text>
         </View>
+
 
         {/**----------txtFields------------txtFields------------- */}
         <View style={styles.textfieldCards}>
@@ -167,7 +169,7 @@ export default function SignIn ({ navigation }) {
           </TouchableOpacity>
 
         </View>
-        
+
         {/*----------------------Medical Personel--------------Medical Personel------------------ */}
         <View style={{ marginTop: 10, width: '100%' }}>
           <Text

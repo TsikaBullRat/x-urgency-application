@@ -58,7 +58,9 @@ export default function ForgotPassword ({ navigation }) {
   return (
     <View style={styles.container}>
       
-      <View style={{ width: 410 }}>
+      <View style={{width:'100%', alignItems:'center'}}>
+      
+      <View style={{ width: '100%' }}>
         <Card style={styles.card}>
           <View style={styles.heartIcon}>
             <FontAwesome name='heartbeat' size={110} color='#fff' />
@@ -147,6 +149,8 @@ export default function ForgotPassword ({ navigation }) {
           <Text>{`BACK`}</Text>
         </TouchableOpacity>
       </View>
+
+      </View>
     </View>
   )
 }
@@ -155,13 +159,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
+    height:'100%',
     alignItems: 'center',
     backgroundColor: '#fff'
   },
 
   card: {
     width: '100%',
-    height: 310,
+    height: 180,
     backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -170,7 +175,7 @@ const styles = StyleSheet.create({
   },
 
   heartIcon: {
-    marginTop: 85,
+    marginTop: 30,
     alignItems: 'center'
   },
 
@@ -180,7 +185,6 @@ const styles = StyleSheet.create({
 
   txtField: {
     marginTop: 7,
-    // paddingLeft: 10,
     paddingTop: 10,
     fontSize: 18,
     borderRadius: 10,

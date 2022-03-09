@@ -72,23 +72,27 @@ export default function ResetPassword({ navigation }) {
   return (
 
     <View style={styles.container}>
+
+<View style={{width:'100%', alignItems:'center'}}>
+      
+      
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
 
       {/**----------Logo------------Logo------------- */}
 
-      <View>
+      <View style={{ width: '100%' }}>
         <Card style={styles.card}>
           <View style={styles.heartIcon}>
             <FontAwesome name='heartbeat' size={110} color='#fff' />
           </View>
-          <Text style={{ fontFamily: 'Arial', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+          <Text style={{  color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
         </Card>
       </View>
 
       {/**----------Header------------Header------------- */}
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 30, fontWeight: 'bold', ...Platform.select({ web: { fontFamily: 'Arial' } }), color: '#F47066', textAlign: 'center' }} >{`Reset Password`}</Text>
+        <Text style={{ fontSize: 30, fontWeight: 'bold', ...Platform.select({ web: {  } }), color: '#F47066', textAlign: 'center' }} >{`Reset Password`}</Text>
       </View>
 
       {/**----------txtFields------------txtFields------------- */}
@@ -133,7 +137,7 @@ export default function ResetPassword({ navigation }) {
 
       <View style={styles.btnReset}>
         <TouchableOpacity style={styles.signUp} onPress={Register}>
-          <Text style={{ fontSize: 20, fontFamily: 'Arial', color: '#fff' }}> {`RESET`}</Text>
+          <Text style={{ fontSize: 20,  color: '#fff' }}> {`RESET`}</Text>
         </TouchableOpacity>
       </View>
 
@@ -144,6 +148,8 @@ export default function ResetPassword({ navigation }) {
           <Text>{' BACK'}</Text>
         </TouchableOpacity>
       </View>
+
+      </View>
     </View>
   )
 }
@@ -152,13 +158,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width:'100%',
+    height: '100%',
     alignItems:'center',
     backgroundColor: '#fff'
   },
 
   card: {
     width: '100%',
-    height: 310,
+    height: 180,
     backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -183,10 +190,9 @@ const styles = StyleSheet.create({
 
   txtFields: {
     marginTop: 7,
-    // paddingLeft: 10,
     paddingTop: 10,
     fontSize: 18,
-    fontFamily: 'Arial',
+    
     borderRadius: 10,
     ...Platform.select({
       web: {

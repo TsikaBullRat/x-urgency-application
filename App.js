@@ -99,10 +99,6 @@ export default function App() {
                 </>
               ) : null}
 
-<Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
-                  <Stack.Screen name="FollowMore" component={FollowMore} options={{ headerShown: false }} />
-                  <Stack.Screen name="UrgentHelp" component={UrgentHelp} options={{ headerShown: false }} />
-
               <Stack.Screen name="Home" options={{ headerShown: false }}>
                 {(props) => <Home {...props} Exit={Exit} />}
               </Stack.Screen>
