@@ -37,8 +37,9 @@ export default function Home ({ navigation, Exit }) {
       owner: "Ntsikayomzi Ngcakani",
       firestore: "c4ac278a-baa1-403a-bb98-1f4ff9d8af7",
       match: "XYRltIaLknbfJrvZG4OfyOtGYTz2",
-      url: '../../images/pexels-sathyaprabha-rakkimuthu-5613843.mp4'
+      uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     },
+
     {
       title: "Video 2",
       views: 200,
@@ -49,7 +50,7 @@ export default function Home ({ navigation, Exit }) {
       owner: "Thabo Moeti",
       firestore: "b7e7379f-4c5b-459a-8b17-14cfb254786",
       match: "SvkJPojTkUNBr8IVgoKqoTosIlE3",
-      url: '../../images/pexels-anastasia-shuraeva-8028812.mp4'
+      uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
     }
   ])
 
@@ -161,7 +162,7 @@ export default function Home ({ navigation, Exit }) {
           {collection
             ? collection.map((vid, index) => (
                 <View
-                  style={{ width: 360, alignItems:'center', backgroundColor: '#b5a8a8' }}
+                  style={{ width: 360, marginTop: 20, alignItems:'center', backgroundColor: '#b5a8a8' }}
                   key={index}
                 >
                   <TouchableOpacity
@@ -170,7 +171,7 @@ export default function Home ({ navigation, Exit }) {
                   >
                     <Video
                       ref={reference[index]}
-                      source={{ uri: vid.url }}
+                      source={{ uri: vid.uri }}
                       resizeMode='stretch'
                       isLooping
                       style={{ width: '100%', height: 180 }}

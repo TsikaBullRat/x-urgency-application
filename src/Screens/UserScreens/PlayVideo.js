@@ -38,7 +38,7 @@ import { Collect, Post } from '../../firebase/Storage/Storage.functions'
 export default function PlayVideo ({ navigation, route }) {
   const data = route.params.vid
   const [userName, setUserName] = useState(data.owner)
-  const [videoPlay, setVideoPlay] = useState(data.url)
+  const [videoPlay, setVideoPlay] = useState(data.uri)
   const [views, setViews] = useState(data.views)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
