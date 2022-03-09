@@ -26,7 +26,32 @@ export default function Home ({ navigation, Exit }) {
   const [videos, setLoad] = useState(null)
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')
-  const [collection, setCollection] = useState([])
+  const [collection, setCollection] = useState([
+    {
+      title: "Video 1",
+      views: 7,
+      tag: "Choking",
+      stamp: "2 days ago",
+      id: 1,
+      description: "Lorem ipsum etc",
+      owner: "Ntsikayomzi Ngcakani",
+      firestore: "c4ac278a-baa1-403a-bb98-1f4ff9d8af7",
+      match: "XYRltIaLknbfJrvZG4OfyOtGYTz2",
+      url: '../../images/pexels-sathyaprabha-rakkimuthu-5613843.mp4'
+    },
+    {
+      title: "Video 2",
+      views: 200,
+      tag: "Stroke",
+      stamp: "3 years ago",
+      id: 2,
+      description: "Lorem ipsum etc",
+      owner: "Thabo Moeti",
+      firestore: "b7e7379f-4c5b-459a-8b17-14cfb254786",
+      match: "SvkJPojTkUNBr8IVgoKqoTosIlE3",
+      url: '../../images/pexels-anastasia-shuraeva-8028812.mp4'
+    }
+  ])
 
   useEffect(() => {
     auth.currentUser ?
@@ -40,15 +65,11 @@ export default function Home ({ navigation, Exit }) {
         })
   }, [])
 
-  useEffect(()=>{
-    LoadSet(setCollection)
-  }, [])
+  // useEffect(()=>{
+  //   LoadSet(setCollection)
+  // }, [])
 
   const reference = useRef(collection.map(item=>item.url))
-
-  useEffect(()=>{
-    console.log(collection)
-  }, [])
 
   const ItemSeperatorView = () => {
     return (
