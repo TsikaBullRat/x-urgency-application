@@ -121,17 +121,8 @@ const LoadSet = (Load, query) => {
                             })
                             return views
                         })
-                        getLink = itemRef.getDownloadURL().then(url =>{
-                            var xhr = new XMLHttpRequest()
-                            xhr.responseType = 'blob'
-                            xhr.onload = (event) =>{
-                                var blob = xhr.response
-                            }
-                            xhr.open('GET', url)
-                            xhr.send()
-
-                            return url
-                        })
+                        console.log(itemRef.toString())
+                        getLink = itemRef.getDownloadURL().then(url =>url)
                         .catch(err=>console.log(err))
                     let link = await getLink
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
@@ -163,19 +154,10 @@ const LoadSet = (Load, query) => {
                             })
                             return views
                         })
-                    getLink = itemRef.getDownloadURL().then(url =>{
-                        var xhr = new XMLHttpRequest()
-                        xhr.responseType = 'blob'
-                        xhr.onload = (event) =>{
-                            var blob = xhr.response
-                            console.log(blob)
-                        }
-                        console.log(xhr.open('GET', url))
-                        xhr.open('GET', url)
-                        return url
-                    })
+                    getLink = itemRef.getDownloadURL().then(url =>url)
                     .catch(err=>console.log(err))
                     let link = await getLink
+                    console.log(link)
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title
                     let match = find.ref
