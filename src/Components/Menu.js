@@ -19,8 +19,8 @@ export default function Menu({ list, setVids }) {
 
       {/*----------------------Horizontal Menu----------------------*/}
 
-      <ScrollView style={{ width: 350 }} horizontal={true} showsHorizontalScrollIndicator={false}>
-        <View style={{ width: 695, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', left: 3 }} >
+      <ScrollView style={{ width: 360 }} horizontal={true} showsHorizontalScrollIndicator={false}>
+        <View style={{ width: 719, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }} >
 
           {categories.map((emergency, index) => (
             <TouchableOpacity key={index} activeOpacity={0.8}
@@ -29,8 +29,9 @@ export default function Menu({ list, setVids }) {
 
               <View>
                 <Text style={{
-                  fontSize: 16, //color: '#fff'
-                  color: selectedCategory == index ? '#fff' : '#fff'
+                  fontSize: 15,
+                  //color: '#fff'
+                  color: selectedCategory == index ? '#black' : '#fff'
                 }}> {emergency}</Text>
 
                 {selectedCategory == index && (<View style={{ height: 3, width: 55, backgroundColor: '#47066', marginTop: 2 }}> </View>)}

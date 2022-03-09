@@ -3,12 +3,12 @@ import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { Card } from 'react-native-paper'
 import { Avatar, Badge } from 'react-native-elements';
-import { Socials, } from '../../Components/Socials';
+import { Socials } from '../../Components/index';
 import { auth, firestore } from '../../firebase/config';
 import Button from '../../Components/button';
 import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
-export const MedProfile = ({ navigation, route }) => {
+ const MedProfile = ({ navigation, route }) => {
 
 
   const info = route.params.match
@@ -150,7 +150,7 @@ export const MedProfile = ({ navigation, route }) => {
 
       <View style={{ paddingTop: 20, width: 335, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
         <Socials text="Following" number="15" />
-        <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length :*/ 0} />
+        <Socials text="Followers" number={data.subscribers ? data.subscribers.length : 0} />
         <Socials text="Likes" number="3.1M" />
       </View>
 
@@ -289,5 +289,7 @@ const styles = StyleSheet.create({
   },
 
 });
+
+export default {MedProfile}
 
 // export default Doctor;

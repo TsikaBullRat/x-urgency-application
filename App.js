@@ -13,6 +13,7 @@ import {
   TakeVideo,
   ShareContent,
   LikeConn,
+  PlayVideo,
   UploadVideo,
   MedicalHome,
   Upload,
@@ -24,6 +25,7 @@ import {
   ForgotPassword,
   ResetPassword,
   DoctorSignUp,
+  MedSignIn,
   Doctor,
   Clone,
 } from "./src/Screens";
@@ -87,7 +89,7 @@ export default function App() {
               </Stack.Screen>
               <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
               <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
-              <Stack.Screen name="PlayVideo" component={Clone} options={{ headerShown: false }} />
+              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
               <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
             </>
           ) : (
@@ -97,16 +99,14 @@ export default function App() {
                   <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
                   <Stack.Screen name="FollowMore" component={FollowMore} options={{ headerShown: false }} />
                   <Stack.Screen name="UrgentHelp" component={UrgentHelp} options={{ headerShown: false }} />
-                  <Stack.Screen name="TakeVideo" component={TakeVideo} options={{ headerShown: false }} />
-                  <Stack.Screen name="ShareContent" component={ShareContent} options={{ headerShown: false }} />
-                  <Stack.Screen name="LikeConn" component={LikeConn} options={{ headerShown: false }} />
                 </>
               ) : null}
+
               <Stack.Screen name="Home" options={{ headerShown: false }}>
                 {(props) => <Home {...props} Exit={Exit} />}
               </Stack.Screen>
               <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
-              <Stack.Screen name="PlayVideo" component={Clone} options={{ headerShown: false }} />
+              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
               <Stack.Screen name="EmergencyContacts" options={{ headerShown: false }} >
                 {(props) => <EmergencyContacts {...props} />}
               </Stack.Screen>
@@ -115,9 +115,15 @@ export default function App() {
         ) : (
           <>
             <Stack.Screen name="SignIn" options={{ headerShown: false }} component={SignIn} />
-            <Stack.Screen name="DoctorSignUp" options={{ headerShown: false }} component={DoctorSignUp} />
+            
             <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
+
+            <Stack.Screen name="MedSignIn" options={{ headerShown: false }} component={MedSignIn} />
+
+            <Stack.Screen name="DoctorSignUp" options={{ headerShown: false }} component={DoctorSignUp} />
+
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
+            
             <Stack.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
           </>
         )}

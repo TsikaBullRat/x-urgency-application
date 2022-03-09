@@ -68,6 +68,10 @@ export default function Home ({ navigation, Exit }) {
 
   return (
     <View style={styles.container}>
+
+<View style={{ alignItems:'center' }}>
+
+  <View style={{width:'100%'}}>
       <AlertNote
         modalVisible={displayModal}
         setModalVisible={setDisplaModal}
@@ -77,7 +81,7 @@ export default function Home ({ navigation, Exit }) {
       {/**------------------CallSiren--------------------CallSiren----------------- */}
       <View
         style={{
-          width: 345,
+          width: '95%',
           flexDirection: 'row',
           marginVertical: 35,
           justifyContent: 'flex-end'
@@ -101,18 +105,16 @@ export default function Home ({ navigation, Exit }) {
       <View
         style={{
           flexDirection: 'row',
-          width: 350,
+          width: '100%',
           alignItems: 'center',
           justifyContent: 'space-between'
         }}>
         {/*-------------Header---------------Header--------------Header------- */}
-        <View style={{ left: 6 }}>
+        <View>
           <Header />
         </View>
 
-        <TouchableOpacity
-          style={{ top: -24 }}
-          onPress={() => navigation.navigate('Doctor')}>
+        <View style={{top:-20}}>
           {image ? (
             <Avatar rounded source={{ uri: image }} size='large' />
           ) : (
@@ -120,16 +122,16 @@ export default function Home ({ navigation, Exit }) {
               <Text style={styles.temp_text}> {initial} </Text>
             </View>
           )}
-        </TouchableOpacity>
+        </View>
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={{ width: 360, left: 2 }}>
+      <View style={{ width: '100%', alignItems:'center'}}>
         <Menu />
       </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
-      <View style={{ marginVertical: 20 }}>
+      <View style={{ marginTop:15, alignItems:' center'}}>
         <ScrollView
           style={{ height: 435 }}
           vertical={true}
@@ -138,7 +140,7 @@ export default function Home ({ navigation, Exit }) {
           {collection
             ? collection.map((vid, index) => (
                 <View
-                  style={{ width: 340, left: 11, backgroundColor: '#ffe7e6' }}
+                  style={{ width: 360, alignItems:'center', backgroundColor: '#ffe7e6' }}
                   key={index}
                 >
                   <TouchableOpacity
@@ -150,12 +152,13 @@ export default function Home ({ navigation, Exit }) {
                       source={{ uri: vid.url }}
                       resizeMode='stretch'
                       isLooping
-                      style={{ width: 340, height: 180 }}
+                      style={{ width: 360, height: 180 }}
                     />
                   </TouchableOpacity>
 
                 <View
                   style={{
+                    width: '98%',
                     flexDirection: 'row',
                     margin:3,
                     justifyContent: 'space-between'}} >
@@ -163,7 +166,7 @@ export default function Home ({ navigation, Exit }) {
                     <Text style={styles.tag}>{vid.views}Views</Text>
                   </View>
 
-                  <View style={{ margin:3}}>
+                  <View style={{ width:'98%', margin:3, alignItems:'flex-start'}}>
                     <Text style={styles.tag}>{vid.tag} </Text>
                     <Text style={styles.tag}>{vid.stamp}</Text>
                   </View>
@@ -174,6 +177,9 @@ export default function Home ({ navigation, Exit }) {
             : null}
         </ScrollView>
       </View>
+      </View>
+
+      </View>
     </View>
   )
 }
@@ -181,6 +187,7 @@ export default function Home ({ navigation, Exit }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width:'100%',
     backgroundColor: '#fff'
   },
 
@@ -190,7 +197,7 @@ const styles = StyleSheet.create({
   },
 
   menu2: {
-    width: 335,
+    width: '95%',
     height: 520,
     borderRadius: 15,
     shadowOffset: {},
@@ -211,14 +218,14 @@ const styles = StyleSheet.create({
   },
 
   tag: {
-    paddingVertical: 2,
-    fontSize: 12
+    // fontSize: 12
   },
 
   temp: {
     width: 70,
     height: 70,
     borderRadius: 50,
+    left: -10,
     backgroundColor: 'turquoise',
     alignItems: 'center',
     justifyContent: 'center'
@@ -228,6 +235,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: '#fff',
     textAlign: 'center',
-    fontFamily: 'Roboto'
+    
   }
 })

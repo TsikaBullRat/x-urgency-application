@@ -11,15 +11,23 @@
  * - Modification    :
  **/
 
-import React, { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Platform,
+  SafeAreaView
+} from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { auth, firestore } from '../../firebase/config'
-import handleSignIn from '../../firebase/Auth/SignIn.function'
+import { handleSignIn } from '../../firebase/Auth/HandleSignIn'
 import { AlertNote } from '../../Components'
 
-export default function SignIn({ navigation }) {
+export default function SignIn ({ navigation }) {
   const [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
     [displayModal, setDisplaModal] = useState(false),
@@ -28,7 +36,7 @@ export default function SignIn({ navigation }) {
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null)
 
-  const Login = (setDone) => {
+  const Login = (setDone, setMessage) => {
     if (email === '' && password === '') {
       setPrompt('Please enter thr requested information')
     } else if (email === '') {
@@ -40,89 +48,157 @@ export default function SignIn({ navigation }) {
       setPrompt1(null)
       setPrompt2('Please enter password')
     } else {
-      handleSignIn(email, password, setMessage, setDone)
+      handleSignIn(email, password)
       setDisplaModal(true)
     }
+
+    navigation.navigate('Home')
   }
 
   return (
-
     <View style={styles.container}>
-      <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      <View style={{ width: '100%' }}>
+        <AlertNote
+          modalVisible={displayModal}
+          setModalVisible={setDisplaModal}
+          msg={message}
+        />
 
-      {/**----------Logo------------Logo------------- */}
+        {/**----------Logo------------Logo------------- */}
+        <View style={{height: '35%'}}>
+          <Card style={styles.card}>
+            <View style={styles.heartIcon}>
+              <FontAwesome name='heartbeat' size={110} color='#fff' />
+            </View>
+            <Text style={{ color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+          </Card>
+        </View>
 
-      <View>
-        <Card style={styles.card}>
-          <View style={styles.heartIcon}>
-            <FontAwesome name='heartbeat' size={110} color='#fff' />
-          </View>
-          <Text style={{  color: '#fff', fontSize: 30 }}>  {`X-urgency`} </Text>
-        </Card>
-      </View>
+        {/**----------Header------------Header------------- */}
 
-      {/**----------Header------------Header------------- */}
+        <View style={styles.header}>
+          <Text
+            style={{ fontSize: 36, textAlign: 'center', color: '#F47066' }}
+          >{`SignIn`}</Text>
+        </View>
 
-      <View style={styles.header}>
-        <Text style={{ fontSize: 30, fontWeight: 'bold', textAlign: 'center',  color: '#F47066' }}>{`SignIn`}</Text>
-      </View>
 
-      {/**----------txtFields------------txtFields------------- */}
+        {/**----------txtFields------------txtFields------------- */}
+        <View style={styles.textfieldCards}>
+          {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
 
-      <View style={styles.textfieldCards}>
-        {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: 'row' }}>
+              <AntDesign
+                name='user'
+                size={20}
+                color='black'
+                style={{ margin: 13 }}
+              />
+              <TextInput
+                style={styles.txtField}
+                name='username'
+                placeholder='Username'
+                onChangeText={text => setEmail(text)}
+              />
+            </View>
+          </Card>
+          {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
-        <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <AntDesign name='user' size={22} color='black' style={{ marginTop: 16, marginLeft: 18 }} />
-            <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
-          </View>
-        </Card>
-        {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
+          <Card style={styles.txtCards}>
+            <View style={{ flexDirection: 'row' }}>
+              <EvilIcons
+                name='lock'
+                size={29}
+                color='black'
+                style={{ margin: 10 }}
+              />
+              <TextInput
+                style={styles.txtField}
+                name='password'
+                placeholder='Password'
+                secureTextEntry={true}
+                onChangeText={text => setPassword(text)}
+              />
+            </View>
+          </Card>
+          {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
+        </View>
 
-        <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name='lock' size={32} color='black' style={{ marginTop: 12, marginLeft: 12 }} />
-            <TextInput style={styles.txtField} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
-          </View>
-        </Card>
-        {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
-      </View>
-
-      {/**----------ResetPassword------------ResetPassword------------- */}
-
-      <View style={styles.reset}>
-        <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword') }} >
-          <Text style={{ paddingTop: 20, fontSize: 18,  color: '#F47066' }} >{`Forgot Password?`} </Text>
-        </TouchableOpacity>
-      </View>
-
-      {/**----------btnLogIn------------btnLogIn------------- */}
-
-      <View style={styles.loginView}>
-        <TouchableOpacity style={styles.signIn} onPress={Login}>
-          <Text style={{ fontSize: 20,  color: '#fff' }}>{`LOGIN`} </Text>
-        </TouchableOpacity>
-      </View>
-
-      {/*----------------------New User--------------New User------ */}
-
-      <View style={styles.newUser}>
-        <Text style={{ paddingTop: 10, fontWeight: 'bold', textAlign: 'center', color: 'grey', fontSize: 15 }} > {`New User?`} </Text>
-
-        <View style={{ marginTop: 2, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-          <TouchableOpacity onPress={() => { navigation.navigate('Sign Up') }} >
-            <Text style={{ paddingTop: 9, fontSize: 20,  color: '#F47066' }}> {`SignUp`} </Text>
+        {/**----------ResetPassword------------ResetPassword------------- */}
+        <View style={styles.reset}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ForgotPassword')
+            }}
+          >
+            <Text style={{ paddingTop: 20, fontSize: 18, color: '#F47066' }}>
+              {`Forgot Password?`}{' '}
+            </Text>
           </TouchableOpacity>
         </View>
-      </View>
 
-      <View style={{ marginTop: 10, width: 360 }}>
-        <Text style={{ paddingTop: 10, fontWeight: 'bold', color: 'grey', fontSize: 15, textAlign: 'center', justifyContent: 'center' }}> {`Medical Personel?`}</Text>
-        <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }}>
-          <TouchableOpacity onPress={() => navigation.navigate('MedSignIn')}>
-            <Text style={{  fontSize: 20, paddingTop: 5, color: '#F47066' }} > {`SignIn`}</Text>
+        {/**----------btnLogIn------------btnLogIn------------- */}
+        <View style={styles.loginView}>
+          <TouchableOpacity style={styles.signIn} onPress={Login}>
+            <Text style={{ fontSize: 20, color: '#fff' }}>{`LOGIN`} </Text>
           </TouchableOpacity>
+        </View>
+
+        {/*----------------------New User--------------New User------ */}
+        <View style={styles.newUser}>
+          <Text
+            style={{
+              paddingTop: 10,
+              textAlign: 'center',
+              color: 'grey',
+              fontSize: 14
+            }}>
+            {' '}
+            {`New User?`}
+          </Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('SignUp')
+            }}
+            style={{ left: 5 }}>
+            <Text style={{ paddingTop: 4, fontSize: 20, color: '#F47066' }}>
+              {`SignUp`}
+            </Text>
+          </TouchableOpacity>
+
+        </View>
+
+        {/*----------------------Medical Personel--------------Medical Personel------------------ */}
+        <View style={{ marginTop: 10, width: '100%' }}>
+          <Text
+            style={{
+              paddingTop: 10,
+              color: 'grey',
+              fontSize: 14,
+              textAlign: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            {' '}
+            {`Medical Personel?`}
+          </Text>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              textAlign: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <TouchableOpacity onPress={() => navigation.navigate('MedSignIn')}>
+              <Text style={{ fontSize: 20, paddingTop: 5, color: '#F47066' }}>
+                {' '}
+                {`SignIn`}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -132,29 +208,29 @@ export default function SignIn({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width:360,
-    alignItems:'center',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
     backgroundColor: '#fff'
   },
 
   card: {
-    width: 360,
-    height: 200,
-    marginTop:35,
+    width: '100%',
+    height: '100%',
     backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 
   heartIcon: {
-    marginTop: 30,
-    alignItems:'center'
+    marginTop: 85,
+    alignItems: 'center'
   },
 
   header: {
-    marginTop: 20,
+    marginTop: 20
   },
 
   textfieldCards: {
@@ -164,16 +240,13 @@ const styles = StyleSheet.create({
   },
 
   txtField: {
-    marginTop: 7,
-    paddingLeft: 10,
-    paddingTop: 10,
+    marginTop: 14,
     fontSize: 18,
-    
     borderRadius: 10,
     ...Platform.select({
       web: {
         outlineColor: '#fff',
-        width: 220
+        height: 25
       }
     })
   },
@@ -199,14 +272,13 @@ const styles = StyleSheet.create({
   },
 
   loginView: {
-    width: 360,
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center'
   },
 
   newUser: {
-    width: 360,
-    // marginRight: 10,
+    width: '100%',
     marginTop: 10,
     flexDirection: 'row',
     alignItems: 'center',
@@ -222,5 +294,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-
 })

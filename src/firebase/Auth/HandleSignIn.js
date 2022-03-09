@@ -2,7 +2,7 @@ import { auth } from "../config"
 
 import { AlertNote } from "../../Components"
 
-export default function handleSignIn (email, password, setMessage, setDone){
+export const handleSignIn = (email, password, setMessage, setDone) => {
     auth.signInWithEmailAndPassword(email, password)
         .then(() => {
             setMessage("Welcome back")

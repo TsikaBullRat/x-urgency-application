@@ -10,7 +10,7 @@ import firebase from 'firebase'
 
 var atob = require('atob')
 
-export const UpdateProfile = ({navigation}) => {
+function UpdateProfile() {
 
     //Copies for testing
     const [uid, setID] = useState(null)
@@ -275,3 +275,5 @@ const styles = StyleSheet.create({
         color: '#fff',
     }
 })
+
+export default {UpdateProfile}

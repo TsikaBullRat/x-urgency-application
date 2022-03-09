@@ -15,7 +15,7 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import {handleSignUp} from '../../firebase/Auth/SignUp.function'
+import {handleSignUp} from '../../firebase/Auth/HandleSignUp'
 import { AlertNote } from '../../Components/Alert'
 
 export default function SignUp({ navigation }) {
@@ -73,11 +73,12 @@ export default function SignUp({ navigation }) {
   return (
 
     <View style={styles.container}>
+
+    <View style={{width:'100%'}}>
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
 
       {/**----------Logo------------Logo------------- */}
-
-      <View>
+      <View style={{width:'100%'}}>
         <Card style={styles.card}>
           <View style={styles.heartIcon}>
             <FontAwesome name='heartbeat' size={110} color='#fff' />
@@ -86,33 +87,34 @@ export default function SignUp({ navigation }) {
         </Card>
       </View>
 
+      {/**----------Header------------Header------------- */}
       <View style={styles.header}>
-        <Text style={{ fontSize: 30, fontWeight: 'bold', textAlign: 'center', color: '#F47066' }}>{`SignUp`}</Text>
+        <Text style={{ fontSize: 36, textAlign: 'center',  color: '#F47066' }}>{`SignIn`}</Text>
       </View>
 
       {/**----------txtFields------------txtFields------------- */}
-
       <View style={styles.textfieldCards}>
         {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
+
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <AntDesign name='user' size={22} color='black' style={{ marginTop: 16, marginLeft: 18 }} />
-            <TextInput style={styles.txtField} name='userName' placeholder='Username' onChangeText={text => setEmail(text)} />
+            <AntDesign name='user' size={20} color='black' style={{ margin:13 }} />
+            <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
-
         {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
+
         <Card style={styles.txtCards}>
-          <View style={{ flexDirection: 'row' }}>
-            <AntDesign name='mail' size={20} color='black' style={{ marginTop: 20, marginLeft: 15 }} />
-            <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
+          <View style={{ flexDirection: 'row'}}>
+            <AntDesign name='mail' size={16} color='black' style={{ marginTop: 20, marginLeft: 15 }} />
+            <TextInput style={styles.txtEmail} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
           </View>
         </Card>
         {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name='lock' size={32} color='black' style={{ marginTop: 12, marginLeft: 12 }} />
+            <EvilIcons name='lock' size={29} color='black' style={{ margin: 10}} />
             <TextInput style={styles.txtField} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
           </View>
         </Card>
@@ -120,7 +122,7 @@ export default function SignUp({ navigation }) {
 
         <Card style={styles.txtCards}>
           <View style={{ flexDirection: 'row' }}>
-            <EvilIcons name='lock' size={32} color='black' style={{ marginTop: 12, marginLeft: 12 }} />
+          <EvilIcons name='lock' size={29} color='black' style={{ margin: 10}} />
             <TextInput style={styles.txtField} name='confirmPassword' placeholder='Confirm Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
           </View>
         </Card>
@@ -143,6 +145,7 @@ export default function SignUp({ navigation }) {
         </View>
       </View>
 
+      </View>
     </View>
   )
 }
@@ -150,15 +153,15 @@ export default function SignUp({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width:360,
+    width: '100%',
+    height: '100%',
     alignItems:'center',
     backgroundColor: '#fff'
   },
 
   card: {
-    width: 360,
-    height: 200,
-    marginTop:35,
+    width: '100%',
+    height: '100%',
     backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -167,7 +170,7 @@ const styles = StyleSheet.create({
   },
 
   heartIcon: {
-    marginTop: 30,
+    marginTop: 85,
     alignItems:'center'
   },
 
@@ -182,16 +185,26 @@ const styles = StyleSheet.create({
   },
 
   txtField: {
-    marginTop: 7,
-    paddingLeft: 10,
-    paddingTop: 10,
+    marginTop: 14,
     fontSize: 18,
-    
     borderRadius: 10,
     ...Platform.select({
       web: {
         outlineColor: '#fff',
-        width: 220
+        height:25,
+      }
+    })
+  },
+
+  txtEmail: {
+    marginTop: 14,
+    marginLeft: 16,
+    fontSize: 18,
+    borderRadius: 10,
+    ...Platform.select({
+      web: {
+        outlineColor: '#fff',
+        height:25,
       }
     })
   },
@@ -217,7 +230,8 @@ const styles = StyleSheet.create({
   },
 
   signupView: {
-    width: 360,
+    width: '100%',
+    height: '20%',
     alignItems: 'center',
     justifyContent: 'center'
   },

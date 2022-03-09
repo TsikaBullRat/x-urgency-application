@@ -48,9 +48,12 @@ export default function PlayVideo ({ navigation, route }) {
   const [Comments, setComments] = useState([])
   const [comment, setComment] = useState('')
   const [visibleStatusBar, setVisibleStatusBar] = useState(false)
+  const [ status, setStatus] = useState()
+  
   const changeVisibilityStatusBar = () => {
       setVisibleStatusBar(!visibleStatusBar)
   }
+  
   const addAct = async () => {
       let metadata = firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid)
       let found = (await metadata.get()).exists
@@ -68,6 +71,7 @@ export default function PlayVideo ({ navigation, route }) {
       let match = data.match
       navigation.navigate('Doctor', { match })
   }
+
   const Delete = remove => {
       firestore.collection('Videos').doc(data.firestore).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => {
@@ -113,7 +117,6 @@ export default function PlayVideo ({ navigation, route }) {
   return (
     <View style={styles.contain}>
       {/**-------BACK------BACK-------BACK */}
-
       <View style={styles.back}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text>{`BACK`}</Text>
@@ -121,7 +124,6 @@ export default function PlayVideo ({ navigation, route }) {
       </View>
 
       {/**-------------Video----------------Video-----------------Video---------------- */}
-
       <View style={styles.videoContainer}>
         <Video
           ref={reference}
@@ -129,7 +131,6 @@ export default function PlayVideo ({ navigation, route }) {
           useNativeControls
           resizeMode='contain'
           isLooping
-          style={styles.video}
           onPlaybackStatusUpdate={status => setStatus(() => status)}
         />
       </View>
@@ -139,8 +140,8 @@ export default function PlayVideo ({ navigation, route }) {
         {!visibleStatusBar ? (
           <View
             style={styles.statusOff}>
-            <View
-              style={styles.title}>
+
+            <View style={styles.title}>
               <View>
                 <Text style={styles.vidTitle}>
                   {data.title}
@@ -151,27 +152,38 @@ export default function PlayVideo ({ navigation, route }) {
               </View>
 
               {/*------------DropDown-------------DropDown--------DropDown*/}
-
               <View style={styles.dropdown}>
-                <TouchableOpacity title='topNav' onPress={() => changeVisibilityStatusBar()} >
-                  <AntDesign name='downcircle' size={18} color='black' style={styles.drop} />
+                <TouchableOpacity
+                  title='topNav'
+                  onPress={() => changeVisibilityStatusBar()}
+                >
+                  <AntDesign
+                    name='downcircle'
+                    size={18}
+                    color='black'
+                  />
                 </TouchableOpacity>
               </View>
             </View>
 
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
-
             <View style={styles.socialIcons}>
               {/*------------Likes-------------Likes--------Likes*/}
 
               <Likes data={ data.firestore } />
 
               {/*------------DisLikes-------------DisLikes--------DisLikes*/}
-
-              <Dislikes data={ data.firestore } />
+              <View style={styles.dislike}>
+                {
+                  <Dislikes
+                    data={
+                      data.firestore
+                    }
+                  />
+                }
+              </View>
 
               {/*------------Share-------------Share--------Share*/}
-
               <View style={styles.share}>
                 <TouchableOpacity onPress={() => ShareItem(data.url)} >
                   <Text style={styles.shareIcon}>
@@ -192,10 +204,8 @@ export default function PlayVideo ({ navigation, route }) {
             </View>
 
             {/*------------Avatar-------------Avatar--------Avatar*/}
-
             <View
-              style={styles.avatar}
-            >
+              style={styles.avatar}>
               <Avatar
                 rounded
                 source={{
@@ -208,7 +218,6 @@ export default function PlayVideo ({ navigation, route }) {
             </View>
 
             {/*------------Comments-------------Comments--------Comments*/}
-
             <Card style={styles.txtCards}>
               <View style={styles.commentBox}>
                 <TextInput
@@ -218,8 +227,7 @@ export default function PlayVideo ({ navigation, route }) {
                   onChangeText={text => setComment(text)}
                 />
                 <View
-                  style={styles.commentButton}
-                >
+                  style={styles.commentButton}>
                   <Button
                     color='#F47066'
                     onPress={() => Post(comment, data.firestore)}
@@ -239,8 +247,7 @@ export default function PlayVideo ({ navigation, route }) {
 
             <ScrollView
               style={styles.commentSect}
-              showsVerticalScrollIndicator={false}
-            >
+              showsVerticalScrollIndicator={false}>
               <Card style={styles.commentsInner}>
                 {Comments.map((item, index) =>(
                   <View style={styles.comments} key={index}>
@@ -256,7 +263,7 @@ export default function PlayVideo ({ navigation, route }) {
         ) : (
           /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
 
-          <View style={styles.hiddenDescription}>
+          <View style={styles.descriptionContainer}>
             <View
               style={styles.description}>
               <View>
@@ -276,8 +283,7 @@ export default function PlayVideo ({ navigation, route }) {
             </View>
 
             <View
-              style={styles.descriptionBox}
-            >
+              style={styles.descriptionBox}>
               <Text>
                 {data.description}
               </Text>
@@ -292,14 +298,88 @@ export default function PlayVideo ({ navigation, route }) {
 const styles = StyleSheet.create({
   contain: {
     flex: 1,
+    width:'100%',
     alignItems: 'center',
     backgroundColor: '#fff'
   },
+
+  back:{
+    marginTop: 10, 
+  },
+
+  videoContainer:{
+    marginTop: 25,
+    width: '100%',
+    backgroundColor: '#f7eeed' 
+  },
+
+
+  statusOff:{
+    width: 340,
+    justifyContent: 'space-between'
+  },
+
+  title:{
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+
+  vidTitle:{ 
+    fontSize: 18,
+    color: '#F47066' 
+  },
+
+  viewCount: { 
+    width: 340,
+    left: 2 
+  },
+
+  dropdown:{ 
+    marginTop: 2,
+    left: -18
+  },
+
+  close:{
+    marginTop:5
+  },
+
+  /*--------------Socials--------------------Socials----------------- */
+  like:{ 
+    left: -8 
+  },
+
+  dislike:{ 
+    marginLeft: 10, 
+    marginTop: 3 
+  },
+
+  share: { 
+    marginLeft: 15 
+  },
+
+  save:{ 
+    marginLeft: 2 
+  },
+
+  saveIcon: {
+    marginLeft: 8
+  },
+
+  avatar:{
+    width: 340,
+    marginTop: 25,
+    flexDirection: 'row',
+  },
+
   descriptionContainer: {
     width: 340
   },
+
+  /*------------Comments------------------Comments----------------------- */
   txtCards: {
-    width: 340,
+    width: '100%',
     height: 40,
     borderRadius: 10,
     backgroundColor: '#fff',
@@ -307,48 +387,57 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#F47066'
   },
+
+  commentBox:{ 
+    flexDirection: 'row' 
+  },
+
   comment: {
-    width: 295,
+    width: '65%',
     height: 38,
     borderRadius: 10,
     backgroundColor: '#fff',
-    paddingLeft: 10
   },
+
+  commentButton:{
+    width: '35%',
+    height: 50,
+    borderRadius: 15,
+    marginTop: 2
+  },
+
+
+
+  
+
+  
+
+  
+    
   comments: {
-    width: 295,
+    width: '65%',
     left: 3,
     marginVertical: 10,
     flexDirection: 'row',
     borderRadius: 10,
     backgroundColor: '#f47066',
-    paddingLeft: 5
   },
+
   txtComments: {
     color: '#fff',
     padding: 10
   },
+
   txtUserComment: {
     padding: 10,
     fontSize: 18,
     color: '#fff'
   },
+
   btnComment: {
     backgroundColor: '#F47066'
   }, 
-  back:{
-    marginTop: 10, 
-    width: 340, 
-    alignItems: 'flex-start' 
-  },
-  videoContainer:{
-    width: 344,
-    marginTop: 25,
-    backgroundColor: '#f7eeed' 
-  },
-  statusOff:{
-    width: 340,
-    justifyContent: 'space-between'
-  },
+
   socialIcons:{
     width: 360,
     flexDirection: 'row',
@@ -359,85 +448,76 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around'
   },
-  avatar:{
-    width: 340,
-    marginTop: 25,
-    flexDirection: 'row',
-    // justifyContent: 'flex'
-  },
+
   hiddenDescription:{ 
     backgroundColor: '#fff', 
-    marginTop: 15 
-  },
-  safeArea:{ 
-    paddingLeft: 20, 
-    paddingTop: 10 
-  },
-  commentCount:{ 
-    width: 340, 
-    alignItems: 'flex-start' 
-  },
-  description:{
-    width: 340,
-    marginTop: 5,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  title:{
-    flexDirection: 'row',
-    width: 340,
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-  dropdown:{ 
-    marginLeft: 25, 
     marginTop: 20 
   },
-  like:{ left: "-8" },
-  dislike:{ marginLeft: 10, marginTop: 3 },
-  share: { marginLeft: 15 },
-  commentButton:{
-    width: 90,
-    height: 50,
-    borderRadius: 15,
-    marginTop: 2
+
+  safeArea:{     
+    marginTop: 10 
   },
-  save:{ marginLeft: 2 },
-  close:{marginTop:5},
-  commentBox:{ flexDirection: 'row' },
-  vidTitle:{ fontWeight: 'bold', color: '#F47066' },
-  video:{ 
-    width: 340, 
-    height: 180, 
-    left: 2 
+
+  description:{
+    width: '100%',
+    marginTop: 8,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
-  viewCount: { 
-    width: 340,
-    left: 2 
-  },
-  commentSect: { height: 220 },
-  commentsInner: { 
-    height: 340, 
-    width: 340 
-  },
+
   descriptionBox: { 
     width: 340, 
     marginTop: 25, 
     alignItems: 'flex-start' 
   },
+
+  descriptionHead: { 
+    fontWeight: 'bold', 
+    color: '#F47066', 
+    fontSize: 22 
+  },
+
   descriptionText:{
     maxWidth: 315,
-    paddinLeft: 20 
   },
-  shareIcon: { marginLeft: 8 },
-  shareText: { paddingTop: 5 },
-  saveText: { paddingTop: 5 },
-  owner: { paddingTop: 15 },
+
+  shareIcon: { 
+    marginLeft: 8 
+  },
+
+  shareText: { 
+    paddingTop: 5 
+  },
+
+  saveText: { 
+    paddingTop: 5 
+  },
+
+  owner: { 
+    paddingTop: 15,
+    fontSize: 17,
+    color: '#f47066'
+  },
+
+  commentCount:{ 
+    width: 340, 
+    alignItems: 'flex-start' 
+  },
+
+  commentSect: { 
+    height: 220 
+  },
+
+  commentsInner: { 
+    height: 340, 
+    width: 340 
+  },
+
+
   commentCount: {
     paddingTop: 15,
-    paddingLeft: 10,
-    fontWeight: 'medium',
-    fontSize: 18
-  },
-  descriptionHead: { fontWeight: 'bold', color: '#F47066', fontSize: 22 }
+  } ,
+  
+ 
+
 })
