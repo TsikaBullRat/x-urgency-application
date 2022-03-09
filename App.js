@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { createStackNavigator } from "@react-navigation/stack";
 import { auth, firestore } from "./src/firebase/config";
 import LogOut from "./src/firebase/Auth/LogOut";
-import { Loading } from "./src/Components";
-import { StyleSheet, NativeModules, View } from "react-native";
+import { StyleSheet } from "react-native";
 import {
   Welcome,
   FollowMore,
@@ -33,7 +31,6 @@ import {
 const Stack = createStackNavigator();
 
 export default function App() {
-  const [run, setRun] = useState(0);
   const [id, setID] = useState(null);
   const [doctor, setDoctor] = useState(null);
   const [firstTimeUser, setFirstTimeUser] = useState(false);
