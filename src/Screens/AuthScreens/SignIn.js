@@ -65,12 +65,12 @@ export default function SignIn ({ navigation }) {
         />
 
         {/**----------Logo------------Logo------------- */}
-        <View style={{height: '35%'}}>
+        <View style={{width:'100%'}}>
           <Card style={styles.card}>
             <View style={styles.heartIcon}>
               <FontAwesome name='heartbeat' size={110} color='#fff' />
             </View>
-            <Text style={{ color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+            <Text style={{ textAlign:'center', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
           </Card>
         </View>
 
@@ -221,11 +221,12 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    textAlign:'center',
   },
 
   heartIcon: {
-    marginTop: 85,
+    marginTop: 55,
     alignItems: 'center'
   },
 

@@ -115,6 +115,8 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
         description
       )
     }
+
+    navigation.navigate('DocHome')
   }
 
   return (
@@ -350,7 +352,7 @@ const styles = StyleSheet.create({
 
   card: {
     width: '100%',
-    height: 180,
+    height: '100%',
     backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -359,7 +361,7 @@ const styles = StyleSheet.create({
   },
 
   heartIcon: {
-    marginTop: 85,
+    marginTop: 55,
     alignItems: 'center'
   },
 

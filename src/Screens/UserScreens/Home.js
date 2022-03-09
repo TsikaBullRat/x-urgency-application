@@ -114,7 +114,7 @@ export default function Home ({ navigation, Exit }) {
           <Header />
         </View>
 
-        <View style={{top:-20}}>
+        <View style={{top:-25}}>
           {image ? (
             <Avatar rounded source={{ uri: image }} size='large' />
           ) : (
@@ -140,11 +140,11 @@ export default function Home ({ navigation, Exit }) {
           {collection
             ? collection.map((vid, index) => (
                 <View
-                  style={{ width: 360, alignItems:'center', backgroundColor: '#ffe7e6' }}
+                  style={{ width: 360, alignItems:'center', backgroundColor: '#b5a8a8' }}
                   key={index}
                 >
                   <TouchableOpacity
-                    style={{ alignItems: 'center', justifyContent: 'center' }}
+                    style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}
                     onPress={() => navigation.navigate('PlayVideo', { vid })}
                   >
                     <Video
@@ -152,10 +152,10 @@ export default function Home ({ navigation, Exit }) {
                       source={{ uri: vid.url }}
                       resizeMode='stretch'
                       isLooping
-                      style={{ width: 360, height: 180 }}
+                      style={{ width: '100%', height: 180 }}
                     />
                   </TouchableOpacity>
-
+ 
                 <View
                   style={{
                     width: '98%',
@@ -166,8 +166,8 @@ export default function Home ({ navigation, Exit }) {
                     <Text style={styles.tag}>{vid.views}Views</Text>
                   </View>
 
-                  <View style={{ width:'98%', margin:3, alignItems:'flex-start'}}>
-                    <Text style={styles.tag}>{vid.tag} </Text>
+                  <View style={{ width:'98%', margin:3, marginTop: -25, alignItems:'flex-start'}}>
+                    <Text style={styles.tag1}>{vid.tag} </Text>
                     <Text style={styles.tag}>{vid.stamp}</Text>
                   </View>
 
@@ -175,6 +175,7 @@ export default function Home ({ navigation, Exit }) {
                 </View>
               ))
             : null}
+            
         </ScrollView>
       </View>
       </View>
@@ -213,13 +214,22 @@ const styles = StyleSheet.create({
   },
 
   vidTitle: {
-    fontSize: 16,
-    fontWeight: 'bold'
+    marginTop: -25,
+    fontSize: 17,
+    fontWeight:'bold',
+    color: '#f47066'
   },
 
   tag: {
-    // fontSize: 12
+    color:'#fff'
   },
+
+  tag1: {
+    color:'#fff',
+    marginTop: -25
+  },
+
+
 
   temp: {
     width: 70,

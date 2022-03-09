@@ -50,7 +50,7 @@ export default function MedSignIn ({ navigation }) {
       setDisplaModal(true)
     }
 
-    navigation.navigate('Home')
+    navigation.navigate('DocHome')
   }
 
   return (
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   },
 
   heartIcon: {
-    marginTop: 85,
+    marginTop: 55,
     alignItems: 'center'
   },
 

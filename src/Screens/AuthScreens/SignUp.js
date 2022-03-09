@@ -12,7 +12,7 @@
  **/
 
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform } from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, ScrollView } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import {handleSignUp} from '../../firebase/Auth/HandleSignUp'
@@ -78,21 +78,25 @@ export default function SignUp({ navigation }) {
       <AlertNote modalVisible={displayModal} setModalVisible={setDisplayModal} msg={message} />
 
       {/**----------Logo------------Logo------------- */}
-      <View style={{width:'100%'}}>
-        <Card style={styles.card}>
-          <View style={styles.heartIcon}>
-            <FontAwesome name='heartbeat' size={110} color='#fff' />
-          </View>
-          <Text style={{  color: '#fff', fontSize: 30 }}> {' '} {`X-urgency`}{' '} </Text>
-        </Card>
-      </View>
+        <View style={{width:'100%'}}>
+          <Card style={styles.card}>
+            <View style={styles.heartIcon}>
+              <FontAwesome name='heartbeat' size={110} color='#fff' />
+            </View>
+            <Text style={{ textAlign:'center', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+          </Card>
+        </View>
 
       {/**----------Header------------Header------------- */}
       <View style={styles.header}>
-        <Text style={{ fontSize: 36, textAlign: 'center',  color: '#F47066' }}>{`SignIn`}</Text>
+        <Text style={{ fontSize: 36, textAlign: 'center',  color: '#F47066' }}>{`SignUp`}</Text>
       </View>
 
       {/**----------txtFields------------txtFields------------- */}
+
+      <View style={{marginTop:25}}>
+      <ScrollView style={{height:385}} showsVerticalScrollIndicator={false}>
+
       <View style={styles.textfieldCards}>
         {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
 
@@ -145,6 +149,9 @@ export default function SignUp({ navigation }) {
         </View>
       </View>
 
+      </ScrollView>
+      </View>
+
       </View>
     </View>
   )
@@ -170,16 +177,17 @@ const styles = StyleSheet.create({
   },
 
   heartIcon: {
-    marginTop: 85,
-    alignItems:'center'
+    marginTop: 55,
+    alignItems: 'center'
   },
 
   header: {
-    marginTop: 20,
+    marginTop: 20
   },
 
   textfieldCards: {
     width: '100%',
+    top: -25,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -197,14 +205,14 @@ const styles = StyleSheet.create({
   },
 
   txtEmail: {
-    marginTop: 14,
+    marginTop: 12,
     marginLeft: 16,
     fontSize: 18,
     borderRadius: 10,
     ...Platform.select({
       web: {
         outlineColor: '#fff',
-        height:25,
+        height:30,
       }
     })
   },

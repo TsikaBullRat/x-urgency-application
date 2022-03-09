@@ -40,7 +40,7 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
   const getProfile = async () => {
     let name
     setImage(auth.currentUser.photoURL)
-    name = auth.currentUser.displayName
+
     setInitial(name.substring(0, 1))
   }
 

@@ -125,6 +125,9 @@ export default function App() {
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
             
             <Stack.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
+            <Stack.Screen name="DocHome" options={{ headerShown: false }}>
+                {(props) => <MedicalHome {...props} Exit={Exit} />}
+                </Stack.Screen>
           </>
         )}
       </Stack.Navigator>
