@@ -42,7 +42,7 @@ export default function PlayVideo ({ navigation, route }) {
   const [views, setViews] = useState(data.views)
   const [videoVisible, setVideoVisible] = useState(true)
   const [count, setCount] = useState(0)
-  const reference = useRef(data.url)
+  const reference = useRef(data.index)
   const [info, setInfo] = useState()
   const [Comments, setComments] = useState([])
   const [comment, setComment] = useState('')
@@ -120,8 +120,8 @@ export default function PlayVideo ({ navigation, route }) {
       {/**-------------Video----------------Video-----------------Video---------------- */}
       <View style={styles.videoContainer}>
         <Video
-          ref={reference}
-          source={{ uri: videoPlay }}
+          ref={data.index}
+          source={{ uri: data.uri }}
           useNativeControls
           resizeMode='contain'
           isLooping

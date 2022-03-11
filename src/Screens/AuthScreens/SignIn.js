@@ -19,11 +19,11 @@ import {
   TextInput,
   TouchableOpacity,
   Platform,
-  SafeAreaView
+  SafeAreaView, ActivityIndicator
 } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
-import { auth, firestore } from '../../firebase/config'
+import { auth, firestore, firebase } from '../../firebase/config'
 import { handleSignIn } from '../../firebase/Auth/HandleSignIn'
 import { AlertNote } from '../../Components'
 
@@ -31,12 +31,13 @@ export default function SignIn ({ navigation }) {
   const [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
     [displayModal, setDisplaModal] = useState(false),
+    [visible, setVisible] = useState(false),
     [message, setMessage] = useState(''),
     [prompt, setPrompt] = useState(null),
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null)
 
-  const Login = (setDone, setMessage) => {
+  const Login = ( setMessage) => {
     if (email === '' && password === '') {
       setPrompt('Please enter thr requested information')
     } else if (email === '') {
@@ -50,9 +51,13 @@ export default function SignIn ({ navigation }) {
     } else {
       handleSignIn(email, password)
       setDisplaModal(true)
+      setVisible(true) 
+      setTimeout(function() {
+        if (displayModal == true) {
+          setVisible(false)
+        } 2000
+      }) 
     }
-
-    navigation.navigate('Home')
   }
 
   return (
@@ -74,6 +79,13 @@ export default function SignIn ({ navigation }) {
           </Card>
         </View>
 
+        {/*--------------Loader----------- */}
+        {visible == true ? (
+          <ActivityIndicator size={30} color='#f47066'  />
+        )
+        : (
+          null
+        )}
         {/**----------Header------------Header------------- */}
 
         <View style={styles.header}>
@@ -216,7 +228,7 @@ const styles = StyleSheet.create({
 
   card: {
     width: '100%',
-    height: '100%',
+    height: 220,
     backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,

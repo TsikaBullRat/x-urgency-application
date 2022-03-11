@@ -54,23 +54,23 @@ export default function Home ({ navigation, Exit }) {
     }
   ])
 
-  useEffect(() => {
-    auth.currentUser ?
-      //  (setImage(auth.currentUser.photoURL),
-        setInitial(auth.currentUser.displayName.substring(0, 1))
-      : auth.onAuthStateChanged(doc => {
-          // setImage(doc.photoURL)
-          // console.log(doc.displayName)
-          setInitial(doc.displayName.substring(0, 1))
-          console.log(auth.currentUser)
-        })
-  }, [])
+  // useEffect(() => {
+  //   auth.currentUser ?
+  //     //  (setImage(auth.currentUser.photoURL),
+  //       setInitial(auth.currentUser.displayName.substring(0, 1))
+  //     : auth.onAuthStateChanged(doc => {
+  //         // setImage(doc.photoURL)
+  //         // console.log(doc.displayName)
+  //         setInitial(doc.displayName.substring(0, 1))
+  //         console.log(auth.currentUser)
+  //       })
+  // }, [])
 
   // useEffect(()=>{
   //   LoadSet(setCollection)
   // }, [])
 
-  const reference = useRef(collection.map(item=>item.url))
+  // const reference = useRef(collection.map(item=>item.uri))
 
   const ItemSeperatorView = () => {
     return (
@@ -170,7 +170,7 @@ export default function Home ({ navigation, Exit }) {
                     onPress={() => navigation.navigate('PlayVideo', { vid })}
                   >
                     <Video
-                      ref={reference[index]}
+                      ref={vid.index}
                       source={{ uri: vid.uri }}
                       resizeMode='stretch'
                       isLooping
@@ -223,9 +223,6 @@ const styles = StyleSheet.create({
     width: '95%',
     height: 520,
     borderRadius: 15,
-    shadowOffset: {},
-    shadowOpacity: 0.8,
-    shadowRadius: 3.84,
     elevation: 5
   },
 
@@ -239,7 +236,7 @@ const styles = StyleSheet.create({
     marginTop: -25,
     fontSize: 17,
     fontWeight:'bold',
-    color: '#f47066'
+    color: 'black'
   },
 
   tag: {
