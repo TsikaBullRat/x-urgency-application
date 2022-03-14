@@ -4,29 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { auth, firestore } from "./src/firebase/config";
 import LogOut from "./src/firebase/Auth/LogOut";
 import { StyleSheet } from "react-native";
-import {
-  Welcome,
-  FollowMore,
-  UrgentHelp,
-  TakeVideo,
-  ShareContent,
-  LikeConn,
-  PlayVideo,
-  UploadVideo,
-  MedicalHome,
-  Upload,
-  UpdateProfile,
-  Home,
-  EmergencyContacts,
-  SignIn,
-  SignUp,
-  ForgotPassword,
-  ResetPassword,
-  DoctorSignUp,
-  MedSignIn,
-  Doctor,
-  Clone,
-} from "./src/Screens";
+import { Welcome, FollowMore, UrgentHelp, TakeVideo, ShareContent, LikeConn, PlayVideo, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, EmergencyContacts, SignIn, SignUp, ForgotPassword, ResetPassword, DoctorSignUp, MedSignIn, Doctor, Clone, } from "./src/Screens";
 
 const Stack = createStackNavigator();
 
@@ -112,7 +90,7 @@ export default function App() {
         ) : (
           <>
             <Stack.Screen name="SignIn" options={{ headerShown: false }} component={SignIn} />
-            
+
             <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
 
             <Stack.Screen name="MedSignIn" options={{ headerShown: false }} component={MedSignIn} />
@@ -120,11 +98,11 @@ export default function App() {
             <Stack.Screen name="DoctorSignUp" options={{ headerShown: false }} component={DoctorSignUp} />
 
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
-            
+
             <Stack.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
             <Stack.Screen name="DocHome" options={{ headerShown: false }}>
-                {(props) => <MedicalHome {...props} Exit={Exit} />}
-                </Stack.Screen>
+              {(props) => <MedicalHome {...props} Exit={Exit} />}
+            </Stack.Screen>
           </>
         )}
       </Stack.Navigator>

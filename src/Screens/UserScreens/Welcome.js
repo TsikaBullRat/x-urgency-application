@@ -7,7 +7,7 @@ export default function Welcome({ navigation }) {
 
     <View style={styles.container}>
       <TouchableOpacity style={styles.logo}
-      onPress={() => navigation.navigate('FollowMore')}>
+        onPress={() => navigation.navigate('FollowMore')}>
         <Image style={{ height: 350, width: '95%' }} source={require('../../images/WatchLOGO.png')} />
       </TouchableOpacity>
 
@@ -49,7 +49,7 @@ export default function Welcome({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems:'center',
+    alignItems: 'center',
     backgroundColor: '#fff'
   },
 

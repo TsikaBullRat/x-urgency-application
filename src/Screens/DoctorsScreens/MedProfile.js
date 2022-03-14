@@ -8,8 +8,7 @@ import { auth, firestore } from '../../firebase/config';
 import Button from '../../Components/button';
 import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
- const MedProfile = ({ navigation, route }) => {
-
+const MedProfile = ({ navigation, route }) => {
 
   const info = route.params.match
   const [About, setAbout] = useState(true);
@@ -206,7 +205,7 @@ import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems:'center',
+    alignItems: 'center',
     backgroundColor: '#fff',
   },
   textTitle: {
@@ -290,6 +289,6 @@ const styles = StyleSheet.create({
 
 });
 
-export default {MedProfile}
+export default { MedProfile }
 
 // export default Doctor;

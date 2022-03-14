@@ -1,13 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import {
-  View,
-  Button,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  ScrollView,
-} from "react-native";
+import { View, Button, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, } from "react-native";
 import { Video } from "expo-av";
 import { AntDesign, FontAwesome5, Entypo } from "@expo/vector-icons";
 import { Avatar } from "react-native-elements";
@@ -43,11 +35,11 @@ const Clone = ({ route, navigation }) => {
     found
       ? null
       : (metadata.set({
-          liked: false,
-          disliked: false,
-          Comments: [null],
-          ref: auth.currentUser.uid,
-        }),
+        liked: false,
+        disliked: false,
+        Comments: [null],
+        ref: auth.currentUser.uid,
+      }),
         setViews(views + 1));
   };
   const Navigate = () => {
@@ -87,13 +79,15 @@ const Clone = ({ route, navigation }) => {
     addAct();
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(data.url)
   })
 
   return (
     <View style={styles.contain}>
+
       {/**-------BACK------BACK-------BACK */}
+
       <View style={styles.back}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text>{`BACK`}</Text>
@@ -101,16 +95,9 @@ const Clone = ({ route, navigation }) => {
       </View>
 
       {/**-------------Video----------------Video-----------------Video---------------- */}
+
       <View style={styles.videoContainer}>
-        <Video
-          ref={reference}
-          source={{ uri: videoPlay }}
-          useNativeControls
-          resizeMode="stretch"
-          isLooping
-          style={styles.video}
-          onPlaybackStatusUpdate={status => setStatus(() => status)}
-        />
+        <Video ref={reference} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping style={styles.video} onPlaybackStatusUpdate={status => setStatus(() => status)} />
       </View>
 
       {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
@@ -125,33 +112,31 @@ const Clone = ({ route, navigation }) => {
             </View>
 
             {/*------------DropDown-------------DropDown--------DropDown*/}
+
             <View style={styles.dropdown}>
-              <TouchableOpacity
-                title="topNav"
-                onPress={() => changeVisibilityStatusBar()}
-              >
-                <AntDesign
-                  name="downcircle"
-                  size={18}
-                  color="black"
-                  style={styles.drop}
-                />
+              <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()}  >
+                <AntDesign name="downcircle" size={18} color="black" style={styles.drop} />
               </TouchableOpacity>
             </View>
 
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
+
             <View style={styles.socialIcons}>
+
               {/*------------Likes-------------Likes--------Likes*/}
+
               <View style={styles.like}>
                 <Likes data={data.firestore} />
               </View>
 
               {/*------------DisLikes-------------DisLikes--------DisLikes*/}
+
               <View style={styles.dislike}>
                 <Dislikes data={data.firestore} />
               </View>
 
               {/*------------Share-------------Share--------Share*/}
+
               <View style={styles.share}>
                 <TouchableOpacity onPress={() => ShareItem(data.url)}>
                   <Text style={styles.shareIcon}>
@@ -162,6 +147,7 @@ const Clone = ({ route, navigation }) => {
               </View>
 
               {/*------------Save-------------Save--------Save*/}
+
               <View style={styles.save}>
                 <Text style={styles.saveIcon}>
                   <Entypo name="save" size={20} color="black" />
@@ -171,33 +157,19 @@ const Clone = ({ route, navigation }) => {
             </View>
 
             {/*------------Avatar-------------Avatar--------Avatar*/}
+
             <View style={styles.avatar}>
-              <Avatar
-                rounded
-                source={{
-                  uri: "https://randomuser.me/api/portraits/men/41.jpg",
-                }}
-                size="medium"
-                onPress={Navigate}
-              />
+              <Avatar rounded source={{ uri: "https://randomuser.me/api/portraits/men/41.jpg", }} size="medium" onPress={Navigate} />
               <Text style={styles.owner}> {data.owner}</Text>
             </View>
 
             {/*------------Comments-------------Comments--------Comments*/}
+
             <Card style={styles.txtCards}>
               <View style={styles.commentBox}>
-                <TextInput
-                  style={styles.comment}
-                  name="comment"
-                  placeholder="Write a comment"
-                  onChangeText={(text) => setComment(text)}
-                />
+                <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={(text) => setComment(text)} />
                 <View style={styles.commentButton}>
-                  <Button
-                    color="#F47066"
-                    onPress={() => Post(comment, data.firestore)}
-                    title="Comment"
-                  />
+                  <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title="Comment" />
                 </View>
               </View>
             </Card>
@@ -206,10 +178,7 @@ const Clone = ({ route, navigation }) => {
               <Text style={styles.commentCount}>Comments: {count}</Text>
             </View>
 
-            <ScrollView
-              style={styles.commentSect}
-              showsVerticalScrollIndicator={false}
-            >
+            <ScrollView style={styles.commentSect} showsVerticalScrollIndicator={false}  >
               <Card style={styles.commentsInner}>
                 {Comments.map((item, index) => (
                   <View style={styles.comments} key={index}>
@@ -221,7 +190,9 @@ const Clone = ({ route, navigation }) => {
             </ScrollView>
           </View>
         ) : (
+
           /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
+
           <View style={styles.hiddenDescription}>
             <View style={styles.description}>
               <View>
@@ -235,9 +206,7 @@ const Clone = ({ route, navigation }) => {
               </View>
             </View>
 
-            <View
-              style={styles.descriptionBox}
-            >
+            <View style={styles.descriptionBox}>
               <Text>
                 {data.description}
               </Text>
@@ -255,40 +224,48 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
   },
+
   back: {
     marginTop: 10,
     width: 340,
     alignItems: "flex-start",
   },
+
   videoContainer: {
     width: 344,
     marginTop: 25,
     backgroundColor: "#f7eeed",
   },
+
   video: {
     width: 340,
     height: 180,
     left: 2,
   },
+
   statusOff: {
     width: 340,
     justifyContent: "space-between",
   },
+
   title: {
     flexDirection: "row",
     width: 340,
     alignItems: "center",
     justifyContent: "space-between",
   },
+
   vidTitle: { fontWeight: "bold", color: "#F47066" },
   viewCount: {
     width: 340,
     left: 2,
   },
+
   dropdown: {
     marginLeft: 25,
     marginTop: 20,
   },
+
   socialIcons: {
     width: 360,
     flexDirection: "row",
@@ -299,6 +276,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
   },
+
   like: { left: -8 },
   dislike: { marginLeft: 10, marginTop: 3 },
   share: { marginLeft: 15 },
@@ -311,6 +289,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
     flexDirection: "row",
   },
+
   owner: { paddingTop: 15 },
   txtCards: {
     width: 340,
@@ -321,6 +300,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#F47066",
   },
+
   commentBox: { flexDirection: "row" },
   comment: {
     width: 295,
@@ -329,21 +309,25 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingLeft: 10,
   },
+
   commentButton: {
     width: 90,
     height: 50,
     borderRadius: 15,
     marginTop: 2,
   },
+
   commentCount: {
     width: 340,
     alignItems: "flex-start",
   },
+
   commentSect: { height: 220 },
   commentsInner: {
     height: 340,
     width: 340,
   },
+
   comments: {
     width: 295,
     left: 3,
@@ -353,36 +337,42 @@ const styles = StyleSheet.create({
     backgroundColor: "#f47066",
     paddingLeft: 5,
   },
+
   txtUserComment: {
     padding: 10,
     fontSize: 18,
     color: "#fff",
   },
+
   txtComments: {
     color: "#fff",
     padding: 10,
   },
+
   hiddenDescription: {
     backgroundColor: "#fff",
     marginTop: 15,
   },
+
   description: {
     width: 340,
     marginTop: 5,
     flexDirection: "row",
     justifyContent: "space-between",
   },
+
   descriptionHead: { fontWeight: 'bold', color: '#F47066', fontSize: 22 },
-  descriptionText:{
+  descriptionText: {
     maxWidth: 315,
-    paddinLeft: 20 
+    paddinLeft: 20
   },
-  close:{marginTop:5},
-  descriptionBox: { 
-    width: 340, 
-    marginTop: 25, 
-    alignItems: 'flex-start' 
+
+  close: { marginTop: 5 },
+  descriptionBox: {
+    width: 340,
+    marginTop: 25,
+    alignItems: 'flex-start'
   },
 });
 
-export default {Clone}
+export default { Clone }

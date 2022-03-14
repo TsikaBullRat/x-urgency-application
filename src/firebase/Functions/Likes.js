@@ -55,12 +55,12 @@ function Counter({ video }) {
   useEffect(() => { Check() }, [pressed])
 
   return (
-      <View>
-        <TouchableOpacity onPress={Like}>
-          <Entypo name="thumbs-up" size={20} color="black" />
-          <Text style={{ paddingTop: 6 }}> {count}</Text>
-        </TouchableOpacity>
-      </View>
+    <View>
+      <TouchableOpacity onPress={Like}>
+        <Entypo name="thumbs-up" size={20} color="black" />
+        <Text style={{ paddingTop: 6 }}> {count}</Text>
+      </TouchableOpacity>
+    </View>
 
   );
 }

@@ -54,14 +54,7 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
 
   const ItemSeperatorView = () => {
     return (
-      <View
-        style={{
-          height: 0.5,
-          width: 380,
-          left: -10,
-          backgroundColor: '#c8c8c8'
-        }}
-      />
+      <View style={{ height: 0.5, width: 380, left: -10, backgroundColor: '#c8c8c8' }} />
     )
   }
 
@@ -83,10 +76,11 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
 
       <AlertNote modalVisible={display} setModalVisible={setDisplayModal} msg="Hey doc why not add your first video" />
       <View style={styles.logout}>
-          <TouchableOpacity onPress={Exit}>
-            <LogOutComp />
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={Exit}>
+          <LogOutComp />
+        </TouchableOpacity>
+      </View>
+
       {/*---------------------------Header--------------------------*/}
 
       <View style={{ flexDirection: "row" }}>
@@ -96,12 +90,12 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
           <Text style={{ fontSize: 36, paddingLeft: 30, color: "red", textShadowColor: "grey", textShadowOffset: { width: 2, height: 2 }, textShadowRadius: 1, }} > In Da House </Text>
         </Text>
         <View style={{ marginTop: 10, marginLeft: 10 }}>
-            {image ? (
-              <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
-            ) : (
-              <View style={styles.temp}>
-                <Text style={styles.temp_text}> {initial} </Text>
-              </View>
+          {image ? (
+            <Avatar style={styles.avatar} rounded source={{ uri: image, }} size="large" />
+          ) : (
+            <View style={styles.temp}>
+              <Text style={styles.temp_text}> {initial} </Text>
+            </View>
           )}
           <Text onPress={() => navigation.navigate("Update")} >
             <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
@@ -118,41 +112,24 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
         vertical={true} showsVerticalScrollIndicator={false}>
 
         {/*---------------------- Video Scroll View--------------------*/}
-      <View style={{ marginVertical: 20 }}>
-        <ScrollView
-          style={{ height: 435 }}
-          vertical={true}
-          showsVerticalScrollIndicator={false}
-        >
-          {collection
-            ? collection.map((vid, index) => (
-                <View
-                  style={{ width: 340, left: 11, backgroundColor: '#ffe7e6' }}
-                  key={index}
-                >
-                  <TouchableOpacity
-                    style={{ alignItems: 'center', justifyContent: 'center' }}
-                    onPress={() => navigation.navigate('PlayVideo', { vid })}
-                  >
+
+        <View style={{ marginVertical: 20 }}>
+          <ScrollView style={{ height: 435 }} vertical={true} showsVerticalScrollIndicator={false} >
+            {collection
+              ? collection.map((vid, index) => (
+                <View style={{ width: 340, left: 11, backgroundColor: '#ffe7e6' }} key={index} >
+                  <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate('PlayVideo', { vid })} >
                     <Video
                       //ref={reference}
-                      source={{ uri: vid.url }}
-                      resizeMode='stretch'
-                      isLooping
-                      style={{ width: 340, height: 180 }}
-                    />
+                      source={{ uri: vid.url }} resizeMode='stretch' isLooping style={{ width: 340, height: 180 }} />
                   </TouchableOpacity>
 
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    margin:3,
-                    justifyContent: 'space-between'}} >
+                  <View style={{ flexDirection: 'row', margin: 3, justifyContent: 'space-between' }} >
                     <Text style={styles.vidTitle}>{vid.title}</Text>
                     <Text style={styles.tag}>{vid.views}Views</Text>
                   </View>
 
-                  <View style={{ margin:3}}>
+                  <View style={{ margin: 3 }}>
                     <Text style={styles.tag}>{vid.tag} </Text>
                     <Text style={styles.tag}>{vid.stamp}</Text>
                   </View>
@@ -160,9 +137,9 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
                   <ItemSeperatorView />
                 </View>
               ))
-            : null}
-        </ScrollView>
-      </View>
+              : null}
+          </ScrollView>
+        </View>
 
       </ScrollView>
       <Text style={styles.btnUpload} onPress={() => { navigation.navigate("Upload") }} >
@@ -180,7 +157,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: 40
   },
-  logout:{
+  logout: {
     left: 150
   },
 

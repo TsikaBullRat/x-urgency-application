@@ -10,7 +10,7 @@ import UploadVideo from "./DoctorsScreens/UploadVideo"
 import MedicalHome from "./DoctorsScreens/MedicalHome"
 import Upload from "./DoctorsScreens/Upload"
 import PlayVideo from "./UserScreens/PlayVideo"
-import  UpdateProfile  from "./DoctorsScreens/UpdateProfile"
+import UpdateProfile from "./DoctorsScreens/UpdateProfile"
 import Welcome from './UserScreens/Welcome'
 import FollowMore from './UserScreens/FollowMore'
 import UrgentHelp from './UserScreens/UrgentHelp'
