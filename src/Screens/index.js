@@ -17,7 +17,7 @@ import UrgentHelp from './UserScreens/UrgentHelp'
 import TakeVideo from './UserScreens/TakeVideo'
 import ShareContent from './UserScreens/ShareContent'
 import LikeConn from './UserScreens/LikeConn'
-import MedProfile from './DoctorsScreens/MedProfile'
+import { MedProfile } from './DoctorsScreens/MedProfile'
 
 // import {Clone} from "Clone"
 

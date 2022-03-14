@@ -289,6 +289,6 @@ const styles = StyleSheet.create({
 
 });
 
-export default { MedProfile }
+export { MedProfile }
 
 // export default Doctor;

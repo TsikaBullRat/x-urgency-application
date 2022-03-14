@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { auth, firestore } from "./src/firebase/config";
 import LogOut from "./src/firebase/Auth/LogOut";
 import { StyleSheet } from "react-native";
-import { Welcome, FollowMore, UrgentHelp, TakeVideo, ShareContent, LikeConn, PlayVideo, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, EmergencyContacts, SignIn, SignUp, ForgotPassword, ResetPassword, DoctorSignUp, MedSignIn, Doctor, Clone, } from "./src/Screens";
+import { Welcome, FollowMore, UrgentHelp, TakeVideo, ShareContent, LikeConn, PlayVideo, UploadVideo, MedicalHome, Upload, UpdateProfile, Home, EmergencyContacts, SignIn, SignUp, ForgotPassword, ResetPassword, DoctorSignUp, MedSignIn, Doctor, Clone, MedProfile, } from "./src/Screens";
 
 const Stack = createStackNavigator();
 
@@ -65,7 +65,7 @@ export default function App() {
               <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
               <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
               <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
-              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+              <Stack.Screen name="Doctor" component={MedProfile} options={{ headerShown: false }} />
             </>
           ) : (
             <>
@@ -80,7 +80,7 @@ export default function App() {
               <Stack.Screen name="Home" options={{ headerShown: false }}>
                 {(props) => <Home {...props} Exit={Exit} />}
               </Stack.Screen>
-              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+              <Stack.Screen name="Doctor" component={MedProfile} options={{ headerShown: false }} />
               <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
               <Stack.Screen name="EmergencyContacts" options={{ headerShown: false }} >
                 {(props) => <EmergencyContacts {...props} />}
