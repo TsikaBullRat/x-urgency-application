@@ -26,51 +26,32 @@ export default function Home ({ navigation, Exit }) {
   const [videos, setLoad] = useState(null)
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')
-  const [collection, setCollection] = useState([
-    {
-      title: "Video 1",
-      views: 7,
-      tag: "Choking",
-      stamp: "2 days ago",
-      id: 1,
-      description: "Lorem ipsum etc",
-      owner: "Ntsikayomzi Ngcakani",
-      firestore: "c4ac278a-baa1-403a-bb98-1f4ff9d8af7",
-      match: "XYRltIaLknbfJrvZG4OfyOtGYTz2",
-      uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    },
+  const [collection, setCollection] = useState([])
 
-    {
-      title: "Video 2",
-      views: 200,
-      tag: "Stroke",
-      stamp: "3 years ago",
-      id: 2,
-      description: "Lorem ipsum etc",
-      owner: "Thabo Moeti",
-      firestore: "b7e7379f-4c5b-459a-8b17-14cfb254786",
-      match: "SvkJPojTkUNBr8IVgoKqoTosIlE3",
-      uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'
-    }
-  ])
+  useEffect(() => {
+    auth.currentUser ?
+      //  (setImage(auth.currentUser.photoURL),
+        setInitial(auth.currentUser.displayName.substring(0, 1))
+      : auth.onAuthStateChanged(doc => {
+          // setImage(doc.photoURL)
+          // console.log(doc.displayName)
+          setInitial(doc.displayName.substring(0, 1))
+          console.log(auth.currentUser)
+        })
+  }, [])
 
-  // useEffect(() => {
-  //   auth.currentUser ?
-  //     //  (setImage(auth.currentUser.photoURL),
-  //       setInitial(auth.currentUser.displayName.substring(0, 1))
-  //     : auth.onAuthStateChanged(doc => {
-  //         // setImage(doc.photoURL)
-  //         // console.log(doc.displayName)
-  //         setInitial(doc.displayName.substring(0, 1))
-  //         console.log(auth.currentUser)
-  //       })
-  // }, [])
+  useEffect(() => {
+    firestore
+      .collection('Videos')
+      .onSnapshot((snapshot) => {
+        const videos = snapshot.docs.map((doc) => ({
+          ...doc.data(),
+        }));
+        setCollection(videos);
+        console.log(videos);
+      });
+  }, []);
 
-  // useEffect(()=>{
-  //   LoadSet(setCollection)
-  // }, [])
-
-  // const reference = useRef(collection.map(item=>item.uri))
 
   const ItemSeperatorView = () => {
     return (
@@ -171,7 +152,7 @@ export default function Home ({ navigation, Exit }) {
                   >
                     <Video
                       ref={vid.index}
-                      source={{ uri: vid.uri }}
+                      source={{ uri: vid.video }}
                       resizeMode='stretch'
                       isLooping
                       style={{ width: '100%', height: 180 }}
