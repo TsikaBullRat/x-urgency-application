@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { View, StyleSheet, TouchableOpacity, Image, Text, ScrollView } from 'react-native'
-// import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
 import { auth, firestore } from '../../firebase/config'
 import { LoadSet } from '../../firebase/Storage/Storage.functions'
@@ -8,6 +7,7 @@ import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import CallSiren from '../../Components/CallSiren'
 import LogOutComp from '../../Components/LogOutComp'
+import VideoList from '../../Components/VideoList'
 import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
@@ -15,6 +15,7 @@ import { Video } from 'expo-av'
 
 export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
+  const [videos, setLoad] = useState(null)
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')
   const [collection, setCollection] = useState([])
@@ -31,15 +32,15 @@ export default function Home({ navigation, Exit }) {
         })
   }, [])
 
-  useEffect(()=>{
-    LoadSet(setCollection)
-  }, [])
+  // useEffect(()=>{
+  //   LoadSet(setCollection)
+  // }, [])
 
   useEffect(()=>{
     LoadSet(setCollection)
   }, [])
 
-  // const reference = useRef(collection.map(item=>item.uri))
+  const reference = useRef(null)
 
   useEffect(()=>{
     console.log(collection)
@@ -81,66 +82,66 @@ export default function Home({ navigation, Exit }) {
 
           {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
 
-          <View style={styles.header}>
+          
 
             {/*-------------Header---------------Header--------------Header------- */}
 
-            <View>
+            <View style={styles.header}>
               <Header />
             </View>
-
-            <View style={styles.avatar}>
-              {image ? (
-                <Avatar rounded source={{ uri: image }} size='large' />
-              ) : (
-                <View style={styles.temp}>
-                  <Text style={styles.temp_text}> {initial} </Text>
-                </View>
-              )}
-            </View>
-          </View>
-
-          {/**-----------Menu Category--------------Menu Category--------------------- */}
-
-            <Menu />
-
-          {/*---------------------- Video Scroll View--------------------*/}
-
-          <View style={styles.scrollBase}>
-            <ScrollView style={styles.scrollHeight} vertical={true} showsVerticalScrollIndicator={false} >
-              {collection
-                ? collection.map((vid, index) => (
-                  <View style={styles.card} key={index} >
-                    <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate('PlayVideo', { vid })}  >
-                      <Video ref={vid.index} source={{ uri: vid.uri }} resizeMode='stretch' isLooping style={styles.video} />
-                    </TouchableOpacity>
-
-                    <View style={styles.textBox1} >
-                      <Text style={styles.vidTitle}>{vid.title}</Text>
-                      <Text style={styles.tag}>{vid.views}Views</Text>
-                    </View>
-
-                    <View style={styles.textBox2}>
-                      <Text style={styles.tag1}>{vid.tag} </Text>
-                      <Text style={styles.tag}>{vid.stamp}</Text>
-                    </View>
-
-                    <ItemSeperatorView />
-                  </View>
-                ))
-                : null}
-
-            </ScrollView>
-          </View>
         </View>
 
-      </View>
+      {/**-----------Menu Category--------------Menu Category--------------------- */}
+        <Menu />
+
+      {/*---------------------- Video Scroll View--------------------*/}
+      <View style={styles.mainBody}>
+        <ScrollView
+          style={styles.scroll}
+          vertical={true}
+          showsVerticalScrollIndicator={false}
+        >
+          {collection?( 
+            collection.map((vid, index) => (
+                <View
+                  style={styles.item}
+                  key={index}
+                >
+                  <TouchableOpacity
+                    style={styles.pressable}
+                    onPress={() => navigation.navigate('PlayVideo', { vid })}
+                  >
+                    <Video
+                      ref={reference}
+                      source={{ uri: vid.url }}
+                      resizeMode='stretch'
+                      isLooping
+                      style={styles.video}
+                    />
+                  </TouchableOpacity>
+                
+                <View
+                  style={styles.vidText} >
+                    <Text style={styles.vidTitle}>{vid.title}</Text>
+                    <Text style={styles.tag}>{vid.views}Views</Text>
+                  </View>
+
+                  <View style={styles.vidText2}>
+                    <Text style={styles.tag}>{vid.tag} </Text>
+                    <Text style={styles.tag}>{vid.stamp}</Text>
+                  </View>
+                </View>
+            ))): null }
+
+            </ScrollView>
+            </View>
+        </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     width: '100%',
     backgroundColor: '#fff'
@@ -178,6 +179,10 @@ const styles = StyleSheet.create({
   tag1: {
     color: '#fff',
     marginTop: -25
+  },
+
+  tag: {
+    // fontSize: 12
   },
 
   temp: {

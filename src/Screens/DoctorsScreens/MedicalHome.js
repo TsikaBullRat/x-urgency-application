@@ -188,15 +188,16 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    marginTop: 80,
     backgroundColor: 'turquoise',
-    textAlign: 'center',
+    alignItems: 'center',
     justifyContent: 'center'
   },
 
   temp_text: {
     fontSize: 40,
     color: '#fff',
+    textAlign: 'center',
+    fontFamily: 'Roboto'
   }
 
 });

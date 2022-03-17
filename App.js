@@ -66,7 +66,7 @@ export default function App() {
               </Stack.Screen>
               <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
               <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
-              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+              <Stack.Screen name="PlayVideo" component={Clone} options={{ headerShown: false }} />
               <Stack.Screen name="Doctor" component={MedProfile} options={{ headerShown: false }} />
             </>
           ) : (
@@ -78,11 +78,12 @@ export default function App() {
                   <Stack.Screen name="UrgentHelp" component={UrgentHelp} options={{ headerShown: false }} />
                 </>
               ) : null}
+
               <Stack.Screen name="Home" options={{ headerShown: false }}>
                 {(props) => <Home {...props} Exit={Exit} />}
               </Stack.Screen>
               <Stack.Screen name="Doctor" component={MedProfile} options={{ headerShown: false }} />
-              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+              <Stack.Screen name="PlayVideo" component={Clone} options={{ headerShown: false }} />
               <Stack.Screen name="EmergencyContacts" options={{ headerShown: false }} >
                 {(props) => <EmergencyContacts {...props} />}
               </Stack.Screen>
@@ -91,10 +92,15 @@ export default function App() {
         ) : (
           <>
             <Stack.Screen name="SignIn" options={{ headerShown: false }} component={SignIn} />
+            
             <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
+
             <Stack.Screen name="MedSignIn" options={{ headerShown: false }} component={MedSignIn} />
+
             <Stack.Screen name="DoctorSignUp" options={{ headerShown: false }} component={DoctorSignUp} />
+
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
+            
             <Stack.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
           </>
         )}

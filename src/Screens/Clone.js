@@ -1,10 +1,19 @@
 import React, { useRef, useState, useEffect } from "react";
-import { View, Button, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, } from "react-native";
+import {
+  View,
+  Button,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  ScrollView,
+  Share,
+} from "react-native";
 import { Video } from "expo-av";
+import { WebView } from "react-native-webview";
 import { AntDesign, FontAwesome5, Entypo } from "@expo/vector-icons";
 import { Avatar } from "react-native-elements";
 import { Card } from "react-native-paper";
-import { Video } from 'expo-av'
 import { Likes } from "../firebase/Functions/Likes";
 import { Dislikes } from "../firebase/Functions/Dislikes";
 import { Collect, Post } from "../firebase/Storage/Storage.functions";
@@ -21,11 +30,12 @@ const Clone = ({ route, navigation }) => {
   const [Comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
-  const [status, setStatus] = useState({});
+  const [status, setStatus] = React.useState({});
 
-  const LoadVideo = () =>{
-    const uri = data.url
-  }
+  const LoadVideo = () => {
+    const uri = data.url;
+    console.log(data.url);
+  };
   const changeVisibilityStatusBar = () => {
     setVisibleStatusBar(!visibleStatusBar);
   };
@@ -35,15 +45,15 @@ const Clone = ({ route, navigation }) => {
       .doc(data.firestore)
       .collection("Acts")
       .doc(auth.currentUser.uid);
-    let found = await metadata.get().then(doc=>doc.exist);
+    let found = await metadata.get().then((doc) => doc.exist);
     found
       ? null
       : (metadata.set({
-        liked: false,
-        disliked: false,
-        Comments: [null],
-        ref: auth.currentUser.uid,
-      }),
+          liked: false,
+          disliked: false,
+          Comments: [null],
+          ref: auth.currentUser.uid,
+        }),
         setViews(views + 1));
   };
   const Navigate = () => {
@@ -80,34 +90,33 @@ const Clone = ({ route, navigation }) => {
 
   const ShareItem = async (url) => {
     try {
-      const result = await Share.share({ url: url, });
+      const result = await Share.share({ url: url });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
-          console.log("Shared with activity type") // shared with activity type of result.activityType
-          console.log(result.activityType)
+          console.log("Shared with activity type"); // shared with activity type of result.activityType
+          console.log(result.activityType);
         } else {
-          console.log("Shared") // shared
-          console.log(result.action)
+          console.log("Shared"); // shared
+          console.log(result.action);
         }
       } else if (result.action === Share.dismissedAction) {
-        console.log("Could not share") // dismissed
+        console.log("Could not share"); // dismissed
       }
     } catch (error) {
       console.log(error.message);
     }
-  }
+  };
 
   useEffect(() => {
     Collect(data.firestore, setComments, setCount);
   }, []);
 
   useEffect(() => {
-    console.log(data.url)
-  })
+    console.log(data.url);
+  });
 
   return (
     <View style={styles.contain}>
-
       {/**-------BACK------BACK-------BACK */}
 
       <View style={styles.back}>
@@ -119,7 +128,13 @@ const Clone = ({ route, navigation }) => {
       {/**-------------Video----------------Video-----------------Video---------------- */}
 
       <View style={styles.videoContainer}>
-        <Video ref={reference} source={{ uri: videoPlay }} useNativeControls resizeMode="stretch" isLooping style={styles.video} onPlaybackStatusUpdate={status => setStatus(() => status)} />
+        <View style={styles.video}>
+          <WebView
+            source={{
+              uri: videoPlay,
+            }}
+          />
+        </View>
       </View>
 
       {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
@@ -136,15 +151,22 @@ const Clone = ({ route, navigation }) => {
             {/*------------DropDown-------------DropDown--------DropDown*/}
 
             <View style={styles.dropdown}>
-              <TouchableOpacity title="topNav" onPress={() => changeVisibilityStatusBar()}  >
-                <AntDesign name="downcircle" size={18} color="black" style={styles.drop} />
+              <TouchableOpacity
+                title="topNav"
+                onPress={() => changeVisibilityStatusBar()}
+              >
+                <AntDesign
+                  name="downcircle"
+                  size={18}
+                  color="black"
+                  style={styles.drop}
+                />
               </TouchableOpacity>
             </View>
 
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
 
             <View style={styles.socialIcons}>
-
               {/*------------Likes-------------Likes--------Likes*/}
 
               <View style={styles.like}>
@@ -154,7 +176,7 @@ const Clone = ({ route, navigation }) => {
               {/*------------DisLikes-------------DisLikes--------DisLikes*/}
 
               <View style={styles.dislike}>
-                <Dislikes data={data.firestore} Dependent={Likes}/>
+                <Dislikes data={data.firestore} Dependent={Likes} />
               </View>
 
               {/*------------Share-------------Share--------Share*/}
@@ -181,7 +203,14 @@ const Clone = ({ route, navigation }) => {
             {/*------------Avatar-------------Avatar--------Avatar*/}
 
             <View style={styles.avatar}>
-              <Avatar rounded source={{ uri: "https://randomuser.me/api/portraits/men/41.jpg", }} size="medium" onPress={Navigate} />
+              <Avatar
+                rounded
+                source={{
+                  uri: "https://randomuser.me/api/portraits/men/41.jpg",
+                }}
+                size="medium"
+                onPress={Navigate}
+              />
               <Text style={styles.owner}> {data.owner}</Text>
             </View>
 
@@ -189,9 +218,18 @@ const Clone = ({ route, navigation }) => {
 
             <Card style={styles.txtCards}>
               <View style={styles.commentBox}>
-                <TextInput style={styles.comment} name="comment" placeholder="Write a comment" onChangeText={(text) => setComment(text)} />
+                <TextInput
+                  style={styles.comment}
+                  name="comment"
+                  placeholder="Write a comment"
+                  onChangeText={(text) => setComment(text)}
+                />
                 <View style={styles.commentButton}>
-                  <Button color="#F47066" onPress={() => Post(comment, data.firestore)} title="Comment" />
+                  <Button
+                    color="#F47066"
+                    onPress={() => Post(comment, data.firestore)}
+                    title="Comment"
+                  />
                 </View>
               </View>
             </Card>
@@ -200,7 +238,10 @@ const Clone = ({ route, navigation }) => {
               <Text style={styles.commentCount}>Comments: {count}</Text>
             </View>
 
-            <ScrollView style={styles.commentSect} showsVerticalScrollIndicator={false}  >
+            <ScrollView
+              style={styles.commentSect}
+              showsVerticalScrollIndicator={false}
+            >
               <Card style={styles.commentsInner}>
                 {Comments.map((item, index) => (
                   <View style={styles.comments} key={index}>
@@ -212,7 +253,6 @@ const Clone = ({ route, navigation }) => {
             </ScrollView>
           </View>
         ) : (
-
           /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
 
           <View style={styles.hiddenDescription}>
@@ -223,15 +263,13 @@ const Clone = ({ route, navigation }) => {
               </View>
               <View style={styles.close}>
                 <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                  <AntDesign name='closecircle' size={18} color='black' />
+                  <AntDesign name="closecircle" size={18} color="black" />
                 </TouchableOpacity>
               </View>
             </View>
 
             <View style={styles.descriptionBox}>
-              <Text>
-                {data.description}
-              </Text>
+              <Text>{data.description}</Text>
             </View>
           </View>
         )}
@@ -262,8 +300,6 @@ const styles = StyleSheet.create({
   video: {
     width: 340,
     height: 180,
-    left: 2,
-    backgroundColor: "#000"
   },
 
   statusOff: {
@@ -384,18 +420,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 
-  descriptionHead: { fontWeight: 'bold', color: '#F47066', fontSize: 22 },
+  descriptionHead: { fontWeight: "bold", color: "#F47066", fontSize: 22 },
   descriptionText: {
     maxWidth: 315,
-    paddinLeft: 20
+    paddingLeft: 20,
   },
 
   close: { marginTop: 5 },
   descriptionBox: {
     width: 340,
     marginTop: 25,
-    alignItems: 'flex-start'
+    alignItems: "flex-start",
   },
 });
 
-export default { Clone }
+export { Clone };
