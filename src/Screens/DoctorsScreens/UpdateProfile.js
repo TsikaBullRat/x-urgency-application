@@ -171,29 +171,29 @@ function UpdateProfile() {
         })
     }, [])
     return (
-            <ScrollView contentContainerStyle={styles.body} vertical={true} >
-                <Pressable onPress={openImagePickerAsync}>
-                    {image ? (
-                        <Image style={styles.image} source={{ uri: image }} />
-                    ) : (
-                        <View style={styles.temp}>
-                            <Text style={styles.temp_text}> {initial} </Text>
-                        </View>
-                    )}
-                    <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
-                </Pressable>
+        <ScrollView contentContainerStyle={styles.body} vertical={true} >
+            <Pressable onPress={openImagePickerAsync}>
+                {image ? (
+                    <Image style={styles.image} source={{ uri: image }} />
+                ) : (
+                    <View style={styles.temp}>
+                        <Text style={styles.temp_text}> {initial} </Text>
+                    </View>
+                )}
+                <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
+            </Pressable>
 
-                <TextInput style={styles.inputLarge} placeholder="Tell us about yourself" multiline maxLength={480} editable defaultValue={about} onChangeText={text => setAbout(text)} />
-                <TextInput placeholder="Qualification" style={styles.input} editable defaultValue={qualification} onChangeText={text => setQualification(text)} />
-                <TextInput placeholder="Specialization" style={styles.input} editable defaultValue={specialization} onChangeText={text => setSpecialization(text)} />
-                <TextInput placeholder="Branch" style={styles.input} editable defaultValue={branch} onChangeText={text => setBranch(text)} />
-                <TextInput placeholder="Contact number" style={styles.input} editable defaultValue={contact} onChangeText={text => setContact(text)} />
-                <TextInput placeholder="Email" style={styles.input} editable defaultValue={email} onChangeText={text => setEmail(text)} />
+            <TextInput style={styles.inputLarge} placeholder="Tell us about yourself" multiline maxLength={480} editable defaultValue={about} onChangeText={text => setAbout(text)} />
+            <TextInput placeholder="Qualification" style={styles.input} editable defaultValue={qualification} onChangeText={text => setQualification(text)} />
+            <TextInput placeholder="Specialization" style={styles.input} editable defaultValue={specialization} onChangeText={text => setSpecialization(text)} />
+            <TextInput placeholder="Branch" style={styles.input} editable defaultValue={branch} onChangeText={text => setBranch(text)} />
+            <TextInput placeholder="Contact number" style={styles.input} editable defaultValue={contact} onChangeText={text => setContact(text)} />
+            <TextInput placeholder="Email" style={styles.input} editable defaultValue={email} onChangeText={text => setEmail(text)} />
 
-                <Pressable style={styles.button} onPress={resetCred}>
-                    <Text style={{ fontSize: 18, color: '#fff' }}>Save</Text>
-                </Pressable>
-            </ScrollView>
+            <Pressable style={styles.button} onPress={resetCred}>
+                <Text style={{ fontSize: 18, color: '#fff' }}>Save</Text>
+            </Pressable>
+        </ScrollView>
     )
 }
 

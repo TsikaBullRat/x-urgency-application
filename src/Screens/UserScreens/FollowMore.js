@@ -7,7 +7,7 @@ export default function FollowMore({ navigation }) {
 
     <View style={styles.container}>
       <TouchableOpacity style={styles.logo}
-      onPress={() => navigation.navigate('UrgentHelp')}>
+        onPress={() => navigation.navigate('UrgentHelp')}>
         <Image style={{ height: 350, width: '95%' }} source={require('../../images/FollowLOGO.png')} />
       </TouchableOpacity>
 
@@ -34,7 +34,7 @@ export default function FollowMore({ navigation }) {
 
       <View style={{ width: 360, marginVertical: 15, alignItems: 'center' }}>
         <TouchableOpacity onPress={() => navigation.navigate('UrgentHelp')} style={styles.btnNext} >
-         <Text style={{ fontWeight: 'bold', color: '#fff', paddingLeft: 25 }} > {`NEXT`}</Text>
+          <Text style={{ fontWeight: 'bold', color: '#fff', paddingLeft: 25 }} > {`NEXT`}</Text>
           <View style={{ left: 40 }}>
             <AntDesign name='arrowright' size={25} color='#fff' />
           </View>
@@ -45,7 +45,7 @@ export default function FollowMore({ navigation }) {
 
       <View style={{ width: 360, marginVertical: 15, alignItems: 'center' }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={{textAlign:'center'}}>{`BACK`}</Text>
+          <Text style={{ textAlign: 'center' }}>{`BACK`}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -55,7 +55,7 @@ export default function FollowMore({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems:'center',
+    alignItems: 'center',
     backgroundColor: '#fff'
   },
 

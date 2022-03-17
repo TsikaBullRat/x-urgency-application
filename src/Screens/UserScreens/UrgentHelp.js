@@ -7,7 +7,7 @@ export default function UrgentHelp({ navigation }) {
 
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('SignIn')}
-      style={styles.logo}>
+        style={styles.logo}>
         <Image style={{ height: 350, width: '95%' }} source={require('../../images/UrgentHelpLOGO.png')} />
       </TouchableOpacity>
 
@@ -51,7 +51,7 @@ export default function UrgentHelp({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems:'center',
+    alignItems: 'center',
     backgroundColor: '#fff'
   },
 

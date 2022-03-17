@@ -10,7 +10,7 @@ export default function TakeVideo({ navigation }) {
         <Image style={{ height: 350, width: '95%' }} source={require('../../images/TakeVideoLOGO.png')} /> </View>
 
       <View style={styles.header}>
-        <Text style={{ fontSize: 34, fontWeight: 'bold',textAlign: 'center', color: '#F47066' }} >{`Take a Video?`}</Text>
+        <Text style={{ fontSize: 34, fontWeight: 'bold', textAlign: 'center', color: '#F47066' }} >{`Take a Video?`}</Text>
       </View>
 
       <View style={styles.content}>
@@ -44,7 +44,7 @@ export default function TakeVideo({ navigation }) {
 
       <View style={{ width: 360, marginVertical: 15, alignItems: 'center' }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={{textAlign:'center'}}>{`BACK`}</Text>
+          <Text style={{ textAlign: 'center' }}>{`BACK`}</Text>
         </TouchableOpacity>
       </View>
 

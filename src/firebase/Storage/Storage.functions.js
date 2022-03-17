@@ -153,8 +153,8 @@ const LoadSet = (Load, query) => {
                             })
                             return views
                         })
-                    getLink = itemRef.getDownloadURL().then(url =>url)
-                    .catch(err=>console.log(err))
+                    getLink = itemRef.getDownloadURL().then(url => url)
+                        .catch(err => console.log(err))
                     let link = await getLink
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title

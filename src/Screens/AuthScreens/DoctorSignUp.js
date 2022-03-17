@@ -1,20 +1,11 @@
 import React, { useState } from 'react'
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Platform,
-  Picker,
-  ScrollView
-} from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, Picker, ScrollView } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { handleDoctorSignUp } from '../../firebase/Auth/HandleSignUp'
 import { AlertNote } from '../../Components/Alert'
 
-export default function DoctorSignUp ({ navigation, setDetails }) {
+export default function DoctorSignUp({ navigation, setDetails }) {
   const [email, setEmail] = useState(''),
     [name, setName] = useState(''),
     [surname, setSurname] = useState(''),
@@ -115,139 +106,96 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
         description
       )
     }
+
+    navigation.navigate('DocHome')
   }
 
   return (
+
     <View style={styles.container}>
       <View style={{ width: '100%' }}>
+
         {/**----------Logo------------Logo------------- */}
+
         <View style={{ width: '100%' }}>
           <Card style={styles.card}>
             <View style={styles.heartIcon}>
               <FontAwesome name='heartbeat' size={110} color='#fff' />
             </View>
-            <Text style={{  color: '#fff', fontSize: 30 }}>
-              {' '}
-              {`X-urgency`}{' '}
-            </Text>
+            <Text style={{ color: '#fff', fontSize: 30 }}> {' '}{`X-urgency`}{' '}</Text>
           </Card>
         </View>
 
         {/**----------Header------------Header------------- */}
+
         <View style={styles.header}>
-          <Text
-            style={{ fontSize: 36, textAlign: 'center', color: '#F47066' }}
-          >{`Medical SignUp`}</Text>
+          <Text style={{ fontSize: 36, textAlign: 'center', color: '#F47066' }} >{`Medical SignUp`}</Text>
         </View>
 
         {/**----------txtFields------------txtFields------------- */}
-        <View style={{ width:'100%', marginTop: 20, alignItems:'center', justifyContent:'center'}}>
+
+        <View style={{ width: '100%', marginTop: 20, alignItems: 'center', justifyContent: 'center' }}>
           {visibleStatusBar ? (
-            <ScrollView
-              style={{ height: 380, width:'100%' }}
-              showsVerticalScrollIndicator={false}
-            >
+            <ScrollView style={{ height: 380, width: '100%' }} showsVerticalScrollIndicator={false}  >
+
               {/*-------------Screen1.1------------Screen1.1-----------Screen1.1---------*/}
+
               <View style={styles.textfieldCards}>
                 <Card style={styles.txtCards}>
                   <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='name'
-                      placeholder='Name'
-                      onChangeText={text => setEmail(text)}
-                    />
+                    <TextInput style={styles.txtField} name='name' placeholder='Name' onChangeText={text => setEmail(text)} />
                   </View>
                 </Card>
                 {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
                 <Card style={styles.txtCards}>
                   <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='Surname'
-                      placeholder='Surname'
-                      onChangeText={text => setSurname(text)}
-                    />
+                    <TextInput style={styles.txtField} name='Surname' placeholder='Surname' onChangeText={text => setSurname(text)} />
                   </View>
                 </Card>
                 {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
 
                 <Card style={styles.txtCards}>
                   <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='ContactDetails'
-                      placeholder='Contact Details'
-                      onChangeText={text => setContactDetails(text)}
-                    />
+                    <TextInput style={styles.txtField} name='ContactDetails' placeholder='Contact Details' onChangeText={text => setContactDetails(text)} />
                   </View>
                 </Card>
                 {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
                 <Card style={styles.txtCards}>
                   <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='email'
-                      placeholder='Email'
-                      onChangeText={text => setEmail(text)}
-                    />
+                    <TextInput style={styles.txtField} name='email' placeholder='Email' onChangeText={text => setEmail(text)} />
                   </View>
                 </Card>
                 {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
 
                 <Card style={styles.txtCards}>
-                  <Picker
-                    specialization={specialization}
-                    style={styles.picker}
-                    onValueChange={(itemValue, itemIndex) =>
-                      setSpecialization(itemValue)
-                    }
-                  >
+                  <Picker specialization={specialization} style={styles.picker} onValueChange={(itemValue, itemIndex) => setSpecialization(itemValue)} >
                     <Picker.Item label='Doctor' value='Doctor' />
                     <Picker.Item label='Nurse' value='Nurse' />
                     <Picker.Item
                       label='Basic Abulance Assistance'
-                      value='BEA'
-                    />
+                      value='BEA' />
                     <Picker.Item
                       label='Ambulance Emergency Assistance'
-                      value='AEA'
-                    />
+                      value='AEA' />
                     <Picker.Item label='Critical Care Assist' value='CCA' />
                     <Picker.Item
                       label='Emergency Care Practitioner'
-                      value='ECP'
-                    />
+                      value='ECP' />
                   </Picker>
                 </Card>
 
                 <Card style={styles.txtCards}>
                   <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='Qualification'
-                      placeholder='Qualification'
-                      onChangeText={text => setQualification(text)}
-                    />
+                    <TextInput style={styles.txtField} name='Qualification' placeholder='Qualification' onChangeText={text => setQualification(text)} />
                   </View>
                 </Card>
                 {prompt5 ? <Text style={styles.prompt}>{prompt5}</Text> : null}
 
-                <View style={{ width:'100%', alignItems: 'center' }}>
-                  <TouchableOpacity
-                    style={styles.signIn}
-                    onPress={changeVisibilityStatusBar}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 20,                       
-                        color: '#fff'
-                      }}
-                    >
-                      {`NEXT`}
-                    </Text>
+                <View style={{ width: '100%', alignItems: 'center' }}>
+                  <TouchableOpacity style={styles.signIn} onPress={changeVisibilityStatusBar} >
+                    <Text style={{ fontSize: 20, color: '#fff' }}  >  {`NEXT`} </Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -256,71 +204,40 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
             <ScrollView
               style={{ height: 380, width: '100%' }}
               showsVerticalScrollIndicator={false}>
-             
-             {/*-------------Screen1.2------------Screen1.2-----------Screen1.2---------*/}
+
+              {/*-------------Screen1.2------------Screen1.2-----------Screen1.2---------*/}
+
               <View style={styles.textfieldCards}>
                 <Card style={styles.txtCards}>
                   <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='Description'
-                      placeholder='Description'
-                      onChangeText={text => setDescription(text)}
-                    />
+                    <TextInput style={styles.txtField} name='Description' placeholder='Description' onChangeText={text => setDescription(text)} />
                   </View>
                 </Card>
 
                 <Card style={styles.txtCards}>
                   <View style={{ flexDirection: 'row' }}>
-                    <TextInput
-                      style={styles.txtField}
-                      name='Branch'
-                      placeholder='Branch'
-                      onChangeText={text => setBranch(text)}
-                    />
+                    <TextInput style={styles.txtField} name='Branch' placeholder='Branch' onChangeText={text => setBranch(text)} />
                   </View>
                 </Card>
 
                 <Card style={styles.txtCards}>
-
-                    <TextInput
-                      style={styles.txtField}
-                      name='password'
-                      placeholder='Password'
-                      secureTextEntry={true}
-                      onChangeText={text => setPassword(text)}
-                    />
+                  <TextInput style={styles.txtField} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
 
                 </Card>
                 {prompt3 ? <Text style={styles.prompt}>{prompt3}</Text> : null}
 
                 <Card style={styles.txtCards}>
                   <View style={{ flexDirection: 'row' }}>
-                    <EvilIcons
-                      name='lock'
-                      size={29}
-                      color='black'
-                      style={{ margin: 10 }}
-                    />
-                    <TextInput
-                      style={styles.txtField}
-                      name='confirmPassword'
-                      placeholder='Confirm Password'
-                      secureTextEntry={true}
-                      onChangeText={text => setPassword(text)}
-                    />
+                    <EvilIcons name='lock' size={29} color='black' style={{ margin: 10 }} />
+                    <TextInput style={styles.txtField} name='confirmPassword' placeholder='Confirm Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
                   </View>
                 </Card>
                 {prompt4 ? <Text style={styles.prompt}>{prompt4}</Text> : null}
               </View>
 
-              <View style={{ width:'100%', alignItems: 'center' }}>
+              <View style={{ width: '100%', alignItems: 'center' }}>
                 <TouchableOpacity style={styles.btnNxt} onPress={Register}>
-                  <Text
-                    style={{ fontSize: 20,  color: '#fff' }}
-                  >
-                    {`SIGNIN`}
-                  </Text>
+                  <Text style={{ fontSize: 20, color: '#fff' }}  >  {`SIGNIN`} </Text>
                 </TouchableOpacity>
               </View>
             </ScrollView>
@@ -329,7 +246,7 @@ export default function DoctorSignUp ({ navigation, setDetails }) {
 
         {/**-------BACK------BACK-------BACK */}
 
-        <View style={{ marginTop: 10, alignItems:'center' }}>
+        <View style={{ marginTop: 10, alignItems: 'center' }}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Text>{' BACK '}</Text>
           </TouchableOpacity>
@@ -350,7 +267,7 @@ const styles = StyleSheet.create({
 
   card: {
     width: '100%',
-    height: 180,
+    height: 220,
     backgroundColor: '#F47066',
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
@@ -359,7 +276,7 @@ const styles = StyleSheet.create({
   },
 
   heartIcon: {
-    marginTop: 85,
+    marginTop: 55,
     alignItems: 'center'
   },
 

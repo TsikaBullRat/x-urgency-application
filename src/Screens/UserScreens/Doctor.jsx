@@ -6,8 +6,7 @@ import Socials from '../../Components/Socials';
 import { auth, firestore } from '../../firebase/config';
 import { AntDesign, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function Doctor({ navigation, route }){
-
+export default function Doctor({ navigation, route }) {
 
   const info = route.params.match
   const [doctor, setDoctor] = useState("")
@@ -112,7 +111,6 @@ export default function Doctor({ navigation, route }){
           )}
       </View>
 
-
       <View style={{ width: 355, marginTop: 10, alignItems: 'center', justifyContent: 'space-around', flexDirection: 'row', }}>
 
         <Card style={styles.docCards}>
@@ -138,13 +136,11 @@ export default function Doctor({ navigation, route }){
 
       </View>
 
-
       <View style={{ paddingTop: 20, width: 335, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
         <Socials text="Following" number="15" />
         <Socials text="Followers" number="0" />
         <Socials text="Likes" number="3.1M" />
       </View>
-
 
       <View style={{ marginTop: 35, width: 335 }}>
         <Text style={styles.txtHead}>{`About`}</Text>
@@ -153,9 +149,7 @@ export default function Doctor({ navigation, route }){
         </Text>
       </View>
 
-
       <View style={{ width: 335, marginTop: 35, alignItems: 'center' }}>
-
 
         <View style={{ width: 220, flexDirection: 'row', justifyContent: 'space-evenly' }}>
           <Feather name='phone' size={20} color='black' />
@@ -168,7 +162,6 @@ export default function Doctor({ navigation, route }){
         <View style={{ marginTop: 10 }}>
           <Text style={{ paddingTop: 5, textAlign: 'center' }}>{`OR`}</Text>
         </View>
-
 
         <View style={{ marginTop: 10, width: 175, flexDirection: 'row', justifyContent: 'space-evenly' }}>
           <AntDesign name='mail' size={20} color='black' />
@@ -192,27 +185,32 @@ export default function Doctor({ navigation, route }){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems:'center',
+    alignItems: 'center',
     backgroundColor: '#fff',
   },
+
   textTitle: {
     fontFamily: 'Roboto',
     color: '#F47066',
     fontSize: 25,
     marginTop: 5,
   },
+
   textTitle2: {
     fontSize: 15,
     marginTop: 20,
     marginLeft: 5,
   },
+
   box: {
     flexDirection: 'row',
   },
+
   tab: {
     paddingLeft: 5,
     width: 380,
   },
+
   avatar: {
     width: 70,
     height: 70,
@@ -225,11 +223,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     elevation: 1,
   },
+
   words: {
     width: 250,
     textAlign: 'center',
     alignSelf: 'center',
   },
+
   follow: {
     top: 10,
     backgroundColor: "#f47066",
@@ -239,11 +239,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
   txtHead: {
     fontSize: 30,
     fontFamily: 'flexi-titling',
     color: '#F47066'
   },
+
   temp: {
     width: 70,
     height: 70,
@@ -253,19 +255,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center'
   },
+
   temp_text: {
     fontSize: 40,
     color: '#fff',
   },
+
   textTitle: {
     color: 'red',
     fontSize: 25,
     marginTop: 5,
   },
+
   txtAbout: {
     fontSize: 16,
     paddingTop: 15
   },
+
   docCards: {
     width: 100,
     height: 80,
