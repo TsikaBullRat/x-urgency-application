@@ -47,7 +47,7 @@ export default function Home({ navigation, Exit }) {
 
   const ItemSeperatorView = () => {
     return (
-      <View style={{ height: 0.5, width: 380, left: -10, backgroundColor: '#c8c8c8' }}
+      <View style={styles.seperator}
       />
     )
   }
@@ -58,21 +58,21 @@ export default function Home({ navigation, Exit }) {
   return (
     <View style={styles.container}>
 
-      <View style={{ alignItems: 'center' }}>
+      <View style={styles.center}>
 
-        <View style={{ width: '100%' }}>
+        <View style={styles.width}>
           <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
 
           {/**------------------CallSiren--------------------CallSiren----------------- */}
 
-          <View style={{ width: '95%', flexDirection: 'row', marginVertical: 35, justifyContent: 'flex-end' }}>
-            <View style={{ left: -15 }}>
+          <View style={styles.callMain}>
+            <View style={styles.callCenter}>
               <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')} >
                 <CallSiren />
               </TouchableOpacity>
             </View>
 
-            <View style={{ marginTop: 10 }}>
+            <View style={styles.logout}>
               <TouchableOpacity onPress={Exit}>
                 <LogOutComp />
               </TouchableOpacity>
@@ -81,7 +81,7 @@ export default function Home({ navigation, Exit }) {
 
           {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
 
-          <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
+          <View style={styles.header}>
 
             {/*-------------Header---------------Header--------------Header------- */}
 
@@ -89,7 +89,7 @@ export default function Home({ navigation, Exit }) {
               <Header />
             </View>
 
-            <View style={{ top: -25 }}>
+            <View style={styles.avatar}>
               {image ? (
                 <Avatar rounded source={{ uri: image }} size='large' />
               ) : (
@@ -106,21 +106,21 @@ export default function Home({ navigation, Exit }) {
 
           {/*---------------------- Video Scroll View--------------------*/}
 
-          <View style={{ marginTop: 15, alignItems: ' center' }}>
-            <ScrollView style={{ height: 435 }} vertical={true} showsVerticalScrollIndicator={false} >
+          <View style={styles.scrollBase}>
+            <ScrollView style={styles.scrollHeight} vertical={true} showsVerticalScrollIndicator={false} >
               {collection
                 ? collection.map((vid, index) => (
-                  <View style={{ width: 360, marginTop: 20, alignItems: 'center', backgroundColor: '#b5a8a8' }} key={index} >
-                    <TouchableOpacity style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate('PlayVideo', { vid })}  >
-                      <Video ref={vid.index} source={{ uri: vid.uri }} resizeMode='stretch' isLooping style={{ width: '100%', height: 180 }} />
+                  <View style={styles.card} key={index} >
+                    <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate('PlayVideo', { vid })}  >
+                      <Video ref={vid.index} source={{ uri: vid.uri }} resizeMode='stretch' isLooping style={styles.video} />
                     </TouchableOpacity>
 
-                    <View style={{ width: '98%', flexDirection: 'row', margin: 3, justifyContent: 'space-between' }} >
+                    <View style={styles.textBox1} >
                       <Text style={styles.vidTitle}>{vid.title}</Text>
                       <Text style={styles.tag}>{vid.views}Views</Text>
                     </View>
 
-                    <View style={{ width: '98%', margin: 3, marginTop: -25, alignItems: 'flex-start' }}>
+                    <View style={styles.textBox2}>
                       <Text style={styles.tag1}>{vid.tag} </Text>
                       <Text style={styles.tag}>{vid.stamp}</Text>
                     </View>
@@ -195,5 +195,72 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
 
+  },
+  seperator: { 
+    height: 0.5, 
+    width: 380, 
+    left: -10, 
+    backgroundColor: '#c8c8c8' 
+  },
+  center: {
+    alignItems: 'center'
+  },
+  width: { 
+    width: '100%' 
+  },
+  callMain: { 
+    width: '95%', 
+    flexDirection: 'row', 
+    marginVertical: 35, 
+    justifyContent: 'flex-end' 
+  },
+  callCenter: { 
+    left: -15 
+  },
+  logout: { 
+    marginTop: 10 
+  },
+  header: { 
+    flexDirection: 'row', 
+    width: '100%', 
+    alignItems: 'center', 
+    justifyContent: 'space-between' 
+  },
+  avatar: { 
+    top: -25 
+  },
+  scrollBase:{ 
+    marginTop: 15, 
+    alignItems: 'center' 
+  },
+  scrollHeight:{ 
+    height: 435 
+  },
+  card: { 
+    width: 360, 
+    marginTop: 20, 
+    alignItems: 'center', 
+    backgroundColor: '#b5a8a8' 
+  },
+  touchable: { 
+    width: '100%', 
+    alignItems: 'center', 
+    justifyContent: 'center' 
+  },
+  textBox1: { 
+    width: '98%', 
+    flexDirection: 'row', 
+    margin: 3, 
+    justifyContent: 'space-between' 
+  },
+  textBox2: { 
+    width: '98%', 
+    margin: 3, 
+    marginTop: -25, 
+    alignItems: 'flex-start' 
+  },
+  video: { 
+    width: '100%', 
+    height: 180 
   }
 })

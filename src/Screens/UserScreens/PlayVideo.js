@@ -208,12 +208,20 @@ export default function PlayVideo({ navigation, route }) {
 
             <Card style={styles.txtCards}>
               <View style={styles.commentBox}>
-                <View>
-                  <TextInput style={styles.txtFieldComment} name='comment' placeholder='Write a comment' onChangeText={text => setComment(text)} />
-                </View>
-
-                <View style={styles.commentButton}>
-                  <Button color='#F47066' onPress={() => Post(comment, data.firestore)} title='Comment' />
+                <TextInput
+                  style={styles.comment}
+                  name='comment'
+                  placeholder='Write a comment'
+                  onChangeText={text => setComment(text)}
+                />
+                <View
+                  style={styles.commentButton}
+                >
+                  <Button
+                    color='#F47066'
+                    onPress={() => Post(comment, data.firestore)}
+                    title='Comment'
+                  />
                 </View>
               </View>
             </Card>
@@ -311,42 +319,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
 
-  /*--------------Socials--------------------Socials----------------- */
-
-  socialIcons: {
-    width: 380,
-    flexDirection: 'row',
-    marginTop: 15,
-    left: 5,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#f47066',
-    alignItems: 'center',
-    justifyContent: 'space-around'
-  },
-
-  like: {
-    left: -8
-  },
-
-  dislike: {
-    marginLeft: 10,
-    marginTop: 3
-  },
-
-  share: {
-    marginLeft: 15
-  },
-
-  save: {
-    marginLeft: 2
-  },
-
-  saveIcon: {
-    marginLeft: 8
-  },
-
-  avatar: {
+  avatar:{
     width: 340,
     flexDirection: 'row'
   },
@@ -354,8 +327,6 @@ const styles = StyleSheet.create({
   descriptionContainer: {
     width: 340
   },
-
-  /*------------Comments------------------Comments----------------------- */
 
   txtCards: {
     width: '100%',
@@ -368,29 +339,47 @@ const styles = StyleSheet.create({
     borderColor: '#F47066'
   },
 
-  commentBox: {
-    flexDirection: 'row'
+  like:{ 
+    left: -8 
   },
 
-  txtFieldComment: {
-    margin: 8,
-    fontSize: 18,
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff',
-        height: 25
-      }
-    })
+  dislike:{ 
+    marginLeft: 10, 
+    marginTop: 3 
   },
 
-  commentButton: {
-    width: '32%',
+  share: { 
+    marginLeft: 15 
+  },
+
+  commentButton:{
+    width: '60%',
     height: 50,
     borderRadius: 25,
     left: 11
   },
 
+  save:{ 
+    marginLeft: 2 
+  },
+
+  saveIcon: {
+    marginLeft: 8
+  },
+
+  
+
+  commentBox:{ 
+    flexDirection: 'row' 
+  },
+
+  comment: {
+    width: '65%',
+    height: 38,
+    borderRadius: 10,
+    backgroundColor: '#fff',
+  },
+    
   comments: {
     width: '65%',
     left: 3,
@@ -474,9 +463,29 @@ const styles = StyleSheet.create({
     paddingTop: 5
   },
 
-  owner: {
+  owner: { 
+    paddingTop: 15 
+  },
+
+  commentCount:{ 
+    width: 340, 
+    alignItems: 'flex-start' 
+  },
+
+  commentSect: { 
+    height: 220 
+  },
+
+  commentsInner: { 
+    height: 340, 
+    width: 340 
+  },
+
+
+  commentCount: {
     paddingTop: 15,
-    fontSize: 17,
-    color: '#f47066'
-  }
+  } ,
+  
+ 
+
 })
