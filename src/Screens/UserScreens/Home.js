@@ -17,25 +17,33 @@ export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')
-  const [collection, setCollection] = useState()
+  const [collection, setCollection] = useState([])
 
-  // useEffect(() => {
-  //   auth.currentUser ?
-  //     //  (setImage(auth.currentUser.photoURL),
-  //       setInitial(auth.currentUser.displayName.substring(0, 1))
-  //     : auth.onAuthStateChanged(doc => {
-  //         // setImage(doc.photoURL)
-  //         // console.log(doc.displayName)
-  //         setInitial(doc.displayName.substring(0, 1))
-  //         console.log(auth.currentUser)
-  //       })
-  // }, [])
+  useEffect(() => {
+    auth.currentUser ?
+      //  (setImage(auth.currentUser.photoURL),
+        setInitial(auth.currentUser.displayName.substring(0, 1))
+      : auth.onAuthStateChanged(doc => {
+          // setImage(doc.photoURL)
+          // console.log(doc.displayName)
+          setInitial(doc.displayName.substring(0, 1))
+          console.log(auth.currentUser)
+        })
+  }, [])
+
+  useEffect(()=>{
+    LoadSet(setCollection)
+  }, [])
 
   useEffect(()=>{
     LoadSet(setCollection)
   }, [])
 
   // const reference = useRef(collection.map(item=>item.uri))
+
+  useEffect(()=>{
+    console.log(collection)
+  }, [])
 
   const ItemSeperatorView = () => {
     return (
