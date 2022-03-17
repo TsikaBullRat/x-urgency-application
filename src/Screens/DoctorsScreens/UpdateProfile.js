@@ -276,4 +276,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default {UpdateProfile}
+export {UpdateProfile}

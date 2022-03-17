@@ -9,10 +9,11 @@ import {
   ScrollView,
   Share
 } from "react-native";
-import { Video } from "expo-av";
+import { WebView } from 'react-native-webview';
 import { AntDesign, FontAwesome5, Entypo } from "@expo/vector-icons";
 import { Avatar } from "react-native-elements";
 import { Card } from "react-native-paper";
+import { Video } from 'expo-av'
 import { Likes } from "../firebase/Functions/Likes";
 import { Dislikes } from "../firebase/Functions/Dislikes";
 import { Collect, Post } from "../firebase/Storage/Storage.functions";
@@ -20,7 +21,7 @@ import { Collect, Post } from "../firebase/Storage/Storage.functions";
 const Clone = ({ route, navigation }) => {
   const data = route.params.vid;
   const [userName, setUserName] = useState(data.owner);
-  const [videoPlay, setVideoPlay] = useState();
+  const [videoPlay, setVideoPlay] = useState(data.url);
   const [views, setViews] = useState(data.views);
   const [videoVisible, setVideoVisible] = useState(true);
   const [count, setCount] = useState(0);
@@ -29,11 +30,10 @@ const Clone = ({ route, navigation }) => {
   const [Comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
-  const [status, setStatus] = React.useState({});
+  const [status, setStatus] = useState({});
 
   const LoadVideo = () =>{
     const uri = data.url
-    console.log(data.url)
   }
   const changeVisibilityStatusBar = () => {
     setVisibleStatusBar(!visibleStatusBar);
@@ -126,12 +126,12 @@ const Clone = ({ route, navigation }) => {
       {/**-------------Video----------------Video-----------------Video---------------- */}
       <View style={styles.videoContainer}>
         <Video
-          ref={reference}
-          source={{ uri: videoPlay }}
-          useNativeControls
-          resizeMode="stretch"
-          isLooping
           style={styles.video}
+          ref={reference}
+          source={{uri: videoPlay}}
+          useNativeControls
+          resizeMode="contain"
+          isLooping
           onPlaybackStatusUpdate={status => setStatus(() => status)}
         />
       </View>
@@ -292,6 +292,7 @@ const styles = StyleSheet.create({
     width: 340,
     height: 180,
     left: 2,
+    backgroundColor: "#000"
   },
   statusOff: {
     width: 340,

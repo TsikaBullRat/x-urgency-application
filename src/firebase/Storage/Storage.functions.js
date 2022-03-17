@@ -121,7 +121,6 @@ const LoadSet = (Load, query) => {
                             })
                             return views
                         })
-                        console.log(itemRef.toString())
                         getLink = itemRef.getDownloadURL().then(url =>url)
                         .catch(err=>console.log(err))
                     let link = await getLink
@@ -157,7 +156,6 @@ const LoadSet = (Load, query) => {
                     getLink = itemRef.getDownloadURL().then(url =>url)
                     .catch(err=>console.log(err))
                     let link = await getLink
-                    console.log(link)
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title
                     let match = find.ref

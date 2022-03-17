@@ -15,7 +15,6 @@ import Header from '../../Components/Header'
 import Menu from '../../Components/Menu'
 import CallSiren from '../../Components/CallSiren'
 import LogOutComp from '../../Components/LogOutComp'
-import VideoList from '../../Components/VideoList'
 import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
@@ -23,35 +22,9 @@ import { Video } from 'expo-av'
 
 export default function Home ({ navigation, Exit }) {
   const [status, setStatus] = useState({})
-  const [videos, setLoad] = useState(null)
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')
-  const [collection, setCollection] = useState([
-    {
-      title: "Video 1",
-      views: 7,
-      tag: "Choking",
-      stamp: "2 days ago",
-      id: 1,
-      description: "Lorem ipsum etc",
-      owner: "Ntsikayomzi Ngcakani",
-      firestore: "c4ac278a-baa1-403a-bb98-1f4ff9d8af7",
-      match: "XYRltIaLknbfJrvZG4OfyOtGYTz2",
-      url: '../../images/pexels-sathyaprabha-rakkimuthu-5613843.mp4'
-    },
-    {
-      title: "Video 2",
-      views: 200,
-      tag: "Stroke",
-      stamp: "3 years ago",
-      id: 2,
-      description: "Lorem ipsum etc",
-      owner: "Thabo Moeti",
-      firestore: "b7e7379f-4c5b-459a-8b17-14cfb254786",
-      match: "SvkJPojTkUNBr8IVgoKqoTosIlE3",
-      url: '../../images/pexels-anastasia-shuraeva-8028812.mp4'
-    }
-  ])
+  const [collection, setCollection] = useState()
 
   useEffect(() => {
     auth.currentUser ?
@@ -65,11 +38,11 @@ export default function Home ({ navigation, Exit }) {
         })
   }, [])
 
-  // useEffect(()=>{
-  //   LoadSet(setCollection)
-  // }, [])
+  useEffect(()=>{
+    LoadSet(setCollection)
+  }, [])
 
-  const reference = useRef(collection.map(item=>item.url))
+  const reference = useRef(null)
 
   const ItemSeperatorView = () => {
     return (
@@ -132,9 +105,7 @@ export default function Home ({ navigation, Exit }) {
       </View>
 
       {/**-----------Menu Category--------------Menu Category--------------------- */}
-      <View style={styles.menu}>
         <Menu />
-      </View>
 
       {/*---------------------- Video Scroll View--------------------*/}
       <View style={styles.mainBody}>
@@ -143,8 +114,8 @@ export default function Home ({ navigation, Exit }) {
           vertical={true}
           showsVerticalScrollIndicator={false}
         >
-          {collection
-            ? collection.map((vid, index) => (
+          {collection?(
+            collection.map((vid, index) => (
                 <View
                   style={styles.item}
                   key={index}
@@ -165,18 +136,18 @@ export default function Home ({ navigation, Exit }) {
                 <View
                   style={styles.vidText} >
                     <Text style={styles.vidTitle}>{vid.title}</Text>
-                    <Text style={styles.tag}>{vid.views}Views</Text>
+                    <Text>{vid.views}Views</Text>
                   </View>
 
                   <View style={styles.vidText2}>
-                    <Text style={styles.tag}>{vid.tag} </Text>
-                    <Text style={styles.tag}>{vid.stamp}</Text>
+                    <Text>{vid.tag} </Text>
+                    <Text>{vid.stamp}</Text>
                   </View>
 
                   <ItemSeperatorView />
                 </View>
               ))
-            : null}
+          ): null}
         </ScrollView>
       </View>
       </View>
@@ -187,7 +158,7 @@ export default function Home ({ navigation, Exit }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container:{
     flex: 1,
     width:'100%',
     backgroundColor: '#fff'
@@ -217,10 +188,6 @@ const styles = StyleSheet.create({
   vidTitle: {
     fontSize: 16,
     fontWeight: 'bold'
-  },
-
-  tag: {
-    // fontSize: 12
   },
 
   temp: {
@@ -257,7 +224,7 @@ const styles = StyleSheet.create({
   },
   avatar: {top:-20},
   menu: { width: '100%', alignItems:'center'},
-  mainBody: { marginTop:15, alignItems:' center'},
+  mainBody: { marginTop:15, alignItems :'center'},
   scroll: { height: 435 },
   item: { width: 360, alignItems:'center', backgroundColor: '#ffe7e6' },
   pressable: { alignItems: 'center', justifyContent: 'center' },
