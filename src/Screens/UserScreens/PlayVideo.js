@@ -121,7 +121,7 @@ export default function PlayVideo ({ navigation, route }) {
       <View style={styles.videoContainer}>
         <Video
           ref={data.index}
-          source={{ uri: data.video }}
+          source={{ uri: data.url }}
           useNativeControls
           resizeMode='contain'
           isLooping

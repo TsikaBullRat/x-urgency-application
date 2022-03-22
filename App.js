@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+// import { createDrawerNavigator } from "@react-navigation/Drawer";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { auth, firestore } from "./src/firebase/config";
 import LogOut from "./src/firebase/Auth/LogOut";
 import { StyleSheet } from "react-native";
@@ -28,7 +29,7 @@ import {
   Clone,
 } from "./src/Screens";
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   const [id, setID] = useState(null);
@@ -67,67 +68,67 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Drawer.Navigator>
         {id ? (
           doctor ? (
             <>
               {firstTimeUser ? (
                 <>
-                  <Stack.Screen name="TakeVideo" component={TakeVideo} options={{ headerShown: false }} />
-                  <Stack.Screen name="ShareContent" component={ShareContent} options={{ headerShown: false }} />
-                  <Stack.Screen name="LikeConn" component={LikeConn} options={{ headerShown: false }} />
+                  <Drawer.Screen name="TakeVideo" component={TakeVideo} options={{ headerShown: false }} />
+                  <Drawer.Screen name="ShareContent" component={ShareContent} options={{ headerShown: false }} />
+                  <Drawer.Screen name="LikeConn" component={LikeConn} options={{ headerShown: false }} />
                 </>
               ) : null}
-              <Stack.Screen name="DocHome" options={{ headerShown: false }}>
+              <Drawer.Screen name="DocHome" options={{ headerShown: false }}>
                 {(props) => <MedicalHome {...props} Exit={Exit} />}
-              </Stack.Screen>
-              <Stack.Screen name="Upload" options={{ headerShown: false }}>
+              </Drawer.Screen>
+              <Drawer.Screen name="Upload" options={{ headerShown: false }}>
                 {(props) => <Upload {...props} />}
-              </Stack.Screen>
-              <Stack.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
-              <Stack.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
-              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
-              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+              </Drawer.Screen>
+              <Drawer.Screen name="Update" component={UpdateProfile} options={{ headerShown: false }} />
+              <Drawer.Screen name="UploadVideo" component={UploadVideo} options={{ headerShown: false }} />
+              <Drawer.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+              <Drawer.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
             </>
           ) : (
             <>
               {firstTimeUser ? (
                 <>
-                  <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
-                  <Stack.Screen name="FollowMore" component={FollowMore} options={{ headerShown: false }} />
-                  <Stack.Screen name="UrgentHelp" component={UrgentHelp} options={{ headerShown: false }} />
+                  <Drawer.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
+                  <Drawer.Screen name="FollowMore" component={FollowMore} options={{ headerShown: false }} />
+                  <Drawer.Screen name="UrgentHelp" component={UrgentHelp} options={{ headerShown: false }} />
                 </>
               ) : null}
 
-              <Stack.Screen name="Home" options={{ headerShown: false }}>
+              <Drawer.Screen name="Home" >
                 {(props) => <Home {...props} Exit={Exit} />}
-              </Stack.Screen>
-              <Stack.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
-              <Stack.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
-              <Stack.Screen name="EmergencyContacts" options={{ headerShown: false }} >
+              </Drawer.Screen>
+              <Drawer.Screen name="Doctor" component={Doctor} options={{ headerShown: false }} />
+              <Drawer.Screen name="PlayVideo" component={PlayVideo} options={{ headerShown: false }} />
+              <Drawer.Screen name="EmergencyContacts" options={{ headerShown: false }} >
                 {(props) => <EmergencyContacts {...props} />}
-              </Stack.Screen>
+              </Drawer.Screen>
             </>
           )
         ) : (
           <>
-            <Stack.Screen name="SignIn" options={{ headerShown: false }} component={SignIn} />
+            <Drawer.Screen name="SignIn" options={{ headerShown: false }} component={SignIn} />
             
-            <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
+            <Drawer.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
 
-            <Stack.Screen name="MedSignIn" options={{ headerShown: false }} component={MedSignIn} />
+            <Drawer.Screen name="MedSignIn" options={{ headerShown: false }} component={MedSignIn} />
 
-            <Stack.Screen name="DoctorSignUp" options={{ headerShown: false }} component={DoctorSignUp} />
+            <Drawer.Screen name="DoctorSignUp" options={{ headerShown: false }} component={DoctorSignUp} />
 
-            <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
+            <Drawer.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
             
-            <Stack.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
-            <Stack.Screen name="DocHome" options={{ headerShown: false }}>
+            <Drawer.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
+            <Drawer.Screen name="DocHome" options={{ headerShown: false }}>
                 {(props) => <MedicalHome {...props} Exit={Exit} />}
-                </Stack.Screen>
+                </Drawer.Screen>
           </>
         )}
-      </Stack.Navigator>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }

@@ -51,7 +51,7 @@ function Counter({ video }) {
 
     };
 
-  useEffect(() => { Check() }, [pressed])
+  // useEffect(() => { Check() }, [pressed])
 
   return (
     <View>
