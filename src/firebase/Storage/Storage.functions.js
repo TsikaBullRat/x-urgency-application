@@ -3,6 +3,7 @@ import firebase from 'firebase'
 import { v4 as uuidv4 } from 'uuid'
 
 var atob = require('atob')
+var btoa = require('btoa')
 
 const Collect = async (doc, SetCollection, Count) => {
     var count
@@ -153,8 +154,8 @@ const LoadSet = (Load, query) => {
                             })
                             return views
                         })
-                    getLink = itemRef.getDownloadURL().then(url =>url)
-                    .catch(err=>console.log(err))
+                    getLink = itemRef.getDownloadURL().then(url => url)
+                        .catch(err => console.log(err))
                     let link = await getLink
                     console.log(link)
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())

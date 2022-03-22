@@ -11,18 +11,18 @@ import MedicalHome from "./DoctorsScreens/MedicalHome"
 import Upload from "./DoctorsScreens/Upload"
 import PlayVideo from "./UserScreens/PlayVideo"
 import Doctor from "./UserScreens/Doctor"
-import  UpdateProfile  from "./DoctorsScreens/UpdateProfile"
+import  {UpdateProfile}  from "./DoctorsScreens/UpdateProfile"
 import Welcome from './UserScreens/Welcome'
 import FollowMore from './UserScreens/FollowMore'
 import UrgentHelp from './UserScreens/UrgentHelp'
 import TakeVideo from './UserScreens/TakeVideo'
 import ShareContent from './UserScreens/ShareContent'
 import LikeConn from './UserScreens/LikeConn'
-import MedProfile from './DoctorsScreens/MedProfile'
+import { MedProfile } from './DoctorsScreens/MedProfile'
 
-// import {Clone} from "Clone"
+import {Clone} from "./Clone"
 
-export { MedProfile, Welcome, FollowMore, TakeVideo, UrgentHelp, ShareContent, LikeConn, Doctor, SignIn, SignUp, MedSignIn, ForgotPassword, ResetPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile }
+export { MedProfile, Welcome, FollowMore, TakeVideo, UrgentHelp, ShareContent, LikeConn, SignIn, SignUp, MedSignIn, ForgotPassword, ResetPassword, Home, PlayVideo, UploadVideo, DoctorSignUp, MedicalHome, Upload, EmergencyContacts, UpdateProfile, Clone }
 
 
 

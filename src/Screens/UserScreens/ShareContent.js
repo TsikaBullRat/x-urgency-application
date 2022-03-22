@@ -45,7 +45,7 @@ export default function ShareContent({ navigation }) {
 
       <View style={{ width: 360, marginVertical: 15, alignItems: 'center' }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={{textAlign:'center'}}>{`BACK`}</Text>
+          <Text style={{ textAlign: 'center' }}>{`BACK`}</Text>
         </TouchableOpacity>
       </View>
 

@@ -5,7 +5,7 @@ import { AlertNote } from "../../Components"
 export const handleSignIn = (email, password, setMessage) => {
     auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-            setMessage="Welcome back"
+            setMessage = "Welcome back"
         })
 
         .catch(err => {

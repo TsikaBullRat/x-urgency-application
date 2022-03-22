@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export default function Socials ({ text, number }) {
+export default function Socials({ text, number }) {
     return (
 
         <View style={styles.socials}>

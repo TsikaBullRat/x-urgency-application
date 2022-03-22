@@ -12,18 +12,7 @@
  **/
 
 import React, { useState, useEffect, useRef } from 'react'
-import {
-  Text,
-  View,
-  StyleSheet,
-  SafeAreaView,
-  TouchableOpacity,
-  ScrollView,
-  TextInput,
-  Button,
-  Pressable,
-  Platform
-} from 'react-native'
+import { Text, View, StyleSheet, SafeAreaView, TouchableOpacity, ScrollView, TextInput, Button, Pressable, Platform } from 'react-native'
 import { Card } from 'react-native-paper'
 import { AntDesign } from '@expo/vector-icons'
 import { Entypo } from '@expo/vector-icons'
@@ -35,7 +24,7 @@ import { Dislikes } from '../../firebase/Functions/Dislikes'
 import { auth, firestore } from '../../firebase/config'
 import { Collect, Post } from '../../firebase/Storage/Storage.functions'
 
-export default function PlayVideo ({ navigation, route }) {
+export default function PlayVideo({ navigation, route }) {
   const data = route.params.vid
   const [userName, setUserName] = useState(data.owner)
   const [videoPlay, setVideoPlay] = useState(data.uri)
@@ -63,11 +52,11 @@ export default function PlayVideo ({ navigation, route }) {
     found
       ? null
       : (metadata.set({
-          liked: false,
-          disliked: false,
-          Comments: [null],
-          ref: auth.currentUser.uid
-        }),
+        liked: false,
+        disliked: false,
+        Comments: [null],
+        ref: auth.currentUser.uid
+      }),
         setViews(views + 1))
   }
   const Navigate = () => {
@@ -103,6 +92,24 @@ export default function PlayVideo ({ navigation, route }) {
     setComments(Comments.filter(item => item.comment !== remove))
   }
 
+  const ShareItem = async (url) => {
+    try {
+      const result = await Share.share({ url: url, });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          console.log("Shared with activity type") // shared with activity type of result.activityType
+          console.log(result.activityType)
+        } else {
+          console.log("Shared") // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        console.log("Could not share") // dismissed
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   useEffect(() => {
     Collect(data.firestore, setComments, setCount)
     addAct()
@@ -110,7 +117,9 @@ export default function PlayVideo ({ navigation, route }) {
 
   return (
     <View style={styles.contain}>
+
       {/**-------BACK------BACK-------BACK */}
+
       <View style={styles.back}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text>{`BACK`}</Text>
@@ -118,103 +127,96 @@ export default function PlayVideo ({ navigation, route }) {
       </View>
 
       {/**-------------Video----------------Video-----------------Video---------------- */}
+
       <View style={styles.videoContainer}>
-        <Video
-          ref={data.index}
-          source={{ uri: data.url }}
-          useNativeControls
-          resizeMode='contain'
-          isLooping
-          onPlaybackStatusUpdate={status => setStatus(() => status)}
-        />
+        <Video ref={data.index} source={{ uri: data.url }} useNativeControls resizeMode='contain' isLooping onPlaybackStatusUpdate={status => setStatus(() => status)} />
       </View>
 
       <View>
-        <Text style={styles.vidTitle}>{data.title}</Text>
+        <Text style={styles.vidTitle}>{data.description}</Text>
         <Text style={styles.viewCount}>
           {views} views - {data.stamp}
         </Text>
       </View>
 
       {/*-------------Social Icons-------Social Icons----------Social Icons */}
+
       <View style={styles.socialIcons}>
-              {/*------------Likes-------------Likes--------Likes*/}
 
-              <View style={styles.like}>
-                <Likes data={data.firestore} />
-              </View>
+        {/*------------Likes-------------Likes--------Likes*/}
 
-              {/*------------DisLikes-------------DisLikes--------DisLikes*/}
-              <View style={styles.dislike}>
-                {<Dislikes data={data.firestore} />}
-              </View>
+        <View style={styles.like}>
+          <Likes data={data.firestore} />
+        </View>
 
-              {/*------------Share-------------Share--------Share*/}
-              <View style={styles.share}>
-                <TouchableOpacity onPress={() => ShareItem(data.url)}>
-                  <Text style={styles.shareIcon}>
-                    <FontAwesome5 name='share' size={20} color='black' />
-                  </Text>
-                  <Text style={styles.shareText}> Share </Text>
-                </TouchableOpacity>
-              </View>
+        {/*------------DisLikes-------------DisLikes--------DisLikes*/}
 
-              {/*------------Save-------------Save--------Save*/}
+        <View style={styles.dislike}>
+          {<Dislikes data={data.firestore} />}
+        </View>
 
-              <View style={styles.save}>
-                <Text style={styles.saveIcon}>
-                  <Entypo name='save' size={20} color='black' />
-                </Text>
-                <Text style={styles.saveText}> Save </Text>
-              </View>
-            </View>
+        {/*------------Share-------------Share--------Share*/}
+
+        <View style={styles.share}>
+          <TouchableOpacity onPress={() => ShareItem(data.url)}>
+            <Text style={styles.shareIcon}>
+              <FontAwesome5 name='share' size={20} color='black' />
+            </Text>
+            <Text style={styles.shareText}> Share </Text>
+          </TouchableOpacity>
+        </View>
+
+        {/*------------Save-------------Save--------Save*/}
+
+        <View style={styles.save}>
+          <Text style={styles.saveIcon}>
+            <Entypo name='save' size={20} color='black' />
+          </Text>
+          <Text style={styles.saveText}> Save </Text>
+        </View>
+      </View>
 
 
       <View>
 
         {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
+
         {!visibleStatusBar ? (
           <View style={styles.statusOff}>
             <View style={styles.title}>
-              <View/>
+              <View />
+
               {/*------------DropDown-------------DropDown--------DropDown*/}
+
               <View style={styles.dropdown}>
-                <TouchableOpacity
-                  title='topNav'
-                  onPress={() => changeVisibilityStatusBar()}
-                >
+                <TouchableOpacity title='topNav' onPress={() => changeVisibilityStatusBar()}>
                   <AntDesign name='downcircle' size={18} color='black' />
                 </TouchableOpacity>
               </View>
             </View>
 
-            
             {/*------------Avatar-------------Avatar--------Avatar*/}
+
             <View style={styles.avatar}>
-              <Avatar
-                rounded
-                source={{
-                  uri: 'https://randomuser.me/api/portraits/men/41.jpg'
-                }}
-                size='medium'
-                // onPress={Navigate}
+              <Avatar rounded source={{ uri: 'https://randomuser.me/api/portraits/men/41.jpg' }} size='medium'
+              // onPress={Navigate}
               />
               <Text style={styles.owner}> {data.owner}</Text>
             </View>
 
             {/*------------Comments-------------Comments--------Comments*/}
+
             <Card style={styles.txtCards}>
               <View style={styles.commentBox}>
-                <View>
-                  <TextInput
-                    style={styles.txtFieldComment}
-                    name='comment'
-                    placeholder='Write a comment'
-                    onChangeText={text => setComment(text)}
-                  />
-                </View>
-
-                <View style={styles.commentButton}>
+                <TextInput
+                  style={styles.comment}
+                  name='comment'
+                  placeholder='Write a comment'
+                  onChangeText={text => setComment(text)}
+                />
+                <View
+                  style={styles.commentButton}
+                >
                   <Button
                     color='#F47066'
                     onPress={() => Post(comment, data.firestore)}
@@ -228,10 +230,7 @@ export default function PlayVideo ({ navigation, route }) {
               <Text style={{ fontSize: 16 }}>Comments: {count}</Text>
             </View>
 
-            <ScrollView
-              style={styles.commentSect}
-              showsVerticalScrollIndicator={false}
-            >
+            <ScrollView style={styles.commentSect} showsVerticalScrollIndicator={false} >
               <Card style={styles.commentsInner}>
                 {Comments.map((item, index) => (
                   <View style={styles.comments} key={index}>
@@ -243,6 +242,7 @@ export default function PlayVideo ({ navigation, route }) {
             </ScrollView>
           </View>
         ) : (
+
           /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
 
           <View style={styles.descriptionContainer}>
@@ -319,41 +319,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
 
-  /*--------------Socials--------------------Socials----------------- */
-  socialIcons: {
-    width: 380,
-    flexDirection: 'row',
-    marginTop: 15,
-    left: 5,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: '#f47066',
-    alignItems: 'center',
-    justifyContent: 'space-around'
-  },
-
-  like: {
-    left: -8
-  },
-
-  dislike: {
-    marginLeft: 10,
-    marginTop: 3
-  },
-
-  share: {
-    marginLeft: 15
-  },
-
-  save: {
-    marginLeft: 2
-  },
-
-  saveIcon: {
-    marginLeft: 8
-  },
-
-  avatar: {
+  avatar:{
     width: 340,
     flexDirection: 'row'
   },
@@ -362,7 +328,6 @@ const styles = StyleSheet.create({
     width: 340
   },
 
-  /*------------Comments------------------Comments----------------------- */
   txtCards: {
     width: '100%',
     height: 37,
@@ -374,29 +339,47 @@ const styles = StyleSheet.create({
     borderColor: '#F47066'
   },
 
-  commentBox: {
-    flexDirection: 'row'
+  like:{ 
+    left: -8 
   },
 
-  txtFieldComment: {
-    margin: 8,
-    fontSize: 18,
-    borderRadius: 10,
-    ...Platform.select({
-      web: {
-        outlineColor: '#fff',
-        height: 25
-      }
-    })
+  dislike:{ 
+    marginLeft: 10, 
+    marginTop: 3 
   },
 
-  commentButton: {
-    width: '32%',
+  share: { 
+    marginLeft: 15 
+  },
+
+  commentButton:{
+    width: '60%',
     height: 50,
     borderRadius: 25,
     left: 11
   },
 
+  save:{ 
+    marginLeft: 2 
+  },
+
+  saveIcon: {
+    marginLeft: 8
+  },
+
+  
+
+  commentBox:{ 
+    flexDirection: 'row' 
+  },
+
+  comment: {
+    width: '65%',
+    height: 38,
+    borderRadius: 10,
+    backgroundColor: '#fff',
+  },
+    
   comments: {
     width: '65%',
     left: 3,
@@ -480,9 +463,29 @@ const styles = StyleSheet.create({
     paddingTop: 5
   },
 
-  owner: {
+  owner: { 
+    paddingTop: 15 
+  },
+
+  commentCount:{ 
+    width: 340, 
+    alignItems: 'flex-start' 
+  },
+
+  commentSect: { 
+    height: 220 
+  },
+
+  commentsInner: { 
+    height: 340, 
+    width: 340 
+  },
+
+
+  commentCount: {
     paddingTop: 15,
-    fontSize: 17,
-    color: '#f47066'
-  }
+  } ,
+  
+ 
+
 })

@@ -90,12 +90,11 @@ export default function Home ({ navigation, Exit }) {
           {/**------------------CallSiren--------------------CallSiren----------------- */}
           <View
             style={{
-              width: '95%',
+              width: '97%',
               flexDirection: 'row',
               marginVertical: 35,
-              justifyContent: 'flex-end'
-            }}
-          >
+              justifyContent: 'flex-end',             
+            }}>
             <View style={{ left: -15 }}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('EmergencyContacts')}
@@ -118,8 +117,7 @@ export default function Home ({ navigation, Exit }) {
               width: '100%',
               alignItems: 'center',
               justifyContent: 'space-between'
-            }}
-          >
+            }}>
             {/*-------------Header---------------Header--------------Header------- */}
             <View>
               <Header />
@@ -168,11 +166,11 @@ export default function Home ({ navigation, Exit }) {
           {/*---------------------- Video Scroll View--------------------*/}
           <View
             style={{
-              height:'45%',
+              top: 25, 
+              marginBottom: 25,
               alignItems: ' center',
               justifyContent:'center'
-            }}
-          >
+            }}>
             <ScrollView
               style={{ height: '15%', width:'100%' }}
               vertical={true}
@@ -183,7 +181,7 @@ export default function Home ({ navigation, Exit }) {
                     <View
                       style={{
                         width: '100%',
-                        marginTop: 20,
+                        marginTop: 15,
                         alignItems: 'center',
                         backgroundColor: '#b5a8a8'
                       }}
@@ -194,7 +192,7 @@ export default function Home ({ navigation, Exit }) {
                         source={{ uri: vid.url }}
                         resizeMode='stretch'
                         isLooping
-                        style={{ width: '100%', height: 235 }}
+                        style={{ width: '100%', height: 255 }}
                       />
 
                       
@@ -205,8 +203,8 @@ export default function Home ({ navigation, Exit }) {
                         >
                           <Image
                             style={{
-                              height: 50,
-                              width: 50,
+                              height: 30,
+                              width: 30,
                               borderRadius: 50,
                               top:-95,
                               alignItems:'center',
@@ -225,8 +223,7 @@ export default function Home ({ navigation, Exit }) {
                           justifyContent: 'space-between'
                         }}
                       >
-                        <Text style={styles.vidTitle}>{vid.title}</Text>
-                        <Text style={styles.tag}>{vid.views}Views</Text>
+                        <Text style={styles.vidTitle}>{vid.title}</Text>                       
                       </View>
 
                       <View
@@ -236,7 +233,14 @@ export default function Home ({ navigation, Exit }) {
                           alignItems: 'flex-start'
                         }}
                       >
-                        <Text style={styles.tag1}>{vid.tag} </Text>
+
+                        <View style={{ width: 350, flexDirection:'row', justifyContent:'space-between'}}>
+                        <Text style={styles.description}>{vid.description}</Text>
+                        <Text style={styles.tag}>{vid.views}Views</Text>
+                        </View>
+
+
+                        <Text style={styles.description}>{vid.tag} </Text>
                         <Text style={styles.tag}>{vid.stamp}</Text>
                       </View>
 
@@ -280,7 +284,11 @@ const styles = StyleSheet.create({
   vidTitle: {
     fontSize: 17,
     fontWeight: 'bold',
-    color: 'black'
+    color: 'red'
+  },
+
+  description: {
+    color: '#fff',    
   },
 
   tag: {

@@ -12,22 +12,14 @@
  **/
 
 import React, { useState, useEffect } from 'react'
-import {
-  Text,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  Platform,
-  SafeAreaView, ActivityIndicator
-} from 'react-native'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, SafeAreaView, ActivityIndicator } from 'react-native'
 import { Card } from 'react-native-paper'
 import { FontAwesome, AntDesign, EvilIcons } from '@expo/vector-icons'
 import { auth, firestore, firebase } from '../../firebase/config'
 import { handleSignIn } from '../../firebase/Auth/HandleSignIn'
 import { AlertNote } from '../../Components'
 
-export default function SignIn ({ navigation }) {
+export default function SignIn({ navigation }) {
   const [email, setEmail] = useState(''),
     [password, setPassword] = useState(''),
     [displayModal, setDisplaModal] = useState(false),
@@ -37,7 +29,7 @@ export default function SignIn ({ navigation }) {
     [prompt1, setPrompt1] = useState(null),
     [prompt2, setPrompt2] = useState(null)
 
-  const Login = () => {
+  const Login = (setMessage) => {
     if (email === '' && password === '') {
       setPrompt('Please enter thr requested information')
     } else if (email === '') {
@@ -51,106 +43,78 @@ export default function SignIn ({ navigation }) {
     } else {
       handleSignIn(email, password)
       setDisplaModal(true)
-      setVisible(true) 
-      setTimeout(function() {
+      setVisible(true)
+      setTimeout(function () {
         if (displayModal == true) {
           setVisible(false)
         } 2000
-      }) 
+      })
     }
   }
 
   return (
     <View style={styles.container}>
       <View style={{ width: '100%' }}>
-        <AlertNote
-          modalVisible={displayModal}
-          setModalVisible={setDisplaModal}
-          msg={message}
-        />
+        <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
 
         {/**----------Logo------------Logo------------- */}
-        <View style={{width:'100%'}}>
+
+        <View style={{ width: '100%' }}>
           <Card style={styles.card}>
             <View style={styles.heartIcon}>
               <FontAwesome name='heartbeat' size={110} color='#fff' />
             </View>
-            <Text style={{ textAlign:'center', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
+            <Text style={{ textAlign: 'center', color: '#fff', fontSize: 30 }}> {`X-urgency`} </Text>
           </Card>
         </View>
 
         {/*--------------Loader----------- */}
+
         {visible == true ? (
-          <ActivityIndicator size={30} color='#f47066'  />
+          <ActivityIndicator size={30} color='#f47066' />
         )
-        : (
-          null
-        )}
+          : (
+            null
+          )}
+
         {/**----------Header------------Header------------- */}
 
         <View style={styles.header}>
-          <Text
-            style={{ fontSize: 36, textAlign: 'center', color: '#F47066' }}
-          >{`SignIn`}</Text>
+          <Text style={{ fontSize: 36, textAlign: 'center', color: '#F47066' }} >{`SignIn`}</Text>
         </View>
 
-
         {/**----------txtFields------------txtFields------------- */}
+
         <View style={styles.textfieldCards}>
           {prompt ? <Text style={styles.prompt}>{prompt}</Text> : null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: 'row' }}>
-              <AntDesign
-                name='user'
-                size={20}
-                color='black'
-                style={{ margin: 13 }}
-              />
-              <TextInput
-                style={styles.txtField}
-                name='username'
-                placeholder='Username'
-                onChangeText={text => setEmail(text)}
-              />
+              <AntDesign name='user' size={20} color='black' style={{ margin: 13 }} />
+              <TextInput style={styles.txtField} name='username' placeholder='Username' onChangeText={text => setEmail(text)} />
             </View>
           </Card>
           {prompt1 ? <Text style={styles.prompt}>{prompt1}</Text> : null}
 
           <Card style={styles.txtCards}>
             <View style={{ flexDirection: 'row' }}>
-              <EvilIcons
-                name='lock'
-                size={29}
-                color='black'
-                style={{ margin: 10 }}
-              />
-              <TextInput
-                style={styles.txtField}
-                name='password'
-                placeholder='Password'
-                secureTextEntry={true}
-                onChangeText={text => setPassword(text)}
-              />
+              <EvilIcons name='lock' size={29} color='black' style={{ margin: 10 }} />
+              <TextInput style={styles.txtField} name='password' placeholder='Password' secureTextEntry={true} onChangeText={text => setPassword(text)} />
             </View>
           </Card>
           {prompt2 ? <Text style={styles.prompt}>{prompt2}</Text> : null}
         </View>
 
         {/**----------ResetPassword------------ResetPassword------------- */}
+
         <View style={styles.reset}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('ForgotPassword')
-            }}
-          >
-            <Text style={{ paddingTop: 20, fontSize: 18, color: '#F47066' }}>
-              {`Forgot Password?`}{' '}
-            </Text>
+          <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword') }} >
+            <Text style={{ paddingTop: 20, fontSize: 18, color: '#F47066' }}> {`Forgot Password?`}{' '} </Text>
           </TouchableOpacity>
         </View>
 
         {/**----------btnLogIn------------btnLogIn------------- */}
+
         <View style={styles.loginView}>
           <TouchableOpacity style={styles.signIn} onPress={Login}>
             <Text style={{ fontSize: 20, color: '#fff' }}>{`LOGIN`} </Text>
@@ -158,57 +122,25 @@ export default function SignIn ({ navigation }) {
         </View>
 
         {/*----------------------New User--------------New User------ */}
-        <View style={styles.newUser}>
-          <Text
-            style={{
-              paddingTop: 10,
-              textAlign: 'center',
-              color: 'grey',
-              fontSize: 14
-            }}>
-            {' '}
-            {`New User?`}
-          </Text>
 
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('SignUp')
-            }}
+        <View style={styles.newUser}>
+          <Text style={{ paddingTop: 10, textAlign: 'center', color: 'grey', fontSize: 14 }}> {' '}{`New User?`} </Text>
+
+          <TouchableOpacity onPress={() => { navigation.navigate('SignUp') }}
             style={{ left: 5 }}>
-            <Text style={{ paddingTop: 4, fontSize: 20, color: '#F47066' }}>
-              {`SignUp`}
-            </Text>
+            <Text style={{ paddingTop: 4, fontSize: 20, color: '#F47066' }}> {`SignUp`}  </Text>
           </TouchableOpacity>
 
         </View>
 
         {/*----------------------Medical Personel--------------Medical Personel------------------ */}
-        <View style={{ marginTop: 10, width: '100%' }}>
-          <Text
-            style={{
-              paddingTop: 10,
-              color: 'grey',
-              fontSize: 14,
-              textAlign: 'center',
-              justifyContent: 'center'
-            }}
-          >
-            {' '}
-            {`Medical Personel?`}
-          </Text>
 
-          <View
-            style={{
-              flexDirection: 'row',
-              textAlign: 'center',
-              justifyContent: 'center'
-            }}
-          >
+        <View style={{ marginTop: 10, width: '100%' }}>
+          <Text style={{ paddingTop: 10, color: 'grey', fontSize: 14, textAlign: 'center', justifyContent: 'center' }} >  {' '}  {`Medical Personel?`}</Text>
+
+          <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }} >
             <TouchableOpacity onPress={() => navigation.navigate('MedSignIn')}>
-              <Text style={{ fontSize: 20, paddingTop: 5, color: '#F47066' }}>
-                {' '}
-                {`SignIn`}
-              </Text>
+              <Text style={{ fontSize: 20, paddingTop: 5, color: '#F47066' }}>  {' '}  {`SignIn`}  </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -234,7 +166,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    textAlign:'center',
+    textAlign: 'center',
   },
 
   heartIcon: {
