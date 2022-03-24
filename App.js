@@ -51,13 +51,13 @@ export default function App() {
         {id ? (
           doctor ? (
             <>
-              {firstTimeUser ? (
+              {/* {firstTimeUser ? (
                 <>
                   <Stack.Screen name="TakeVideo" component={TakeVideo} options={{ headerShown: false }} />
                   <Stack.Screen name="ShareContent" component={ShareContent} options={{ headerShown: false }} />
                   <Stack.Screen name="LikeConn" component={LikeConn} options={{ headerShown: false }} />
                 </>
-              ) : null}
+              ) : null} */}
               <Stack.Screen name="DocHome" options={{ headerShown: false }}>
                 {(props) => <MedicalHome {...props} Exit={Exit} />}
               </Stack.Screen>
@@ -71,14 +71,13 @@ export default function App() {
             </>
           ) : (
             <>
-              {firstTimeUser ? (
+              {/* {firstTimeUser ? (
                 <>
                   <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
                   <Stack.Screen name="FollowMore" component={FollowMore} options={{ headerShown: false }} />
                   <Stack.Screen name="UrgentHelp" component={UrgentHelp} options={{ headerShown: false }} />
                 </>
-              ) : null}
-
+              ) : null} */}
               <Stack.Screen name="Home" options={{ headerShown: false }}>
                 {(props) => <Home {...props} Exit={Exit}  />}
               </Stack.Screen>
@@ -91,16 +90,14 @@ export default function App() {
           )
         ) : (
           <>
+            <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
+            <Stack.Screen name="FollowMore" component={FollowMore} options={{ headerShown: false }} />
+            <Stack.Screen name="UrgentHelp" component={UrgentHelp} options={{ headerShown: false }} />
             <Stack.Screen name="SignIn" options={{ headerShown: false }} component={SignIn} />
-            
             <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
-
             <Stack.Screen name="MedSignIn" options={{ headerShown: false }} component={MedSignIn} />
-
             <Stack.Screen name="DoctorSignUp" options={{ headerShown: false }} component={DoctorSignUp} />
-
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
-            
             <Stack.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
           </>
         )}

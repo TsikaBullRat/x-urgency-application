@@ -34,11 +34,11 @@ export default function UrgentHelp({ navigation }) {
       {/**------btnNext-----------btnNext--------- */}
 
       <View style={{ width: 360, marginTop: 15, alignItems: 'center' }}>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.buttons} >
+        <TouchableOpacity onPress={() => navigation.navigate('SignIn')} style={styles.buttons} >
           <Text style={{ fontWeight: 'bold', color: '#fff', }}> {`SignIn`} </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}
           style={styles.buttons} >
           <Text style={{ fontWeight: 'bold', color: '#fff', }}>  {`Create Account`} </Text>
         </TouchableOpacity>

@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   Image,
   Text,
-  ScrollView
+  ScrollView,
+  ActivityIndicator
 } from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
@@ -165,7 +166,11 @@ export default function Home ({ navigation, Exit }) {
                       <ItemSeperatorView />
                     </View>
                   ))
-                : null}
+                :( 
+                  <View>
+                    <ActivityIndicator size="large" color="#f47066"/>
+                  </View>
+                )}
             </ScrollView>
           </View>
         </View>

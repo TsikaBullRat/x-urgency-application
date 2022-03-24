@@ -20,13 +20,13 @@ const MedProfile = ({ navigation, route }) => {
   const [data, setData] = useState(null);
   const [subscription, setSubscription] = useState({ text: "", Func: () => null })
 
-  const getDoctorInfo = () => {
-    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+  const getDoctorInfo = async () => {
+    await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
       .then(doc => {
         setData(doc.data())
       })
 
-    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+    await firestore.collection("Users").doc(info).get()
       .then(doc => {
         setDoctor(doc.data().username)
         setEmail(doc.data().email)
@@ -34,12 +34,12 @@ const MedProfile = ({ navigation, route }) => {
   }
 
   const Subscribe = async () => {
-    let change = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+    let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
       .then(doc => {
         return doc.data().subscribers
       })
 
-    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").update({
+    firestore.collection("Users").doc(info).collection("cred").doc(info).update({
       subscribers: [...change, auth.currentUser.uid]
     })
 
@@ -50,13 +50,13 @@ const MedProfile = ({ navigation, route }) => {
   }
 
   const unSubscribe = async () => {
-    let change = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+    let change = await firestore.collection("Users").doc(info).collection("cred").doc(info).get()
       .then(doc => {
         return doc.data().subscribers
       })
 
     change = change.filter(item => item !== auth.currentUser.uid)
-    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").update({
+    firestore.collection("Users").doc(info).collection("cred").doc(info).update({
       subscribers: change
     })
 
@@ -75,7 +75,7 @@ const MedProfile = ({ navigation, route }) => {
   const getProfile = async () => {
     let name
     setImage(false)
-    name = await firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get().then(doc => doc.data().username)
+    name = await firestore.collection("Users").doc(info).get().then(doc => doc.data().username)
     setInitial(name.substring(0, 1))
   }
 
@@ -83,8 +83,12 @@ const MedProfile = ({ navigation, route }) => {
     getProfile()
   }, [])
 
+  useEffect(()=>{
+    console.log(data)
+  }, [])
+
   useEffect(() => {
-    firestore.collection("Users").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").collection("cred").doc(/*info*/"XYRltIaLknbfJrvZG4OfyOtGYTz2").get()
+    firestore.collection("Users").doc(info).collection("cred").doc(info).get()
       .then(doc => {
         let array = []
         array = [...array, doc.data().subscribers]
@@ -149,7 +153,7 @@ const MedProfile = ({ navigation, route }) => {
 
       <View style={{ paddingTop: 20, width: 335, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
         <Socials text="Following" number="15" />
-        <Socials text="Followers" number={data.subscribers ? data.subscribers.length : 0} />
+        <Socials text="Followers" number={/*data.subscribers ? data.subscribers.length : 0*/0} />
         <Socials text="Likes" number="3.1M" />
       </View>
 
