@@ -21,7 +21,6 @@ import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
 import { AntDesign } from '@expo/vector-icons'
 import { Video } from 'expo-av'
-// import {Video101} from '../../images/Video101.mp4'
 
 export default function Home ({ navigation, Exit }) {
   const [status, setStatus] = useState({})
@@ -43,23 +42,12 @@ export default function Home ({ navigation, Exit }) {
           // setImage(doc.photoURL)
           // console.log(doc.displayName)
           setInitial(doc.displayName.substring(0, 1))
-          console.log(auth.currentUser)
         })
   }, [])
 
   useEffect(() => {
-    firestore.collection('Videos').onSnapshot(snapshot => {
-      const videos = snapshot.docs.map(doc => ({
-        ...doc.data()
-      }))
-      setCollection(videos)
-      console.log(videos)
-    })
+    LoadSet(setCollection)
   }, [])
-
-  const video101 = useState({
-    uri: require('../../images/Video101.mp4')
-  })
 
   const ItemSeperatorView = () => {
     return (
@@ -89,13 +77,8 @@ export default function Home ({ navigation, Exit }) {
 
           {/**------------------CallSiren--------------------CallSiren----------------- */}
           <View
-            style={{
-              width: '97%',
-              flexDirection: 'row',
-              marginVertical: 35,
-              justifyContent: 'flex-end',             
-            }}>
-            <View style={{ left: -15 }}>
+            style={styles.callSiren}>
+            <View style={styles.emergency}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('EmergencyContacts')}
               >
@@ -103,7 +86,7 @@ export default function Home ({ navigation, Exit }) {
               </TouchableOpacity>
             </View>
 
-            <View style={{ marginTop: 10 }}>
+            <View style={styles.logout}>
               <TouchableOpacity onPress={Exit}>
                 <LogOutComp />
               </TouchableOpacity>
@@ -112,18 +95,13 @@ export default function Home ({ navigation, Exit }) {
 
           {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
           <View
-            style={{
-              flexDirection: 'row',
-              width: '100%',
-              alignItems: 'center',
-              justifyContent: 'space-between'
-            }}>
+            style={styles.upperView}>
             {/*-------------Header---------------Header--------------Header------- */}
             <View>
               <Header />
             </View>
 
-            <View style={{ top: -25 }}>
+            <View style={styles.displaypicture}>
               {image ? (
                 <Avatar rounded source={{ uri: image }} size='large' />
               ) : (
@@ -135,115 +113,55 @@ export default function Home ({ navigation, Exit }) {
           </View>
 
           {/**-----------Menu Category--------------Menu Category--------------------- */}
-          <View style={{ width: '100%', alignItems: 'center' }}>
+          {/* <View style={{ width: '100%', alignItems: 'center' }}> */}
             <Menu />
-          </View>
-
-          {/* {!visibleStatusBar ? (
-            <View style={styles.dropdown}>
-              <TouchableOpacity
-                title='topNav'
-                onPress={() => changeVisibilityStatusBar()}
-              >
-                <AntDesign name='downcircle' size={18} color='black' />
-              </TouchableOpacity>
-            </View>
-          ) : (
-
-            <View style={styles.descriptionContainer}>
-              <View style={styles.close}>
-                <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                  <AntDesign name='closecircle' size={18} color='black' />
-                </TouchableOpacity>
-              </View>
-
-              <Card
-                style={{ height: 150, width: 150, backgroundColor: '#f47066' }}
-              />
-            </View>
-          )} */}
+          {/* </View> */}
 
           {/*---------------------- Video Scroll View--------------------*/}
           <View
-            style={{
-              top: 25, 
-              marginBottom: 25,
-              alignItems: ' center',
-              justifyContent:'center'
-            }}>
+            style={styles.videoList}>
             <ScrollView
-              style={{ height: '15%', width:'100%' }}
+              // style={{ height: '15%', width:'100%' }}
               vertical={true}
               showsVerticalScrollIndicator={false}
             >
               {collection
                 ? collection.map((vid, index) => (
                     <View
-                      style={{
-                        width: '100%',
-                        marginTop: 15,
-                        alignItems: 'center',
-                        backgroundColor: '#b5a8a8'
-                      }}
+                      style={styles.videoContainer}
                       key={index}
                     >
+                      
                       <Video
                         ref={vid.index}
                         source={{ uri: vid.url }}
                         resizeMode='stretch'
                         isLooping
-                        style={{ width: '100%', height: 255 }}
+                        style={styles.video}
                       />
-
-                      
-                        <TouchableOpacity
-                          onPress={() =>
-                            navigation.navigate('PlayVideo', { vid })
-                          }
-                        >
-                          <Image
-                            style={{
-                              height: 30,
-                              width: 30,
-                              borderRadius: 50,
-                              top:-95,
-                              alignItems:'center',
-                              justifyContent:'center',
-                              backgroundColor: '#f47066'
-                            }}
-                            source={require('../../images/PlayMenu.jpg')}
-                          />
-                        </TouchableOpacity>                   
-
+                        <TouchableOpacity style={styles.playContainer} onPress={() =>navigation.navigate('PlayVideo', {vid})} >
+                          <Image style={styles.playButton} source={require('../../images/playMenu.jpg')} />
+                        </TouchableOpacity>
                       <View
-                        style={{
-                          width: '98%',
-                          flexDirection: 'row',
-                          margin: 3,
-                          justifyContent: 'space-between'
-                        }}
+                        style={styles.titleVideo}
                       >
                         <Text style={styles.vidTitle}>{vid.title}</Text>                       
                       </View>
 
                       <View
-                        style={{
-                          width: '98%',
-                          margin: 3,
-                          alignItems: 'flex-start'
-                        }}
+                        style={styles.desBox}
                       >
 
-                        <View style={{ width: 350, flexDirection:'row', justifyContent:'space-between'}}>
+                        <View style={styles.desBox2}>
                         <Text style={styles.description}>{vid.description}</Text>
-                        <Text style={styles.tag}>{vid.views}Views</Text>
+                        <Text style={styles.tag}>{vid.views} views</Text>
                         </View>
 
 
                         <Text style={styles.description}>{vid.tag} </Text>
                         <Text style={styles.tag}>{vid.stamp}</Text>
                       </View>
-
+                      
                       <ItemSeperatorView />
                     </View>
                   ))
@@ -313,5 +231,68 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: '#fff',
     textAlign: 'center'
+  },
+  callSiren:{
+    width: '97%',
+    flexDirection: 'row',
+    marginVertical: 35,
+    justifyContent: 'flex-end',             
+  },
+  emergency:{ 
+    left: -15 
+  },
+  logout:{ 
+    marginTop: 10 
+  },
+  upperView:{
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  displaypicture:{ 
+    top: -25 
+  },
+  videoList:{
+    top: 25, 
+    marginBottom: 25,
+    alignItems: 'center',
+    justifyContent:'center'
+  },
+  videoContainer:{
+    width: '100%',
+    marginTop: 15,
+    alignItems: 'center',
+    backgroundColor: '#b5a8a8'
+  },
+  video:{ 
+    width: '100%', 
+    height: 255 
+  },
+  playButton:{
+    borderRadius: 50
+  },
+  playContainer:{
+    height: 50,
+    width: 50,
+    borderRadius: 50,
+    backgroundColor: '#f47066',
+    bottom: 150,
+  },
+  titleVideo:{
+    width: '98%',
+    flexDirection: 'row',
+    margin: 3,
+    justifyContent: 'space-between'
+  },
+  desBox: {
+    width: '98%',
+    margin: 3,
+    alignItems: 'flex-start'
+  },
+  desBox2: { 
+    width: 350, 
+    flexDirection:'row', 
+    justifyContent:'space-between'
   }
 })
