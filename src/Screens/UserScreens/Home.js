@@ -138,13 +138,7 @@ export default function Home({ navigation, Exit }) {
 
                         <Text style={styles.tag}>{vid.stamp}</Text>
                       </View>
-
-                      <Text style={styles.description}>{vid.tag} </Text>
-                      <Text style={styles.tag}>{vid.stamp}</Text>
-                    </View>
-
-                    <ItemSeperatorView />
-                  </View>
+                    </View>            
                 ))
                 : null}
             </ScrollView>
@@ -188,8 +182,9 @@ const styles = StyleSheet.create({
 
   titleVideo: {
     width:355,
-    left:5,
-    alignItems:'center', justifyContent:'center'
+    left:2,
+    alignItems:'center', 
+    justifyContent:'center'
   },
 
   playMenu: {
@@ -254,13 +249,12 @@ const styles = StyleSheet.create({
   videoList:{
     top: 25, 
     width:'100%',
-    left:5,
     alignItems: 'center',
     justifyContent: 'center'
   },
 
   videoContainer:{
-    width: '98%',
+    width: '100%',
     marginTop: 10,
     alignItems: 'center',
     backgroundColor: '#b5a8a8'
