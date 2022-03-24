@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useRef, useState, useEffect } from 'react'
 import {
   View,
@@ -33,6 +34,34 @@ const Clone = ({ route, navigation }) => {
   const [comment, setComment] = useState('')
   const [visibleStatusBar, setVisibleStatusBar] = useState(false)
   const [status, setStatus] = React.useState({})
+=======
+import React, { useRef, useState, useEffect } from "react";
+import { View, Button, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Share, } from "react-native";
+import { Video } from "expo-av";
+import { WebView } from "react-native-webview";
+import { AntDesign, FontAwesome5, Entypo } from "@expo/vector-icons";
+import { Avatar } from "react-native-elements";
+import { Card } from "react-native-paper";
+import { Likes } from "../firebase/Functions/Likes";
+import { Dislikes } from "../firebase/Functions/Dislikes";
+import { Collect, Post } from "../firebase/Storage/Storage.functions";
+import { firestore, auth } from '../firebase/config';
+
+const Clone = ({ route, navigation }) => {
+  const data = route.params.vid;
+
+  const [userName, setUserName] = useState(data.owner);
+  const [videoPlay, setVideoPlay] = useState(data.url);
+  const [views, setViews] = useState(data.views);
+  const [videoVisible, setVideoVisible] = useState(true);
+  const [count, setCount] = useState(0);
+  const reference = useRef(data.url);
+  const [info, setInfo] = useState();
+  const [Comments, setComments] = useState([]);
+  const [comment, setComment] = useState("");
+  const [visibleStatusBar, setVisibleStatusBar] = useState(false);
+  const [status, setStatus] = React.useState({});
+>>>>>>> 304931dcd3d806864fee840a734a6a5879abafef
   const [likes, setLikes] = useState(0)
   const [dislikes, setDislikes] = useState(0)
   const [pressed, setPressed] = useState(false)
@@ -56,6 +85,7 @@ const Clone = ({ route, navigation }) => {
     found
       ? null
       : (metadata.set({
+<<<<<<< HEAD
           liked: false,
           disliked: false,
           Comments: [null],
@@ -63,6 +93,15 @@ const Clone = ({ route, navigation }) => {
         }),
         setViews(views + 1))
   }
+=======
+        liked: false,
+        disliked: false,
+        Comments: [null],
+        ref: auth.currentUser.uid,
+      }),
+        setViews(views + 1));
+  };
+>>>>>>> 304931dcd3d806864fee840a734a6a5879abafef
 
   const Navigate = () => {
     let match = data.match
@@ -128,6 +167,18 @@ const Clone = ({ route, navigation }) => {
 
   return (
     <View style={styles.contain}>
+<<<<<<< HEAD
+=======
+
+      {/**-------BACK------BACK-------BACK */}
+
+      <View style={styles.back}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text>{`BACK`}</Text>
+        </TouchableOpacity>
+      </View>
+
+>>>>>>> 304931dcd3d806864fee840a734a6a5879abafef
       {/**-------------Video----------------Video-----------------Video---------------- */}
       <View style={styles.videoContainer}>
         <View style={styles.video}>
@@ -154,6 +205,7 @@ const Clone = ({ route, navigation }) => {
       </View>
 
       {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
+
       <View>
         {!visibleStatusBar ? (
           <View style={styles.statusOff}>
@@ -179,6 +231,7 @@ const Clone = ({ route, navigation }) => {
 
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
             <View style={styles.socialIcons}>
+
               {/*------------Likes-------------Likes--------Likes*/}
               <View style={styles.like}>
                 <Likes
@@ -272,6 +325,7 @@ const Clone = ({ route, navigation }) => {
             </ScrollView>
           </View>
         ) : (
+
           /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
 
           <View style={styles.hiddenDescription}>

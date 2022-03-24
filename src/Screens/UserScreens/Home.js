@@ -1,12 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  Text,
-  ScrollView
-} from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Image, Text, ScrollView } from 'react-native'
 // import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
 import { auth, firestore } from '../../firebase/config'
@@ -22,7 +15,7 @@ import { AlertNote } from '../../Components/Alert'
 import { AntDesign } from '@expo/vector-icons'
 import { Video } from 'expo-av'
 
-export default function Home ({ navigation, Exit }) {
+export default function Home({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null)
   const [image, setImage] = useState(null)
@@ -37,12 +30,12 @@ export default function Home ({ navigation, Exit }) {
   useEffect(() => {
     auth.currentUser
       ? //  (setImage(auth.currentUser.photoURL),
-        setInitial(auth.currentUser.displayName.substring(0, 1))
+      setInitial(auth.currentUser.displayName.substring(0, 1))
       : auth.onAuthStateChanged(doc => {
-          // setImage(doc.photoURL)
-          // console.log(doc.displayName)
-          setInitial(doc.displayName.substring(0, 1))
-        })
+        // setImage(doc.photoURL)
+        // console.log(doc.displayName)
+        setInitial(doc.displayName.substring(0, 1))
+      })
   }, [])
 
   useEffect(() => {
@@ -51,14 +44,7 @@ export default function Home ({ navigation, Exit }) {
 
   const ItemSeperatorView = () => {
     return (
-      <View
-        style={{
-          height: 0.5,
-          width: 380,
-          left: -10,
-          backgroundColor: '#c8c8c8'
-        }}
-      />
+      <View style={{ height: 0.5, width: 380, left: -10, backgroundColor: '#c8c8c8' }} />
     )
   }
 
@@ -68,11 +54,7 @@ export default function Home ({ navigation, Exit }) {
   return (
     <View style={styles.container}>
         <View style={{ width: '100%' }}>
-          <AlertNote
-            modalVisible={displayModal}
-            setModalVisible={setDisplaModal}
-            msg={message}
-          />
+          <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
 
           {/**------------------CallSiren--------------------CallSiren----------------- */}
           <View style={styles.callSiren}>
@@ -90,9 +72,12 @@ export default function Home ({ navigation, Exit }) {
           </View>
 
           {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
+
           <View
             style={styles.upperView}>
+
             {/*-------------Header---------------Header--------------Header------- */}
+
             <View>
               <Header />
             </View>
@@ -109,18 +94,20 @@ export default function Home ({ navigation, Exit }) {
           </View>
 
           {/**-----------Menu Category--------------Menu Category--------------------- */}
+
           {/* <View style={{ width: '100%', alignItems: 'center' }}> */}
-            <Menu />
+
+          <Menu />
+
           {/* </View> */}
 
           {/*---------------------- Video Scroll View--------------------*/}
+
           <View
             style={styles.videoList}>
             <ScrollView
               // style={{ height: '15%', width:'100%' }}
-              vertical={true}
-              showsVerticalScrollIndicator={false}
-            >
+              vertical={true} showsVerticalScrollIndicator={false} >
               {collection
                 ? collection.map((vid, index) => (
                     <View style={styles.videoContainer}
@@ -151,10 +138,14 @@ export default function Home ({ navigation, Exit }) {
 
                         <Text style={styles.tag}>{vid.stamp}</Text>
                       </View>
-                      
-                      <ItemSeperatorView />
+
+                      <Text style={styles.description}>{vid.tag} </Text>
+                      <Text style={styles.tag}>{vid.stamp}</Text>
                     </View>
-                  ))
+
+                    <ItemSeperatorView />
+                  </View>
+                ))
                 : null}
             </ScrollView>
           </View>
@@ -168,7 +159,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    height:'100%',
+    height: '100%',
     backgroundColor: '#fff'
   },
 
@@ -215,7 +206,7 @@ const styles = StyleSheet.create({
   },
 
   description: {
-    color: '#fff',    
+    color: '#fff',
   },
 
   tag: {
@@ -265,7 +256,7 @@ const styles = StyleSheet.create({
     width:'100%',
     left:5,
     alignItems: 'center',
-    justifyContent:'center'
+    justifyContent: 'center'
   },
 
   videoContainer:{
@@ -278,7 +269,8 @@ const styles = StyleSheet.create({
     width: 360, 
     height: 255 
   },
-  playButton:{
+
+  playButton: {
     borderRadius: 50
   },
   playContainer:{
@@ -286,20 +278,24 @@ const styles = StyleSheet.create({
     width: 25,
     borderRadius: 50,
   },
-  titleVideo:{
+
+  titleVideo: {
     width: '98%',
     flexDirection: 'row',
     margin: 3,
     justifyContent: 'space-between'
   },
+
   desBox: {
     width: '98%',
     margin: 3,
     alignItems: 'flex-start'
   },
-  desBox2: { 
-    width: 350, 
-    flexDirection:'row', 
-    justifyContent:'space-between'
-  }
+
+  desBox2: {
+    width: 350,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+
 })

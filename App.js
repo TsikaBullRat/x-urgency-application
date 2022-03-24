@@ -81,7 +81,7 @@ export default function App() {
               ) : null}
 
               <Stack.Screen name="Home" options={{ headerShown: false }}>
-                {(props) => <Home {...props} Exit={Exit}  />}
+                {(props) => <Home {...props} Exit={Exit} />}
               </Stack.Screen>
               <Stack.Screen name="Doctor" component={MedProfile} options={{ headerShown: false }} />
               <Stack.Screen name="PlayVideo" component={Clone} options={{ headerShown: false }} />
@@ -93,7 +93,7 @@ export default function App() {
         ) : (
           <>
             <Stack.Screen name="SignIn" options={{ headerShown: false }} component={SignIn} />
-            
+
             <Stack.Screen name="SignUp" options={{ headerShown: false }} component={SignUp} />
 
             <Stack.Screen name="MedSignIn" options={{ headerShown: false }} component={MedSignIn} />
@@ -101,7 +101,7 @@ export default function App() {
             <Stack.Screen name="DoctorSignUp" options={{ headerShown: false }} component={DoctorSignUp} />
 
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
-            
+
             <Stack.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
             <Stack.Screen name="DocHome" options={{ headerShown: false }}>
                 {(props) => <MedicalHome {...props} Exit={Exit} />}
