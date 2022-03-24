@@ -7,44 +7,44 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
-  Share,
-} from "react-native";
-import { Video } from "expo-av";
-import { WebView } from "react-native-webview";
-import { AntDesign, FontAwesome5, Entypo } from "@expo/vector-icons";
-import { Avatar } from "react-native-elements";
-import { Card } from "react-native-paper";
-import { Likes } from "../firebase/Functions/Likes";
-import { Dislikes } from "../firebase/Functions/Dislikes";
-import { Collect, Post } from "../firebase/Storage/Storage.functions";
-import { firestore, auth } from '../firebase/config';
+  Share, Platform
+} from 'react-native'
+import { Video } from 'expo-av'
+import { WebView } from 'react-native-webview'
+import { AntDesign, FontAwesome5, Entypo } from '@expo/vector-icons'
+import { Avatar } from 'react-native-elements'
+import { Card } from 'react-native-paper'
+import { Likes } from '../firebase/Functions/Likes'
+import { Dislikes } from '../firebase/Functions/Dislikes'
+import { Collect, Post } from '../firebase/Storage/Storage.functions'
+import { firestore, auth } from '../firebase/config'
 
 const Clone = ({ route, navigation }) => {
-  const data = route.params.vid;
+  const data = route.params.vid
 
-  const [userName, setUserName] = useState(data.owner);
-  const [videoPlay, setVideoPlay] = useState(data.url);
-  const [views, setViews] = useState(data.views);
-  const [videoVisible, setVideoVisible] = useState(true);
-  const [count, setCount] = useState(0);
-  const reference = useRef(data.url);
-  const [info, setInfo] = useState();
-  const [Comments, setComments] = useState([]);
-  const [comment, setComment] = useState("");
-  const [visibleStatusBar, setVisibleStatusBar] = useState(false);
-  const [status, setStatus] = React.useState({});
-  const [ likes, setLikes] = useState(0)
-  const [ dislikes, setDislikes] = useState(0)
+  const [userName, setUserName] = useState(data.owner)
+  const [videoPlay, setVideoPlay] = useState(data.url)
+  const [views, setViews] = useState(data.views)
+  const [videoVisible, setVideoVisible] = useState(true)
+  const [count, setCount] = useState(0)
+  const reference = useRef(data.url)
+  const [info, setInfo] = useState()
+  const [Comments, setComments] = useState([])
+  const [comment, setComment] = useState('')
+  const [visibleStatusBar, setVisibleStatusBar] = useState(false)
+  const [status, setStatus] = React.useState({})
+  const [likes, setLikes] = useState(0)
+  const [dislikes, setDislikes] = useState(0)
   const [pressed, setPressed] = useState(false)
   const [newComment, setNew] = useState(false)
 
   const LoadVideo = () => {
-    const uri = data.url;
-  };
+    const uri = data.url
+  }
 
   const changeVisibilityStatusBar = () => {
-    setVisibleStatusBar(!visibleStatusBar);
-  };
+    setVisibleStatusBar(!visibleStatusBar)
+  }
 
   const addAct = async () => {
     let metadata = firestore
@@ -61,15 +61,15 @@ const Clone = ({ route, navigation }) => {
           Comments: [null],
           ref: auth.currentUser.uid
         }),
-        setViews(views + 1));
-  };
+        setViews(views + 1))
+  }
 
   const Navigate = () => {
-    let match = data.match;
-    navigation.navigate("Doctor", { match });
-  };
+    let match = data.match
+    navigation.navigate('Doctor', { match })
+  }
 
-  const Delete = (remove) => {
+  const Delete = remove => {
     firestore
       .collection('Videos')
       .doc(data.firestore)
@@ -97,11 +97,11 @@ const Clone = ({ route, navigation }) => {
     setComments(Comments.filter(item => item.comment !== remove))
   }
 
-  const Comment = () =>{
+  const Comment = () => {
     Post(comment, data.firestore)
     setNew(!newComment)
   }
-  const ShareItem = async (url) => {
+  const ShareItem = async url => {
     try {
       const result = await Share.share({ url: url })
       if (result.action === Share.sharedAction) {
@@ -121,30 +121,35 @@ const Clone = ({ route, navigation }) => {
   }
 
   useEffect(() => {
-    Collect(data.firestore, setComments, setCount);
-  }, [newComment]);
+    Collect(data.firestore, setComments, setCount)
+  }, [newComment])
 
   // useEffect(()=>console.log(Comments), [])
 
   return (
     <View style={styles.contain}>
-      {/**-------BACK------BACK-------BACK */}
-
-      <View style={styles.back}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text>{`BACK`}</Text>
-        </TouchableOpacity>
-      </View>
-
       {/**-------------Video----------------Video-----------------Video---------------- */}
-
       <View style={styles.videoContainer}>
         <View style={styles.video}>
-          <WebView
-            source={{
-              uri: videoPlay
-            }}
-          />
+          {Platform.OS == 'Android' ? (
+            <WebView
+              source={{
+                uri: data.url
+              }}
+            />
+          ) : (
+            <View>
+              <Video
+                
+                ref={data.index}
+                source={{ uri: videoPlay }}
+                useNativeControls
+                resizeMode='stretch'
+                isLooping
+                style={styles.video}
+              />
+            </View>
+          )}
         </View>
       </View>
 
@@ -157,6 +162,7 @@ const Clone = ({ route, navigation }) => {
               <Text style={styles.viewCount}>
                 {views} views - {data.stamp}
               </Text>
+
               {/*------------DropDown-------------DropDown--------DropDown*/}
               <TouchableOpacity
                 title='topNav'
@@ -174,9 +180,12 @@ const Clone = ({ route, navigation }) => {
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
             <View style={styles.socialIcons}>
               {/*------------Likes-------------Likes--------Likes*/}
-
               <View style={styles.like}>
-                <Likes data={data.firestore} pressed={pressed} setPressed={setPressed} />
+                <Likes
+                  data={data.firestore}
+                  pressed={pressed}
+                  setPressed={setPressed}
+                />
               </View>
 
               {/* <TouchableOpacity onPress={Like}>
@@ -185,9 +194,12 @@ const Clone = ({ route, navigation }) => {
               </TouchableOpacity> */}
 
               {/*------------DisLikes-------------DisLikes--------DisLikes*/}
-
               <View style={styles.dislike}>
-                <Dislikes data={data.firestore} pressed={pressed} setPressed={setPressed} />
+                <Dislikes
+                  data={data.firestore}
+                  pressed={pressed}
+                  setPressed={setPressed}
+                />
               </View>
 
               {/* <TouchableOpacity onPress={Dislike}>
@@ -195,7 +207,6 @@ const Clone = ({ route, navigation }) => {
                 <Text style={{ paddingTop: 6 }}> {dislikes}</Text>
               </TouchableOpacity> */}
               {/*------------Share-------------Share--------Share*/}
-
               <View style={styles.share}>
                 <TouchableOpacity onPress={() => ShareItem(data.url)}>
                   <View style={styles.shareIcon}>
@@ -206,7 +217,6 @@ const Clone = ({ route, navigation }) => {
               </View>
 
               {/*------------Save-------------Save--------Save*/}
-
               <View style={styles.save}>
                 <View style={styles.saveIcon}>
                   <Entypo name='save' size={20} color='black' />
@@ -229,7 +239,6 @@ const Clone = ({ route, navigation }) => {
             </View>
 
             {/*------------Comments-------------Comments--------Comments*/}
-
             <Card style={styles.txtCards}>
               <View style={styles.commentBox}>
                 <TextInput
@@ -239,11 +248,7 @@ const Clone = ({ route, navigation }) => {
                   onChangeText={text => setComment(text)}
                 />
                 <View style={styles.commentButton}>
-                  <Button
-                    color="#F47066"
-                    onPress={Comment}
-                    title="Comment"
-                  />
+                  <Button color='#F47066' onPress={Comment} title='Comment' />
                 </View>
               </View>
             </Card>
@@ -254,7 +259,8 @@ const Clone = ({ route, navigation }) => {
 
             <ScrollView
               style={styles.commentSect}
-              showsVerticalScrollIndicator={false}>
+              showsVerticalScrollIndicator={false}
+            >
               <Card style={styles.commentsInner}>
                 {Comments.map((item, index) => (
                   <View style={styles.comments} key={index}>
@@ -294,41 +300,36 @@ const Clone = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   contain: {
     flex: 1,
+    width: '100%',
     alignItems: 'center',
     backgroundColor: '#fff'
   },
 
-  back: {
-    marginTop: 10,
-    width: 340,
-    alignItems: 'flex-start'
-  },
-
   videoContainer: {
     width: '100%',
-    marginTop: 25,
     backgroundColor: '#f7eeed'
   },
 
   video: {
-    width: '100%',
-    height: 180
+    width: 360,
+    height: 220
   },
 
   statusOff: {
-    width: 340,
-    justifyContent: 'space-between'
+    width: '100%',
+    alignItems: 'center'
   },
 
   title: {
     flexDirection: 'row',
-    width: 340,
-    marginTop: 20,
+    width: '85%',
+    marginTop: 10,
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-around'
   },
 
   vidTitle: {
+    fontSize: 17,
     fontWeight: 'bold',
     color: '#F47066'
   },
@@ -354,25 +355,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
 
-  like: {
-  },
+  like: {},
 
   dislike: {
     marginTop: 3
   },
 
   shareIcon: {
-     marginLeft: 8
+    marginLeft: 8
   },
 
-  shareText: { paddingTop: 5, },
+  shareText: { paddingTop: 5 },
 
   save: {
-    left:-15
+    left: -15
   },
 
   saveIcon: {
-    left:8
+    left: 8
   },
 
   saveText: { paddingTop: 5 },
@@ -410,7 +410,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 15,
     marginTop: 2,
-    left: -50
+    left: -5
   },
 
   commentCount: {
@@ -457,11 +457,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
 
-  descriptionHead: { 
-    fontWeight: 'bold', 
-    color: '#F47066', 
-    fontSize: 22 
-},
+  descriptionHead: {
+    fontWeight: 'bold',
+    color: '#F47066',
+    fontSize: 22
+  },
 
   descriptionText: {
     maxWidth: 315,

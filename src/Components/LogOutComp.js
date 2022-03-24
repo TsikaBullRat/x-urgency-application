@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   logoutIMG: {
     height: 20,
     width: 20,
+    top:10
   }
 
 })

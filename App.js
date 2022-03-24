@@ -76,6 +76,7 @@ export default function App() {
                   <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
                   <Stack.Screen name="FollowMore" component={FollowMore} options={{ headerShown: false }} />
                   <Stack.Screen name="UrgentHelp" component={UrgentHelp} options={{ headerShown: false }} />
+
                 </>
               ) : null}
 
@@ -102,6 +103,9 @@ export default function App() {
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{ headerShown: false }} />
             
             <Stack.Screen name="ResetPassword" component={ResetPassword} options={{ headerShown: false }} />
+            <Stack.Screen name="DocHome" options={{ headerShown: false }}>
+                {(props) => <MedicalHome {...props} Exit={Exit} />}
+                </Stack.Screen>
           </>
         )}
       </Stack.Navigator>

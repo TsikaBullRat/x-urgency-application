@@ -110,10 +110,10 @@ export default function MedSignIn({ navigation }) {
         {/*----------------------New User--------------New User------ */}
 
         <View style={styles.newUser}>
-          <Text style={{ paddingTop: 10, textAlign: 'center', color: 'grey', fontSize: 14 }}> {' '} {`New User?`} </Text>
+          <Text style={{ paddingTop: 10, textAlign: 'center', color: 'grey', fontSize: 14 }}> {`New User?`} </Text>
 
           <TouchableOpacity onPress={() => { navigation.navigate('DoctorSignUp') }}
-            style={{ left: 5 }}>
+            style={{ left: 2 }}>
             <Text style={{ paddingTop: 4, fontSize: 20, color: '#F47066' }}>  {`SignUp`} </Text>
           </TouchableOpacity>
         </View>

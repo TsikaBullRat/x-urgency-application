@@ -67,7 +67,6 @@ export default function Home ({ navigation, Exit }) {
 
   return (
     <View style={styles.container}>
-      <View style={{ alignItems: 'center' }}>
         <View style={{ width: '100%' }}>
           <AlertNote
             modalVisible={displayModal}
@@ -76,21 +75,18 @@ export default function Home ({ navigation, Exit }) {
           />
 
           {/**------------------CallSiren--------------------CallSiren----------------- */}
-          <View
-            style={styles.callSiren}>
-            <View style={styles.emergency}>
+          <View style={styles.callSiren}>
+            <View style={styles.headIcons}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('EmergencyContacts')}
               >
                 <CallSiren />
               </TouchableOpacity>
-            </View>
 
-            <View style={styles.logout}>
               <TouchableOpacity onPress={Exit}>
                 <LogOutComp />
               </TouchableOpacity>
-            </View>
+              </View>
           </View>
 
           {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
@@ -127,32 +123,28 @@ export default function Home ({ navigation, Exit }) {
             >
               {collection
                 ? collection.map((vid, index) => (
-                    <View
-                      style={styles.videoContainer}
-                      key={index}
-                    >
+                    <View style={styles.videoContainer}
+                      key={index}>
                       
                       <Video
                         ref={vid.index}
                         source={{ uri: vid.url }}
                         resizeMode='stretch'
                         isLooping
-                        style={styles.video}
-                      />
+                        style={styles.video}/>
+                        
                         <TouchableOpacity style={styles.playContainer} onPress={() =>navigation.navigate('PlayVideo', {vid})} >
-                          <Image style={styles.playButton} source={require('../../images/playMenu.jpg')} />
+                          <Image style={styles.playMenu} source={require('../../images/playMenu.jpg')} />
                         </TouchableOpacity>
-                      <View
-                        style={styles.titleVideo}
-                      >
-                        <Text style={styles.vidTitle}>{vid.title}</Text>                       
+
+                      <View style={styles.titleVideo} >
+                        <Text style={styles.vidTitle}>{vid.title}
+                        </Text>                       
                       </View>
 
-                      <View
-                        style={styles.desBox}
-                      >
+                      <View >
 
-                        <View style={styles.desBox2}>
+                        <View style={{width:355, flexDirection:'row', alignitems:'center', justifyContent:'space-between'}}>
                         <Text style={styles.description}>{vid.description}</Text>
                         <Text style={styles.tag}>{vid.views} views</Text>
                         </View>
@@ -166,8 +158,8 @@ export default function Home ({ navigation, Exit }) {
                 : null}
             </ScrollView>
           </View>
+
         </View>
-      </View>
     </View>
   )
 }
@@ -178,6 +170,13 @@ const styles = StyleSheet.create({
     width: '100%',
     height:'100%',
     backgroundColor: '#fff'
+  },
+
+  headIcons: {
+    width: '100%',
+    left: 5, 
+    flexDirection:'row', 
+    justifyContent: 'space-between' 
   },
 
   logoutIMG: {
@@ -194,6 +193,19 @@ const styles = StyleSheet.create({
   categoryListText: {
     fontSize: 17,
     fontWeight: 'bold'
+  },
+
+  titleVideo: {
+    width:355,
+    left:5,
+    alignItems:'center', justifyContent:'center'
+  },
+
+  playMenu: {
+    width:25,
+    height:25,
+    borderRadius:50,
+    top:-125
   },
 
   vidTitle: {
@@ -218,7 +230,6 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 50,
-    left: -10,
     backgroundColor: 'turquoise',
     alignItems: 'center',
     justifyContent: 'center'
@@ -229,52 +240,51 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center'
   },
+  
   callSiren:{
-    width: '97%',
-    flexDirection: 'row',
+    width: '95%',
     marginVertical: 35,
-    justifyContent: 'flex-end',             
+    alignItems:'center',            
   },
-  emergency:{ 
-    left: -15 
-  },
-  logout:{ 
-    marginTop: 10 
-  },
+
+
   upperView:{
     flexDirection: 'row',
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between'
   },
+
   displaypicture:{ 
-    top: -25 
+    top: -25,
+    left:-8 
   },
+
   videoList:{
     top: 25, 
-    marginBottom: 25,
+    width:'100%',
+    left:5,
     alignItems: 'center',
     justifyContent:'center'
   },
+
   videoContainer:{
-    width: '100%',
-    marginTop: 15,
+    width: '98%',
+    marginTop: 10,
     alignItems: 'center',
     backgroundColor: '#b5a8a8'
   },
   video:{ 
-    width: '100%', 
+    width: 360, 
     height: 255 
   },
   playButton:{
     borderRadius: 50
   },
   playContainer:{
-    height: 50,
-    width: 50,
+    height: 25,
+    width: 25,
     borderRadius: 50,
-    backgroundColor: '#f47066',
-    bottom: 150,
   },
   titleVideo:{
     width: '98%',

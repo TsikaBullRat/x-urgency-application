@@ -22,10 +22,10 @@ export default function FollowMore({ navigation }) {
 
       {/**------Screen Indicators-----------Screen Indicators----------- */}
 
-      <View style={{ width: 360, alignItems: 'center', marginTop: 102 }} >
-        <View style={{ width: 130, top: -25, flexDirection: 'row', justifyContent: 'space-evenly' }} >
+      <View style={{ width: 360, alignItems: 'center', marginTop: 105 }} >
+        <View style={{ width: 220, top: -25, flexDirection: 'row', justifyContent: 'space-evenly' }} >
           <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
-          <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
+          <Text style={styles.follow}>{`'`}</Text>
           <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
         </View>
       </View>
@@ -76,6 +76,15 @@ const styles = StyleSheet.create({
     top: -20,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+
+  follow: {
+    marginTop:13,
+    width:11,
+    height:11,
+    borderRadius:50,
+    color:'#f47066',
+    backgroundColor: '#F47066'
   },
 
   txtContent: {

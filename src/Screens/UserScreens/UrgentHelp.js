@@ -24,10 +24,10 @@ export default function UrgentHelp({ navigation }) {
       {/**------Screen Indicators-----------Screen Indicators----------- */}
 
       <View style={{ width: 360, alignItems: 'center', marginTop: 80 }}>
-        <View style={{ width: 130, top: -25, flexDirection: 'row', justifyContent: 'space-evenly' }}  >
+        <View style={{ width: 220, top: -25, flexDirection: 'row', justifyContent: 'space-evenly' }}  >
           <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
           <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
-          <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
+          <Text style={styles.urgent}>{`'`}</Text>
         </View>
       </View>
 
@@ -38,7 +38,7 @@ export default function UrgentHelp({ navigation }) {
           <Text style={{ fontWeight: 'bold', color: '#fff', }}> {`SignIn`} </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('SignIn')}
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}
           style={styles.buttons} >
           <Text style={{ fontWeight: 'bold', color: '#fff', }}>  {`Create Account`} </Text>
         </TouchableOpacity>
@@ -71,6 +71,15 @@ const styles = StyleSheet.create({
     width: 360,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+
+  urgent: {
+    marginTop:13,
+    width:11,
+    height:11,
+    borderRadius:50,
+    color:'#f47066',
+    backgroundColor: '#F47066'
   },
 
   txtContent: {
