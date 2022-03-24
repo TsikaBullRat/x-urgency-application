@@ -13,7 +13,7 @@ export default function App() {
   const [run, setRun] = useState(0);
   const [id, setID] = useState(null);
   const [doctor, setDoctor] = useState(null);
-  const [firstTimeUser, setFirstTimeUser] = useState(false);
+  const [firstTimeUser, setFirstTimeUser] = useState(true);
 
   const Exit = () => {
     LogOut();
