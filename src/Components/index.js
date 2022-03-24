@@ -9,4 +9,4 @@ import { DisplayPicture } from "./DisplayPicture"
 import { LargeInput } from "./LargeInput"
 import Menu from './Menu'
 
-export { AlertNote, BottomNav, button, Header, Socials, ProgressBar, VideoList, Loading, DisplayPicture, LargeInput, Menu}
+export { AlertNote, BottomNav, button, Header, Socials, ProgressBar, VideoList, Loading, DisplayPicture, LargeInput, Menu }

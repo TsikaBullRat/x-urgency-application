@@ -176,7 +176,6 @@ export default function PlayVideo({ navigation, route }) {
         </View>
       </View>
 
-
       <View>
 
         {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
@@ -208,20 +207,9 @@ export default function PlayVideo({ navigation, route }) {
 
             <Card style={styles.txtCards}>
               <View style={styles.commentBox}>
-                <TextInput
-                  style={styles.comment}
-                  name='comment'
-                  placeholder='Write a comment'
-                  onChangeText={text => setComment(text)}
-                />
-                <View
-                  style={styles.commentButton}
-                >
-                  <Button
-                    color='#F47066'
-                    onPress={() => Post(comment, data.firestore)}
-                    title='Comment'
-                  />
+                <TextInput style={styles.comment} name='comment' placeholder='Write a comment' onChangeText={text => setComment(text)} />
+                <View style={styles.commentButton} >
+                  <Button color='#F47066' onPress={() => Post(comment, data.firestore)} title='Comment' />
                 </View>
               </View>
             </Card>
@@ -319,7 +307,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
 
-  avatar:{
+  avatar: {
     width: 340,
     flexDirection: 'row'
   },
@@ -339,38 +327,38 @@ const styles = StyleSheet.create({
     borderColor: '#F47066'
   },
 
-  like:{ 
-    left: -8 
+  like: {
+    left: -8
   },
 
-  dislike:{ 
-    marginLeft: 10, 
-    marginTop: 3 
+  dislike: {
+    marginLeft: 10,
+    marginTop: 3
   },
 
-  share: { 
-    marginLeft: 15 
+  share: {
+    marginLeft: 15
   },
 
-  commentButton:{
+  commentButton: {
     width: '60%',
     height: 50,
     borderRadius: 25,
     left: 11
   },
 
-  save:{ 
-    marginLeft: 2 
+  save: {
+    marginLeft: 2
   },
 
   saveIcon: {
     marginLeft: 8
   },
 
-  
 
-  commentBox:{ 
-    flexDirection: 'row' 
+
+  commentBox: {
+    flexDirection: 'row'
   },
 
   comment: {
@@ -379,7 +367,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
   },
-    
+
   comments: {
     width: '65%',
     left: 3,
@@ -463,29 +451,29 @@ const styles = StyleSheet.create({
     paddingTop: 5
   },
 
-  owner: { 
-    paddingTop: 15 
+  owner: {
+    paddingTop: 15
   },
 
-  commentCount:{ 
-    width: 340, 
-    alignItems: 'flex-start' 
+  commentCount: {
+    width: 340,
+    alignItems: 'flex-start'
   },
 
-  commentSect: { 
-    height: 220 
+  commentSect: {
+    height: 220
   },
 
-  commentsInner: { 
-    height: 340, 
-    width: 340 
+  commentsInner: {
+    height: 340,
+    width: 340
   },
 
 
   commentCount: {
     paddingTop: 15,
-  } ,
-  
- 
+  },
+
+
 
 })

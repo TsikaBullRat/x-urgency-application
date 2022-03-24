@@ -1,14 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import {
-  View,
-  Button,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  ScrollView,
-  Share,
-} from "react-native";
+import { View, Button, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, Share, } from "react-native";
 import { Video } from "expo-av";
 import { WebView } from "react-native-webview";
 import { AntDesign, FontAwesome5, Entypo } from "@expo/vector-icons";
@@ -33,8 +24,8 @@ const Clone = ({ route, navigation }) => {
   const [comment, setComment] = useState("");
   const [visibleStatusBar, setVisibleStatusBar] = useState(false);
   const [status, setStatus] = React.useState({});
-  const [ likes, setLikes] = useState(0)
-  const [ dislikes, setDislikes] = useState(0)
+  const [likes, setLikes] = useState(0)
+  const [dislikes, setDislikes] = useState(0)
   const [pressed, setPressed] = useState(false)
   const [newComment, setNew] = useState(false)
 
@@ -56,11 +47,11 @@ const Clone = ({ route, navigation }) => {
     found
       ? null
       : (metadata.set({
-          liked: false,
-          disliked: false,
-          Comments: [null],
-          ref: auth.currentUser.uid,
-        }),
+        liked: false,
+        disliked: false,
+        Comments: [null],
+        ref: auth.currentUser.uid,
+      }),
         setViews(views + 1));
   };
 
@@ -97,7 +88,7 @@ const Clone = ({ route, navigation }) => {
     setComments(Comments.filter((item) => item.comment !== remove));
   };
 
-  const Comment = () =>{
+  const Comment = () => {
     Post(comment, data.firestore)
     setNew(!newComment)
   }
@@ -128,6 +119,7 @@ const Clone = ({ route, navigation }) => {
 
   return (
     <View style={styles.contain}>
+
       {/**-------BACK------BACK-------BACK */}
 
       <View style={styles.back}>
@@ -149,6 +141,7 @@ const Clone = ({ route, navigation }) => {
       </View>
 
       {/**-------------Visible Info----------------Visible Info-----------------Visible Info----------------  */}
+
       <View>
         {!visibleStatusBar ? (
           <View style={styles.statusOff}>
@@ -178,6 +171,7 @@ const Clone = ({ route, navigation }) => {
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
 
             <View style={styles.socialIcons}>
+
               {/*------------Likes-------------Likes--------Likes*/}
 
               <View style={styles.like}>
@@ -273,6 +267,7 @@ const Clone = ({ route, navigation }) => {
             </ScrollView>
           </View>
         ) : (
+
           /**-------------Hidden Description----------------Hidden Description-----------------Hidden Description----------------  */
 
           <View style={styles.hiddenDescription}>

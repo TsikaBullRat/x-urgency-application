@@ -98,39 +98,39 @@ export default function MedicalHome({ navigation, Exit, credentials }) {
             </View>
           )}
         </View>
-          <Text onPress={() => navigation.navigate("Update")} >
-            <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
-          </Text>
-        </View>
-        {/*---------------------- Video Scroll View--------------------*/}
+        <Text onPress={() => navigation.navigate("Update")} >
+          <Feather name="edit" size={24} color="#F47066" style={{ left: 120, top: -20 }} />
+        </Text>
+      </View>
+      {/*---------------------- Video Scroll View--------------------*/}
 
-        <View style={{ marginVertical: 20 }}>
-          <ScrollView style={{ height: 435 }} vertical={true} showsVerticalScrollIndicator={false} >
-            {collection
-              ? collection.map((vid, index) => (
-                <View style={{ width: 340, left: 11, backgroundColor: '#ffe7e6' }} key={index} >
-                  <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate('PlayVideo', { vid })} >
-                    <Video
-                      //ref={reference}
-                      source={{ uri: vid.url }} resizeMode='stretch' isLooping style={{ width: 340, height: 180 }} />
-                  </TouchableOpacity>
+      <View style={{ marginVertical: 20 }}>
+        <ScrollView style={{ height: 435 }} vertical={true} showsVerticalScrollIndicator={false} >
+          {collection
+            ? collection.map((vid, index) => (
+              <View style={{ width: 340, left: 11, backgroundColor: '#ffe7e6' }} key={index} >
+                <TouchableOpacity style={{ alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate('PlayVideo', { vid })} >
+                  <Video
+                    //ref={reference}
+                    source={{ uri: vid.url }} resizeMode='stretch' isLooping style={{ width: 340, height: 180 }} />
+                </TouchableOpacity>
 
-                  <View style={{ flexDirection: 'row', margin: 3, justifyContent: 'space-between' }} >
-                    <Text style={styles.vidTitle}>{vid.title}</Text>
-                    <Text style={styles.tag}>{vid.views}Views</Text>
-                  </View>
-
-                  <View style={{ margin: 3 }}>
-                    <Text style={styles.tag}>{vid.tag} </Text>
-                    <Text style={styles.tag}>{vid.stamp}</Text>
-                  </View>
-
-                  <ItemSeperatorView />
+                <View style={{ flexDirection: 'row', margin: 3, justifyContent: 'space-between' }} >
+                  <Text style={styles.vidTitle}>{vid.title}</Text>
+                  <Text style={styles.tag}>{vid.views}Views</Text>
                 </View>
-              ))
-              : null}
-          </ScrollView>
-        </View>
+
+                <View style={{ margin: 3 }}>
+                  <Text style={styles.tag}>{vid.tag} </Text>
+                  <Text style={styles.tag}>{vid.stamp}</Text>
+                </View>
+
+                <ItemSeperatorView />
+              </View>
+            ))
+            : null}
+        </ScrollView>
+      </View>
 
       <Text style={styles.btnUpload} onPress={() => { navigation.navigate("Upload") }} >
         <Text style={{ color: "#fff", fontSize: 26 }}>+</Text>
