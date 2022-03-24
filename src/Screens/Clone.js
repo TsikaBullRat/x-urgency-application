@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from 'react'
 import {
   View,
   Button,
@@ -7,113 +7,115 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
-  Share,
-} from "react-native";
-import { Video } from "expo-av";
-import { WebView } from "react-native-webview";
-import { AntDesign, FontAwesome5, Entypo } from "@expo/vector-icons";
-import { Avatar } from "react-native-elements";
-import { Card } from "react-native-paper";
-import { Likes } from "../firebase/Functions/Likes";
-import { Dislikes } from "../firebase/Functions/Dislikes";
-import { Collect, Post } from "../firebase/Storage/Storage.functions";
+  Share
+} from 'react-native'
+import { Video } from 'expo-av'
+import { WebView } from 'react-native-webview'
+import { AntDesign, FontAwesome5, Entypo } from '@expo/vector-icons'
+import { Avatar } from 'react-native-elements'
+import { Card } from 'react-native-paper'
+import { Likes } from '../firebase/Functions/Likes'
+import { Dislikes } from '../firebase/Functions/Dislikes'
+import { Collect, Post } from '../firebase/Storage/Storage.functions'
 
 const Clone = ({ route, navigation }) => {
-  const data = route.params.vid;
-  const [userName, setUserName] = useState(data.owner);
-  const [videoPlay, setVideoPlay] = useState(data.url);
-  const [views, setViews] = useState(data.views);
-  const [videoVisible, setVideoVisible] = useState(true);
-  const [count, setCount] = useState(0);
-  const reference = useRef(data.url);
-  const [info, setInfo] = useState();
-  const [Comments, setComments] = useState([]);
-  const [comment, setComment] = useState("");
-  const [visibleStatusBar, setVisibleStatusBar] = useState(false);
-  const [status, setStatus] = React.useState({});
+  const data = route.params.vid
+  const [userName, setUserName] = useState(data.owner)
+  const [videoPlay, setVideoPlay] = useState(data.url)
+  const [views, setViews] = useState(data.views)
+  const [videoVisible, setVideoVisible] = useState(true)
+  const [count, setCount] = useState(0)
+  const reference = useRef(data.url)
+  const [info, setInfo] = useState()
+  const [Comments, setComments] = useState([])
+  const [comment, setComment] = useState('')
+  const [visibleStatusBar, setVisibleStatusBar] = useState(false)
+  const [status, setStatus] = React.useState({})
 
   const LoadVideo = () => {
-    const uri = data.url;
-    console.log(data.url);
-  };
+    const uri = data.url
+    console.log(data.url)
+  }
+
   const changeVisibilityStatusBar = () => {
-    setVisibleStatusBar(!visibleStatusBar);
-  };
+    setVisibleStatusBar(!visibleStatusBar)
+  }
+
   const addAct = async () => {
     let metadata = firestore
-      .collection("Videos")
+      .collection('Videos')
       .doc(data.firestore)
-      .collection("Acts")
-      .doc(auth.currentUser.uid);
-    let found = await metadata.get().then((doc) => doc.exist);
+      .collection('Acts')
+      .doc(auth.currentUser.uid)
+    let found = await metadata.get().then(doc => doc.exist)
     found
       ? null
       : (metadata.set({
           liked: false,
           disliked: false,
           Comments: [null],
-          ref: auth.currentUser.uid,
+          ref: auth.currentUser.uid
         }),
-        setViews(views + 1));
-  };
+        setViews(views + 1))
+  }
   const Navigate = () => {
-    let match = data.match;
-    navigation.navigate("Doctor", { match });
-  };
-  const Delete = (remove) => {
+    let match = data.match
+    navigation.navigate('Doctor', { match })
+  }
+  const Delete = remove => {
     firestore
-      .collection("Videos")
+      .collection('Videos')
       .doc(data.firestore)
-      .collection("Acts")
+      .collection('Acts')
       .doc(auth.currentUser.uid)
       .get()
-      .then((doc) => {
-        return doc.data().Comments;
+      .then(doc => {
+        return doc.data().Comments
       })
-      .then((item) => {
-        let update = item.filter((item) => item.comment !== remove);
-        return update;
+      .then(item => {
+        let update = item.filter(item => item.comment !== remove)
+        return update
       })
-      .then((update) => {
+      .then(update => {
         firestore
-          .collection("Videos")
+          .collection('Videos')
           .doc(data.firestore)
-          .collection("Acts")
+          .collection('Acts')
           .doc(auth.currentUser.uid)
           .update({
-            Comments: update,
-          });
-      });
+            Comments: update
+          })
+      })
 
-    setComments(Comments.filter((item) => item.comment !== remove));
-  };
+    setComments(Comments.filter(item => item.comment !== remove))
+  }
 
-  const ShareItem = async (url) => {
+  const ShareItem = async url => {
     try {
-      const result = await Share.share({ url: url });
+      const result = await Share.share({ url: url })
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
-          console.log("Shared with activity type"); // shared with activity type of result.activityType
-          console.log(result.activityType);
+          console.log('Shared with activity type') // shared with activity type of result.activityType
+          console.log(result.activityType)
         } else {
-          console.log("Shared"); // shared
-          console.log(result.action);
+          console.log('Shared') // shared
+          console.log(result.action)
         }
       } else if (result.action === Share.dismissedAction) {
-        console.log("Could not share"); // dismissed
+        console.log('Could not share') // dismissed
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error.message)
     }
-  };
-
-  // useEffect(() => {
-  //   Collect(data.firestore, setComments, setCount);
-  // }, []);
+  }
 
   useEffect(() => {
-    console.log(data.url);
-  });
+    Collection(data.firestore, setComments, setCount)
+  }, [])
+
+  useEffect(() => {
+    console.log(data.url)
+  })
 
   return (
     <View style={styles.contain}>
@@ -131,7 +133,7 @@ const Clone = ({ route, navigation }) => {
         <View style={styles.video}>
           <WebView
             source={{
-              uri: data.url,
+              uri: videoPlay
             }}
           />
         </View>
@@ -142,30 +144,25 @@ const Clone = ({ route, navigation }) => {
         {!visibleStatusBar ? (
           <View style={styles.statusOff}>
             <View style={styles.title}>
-              <Text style={styles.vidTitle}>{'data.title'}</Text>
+              <Text style={styles.vidTitle}>{data.title}</Text>
               <Text style={styles.viewCount}>
                 {views} views - {data.stamp}
               </Text>
-            </View>
-
-            {/*------------DropDown-------------DropDown--------DropDown*/}
-
-            <View style={styles.dropdown}>
+              {/*------------DropDown-------------DropDown--------DropDown*/}
               <TouchableOpacity
-                title="topNav"
+                title='topNav'
                 onPress={() => changeVisibilityStatusBar()}
               >
                 <AntDesign
-                  name="downcircle"
+                  name='downcircle'
                   size={18}
-                  color="black"
+                  color='black'
                   style={styles.drop}
                 />
               </TouchableOpacity>
             </View>
 
             {/*-------------Social Icons-------Social Icons----------Social Icons */}
-
             <View style={styles.socialIcons}>
               {/*------------Likes-------------Likes--------Likes*/}
 
@@ -183,9 +180,9 @@ const Clone = ({ route, navigation }) => {
 
               <View style={styles.share}>
                 <TouchableOpacity onPress={() => ShareItem(data.url)}>
-                  <Text style={styles.shareIcon}>
-                    <FontAwesome5 name="share" size={20} color="black" />
-                  </Text>
+                  <View style={styles.shareIcon}>
+                    <FontAwesome5 name='share' size={20} color='black' />
+                  </View>
                   <Text style={styles.shareText}> Share </Text>
                 </TouchableOpacity>
               </View>
@@ -193,22 +190,21 @@ const Clone = ({ route, navigation }) => {
               {/*------------Save-------------Save--------Save*/}
 
               <View style={styles.save}>
-                <Text style={styles.saveIcon}>
-                  <Entypo name="save" size={20} color="black" />
-                </Text>
+                <View style={styles.saveIcon}>
+                  <Entypo name='save' size={20} color='black' />
+                </View>
                 <Text style={styles.saveText}> Save </Text>
               </View>
             </View>
 
             {/*------------Avatar-------------Avatar--------Avatar*/}
-
             <View style={styles.avatar}>
               <Avatar
                 rounded
                 source={{
-                  uri: "https://randomuser.me/api/portraits/men/41.jpg",
+                  uri: 'https://randomuser.me/api/portraits/men/41.jpg'
                 }}
-                size="medium"
+                size='medium'
                 onPress={Navigate}
               />
               <Text style={styles.owner}> {data.owner}</Text>
@@ -220,15 +216,15 @@ const Clone = ({ route, navigation }) => {
               <View style={styles.commentBox}>
                 <TextInput
                   style={styles.comment}
-                  name="comment"
-                  placeholder="Write a comment"
-                  onChangeText={(text) => setComment(text)}
+                  name='comment'
+                  placeholder='Write a comment'
+                  onChangeText={text => setComment(text)}
                 />
                 <View style={styles.commentButton}>
                   <Button
-                    color="#F47066"
+                    color='#F47066'
                     onPress={() => Post(comment, data.firestore)}
-                    title="Comment"
+                    title='Comment'
                   />
                 </View>
               </View>
@@ -240,8 +236,7 @@ const Clone = ({ route, navigation }) => {
 
             <ScrollView
               style={styles.commentSect}
-              showsVerticalScrollIndicator={false}
-            >
+              showsVerticalScrollIndicator={false}>
               <Card style={styles.commentsInner}>
                 {Comments.map((item, index) => (
                   <View style={styles.comments} key={index}>
@@ -258,12 +253,12 @@ const Clone = ({ route, navigation }) => {
           <View style={styles.hiddenDescription}>
             <View style={styles.description}>
               <View>
-                <Text style={styles.descriptionHead}>{"Description: "}</Text>
+                <Text style={styles.descriptionHead}>{'Description: '}</Text>
                 <Text style={styles.descriptionText}>{data.description}</Text>
               </View>
               <View style={styles.close}>
                 <TouchableOpacity onPress={() => changeVisibilityStatusBar()}>
-                  <AntDesign name="closecircle" size={18} color="black" />
+                  <AntDesign name='closecircle' size={18} color='black' />
                 </TouchableOpacity>
               </View>
             </View>
@@ -275,163 +270,194 @@ const Clone = ({ route, navigation }) => {
         )}
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   contain: {
     flex: 1,
-    alignItems: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    backgroundColor: '#fff'
   },
 
   back: {
     marginTop: 10,
     width: 340,
-    alignItems: "flex-start",
+    alignItems: 'flex-start'
   },
 
   videoContainer: {
-    width: 344,
+    width: '100%',
     marginTop: 25,
-    backgroundColor: "#f7eeed",
+    backgroundColor: '#f7eeed'
   },
 
   video: {
-    width: 340,
-    height: 180,
+    width: '100%',
+    height: 180
   },
 
   statusOff: {
     width: 340,
-    justifyContent: "space-between",
+    justifyContent: 'space-between'
   },
 
   title: {
-    flexDirection: "row",
+    flexDirection: 'row',
     width: 340,
-    alignItems: "center",
-    justifyContent: "space-between",
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
 
-  vidTitle: { fontWeight: "bold", color: "#F47066" },
+  vidTitle: {
+    fontWeight: 'bold',
+    color: '#F47066'
+  },
+
   viewCount: {
     width: 340,
-    left: 2,
+    left: 2
   },
 
   dropdown: {
     marginLeft: 25,
-    marginTop: 20,
+    marginTop: 20
   },
 
   socialIcons: {
     width: 360,
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 15,
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderColor: "#f47066",
-    alignItems: "center",
-    justifyContent: "space-around",
+    borderColor: '#f47066',
+    alignItems: 'center',
+    justifyContent: 'space-around'
   },
 
-  like: { left: -8 },
-  dislike: { marginLeft: 10, marginTop: 3 },
-  share: { marginLeft: 15 },
-  shareIcon: { marginLeft: 8 },
-  shareText: { paddingTop: 5 },
-  save: { marginLeft: 2 },
+  like: {
+  },
+
+  dislike: {
+    marginTop: 3
+  },
+
+  shareIcon: {
+     marginLeft: 8
+  },
+
+  shareText: { paddingTop: 5, },
+
+  save: {
+    left:-15
+  },
+
+  saveIcon: {
+    left:8
+  },
+
   saveText: { paddingTop: 5 },
+
   avatar: {
     width: 340,
     marginTop: 25,
-    flexDirection: "row",
+    flexDirection: 'row'
   },
 
   owner: { paddingTop: 15 },
+
   txtCards: {
     width: 340,
     height: 40,
     borderRadius: 10,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     marginTop: 5,
     borderWidth: 1,
-    borderColor: "#F47066",
+    borderColor: '#F47066'
   },
 
-  commentBox: { flexDirection: "row" },
+  commentBox: { flexDirection: 'row' },
+
   comment: {
     width: 295,
     height: 38,
     borderRadius: 10,
-    backgroundColor: "#fff",
-    paddingLeft: 10,
+    backgroundColor: '#fff',
+    paddingLeft: 10
   },
 
   commentButton: {
     width: 90,
     height: 50,
     borderRadius: 15,
-    marginTop: 2,
+    marginTop: 2
   },
 
   commentCount: {
     width: 340,
-    alignItems: "flex-start",
+    alignItems: 'flex-start'
   },
 
   commentSect: { height: 220 },
   commentsInner: {
     height: 340,
-    width: 340,
+    width: 340
   },
 
   comments: {
     width: 295,
     left: 3,
     marginVertical: 10,
-    flexDirection: "row",
+    flexDirection: 'row',
     borderRadius: 10,
-    backgroundColor: "#f47066",
-    paddingLeft: 5,
+    backgroundColor: '#f47066',
+    paddingLeft: 5
   },
 
   txtUserComment: {
     padding: 10,
     fontSize: 18,
-    color: "#fff",
+    color: '#fff'
   },
 
   txtComments: {
-    color: "#fff",
-    padding: 10,
+    color: '#fff',
+    padding: 10
   },
 
   hiddenDescription: {
-    backgroundColor: "#fff",
-    marginTop: 15,
+    backgroundColor: '#fff',
+    marginTop: 15
   },
 
   description: {
     width: 340,
     marginTop: 5,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
 
-  descriptionHead: { fontWeight: "bold", color: "#F47066", fontSize: 22 },
+  descriptionHead: { 
+    fontWeight: 'bold', 
+    color: '#F47066', 
+    fontSize: 22 
+},
+
   descriptionText: {
     maxWidth: 315,
-    paddingLeft: 20,
+    paddingLeft: 20
   },
 
-  close: { marginTop: 5 },
+  close: {
+    // marginTop: 5
+  },
+
   descriptionBox: {
     width: 340,
     marginTop: 25,
-    alignItems: "flex-start",
-  },
-});
+    alignItems: 'flex-start'
+  }
+})
 
-export { Clone };
+export { Clone }

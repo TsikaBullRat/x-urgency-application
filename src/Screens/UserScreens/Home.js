@@ -181,70 +181,40 @@ export default function Home ({ navigation, Exit }) {
                     <View
                       style={{
                         width: '100%',
-                        marginTop: 15,
+                        marginTop: 25,
                         alignItems: 'center',
                         backgroundColor: '#b5a8a8'
                       }}
                       key={index}
                     >
+                      <TouchableOpacity
+                          onPress={() =>
+                            navigation.navigate('PlayVideo', { vid })}>
                       <Video
                         ref={vid.index}
                         source={{ uri: vid.url }}
                         resizeMode='stretch'
                         isLooping
-                        style={{ width: '100%', height: 255 }}
+                        style={{ width: '100%', height: 220 }}
                       />
-
-                      
-                        <TouchableOpacity
-                          onPress={() =>
-                            navigation.navigate('PlayVideo', { vid })
-                          }
-                        >
-                          <Image
-                            style={{
-                              height: 30,
-                              width: 30,
-                              borderRadius: 50,
-                              top:-95,
-                              alignItems:'center',
-                              justifyContent:'center',
-                              backgroundColor: '#f47066'
-                            }}
-                            source={require('../../images/PlayMenu.jpg')}
-                          />
-                        </TouchableOpacity>                   
-
-                      <View
-                        style={{
-                          width: '98%',
-                          flexDirection: 'row',
-                          margin: 3,
-                          justifyContent: 'space-between'
-                        }}
-                      >
-                        <Text style={styles.vidTitle}>{vid.title}</Text>                       
-                      </View>
+                     </TouchableOpacity>    
+                       
 
                       <View
                         style={{
                           width: '98%',
                           margin: 3,
                           alignItems: 'flex-start'
-                        }}
-                      >
-
+                        }}>
+                        <Text style={styles.vidTitle}>{vid.title}</Text>
                         <View style={{ width: 350, flexDirection:'row', justifyContent:'space-between'}}>
                         <Text style={styles.description}>{vid.description}</Text>
                         <Text style={styles.tag}>{vid.views}Views</Text>
                         </View>
 
-
-                        <Text style={styles.description}>{vid.tag} </Text>
                         <Text style={styles.tag}>{vid.stamp}</Text>
                       </View>
 
-                      <ItemSeperatorView />
                     </View>
                   ))
                 : null}
@@ -271,7 +241,6 @@ const styles = StyleSheet.create({
 
   menu2: {
     width: '95%',
-    height: 520,
     borderRadius: 15,
     elevation: 5
   },
