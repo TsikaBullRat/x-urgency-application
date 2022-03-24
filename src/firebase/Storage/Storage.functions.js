@@ -6,8 +6,7 @@ var atob = require('atob')
 var btoa = require('btoa')
 
 const Collect = async (doc, SetCollection, Count) => {
-    var count
-    var set = []
+    
     await firestore.collection('Videos').doc(doc).collection('Acts')
         .onSnapshot(query => {
             query.forEach(async doc => {
@@ -16,27 +15,29 @@ const Collect = async (doc, SetCollection, Count) => {
                 let comment
                 let time
                 let load = []
+                let count = 0
+                let set = []
 
-                if (doc.data().comments !== undefined) {
-                    if (doc.data().comments[0] !== null) count = doc.data().comments.length
-                    else count = 0
+                if (doc.data().Comments !== undefined) {
+                    if (doc.data().Comments[0] !== null) count = doc.data().Comments.length
                 }
 
-                if (doc.data().comments !== undefined) {
-                    if (doc.data().comments[0] !== null) {
-                        for (var i = 0; i < doc.data().comments.length; i++) {
+                if (doc.data().Comments !== undefined) {
+                    if (doc.data().Comments[0] !== null) {
+                        for (var i = 0; i < doc.data().Comments.length; i++) {
                             locator = doc.data().ref
                             user = await firestore.collection("Users").doc(locator).get().then(doc => doc.data().username ? doc.data().username : null)
-                            comment = doc.data().comments[i].comment
-                            time = doc.data().comments[i].time.toDate()
+                            comment = doc.data().Comments[i].comment
+                            time = doc.data().Comments[i].time.toDate()
                             load = [...load, { user, comment, time }]
                         }
                     }
                 }
                 set = [...set, ...load]
                 SetCollection(set)
+                Count(count)
             })
-            Count(count)
+            
         })
 }
 
@@ -44,17 +45,18 @@ const Post = (comment, video) => {
     let time = new Date()
     firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => {
-            if (doc.data().comments[0] !== null) {
+            if (doc.data().Comments[0] !== null) {
                 firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
-                    comments: [...doc.data().comments, { comment, time }]
+                    Comments: [...doc.data().Comments, { comment, time }]
                 })
             }
             else {
                 firestore.collection('Videos').doc(video).collection('Acts').doc(auth.currentUser.uid).update({
-                    comments: [{ comment, time }]
+                    Comments: [{ comment, time }]
                 })
             }
         })
+        .catch(err=>console.log(err))
 }
 
 const LoadSet = (Load, query) => {
@@ -113,7 +115,6 @@ const LoadSet = (Load, query) => {
             .then(res => {
                 res.items.forEach(async itemRef => {
                     var views = 0
-                    console.log(metadata)
                     views = await metadata.doc(itemRef.name.split('.')[0]).collection("Acts").get()
                         .then(query => {
                             query.forEach(doc => {
@@ -121,7 +122,6 @@ const LoadSet = (Load, query) => {
                             })
                             return views
                         })
-                        console.log(itemRef.toString())
                         getLink = itemRef.getDownloadURL().then(url =>url)
                         .catch(err=>console.log(err))
                     let link = await getLink
@@ -157,7 +157,6 @@ const LoadSet = (Load, query) => {
                     getLink = itemRef.getDownloadURL().then(url => url)
                         .catch(err => console.log(err))
                     let link = await getLink
-                    console.log(link)
                     let find = await metadata.doc(itemRef.name.split('.')[0]).get().then(data => data.data())
                     let name = find.title
                     let match = find.ref

@@ -3,22 +3,22 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { Entypo } from 'react-native-vector-icons';
 import { firestore, auth } from '../config';
 
-function Dislikes({ data }) {
-  const [count, setCount] = useState(0),
+function Dislikes({ data, pressed, setPressed }) {
 
-    [pressed, setPressed] = useState(false),
-    Check = async () => {
-      let myDislike = await firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).get()
-        .then(doc => (doc.data().disliked))
-      firestore.collection('Videos').doc(data).collection('Acts').where("disliked", "==", true)
-        .onSnapshot(query => {
-          query.forEach(doc => {
-            doc.exists ? setCount(count + 1) : null
-          })
+  const [count, setCount] = useState(0)
+
+  const Check = async () => {
+    setCount(0)
+    await firestore.collection('Videos').doc(data).collection('Acts').where("disliked", "==", true)
+      .onSnapshot(query => {
+        query.forEach(doc => {
+          let patch = 0
+          setCount(patch + 1)
         })
-    },
+      })
+}
 
-    Like = async () => {
+  const Like = async () => {
       let thisLike = await firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).get()
         .then(doc => (doc.data().liked))
       let thisDislike = await firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).get()
@@ -29,26 +29,19 @@ function Dislikes({ data }) {
         }),
         setPressed(!pressed)
       ) : (
-
         thisLike ? (
           firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).update({
             liked: false,
             disliked: true
           }),
-
           setPressed(!pressed)
-
         ) : (
-
           firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).update({
             disliked: true
           }),
-
           setPressed(!pressed)
-
         )
       )
-      Check()
     };
 
   useEffect(() => { Check() }, [pressed])
@@ -58,7 +51,6 @@ function Dislikes({ data }) {
           <Entypo name="thumbs-down" size={20} color="black" />
           <Text style={{ paddingTop: 6 }}> {count}</Text>
         </TouchableOpacity>
-
   );
 }
 

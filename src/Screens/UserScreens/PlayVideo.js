@@ -129,11 +129,11 @@ export default function PlayVideo({ navigation, route }) {
       {/**-------------Video----------------Video-----------------Video---------------- */}
 
       <View style={styles.videoContainer}>
-        <Video ref={data.index} source={{ uri: data.uri }} useNativeControls resizeMode='contain' isLooping onPlaybackStatusUpdate={status => setStatus(() => status)} />
+        <Video ref={data.index} source={{ uri: data.url }} useNativeControls resizeMode='contain' isLooping onPlaybackStatusUpdate={status => setStatus(() => status)} />
       </View>
 
       <View>
-        <Text style={styles.vidTitle}>{data.title}</Text>
+        <Text style={styles.vidTitle}>{data.description}</Text>
         <Text style={styles.viewCount}>
           {views} views - {data.stamp}
         </Text>

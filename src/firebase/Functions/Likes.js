@@ -3,15 +3,16 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { Entypo } from 'react-native-vector-icons'
 import { firestore, auth } from '../config';
 
-function Likes({ data }) {
+function Likes({ data, pressed, setPressed }) {
 
   const [count, setCount] = useState(0)
-  const [pressed, setPressed] = useState(false)
+
   const Check = async () => {
+      setCount(0)
       await firestore.collection('Videos').doc(data).collection('Acts').where("liked", "==", true)
         .onSnapshot(query => {
           query.forEach(doc => {
-            doc.exists ? setCount(count + 1) : null
+            setCount(count + 1)
           })
         })
   }
@@ -25,9 +26,7 @@ function Likes({ data }) {
         firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).update({
           liked: false
         }),
-
         setPressed(!pressed)
-
       ) : (
 
         thisDislike ? (
@@ -35,20 +34,14 @@ function Likes({ data }) {
             liked: true,
             disliked: false
           }),
-
           setPressed(!pressed)
-
         ) : (
-
           firestore.collection('Videos').doc(data).collection('Acts').doc(auth.currentUser.uid).update({
             liked: true
           }),
-
           setPressed(!pressed)
-
         )
       )
-      Check()
   };
 
   useEffect(() => { Check() }, [pressed])

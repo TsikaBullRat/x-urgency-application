@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { View, StyleSheet, TouchableOpacity, Image, Text, ScrollView } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Text,
+  ScrollView
+} from 'react-native'
+// import { ScrollView } from 'react-native-gesture-handler'
 import { Card } from 'react-native-paper'
 import { auth, firestore } from '../../firebase/config'
 import { LoadSet } from '../../firebase/Storage/Storage.functions'
@@ -11,44 +19,45 @@ import VideoList from '../../Components/VideoList'
 import { Feather } from '@expo/vector-icons'
 import { Avatar, Badge } from 'react-native-elements'
 import { AlertNote } from '../../Components/Alert'
+import { AntDesign } from '@expo/vector-icons'
 import { Video } from 'expo-av'
 
-export default function Home({ navigation, Exit }) {
+export default function Home ({ navigation, Exit }) {
   const [status, setStatus] = useState({})
   const [videos, setLoad] = useState(null)
   const [image, setImage] = useState(null)
   const [initial, setInitial] = useState('')
   const [collection, setCollection] = useState([])
+  const [visibleStatusBar, setVisibleStatusBar] = useState(false)
+
+  const changeVisibilityStatusBar = () => {
+    setVisibleStatusBar(!visibleStatusBar)
+  }
 
   useEffect(() => {
-    auth.currentUser ?
-      //  (setImage(auth.currentUser.photoURL),
+    auth.currentUser
+      ? //  (setImage(auth.currentUser.photoURL),
         setInitial(auth.currentUser.displayName.substring(0, 1))
       : auth.onAuthStateChanged(doc => {
           // setImage(doc.photoURL)
           // console.log(doc.displayName)
           setInitial(doc.displayName.substring(0, 1))
-          console.log(auth.currentUser)
         })
   }, [])
 
-  // useEffect(()=>{
-  //   LoadSet(setCollection)
-  // }, [])
-
-  useEffect(()=>{
+  useEffect(() => {
     LoadSet(setCollection)
-  }, [])
-
-  const reference = useRef(null)
-
-  useEffect(()=>{
-    console.log(collection)
   }, [])
 
   const ItemSeperatorView = () => {
     return (
-      <View style={styles.seperator}
+      <View
+        style={{
+          height: 0.5,
+          width: 380,
+          left: -10,
+          backgroundColor: '#c8c8c8'
+        }}
       />
     )
   }
@@ -58,17 +67,21 @@ export default function Home({ navigation, Exit }) {
 
   return (
     <View style={styles.container}>
-
-      <View style={styles.center}>
-
-        <View style={styles.width}>
-          <AlertNote modalVisible={displayModal} setModalVisible={setDisplaModal} msg={message} />
+      <View style={{ alignItems: 'center' }}>
+        <View style={{ width: '100%' }}>
+          <AlertNote
+            modalVisible={displayModal}
+            setModalVisible={setDisplaModal}
+            msg={message}
+          />
 
           {/**------------------CallSiren--------------------CallSiren----------------- */}
-
-          <View style={styles.callMain}>
-            <View style={styles.callCenter}>
-              <TouchableOpacity onPress={() => navigation.navigate('EmergencyContacts')} >
+          <View
+            style={styles.callSiren}>
+            <View style={styles.emergency}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('EmergencyContacts')}
+              >
                 <CallSiren />
               </TouchableOpacity>
             </View>
@@ -81,61 +94,82 @@ export default function Home({ navigation, Exit }) {
           </View>
 
           {/**----------------Header/Avatar--------------------Header/Avatar--------------- */}
-
-          
-
+          <View
+            style={styles.upperView}>
             {/*-------------Header---------------Header--------------Header------- */}
-
-            <View style={styles.header}>
+            <View>
               <Header />
             </View>
-        </View>
 
-      {/**-----------Menu Category--------------Menu Category--------------------- */}
-        <Menu />
-
-      {/*---------------------- Video Scroll View--------------------*/}
-      <View style={styles.mainBody}>
-        <ScrollView
-          style={styles.scroll}
-          vertical={true}
-          showsVerticalScrollIndicator={false}
-        >
-          {collection?( 
-            collection.map((vid, index) => (
-                <View
-                  style={styles.item}
-                  key={index}
-                >
-                  <TouchableOpacity
-                    style={styles.pressable}
-                    onPress={() => navigation.navigate('PlayVideo', { vid })}
-                  >
-                    <Video
-                      ref={reference}
-                      source={{ uri: vid.url }}
-                      resizeMode='stretch'
-                      isLooping
-                      style={styles.video}
-                    />
-                  </TouchableOpacity>
-                
-                <View
-                  style={styles.vidText} >
-                    <Text style={styles.vidTitle}>{vid.title}</Text>
-                    <Text style={styles.tag}>{vid.views}Views</Text>
-                  </View>
-
-                  <View style={styles.vidText2}>
-                    <Text style={styles.tag}>{vid.tag} </Text>
-                    <Text style={styles.tag}>{vid.stamp}</Text>
-                  </View>
+            <View style={styles.displaypicture}>
+              {image ? (
+                <Avatar rounded source={{ uri: image }} size='large' />
+              ) : (
+                <View style={styles.temp}>
+                  <Text style={styles.temp_text}> {initial} </Text>
                 </View>
-            ))): null }
-
-            </ScrollView>
+              )}
             </View>
+          </View>
+
+          {/**-----------Menu Category--------------Menu Category--------------------- */}
+          {/* <View style={{ width: '100%', alignItems: 'center' }}> */}
+            <Menu />
+          {/* </View> */}
+
+          {/*---------------------- Video Scroll View--------------------*/}
+          <View
+            style={styles.videoList}>
+            <ScrollView
+              // style={{ height: '15%', width:'100%' }}
+              vertical={true}
+              showsVerticalScrollIndicator={false}
+            >
+              {collection
+                ? collection.map((vid, index) => (
+                    <View
+                      style={styles.videoContainer}
+                      key={index}
+                    >
+                      
+                      <Video
+                        ref={vid.index}
+                        source={{ uri: vid.url }}
+                        resizeMode='stretch'
+                        isLooping
+                        style={styles.video}
+                      />
+                        <TouchableOpacity style={styles.playContainer} onPress={() =>navigation.navigate('PlayVideo', {vid})} >
+                          <Image style={styles.playButton} source={require('../../images/playMenu.jpg')} />
+                        </TouchableOpacity>
+                      <View
+                        style={styles.titleVideo}
+                      >
+                        <Text style={styles.vidTitle}>{vid.title}</Text>                       
+                      </View>
+
+                      <View
+                        style={styles.desBox}
+                      >
+
+                        <View style={styles.desBox2}>
+                        <Text style={styles.description}>{vid.description}</Text>
+                        <Text style={styles.tag}>{vid.views} views</Text>
+                        </View>
+
+
+                        <Text style={styles.description}>{vid.tag} </Text>
+                        <Text style={styles.tag}>{vid.stamp}</Text>
+                      </View>
+                      
+                      <ItemSeperatorView />
+                    </View>
+                  ))
+                : null}
+            </ScrollView>
+          </View>
         </View>
+      </View>
     </View>
   )
 }
@@ -144,6 +178,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
+    height:'100%',
     backgroundColor: '#fff'
   },
 
@@ -160,16 +195,18 @@ const styles = StyleSheet.create({
   },
 
   categoryListText: {
-    paddingLeft: 15,
     fontSize: 17,
     fontWeight: 'bold'
   },
 
   vidTitle: {
-    marginTop: -25,
     fontSize: 17,
     fontWeight: 'bold',
-    color: 'black'
+    color: 'red'
+  },
+
+  description: {
+    color: '#fff',    
   },
 
   tag: {
@@ -178,11 +215,6 @@ const styles = StyleSheet.create({
 
   tag1: {
     color: '#fff',
-    marginTop: -25
-  },
-
-  tag: {
-    // fontSize: 12
   },
 
   temp: {
@@ -198,74 +230,69 @@ const styles = StyleSheet.create({
   temp_text: {
     fontSize: 40,
     color: '#fff',
-    textAlign: 'center',
-
+    textAlign: 'center'
   },
-  seperator: { 
-    height: 0.5, 
-    width: 380, 
-    left: -10, 
-    backgroundColor: '#c8c8c8' 
+  callSiren:{
+    width: '97%',
+    flexDirection: 'row',
+    marginVertical: 35,
+    justifyContent: 'flex-end',             
   },
-  center: {
-    alignItems: 'center'
-  },
-  width: { 
-    width: '100%' 
-  },
-  callMain: { 
-    width: '95%', 
-    flexDirection: 'row', 
-    marginVertical: 35, 
-    justifyContent: 'flex-end' 
-  },
-  callCenter: { 
+  emergency:{ 
     left: -15 
   },
-  logout: { 
+  logout:{ 
     marginTop: 10 
   },
-  header: { 
-    flexDirection: 'row', 
-    width: '100%', 
-    alignItems: 'center', 
-    justifyContent: 'space-between' 
+  upperView:{
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
-  avatar: { 
+  displaypicture:{ 
     top: -25 
   },
-  scrollBase:{ 
-    marginTop: 15, 
-    alignItems: 'center' 
+  videoList:{
+    top: 25, 
+    marginBottom: 25,
+    alignItems: 'center',
+    justifyContent:'center'
   },
-  scrollHeight:{ 
-    height: 435 
+  videoContainer:{
+    width: '100%',
+    marginTop: 15,
+    alignItems: 'center',
+    backgroundColor: '#b5a8a8'
   },
-  card: { 
-    width: 360, 
-    marginTop: 20, 
-    alignItems: 'center', 
-    backgroundColor: '#b5a8a8' 
-  },
-  touchable: { 
+  video:{ 
     width: '100%', 
-    alignItems: 'center', 
-    justifyContent: 'center' 
+    height: 255 
   },
-  textBox1: { 
-    width: '98%', 
-    flexDirection: 'row', 
-    margin: 3, 
-    justifyContent: 'space-between' 
+  playButton:{
+    borderRadius: 50
   },
-  textBox2: { 
-    width: '98%', 
-    margin: 3, 
-    marginTop: -25, 
-    alignItems: 'flex-start' 
+  playContainer:{
+    height: 50,
+    width: 50,
+    borderRadius: 50,
+    backgroundColor: '#f47066',
+    bottom: 150,
   },
-  video: { 
-    width: '100%', 
-    height: 180 
+  titleVideo:{
+    width: '98%',
+    flexDirection: 'row',
+    margin: 3,
+    justifyContent: 'space-between'
+  },
+  desBox: {
+    width: '98%',
+    margin: 3,
+    alignItems: 'flex-start'
+  },
+  desBox2: { 
+    width: 350, 
+    flexDirection:'row', 
+    justifyContent:'space-between'
   }
 })
