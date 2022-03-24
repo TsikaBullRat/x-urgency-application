@@ -14,8 +14,7 @@ export default function CallSiren() {
       <Image source={require('../../img/siren.jpg')} style={{ width: 30, height: 35 }} />
 
       <View style={{ paddingVertical: 10 }}>
-        <Text style={{ fontSize: 12, fontWeight: 'bold', fontFamily: 'Arial', color: '#F47066' }} > {`Call`}</Text>
-        <Text style={{ fontSize: 12, fontWeight: 'bold', fontFamily: 'Arial', color: '#F47066' }}> {`Now`}</Text>
+        <Text style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'Arial', color: '#F47066' }} > {`Emergency`}</Text>
       </View>
     </View>
   )

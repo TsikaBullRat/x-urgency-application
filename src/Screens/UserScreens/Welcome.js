@@ -23,8 +23,8 @@ export default function Welcome({ navigation }) {
       {/**------Screen Indicators-----------Screen Indicators----------- */}
 
       <View style={{ width: 360, alignItems: 'center', marginTop: 80 }}>
-        <View style={{ width: 130, top: -25, flexDirection: 'row', justifyContent: 'space-evenly' }} >
-          <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
+        <View style={{ width: 220, top: -25, flexDirection: 'row', justifyContent: 'space-evenly' }} >
+          <Text style={styles.welcome}>{`'`}</Text>
           <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
           <Text style={{ fontSize: 22, color: '#F47066' }}>{`o`}</Text>
         </View>
@@ -70,6 +70,15 @@ const styles = StyleSheet.create({
     top: -20,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+
+  welcome: {
+    marginTop:13,
+    width:11,
+    height:11,
+    borderRadius:50,
+    color:'#f47066',
+    backgroundColor: '#F47066' 
   },
 
   txtContent: {

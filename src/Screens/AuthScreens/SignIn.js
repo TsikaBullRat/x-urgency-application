@@ -135,12 +135,12 @@ export default function SignIn({ navigation }) {
 
         {/*----------------------Medical Personel--------------Medical Personel------------------ */}
 
-        <View style={{ marginTop: 10, width: '100%' }}>
-          <Text style={{ paddingTop: 10, color: 'grey', fontSize: 14, textAlign: 'center', justifyContent: 'center' }} >  {' '}  {`Medical Personel?`}</Text>
+        <View style={{ marginTop: 10, width: '100%', alignItems:'center', }}>
+          <Text style={{ paddingTop: 10, color: 'grey', fontSize: 14, textAlign: 'center', justifyContent: 'center' }} >{`Medical Personel?`}</Text>
 
-          <View style={{ flexDirection: 'row', textAlign: 'center', justifyContent: 'center' }} >
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
             <TouchableOpacity onPress={() => navigation.navigate('MedSignIn')}>
-              <Text style={{ fontSize: 20, paddingTop: 5, color: '#F47066' }}>  {' '}  {`SignIn`}  </Text>
+              <Text style={{ fontSize: 20, paddingTop: 5, color: '#F47066' }}>{`SignIn`}  </Text>
             </TouchableOpacity>
           </View>
         </View>

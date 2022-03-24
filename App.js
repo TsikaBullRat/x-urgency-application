@@ -76,10 +76,11 @@ export default function App() {
                   <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
                   <Stack.Screen name="FollowMore" component={FollowMore} options={{ headerShown: false }} />
                   <Stack.Screen name="UrgentHelp" component={UrgentHelp} options={{ headerShown: false }} />
+
                 </>
               ) : null} */}
               <Stack.Screen name="Home" options={{ headerShown: false }}>
-                {(props) => <Home {...props} Exit={Exit}  />}
+                {(props) => <Home {...props} Exit={Exit} />}
               </Stack.Screen>
               <Stack.Screen name="Doctor" component={MedProfile} options={{ headerShown: false }} />
               <Stack.Screen name="PlayVideo" component={Clone} options={{ headerShown: false }} />
