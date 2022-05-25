@@ -29,3 +29,16 @@ export { SignIn, SignUp, ForgotPassword, Home, PlayVideo, UploadVideo, DoctorPro
 export { UserScreens } from './UserScreens/UserScreens'
 export { DoctorsScreens } from './DoctorsScreens/DoctorScreens'
 export { AuthScreens } from './AuthScreens/AuthScreens'
+
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// import './index.css'
+// import App from './App'
+// import reportWebVitals from './reprotWebVitals'
+
+// ReactDOM.render(
+//     <React.StrictMode>
+//         <App />
+//     </React.StrictMode>
+//     document.getElementById('root')
+// )

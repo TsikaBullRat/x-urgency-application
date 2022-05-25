@@ -11,8 +11,8 @@
  * - Modification    :
  **/
 import React from 'react'
+import { SignIn, SignUp, DoctorSignUp, ForgotPassword } from '..'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { SignIn, SignUp, DoctorSignUp, ForgotPassword } from '../'
 
 const Stack = createNativeStackNavigator()
 
@@ -25,8 +25,10 @@ export const AuthScreens = () => {
         options={{ headerShown: false }}
       />
 
-      <Stack.Screen name='Sign In' options={{ headerShown: false }}>
-        {(props) => <SignIn {...props} />}
+      <Stack.Screen name='Sign In' 
+        component={SignIn}
+        options={{ headerShown: false }}>
+        {/* {{(props) => <SignIn {...props} />}} */}
       </Stack.Screen>
 
       <Stack.Screen name='Sign Up' options={{ headerShown: false }}>
